@@ -5,7 +5,6 @@
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
 <!DOCTYPE html>
 <html>
- 
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
