@@ -136,9 +136,9 @@
 		    <!-- 내용 끝 -->
 	    </div>
 	    <div class="footer">
-<!-- 		    푸터 시작 -->
+			<!-- 푸터 시작 -->
 	    	<tiles:insertAttribute name="Footer"/>
-<!-- 	    	푸터 끝 -->
+			<!-- 푸터 끝 -->
 	    </div>
   </body>
 </html>
