@@ -57,7 +57,7 @@
  
  background-position: center;
  
- background-size: 150%;
+ background-size: 75%;
 
  }
  
@@ -69,7 +69,7 @@
  
  background-position: center;
  
- background-size: 150%;
+ background-size: 75%;
 
  }
    #btn3{
@@ -80,7 +80,7 @@
  
  background-position: center;
  
- background-size: 150%;
+ background-size: 75%;
 
  }
  
@@ -92,7 +92,7 @@
  
  background-position: center;
  
- background-size: 150%;
+ background-size: 75%;
 
  }
    #btn5{
@@ -103,7 +103,7 @@
  
  background-position: center;
  
- background-size: 150%;
+ background-size: 75%;
 
  }
    #btn6{
@@ -114,7 +114,7 @@
  
  background-position: center;
  
- background-size: 150%;
+ background-size: 75%;
 
  }
     
@@ -149,7 +149,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 머리 -->
-							<a href="<c:url value='/Sample/Self_diagnosis_Brain.jsp' />">
+							<a href="<c:url value='/general/reservation/selfdiagnosis_brain.do'/>">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: 10px;" id="btn1"></button>
 							</a>
@@ -163,7 +163,7 @@
 						<div class="col-sm-8">
 
 							<!-- 귀 -->
-							<a href="<c:url value='/Sample/Self_diagnosis_Ear.jsp' />">
+							<a href="<c:url value='/general/reservation/selfdiagnosis_ear.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: -150px;" id="btn2"></button>
 							</a>
@@ -177,7 +177,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 입 -->
-							<a href="<c:url value='/Sample/Self_diagnosis_Mouth.jsp' />">
+							<a href="<c:url value='/general/reservation/selfdiagnosis_mouth.do' />">
 								<button type="button" class="btn btn-warning"
 								style="margin-left: 90px;"	id="btn3"></button>
 							</a>
@@ -191,7 +191,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 목 -->
-							<a href="<c:url value='/Sample/Self_diagnosis_Neck.jsp' />">
+							<a href="<c:url value='/general/reservation/selfdiagnosis_neck.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: -235px;" id="btn4"></button>
 							</a>
@@ -208,7 +208,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 코 -->
-							<a href="<c:url value='/Sample/Self_diagnosis_Nose.jsp' />">
+							<a href="<c:url value='/general/reservation/selfdiagnosis_nose.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: 10px;" id="btn5"></button>
 							</a>
@@ -222,7 +222,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 눈 -->
-							<a href="<c:url value='/Sample/Self_diagnosis_Eyes.jsp' />">
+							<a href="<c:url value='/general/reservation/selfdiagnosis_eye.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: -150px;" id="btn6"></button>
 							</a>

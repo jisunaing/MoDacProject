@@ -96,7 +96,7 @@
 						문의
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="/category">자가진단</a></li>
+						<li><a href="<c:url value='/general/reservation/selfdiagnosis.do'/>">자가진단</a></li>
 						<li class="divider"></li>
 						<li><a href="/category/1">병원에증상문의</a></li>
 					</ul>
