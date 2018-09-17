@@ -33,7 +33,6 @@
 <!-- scrolle effect~ -->
 <link href="css/parallax.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
-<script src="js/parallax.jquery.js"></script>
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
 
@@ -52,9 +51,15 @@
 	.container{
 		min-height: 100%;
 	} ////////////////
+	
 	.row{
 		margin:0 auto;
 		text-align:center;
+	}
+		.row .col-md-4{
+		margin-top:10px;
+		outline:1px pink solid;
+		height:200px;
 	}
 			/* 	
 	.container { 
@@ -64,7 +69,7 @@
 	  padding: 0 20px;
 	  padding-bottom: 80px;
 	} */
-	#my-slider {
+	/* #my-slider {
       width: 100%;
       height: 600px;
       color: white;
@@ -92,20 +97,20 @@
 	p{
 		font-weight: lighter;
 		font-family: 'Black Han Sans';
-	}
-	.footer{
-		margin-top: 10px; 
-		min-width: 100%;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	}
+	} */
+/* 	.footer{ */
+/* 		margin-top: 10px;  */
+/* 		min-width: 100%; */
+/* 		position: absolute; */
+/* 		bottom: 0; */
+/* 		left: 0; */
+/* 		right: 0; */
+/* 	} */
     </style>
     <script>
 	$(function(){
-		$('body').css('height', '100%').css('margin', '0');
-		$('html').css('height', '100%');
+/* 		$('body').css('height', '100%').css('margin', '0');
+		$('html').css('height', '100%'); */
 		$("#my-slider").camRollSlider();
 		// 슬라이더
 		var _gaq = _gaq || []; 
@@ -125,15 +130,15 @@
 	    <!-- 네비게이션바 시작 -->
 	    <tiles:insertAttribute name="Top"/>
 	    <!-- 네비게이션바 끝-->	    
-	    <div class="container">
+	    <div class="container" style="margin-bottom: 10px;">
 		    <!-- 내용 시작 -->
 		    <tiles:insertAttribute name="Body"/>
 		    <!-- 내용 끝 -->
 	    </div>
 	    <div class="footer">
-		    <!-- 푸터 시작 -->
+<!-- 		    푸터 시작 -->
 	    	<tiles:insertAttribute name="Footer"/>
-	    	<!-- 푸터 끝 -->
+<!-- 	    	푸터 끝 -->
 	    </div>
   </body>
 </html>
