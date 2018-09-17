@@ -111,6 +111,18 @@
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
+			<!-- 달력 테스트 부분 -->
+			<div class="form-group">
+				<label for="inputPassword" class="col-sm-2 control-label">예약시간</label>
+				<div class="col-sm-10">
+					<div style="width: 200px;">
+						<div id="picker">
+							<input type="hidden" id="result" value="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 달력 테스트 부분 -->
 			<!-- 예약자 이메일 -->
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>

@@ -23,10 +23,15 @@ public class GenenralController {
 	}
 	@RequestMapping("/general/reservation/reservation.do")
 	public String reservation() throws Exception {
-		return "general/reservation/Receipt.tiles";
+		return "general/reservation/Reservation.tiles";
 	}
 	@RequestMapping("/general/reservation/reservationlist.do")
 	public String reservationList() throws Exception {
-		return "general/reservation/Receipt.tiles";
+		return "general/reservation/Reservation_List.tiles";
 	}
+	
+	
+	
+	
+	
 }
