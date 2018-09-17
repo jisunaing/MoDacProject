@@ -40,7 +40,7 @@
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
   
-<title>모두의닥터</title>
+<title>모두의닥터 테스트</title>
 <script>
 	$(function(){
 		
