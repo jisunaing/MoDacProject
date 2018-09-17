@@ -43,15 +43,13 @@
 		$( "#tabletoggles" ).hide();
 		
 		$('#toggles').click(function(){		
-			$('#tabletoggles').toggle(500);
-			console.log($(this).val());
-			
-			if($(this).val()=='가족 정보보기'){
-				$('input:eq(0)').attr("value","가족정보 숨기기");
-			}
-			else{
-				$('input:eq(0)').attr("value","가족정보 보기");
-			}
+			$('#tabletoggles').toggle(500,function(){
+				var text = $('input:eq(0)').val();
+				console.log(text);
+				$('input:eq(0)').val(text=='가족 정보보기'?'가족 정보숨기기':'가족 정보보기');
+				
+			});
+
 		});
 	
 		$('label').css('minWidth', '90px');
@@ -146,7 +144,7 @@
 		</form>
 
 		<input type="checkbox" name="PersonalData" />
-		<span>개인정보 수집 및 사용에 동의합니다</span><br /> <br />
+		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
 		<button type="button" class="btn btn-default">접수</button>
 		<!-- 가운데 정렬 끝 -->
 		</div>

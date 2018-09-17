@@ -43,22 +43,19 @@
 		$( "#tabletoggles" ).hide();
 		
 		$('#toggles').click(function(){		
-			$('#tabletoggles').toggle(500);
-			console.log($(this).val());
-			
-			if($(this).val()=='가족 정보보기'){
-				$('input:eq(0)').attr("value","가족정보 숨기기");
-			}
-			else{
-				$('input:eq(0)').attr("value","가족정보 보기");
-			}
+			$('#tabletoggles').toggle(500,function(){
+				var text = $('input:eq(0)').val();
+				console.log(text);
+				$('input:eq(0)').val(text=='가족 정보보기'?'가족 정보숨기기':'가족 정보보기');
+				
+			});
+
 		});
 	
 		$('label').css('minWidth', '90px');
 		
 	});
 	</script>
-<div class="container">
 	<div class="row">
 		<div class="page-header">
 		  <h1>병원 이름 <small>성형외과</small></h1>
@@ -68,8 +65,7 @@
 		<div class="in">
 		<!-- 가운데 정렬 시작 -->
 		<div style="float: right;">
-			<input id="toggles" type="button" class="btn btn-default"
-				value="가족 정보보기">
+			<input id="toggles" type="button" class="btn btn-default" value="가족 정보보기"/>
 			<div id="tabletoggles" class="table-responsive">
 				<table class="table" style="width: 600px">
 					<tr>
