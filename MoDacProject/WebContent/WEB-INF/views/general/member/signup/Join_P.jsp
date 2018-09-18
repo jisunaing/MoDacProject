@@ -65,8 +65,15 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		
 		change = nujeok.substring(0,nujeok.lastIndexOf(','));
 				
-	
-		$(this).hide(1200);
+		
+		
+		
+		$(this).hide(900);
+		
+		$(this).not();
+		
+		
+		$(this).show(900);
 		
 	 
 	 $('#jin').attr('value',change);
@@ -183,14 +190,14 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 											
 												
 											<ul id="selectable">
-												
+											
 												  <li class="ui-state-default" value="1" >가정의학과</li>												  
 												
 												  <li class="ui-state-default" value="2">결핵과</li>
 												
 												  <li class="ui-state-default" value="3">내과</li>
 												
-												  <li class="ui-state-default" value="4">마취통증과</li> 
+												  <li class="ui-state-default" value="4" >마취통증과</li> 
 												
 												  <li class="ui-state-default" value="5">비뇨기과</li>
 												
@@ -310,3 +317,5 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
   </body>
 </html>
+
+
