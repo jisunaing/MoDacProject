@@ -19,12 +19,7 @@
     
     
     
-<script language="javascript">
-
-
-	
-
-
+<script>
 
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
 //document.domain = "abc.go.kr";  /popup/jusoPopup.jsp
@@ -34,7 +29,7 @@ function goPopup(){
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 	
 	
-	var pop = window.open("<c:url value='/popup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("<c:url value='/jusoPopup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	
 	//var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
@@ -57,34 +52,33 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	
 	
 	 var nujeok= "";
-	  
-	 
-	 $('li').click(function() {
+	
+		
+	 $('#selectable li').click(function(){
 		 
+		 var change = "";
 
 		 
 		console.log($(this).html()); //선택한 진료과목의 값을 가져옴
 		
-		//$('#jin').val().append().attr('value',$(this).html());
+		nujeok += $(this).html()+",";
 		
-		//$('#jin').append($('#jin').attr('value',$(this).html()));
-		
-		nujeok += $(this).html()+"  ";
-		
-		
+		change = nujeok.substring(0,nujeok.lastIndexOf(','));
+				
 	
 		$(this).hide(1200);
 		
 	 
-	 $('#jin').attr('value',nujeok);
-	 
-	 console.log($('#jin').val());
-	 
-	});	 
+	 $('#jin').attr('value',change);
 	 
 	 
 	 
 	 
+	 
+	});	
+	 
+	
+	
 	 
 	 
 	 
@@ -108,9 +102,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     font-size: 1em; text-align: center; border: 1px solid black; border-radius: 10px; }
     
     .modal-footer{margin-top: 290px; }
-
-
-
+    
 
 </style>
 
@@ -118,11 +110,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
   </head>
   <body>
   	<div class="container">
-	    <!-- 네비게이션바 -->
-	  
-	    <!-- 네비게이션바 -->
-	    <!-- 내용 시작 -->
-	    <div class="container">
+
 	    	
 	    	<div class="page-header">
 		  		<h1>제휴 문의<small> 병원 제휴</small></h1>
@@ -130,16 +118,13 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			<div class="row">
 				<div class="col-md-12">
 				
-					<!--		
-					폼의 가로폭은 <div >로 감싼후 col-*-*계열로 설정
-					폼의 세로폭는 .input-lg 또는 .input-sm 선택자를 .form-control 선택자와 함께 입력
-					 --> 
-					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='/DataRoom/Join.kosmo'/>" >
+					
+					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='#'/>" >
 					
 					
 						  <div class="form-group">
 						  
-						    <label for="id" class="col-sm-2  control-label" style="font-family: HYBDAL">아이디</label>
+						    <label for="id" class="col-sm-2  control-label">아이디</label>
 						   	<div class="col-sm-3">
 						      <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" >
 						    </div>
@@ -243,7 +228,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 											</ul>
 										</div>
 										<div class="modal-footer">
-											<button class="btn btn-primary" data-dismiss="modal">닫기</button>
+											<button class="btn btn-primary modal_close" data-dismiss="modal">닫기</button>
 										</div>
 									</div>
 								</div>
@@ -322,6 +307,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			
 	    </div>
     	 <!-- 내용 끝 -->
-    </div>
+
   </body>
 </html>

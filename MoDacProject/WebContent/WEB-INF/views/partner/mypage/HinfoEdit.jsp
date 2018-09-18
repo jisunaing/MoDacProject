@@ -154,6 +154,7 @@ input:focus{ outline: 0; border-color: black; }
 			
 		
 				$('li').click(function() {
+					
 					cut = $(this).html();
 
 					if ($(this).val() == 0) {
@@ -214,23 +215,15 @@ input:focus{ outline: 0; border-color: black; }
 					$('#humoo').val(ghd);
 				
 				});
-				
-			
-								
-			
-				
-				
-				
-				
+
 				
 				
 				/*모달용 함수 끝 */
 
+			
 				
 	  $('input[type="text"]').css('margin-bottom','23px');		
-		
-				
-				
+
 				
 			});///최상위
 		</script>

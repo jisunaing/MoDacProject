@@ -106,7 +106,7 @@
 					<li id="navbar-guestbook"><a href="#" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
-					<li id="navbar-tag"><a href="#" class="navmenus">로그인</a></li>
+					<li id="navbar-tag"><a href="<c:url value='/home/login.do'/>" class="navmenus">로그인</a></li>
 					<li id="navbar-guestbook"><a href="#" class="navmenus">회원가입</a></li>
 				</c:if>
 	    	</ul>
