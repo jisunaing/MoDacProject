@@ -91,10 +91,10 @@ table th {
 				</div>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">카테고리</li>
-					<li class="active treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>예약/문의 관리</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
+					<li class="active treeview"><a href="#">
+					<i class="fa fa-dashboard"></i> <span>예약/문의 관리</span>
+					<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
@@ -167,9 +167,8 @@ table th {
 							<li class="page-item"><a class="page-link" href="#">1</a></li>
 							<li class="page-item"><a class="page-link" href="#">2</a></li>
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-									class="sr-only">Next</span>
+							<li class="page-item"><a class="page-link" href="#"	aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
 							</a></li>
 						</ul>
 					</nav>

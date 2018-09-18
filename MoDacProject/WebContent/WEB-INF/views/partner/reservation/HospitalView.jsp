@@ -105,10 +105,11 @@ table th {
 				</div>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">카테고리</li>
-					<li class="active treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>예약/문의 관리</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
+					<li class="active treeview"><a href="#">
+					<i	class="fa fa-dashboard"></i> 
+					<span>예약/문의 관리</span>
+							<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
