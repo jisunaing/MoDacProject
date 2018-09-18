@@ -23,4 +23,24 @@ public class HomeController {
 //		return "general/hospital/MapHospital.tiles";
 //	}
 
-}
+	
+	@RequestMapping("/home/login.do")
+	public String login()throws Exception{
+		
+		
+		return "general/member/Login.tiles";
+	}///login
+	
+	@RequestMapping("/home/login_Pjoin.do")
+	public String join_P()throws Exception{
+		
+		
+		
+		
+		return "general/member/signup/Join_P.tiles";
+	}///login
+	
+	
+	
+	
+}////HomeController

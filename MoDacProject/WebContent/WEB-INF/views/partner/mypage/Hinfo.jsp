@@ -116,124 +116,11 @@ input:focus{ outline: 0; border-color: black; }
 
 }
  
-	/* 아래는 휴일 모달창 스타일  */
 
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 550px; }
-
-    #selectable li { margin: 0px 0px 0px 18px; padding: 11px; float: left; width: 50px; height: 120px; 
-    
-    font-size: 1.5em; text-align: center; border: 1px solid black; border-radius: 10px; }
-    
-    .modal-footer{margin-top: 130px; }
-    
-     #selectable li:hover {background-color: #79ABFF; color : white; }
-    
-    /* 휴일 모달창 스타일 끝  */
 
     </style>
 
-  <script>
-  
-  $(function() {
 
-		/*모달용 함수 시작 */
-
-			$("#selectable").selectable();
-		
-			var nujeok= new Array();
-							
-			var dydlf = new Array();
-			
-			var cut = new Array();
-			
-			var dkd = "";
-			
-			var ghd = "";
-			
-			
-			
-		
-				$('li').click(function() {
-					cut = $(this).html();
-
-					if ($(this).val() == 0) {
-
-						$(this).css({
-							'background-color' : '#79ABFF',
-							'color' : 'white'
-						});
-						
-						$(this).attr('value', 1);
-						
-											
-						
-						
-						nujeok += cut+",";	
-						
-						dkd = nujeok.substring(0,nujeok.lastIndexOf(','));
-						
-						ghd = dkd.split(','); //배열로 만듬
-				
-			
-					} 
-					else {
-
-						$(this).css({
-							'background-color' : 'white',
-							'color' : 'black'
-						});
-
-						$(this).attr('value', 0);
-						
-
-						ghd.forEach(function(value,index) {
-							
-						if(value == cut){
-
-							ghd.splice(index);
-					
-						}
-
-						});
-
-						
-					}
-
-				console.log('어떤새끼냐  ghd : '+ghd.length);
-				
-				console.log('어떤새끼냐 dydlf : '+dydlf.length);
-				
-				//console.log('어떤새끼냐 2 : '+dkd);
-				//console.log('어떤새끼냐 3 : '+dydlf);
-				});
-				
-				
-				
-				$('#okbutton').click(function() {
-					
-					$('#humoo').val(ghd);
-				
-				});
-				
-			
-								
-			
-				
-				
-				
-				
-				
-				
-				/*모달용 함수 끝 */
-
-				
-	  $('input[type="text"]').css('margin-bottom','23px');		
-		
-				
-				
-				
-			});///최상위
-		</script>
 
 </head>
 
@@ -361,44 +248,5 @@ input:focus{ outline: 0; border-color: black; }
 
 	<!--  내용 끝   -->
 
-
-
-
-
-
-  
-
-    <script >
-      var formTarget = $('.form-box').find('input, textarea');
-formTarget.on('keyup blur focus', function (e) {
-
-	var $this = $(this),
-	label = $this.prev('label');
-
-	if (e.type === 'keyup') {
-		if ($this.val() === '') {
-			label.removeClass('active highlight');
-		} else {
-			label.addClass('active highlight');
-		}
-	} else if (e.type === 'blur') {
-		if ($this.val() === '') {
-			label.removeClass('active highlight');
-		} else {
-			label.removeClass('highlight');
-		}
-	} else if (e.type === 'focus') {
-
-		if ($this.val() === '') {
-			label.removeClass('highlight');
-		} else
-		if ($this.val() !== '') {
-			label.addClass('highlight');
-		}
-	}
-
-});
-
-    </script>
 </body>
 </html>

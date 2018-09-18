@@ -199,12 +199,7 @@ input:focus{ outline: 0; border-color: black; }
 						
 					}
 
-				console.log('어떤새끼냐  ghd : '+ghd.length);
-				
-				console.log('어떤새끼냐 dydlf : '+dydlf.length);
-				
-				//console.log('어떤새끼냐 2 : '+dkd);
-				//console.log('어떤새끼냐 3 : '+dydlf);
+
 				});
 				
 				

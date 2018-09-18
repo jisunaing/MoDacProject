@@ -126,7 +126,9 @@
 </head>
 
 <body>
-		<c:set value="sdf" var="PARTNER_ID" scope="session"/>
+<%-- 		<c:set value="sdf" var="PARTNER_ID" scope="session"/> --%>
+		<c:set value="sdf" var="USER_ID" scope="session"/>
+
 	<!-- topMenu -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>

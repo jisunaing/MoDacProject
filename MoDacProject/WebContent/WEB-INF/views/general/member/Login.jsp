@@ -54,7 +54,7 @@ a:hover {
 	background: #F6F6F6; 
 	padding: 40px;
 	max-width: 600px;
-	margin: 200px auto; 
+	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);
 	
@@ -275,14 +275,14 @@ textarea {
 				
 				<div class="col-sm-offset-3">
 					<button type="submit" class="button button-block">로 그 인</button>
-				</div>
-				
+				</div>				
+			</form>
+			
 				<div class="col-sm-offset-3">
 					<button type="submit" class="button button-block" style="margin-top: 13px;">회원 가입</button>
 				</div>
-			</form>
-			
-		</div>
+
+			</div>
 		<!-- // Sign Up for Free -->
 		
 		<!-- Welcome Back! -->
@@ -307,10 +307,11 @@ textarea {
 				 <div class="col-sm-offset-3">
 					<button type="submit" class="button button-block">로 그 인</button>
 				</div>
-				<div class="col-sm-offset-3">
-					<button type="submit"  class="button button-block" style="margin-top: 13px;">제휴 신청</button>
-				</div>
+				
 			</form>
+				<div class="col-sm-offset-3">				
+					<a href="<c:url value='/home/login_Pjoin.do'/>"><button type="submit" class="button button-block" style="margin-top: 13px;">제휴 가입</button></a>					
+				</div>
 			
 		</div>
 		<!-- Welcome Back! -->
