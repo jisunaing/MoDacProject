@@ -28,7 +28,7 @@
 	<div class="">
 		<div class="page-header text-center">
 			<h1>
-				MyPage <small>OOO님 </small>
+				MyPage <small>${USER_ID}님 </small>
 			</h1>
 		</div>
 	</div>
