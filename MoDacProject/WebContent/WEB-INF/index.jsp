@@ -33,6 +33,7 @@
 <script src="dist/camroll_slider.js"></script>
 <!-- ~SLIDE -->
 
+
 <!-- scrolle effect~ -->
 <link href="css/parallax.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
@@ -43,7 +44,7 @@
 <title>모두의닥터</title>
 <script>
 	$(function(){
-		
+	
 		$("#my-slider").camRollSlider();
 		// 슬라이더 & 블러 이펙트
 		var _gaq = _gaq || []; 
@@ -56,7 +57,8 @@
 		  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
-	});	 		
+	});	 	
+	
 </script>
 <style>
 	/* 	
