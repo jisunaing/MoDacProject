@@ -77,7 +77,26 @@ public class GenenralController {
 	}//귀
 
 	
-	
+	//마이페이지로 이동
+	@RequestMapping("/general/mypage/mypage.do")
+	public String mypage() throws Exception {
+		return "general/mypage/MyPage.tiles";
+	}
+	//개인 정보
+	@RequestMapping("/general/mypage/personalinfo.do")
+	public String personalInfo() throws Exception {
+		return "general/mypage/Personal_Info_View.tiles";
+	}	
+	//개인 건강 정보
+	@RequestMapping("/general/mypage/healthinfo.do")
+	public String personalHealthInfo() throws Exception {
+		return "general/mypage/Personal_Health_Info_View.tiles";
+	}
+	//개인 건강 정보 수정
+	@RequestMapping("/general/mypage/healthinfo_edit.do")
+	public String personalHealthInfo_Edit() throws Exception {
+		return "general/mypage/Personal_Health_Info_Edit.tiles";
+	}
 	
 	
 	
