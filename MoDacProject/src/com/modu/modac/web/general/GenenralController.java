@@ -86,7 +86,12 @@ public class GenenralController {
 	@RequestMapping("/general/mypage/personalinfo.do")
 	public String personalInfo() throws Exception {
 		return "general/mypage/Personal_Info_View.tiles";
-	}	
+	}
+	//개인 정보 수정
+	@RequestMapping("/general/mypage/personalinfo_edit.do")
+	public String personalInfo_Edit() throws Exception {
+		return "general/mypage/Personal_Info_Edit.tiles";
+	}
 	//개인 건강 정보
 	@RequestMapping("/general/mypage/healthinfo.do")
 	public String personalHealthInfo() throws Exception {
@@ -97,13 +102,49 @@ public class GenenralController {
 	public String personalHealthInfo_Edit() throws Exception {
 		return "general/mypage/Personal_Health_Info_Edit.tiles";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//가족정보
+	@RequestMapping("/general/mypage/familyinfo.do")
+	public String familyInfo() throws Exception {
+		return "general/mypage/Family_Info_View.tiles";
+	}
+	//가족정보 수정
+	@RequestMapping("/general/mypage/familyinfo_edit.do")
+	public String familyInfo_Edit() throws Exception {
+		return "general/mypage/Family_Info_Edit.tiles";
+	}
+	//건강문의목록
+	@RequestMapping("/general/qna/qnahealth/health_qna_list.do")
+	public String health_QnA_List() throws Exception {
+		return "general/mypage/Health_QnA_List.tiles";
+	}
+	//건강문의 폼
+	@RequestMapping("/general/qna/qnahealth/health_qna_write.do")
+	public String health_QnA_Write() throws Exception {
+		return "general/mypage/Health_QnA_Write.tiles";
+	}
+	//건강문의 상세보기
+	@RequestMapping("/general/qna/qnahealth/health_qna_view.do")
+	public String health_QnA_View() throws Exception {
+		return "general/mypage/Health_QnA_View.tiles";
+	}
+	//사이트문의목록
+	@RequestMapping("/general/qna/qna_list.do")
+	public String QnA_List() throws Exception {
+		return "general/mypage/QnA_List.tiles";
+	}
+	//사이트문의 폼(글쓰기)
+	@RequestMapping("/general/qna/qna_write.do")
+	public String QnA_Write() throws Exception {
+		return "general/mypage/QnA_Write.tiles";
+	}
+	//사이트문의 상세보기
+	@RequestMapping("/general/qna/qna_view.do")
+	public String QnA_View() throws Exception {
+		return "general/mypage/QnA_View.tiles";
+	}
+	//사이트문의 상세보기 수정
+	@RequestMapping("/general/qna/qna_edit.do")
+	public String QnA_Edit() throws Exception {
+		return "general/mypage/QnA_Edit.tiles";
+	}
 }

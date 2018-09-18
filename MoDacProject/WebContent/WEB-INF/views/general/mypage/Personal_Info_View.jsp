@@ -76,7 +76,7 @@ tr th{
 		  </table>
 		  <br/><br/>
 		  <div class="row">
-		  	<a class="btn btn-warning">수정하기</a>
+		  	<a class="btn btn-warning" href="<c:url value='/general/mypage/personalinfo_edit.do'/>">수정하기</a>
 		  </div>
 		  <br/><br/><br/>
 		</div>

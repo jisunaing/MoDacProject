@@ -63,15 +63,15 @@ hr{
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
-
 						<p>
-						<h2>내 정보</h2>
-						회원님의 개인 정보와 건강상태를 확인하세요
+							<h2>내 정보</h2>
+							회원님의 개인 정보와 건강상태를 확인하세요
 						</p>
 						<a tabindex="-1" class="btn btn-primary " href="<c:url value='/general/mypage/personalinfo.do'/>"> 
-						<i class="fas fa-id-card-alt"></i> 개인정보
-						</a> <a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/healthinfo.do'/>"> <i
-							class="fas fa-notes-medical"></i> 건강 상태
+							<i class="fas fa-id-card-alt"></i> 개인정보
+						</a> 
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/healthinfo.do'/>"> 
+							<i class="fas fa-notes-medical"></i> 건강 상태
 						</a>
 					</div>
 				</div>
@@ -82,18 +82,16 @@ hr{
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution"
 			style="position: absolute; left: 35%; top: 30px;">
-
-			<img src="<c:url value='/Images/babyfeet.jpg'/>" class="masongram-image" width="640"
-				height="800">
+ 			<img src="<c:url value='/Images/babyfeet.jpg'/>" class="masongram-image" width="640" height="800">
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
 						<p>
-						<h2>가족 정보 관리</h2>
-						가족들의 정보까지 한번에 관리하세요.
+							<h2>가족 정보 관리</h2>
+							가족들의 정보까지 한번에 관리하세요.
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="#"> <i
-							class="fas fa-heart"></i> 보러가기
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/familyinfo.do'/>"> 
+							<i class="fas fa-heart"></i> 보러가기
 						</a>
 					</div>
 				</div>
@@ -118,7 +116,7 @@ hr{
 						<h2>자가 진단</h2>
 						회원님의 증상을 바탕으로 간편하게 진단해보세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="#" target="_blank">
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/selfdiagnosis.do'/>" target="_blank">
 							<i class="fas fa-heartbeat"></i> 자가진단하기
 						</a>
 					</div>
@@ -127,7 +125,7 @@ hr{
 			</div>
 		</div>
 		<!--자가진단 끝-->
-		<!-- 병원방문내역 -->
+		<!-- 접수/예약 내역 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution"
 			style="position: absolute; left: 5%; top: 10.7%;">
@@ -136,17 +134,21 @@ hr{
 				<div class="masongram-image-caption">
 					<div class="text-center">
 						<p>
-						<h2>병원 방문 내역</h2>
-						그동안 방문했던 병원을 한번에 확인하세요
+							<h2>접수/예약 내역</h2>
+							그동안의 진료내역과 예약을 한번에 확인하세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="#"> <i
-							class="far fa-hospital"></i></i> 확인하기
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/reservationlist.do'/>"> 
+							<i class="far fa-hospital"></i></i> 예약/접수
 						</a>
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/reservationlist.do'/>"> 
+							<i class="far fa-hospital"></i></i> 진료내역
+						</a>
+						
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- 병원방문내역 끝-->
+		<!-- 접수/예약 내역 끝-->
 
 		<!-- 건강 문의 -->
 		<div tabindex="0"
@@ -157,11 +159,11 @@ hr{
 				<div class="masongram-image-caption">
 					<div class="text-center">
 						<p>
-						<h2>건강문의</h2>
-						의사 선생님께 내 상태에 대해 직접 물어보세요
+							<h2>건강문의</h2>
+							의사 선생님께 내 상태에 대해 직접 물어보세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="#"> <i
-							class="fas fa-stethoscope"></i>문의하기
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnahealth/health_qna_list.do'/>"> 
+							<i class="fas fa-stethoscope"></i>문의하기
 						</a>
 					</div>
 				</div>
@@ -177,11 +179,11 @@ hr{
 				<div class="masongram-image-caption">
 					<div class="text-center">
 						<p>
-						<h2>사이트 문의하기</h2>
-						사이트에 대해 문의하실 사항이 있으면 적어주세요. 빠른 시일 내에 답변드리겠습니다.
+							<h2>사이트 문의하기</h2>
+							사이트에 대해 문의하실 사항이 있으면 적어주세요. 빠른 시일 내에 답변드리겠습니다.
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="#"> <i
-							class="far fa-comment-dots"></i> 문의하기
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qna_list.do'/>"> 
+							<i class="far fa-comment-dots"></i> 문의하기
 						</a>
 					</div>
 				</div>

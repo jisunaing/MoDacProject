@@ -61,7 +61,7 @@
   </div><!-- navbar-header -->
   
 <!-- 일반사용자용 top -->
-<%-- <c:set value="claire" var="USER_ID" scope="session"/> --%>
+<c:set value="claire" var="USER_ID" scope="session"/> 
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
