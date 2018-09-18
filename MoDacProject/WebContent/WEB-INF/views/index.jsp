@@ -124,144 +124,155 @@
 	}
 </style>
 </head>
+
 <body>
+		<c:set value="sdf" var="PARTNER_ID" scope="session"/>
 	<!-- topMenu -->
 	<div class="topMenu">
-<%-- 		<c:set value="sdf" var="PARTNER_ID" scope="session"/> --%>
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
-	</div><!-- topMennu -->
-	<!-- body 시작 -->
-	<div class="container">
-		<!-- 테스트컨트롤러_테스트용스팬 -->
-		<span style="color:pink;font-size:3em;">${testvar }</span>
-		<div class="row">
-			<!-- slider -->
-			<div id="my-slider" class="crs-wrap">
-			 <div class="crs-screen"><!-- 슬라이드 -->
-			   <div class="crs-screen-roll">
-				 <!-- .parallax: scroll effect적용 -->
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
-			       <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
-			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
-			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
-			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
-			     </div>
-			   </div><!--crs-screen-rol-->
-			 </div><!--crs-screen-->
-			 <div class="crs-bar"> <!-- 슬라이드선택버튼 -->
-			   <div class="crs-bar-roll-current"></div>
-			   <div class="crs-bar-roll-wrap">
-			     <div class="crs-bar-roll">
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')"></div>
-			     </div><!-- ROLL -->
-			   </div><!-- ROLL-WRAP -->
-			 </div><!--BAR-->
-			</div><!--crs-wrap-->
-			<!-- slider -->
-		</div><!-- row -->
 		
-  		<!-- themeSearch -->
-  		<div class="row themeSearch-header">
-  			<h2 style="color:balck; font-weight: bolder;"><br/>건강정보</h2>
-  		</div><!-- second_row -->
-  		<br/>
-		<!--div_row:반응형이미지_첫번째row-->
-		<div class="row">
+	</div><!-- topMennu -->
+	
+	<!-- 병원페이지 일반페이지 분기~ -->
+	<c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
+		<!-- 병원페이지 이동용 인덱스페이지_body시작 -->
+			<div class="container">
+				<h2>병원이동</h2>
+			</div><!-- ~container_div -->	
+		<!-- 병원페이지 이동용 인덱스페이지_body끝 -->
+	</c:if>
+	<c:if test="${not isPartnerPage}">
+		<!-- 일반페이지 body 시작 -->
+		<div class="container">
+			<!-- 테스트컨트롤러_테스트용스팬 -->
+			<span style="color:pink;font-size:3em;">${testvar }</span>
 			<div class="row">
-				<div class="col-md-4">
+				<!-- slider -->
+				<div id="my-slider" class="crs-wrap">
+				 <div class="crs-screen"><!-- 슬라이드 -->
+				   <div class="crs-screen-roll">
+					 <!-- .parallax: scroll effect적용 -->
+				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
+				       <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
+				     </div>
+				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
+				       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+				     </div>
+				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
+				       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+				     </div>
+				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')">
+				       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+				     </div>
+				   </div><!--crs-screen-rol-->
+				 </div><!--crs-screen-->
+				 <div class="crs-bar"> <!-- 슬라이드선택버튼 -->
+				   <div class="crs-bar-roll-current"></div>
+				   <div class="crs-bar-roll-wrap">
+				     <div class="crs-bar-roll">
+				       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
+				       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div> 	
+				       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
+				       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')"></div>
+				     </div><!-- ROLL -->
+				   </div><!-- ROLL-WRAP -->
+				 </div><!--BAR-->
+				</div><!--crs-wrap-->
+				<!-- slider -->
+			</div><!-- row -->
+			
+	  		<!-- themeSearch -->
+	  		<div class="row themeSearch-header">
+	  			<h2 style="color:balck; font-weight: bolder;"><br/>건강정보</h2>
+	  		</div><!-- second_row -->
+	  		<br/>
+			<!--div_row:반응형이미지_첫번째row-->
+				<div class="row">
+				<div class="row">
+					<div class="col-md-4">
+					    <div class="thumbnail">
+					      <a href="<c:url value='/general/HealthInfo.do'/>" target="_blank">
+					        <img src="<c:url value='/Images/healthinfo1.jpg'/>" alt="Lights" style="width:100%">
+					        <div class="caption">
+					        	<span class="imgcpation">소아시력</span>
+					        	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+					        </div>
+					      </a>
+					</div>
+				  </div>
+				  <div class="col-md-4">
 				    <div class="thumbnail">
-				      <a href="<c:url value='/general/HealthInfo.do'/>" target="_blank">
-				        <img src="<c:url value='/Images/healthinfo1.jpg'/>" alt="Lights" style="width:100%">
+				      <a href="#" target="_blank">
+				        <img src="<c:url value='/Images/healthinfo2.jpg'/>" alt="Nature" style="width:100%">
 				        <div class="caption">
-				        	<span class="imgcpation">소아시력</span>
+				        	<span class="imgcpation">우울증</span>
+				          	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
+				  <div class="col-md-4">
+				    <div class="thumbnail">
+				      <a href="#" target="_blank">
+				        <img src="<c:url value='/Images/healthinfo3.jpg'/>" alt="Fjords" style="width:100%">
+				        <div class="caption">
+				        	<span class="imgcpation">생리불순</span>
 				        	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
 				        </div>
 				      </a>
+				    </div>
+				  </div>
 				</div>
-			  </div>
-			  <div class="col-md-4">
-			    <div class="thumbnail">
-			      <a href="#" target="_blank">
-			        <img src="<c:url value='/Images/healthinfo2.jpg'/>" alt="Nature" style="width:100%">
-			        <div class="caption">
-			        	<span class="imgcpation">우울증</span>
-			          	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			        </div>
-			      </a>
-			    </div>
-			  </div>
-			  <div class="col-md-4">
-			    <div class="thumbnail">
-			      <a href="#" target="_blank">
-			        <img src="<c:url value='/Images/healthinfo3.jpg'/>" alt="Fjords" style="width:100%">
-			        <div class="caption">
-			        	<span class="imgcpation">생리불순</span>
-			        	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			        </div>
-			      </a>
-			    </div>
-			  </div>
 			</div>
-		</div>
-		<!--div_row:반응형이미지_첫번째row끝-->
-		<!--div_row:반응형이미지_두번째row-->
-		<div class="row">
+			<!--div_row:반응형이미지_첫번째row끝-->
+			<!--div_row:반응형이미지_두번째row-->
 			<div class="row">
-			  <div class="col-md-4">
-			    <div class="thumbnail">
-			      <a href="#" target="_blank">
-			        <img src="<c:url value='/Images/healthinfo4.jpg'/>" alt="Lights" style="width:100%">
-			        <div class="caption">		        	
-			        	<span class="imgcpation">주름</span>
-			          	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			        </div>
-			      </a>	
-			    </div>
-			  </div>
-			  <div class="col-md-4">
-			    <div class="thumbnail">
-			      <a href="#" target="_blank">
-			        <img src="<c:url value='/Images/healthinfo5.jpg'/>" alt="Nature" style="width:100%">
-			        <div class="caption">		        	
-			        	<span class="imgcpation">패혈증</span>
-			         	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			        </div>
-			      </a>
-			    </div>
-			  </div>
-			  <div class="col-md-4">
-			    <div class="thumbnail">
-			      <a href="#" target="_blank">
-			        <img src="<c:url value='/Images/healthinfo6.jpg'/>" alt="Fjords" style="width:100%">
-			        <div class="caption">		        	
-			        	<span class="imgcpation">뇌졸증</span>
-			          	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-			        </div>
-			      </a>
-			    </div>
-			  </div>
+				<div class="row">
+				  <div class="col-md-4">
+				    <div class="thumbnail">
+				      <a href="#" target="_blank">
+				        <img src="<c:url value='/Images/healthinfo4.jpg'/>" alt="Lights" style="width:100%">
+				        <div class="caption">		        	
+				        	<span class="imgcpation">주름</span>
+				          	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+				        </div>
+				      </a>	
+				    </div>
+				  </div>
+				  <div class="col-md-4">
+				    <div class="thumbnail">
+				      <a href="#" target="_blank">
+				        <img src="<c:url value='/Images/healthinfo5.jpg'/>" alt="Nature" style="width:100%">
+				        <div class="caption">		        	
+				        	<span class="imgcpation">패혈증</span>
+				         	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
+				  <div class="col-md-4">
+				    <div class="thumbnail">
+				      <a href="#" target="_blank">
+				        <img src="<c:url value='/Images/healthinfo6.jpg'/>" alt="Fjords" style="width:100%">
+				        <div class="caption">		        	
+				        	<span class="imgcpation">뇌졸증</span>
+				          	<p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
+				</div>
 			</div>
-		</div>
-		<!--div_row:반응형이미지_두번째row끝-->
-  		<!-- themeSearch -->
-  	</div><!-- container -->
-  	<!-- body 끝 -->
-  	
+			<!--div_row:반응형이미지_두번째row끝-->
+	  		<!-- themeSearch -->
+	  	</div><!-- container -->
+	  	<!-- 일반페이지 body 끝 -->
+	</c:if>
 	<!--footer를 감싸는 div 시작--> 
     <div class="footer" >
    	 	<jsp:include page="/WEB-INF/template/Footer.jsp"/>
     </div>
     <!--footer를 감싸는 div 끝-->
 
-</body>
 </body>
 </html>
