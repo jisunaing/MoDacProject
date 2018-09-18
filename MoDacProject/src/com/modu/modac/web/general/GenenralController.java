@@ -32,7 +32,6 @@ public class GenenralController {
 	
 	
 	
-	
 	//지훈-자가진단 
 	@RequestMapping("/general/reservation/selfdiagnosis.do")
 	public String selfdiagnosis()throws Exception{

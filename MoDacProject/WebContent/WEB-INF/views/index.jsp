@@ -137,7 +137,7 @@
 	<c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
 		<!-- 병원페이지 이동용 인덱스페이지_body시작 -->
 			<div class="container">
-				<h2>병원이동</h2>
+				<a href="<c:url value="/partner/hospital/MainMove.do"/>"><img alt="병원 이동페이지 사진" src="<c:url value="/Images/hospitalMove.jpg"/>"></a>
 			</div><!-- ~container_div -->	
 		<!-- 병원페이지 이동용 인덱스페이지_body끝 -->
 	</c:if>

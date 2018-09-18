@@ -56,7 +56,7 @@
   <!-- 한글깨짐filter끝 -->
   
   <welcome-file-list>
-  	<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+     <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>

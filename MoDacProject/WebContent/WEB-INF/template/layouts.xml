@@ -17,6 +17,10 @@
 	<definition name="no-tiles" template="/WEB-INF/views/index.jsp">
 		<put-attribute name="noTemplate" value=""/>
 	</definition>
+	<!-- 타일즈 테스트 박진성 추가[병원관리자랑 곂침] -->
+	<definition name="empty" template="/WEB-INF/views/partner/HospitalSystem.jsp">
+        <put-attribute name="content" value=""/>  
+    </definition>
 	<!-- Body지정 -->
 	<definition name="*.tiles" extends="layouts"> 		
 		<put-attribute name="Body" value="/WEB-INF/views/{1}.jsp"/>		
