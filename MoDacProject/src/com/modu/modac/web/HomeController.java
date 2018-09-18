@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	@RequestMapping("/general/HealthInfo.do")
 	public String heathView() throws Exception {
-		return "general/HealthInfoView.tiles";
+		return "general/HealthInfoList.tiles";
 	}
 	@RequestMapping("/home/index.do")
 	public String home() throws Exception {

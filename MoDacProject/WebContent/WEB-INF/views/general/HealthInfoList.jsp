@@ -12,8 +12,8 @@
 
 	<!-- body 시작 -->
 	<div class="container">
-		<h2>HealthInfoView.jsp</h2>
-				<table class="table table-hover">
+		<h2>HealthInfoList.jsp</h2>
+		<table class="table table-hover">
 			<thead>
 			  <tr>
 			    <th>#</th>
