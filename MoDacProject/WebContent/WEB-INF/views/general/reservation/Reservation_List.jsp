@@ -3,52 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 일반사용자 예약 목록 페이지입니다.-->
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
-<!DOCTYPE html>
-<html lang="ko">
-<head>
 
-<title>일반사용자 예약목록 페이지입니다.</title>
+
 <style>
-html, body {
- height: 100%
-}
-
-body {
- margin: 0
-}
-
-.container {
- min-height: 100%;
-}
-
-.footer {
- background-color: #32323C;
- min-height: 10%;
-}
-
 .row {
  margin: 0 auto;
  text-align: center;
 }
 
-.row .col-md-4 {
- margin-top: 10px;
- outline: 1px pink solid;
- height: 200px;
-}
 /*테이블 센터를 위한 css 시작*/
 table th {
  text-align: center;
 }
 /*테이블 센터를 위한 css 끝*/
 </style>
-</head>
-<body>
-	<!-- topMenu -->
-	<div class="topMenu">
-		<jsp:include page="/WEB-INF/template/Top.jsp" />
-	</div>
-	<!-- topMennu -->
 	<!-- body 시작 -->
 	<!-- 가운데 정렬을 위한 DIV -->
 	<div class="container">
@@ -136,16 +104,3 @@ table th {
 
 	<!-- body 끝 -->
 
-	<!--footer를 감싸는 div 시작-->
-	<div class="footer">
-		<jsp:include page="/WEB-INF/template/Footer.jsp" />
-	</div>
-	<!--footer를 감싸는 div 끝-->
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
-
-</body>
-</body>
-</html>

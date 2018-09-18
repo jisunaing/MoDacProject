@@ -16,6 +16,7 @@
 	
 <script type="text/javascript" src="<c:url value="/js/datetimepicker.js"/>"></script>
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
 <style>
 .row {
  margin: 0 auto;
@@ -32,6 +33,7 @@
 <!-- 달력 라이브러리 시작-->
 	<script type="text/javascript">
     $(document).ready( function () {
+
         $('#picker').dateTimePicker();
         $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY'});
     })
