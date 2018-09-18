@@ -19,21 +19,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script src="<c:url value='/js/masongram.min.js'/>"></script>
+<style>
+.top {
+	margin: 0 auto;
+	margin-top:50px;
+	width: 60%;
+	border: solid 3px #2b68a7;
+	overflow: hidden;
+	margin-bottom: 30px;
+	border-radius: 15px;
+	line-height: 15px;
+	box-sizing: border-box;
+}
 
+hr{
+	border: solid 1px black;
+	width: 30%; 
+	align-content: center 
+}
+</style>
 
 <!-- body 시작 -->
 <div class="container-fluid" style="background-image: url('Images/greenapple.jpg')">
 <br/>
 <br/>
-	<div class="">
-		<div class="page-header text-center">
+	
+		
+		
+		<div class="top" style="text-align: center">
 			<h1>
-				MyPage <small>${USER_ID}님 </small>
+				${USER_ID}님의 <small>MyPage</small>
 			</h1>
+			<br/>
+			<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>
+			<br/>
 		</div>
-	</div>
-
-
 	<div class="masongram-container" style="position: relative; height: 2360px;">
 		<!-- 개인정보 -->
 		<div tabindex="0" class="masongram-image-container masongram-image-size-standard_resolution"

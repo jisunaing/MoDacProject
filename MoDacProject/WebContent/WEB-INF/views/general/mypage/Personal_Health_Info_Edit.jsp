@@ -2,41 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
 
 <title>내 건강정보</title>
 <style>
-.container {
-	min-height: 100%;
-}
-
-.footer {
-	background-color: #32323C;
-	min-height: 10%;
-}
-
-.row {
-	margin: 0 auto;
-	text-align: center;
-}
-
-.row .col-md-4 {
-	margin-top: 10px;
-	outline: 1px pink solid;
-	height: 200px;
-}
+	form{
+		margin-left:21%;
+	}
 </style>
-<script>
-	$(function() {
-		$('body').css('height', '100%').css('margin', '0');
-		$('html').css('height', '100%');
-	});
-</script>
-</head>
-<body>
+
 	<!-- topMenu -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp" />
@@ -44,7 +17,7 @@
 	<!-- topMennu -->
 
 	<!-- body 시작 -->
-	<div class="container">
+	<div class="container" >
 		<div class="panel panel-default">
 		<div style="text-align: center">
 		<br/>
@@ -55,27 +28,30 @@
 			<hr style="border: solid 1px black;width: 30%;align-content: center "><br/><br/>
 		</div>
 		<form class="form-horizontal">
-			<div class="form-group">
-				<label for="id" class="col-sm-2 control-label">혈액형</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="id"
-						placeholder="혈액형 입력하세요">
-				</div>
-			</div>
+			<label for="id" class="col-sm-2 control-label">혈액형</label>
+			<div class="col-sm-4">
+				<select class=" form-control">
+					<option>혈액형을 입력하세요</option>
+				  	<option>A</option>
+				  	<option>B</option>
+				  	<option>O</option>
+				  	<option>AB</option>
+				</select>
+			</div><br/><br/>
 			
 			<div class="form-group">
 				<label for="pwd" class="col-sm-2 control-label">키</label>
-				<div class="col-sm-1">
-					<input type="password" class="form-control" id="pwd"
-						placeholder="키를 입력하세요"> cm
-				</div>
+				<div class="input-group col-sm-2">
+			      <input type="text" class="form-control" id="exampleInputAmount" placeholder="키 입력">
+			      <div class="input-group-addon">cm</div>
+			    </div>
 			</div>
 			
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">몸무게</label>
-				<div class="col-sm-1">
-					<input type="password" class="form-control" id="pwd"
-						placeholder="몸무게를 입력하세요"> kg
+				<div class="input-group col-sm-2">
+					<input type="text" class="form-control" id="exampleInputAmount" placeholder="몸무게 입력">
+			      <div class="input-group-addon">kg</div>
 				</div>
 			</div>
 			<div class="form-group">
@@ -104,18 +80,3 @@
 		</div>
 	</div>
 	<!-- container -->
-
-	<!--footer를 감싸는 div 시작-->
-	<div class="footer">
-		<jsp:include page="/WEB-INF/template/Footer.jsp" />
-	</div>
-	<!--footer를 감싸는 div 끝-->
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</body>
-</html>
-<!-- body 끝 -->
