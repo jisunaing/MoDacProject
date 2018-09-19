@@ -12,6 +12,9 @@
 	.footer-list{
 		padding:30px;
 	}
+	#footera{
+		color:'white';
+	}
 	footer{
 	background-color: #2b68a7;
 	min-height:10%;
@@ -33,9 +36,9 @@
 <!-- Footer -->
 <footer class="page-footer" style="margin-top: 50px;">
 	<div class="footer-list text-center py-1" >
-		<a href="#">사이트문의</a>
-		<a href="#">공지사항</a>
-		<a href="#">admin접속</a>
+		<a id="footera" href="#">사이트문의</a>
+		<a id="footera" href="#">공지사항</a>
+		<a id="footera" href="#">admin접속</a>
 	</div>
 	<div class="m-0 footer-copyright text-center py-1" >
 		&copy; MoDacProject
