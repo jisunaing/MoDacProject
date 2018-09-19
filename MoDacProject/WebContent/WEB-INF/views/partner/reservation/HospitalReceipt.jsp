@@ -56,13 +56,13 @@ table th {
 
 						<li class="dropdown user user-menu">
 						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
-							<img src="Images/space.jpg" class="user-image" alt="User Image">
+							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 							<span class="hidden-xs">병원이름</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
-								<img src="Images/space.jpg" class="user-image" alt="User Image">
+								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 									<p>병원이름 넣을 곳</p></li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
@@ -82,7 +82,7 @@ table th {
 			<section class="sidebar">
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="Images/space.jpg" class="user-image" alt="User Image">
+						<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 					</div>
 					<div class="pull-left info">
 						<p>병원이름</p>
@@ -113,7 +113,7 @@ table th {
 					</a>
 						<ul class="treeview-menu">
 							<li>
-								<a href="#"><i class="fa fa-circle-o"></i>병원정보보기</a>
+							<a href="<c:url value="/partner/mypage/partnerInfo.do"/>"><i class="fa fa-circle-o"></i>병원정보보기</a>
 							</li>
 						</ul>
 					</li>
@@ -125,8 +125,9 @@ table th {
 					</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#">
-						<i class="fa fa-circle-o"></i> 문의확인하기</a></li>
+						<li>
+						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
+						</li>
 					</ul></li>
 				</ul>
 			</section>

@@ -128,7 +128,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 머리 -->
-							<a href="<c:url value='/general/reservation/selfdiagnosis_brain.do'/>">
+							<a href="<c:url value='/general/diagnosis/self_diagnosis_brain.do'/>">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: 10px;" id="btn1"></button>
 							</a>
@@ -142,7 +142,7 @@
 						<div class="col-sm-8">
 
 							<!-- 귀 -->
-							<a href="<c:url value='/general/reservation/selfdiagnosis_ear.do' />">
+							<a href="<c:url value='/general/diagnosis/self_diagnosis_ear.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: -150px;" id="btn2"></button>
 							</a>
@@ -156,7 +156,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 입 -->
-							<a href="<c:url value='/general/reservation/selfdiagnosis_mouth.do' />">
+							<a href="<c:url value='/general/diagnosis/self_diagnosis_mouth.do' />">
 								<button type="button" class="btn btn-warning"
 								style="margin-left: 90px;"	id="btn3"></button>
 							</a>
@@ -170,7 +170,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 목 -->
-							<a href="<c:url value='/general/reservation/selfdiagnosis_neck.do' />">
+							<a href="<c:url value='/general/diagnosis/self_diagnosis_neck.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: -235px;" id="btn4"></button>
 							</a>
@@ -187,7 +187,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 코 -->
-							<a href="<c:url value='/general/reservation/selfdiagnosis_nose.do' />">
+							<a href="<c:url value='/general/diagnosis/self_diagnosis_nose.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: 10px;" id="btn5"></button>
 							</a>
@@ -201,7 +201,7 @@
 					<div class="col-sm-6">
 						<div class="col-sm-8">
 							<!-- 눈 -->
-							<a href="<c:url value='/general/reservation/selfdiagnosis_eye.do' />">
+							<a href="<c:url value='/general/diagnosis/self_diagnosis_eye.do' />">
 								<button type="button" class="btn btn-warning"
 									style="margin-left: -150px;" id="btn6"></button>
 							</a>

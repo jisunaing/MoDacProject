@@ -9,37 +9,39 @@
 <%-- 		<jsp:include page="/WEB-INF/template/Top.jsp"/> --%>
 <!-- 	</div> -->
 	<!-- topMennu -->
-
+	<style>
+		.table{
+			color:black;
+		}
+	</style>
 	<!-- body 시작 -->
 	<div class="container">
-		<h2>HealthInfoList.jsp</h2>
+		<br/>
+		<h2>소아시력 카테고리 관련 글</h2>
+		<br/>
 		<table class="table table-hover">
 			<thead>
 			  <tr>
 			    <th>#</th>
-			    <th>First Name</th>
-			    <th>Last Name</th>
-			    <th>Username</th>
+			    <th>제 목</th>
+			    <th>등록일</th>
 			  </tr>
 			</thead>
-			<tbody class="tbd">
+			<tbody>
 			  <tr>
-			    <td>1</td>
-			    <td>Mark</td>
-			    <td>Otto</td>
-			    <td>@mdo</td>
+			    <td>3</td>
+			    <td><a href="<c:url value='/general/HealthInfoView.do'/>"> 어린이 시력, 왜 약해 지나 </a></td>
+			    <td>2018-09-18</td>
 			  </tr>
 			  <tr>
 			    <td>2</td>
-			    <td>Jacob</td>
-			    <td>Thornton</td>
-			    <td>@fat</td>
+			    <td>글 제목이 들어갑니다</td>
+			    <td>2018-07-15</td>
 			  </tr>
 			  <tr>
-			    <td>3</td>
-			    <td>Larry</td>
-			    <td>the Bird</td>
-			    <td>@twitter</td>
+			    <td>1</td>
+			    <td>글 제목이 들어갑니다</td>
+			    <td>2018-06-18</td>
 			  </tr>
 			 </tbody>
 		</table>

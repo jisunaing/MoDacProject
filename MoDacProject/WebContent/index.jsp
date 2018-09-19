@@ -125,8 +125,14 @@
 </style>
 </head>
 
+<<<<<<< HEAD
+<body><!-- 
+     <c:set value="sdf" var="PARTNER_ID" scope="session"/>
+      -->
+=======
 <body>
      <%-- <c:set value="sdf" var="PARTNER_ID" scope="session"/> --%>
+>>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
    <!-- topMenu -->
    <div class="topMenu">
       <jsp:include page="/WEB-INF/template/Top.jsp"/>

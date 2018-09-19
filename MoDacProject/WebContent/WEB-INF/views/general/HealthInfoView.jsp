@@ -9,43 +9,29 @@
 <%-- 		<jsp:include page="/WEB-INF/template/Top.jsp"/> --%>
 <!-- 	</div> -->
 	<!-- topMennu -->
-
+	<style>
+	.jumbotron {
+		text-align:center;
+	}
+	.p {
+		font-size: 3em;
+	}
+	.panel-body {
+		line-height: 30px;
+		font-family: Times New Roman;
+	}
+	</style>
 	<!-- body 시작 -->
 	<div class="container">
-		<h2>HealthInfoView.jsp</h2>
-				<table class="table table-hover">
-			<thead>
-			  <tr>
-			    <th>#</th>
-			    <th>First Name</th>
-			    <th>Last Name</th>
-			    <th>Username</th>
-			  </tr>
-			</thead>
-			<tbody class="tbd">
-			  <tr>
-			    <td>1</td>
-			    <td>Mark</td>
-			    <td>Otto</td>
-			    <td>@mdo</td>
-			  </tr>
-			  <tr>
-			    <td>2</td>
-			    <td>Jacob</td>
-			    <td>Thornton</td>
-			    <td>@fat</td>
-			  </tr>
-			  <tr>
-			    <td>3</td>
-			    <td>Larry</td>
-			    <td>the Bird</td>
-			    <td>@twitter</td>
-			  </tr>
-			 </tbody>
-		</table>
-	</div><!-- container -->
-	<div class="container">
-	
+		<div class="jumbotron">
+		  <h1> 어린이 시력, 왜 약해 지나 </h1>
+		  <p class="p">가성근시 등에 잘못 대처해 근시 유병률 급증 컴퓨터 게임·잘못된 눈 교정도 눈에 해로워</p>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    ${requestScope.content}		
+		  </div>
+		</div>	
 	</div>
 <!-- 	<div class="footer"> -->
 <%-- 		<jsp:include page="/WEB-INF/template/Footer.jsp"/> --%>
