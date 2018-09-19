@@ -62,7 +62,11 @@
 <!-- 일반사용자용 top --> 
 =======
 <!-- 일반사용자용 top -->
+<<<<<<< HEAD
 >>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
+=======
+<%-- <c:set value="claire" var="USER_ID" scope="session"/>  --%>
+>>>>>>> refs/heads/develope
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
