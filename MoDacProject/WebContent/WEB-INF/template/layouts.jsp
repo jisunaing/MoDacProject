@@ -22,7 +22,6 @@
 <!-- font적용)https://fonts.google.com/?subset=korean -->
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
-
 <!-- 이페이지안에서만 쓰는 파일들 -->
 <!-- SLIDE~ -->
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet">
@@ -57,10 +56,10 @@
 		margin:0 auto;
 		text-align:center;
 	}
-	.row .col-md-4{
-	margin-top:10px;
-	outline:1px pink solid;
-	height:200px;
+		.row .col-md-4{
+		margin-top:10px;
+		outline:1px pink solid;
+		height:200px;
 	}
     </style>
     <script>

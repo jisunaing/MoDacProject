@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">

@@ -10,9 +10,6 @@ public class PartnerController {
 	public String hospitalMainPage() throws Exception {
 		return "/partner/HospitalSystem";
 	}
-	
-	
-
 	//병원 예약 관리 페이지
 	@RequestMapping("/partner/hospital/ReservationMove.do")
 	public String hospitalReservationPage() throws Exception {
@@ -54,10 +51,4 @@ public class PartnerController {
 		
 		return "/partner/partnerQnA/partner_QnA";
 	}
-	
-	
-	
-
-
-	
 }
