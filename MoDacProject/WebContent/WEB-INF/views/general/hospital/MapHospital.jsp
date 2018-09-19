@@ -41,13 +41,13 @@
 
 
 /* 커스텀 오버레이 */
-.wrap {position: absolute;left: 0;bottom: 57px;width: 388px;height: 317px;margin-left: -194px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.wrap {position: absolute;left: 0;bottom: 57px;width: 388px;height: 347px;margin-left: -194px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 .wrap * {padding: 0;margin: 0;}
-.wrap .info {width: 386px;height: 305px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.wrap .info {width: 386px;height: 335px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
 .info .title {padding: 5px 2px 2px 10px;height: 40px;color: #fff;background: #00498c;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold; text-align:center;}
 .info .body { position: relative; overflow: hidden;}
-.info .desc {overflow: auto; text-overflow: ellipsis; position: relative; margin: 13px 0 0 90px; height: 250px;}
+.info .desc {overflow: auto; text-overflow: ellipsis; position: relative; margin: 13px 0 0 110px; height: 300px;}
 .smalltitle {font-weight: bold; color:#00498c;}
 .schedule {width:100%; text-align:left}
 .desc .ellipsis {white-space: nowrap;}
@@ -304,6 +304,8 @@
 					            '                <div class="ellipsis"> 참존빌딩 3층 (중곡동) </div>' + 
 					            '                <div class="smalltitle"> [전화번호] </div>' + 
 					            '                <div class="ellipsis"> 02-1234-5678 </div>' + 
+					            '                <div class="smalltitle"> [홈페이지] </div>' + 
+					            '                <div class="ellipsis"> <a href="http://www.daum.net">www.daum.net</a> </div>' + 
 					            '                <div class="smalltitle"> [진료시간] </div>' + 
 					            '                <table class="schedule">' + 
 					            '                	<tr>' + 
