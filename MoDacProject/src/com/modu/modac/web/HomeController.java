@@ -1,18 +1,17 @@
 package com.modu.modac.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-	@RequestMapping("/general/HealthInfo.do")
-	public String heathView() throws Exception {
-		return "general/HealthInfoList.tiles";
-	}
+	
+
 	@RequestMapping("/home/index.do")
 	public String home() throws Exception {
 //		return "../../../index.";
-		return "/index";
+		return "index";
 	}
 	
 	

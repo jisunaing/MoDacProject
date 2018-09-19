@@ -35,6 +35,28 @@ public class PartnerController {
 	public String hospitalReceiptHistoryPage() throws Exception {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
+	
+	//병원 정보 페이지
+	@RequestMapping("/partner/mypage/partnerInfo.do")
+	public String partnerInfo() throws Exception {
+		return "/partner/mypage/partnerInfo";
+	}
+	
+	//병원 정보 수정페이지
+	@RequestMapping("/partner/mypage/partnerInfoEdit.do")
+	public String partnerInfoEdit() throws Exception {
+		
+		return "/partner/mypage/partnerInfoEdit";
+	}
+	
+	@RequestMapping("/partner/partnerQnA/partner_QnA.do")
+	public String partner_QnA() throws Exception {
+		
+		return "/partner/partnerQnA/partner_QnA";
+	}
+	
+	
+	
 
 
 	

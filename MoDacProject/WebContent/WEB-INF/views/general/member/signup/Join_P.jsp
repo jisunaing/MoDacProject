@@ -53,12 +53,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		
 		
 		
-		$(this).hide(900);
+		$(this).hide(1000);
 		
-		$(this).not();
+		$(this).show(1000);
 		
-		
-		$(this).show(900);
+
 		
 	 
 	 $('#jin').attr('value',change);
@@ -82,10 +81,12 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
 
 	.testbtn{ margin-left: 15px; }
+	
+	#selectable li:hover{background: #74D36D;}
 
-	#selectable .ui-selecting { background: #FECA40; }
+	#selectable .ui-selecting { background: #74D36D; }
 
-    #selectable .ui-selected { background: #F39814; color: white; }
+    #selectable .ui-selected { background: #74D36D; color: white; }
 
     #selectable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
 
@@ -290,10 +291,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						    </div>
 						  </div>
 						</form>  
-	
 				</div>			
 			</div>
-			
 	    </div>
     	 <!-- 내용 끝 -->
 
