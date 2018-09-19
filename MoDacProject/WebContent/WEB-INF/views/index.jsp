@@ -126,14 +126,11 @@
 </head>
 
 <body>
-<<<<<<< HEAD
 			
 		<%-- 
 		<c:set value="sdf" var="PARTNER_ID" scope="session"/>
 		 --%>
-=======
 		<%--<c:set value="sdf" var="PARTNER_ID" scope="session"/> --%>
->>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
 	<!-- topMenu -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
