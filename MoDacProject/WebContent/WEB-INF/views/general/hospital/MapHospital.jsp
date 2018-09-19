@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
-<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
 
 <!-- <head> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,22 +10,18 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
-
-<!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
-
 <style>
 /* 버튼과 폼 관련 */
 /* footer{ */
 /* 	margin-top: 10px;  */
 /* 	min-width: 100%; */
-/* /* 	position: absolute; */ */
+/* /* 	position: absolute; */
 /* 	bottom: 0; */
 /* 	left: 0; */
 /* 	right: 0; */
 /* } */
 .row {
 	margin-top:10px;
-/* 	padding-left:120px;  */
 }
 /* 병원이름 form 넓이 */
 .input-group {
@@ -36,7 +30,6 @@
 
 
 #searchtoggle {
-/* 	margin-left:10px; */
 	float: right;
 }
 
@@ -44,10 +37,6 @@
 #map {
 	width:auto;
 	height:680px;
-	/*
-	margin-left:120px;
-	margin-right:120px; 
-	*/
 }
 
 
@@ -66,109 +55,94 @@
 .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 </style>
 
-<!-- </head> -->
-<!-- <body> -->
-
-	<!-- TOP 영역 -->
-<!-- 	<div class="topMenu" > -->
-<%-- 		<jsp:include page="/WEB-INF/template/Top.jsp" /> --%>
-<!-- 	</div> -->
+<!-- BODY 영역 -->
+	<div class="row">
+		<form class="form-inline">
+		  <div class="btn-group">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			    	진료과목으로 검색 &nbsp;&nbsp; <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a href="?subject=gajeong">가정의학과</a></li>
+			    <li><a href="?subject=gyeolhack">결핵과</a></li>
+			    <li><a href="?subject=nae">내과</a></li>
+			    <li><a href="?subject=machi">마취통증의학과</a></li>
+			    <li><a href="?subject=binyo">비뇨의학과</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?subject=sanbu">산부인과</a></li>
+			    <li><a href="?subject=seonghyung">성형외과</a></li>
+			    <li><a href="?subject=soa">소아청소년과</a></li>
+			    <li><a href="?subject=singyung">신경외과</a></li>
+			    <li><a href="?subject=an">안과</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?subject=youngsang">영상의학과</a></li>
+			    <li><a href="?subject=oe">외과</a></li>
+			    <li><a href="?subject=ebin">이비인후과</a></li>
+			    <li><a href="?subject=jaehwal">재활의학과</a></li>
+			    <li><a href="?subject=jeongsin">정신건강의학과</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?subject=jeonghyung">정형외과</a></li>
+			    <li><a href="?subject=chi">치과</a></li>
+			    <li><a href="?subject=peebu">피부과</a></li>
+			    <li><a href="?subject=hanbang">한방과</a></li>
+			    <li><a href="?subject=hyungboo">흉부외과</a></li>
+			  </ul>
+		</div>
+		<div class="btn-group">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dLabel">
+			    <li><a href="?replace=gangnam">강남구</a></li>
+			    <li><a href="?replace=gangdong">강동구</a></li>
+			    <li><a href="?replace=gangbook">강북구</a></li>
+			    <li><a href="?replace=gangseo">강서구</a></li>
+			    <li><a href="?replace=gwanak">관악구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?replace=gwangjin">광진구</a></li>
+			    <li><a href="?replace=gooro">구로구</a></li>
+			    <li><a href="?replace=guemcheon">금천구</a></li>
+			    <li><a href="?replace=nowon">노원구</a></li>
+			    <li><a href="?replace=dobong">도봉구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?replace=dongdaemoon">동대문구</a></li>
+			    <li><a href="?replace=dongjak">동작구</a></li>
+			    <li><a href="?replace=mapo">마포구</a></li>
+			    <li><a href="?replace=seodaemoon">서대문구</a></li>
+			    <li><a href="?replace=seocho">서초구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?replace=seongdong">성동구</a></li>
+			    <li><a href="?replace=seongbook">성북구</a></li>
+			    <li><a href="?replace=songpa">송파구</a></li>
+			    <li><a href="?replace=yangcheon">양천구</a></li>
+			    <li><a href="?replace=youngduengpo">영등포구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="?replace=yongsan">용산구</a></li>
+			    <li><a href="?replace=eunpyung">은평구</a></li>
+			    <li><a href="?replace=jongro">종로구</a></li>
+			    <li><a href="?replace=joong">중구</a></li>
+			    <li><a href="?replace=joongrang">중랑구</a></li>
+			  </ul>
+		</div>
+	    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="병원 이름으로 검색"/>
+		      <span class="input-group-btn">
+		        <button class="btn btn-primary" type="button"> 검색 </button>
+		      </span>
+	    </div>
+	    <div class="btn-group btngroup" id="searchtoggle">
+			  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
+		</div>
+	</form>
+</div>
 	
-	<!-- BODY 영역 -->
-		<div class="row">
-			<form class="form-inline">
-			  <div class="btn-group">
-				  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				    	진료과목으로 검색 &nbsp;&nbsp; <span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu">
-				    <li><a href="?subject=gajeong">가정의학과</a></li>
-				    <li><a href="?subject=gyeolhack">결핵과</a></li>
-				    <li><a href="?subject=nae">내과</a></li>
-				    <li><a href="?subject=machi">마취통증의학과</a></li>
-				    <li><a href="?subject=binyo">비뇨의학과</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?subject=sanbu">산부인과</a></li>
-				    <li><a href="?subject=seonghyung">성형외과</a></li>
-				    <li><a href="?subject=soa">소아청소년과</a></li>
-				    <li><a href="?subject=singyung">신경외과</a></li>
-				    <li><a href="?subject=an">안과</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?subject=youngsang">영상의학과</a></li>
-				    <li><a href="?subject=oe">외과</a></li>
-				    <li><a href="?subject=ebin">이비인후과</a></li>
-				    <li><a href="?subject=jaehwal">재활의학과</a></li>
-				    <li><a href="?subject=jeongsin">정신건강의학과</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?subject=jeonghyung">정형외과</a></li>
-				    <li><a href="?subject=chi">치과</a></li>
-				    <li><a href="?subject=peebu">피부과</a></li>
-				    <li><a href="?subject=hanbang">한방과</a></li>
-				    <li><a href="?subject=hyungboo">흉부외과</a></li>
-				  </ul>
-			</div>
-			<div class="btn-group">
-				  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-				     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu" aria-labelledby="dLabel">
-				    <li><a href="?replace=gangnam">강남구</a></li>
-				    <li><a href="?replace=gangdong">강동구</a></li>
-				    <li><a href="?replace=gangbook">강북구</a></li>
-				    <li><a href="?replace=gangseo">강서구</a></li>
-				    <li><a href="?replace=gwanak">관악구</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?replace=gwangjin">광진구</a></li>
-				    <li><a href="?replace=gooro">구로구</a></li>
-				    <li><a href="?replace=guemcheon">금천구</a></li>
-				    <li><a href="?replace=nowon">노원구</a></li>
-				    <li><a href="?replace=dobong">도봉구</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?replace=dongdaemoon">동대문구</a></li>
-				    <li><a href="?replace=dongjak">동작구</a></li>
-				    <li><a href="?replace=mapo">마포구</a></li>
-				    <li><a href="?replace=seodaemoon">서대문구</a></li>
-				    <li><a href="?replace=seocho">서초구</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?replace=seongdong">성동구</a></li>
-				    <li><a href="?replace=seongbook">성북구</a></li>
-				    <li><a href="?replace=songpa">송파구</a></li>
-				    <li><a href="?replace=yangcheon">양천구</a></li>
-				    <li><a href="?replace=youngduengpo">영등포구</a></li>
-				    <li class="divider"></li>
-				    <li><a href="?replace=yongsan">용산구</a></li>
-				    <li><a href="?replace=eunpyung">은평구</a></li>
-				    <li><a href="?replace=jongro">종로구</a></li>
-				    <li><a href="?replace=joong">중구</a></li>
-				    <li><a href="?replace=joongrang">중랑구</a></li>
-				  </ul>
-			</div>
-		    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="병원 이름으로 검색"/>
-			      <span class="input-group-btn">
-			        <button class="btn btn-primary" type="button"> 검색 </button>
-			      </span>
-		    </div>
-		    <div class="btn-group btngroup" id="searchtoggle">
-				  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-			  	  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
-			</div>
-		</form>
-	</div>
-		
-		<br/>
+<br/>
 		
 <div class="row">
 	<div id="map"></div>
 </div>	
-
 		
-	<!-- FOOTER 영역 -->
-<!-- 	<div class="footer"> -->
-<%-- 		<jsp:include page="/WEB-INF/template/Footer.jsp" /> --%>
-<!-- 	</div> -->
-
-
 	<!-- KAKAO MAP API -->
 	<script>
 	// 병원 데이터 예
@@ -375,6 +349,3 @@
 		}
 		
 	</script>
-
-<!-- </body> -->
-<!-- </html> -->
