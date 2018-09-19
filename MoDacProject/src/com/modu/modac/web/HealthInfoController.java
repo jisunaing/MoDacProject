@@ -1,5 +1,7 @@
 package com.modu.modac.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,7 @@ public class HealthInfoController {
 		return "general/HealthInfoList.tiles";
 	}
 	@RequestMapping("/general/HealthInfoView.do")
-	public String heathView(Model model) throws Exception {
+	public String heathView(Model model, HttpServletRequest req) throws Exception {
 		
 		String content = 
 						"자녀 손을 잡고 안과를 처음 찾은 때가 언제였는가? 자녀가 칠판 글씨가 잘 보이지 않는다고 호소해야 겨우 안과를 찾았는가?\r\n" + 

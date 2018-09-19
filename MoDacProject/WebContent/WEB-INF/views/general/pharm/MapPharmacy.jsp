@@ -23,7 +23,7 @@
 }
 /* 병원이름 form 넓이 */
 .input-group {
-	width:800px;
+	width:700px;
 }
 
 #searchtoggle {	
@@ -56,18 +56,18 @@
 <body>
 
 	<!-- TOP 영역 -->
-<!-- 	<div class="topMenu" > -->
-<%-- 		<jsp:include page="/WEB-INF/template/Top.jsp" /> --%>
-<!-- 	</div> -->
+	<!-- 	<div class="topMenu" > -->
+	<%-- 		<jsp:include page="/WEB-INF/template/Top.jsp" /> --%>
+	<!-- 	</div> -->
 	
 	<!-- BODY 영역 -->
 	<div class="row1">
 		<form class="form-inline">
 		<div class="btn-group">
-		  <a class="btn btn-default" href="?pharmacyoption=simya" role="button"> 심야약국 </a>
+		  <a class="btn btn-primary" href="?pharmacyoption=simya" role="button"> 심야약국 </a>
 		</div>
 		<div class="btn-group">
-		  <a class="btn btn-default" href="?pharmacyoption=ilban" role="button"> 일반약국 </a>
+		  <a class="btn btn-primary" href="?pharmacyoption=ilban" role="button"> 일반약국 </a>
 		</div>
 	    <div class="input-group">
 	      <input type="text" class="form-control" placeholder="약국 이름으로 검색"/>
@@ -76,11 +76,10 @@
 	      </span>
 	    </div>
 	    <div class="btn-group" id="searchtoggle">
-		  <a class="btn btn-default" href="#" role="button"> 병원검색 </a>
-		  <a class="btn btn-default" href="#" role="button"> 약국검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
 		</div>
 		</form>
-		
 	</div>
 	<br/>
 	<div class="row2">

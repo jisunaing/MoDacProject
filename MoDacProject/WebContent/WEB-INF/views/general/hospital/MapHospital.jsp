@@ -74,12 +74,11 @@
 <%-- 		<jsp:include page="/WEB-INF/template/Top.jsp" /> --%>
 <!-- 	</div> -->
 	
-<div class="container" style="margin-bottom: 10px;">
 	<!-- BODY 영역 -->
 		<div class="row">
 			<form class="form-inline">
-				<div class="btn-group">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			  <div class="btn-group">
+				  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				    	진료과목으로 검색 &nbsp;&nbsp; <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu">
@@ -107,9 +106,9 @@
 				    <li><a href="?subject=hanbang">한방과</a></li>
 				    <li><a href="?subject=hyungboo">흉부외과</a></li>
 				  </ul>
-				</div>
-				<div class="btn-group">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			</div>
+			<div class="btn-group">
+				  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -143,25 +142,25 @@
 				    <li><a href="?replace=joong">중구</a></li>
 				    <li><a href="?replace=joongrang">중랑구</a></li>
 				  </ul>
-			    <div class="input-group">
+			</div>
+		    <div class="input-group">
 			      <input type="text" class="form-control" placeholder="병원 이름으로 검색"/>
 			      <span class="input-group-btn">
 			        <button class="btn btn-primary" type="button"> 검색 </button>
 			      </span>
-			    </div>
-			    <div class="btn-group btngroup" id="searchtoggle">
-				  <a class="btn btn-default" href="#" role="button"> 병원검색 </a>
-			  	  <a class="btn btn-default" href="#" role="button"> 약국검색 </a>
-				</div>
-				</div>
-			</form>
+		    </div>
+		    <div class="btn-group btngroup" id="searchtoggle">
+				  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+			  	  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
 			</div>
-		</div>	
-			
+		</form>
+	</div>
+		
 		<br/>
-		<div class="row">
-			<div id="map"></div>
-		</div>	
+		
+<div class="row">
+	<div id="map"></div>
+</div>	
 
 		
 	<!-- FOOTER 영역 -->
@@ -347,10 +346,10 @@
 					            '                	</tr>' + 
 					            '                </table><br/><hr/><br/>' + 
 					            '                <div class="btn-group">' + 
-						        '	                 <a class="btn btn-primary btn-sm" href="#접수페이지" role="button"> 접수하기 </a>' + 
+						        '	                 <a class="btn btn-primary btn-sm" href="'+'<c:url value="/general/reservation/reception.do"/>'+'" role="button"> 접수하기 </a>' + 
 					            '            	 </div>' + 
 					            '                <div class="btn-group">' + 
-						        '	                 <a class="btn btn-primary btn-sm" href="#예약페이지" role="button"> 예약하기 </a>' + 
+						        '	                 <a class="btn btn-primary btn-sm" href="'+'<c:url value="/general/reservation/reservation.do"/>'+'" role="button"> 예약하기 </a>' + 
 					            '            	 </div>' + 
 					            '                <div class="btn-group">' + 
 						        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/카카오판교오피스,37.402056,127.108212" role="button"> 길찾기 </a>' + 
@@ -373,7 +372,6 @@
 					}
 				}
 			};
-			
 		}
 		
 	</script>

@@ -9,6 +9,8 @@
 <%-- 		<jsp:include page="/WEB-INF/template/Top.jsp"/> --%>
 <!-- 	</div> -->
 	<!-- topMennu -->
+	<link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
+	
 	<style>
 	.jumbotron {
 		text-align:center;
@@ -18,7 +20,7 @@
 	}
 	.panel-body {
 		line-height: 30px;
-		font-family: Times New Roman;
+		font-family: 'Noto Serif KR', sans-serif;
 	}
 	</style>
 	<!-- body 시작 -->
