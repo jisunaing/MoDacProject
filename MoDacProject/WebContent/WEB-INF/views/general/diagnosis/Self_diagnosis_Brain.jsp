@@ -2,26 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-  <title>자가진단_머리</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<link type="text/css" rel="stylesheet" href="https://secure.surveymonkey.com/assets/responseweb/responseweb-base-bundle-min.d03455d7.css"  />
         
 <link type="text/css" rel="stylesheet" href="https://secure.surveymonkey.com/assets/responseweb/smlib.surveytemplates-survey_page-bundle-min.bb748735.css" />
         
 <link id="themeCssLink" rel="stylesheet" href="https://secure.surveymonkey.com/r/themes/4.1.87_887422_591090d6-ebb4-47ec-ac02-83086833b187.css"/>        
   
 <link rel="shortcut icon" href="/favicon1.ico" />
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<script>window.jQuery || document.write('<script src=https://secure.surveymonkey.com/assets/responseweb/responseweb-jquery-bundle-min.2a0d9b04.js><\/script>')</script>
 
 <script src="https://secure.surveymonkey.com/assets/responseweb/responseweb-response-bundle-min.4ab44a75.js"></script>
 

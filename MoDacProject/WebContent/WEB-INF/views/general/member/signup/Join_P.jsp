@@ -1,30 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">  
-    <title>Join_P.jsp</title>	
-    <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">   
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="<c:url value='/js/jquery-3.3.1.min.js'/>"></script>
-    <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>	
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
-    
-    
-    
-<script language="javascript">
 
-
-	
-
-
+   	
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   
+<script>
 
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
 //document.domain = "abc.go.kr";  /popup/jusoPopup.jsp
@@ -34,7 +14,7 @@ function goPopup(){
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 	
 	
-	var pop = window.open("<c:url value='/popup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("<c:url value='/jusoPopup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	
 	//var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
@@ -57,34 +37,40 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	
 	
 	 var nujeok= "";
-	  
-	 
-	 $('li').click(function() {
+	
+		
+	 $('#selectable li').click(function(){
 		 
+		 var change = "";
 
 		 
 		console.log($(this).html()); //선택한 진료과목의 값을 가져옴
 		
-		//$('#jin').val().append().attr('value',$(this).html());
+		nujeok += $(this).html()+",";
 		
-		//$('#jin').append($('#jin').attr('value',$(this).html()));
+		change = nujeok.substring(0,nujeok.lastIndexOf(','));
+				
 		
-		nujeok += $(this).html()+"  ";
 		
 		
+		$(this).hide(900);
+		
+		$(this).not();
+		
+		
+		$(this).show(900);
+		
+	 
+	 $('#jin').attr('value',change);
+	 
+	 
+	 
+	 
+	 
+	});	
+	 
 	
-		$(this).hide(1200);
-		
-	 
-	 $('#jin').attr('value',nujeok);
-	 
-	 console.log($('#jin').val());
-	 
-	});	 
-	 
-	 
-	 
-	 
+	
 	 
 	 
 	 
@@ -108,38 +94,33 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     font-size: 1em; text-align: center; border: 1px solid black; border-radius: 10px; }
     
     .modal-footer{margin-top: 290px; }
-
-
-
-
+    
+    h1{
+    
+    margin: 5px 0px 45px 0px;
+    
+    }
+    
+   
+ 
 </style>
 
   	
   </head>
   <body>
+
   	<div class="container">
-	    <!-- 네비게이션바 -->
-	  
-	    <!-- 네비게이션바 -->
-	    <!-- 내용 시작 -->
-	    <div class="container">
-	    	
-	    	<div class="page-header">
-		  		<h1>제휴 문의<small> 병원 제휴</small></h1>
-			</div>
 			<div class="row">
 				<div class="col-md-12">
 				
-					<!--		
-					폼의 가로폭은 <div >로 감싼후 col-*-*계열로 설정
-					폼의 세로폭는 .input-lg 또는 .input-sm 선택자를 .form-control 선택자와 함께 입력
-					 --> 
-					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='/DataRoom/Join.kosmo'/>" >
+				 <h1>제휴 문의<small> 병원 제휴</small></h1>
+					
+					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='#'/>" >
 					
 					
 						  <div class="form-group">
 						  
-						    <label for="id" class="col-sm-2  control-label" style="font-family: HYBDAL">아이디</label>
+						   <label for="id" class="col-sm-2  control-label">아이디</label>
 						   	<div class="col-sm-3">
 						      <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" >
 						    </div>
@@ -198,14 +179,14 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 											
 												
 											<ul id="selectable">
-												
+											
 												  <li class="ui-state-default" value="1" >가정의학과</li>												  
 												
 												  <li class="ui-state-default" value="2">결핵과</li>
 												
 												  <li class="ui-state-default" value="3">내과</li>
 												
-												  <li class="ui-state-default" value="4">마취통증과</li> 
+												  <li class="ui-state-default" value="4" >마취통증과</li> 
 												
 												  <li class="ui-state-default" value="5">비뇨기과</li>
 												
@@ -243,7 +224,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 											</ul>
 										</div>
 										<div class="modal-footer">
-											<button class="btn btn-primary" data-dismiss="modal">닫기</button>
+											<button class="btn btn-primary modal_close" data-dismiss="modal">닫기</button>
 										</div>
 									</div>
 								</div>
@@ -255,16 +236,16 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						  <div class="form-group">
 						    <label for="pname" class="col-sm-2  control-label">담당자 이름</label>
 						   	<div class="col-sm-2">
-						      <input type="text" class="form-control" name="pname" id="pname" placeholder="이름을 입력하세요">
+						      <input type="text" class="form-control " name="pname" id="pname" placeholder="이름을 입력하세요">
 						    </div>
+						    
+						    <label for="ptel" class="col-sm-pull-1 col-sm-2  control-label">연락처</label>
+							<div class="col-sm-2 col-sm-pull-1">
+								<input type="text" class=" form-control" name="ptel" id="ptel" placeholder="연락처를 입력하세요">
+							</div>
 						  </div>
 
-						<div class="form-group">
-							<label for="ptel" class="col-sm-2  control-label">연락처</label>
-							<div class="col-sm-2">
-								<input type="text" class="form-control" name="ptel" id="ptel" placeholder="연락처를 입력하세요">
-							</div>
-						</div>
+					
 						
 						 
 						<div class="form-group">
@@ -273,9 +254,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								<input type="text" class="form-control" name="zipNo" id="zipNo" disabled>
 							</div>
 						</div>
-						
-						
-
 
 						<div class="form-group">
 							<label for="roadFullAddr" class="col-sm-2 control-label">주 소</label>
@@ -297,21 +275,17 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								<input type="text" class="form-control" name=businessNB id="businessNB" placeholder="사업자 번호를 입력해주세요">
 							</div>
 						</div>
-						
-						
- 
-
 
 						<div class="form-group">
 							<label for="greeting" class="col-sm-2  control-label">요 청 사 항</label>
 							<div class="col-sm-5">
-								<textarea rows="10" class="form-control" id="greeting" name="greeting"></textarea>
+								<textarea rows="5" class="form-control" id="greeting" name="greeting"></textarea>
 							</div>
 						</div>
 
 
 						<div class="form-group">
-						    <div class="col-sm-offset-2 col-sm-10">
+						    <div class="col-sm-offset-5 col-sm-7">
 						      <button type="submit" class="btn btn-danger">제휴 신청</button>
 						    </div>
 						  </div>
@@ -322,6 +296,9 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			
 	    </div>
     	 <!-- 내용 끝 -->
-    </div>
+
+
   </body>
 </html>
+
+

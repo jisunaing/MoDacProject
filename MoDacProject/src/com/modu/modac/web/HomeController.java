@@ -14,6 +14,26 @@ public class HomeController {
 //		return "../../../index.";
 		return "/index";
 	}
+	
+	
+	//로그인 버튼 눌럿을때 오는 부분
+	@RequestMapping("/home/loginmain.do")
+	public String loginMain() throws Exception {
+		
+		return "general/member/Login.tiles";
+	}
+	
+	@RequestMapping("/home/join_P.do")
+	public String join_P() throws Exception {
+		
+		return "general/member/signup/Join_P.tiles";
+	}
+	
+	
+	
+	
+	
+	
 //	@RequestMapping("/general/pharm/pharmMap.do")
 //	public String pharmMapPage() throws Exception {
 //		return "general/pharm/MapPharmacy.tiles";
@@ -22,5 +42,8 @@ public class HomeController {
 //	public String hosMapPage() throws Exception {
 //		return "general/hospital/MapHospital.tiles";
 //	}
+	
+	
+	
 
-}
+}/////HomeController
