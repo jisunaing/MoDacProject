@@ -17,7 +17,8 @@ public class HealthInfoController {
 	@RequestMapping("/general/HealthInfoView.do")
 	public String heathView(Model model, HttpServletRequest req) throws Exception {
 		
-		String content = "자녀 손을 잡고 안과를 처음 찾은 때가 언제였는가?\r\n "
+		String content =
+				"자녀 손을 잡고 안과를 처음 찾은 때가 언제였는가?\r\n "
 				+ "자녀가 칠판 글씨가 잘 보이지 않는다고 호소해야 겨우 안과를 찾았는가?\r\n "
 				+ "그런 경우에도 안과에는 들르지 않고 안경점으로 가 안경 맞춰주기에 급급했는가?\r\n "
 				+ "자녀가 초등학교에 들어간 뒤에야 안과를 찾는다면 70점, 자녀에게 첫 안경을 맞춰줄 때조차 안과를 거치지 않고 안경점으로 직행하는 부모라면 50점도 채 못 받을 것이다."
