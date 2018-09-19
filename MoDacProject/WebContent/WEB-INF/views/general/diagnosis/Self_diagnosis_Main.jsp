@@ -120,7 +120,7 @@
   </head>
   <body>
 
-	<div class="container">
+	<div class="container col-sm-offset-2">
 		<div class="row">
 			<div id="selectable">
 

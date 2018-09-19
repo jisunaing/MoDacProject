@@ -234,7 +234,7 @@
                     <img src="<c:url value='/Images/healthinfo4.jpg'/>" alt="Lights" style="width:100%">
                     <div class="caption">                 
                        <span class="imgcpation">주름</span>
-                         <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                         <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>                         
                     </div>
                   </a>   
                 </div>

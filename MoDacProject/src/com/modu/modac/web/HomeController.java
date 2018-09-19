@@ -23,6 +23,7 @@ public class HomeController {
 		return "general/member/Login.tiles";
 	}
 	
+	
 	@RequestMapping("/home/join_P.do")
 	public String join_P() throws Exception {
 		
