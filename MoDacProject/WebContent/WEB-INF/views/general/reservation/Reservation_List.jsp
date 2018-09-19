@@ -15,6 +15,9 @@
 table th {
  text-align: center;
 }
+table{
+	min-width: 500px;
+}
 /*테이블 센터를 위한 css 끝*/
 </style>
 	<!-- body 시작 -->
@@ -29,7 +32,7 @@ table th {
 			</div>
 			<!-- 부트스트랩 점보트론 끝-->
 			<!-- 테이블 시작 -->
-			<table class="table table-hover" style="min-width: 500px;">
+			<table class="table table-hover">
 				<tr>
 					<th>예약신청일</th>
 					<th>병원명</th>
