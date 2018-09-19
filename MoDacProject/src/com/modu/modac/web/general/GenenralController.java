@@ -14,43 +14,43 @@ public class GenenralController {
 	
 	
 	//지훈-자가진단 
-	@RequestMapping("/general/reservation/selfdiagnosis.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_Main.do")
 	public String selfdiagnosis()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Main.tiles";
 	}///메인
 	
-	@RequestMapping("/general/reservation/selfdiagnosis_eye.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_eye.do")
 	public String selfdiagnosis_eye()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Eyes.tiles";
 	}//눈
 	
-	@RequestMapping("/general/reservation/selfdiagnosis_mouth.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_mouth.do")
 	public String selfdiagnosis_mouth()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Mouth.tiles";
 	}//입
 	
-	@RequestMapping("/general/reservation/selfdiagnosis_neck.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_neck.do")
 	public String selfdiagnosis_neck()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Neck.tiles";
 	}//목
 	
-	@RequestMapping("/general/reservation/selfdiagnosis_nose.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_nose.do")
 	public String selfdiagnosis_nose()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Nose.tiles";
 	}//코
 	
-	@RequestMapping("/general/reservation/selfdiagnosis_brain.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_brain.do")
 	public String selfdiagnosis_brain()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Brain.tiles";
 	}//머리
 	
-	@RequestMapping("/general/reservation/selfdiagnosis_ear.do")
+	@RequestMapping("/general/diagnosis/self_diagnosis_ear.do")
 	public String selfdiagnosis_ear()throws Exception{
 		
 		return "general/diagnosis/Self_diagnosis_Ear.tiles";

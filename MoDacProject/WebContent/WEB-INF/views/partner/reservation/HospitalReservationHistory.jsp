@@ -114,7 +114,7 @@ table th {
 					</a>
 						<ul class="treeview-menu">
 							<li>
-								<a href="#"><i class="fa fa-circle-o"></i>병원정보보기</a>
+								<a href="<c:url value="/partner/mypage/partnerInfo.do"/>"><i class="fa fa-circle-o"></i>병원정보보기</a>
 							</li>
 						</ul>
 					</li>
@@ -126,8 +126,9 @@ table th {
 					</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#">
-						<i class="fa fa-circle-o"></i> 문의확인하기</a></li>
+						<li>
+						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
+						</li>
 					</ul></li>
 				</ul>
 			</section>

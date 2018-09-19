@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-	<script src="<c:url value='/js/jquery-3.3.1.min.js'/>"></script>
+	<script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
     <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
@@ -199,12 +199,7 @@ input:focus{ outline: 0; border-color: black; }
 						
 					}
 
-				console.log('어떤새끼냐  ghd : '+ghd.length);
-				
-				console.log('어떤새끼냐 dydlf : '+dydlf.length);
-				
-				//console.log('어떤새끼냐 2 : '+dkd);
-				//console.log('어떤새끼냐 3 : '+dydlf);
+
 				});
 				
 				
@@ -237,7 +232,7 @@ input:focus{ outline: 0; border-color: black; }
 
 </head>
 
-<body translate="no" >
+<body>
 
   <!-- form -->
 <div class="container">
@@ -252,7 +247,7 @@ input:focus{ outline: 0; border-color: black; }
 					<hr style="border: 1px dashed; margin-left: -16px;"	class="col-sm-12" />
 				</div>
 
-				<form action="/" method="post">
+				<form action="#" method="post">
 			 
 
 				

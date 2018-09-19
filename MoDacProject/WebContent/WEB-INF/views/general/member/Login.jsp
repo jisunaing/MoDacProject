@@ -311,7 +311,7 @@ textarea {
 				
 			</form>
 				<div class="col-sm-offset-3">
-					<a href='<c:url value='/home/join_P.do'/>'><button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button></a>
+					<a href='<c:url value='general/member/join_P.do'/>'><button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button></a>
 				</div>
 
 			</div>

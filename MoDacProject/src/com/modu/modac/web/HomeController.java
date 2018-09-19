@@ -16,13 +16,14 @@ public class HomeController {
 	
 	
 	//로그인 버튼 눌럿을때 오는 부분
-	@RequestMapping("/home/loginmain.do")
+	@RequestMapping("/general/member/Login.do")
 	public String loginMain() throws Exception {
 		
 		return "general/member/Login.tiles";
 	}
 	
-	@RequestMapping("/home/join_P.do")
+	
+	@RequestMapping("/general/member/join_P.do")
 	public String join_P() throws Exception {
 		
 		return "general/member/signup/Join_P.tiles";
