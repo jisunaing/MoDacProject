@@ -48,6 +48,7 @@
     <c:if test="${not isGeneralUser }">
     	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;;line-height: 70px">	
     </c:if>	  
+    <!-- 로고이미지 들어갈자리 -->
 	<%--     	
 		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
 	--%>
@@ -58,11 +59,10 @@
   </div><!-- navbar-header -->
   
 <!-- 일반사용자용 top -->
-<%-- <c:set value="claire" var="USER_ID" scope="session"/>  --%>
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
-				<li id="navbar-page" ><a class="navmenus"href="">홈</a></li>
+				<li id="navbar-page" ><a class="navmenus" href="">홈</a></li>
 				<li class="dropdown">
 					<a href="#" class="navmenus ropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
 						찾기

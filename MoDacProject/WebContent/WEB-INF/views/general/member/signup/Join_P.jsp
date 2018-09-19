@@ -291,10 +291,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						    </div>
 						  </div>
 						</form>  
-	
 				</div>			
 			</div>
-			
 	    </div>
     	 <!-- 내용 끝 -->
 
