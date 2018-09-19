@@ -61,6 +61,7 @@
   </div><!-- navbar-header -->
   
 <!-- 일반사용자용 top -->
+<c:set value="claire" var="USER_ID" scope="session"/> 
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
@@ -103,7 +104,7 @@
 				</li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
 					<li id="navbar-tag"><a href="#" class="navmenus">로그아웃</a></li>
-					<li id="navbar-guestbook"><a href="#" class="navmenus">마이페이지</a></li>
+					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
 					<li id="navbar-tag"><a href="#" class="navmenus">로그인</a></li>
@@ -114,6 +115,7 @@
     </c:if>
     <!-- 일반사용자용 top -->
     <!-- 병원사용자용 top -->
+    
     <c:if test="${not isGeneralUser}">
     	 <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">

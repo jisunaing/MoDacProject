@@ -1,0 +1,10 @@
+body {
+  font-family: arial;
+  max-width: 100%;
+  margin: auto;
+}
+
+h1, p.description {
+  margin: 0 3px 25px 3px;
+}
+
