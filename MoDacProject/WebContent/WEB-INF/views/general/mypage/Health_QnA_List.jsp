@@ -2,27 +2,40 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<style>
+#hr{
+	margin-left: 40%;
+	border: solid 1px black; 
+	width: 20%
+}
+#dv{
+	padding-top: 50px
+}
+#qna{
+	margin-bottom: 20px
+}
+</style>
 <title>건강문의</title>
 
-	<!-- body 시작 -->
-<div class="container">
-	<h2 style="text-align: center">건강문의하기</h2>
+<!-- body 시작 -->
+<div class="container" id="dv">
+	<h2 style="text-align: center">증상문의하기</h2>
 	<br />
 	<p style="text-align: center;">
-		회원님과 제휴병원측만 확인 가능한 페이지 입니다.<br /> 해당 병원에서 이런 저런 검사는 하는지 특정 병원에게
-		문의하거나 의사선생님께 질문을 남기는 곳입니다. <br /> 언제든지 궁금한걸 물어보세요~
+		회원님과 제휴병원측만 확인 가능한 페이지 입니다.<br /> 
+		회원님의 증상에 대해 의사선생님께 직접 질문을 남기는 곳입니다. <br /> 
+		언제든지 궁금한걸 물어보세요~
 	</p>
 	<br />
-	<hr style="border: solid 1px black; width: 20%; align-content: center">
+	<hr id="hr">
 	<br />
 	<br />
-
 	<!-- row -->
-	<div class="row">
+	<div class="row" >
 		<div class="text-center">
-			<div class="container">
-				<a href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;">문의하기</a>
+			<div class="container" >
+				<a id="qna" href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;  color: black">문의하기</a>
+				
 				<table class="table">
 					<thead>
 						<tr>
@@ -34,7 +47,7 @@
 					<tbody>
 						<tr class="success">
 							<td>2018-09-15</td>
-							<td><a href="<c:url value='/general/qna/qnahealth/health_qna_view.do'/>">제목1</a></td>
+							<td><a style=" color: black" href="<c:url value='/general/qna/qnahealth/health_qna_view.do'/>">제목1</a></td>
 							<td>답변완료</td>
 						</tr>
 						<tr class="danger">
@@ -50,9 +63,6 @@
 					</tbody>
 				</table>
 			</div>
-			
-			
-
 		</div>
 	</div>
 	

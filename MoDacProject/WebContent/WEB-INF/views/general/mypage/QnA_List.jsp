@@ -2,27 +2,39 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<style>
+#hr{
+	margin-left: 40%;
+	border: solid 1px black; 
+	width: 20%
+}
+#dv{
+	padding-top: 50px
+}
+#qna{
+	margin-bottom: 20px
+}
+</style>
 <title>사이트 문의</title>
 
 
 <!-- body 시작 -->
-<div class="container">
+<div class="container" id="dv">
 	<h2 style="text-align: center">사이트 문의하기</h2>
 	<br />
 	<p style="text-align: center;">
-	<br /> 언제든지 궁금한걸 물어보세요~ <br />
+		언제든지 궁금한걸 물어보세요~
 	</p>
 	<br />
-	<hr style="border: solid 1px black; width: 20%; align-content: center">
+	<hr id="hr">
 	<br />
 	<br />
-
 	<!-- row -->
-	<div class="row">
+	<div class="row" >
 		<div class="text-center">
-			<div class="container">
-				<a href="<c:url value='/general/qna/qna_write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;">문의하기</a>
+			<div class="container" >
+				<a id="qna" href="<c:url value='/general/qna/qna_write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;  color: black">문의하기</a>
+				
 				<table class="table">
 					<thead>
 						<tr>
@@ -34,7 +46,7 @@
 					<tbody>
 						<tr class="success">
 							<td>2018-09-15</td>
-							<td><a href="<c:url value='/general/qna/qna_view.do'/>">제목1</a></td>
+							<td><a style=" color: black" href="<c:url value='/general/qna/qna_view.do'/>">제목1</a></td>
 							<td>답변완료</td>
 						</tr>
 						<tr class="danger">
@@ -50,9 +62,6 @@
 					</tbody>
 				</table>
 			</div>
-			
-			
-
 		</div>
 	</div>
 	

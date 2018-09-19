@@ -1,117 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-
-<title>사이트 문의하기</title>
 <style>
-.container {
-	min-height: 100%;
+
+#hr{
+	margin-left: 40%;
+	border: solid 1px black;
+	width: 20%
+}
+form{
+	padding-left : 12%
+}
+.panel{
+	margin-top:50px;
+	margin-left: 15%;
+	padding-top:20px;
+	padding-bottom:20px
 }
 
-.footer {
-	background-color: #32323C;
-	min-height: 10%;
-}
 
-.row {
-	margin: 0 auto;
-	text-align: center;
-}
-
-.row .col-md-4 {
-	margin-top: 10px;
-	outline: 1px pink solid;
-	height: 200px;
-}
-.out{
- width: 100%;
- text-align: center;
- border: 1px solid black;
- }
- 
- .in{
- display: inline-block;
- border: 1px solid red;
- width: 40%;
- height: 100px
- 
- }
 </style>
 <script>
-	$(function() {
-		$('body').css('height', '100%').css('margin', '0');
-		$('html').css('height', '100%');
-	});
-	$(document).ready(function() {
+
+/* 	$(document).ready(function() {
 		  $('#summernote').summernote();
-		});
+		}); */
 </script>
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-</head>
-<body>
-	<!-- topMenu -->
-	<div class="topMenu">
-		<jsp:include page="/WEB-INF/template/Top.jsp" />
-	</div>
-	<!-- topMennu -->
 
-	<!-- body 시작 -->
-	<div class="container">
-		<div class="panel panel-default">
-			<div class="row">
-				<div class="heading-content">
-					<h2 class="primary-heading">사이트 문의</h2>
-				</div><br/>
-				<p class="secondary-heading">회원님의 의견을 적극 수렴하겠습니다!</p>
+<!-- body 시작 -->
+<div id="contain"class="container">
+<div class="panel panel-default" style="width: 70%;">
+	<br/><br/>
+	<h2 style="text-align: center">사이트 문의</h2><br/>
+	<p style="text-align: center;">
+	회원님의 의견을 적극 수렴하겠습니다!
+	</p><br/>
+	<hr id="hr"><br/><br/>
+	<div class="row">
+		<form class="form-horizontal" method="post" action="#">
+
+			<div class="form-group">
+				<label for="title" class="col-sm-2  control-label">제목</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="title" name="title"
+						placeholder="제목을 입력하세요">
+				</div>
 			</div>
-			<hr style="border: solid 1px black;width: 10%;align-content: center "><br/><br/>
-			
-			<div class="row">
-				<form class="form-horizontal" method="post" action="#">
-		
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-4">
-							<input type="text" class="form-control" id="title" name="title"
-								placeholder="제목을 입력하세요">
-						</div>
-					</div>
-		
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-8">
-							<textarea rows="10" placeholder="내용을 입력하세요" class="form-control"
-								id="summernote" name="content"></textarea>
-						</div>
-					</div>
-				</form>
-			</div><br/>
-			<div class="row">
-				<a type="submit" class="btn btn-danger">등록</a>
-				<a type="submit" class="btn btn-danger">취소</a>
+
+			<div class="form-group">
+				<label for="content" class="col-sm-2  control-label">내용</label>
+				<div class="col-sm-7">
+					<textarea rows="10" class="form-control" id="summernote" name="content"></textarea>
+				</div>
 			</div>
-			<br/><br/>
-		</div>
+			<div class="form-group">
+				<div class="col-sm-offset-5 col-sm-10">
+					<button type="submit" class="btn btn-primary">등록</button>
+				</div>
+			</div>
+		</form>
 
 	</div>
+</div>	
+	
+</div>
 	<!-- container -->
 
-	<!--footer를 감싸는 div 시작-->
-	<div class="footer">
-		<jsp:include page="/WEB-INF/template/Footer.jsp" />
-	</div>
-	<!--footer를 감싸는 div 끝-->
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</body>
-</html>
-<!-- body 끝 -->

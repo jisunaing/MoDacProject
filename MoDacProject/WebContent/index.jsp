@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
+<c:set value="claire" var="USER_ID" scope="session"/> 
+
+
 <!DOCTYPE html>
 <html>
  

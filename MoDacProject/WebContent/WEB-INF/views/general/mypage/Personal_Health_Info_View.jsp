@@ -9,15 +9,21 @@ tr th{
 	text-align: center;
 }
  
+ .panel{
+	margin-top:50px;
+	margin-left: 15%;
+	padding-top:20px;
+}
 </style>
 <div class="container">
 	
-	<div class="panel panel-default">
+	<div class="panel panel-default" style="width:70%">
 	  <div class="panel-body">
 	  	<div class="page-header text-center">
 			<h2>
-				OOO님의 건강정보 
+				${USER_ID}님의 건강정보 
 			</h2>
+			<br/>
 		</div>
 		<br/><br/>
 		<div class="table-responsive  col-sm-8 col-sm-offset-2">
@@ -26,7 +32,7 @@ tr th{
 		  		<th class="col-sm-2" style="text-align: center">
 		  			혈액형
 		  		</th>
-		  		<td class="col-sm-5">
+		  		<td class="col-sm-3">
 		  			O
 		  		</td>
 		  	</tr>
@@ -66,7 +72,7 @@ tr th{
 		  </table>
 		  <br/><br/>
 		  <div class="row">
-		  	<a class="btn btn-warning" href="<c:url value='/general/mypage/healthinfo_edit.do'/>">수정하기</a>
+		  	<a class=" col-sm-offset-5 btn btn-warning" href="<c:url value='/general/mypage/healthinfo_edit.do'/>">수정하기</a>
 		  </div>
 		  <br/><br/><br/>
 		</div>

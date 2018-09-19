@@ -29,7 +29,11 @@ public class HomeController {
 		return "general/member/signup/Join_P.tiles";
 	}
 	
-	
+	@RequestMapping("/general/member/signup/gen_signup_write.do")
+	public String gen_signup_write() throws Exception {
+		
+		return "general/member/signup/Gen_SignUp_Write.tiles";
+	}
 	
 	
 	
