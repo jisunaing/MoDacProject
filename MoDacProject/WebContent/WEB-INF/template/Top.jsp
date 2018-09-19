@@ -46,7 +46,7 @@
     	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
     </c:if>
     <c:if test="${not isGeneralUser }">
-    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;;line-height: 70px">	
+    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
     </c:if>	  
     <!-- 로고이미지 들어갈자리 -->
 	<%--     	
@@ -57,16 +57,11 @@
 	<!-- 로고자리끝남 -->    
 	
   </div><!-- navbar-header -->
-  
-<<<<<<< HEAD
-<!-- 일반사용자용 top --> 
-=======
+
 <!-- 일반사용자용 top -->
-<<<<<<< HEAD
->>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
-=======
+
 <%-- <c:set value="claire" var="USER_ID" scope="session"/>  --%>
->>>>>>> refs/heads/develope
+
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
@@ -106,17 +101,14 @@
 					</ul>
 				</li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
-					<li id="navbar-tag"><a href="#" class="navmenus">로그아웃</a></li>
+					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
-<<<<<<< HEAD
+
 					<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/member/signup/gen_signup_write.do'/>" class="navmenus">회원가입</a></li>
-=======
-					<li id="navbar-tag"><a href="<c:url value='/general/member/Login.do'/>" class="navmenus">로그인</a></li>
-					<li id="navbar-guestbook"><a href="#" class="navmenus">회원가입</a></li>
->>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
+
 				</c:if>
 	    	</ul>
 	    </div>
@@ -139,7 +131,7 @@
 					</ul>
 				</li>
 				<li id="navbar-tag"><a href="#">환자문의</a></li>
-				<li id="navbar-guestbook"><a href="#">로그아웃</a></li>
+				<li id="navbar-guestbook"><a href="<c:url value='/home/loginout.do'/>">로그아웃</a></li>
 				<li id="navbar-guestbook"><a href="#">마이페이지</a></li>
 			</ul>
 	    </div>

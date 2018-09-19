@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
-<c:set value="claire" var="USER_ID" scope="session"/> 
+
 
 
 <!DOCTYPE html>
@@ -135,7 +135,7 @@
       <jsp:include page="/WEB-INF/template/Top.jsp"/>
       
    </div><!-- topMennu -->
-   
+   <c:set value="claire" var="USER_ID" scope="session"/> 
    <!-- 병원페이지 일반페이지 분기~ -->
    <c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
       <!-- 병원페이지 이동용 인덱스페이지_body시작 -->
