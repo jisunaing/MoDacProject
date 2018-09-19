@@ -9,11 +9,14 @@ public class GenenralController {
 	public String pharmMapPage() throws Exception {
 		return "general/pharm/MapPharmacy.tiles";
 	}
+	
 	@RequestMapping("/general/hospital/hosMap.do")
 	public String hosMapPage() throws Exception {
+		
 		return "general/hospital/MapHospital.tiles";
 	}
-	@RequestMapping("/general/hospital/hosMapSub.do")
+	
+	@RequestMapping("/general/hospital/SelectSubject.do")
 	public String subHosMapPage() throws Exception {
 		return "general/hospital/SelectSubject.tiles";
 	}
