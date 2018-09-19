@@ -61,7 +61,7 @@
   </div><!-- navbar-header -->
   
 <!-- 일반사용자용 top -->
-<c:set value="claire" var="USER_ID" scope="session"/> 
+<%-- <c:set value="claire" var="USER_ID" scope="session"/>  --%>
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
@@ -73,9 +73,7 @@
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
 						<li><a href="<c:url value='/general/pharm/pharmMap.do'/>">약국찾기</a></li>
 						<li class="divider"></li>
-						<li><a href="<c:url value='/general/hospital/hosMap.do'/>">병원찾기</a></li>
-						<li class="divider"></li>
-						<li><a href="<c:url value='/general/hospital/hosMapSub.do'/>">진료과목으로병원찾기</a></li>
+						<li><a href="<c:url value='/general/hospital/SelectSubject.do'/>">병원찾기</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -107,7 +105,7 @@
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
-					<li id="navbar-tag"><a href="#" class="navmenus">로그인</a></li>
+					<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>
 					<li id="navbar-guestbook"><a href="#" class="navmenus">회원가입</a></li>
 				</c:if>
 	    	</ul>
