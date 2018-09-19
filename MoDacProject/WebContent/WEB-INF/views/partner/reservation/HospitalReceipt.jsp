@@ -28,6 +28,9 @@ table th {
  text-align: center;
 }
 /*테이블 센터를 위한 css 끝*/
+
+
+
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
