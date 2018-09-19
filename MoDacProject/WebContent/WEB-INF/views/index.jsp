@@ -5,7 +5,6 @@
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
 <!DOCTYPE html>
 <html>
- 
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,8 +21,7 @@
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- font적용)https://fonts.google.com/?subset=korean -->
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <!-- 이페이지안에서만 쓰는 파일들 -->
 <!-- SLIDE~ -->
@@ -36,9 +34,9 @@
 <!-- scrolle effect~ -->
 <link href="css/parallax.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
-<script src="js/parallax.jquery.js"></script>
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
+  <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
   
 <title>모두의닥터</title>
 <script>
@@ -130,10 +128,7 @@
 			
 	<%-- 
 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
-	 --%>
-		<%-- 
-		<c:set value="sdf" var="PARTNER_ID" scope="session"/>
-		 --%>
+	 <!-- --%> 	
 	<!-- topMenu -->
 =======
 	<%-- 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
@@ -144,14 +139,14 @@
 		
 	</div><!-- topMennu -->
 	<!-- 병원페이지 일반페이지 분기~ -->
-<%-- 	<c:if test="${not empty PARTNER_ID}" var="isPartnerPage"> --%>
+	<c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
 		<!-- 병원페이지 이동용 인덱스페이지_body시작 -->
-<!-- 			<div class="container"> -->
-<%-- 				<a href="<c:url value="/partner/hospital/MainMove.do"/>"><img alt="병원 이동페이지 사진" src="<c:url value="/Images/hospitalMove.jpg"/>"></a> --%>
-<!-- 			</div>~container_div	 -->
+			<div class="container">
+				<a href="<c:url value="/partner/hospital/MainMove.do"/>"><img alt="병원 이동페이지 사진" src="<c:url value="/Images/hospitalMove.jpg"/>"></a>
+			</div>	
 		<!-- 병원페이지 이동용 인덱스페이지_body끝 -->
-<%-- 	</c:if> --%>
-<%-- 	<c:if test="${not isPartnerPage}"> --%>
+	</c:if>
+	<c:if test="${not isPartnerPage}">	
 		<!-- 일반페이지 body 시작 -->
 		<div class="container">
 			<!-- 테스트컨트롤러_테스트용스팬 -->
@@ -277,7 +272,7 @@
 	  		<!-- themeSearch -->
 	  	</div><!-- container -->
 	  	<!-- 일반페이지 body 끝 -->
-<%-- 	</c:if> --%>
+	</c:if>
 	<!--footer를 감싸는 div 시작--> 
     <div class="footer" >
    	 	<jsp:include page="/WEB-INF/template/Footer.jsp"/>
