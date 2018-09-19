@@ -34,6 +34,7 @@
 	width:700px;
 }
 
+
 #searchtoggle {
 /* 	margin-left:10px; */
 	float: right;
@@ -148,23 +149,20 @@
 			        <button class="btn btn-primary" type="button"> 검색 </button>
 			      </span>
 			    </div>
-			    <div class="btn-group" id="searchtoggle">
+			    <div class="btn-group btngroup" id="searchtoggle">
 				  <a class="btn btn-default" href="#" role="button"> 병원검색 </a>
 			  	  <a class="btn btn-default" href="#" role="button"> 약국검색 </a>
 				</div>
 				</div>
 			</form>
-		
-			
-			
-		</div>
-			
+			</div>
+		</div>	
 			
 		<br/>
 		<div class="row">
 			<div id="map"></div>
 		</div>	
-</div>
+
 		
 	<!-- FOOTER 영역 -->
 <!-- 	<div class="footer"> -->

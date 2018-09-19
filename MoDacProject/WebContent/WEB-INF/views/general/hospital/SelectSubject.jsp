@@ -112,88 +112,89 @@
 	</div>
 	
 	<!-- container -->
+		<!-- container -->
 	<div class="container">
 		<div class="row">
 			<div class="btngroup">
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=gajeong"> 가정의학과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=gajeong'/>"> 가정의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=gyeolhack"> 결핵과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=gyeolhack'/>"> 결핵과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=nae"> 내과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=nae'/>"> 내과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=machi"> 마취통증의학과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=machi'/>"> 마취통증의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=binyo"> 비뇨의학과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=beenyo'/>"> 비뇨의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=sanbu"> 산부인과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=sanbu'/>"> 산부인과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=seonghyung"> 성형외과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=seonghyung'/>"> 성형외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=soa"> 소아청소년과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=soa'/>"> 소아청소년과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=singyung"> 신경외과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=singyung'/>"> 신경외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=an"> 안과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=an'/>"> 안과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=youngsang"> 영상의학과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=youngsang'/>"> 영상의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=oe"> 외과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=oe'/>"> 외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=ebin"> 이비인후과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=ebin'/>"> 이비인후과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=jaehwal"> 재활의학과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=jaehwal'/>"> 재활의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=jungsin"> 정신건강의학과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=jungsin'/>"> 정신건강의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=jeonghyung"> 정형외과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=jeonghyung'/>"> 정형외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=chi"> 치과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=chi'/>"> 치과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=peebu"> 피부과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=peeboo'/>"> 피부과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=hanbang"> 한방과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=hanbang'/>"> 한방과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="?subject=hyungboo"> 흉부외과 </a>
+					<a href="<c:url value='/general/hospital/hosMap.do?subject=hyungboo'/>"> 흉부외과 </a>
 				</div>
 			</div>
 			<div>
