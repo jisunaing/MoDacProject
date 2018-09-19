@@ -60,7 +60,7 @@
 	</script>
 	<div class="row">
 		<div class="page-header">
-		  <h1>병원 이름 <small>성형외과</small></h1>
+		  <h1>예약 병원 이름 <small>성형외과</small></h1>
 		</div>
 	</div>
 	<div class="row">
