@@ -109,22 +109,32 @@ public class GenenralController {
 	}
 	//사이트문의목록
 	@RequestMapping("/general/qna/qna_list.do")
-	public String QnA_List() throws Exception {
+	public String qna_List() throws Exception {
 		return "general/mypage/QnA_List.tiles";
 	}
 	//사이트문의 폼(글쓰기)
 	@RequestMapping("/general/qna/qna_write.do")
-	public String QnA_Write() throws Exception {
+	public String qna_Write() throws Exception {
 		return "general/mypage/QnA_Write.tiles";
 	}
 	//사이트문의 상세보기
 	@RequestMapping("/general/qna/qna_view.do")
-	public String QnA_View() throws Exception {
+	public String qna_View() throws Exception {
 		return "general/mypage/QnA_View.tiles";
 	}
 	//사이트문의 상세보기 수정
 	@RequestMapping("/general/qna/qna_edit.do")
-	public String QnA_Edit() throws Exception {
+	public String qna_Edit() throws Exception {
 		return "general/mypage/QnA_Edit.tiles";
+	}
+	//공지사항 리스트 - footer에 위치
+	@RequestMapping("/general/notice/notice_list.do")
+	public String notice_list() throws Exception {
+		return "general/notice/Notice_List.tiles";
+	}
+	//공지사항 상세보기
+	@RequestMapping("/general/notice/notice_view.do")
+	public String notice_view() throws Exception {
+		return "general/notice/Notice_View.tiles";
 	}
 }

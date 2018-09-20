@@ -25,8 +25,8 @@
 
 <footer class="page-footer" style="margin-top: 50px;">
 	<div class="footer-list text-center py-1" >
-		<a id="footera" href="#">사이트문의</a>
-		<a id="footera" href="#">공지사항</a>
+		<a id="footera" href="<c:url value='/general/qna/qna_write.do'/>">사이트문의</a>
+		<a id="footera" href="<c:url value='/general/notice/notice_list.do'/>">공지사항</a>
 		<a id="footera" href="#">admin접속</a>
 	</div>
 	<div class="m-0 footer-copyright text-center py-1" >

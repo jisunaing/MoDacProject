@@ -260,18 +260,18 @@ textarea {
 		<div id="signup">
 			<h1>환영 합니다!!</h1>
 			<small>이곳은  <span id="sp1">일반회원</span> 전용 로그인 입니다</small>
-			<form action="/" method="post">
+			<form action="<c:url value='/home/loginProcess.do'/>" method="get">
 				
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
 					</label>
-					<input type="text" id="email2" required autocomplete="off">
+					<input name="id" type="text" id="email2" required autocomplete="off">
 				</div>
 				
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input type="password" id="pwd2" required autocomplete="off">
+					<input name="pwd"type="password" id="pwd2" required autocomplete="off">
 				</div>
 				
 				<div class="col-sm-offset-3">
@@ -280,7 +280,7 @@ textarea {
 				
 			</form>
 				<div class="col-sm-offset-3">
-					<a href='<c:url value='#'/>'><button type="submit" class="button button-block" style="margin-top: 13px;">회원 가입</button></a>					
+					<a href='<c:url value='/general/member/signup/gen_signup_write.do'/>'><button type="submit" class="button button-block" style="margin-top: 13px;">회원 가입</button></a>					
 				</div>
 			
 		</div>
@@ -291,18 +291,18 @@ textarea {
 			<h1>환영 합니다!!</h1>
 			
 			<small>이곳은 <span id="sp2" >제휴회원</span> 전용 로그인 입니다</small>			
-			<form action="/" method="post">
+			<form action="<c:url value='/home/loginProcess.do'/>" method="post">
 				
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
 					</label>
-					<input type="text" id="email2" required autocomplete="off">
+					<input name="id" type="text" id="email2" required autocomplete="off">
 				</div>
 				
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input type="text" id="pwd2" required autocomplete="off">
+					<input name="pwd"type="text" id="pwd2" required autocomplete="off">
 				</div>
 				 
 				 <div class="col-sm-offset-3">
