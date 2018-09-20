@@ -169,11 +169,9 @@ table th {
 								<th class="col-md-2 text-center">이메일</th>
 								<td>abcd1234@naver.com</td>
 							</tr>
-					
 							<tr>
 								<th class="col-md-2 text-center">예약시간</th>
 								<td>2018-10-15 10:54</td>
-								
 							</tr>
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>

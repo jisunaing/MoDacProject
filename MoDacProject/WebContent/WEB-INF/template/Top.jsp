@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <style>
-	body{
+	body{      
 		padding-top:100px;
 	}
 	.active{
@@ -17,6 +17,9 @@
 	}
 	.navbar-right li{
 		color: white;
+	}
+	#navbar-page a{
+		color:white;
 	}
 </style>
 <script>  	
@@ -120,7 +123,6 @@
 	    </div>
     </c:if>
     <!-- 병원사용자용 top -->
-    
 </div><!-- div:container-fluid -->
 </nav>
 <!-- 네비게이션바 끝 -->  
