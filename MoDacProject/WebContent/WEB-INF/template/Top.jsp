@@ -43,17 +43,16 @@
     </button>	
 	<!-- 로고자리 -->
 	<c:if test="${not empty sessionScope.PARTNER_ID}" var="isGeneralUser">       
-    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
+    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">모닥</a>	      		
     </c:if>
     <c:if test="${not isGeneralUser }">
-    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
+    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">모닥</a>	
     </c:if>	  
     <!-- 로고이미지 들어갈자리 -->
 	<%--     	
 		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
 	--%>
-		모닥
-    </a> 
+		
 	<!-- 로고자리끝남 -->    
 	
   </div><!-- navbar-header -->
