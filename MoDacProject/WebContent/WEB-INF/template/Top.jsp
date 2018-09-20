@@ -55,13 +55,9 @@
 		모닥
     </a> 
 	<!-- 로고자리끝남 -->    
-	
   </div><!-- navbar-header -->
 
 <!-- 일반사용자용 top -->
-
-<%-- <c:set value="claire" var="USER_ID" scope="session"/>  --%>
-
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
@@ -77,62 +73,27 @@
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="navmenus dropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
-						예약/접수
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="<c:url value='/general/reservation/reservation.do'/>">예약</a></li>
-						<li class="divider"></li>
-						<li><a href="<c:url value='/general/reservation/reception.do'/>">접수</a></li>
-						<li class="divider"></li>
-						<li><a href="<c:url value='/general/reservation/reservationlist.do'/>">예약접수내역</a></li>
-	<!-- 					<li class="divider"></li> -->
-	<!-- 					<li><a href="/category/1">예약문의</a></li> -->
-					</ul>
-				</li>
-				<li class="dropdown">
 					<a href="#" class="dropdown-category navmenus" id="dropdownCategoryMenu" data-toggle="dropdown">
-						문의
+						자가진단
 					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
-						<li class="divider"></li>
-						<li><a href="/category/1">병원에증상문의</a></li>
-					</ul>
 				</li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
-
 					<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/member/signup/gen_signup_write.do'/>" class="navmenus">회원가입</a></li>
-
 				</c:if>
 	    	</ul>
 	    </div>
     </c:if>
     <!-- 일반사용자용 top -->
     <!-- 병원사용자용 top -->
-    
     <c:if test="${not isGeneralUser}">
     	 <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
-				<li id="navbar-page" ><a href="PartnerPage.jsp">홈</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
-						예약접수관리
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="/category">예약</a></li>
-						<li class="divider"></li>
-						<li><a href="/category/1">접수</a></li>
-					</ul>
-				</li>
-				<li id="navbar-tag"><a href="#">환자문의</a></li>
-				<li id="navbar-guestbook"><a href="<c:url value='/home/loginout.do'/>">로그아웃</a></li>
-				<li id="navbar-guestbook"><a href="#">마이페이지</a></li>
+				<li id="navbar-page" ><a href="PartnerPage.jsp">병원페이지입니다</a></li>
 			</ul>
 	    </div>
     </c:if>
