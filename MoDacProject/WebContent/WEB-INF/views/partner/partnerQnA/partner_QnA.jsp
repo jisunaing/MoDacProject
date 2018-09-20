@@ -136,25 +136,25 @@ table th {
 		<div class="content-wrapper">
 			<div class="container">
 				<div class="row">
-				<h2>병원접수관리</h2><br/><br/><br/>
+				<h2>병원 문의관리</h2><br/><br/><br/>
 					<table class="table table-hover" style="min-width: 400px;">
 						<tr>
-							<th>제목</th><th>아이디</th><th>연락처</th><th>등록일자</th>
+							<th>글 번호</th><th>제목</th><th>아이디</th><th>등록일자</th>
 						</tr>
 						<tr>
-							<td>제목 1</td><td> 길동이 1</td><td>010-7777-7777</td><td>2018-10-17 15:30</td>
+							<td>1</td><td>환 자 들 의 질 문 _ 제 목 1</td><td>회원 1</td><td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>제목 2</td><td> 길동이 2</td><td>010-7777-7777</td><td>2018-10-17 15:30</td>
+							<td>2</td><td>환 자 들 의 질 문 _ 제 목 2</td><td>회원 2</td><td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>제목 3</td><td> 길동이 3</td><td>010-7777-7777</td><td>2018-10-17 15:30</td>
+							<td>3</td><td>환 자 들 의 질 문 _ 제 목 3</td><td>회원 1</td><td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>제목 4</td><td> 길동이 4</td><td>010-7777-7777</td><td>2018-10-17 15:30</td>
+							<td>4</td><td>환 자 들 의 질 문 _ 제 목 4</td><td>회원 3</td><td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>제목 5</td><td> 길동이 5</td><td>010-7777-7777</td><td>2018-10-17 15:30</td>
+							<td>5</td><td>환 자 들 의 질 문 _ 제 목 5</td><td>회원 4</td><td>2018-10-17 15:30</td>
 						</tr>																								
 					</table>	
 					<!-- 임시 페이징 시작 -->

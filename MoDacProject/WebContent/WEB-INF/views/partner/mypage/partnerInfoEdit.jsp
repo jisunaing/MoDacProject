@@ -334,7 +334,7 @@ input:focus{ outline: 0; border-color: black; }
 
 		 
 			
-			<h2> 병원 정보<small> 상세 보기</small></h2>
+			<h2> 병원 정보<small> 수정</small></h2>
 
 				<div class="col-sm-12">
 					<hr style="border: 1px dashed; margin-left: -16px;"	class="col-sm-12" />

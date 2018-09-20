@@ -302,7 +302,7 @@ textarea {
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input name="pwd"type="text" id="pwd2" required autocomplete="off">
+					<input name="pwd"type="password" id="pwd2" required autocomplete="off">
 				</div>
 				 
 				 <div class="col-sm-offset-3">
