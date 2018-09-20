@@ -43,16 +43,17 @@
     </button>	
 	<!-- 로고자리 -->
 	<c:if test="${not empty sessionScope.PARTNER_ID}" var="isGeneralUser">       
-    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">모닥</a>	      		
+    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
     </c:if>
     <c:if test="${not isGeneralUser }">
-    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">모닥</a>	
+    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
     </c:if>	  
     <!-- 로고이미지 들어갈자리 -->
 	<%--     	
 		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
 	--%>
-		
+		모닥
+    </a> 
 	<!-- 로고자리끝남 -->    
   </div><!-- navbar-header -->
 
@@ -71,13 +72,9 @@
 						<li><a href="<c:url value='/general/hospital/SelectSubject.do'/>">병원찾기</a></li>
 					</ul>
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-category navmenus" id="dropdownCategoryMenu" data-toggle="dropdown">
-						자가진단
-					</a>
-				</li>
+				<li id="navbar-page"><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
-					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
+					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navme	nus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
