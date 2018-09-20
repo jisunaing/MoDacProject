@@ -82,19 +82,17 @@
 .button:hover a {
 	color: #fff;
 }
-
-/*  버튼 밑 바닥 라인   */
-.hr {
-	border: solid 3px #00498c;
-	width: 90%;
+.lead {
+	text-align: center;
 }
+
 </style>
 
 	<!-- TOP 영역 -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp" />
 	</div>
-
+<!--  -->
 	<!-- BODY 영역 -->
 	<!-- container-full -->
 	<div class="container-full">
@@ -112,6 +110,7 @@
 	</div>
 	
 	<!-- container -->
+	<!--  -->
 		<!-- container -->
 	<div class="container">
 		<div class="row">
@@ -196,9 +195,6 @@
 					<div class="eff"></div>
 					<a href="<c:url value='/general/hospital/hosMap.do?subject=hyungboo'/>"> 흉부외과 </a>
 				</div>
-			</div>
-			<div>
-				<hr class="hr">
 			</div>
 		</div>
 
