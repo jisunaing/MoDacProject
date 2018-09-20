@@ -24,7 +24,7 @@ h2{
 	padding-top:50px
 }
 fieldset{
-	padding-bottom:50px
+	margin-top:50px
 }
 </style>
 
@@ -185,24 +185,29 @@ fieldset{
 			<div class="form-group ">
 			<label for="id" class=" col-sm-2 control-label">혈액형</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control" id="id"
-					placeholder="혈액형 입력하세요">
-			</div>
+			<select class=" form-control" id="select">
+				<option>혈액형을 입력하세요</option>
+			  	<option>A</option>
+			  	<option>B</option>
+			  	<option>O</option>
+			  	<option>AB</option>
+			</select>
+		</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="pwd" class="col-sm-2 control-label">키</label>
-			<div class="col-sm-1">
-				<input type="password" class="form-control" id="pwd"
-					placeholder="키를 입력하세요"> cm
+			<div class="input-group col-sm-3">
+				<input type="text" class="form-control" id="weightinput" placeholder="몸무게 입력">
+		      <div class="input-group-addon">kg</div>
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">몸무게</label>
-			<div class="col-sm-1">
-				<input type="password" class="form-control" id="pwd"
-					placeholder="몸무게를 입력하세요"> kg
+			<div class="input-group col-sm-3">
+				<input type="text" class="form-control" id="weightinput" placeholder="몸무게 입력">
+		      <div class="input-group-addon">kg</div>
 			</div>
 		</div>
 		<div class="form-group">
