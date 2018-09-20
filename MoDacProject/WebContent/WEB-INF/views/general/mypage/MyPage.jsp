@@ -116,7 +116,7 @@ hr{
 						<h2>자가 진단</h2>
 						회원님의 증상을 바탕으로 간편하게 진단해보세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/selfdiagnosis.do'/>" target="_blank">
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>" target="_blank">
 							<i class="fas fa-heartbeat"></i> 자가진단하기
 						</a>
 					</div>

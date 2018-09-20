@@ -16,23 +16,23 @@
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<c:url value='/vendor/jquery/jquery.min.js'/>"></script>
+<script src="<c:url value='/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 <!-- font적용)https://fonts.google.com/?subset=korean -->
 <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <!-- 이페이지안에서만 쓰는 파일들 -->
 <!-- SLIDE~ -->
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet">
-<link href="dist/camroll_slider.css" rel="stylesheet">
+<link href="<c:url value='/dist/camroll_slider.css'/>" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
-<script src="dist/camroll_slider.js"></script>
+<script src="<c:url value='/dist/camroll_slider.js'/>"></script>
 <!-- ~SLIDE -->
 
 <!-- scrolle effect~ -->
-<link href="css/parallax.min.css" rel="stylesheet" type="text/css">
+<link href="<c:url value='/css/parallax.min.css'/>" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
@@ -124,16 +124,13 @@
 </head>
 
 <body>
-<<<<<<< HEAD
 			
 	<%-- 
 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
 	 <!-- --%> 	
 	<!-- topMenu -->
-=======
 	<%-- 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
  --%>	<!-- topMenu -->
->>>>>>> refs/heads/develope
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
 		

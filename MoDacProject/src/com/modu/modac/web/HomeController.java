@@ -17,7 +17,7 @@ public class HomeController {
 	@RequestMapping("/home/index.do")
 	public String home() throws Exception {
 ///		return "../../../index.";
-		return "index";
+		return "/index";
 	}
 	
 	
@@ -42,10 +42,10 @@ public class HomeController {
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginProcess.do")
 	public String loginProcess(@RequestParam Map map, HttpSession session) throws Exception {
-		if(map.get("id").equals("USER") && map.get("pwd").equals("1234")) {
+		if(map.get("id").toString().equalsIgnoreCase("USER") && map.get("pwd").equals("1234")) {
 			session.setAttribute("USER_ID", "USER");
 		}
-		else if(map.get("id").equals("PARTNER") && map.get("pwd").equals("1234")) {
+		else if(map.get("id").toString().equalsIgnoreCase("PARTNER") && map.get("pwd").equals("1234")) {
 			session.setAttribute("PARTNER_ID", "PARTNER");
 		}
 		return "/index";
