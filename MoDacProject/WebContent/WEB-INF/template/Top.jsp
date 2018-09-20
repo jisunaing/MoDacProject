@@ -96,7 +96,7 @@
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
 						<li><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
 						<li class="divider"></li>
-						<li><a href="/category/1">병원에증상문의</a></li>
+						<li><a href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>">병원에증상문의</a></li>
 					</ul>
 				</li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">

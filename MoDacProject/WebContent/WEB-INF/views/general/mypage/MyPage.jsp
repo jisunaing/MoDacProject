@@ -137,7 +137,7 @@ hr{
 							<h2>접수/예약 내역</h2>
 							그동안의 진료내역과 예약을 한번에 확인하세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/pharm/pharmMap.do'/>"> 
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/hospital/SelectSubject.do'/>"> 
 							<i class="far fa-hospital"></i></i> 예약/접수
 						</a>
 						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/reservationlist.do'/>"> 
