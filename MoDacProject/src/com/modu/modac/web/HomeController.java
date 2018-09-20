@@ -11,7 +11,7 @@ public class HomeController {
 	@RequestMapping("/home/index.do")
 	public String home() throws Exception {
 //		return "../../../index.";
-		return "index";
+		return "/index";
 	}
 	
 	
