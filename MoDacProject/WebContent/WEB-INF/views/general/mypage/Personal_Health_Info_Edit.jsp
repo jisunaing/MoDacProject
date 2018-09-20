@@ -26,12 +26,6 @@
 }
 </style>
 
-	<!-- topMenu -->
-	<div class="topMenu">
-		<jsp:include page="/WEB-INF/template/Top.jsp" />
-	</div>
-	<!-- topMennu -->
-
 	<!-- body 시작 -->
 	<div class="container" >
 		<div class="panel panel-default" style="width:70%">

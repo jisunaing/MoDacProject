@@ -159,7 +159,7 @@ hr{
 				<div class="masongram-image-caption">
 					<div class="text-center">
 						<p>
-							<h2>건강문의</h2>
+							<h2>증상문의</h2>
 							의사 선생님께 내 상태에 대해 직접 물어보세요
 						</p>
 						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnahealth/health_qna_list.do'/>"> 
