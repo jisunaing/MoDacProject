@@ -35,7 +35,6 @@
 		<div class="text-center">
 			<div class="container" >
 				<a id="qna" href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;  color: black">문의하기</a>
-				
 				<table class="table">
 					<thead>
 						<tr>

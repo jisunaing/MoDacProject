@@ -18,6 +18,9 @@
 	.navbar-right li{
 		color: white;
 	}
+	#navbar-page a{
+		color:white;
+	}
 </style>
 <script>  	
 	$(function(){	 		
@@ -94,7 +97,6 @@
 	    </div>
     </c:if>
     <!-- 병원사용자용 top -->
-    
 </div><!-- div:container-fluid -->
 </nav>
 <!-- 네비게이션바 끝 -->  
