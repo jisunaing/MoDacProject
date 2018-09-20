@@ -28,6 +28,9 @@ table th {
  text-align: center;
 }
 /*테이블 센터를 위한 css 끝*/
+table{
+	min-width: 400px;
+}
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
@@ -138,7 +141,7 @@ table th {
 			<div class="container">
 				<div class="row" style="widows: 50%">	
 				<h2>병원접수했던 내역</h2><br/><br/><br/>
-					<table class="table table-hover" style="min-width: 400px;">
+					<table class="table table-hover">
 						<tr>
 							<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th><th>구분</th>
 						</tr>
