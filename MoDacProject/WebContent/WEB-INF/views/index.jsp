@@ -16,10 +16,10 @@
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<c:url value='/vendor/jquery/jquery.min.js'/>"></script>
+<script src="<c:url value='/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 <!-- font적용)https://fonts.google.com/?subset=korean -->
 <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
