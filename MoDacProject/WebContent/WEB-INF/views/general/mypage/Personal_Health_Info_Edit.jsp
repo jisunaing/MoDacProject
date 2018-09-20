@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<!--  -->
 <title>내 건강정보</title>
 <style>
 	form{
@@ -25,12 +25,6 @@
 	margin-right:20px
 }
 </style>
-
-	<!-- topMenu -->
-	<div class="topMenu">
-		<jsp:include page="/WEB-INF/template/Top.jsp" />
-	</div>
-	<!-- topMennu -->
 
 	<!-- body 시작 -->
 	<div class="container" >

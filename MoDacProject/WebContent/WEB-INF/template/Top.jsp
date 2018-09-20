@@ -75,7 +75,34 @@
 						<li><a href="<c:url value='/general/hospital/SelectSubject.do'/>">병원찾기</a></li>
 					</ul>
 				</li>
+<<<<<<< HEAD
+				<li class="dropdown">
+					<a href="#" class="navmenus dropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
+						예약/접수
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
+						<li><a href="<c:url value='/general/reservation/reservation.do'/>">예약</a></li>
+						<li class="divider"></li>
+						<li><a href="<c:url value='/general/reservation/reception.do'/>">접수</a></li>
+						<li class="divider"></li>
+						<li><a href="<c:url value='/general/reservation/reservationlist.do'/>">예약접수내역</a></li>
+	<!-- 					<li class="divider"></li> -->
+	<!-- 					<li><a href="/category/1">예약문의</a></li> -->
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-category navmenus" id="dropdownCategoryMenu" data-toggle="dropdown">
+						문의
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
+						<li><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
+						<li class="divider"></li>
+						<li><a href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>">병원에증상문의</a></li>
+					</ul>
+				</li>
+=======
 				<li id="navbar-page"><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
+>>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navme	nus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
