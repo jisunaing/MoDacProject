@@ -260,7 +260,7 @@ textarea {
 		<div id="signup">
 			<h1>환영 합니다!!</h1>
 			<small>이곳은  <span id="sp1">일반회원</span> 전용 로그인 입니다</small>
-			<form action="<c:url value='/home/loginProcess.do'/>" method="get">
+			<form action="<c:url value='/home/loginProcess.do'/>" method="post">
 				
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
@@ -296,13 +296,13 @@ textarea {
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
 					</label>
-					<input name="id_p" type="text" id="email2" required autocomplete="off">
+					<input name="id" type="text" id="email2" required autocomplete="off">
 				</div>
 				
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input name="pwd_p"type="text" id="pwd2" required autocomplete="off">
+					<input name="pwd"type="text" id="pwd2" required autocomplete="off">
 				</div>
 				 
 				 <div class="col-sm-offset-3">

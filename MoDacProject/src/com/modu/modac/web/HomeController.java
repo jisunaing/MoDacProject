@@ -45,7 +45,7 @@ public class HomeController {
 		if(map.get("id").toString().equalsIgnoreCase("USER") && map.get("pwd").equals("1234")) {
 			session.setAttribute("USER_ID", "USER");
 		}
-		else if(map.get("id_p").toString().equalsIgnoreCase("PARTNER") && map.get("pwd_p").equals("1234")) {
+		else if(map.get("id").toString().equalsIgnoreCase("PARTNER") && map.get("pwd").equals("1234")) {
 			session.setAttribute("PARTNER_ID", "PARTNER");
 		}
 		return "/index";
