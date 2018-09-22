@@ -10,9 +10,6 @@ public class GenenralController {
 	public String reservationList() throws Exception {
 		return "general/reservation/Reservation_List.tiles";
 	}
-	
-	
-	
 	//지훈-자가진단 
 	@RequestMapping("/general/diagnosis/self_diagnosis_Main.do")
 	public String selfdiagnosis()throws Exception{
