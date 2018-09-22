@@ -16,7 +16,6 @@
 	
 <script type="text/javascript" src="<c:url value="/js/datetimepicker.js"/>"></script>
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-
 <style>
 .row {
  margin: 0 auto;
@@ -29,11 +28,37 @@
  height: 100px
  }
 /*가운데 배치를 위해[더 이쁘게 만들기 위해 넣은 것]*/
+table{
+	width: 600px;
+}
+.form-horizontal{
+	clear: right;
+}
+.size1{
+	min-width: 200px;width: 200px;
+}
+.size2{
+	min-width: 200px;width: 200px;
+}
+.size3{
+	width: 200px;
+}
+.size4{
+	min-width: 200px;width: 300px;
+}
+.size5{
+	min-width: 200px;
+}
+#float-right{
+	float: right;
+}
+#nameUrl{
+	color: blue; width: 100%;
+}
 </style>
 <!-- 달력 라이브러리 시작-->
 	<script type="text/javascript">
     $(document).ready( function () {
-
         $('#picker').dateTimePicker();
         $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY'});
     })
@@ -58,18 +83,19 @@
 		
 	});
 	</script>
+<div class="container">
 	<div class="row">
 		<div class="page-header">
-		  <h1>병원 이름 <small>성형외과강제푸시용</small></h1>
+		  <h1>접수 병원 이름 <small>성형외과</small></h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="in">
 		<!-- 가운데 정렬 시작 -->
-		<div style="float: right;">
+		<div id="float-right">
 			<input id="toggles" type="button" class="btn btn-default" value="가족 정보보기"/>
 			<div id="tabletoggles" class="table-responsive">
-				<table class="table" style="width: 600px">
+				<table class="table">
 					<tr>
 						<th>이름</th>
 						<th>전화번호</th>
@@ -77,13 +103,13 @@
 						<th>생년월일</th>
 					</tr>
 					<tr>
-						<td><a href="#" style="color: blue; width: 100%">홍길동</a></td>
+						<td><a href="#" id="nameUrl">홍길동</a></td>
 						<td>010-7777-7777</td>
 						<td>abcd1234@naver.com</td>
 						<td>1967-08-30</td>
 					</tr>
 					<tr>
-						<td><a href="#" style="color: blue; width: 100%">나길동</a></td>
+						<td><a href="#" id="nameUrl">나길동</a></td>
 						<td>010-7777-7777</td>
 						<td>grdawf777@naver.com</td>
 						<td>1989-01-21</td>
@@ -92,12 +118,12 @@
 			</div>
 		</div>
 		<br /> <br />
-		<form class="form-horizontal" style="clear: right;">
+		<form class="form-horizontal">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" placeholder="예약자 성함 입력" style="min-width: 200px;width: 200px">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력">
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -105,24 +131,27 @@
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control" placeholder="연락처 입력" style="min-width: 200px;width: 200px">
+					<input type="tel" class="form-control size1" placeholder="연락처 입력">
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
+
 			<!-- 예약자 이메일 -->
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" placeholder="이메일 입력" style="min-width: 200px;width: 300px">
+					<input type="email" class="form-control size4" placeholder="이메일 입력" >
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->
+			<!-- 달력 테스트 부분 -->
+			<!-- 달력 테스트 부분 -->
 
 			<!-- 예약자 상담내용 -->
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">상담내용</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" rows="10" name="content" style="min-width: 200px"></textarea>
+					<textarea class="form-control size5" rows="10" name="content"></textarea>
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
@@ -130,8 +159,8 @@
 		</form>
 
 		<input type="checkbox" name="PersonalData" />
-		<span>개인정보 수집 및 사용에 동의합니다</span><br /> <br />
-		<button type="button" class="btn btn-default">예약</button>
+		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
+		<button type="button" class="btn btn-default">접수</button>
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

@@ -2,18 +2,22 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
+
 <html lang="ko" >
-
 <head>
+<meta charset="UTF-8">
 
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/x-icon" 
-  href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+
   
   <link rel="mask-icon" type="" 
   href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
   
-  <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
+  <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js"></script>
+
+  <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
+
+
   
   <title>모닥으로 로그인 중!!!</title>
   
@@ -26,12 +30,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-html {
-	overflow-y: scroll;
-}
+
 body {	
-	font-family:sans-serif;
-	background-image: url("<c:url value='/Images/1.jpg'/>");	
+	font-family:sans-serif;	
 	background-repeat: no-repeat;
 	background-size: 100%
 	
@@ -53,8 +54,8 @@ a:hover {
 .form-box {
 	background: #F6F6F6; 
 	padding: 40px;
-	max-width: 600px;
-	margin: 50px auto; 
+	max-width: 500px;
+	margin: 68px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);
 	
@@ -259,30 +260,32 @@ textarea {
 		<div id="signup">
 			<h1>환영 합니다!!</h1>
 			<small>이곳은  <span id="sp1">일반회원</span> 전용 로그인 입니다</small>
-			<form action="/" method="post">
+			<form action="<c:url value='/home/loginProcess.do'/>" method="post">
 				
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
 					</label>
-					<input type="text" id="email2" required autocomplete="off">
+					<input name="id" type="text" id="email2" required autocomplete="off">
 				</div>
 				
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input type="password" id="pwd2" required autocomplete="off">
+					<input name="pwd"type="password" id="pwd2" required autocomplete="off">
 				</div>
 				
 				<div class="col-sm-offset-3">
 					<button type="submit" class="button button-block">로 그 인</button>
-				</div>				
-			</form>
-			
-				<div class="col-sm-offset-3">
-					<button type="submit" class="button button-block" style="margin-top: 13px;">회원 가입</button>
 				</div>
-
-			</div>
+				
+			</form>
+				<div class="col-sm-offset-3">
+					<a href='<c:url value='/general/member/signup/gen_signup_write.do'/>'>
+						<button type="submit" class="button button-block" style="margin-top: 13px;">회원 가입</button>
+					</a>					
+				</div>
+			
+		</div>
 		<!-- // Sign Up for Free -->
 		
 		<!-- Welcome Back! -->
@@ -290,18 +293,18 @@ textarea {
 			<h1>환영 합니다!!</h1>
 			
 			<small>이곳은 <span id="sp2" >제휴회원</span> 전용 로그인 입니다</small>			
-			<form action="/" method="post">
+			<form action="<c:url value='/home/loginProcess.do'/>" method="post">
 				
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
 					</label>
-					<input type="text" id="email2" required autocomplete="off">
+					<input name="id" type="text" id="email2" required autocomplete="off">
 				</div>
 				
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input type="text" id="pwd2" required autocomplete="off">
+					<input name="pwd"type="text" id="pwd2" required autocomplete="off">
 				</div>
 				 
 				 <div class="col-sm-offset-3">
@@ -309,11 +312,13 @@ textarea {
 				</div>
 				
 			</form>
-				<div class="col-sm-offset-3">				
-					<a href="<c:url value='/home/login_Pjoin.do'/>"><button type="submit" class="button button-block" style="margin-top: 13px;">제휴 가입</button></a>					
+				<div class="col-sm-offset-3">
+					<a href='<c:url value='general/member/join_P.do'/>'>
+						<button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button>
+					</a>
 				</div>
-			
-		</div>
+
+			</div>
 		<!-- Welcome Back! -->
 		
 	</div>
@@ -321,13 +326,6 @@ textarea {
 	
 </div>
 <!--  // form -->
-  <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js"></script>
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-  
-  <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
-
-  
 
     <script >
       var formTarget = $('.form-box').find('input, textarea');

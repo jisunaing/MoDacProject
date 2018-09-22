@@ -46,12 +46,12 @@ table th {
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
 <!-- 부트스트랩으로 삭제 x-->
-<link rel="stylesheet"	href="Bootstrap/css/bootstrap.css">
+<link rel="stylesheet"	href="<c:url value="/Bootstrap/css/bootstrap.css"/>">
 <!-- 아래꺼 삭제하면 틀 자체가 깨짐 -->
-<link rel="stylesheet"	href="css/ionicons.css">
-<link rel="stylesheet" href="css/AdminLTE.css">
+<link rel="stylesheet"	href="<c:url value="/css/ionicons.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
-<link rel="stylesheet" href="css/_all-skins.css">
+<link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -70,13 +70,13 @@ table th {
 
 						<li class="dropdown user user-menu">
 						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
-							<img src="Images/space.jpg" class="user-image" alt="User Image">
+							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 							<span class="hidden-xs">병원이름</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
-								<img src="Images/space.jpg" class="user-image" alt="User Image">
+								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 									<p>병원이름 넣을 곳</p></li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
@@ -96,7 +96,7 @@ table th {
 			<section class="sidebar">
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="Images/space.jpg" class="user-image" alt="User Image">
+						<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 					</div>
 					<div class="pull-left info">
 						<p>병원이름</p>
@@ -105,17 +105,18 @@ table th {
 				</div>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">카테고리</li>
-					<li class="active treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>예약/문의 관리</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
+					<li class="active treeview"><a href="#">
+					<i	class="fa fa-dashboard"></i> 
+					<span>예약/문의 관리</span>
+							<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-circle-o"></i>예약관리</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i>예약지난내역</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i>접수관리</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
+							<li><a href="<c:url value="/partner/hospital/ReservationMove.do"/>"><i class="fa fa-circle-o"></i>예약관리</a></li>
+							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>예약지난내역</a></li>
+							<li><a href="<c:url value="/partner/hospital/ReceiptMove.do"/>"><i class="fa fa-circle-o"></i>접수관리</a></li>
+							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
 						</ul>
 					</li>
 					<li class="treeview"><a href="#">
@@ -127,7 +128,7 @@ table th {
 					</a>
 						<ul class="treeview-menu">
 							<li>
-								<a href="#"><i class="fa fa-circle-o"></i>병원정보보기</a>
+								<a href="<c:url value="/partner/mypage/partnerInfo.do"/>"><i class="fa fa-circle-o"></i>병원정보보기</a>
 							</li>
 						</ul>
 					</li>
@@ -139,8 +140,9 @@ table th {
 					</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#">
-						<i class="fa fa-circle-o"></i> 문의확인하기</a></li>
+						<li>
+						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
+						</li>
 					</ul></li>
 				</ul>
 			</section>
@@ -203,9 +205,9 @@ table th {
 	<!-- ./wrapper -->
 
 	<!--아래부분 삭제하면 안됨 -->
-	<script src="Jquery/jquery.js"></script>
-	<script src="Jquery/jquery-ui.js"></script>
-	<script src="Bootstrap/js/bootstrap.js"></script>
-	<script src="Jquery/adminlte.js"></script>
+	<script src="<c:url value="/Jquery/jquery.js"/>"></script>
+	<script src="<c:url value="/Jquery/jquery-ui.js"/>"></script>
+	<script src="<c:url value="/Bootstrap/js/bootstrap.js"/>"></script>
+	<script src="<c:url value="/Jquery/adminlte.js"/>"></script>
 </body>
 </html>

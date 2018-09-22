@@ -9,43 +9,28 @@
 <%-- 		<jsp:include page="/WEB-INF/template/Top.jsp"/> --%>
 <!-- 	</div> -->
 	<!-- topMennu -->
-
+	<link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
+	
+	<style>
+	.jumbotron {
+		text-align:center;
+	}
+	.panel-body {
+		line-height: 30px;
+		font-family: 'Noto Serif KR', sans-serif;
+		overflow: auto;
+	}
+	</style>
 	<!-- body 시작 -->
 	<div class="container">
-		<h2>HealthInfoView.jsp</h2>
-				<table class="table table-hover">
-			<thead>
-			  <tr>
-			    <th>#</th>
-			    <th>First Name</th>
-			    <th>Last Name</th>
-			    <th>Username</th>
-			  </tr>
-			</thead>
-			<tbody class="tbd">
-			  <tr>
-			    <td>1</td>
-			    <td>Mark</td>
-			    <td>Otto</td>
-			    <td>@mdo</td>
-			  </tr>
-			  <tr>
-			    <td>2</td>
-			    <td>Jacob</td>
-			    <td>Thornton</td>
-			    <td>@fat</td>
-			  </tr>
-			  <tr>
-			    <td>3</td>
-			    <td>Larry</td>
-			    <td>the Bird</td>
-			    <td>@twitter</td>
-			  </tr>
-			 </tbody>
-		</table>
-	</div><!-- container -->
-	<div class="container">
-	
+		<div class="jumbotron">
+		  <h1> 어린이 시력, 왜 약해 지나 </h1>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    ${requestScope.content}		
+		  </div>
+		</div>	
 	</div>
 <!-- 	<div class="footer"> -->
 <%-- 		<jsp:include page="/WEB-INF/template/Footer.jsp"/> --%>

@@ -8,19 +8,28 @@
 tr th{
 	text-align: center;
 }
- 
+.panel{
+	margin-top:50px;
+	margin-left: 15%;
+	padding-top:20px;
+}
+
+#edit{
+	align-self: center
+}
 </style>
 
 
 <!-- body 시작 -->
 <div class="container">
 	
-	<div class="panel panel-default">
+	<div class="panel panel-default" style="width: 70%">
 	  <div class="panel-body">
 	  	<div class="page-header text-center">
 			<h2>
-				OOO님의 회원정보 <small> 개인정보</small>
+				${USER_ID}님의 회원정보 <small> 개인정보</small>
 			</h2>
+			<br/>
 		</div>
 		<br/><br/>
 		<div class="table-responsive  col-sm-8 col-sm-offset-2">
@@ -76,7 +85,7 @@ tr th{
 		  </table>
 		  <br/><br/>
 		  <div class="row">
-		  	<a class="btn btn-warning">수정하기</a>
+		  	<a class="btn btn-warning col-sm-offset-5" href="<c:url value='/general/mypage/personalinfo_edit.do'/>" >수정하기</a>
 		  </div>
 		  <br/><br/><br/>
 		</div>

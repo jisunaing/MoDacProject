@@ -61,56 +61,9 @@
 		outline:1px pink solid;
 		height:200px;
 	}
-			/* 	
-	.container { 
-	  max-width: 760px;
-	  width: 100%;
-	  margin: 150px auto;
-	  padding: 0 20px;
-	  padding-bottom: 80px;
-	} */
-	/* #my-slider {
-      width: 100%;
-      height: 600px;
-      color: white;
-    }
-
-    @media (max-width: 640px) {
-      #my-slider .crs-bar-roll-current {
-        width: 38px;
-        height: 38px;
-      }
-
-      #my-slider .crs-bar-roll-item {
-        width: 30px;
-        height: 30px;
-      }
-    }
-	.imgcpation{
-		font-size:1.2em;
-		font-weight: bolder;
-	}
-	a{
-		text-decoration: none;
-		font-family: 'Jua', sans-serif;
-	}
-	p{
-		font-weight: lighter;
-		font-family: 'Black Han Sans';
-	} */
-/* 	.footer{ */
-/* 		margin-top: 10px;  */
-/* 		min-width: 100%; */
-/* 		position: absolute; */
-/* 		bottom: 0; */
-/* 		left: 0; */
-/* 		right: 0; */
-/* 	} */
     </style>
     <script>
 	$(function(){
-/* 		$('body').css('height', '100%').css('margin', '0');
-		$('html').css('height', '100%'); */
 		$("#my-slider").camRollSlider();
 		// 슬라이더
 		var _gaq = _gaq || []; 

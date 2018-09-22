@@ -5,40 +5,38 @@
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
 <!DOCTYPE html>
 <html>
- 
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다. -->
 <!-- 부트스트랩 -->
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<c:url value='/vendor/jquery/jquery.min.js'/>"></script>
+<script src="<c:url value='/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 <!-- font적용)https://fonts.google.com/?subset=korean -->
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <!-- 이페이지안에서만 쓰는 파일들 -->
 <!-- SLIDE~ -->
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet">
-<link href="dist/camroll_slider.css" rel="stylesheet">
+<link href="<c:url value='/dist/camroll_slider.css'/>" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
-<script src="dist/camroll_slider.js"></script>
+<script src="<c:url value='/dist/camroll_slider.js'/>"></script>
 <!-- ~SLIDE -->
 
 <!-- scrolle effect~ -->
-<link href="css/parallax.min.css" rel="stylesheet" type="text/css">
+<link href="<c:url value='/css/parallax.min.css'/>" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
-<script src="js/parallax.jquery.js"></script>
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
+  <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
   
 <title>모두의닥터</title>
 <script>
@@ -126,24 +124,20 @@
 </head>
 
 <body>
-<%-- 		<c:set value="sdf" var="PARTNER_ID" scope="session"/> --%>
-		<c:set value="sdf" var="USER_ID" scope="session"/>
-
 	<!-- topMenu -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
 		
 	</div><!-- topMennu -->
-	
 	<!-- 병원페이지 일반페이지 분기~ -->
 	<c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
 		<!-- 병원페이지 이동용 인덱스페이지_body시작 -->
 			<div class="container">
-				<h2>병원이동</h2>
-			</div><!-- ~container_div -->	
+				<a href="<c:url value="/partner/hospital/MainMove.do"/>"><img alt="병원 이동페이지 사진" src="<c:url value="/Images/hospitalMove.jpg"/>"></a>
+			</div>	
 		<!-- 병원페이지 이동용 인덱스페이지_body끝 -->
 	</c:if>
-	<c:if test="${not isPartnerPage}">
+	<c:if test="${not isPartnerPage}">	
 		<!-- 일반페이지 body 시작 -->
 		<div class="container">
 			<!-- 테스트컨트롤러_테스트용스팬 -->
