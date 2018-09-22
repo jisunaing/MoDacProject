@@ -7,13 +7,19 @@
 <script type="text/javascript" src="<c:url value='/js/jquery.coolfieldset.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/jquery.coolfieldset.css'/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/main.css'/>" />
+
 <title>Insert title here</title>
 <style>
 
 h3 {
 	text-align: center
 }
-
+.panel{
+	margin-top:50px;
+	margin-left: 15%;
+	padding-top:20px;
+	padding-bottom:20px
+}
 tr th {
 	text-align: center
 }
@@ -26,15 +32,22 @@ h2{
 fieldset{
 	margin-top:50px
 }
+form{
+	margin-left:15%
+}
 </style>
 
 <!-- body 시작 -->
-<h2 style="text-align: center">가족 정보</h2>
-<br/>
-<p class="secondary-heading" style="text-align: center">가족들 대신 접수 해 보세요  </p>
-<br/>
-<hr style="border: solid 1px black;width: 30%;" id="hr"><br/><br/>
 <div class="container">
+	<div class="panel panel-default" style="width:70%">
+		<h2 style="text-align: center">가족 정보</h2>
+		<br/>
+		<p class="secondary-heading" style="text-align: center">
+		가족정보를 등록할 시 대리 예약/접수가 편리해집니다!<br/>
+		매번 정보를 입력할 필요없이 간편하게 관리하세요. 
+		</p>
+		<br/>
+		<hr style="border: solid 1px black;width: 30%;" id="hr"><br/><br/>
 
 	<fieldset id="fieldset1" class="coolfieldset expanded">
 		<legend> 홍길동  </legend>  
@@ -79,7 +92,7 @@ fieldset{
 
 				</table>
 				<br /> <br />
-				<div class="row">
+				<div class="row col-sm-offset-5">
 					<a class="btn btn-warning" href="<c:url value='/general/mypage/familyinfo_edit.do'/>">수정</a>
 					<a class="btn btn-warning">삭제</a>
 				</div>
@@ -133,8 +146,8 @@ fieldset{
 
 				</table>
 				<br /> <br />
-				<div class="row">
-					<a class="btn btn-warning"  href="<c:url value='/general/mypage/familyinfo_edit.do'/>">수정하기</a>
+				<div class="row col-sm-offset-5">
+					<a class="btn btn-warning"  href="<c:url value='/general/mypage/familyinfo_edit.do'/>">수정</a>
 					<a class="btn btn-warning">삭제</a>
 				</div>
 				<br /> <br /> <br />
@@ -145,7 +158,7 @@ fieldset{
 	</fieldset>
 	
 	<fieldset id="fieldset4" class="coolfieldset expanded">
-		<legend>가족 추가하기</legend>
+		<legend style="color:#2b68a7">가족 추가하기</legend>
 		<form class="form-horizontal">
 
 			<div class="form-group">
@@ -247,6 +260,7 @@ fieldset{
 			</div>
 		</form>
 		</fieldset>
+		</div>
 </div>
 <!-- container -->
 
