@@ -103,7 +103,7 @@
 
 				<li id="navbar-page"><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
-					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navme	nus">로그아웃</a></li>
+					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
 				<c:if test="${not isMember }">			
