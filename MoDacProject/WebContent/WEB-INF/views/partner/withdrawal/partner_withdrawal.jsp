@@ -22,6 +22,7 @@ body {
 	font-family:sans-serif;
 	/*
 	background-image: url("<c:url value='/Images/1.jpg'/>");
+	
 	*/	
 	background-repeat: no-repeat;
 	background-size: 90%	
