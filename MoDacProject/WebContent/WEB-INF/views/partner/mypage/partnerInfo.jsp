@@ -43,7 +43,7 @@ li {list-style:none;}
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 900px;	
+	height: 930px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -128,16 +128,15 @@ input:focus{ outline: 0; border-color: black; }
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<!-- 여기부터가 탑 부분임 -->
+	
 		<header class="main-header">
-			<!-- Logo -->
-			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<!-- logo for regular state and mobile devices --> <span
-				class="logo-lg"><b>병원관리자</b>페이지</span>
+		
+			<a href="index2.html" class="logo"> 
+			<span class="logo-lg"><b>병원관리자</b>페이지</span>
 			</a>
-			<!-- Header Navbar: style can be found in header.less -->
+			
 			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
+			
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 
@@ -147,19 +146,18 @@ input:focus{ outline: 0; border-color: black; }
 							<span class="hidden-xs">병원이름</span>
 						</a>
 							<ul class="dropdown-menu">
-								<!-- User image -->
+							
 								<li class="user-header">
 								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
 									<p>병원이름 넣을 곳</p></li>
-								<!-- Menu Body -->
-								<!-- Menu Footer-->
+								
 								<li class="user-footer">
 									<div class="pull-right">
 										<a href="#" class="btn btn-default btn-flat">로그아웃</a>
 									</div>
 								</li>
 							</ul></li>
-						<!-- Control Sidebar Toggle Button -->
+					
 					</ul>
 				</div>
 			</nav>
@@ -212,10 +210,27 @@ input:focus{ outline: 0; border-color: black; }
 					</span>
 					</a>
 					<ul class="treeview-menu">
+							<li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
+
+							<li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
+							
+					</ul></li>
+					
+					
+					<li class="treeview"><a href="#">
+					<i class="fa fa-pie-chart"></i>
+					<span>제휴 탈퇴</span>
+					<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+					</span>
+					</a>
+					<ul class="treeview-menu">
 						<li>
-						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
+						<a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
 						</li>
 					</ul></li>
+					
+					
 				</ul>
 			</section>
 		</aside>
@@ -223,21 +238,17 @@ input:focus{ outline: 0; border-color: black; }
 		<!-- 여기부터가 바디로 추정됨 -->
 		<div class="content-wrapper">
 		
-		<div class="container">
+		<div class="container"> 
 		<div class="row">
 			<div class="form-box">
 			
-				<h2> 병원 정보<small> 정보 보기</small> </h2>
+					<h2> 병원 정보<small> 정보 보기</small> </h2>
 
 					<div class="col-sm-12">
 						<hr style="border: 1px dashed; margin-left: -16px;" class="col-sm-12" />
 					</div>
 
-
-	
-				<form action="<c:url value='/partner/mypage/partnerInfoEdit.do'/>" method="post">
-
-
+				<form action="<c:url value='/partner/mypage/partnerInfoEdit.do' />" method="post">
 
 					<div class="form-group">
 						<div class="col-sm-6">
@@ -279,36 +290,49 @@ input:focus{ outline: 0; border-color: black; }
 
 
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-12">
-								<span class="sp">진료 시간</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-12">
-								<span class="sp">점심 시간</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
-						</div>
-					</div>
-
-
-
-
-					<div class="form-group">
+					<div class="form-group"> 
+					
+						<div class="col-sm-12">  
+						
 						<div class="col-sm-12">
-							<div class="col-sm-5">
-								<span class="sp">휴무 안내</span> <input type="text"
-									class="form-control" name="humoo" id="humoo" value="" disabled>
+							<span class="sp" style="text-align: center;">진료 시간</span>  
+							</div> 
+								 
+							<div style="margin-left: 30px;" class="col-sm-5">
+								월요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								화요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div>
-
-						</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								수요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								목요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								금요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								토요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								일요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								공휴일	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
+							</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								휴무일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								점심시간	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
+							</div>
+						</div> 
 					</div>
+
 
 
 					<div class="form-group">
@@ -333,6 +357,7 @@ input:focus{ outline: 0; border-color: black; }
 					
 					<div class="col-sm-12">
 						<hr style="border: 1px dashed; margin-left: -16px;" class="col-sm-12" />
+						  
 					</div>
 					
 				</form>

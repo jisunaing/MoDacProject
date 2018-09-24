@@ -44,7 +44,7 @@ li {list-style:none;}
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 900px;	
+	height: 1150px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -63,7 +63,7 @@ label {
 	/* 화면 전이 정의 */
 	-webkit-transition: all 0.25s ease;
 	transition: all 0.25s ease;
-	margin-top: 25px;
+	margin-top: 26px;   /* 폼안에있는 이벤트용 라벨  */
 	margin-left: 10px; 
 }
 
@@ -124,6 +124,13 @@ input:focus{ outline: 0; border-color: black; }
      #selectable li:hover {background-color: #79ABFF; color : white; }
     
     /* 휴일 모달창 스타일 끝  */
+    
+    #jin label{
+    
+    margin-top: 20px;
+    }
+    
+ 
 
     </style>
 
@@ -204,15 +211,6 @@ input:focus{ outline: 0; border-color: black; }
 					$('#humoo').val(ghd);
 				
 				});
-				
-			
-								
-			
-				
-				
-				
-				
-				
 				
 				/*모달용 함수 끝 */
 
@@ -316,10 +314,27 @@ input:focus{ outline: 0; border-color: black; }
 					</span>
 					</a>
 					<ul class="treeview-menu">
+							<li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
+
+							<li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
+							
+					</ul></li>
+					
+					<li class="treeview"><a href="#">
+					<i class="fa fa-pie-chart"></i>
+					<span>제휴 탈퇴</span>
+					<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+					</span>
+					</a>
+					<ul class="treeview-menu">
 						<li>
-						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
+						<a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
 						</li>
 					</ul></li>
+					
+					
+					
 				</ul>
 			</section>
 		</aside>
@@ -389,42 +404,59 @@ input:focus{ outline: 0; border-color: black; }
 					
 					
 					
-					<div class="form-group" >
-				<div class="col-sm-6">				
-					<div class="col-sm-12">
-						<span class="sp">진료 시간</span> 
-						<label for="email2"> ex)오전 9시 30분 ~ 오후 7시 30분 <span class="req">*</span> </label>
-						<input type="text" class="form-control" name="id" id="id" value="" >
-					</div>
-					</div>
-				</div>
-				
-				<div class="form-group">	
-					<div class="col-sm-6">			
+				<div class="form-group"> 
+					
+						<div class="col-sm-12">  
+						
 						<div class="col-sm-12">
-							<span class="sp">점심 시간</span> 
-							<label for="email2">ex)오후 12시 30분 ~ 오후 1시 30분 <span class="req">*</span> </label>
-							<input type="text" class="form-control" name="id" id="id" value="" >
+							<span class="sp" style="text-align: center;">진료 시간</span>  
+							</div> 
+								 
+								 <div id="jin">
+							<div style="margin-left: 30px;" class="col-sm-5">
+								<span>월요일</span> 
+								<label for="email2"> ex)오전 9시 ~ 오후 6시 30분<span class="req">*</span> </label>
+								 <input type="text" class="form-control" name="id" id="id" value="">					
+								
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								화요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								수요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								목요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								금요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								토요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								일요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								공휴일	<input type="text" class="form-control" name="id" id="id" value="" > 
+							</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								휴무일	<input type="text" class="form-control" name="humoo" id="humoo" value="" >
+								<button style="margin-top: -20px; margin-bottom: 10px;"	type="button" class="btn btn-primary testbtn" data-toggle="modal" data-target="#basicModal" > 휴무일 선택 </button>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								점심시간	<input type="text" class="form-control" name="id" id="id" value="" > 
+							</div>
+							</div>
 						</div> 
-					</div>	
-				</div>
+					</div>
+			
 					
 		
 				
-					
-					<div class="form-group">
-						<div class="col-sm-12">
-							<div class="col-sm-5">
-								<span class="sp">휴무 안내</span> 
-							
-								 <input type="text" class="form-control" name="humoo" id="humoo" value="" disabled>
-							</div>
-							<div class="col-sm-7">					
-								<button style="margin-top: 25px; margin-left: -15px;" 
-								type="button" class="btn btn-primary testbtn" data-toggle="modal" data-target="#basicModal" > 휴무일 선택 </button>
-							</div>
-						</div>
-					</div>
+			
 					
 												<!-- 모달 창 -->
 							<div class="modal fade" id="basicModal">

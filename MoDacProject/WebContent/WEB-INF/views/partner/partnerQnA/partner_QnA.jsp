@@ -125,9 +125,27 @@ table th {
 					</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#">
-						<i class="fa fa-circle-o"></i> 문의확인하기</a></li>
+							<li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
+
+							<li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
+							
 					</ul></li>
+					
+					<li class="treeview"><a href="#">
+					<i class="fa fa-pie-chart"></i>
+					<span>제휴 탈퇴</span>
+					<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+					</span>
+					</a>
+					<ul class="treeview-menu">
+						<li>
+						<a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
+						</li>
+					</ul></li>
+					
+					
+					
 				</ul>
 			</section>
 		</aside>
@@ -137,26 +155,44 @@ table th {
 			<div class="container">
 				<div class="row">
 				<h2>병원 문의관리</h2><br/><br/><br/>
+				<div style="border: 1px solid;">
 					<table class="table table-hover" style="min-width: 400px;">
 						<tr>
 							<th>글 번호</th><th>제목</th><th>아이디</th><th>등록일자</th>
 						</tr>
 						<tr>
-							<td>1</td><td>환 자 들 의 질 문 _ 제 목 1</td><td>회원 1</td><td>2018-10-17 15:30</td>
+							<td>1</td>
+							
+							<td><a href="<c:url value='/partner/partnerQnA/partner_QnA_View.do'/>">환 자 들 의 질 문 _ 제 목 1</a></td>
+							<td>회원 1</td>
+							<td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>2</td><td>환 자 들 의 질 문 _ 제 목 2</td><td>회원 2</td><td>2018-10-17 15:30</td>
+							<td>2</td>
+							<td>환 자 들 의 질 문 _ 제 목 2</td>
+							<td>회원 2</td>
+							<td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>3</td><td>환 자 들 의 질 문 _ 제 목 3</td><td>회원 1</td><td>2018-10-17 15:30</td>
+							<td>3</td>
+							<td>환 자 들 의 질 문 _ 제 목 3</td>
+							<td>회원 1</td>
+							<td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>4</td><td>환 자 들 의 질 문 _ 제 목 4</td><td>회원 3</td><td>2018-10-17 15:30</td>
+							<td>4</td>
+							<td>환 자 들 의 질 문 _ 제 목 4</td>
+							<td>회원 3</td>
+							<td>2018-10-17 15:30</td>
 						</tr>
 						<tr>
-							<td>5</td><td>환 자 들 의 질 문 _ 제 목 5</td><td>회원 4</td><td>2018-10-17 15:30</td>
+							<td>5</td>
+							<td>환 자 들 의 질 문 _ 제 목 5</td>
+							<td>회원 4</td>
+							<td>2018-10-17 15:30</td>
 						</tr>																								
-					</table>	
+					</table>
+					</div>	
 					<!-- 임시 페이징 시작 -->
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">

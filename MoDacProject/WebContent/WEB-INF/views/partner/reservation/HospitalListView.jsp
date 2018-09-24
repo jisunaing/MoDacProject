@@ -143,10 +143,26 @@ table th {
 					</span>
 					</a>
 					<ul class="treeview-menu">
+							<li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
+
+							<li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
+							
+					</ul></li>
+					
+					<li class="treeview"><a href="#">
+					<i class="fa fa-pie-chart"></i>
+					<span>제휴 탈퇴</span>
+					<span class="pull-right-container">
+					<i class="fa fa-angle-left pull-right"></i>
+					</span>
+					</a>
+					<ul class="treeview-menu">
 						<li>
-						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
+						<a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
 						</li>
 					</ul></li>
+					
+								
 				</ul>
 			</section>
 		</aside>
@@ -169,11 +185,9 @@ table th {
 								<th class="col-md-2 text-center">이메일</th>
 								<td>abcd1234@naver.com</td>
 							</tr>
-					
 							<tr>
 								<th class="col-md-2 text-center">예약시간</th>
 								<td>2018-10-15 10:54</td>
-								
 							</tr>
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>
