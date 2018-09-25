@@ -56,9 +56,11 @@ table{
 				<div class="row">
 				<h2>병원예약관리</h2><br/><br/><br/>
 					<table class="table table-hover">
+					<thead>
 						<tr>
 							<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th>
 						</tr>
+					</thead>
 						<tr>
 							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
 						</tr>
