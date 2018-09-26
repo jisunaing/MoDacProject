@@ -33,6 +33,9 @@ public class PartnerController {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
 	
+	//제휴 가입 페이지
+	
+	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
 	public String partnerInfo() throws Exception {

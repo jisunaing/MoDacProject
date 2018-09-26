@@ -28,11 +28,12 @@ public class HomeController {
 		return "general/member/Login.tiles";
 	}
 	
-	@RequestMapping("/home/join_P.do")
+	@RequestMapping("/general/member/signup/Join_P.do")
 	public String join_P() throws Exception {
 		
 		return "general/member/signup/Join_P.tiles";
 	}
+	
 	//일반 회원가입 신청 폼 
 	@RequestMapping("/general/member/signup/gen_signup_write.do")
 	public String gen_signup_write() throws Exception {
