@@ -76,20 +76,7 @@
 					</ul>
 				</li>
 
-				<li class="dropdown">
-					<a href="#" class="navmenus dropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
-						예약/접수
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="<c:url value='/general/reservation/reservation.do'/>">예약</a></li>
-						<li class="divider"></li>
-						<li><a href="<c:url value='/general/reservation/reception.do'/>">접수</a></li>
-						<li class="divider"></li>
-						<li><a href="<c:url value='/general/reservation/reservationlist.do'/>">예약접수내역</a></li>
-	<!-- 					<li class="divider"></li> -->
-	<!-- 					<li><a href="/category/1">예약문의</a></li> -->
-					</ul>
-				</li>
+			
 				<li class="dropdown">
 					<a href="#" class="dropdown-category navmenus" id="dropdownCategoryMenu" data-toggle="dropdown">
 						문의

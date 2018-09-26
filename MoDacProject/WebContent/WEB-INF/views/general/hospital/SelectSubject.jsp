@@ -87,6 +87,20 @@
 }
 
 </style>
+<script>
+
+$(function(){
+	
+		var message='${message}';
+		alert(message);
+	
+	
+});
+
+
+	
+
+</script>
 
 	<!-- TOP 영역 -->
 	<div class="topMenu">
@@ -112,6 +126,7 @@
 	<!-- container -->
 	<!--  -->
 		<!-- container -->
+		
 	<div class="container">
 		<div class="row">
 			<div class="btngroup">
