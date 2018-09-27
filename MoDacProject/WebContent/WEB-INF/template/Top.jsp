@@ -19,7 +19,7 @@
 		color: white;
 	}
 	#navbar-page a{
-		color:white;
+		color:white; 
 	}
 </style>
 <script>  	
