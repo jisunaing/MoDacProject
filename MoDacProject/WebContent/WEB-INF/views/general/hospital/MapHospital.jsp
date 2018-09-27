@@ -227,7 +227,7 @@
 			
 			var imageSrc;
 			if(false) {
-				imageSrc = '<c:url value="/Images/MakerHospital.png"/>'; // 마커이미지의 주소입니다    
+				imageSrc = '<c:url value="/Images/MarkerHospital.png"/>'; // 마커이미지의 주소입니다    
 			} else {
 				imageSrc = '<c:url value="/Images/MarkerPartner.png"/>';
 			}
