@@ -33,6 +33,8 @@ public class PartnerController {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
 	
+	
+	
 	//제휴 가입 페이지
 	
 	
