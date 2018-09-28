@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<!-- 여기부터가 탑 부분임 -->
+		<!-- 탑부분 시작 -->
 		<header class="main-header">
 			<!-- Logo -->
 			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -37,4 +37,4 @@
 				</div>
 			</nav>
 		</header>
-		<!-- 여기까지가 탑 부분임 -->
+		<!-- 탑부분 끝-->
