@@ -33,6 +33,11 @@ public class PartnerController {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
 	
+	@RequestMapping("/partner/hospital/Logout.do")
+	public String logout()throws Exception{
+		return "general/member/Login.tiles";
+	}
+	
 	
 	
 	//제휴 가입 페이지
