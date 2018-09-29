@@ -47,10 +47,15 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		nujeok += $(this).html()+",";
 		
 		change = nujeok.substring(0,nujeok.lastIndexOf(','));
+
 		$(this).hide(1000);
 		
 		$(this).show(1000);
 		
+
+		$(this).hide(1000);		
+			 
+
 	 $('#jin').attr('value',change);
 	 
 	 
@@ -230,6 +235,14 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								<input type="text" class=" form-control" name="ptel" id="ptel" placeholder="연락처를 입력하세요">
 							</div>
 						  </div>
+						  
+						  
+						<div class="form-group">
+							<label for="id" class="col-sm-2  control-label">담당자 이메일 </label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="name" id="id" placeholder="이메일을 입력해주세요">
+							</div>
+						</div>
 
 					
 						

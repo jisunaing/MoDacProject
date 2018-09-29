@@ -132,83 +132,83 @@ $(function(){
 			<div class="btngroup">
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=gajeong'/>"> 가정의학과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=gajeong'/>"> 가정의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=gyeolhack'/>"> 결핵과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=gyeolhack'/>"> 결핵과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=nae'/>"> 내과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=nae'/>"> 내과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=machi'/>"> 마취통증의학과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=machi'/>"> 마취통증의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=beenyo'/>"> 비뇨의학과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=beenyo'/>"> 비뇨의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=sanbu'/>"> 산부인과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=sanbu'/>"> 산부인과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=seonghyung'/>"> 성형외과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=seonghyung'/>"> 성형외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=soa'/>"> 소아청소년과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=soa'/>"> 소아청소년과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=singyung'/>"> 신경외과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=singyung'/>"> 신경외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=an'/>"> 안과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=an'/>"> 안과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=youngsang'/>"> 영상의학과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=youngsang'/>"> 영상의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=oe'/>"> 외과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=oe'/>"> 외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=ebin'/>"> 이비인후과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=ebin'/>"> 이비인후과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=jaehwal'/>"> 재활의학과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=jaehwal'/>"> 재활의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=jungsin'/>"> 정신건강의학과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=jungsin'/>"> 정신건강의학과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=jeonghyung'/>"> 정형외과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=jeonghyung'/>"> 정형외과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=chi'/>"> 치과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=chi'/>"> 치과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=peeboo'/>"> 피부과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=peeboo'/>"> 피부과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=hanbang'/>"> 한방과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=hanbang'/>"> 한방과 </a>
 				</div>
 				<div class="button">
 					<div class="eff"></div>
-					<a href="<c:url value='/general/hospital/hosMap.do?subject=hyungboo'/>"> 흉부외과 </a>
+					<a href="<c:url value='/general/hospital/SearchSubject.do?subject=hyungboo'/>"> 흉부외과 </a>
 				</div>
 			</div>
 		</div>

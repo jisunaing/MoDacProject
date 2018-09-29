@@ -33,6 +33,9 @@ public class PartnerController {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
 	
+	//제휴 가입 페이지
+	
+	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
 	public String partnerInfo() throws Exception {
@@ -45,10 +48,65 @@ public class PartnerController {
 		
 		return "/partner/mypage/partnerInfoEdit";
 	}
-	
+	//병원 문의 페이지
 	@RequestMapping("/partner/partnerQnA/partner_QnA.do")
 	public String partner_QnA() throws Exception {
 		
 		return "/partner/partnerQnA/partner_QnA";
 	}
+	
+	//병원 문의 상세 페이지
+	@RequestMapping("/partner/partnerQnA/partner_QnA_View.do")
+	public String admin_QnA_View() throws Exception {
+		
+		return "/partner/partnerQnA/partner_QnA_View";
+	}
+	
+	//관리자 문의 페이지
+	@RequestMapping("/partner/partnerQnA/admin_QnA.do")
+	public String admin_QnA_List() throws Exception {
+		
+		return "/partner/partnerQnA/admin_QnA_List";
+	}
+	
+	//관리자  문의 상세 페이지
+	@RequestMapping("/partner/partnerQnA/admin_QnA_View.do")
+	public String partner_QnA_View() throws Exception {
+		
+		return "/partner/partnerQnA/admin_QnA_View";
+	}
+	
+	//관리자에게 문의작성 페이지
+	@RequestMapping("/partner/partnerQnA/admin_QnA_Write.do")
+	public String partner_QnA_Write() throws Exception {
+		
+		return "/partner/partnerQnA/admin_QnA_Write";
+	}
+	
+
+	//병원 회원탈퇴 신청 페이지
+	@RequestMapping("/partner/withdrawal/partner_withdrawal.do")
+	public String withdrawal() throws Exception {
+		
+		return "/partner/withdrawal/partner_withdrawal";
+	}
+	
+	
+	//병원 회원탈퇴 버튼 눌렀을때 오는 맵핑
+	@RequestMapping("/partner/withdrawal/partner_withdrawalREQ.do")
+	public String withdrawalREQ() throws Exception {
+		
+		//현재 메인페이지로 보내야 하는 부분이 임시적이기 때문에 여기 또한 임시로 메인으로 보냄
+		return "/index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

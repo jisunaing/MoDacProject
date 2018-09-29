@@ -59,7 +59,8 @@ public class GenenralController {
 	public String mypage() throws Exception {
 		return "general/mypage/MyPage.tiles";
 	}
-	//개인 정보
+
+	// 개인 정보
 	@RequestMapping("/general/mypage/personalinfo.do")
 	public String personalInfo() throws Exception {
 		return "general/mypage/Personal_Info_View.tiles";

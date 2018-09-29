@@ -57,35 +57,35 @@
 
 <!-- BODY 영역 -->
 	<div class="row">
-		<form class="form-inline">
+		<form class="form-inline" action="<c:url value='/general/pharm/SearchHospital.do'/>">
 		  <div class="btn-group">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			    	진료과목으로 검색 &nbsp;&nbsp; <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu">
-			    <li><a href="?subject=gajeong">가정의학과</a></li>
-			    <li><a href="?subject=gyeolhack">결핵과</a></li>
-			    <li><a href="?subject=nae">내과</a></li>
-			    <li><a href="?subject=machi">마취통증의학과</a></li>
-			    <li><a href="?subject=binyo">비뇨의학과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=gajeong'/>">가정의학과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=gyeolhack'/>">결핵과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=nae'/>">내과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=machi'/>">마취통증의학과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=binyo'/>">비뇨의학과</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?subject=sanbu">산부인과</a></li>
-			    <li><a href="?subject=seonghyung">성형외과</a></li>
-			    <li><a href="?subject=soa">소아청소년과</a></li>
-			    <li><a href="?subject=singyung">신경외과</a></li>
-			    <li><a href="?subject=an">안과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=sanbu'/>">산부인과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=seonghyung'/>">성형외과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=soa'/>">소아청소년과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=singyung'/>">신경외과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=an'/>">안과</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?subject=youngsang">영상의학과</a></li>
-			    <li><a href="?subject=oe">외과</a></li>
-			    <li><a href="?subject=ebin">이비인후과</a></li>
-			    <li><a href="?subject=jaehwal">재활의학과</a></li>
-			    <li><a href="?subject=jeongsin">정신건강의학과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=youngsang'/>">영상의학과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=oe'/>">외과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=ebin'/>">이비인후과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=jaehwal'/>">재활의학과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=jeongsin'/>">정신건강의학과</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?subject=jeonghyung">정형외과</a></li>
-			    <li><a href="?subject=chi">치과</a></li>
-			    <li><a href="?subject=peebu">피부과</a></li>
-			    <li><a href="?subject=hanbang">한방과</a></li>
-			    <li><a href="?subject=hyungboo">흉부외과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=jeonghyung'/>">정형외과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=chi'/>">치과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=peebu'/>">피부과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=hanbang'/>">한방과</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?subject=hyungboo'/>">흉부외과</a></li>
 			  </ul>
 		</div>
 		<div class="btn-group">
@@ -93,41 +93,41 @@
 			     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dLabel">
-			    <li><a href="?replace=gangnam">강남구</a></li>
-			    <li><a href="?replace=gangdong">강동구</a></li>
-			    <li><a href="?replace=gangbook">강북구</a></li>
-			    <li><a href="?replace=gangseo">강서구</a></li>
-			    <li><a href="?replace=gwanak">관악구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gangnam'/>">강남구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gangdong'/>">강동구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gangbook'/>">강북구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gangseo'/>">강서구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gwanak'/>">관악구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?replace=gwangjin">광진구</a></li>
-			    <li><a href="?replace=gooro">구로구</a></li>
-			    <li><a href="?replace=guemcheon">금천구</a></li>
-			    <li><a href="?replace=nowon">노원구</a></li>
-			    <li><a href="?replace=dobong">도봉구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gwangjin'/>">광진구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=gooro'/>">구로구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=guemcheon'/>">금천구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=nowon'/>">노원구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=dobong'/>">도봉구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?replace=dongdaemoon">동대문구</a></li>
-			    <li><a href="?replace=dongjak">동작구</a></li>
-			    <li><a href="?replace=mapo">마포구</a></li>
-			    <li><a href="?replace=seodaemoon">서대문구</a></li>
-			    <li><a href="?replace=seocho">서초구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=dongdaemoon'/>">동대문구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=dongjak'/>">동작구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=mapo'/>">마포구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=seodaemoon'/>">서대문구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=seocho'/>">서초구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?replace=seongdong">성동구</a></li>
-			    <li><a href="?replace=seongbook">성북구</a></li>
-			    <li><a href="?replace=songpa">송파구</a></li>
-			    <li><a href="?replace=yangcheon">양천구</a></li>
-			    <li><a href="?replace=youngduengpo">영등포구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=seongdong'/>">성동구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=seongbook'/>">성북구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=songpa'/>">송파구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=yangcheon'/>">양천구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=youngduengpo'/>">영등포구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="?replace=yongsan">용산구</a></li>
-			    <li><a href="?replace=eunpyung">은평구</a></li>
-			    <li><a href="?replace=jongro">종로구</a></li>
-			    <li><a href="?replace=joong">중구</a></li>
-			    <li><a href="?replace=joongrang">중랑구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=yongsan'/>">용산구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=eunpyung'/>">은평구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=jongro'/>">종로구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=joong'/>">중구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=joongrang'/>">중랑구</a></li>
 			  </ul>
 		</div>
 	    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="병원 이름으로 검색"/>
+		      <input type="text" class="form-control" name="hosName" placeholder="병원 이름으로 검색"/>
 		      <span class="input-group-btn">
-		        <button class="btn btn-primary" type="button"> 검색 </button>
+		        <button class="btn btn-primary" type="submit"> 검색 </button>
 		      </span>
 	    </div>
 	    <div class="btn-group btngroup" id="searchtoggle">
@@ -211,25 +211,29 @@
 	            count++;
 				
 	            // 콜벡함수 (geocoder.addressSearch()) 호출 횟수와 병원 수가 일치되었을 때 다음 코드로 진행되게끔 처리
-	            // 그렇지 않을 경우 아래쪽 코드가 먼저 실행되어 오류 발생
+	            // 그렇지 않을 경우 아래쪽 코드(doNext() 이후)가 먼저 실행되어 오류 발생
 	            if(count === datas.length) {
 					doNext(posArray);            	
 	            }
-	         	
 	        } 
 	    });
 	});
 	
-	var imageSrc = '<c:url value="/Images/MakerHospital.png"/>', // 마커이미지의 주소입니다    
-	imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
-  
-	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
-	
 	function doNext(posArray) {
 		
 		var markers = [];
+		
 		for(var i = 0; i < posArray.length; i++) {
+			
+			var imageSrc;
+			if(false) {
+				imageSrc = '<c:url value="/Images/MarkerHospital.png"/>'; // 마커이미지의 주소입니다    
+			} else {
+				imageSrc = '<c:url value="/Images/MarkerPartner.png"/>';
+			}
+			
+			var imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
+			var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 			
 			console.log("posArray[i]",posArray[i]);
 			  // 마커 생성
@@ -289,14 +293,22 @@
 					
 					// 클릭한 마커의 위치정보와 저장된 마커의 위치정보를 비교하여 클릭한 마커에 해당하는 정보를 가져온다.
 					if (marker.getPosition().getLat() == markers[i].getPosition().getLat()) {
-
+							
+							// 마커를 클릭했을 때 마커가 지도 중심부로 향하도록 셋팅
+							map.setCenter(marker.getPosition());
+							var xPos = marker.getPosition().getLat();
+							var yPos = marker.getPosition().getLng();
+							var northXpos = map.getBounds().getNorthEast().getLat();
+							xPos = xPos + (northXpos-xPos)/2;
+							map.setCenter(new daum.maps.LatLng(xPos, yPos));
+						
 							var content =
 								'<div class="wrap">' + 
 					            '    <div class="info">' + 
 					            '        <div class="title"> 병원 이름이 들어갑니다 </div>' + 
 					            '        <div class="body">' + 
 					            '            <div class="img">' +
-					            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+					            '                <img src="'+'<c:url value="/Images/BasicHospital.png"/>'+'" width="70" height="70">' +
 					            '            </div>' + 
 					            '            <div class="desc">' + 
 					            '                <div class="smalltitle"> [주소] </div>' + 
