@@ -119,6 +119,7 @@ table{
 		</div>
 		<br /> <br />
 		<form class="form-horizontal">
+			<input type="hidden" name="Receipt"/>
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
@@ -155,12 +156,11 @@ table{
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
-
 		</form>
 
 		<input type="checkbox" name="PersonalData" />
 		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
-		<button type="button" class="btn btn-default">접수</button>
+		<a href="<c:url value='/general/receipt/ReceiptListResult.do'/>"><button type="button" class="btn btn-default">접수</button></a>
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

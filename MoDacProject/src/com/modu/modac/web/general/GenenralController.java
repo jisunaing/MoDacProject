@@ -5,12 +5,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class GenenralController {
-
+	
+	//진성 영역 시작
+	
 	@RequestMapping("/general/reservation/reservationlist.do")
 	public String reservationList() throws Exception {
 		return "general/reservation/Reservation_List.tiles";
 	}
-	//지훈-자가진단 
+
+	//예약,접수 완료 버튼 클릭 시 이것이 실행됨
+	@RequestMapping("/general/receipt/ReceiptListResult.do")
+	public String ReceiptListResult()throws Exception{
+		return "general/reservation/Reservation_List.tiles";
+	}
+	
+	//진성 영역 끝
+	
+	// 지훈-자가진단
 	@RequestMapping("/general/diagnosis/self_diagnosis_Main.do")
 	public String selfdiagnosis()throws Exception{
 		

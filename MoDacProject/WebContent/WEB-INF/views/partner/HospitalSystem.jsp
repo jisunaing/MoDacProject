@@ -15,7 +15,38 @@
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {
+		packages : [ "corechart" ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			[ 'Task', 'Hours per Day' ],
+			[ '월요일', 11 ],
+			[ '화요일', 2 ],
+			[ '수요일', 10 ],
+			[ '목요일', 15 ],
+			[ '금요일', 7 ],
+			[ '토요일', 2 ],
+			[ '일요일', 1 ]
+		]);
+		var options = {
+			title : '요일별 고객 현황',
+			is3D : true,
+		};
 
+		var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+		chart.draw(data, options);
+	}
+</script>
+<style>
+	#piechart_3d{
+		width: 100%; height: 865px;
+	}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
    <div class="wrapper">
@@ -27,7 +58,7 @@
       <!-- 카테고리 -->
       <!-- 바디 -->
       <div class="content-wrapper">
-         
+         <div id="piechart_3d"></div>
       </div>
       <!-- 바디 -->
       <!-- 퓨터-->
