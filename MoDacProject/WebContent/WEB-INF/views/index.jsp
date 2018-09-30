@@ -125,9 +125,9 @@
 
 <body>
 			
-<%--
+
 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
- --%>
+
 	<!-- topMenu -->
 	<%-- 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
  --%>	<!-- topMenu -->
