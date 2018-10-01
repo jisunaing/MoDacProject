@@ -39,6 +39,7 @@ table th {
 table td{
 	text-align: center;
 }
+
 /*테이블 센터를 위한 css 끝*/
 table{
 	min-width: 400px;
@@ -70,8 +71,8 @@ table.type10 td {
     padding: 10px;
     vertical-align: top;
 }
-table.type10 .even {
-    background: #ecf0f5;
+tbody tr:nth-child(even) {
+    background-color: #cee3f6;
 }
 </style>
 <title>병원 관리자 페이지</title>
