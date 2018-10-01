@@ -188,7 +188,7 @@ table{
 			<!-- 예약자 상담내용 -->
 		</form>
 
-		<input type="checkbox" name="PersonalData" />
+		<input type="checkbox" name="checkbox_name" />
 		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
 		<button type="button" class="btn btn-default" id="receipt">접수</button>
 		<!-- 가운데 정렬 끝 -->
