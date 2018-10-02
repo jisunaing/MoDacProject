@@ -60,7 +60,7 @@ form {
 				<br /> <br />
 
 				<fieldset id="fieldset1" class="coolfieldset expanded">
-					<legend> 홍길동 </legend>
+					<legend>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;홍길동 </legend>
 					<div>
 						<h3>홍길동님의 정보</h3>
 						<br />
@@ -93,11 +93,15 @@ form {
 									<td>70kg</td>
 								</tr>
 								<tr>
+									<th>임신여부 및 가능성</th>
+									<td>없음</td>
+								</tr>
+								<tr>
 									<th>현재 복용중인 약</th>
 									<td>없음</td>
 								</tr>
 								<tr>
-									<th>임신여부 및 가능성</th>
+									<th>기타</th>
 									<td>없음</td>
 								</tr>
 
@@ -116,7 +120,7 @@ form {
 
 				</fieldset>
 				<fieldset id="fieldset2" class="coolfieldset expanded">
-					<legend>홍홍홍</legend>
+					<legend>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;홍홍홍</legend>
 					<div>
 						<h3>홍홍홍님의 정보</h3>
 						<br />
@@ -149,13 +153,18 @@ form {
 									<td>70kg</td>
 								</tr>
 								<tr>
+									<th>임신여부 및 가능성</th>
+									<td>없음</td>
+								</tr>
+								<tr>
 									<th>현재 복용중인 약</th>
 									<td>없음</td>
 								</tr>
 								<tr>
-									<th>임신여부 및 가능성</th>
+									<th>기타</th>
 									<td>없음</td>
 								</tr>
+
 
 							</table>
 							<br /> <br />
@@ -172,7 +181,7 @@ form {
 				</fieldset>
 
 				<fieldset id="fieldset4" class="coolfieldset expanded">
-					<legend style="color: #2b68a7">가족 추가하기</legend>
+					<legend style="color: #2b68a7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가족 추가하기</legend>
 					<form class="form-horizontal">
 
 						<div class="form-group">
@@ -241,6 +250,15 @@ form {
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="use" class="col-sm-2 control-label">임신 여부 및
+								가능성</label> &nbsp;&nbsp;&nbsp; <label class="radio-inline"> <input
+								type="radio" name="inlineRadioOptions" id="inlineRadio1"
+								value="option1">있다
+							</label> <label class="radio-inline"> <input type="radio"
+								name="inlineRadioOptions" id="inlineRadio2" value="option2">없다
+							</label>
+						</div>
+						<div class="form-group">
 							<label for="birthdate" class="col-sm-2 control-label">현재
 								복용중인 약</label>
 							<div class="col-sm-4">
@@ -249,13 +267,10 @@ form {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="use" class="col-sm-2 control-label">임신 여부 및
-								가능성</label> &nbsp;&nbsp;&nbsp; <label class="radio-inline"> <input
-								type="radio" name="inlineRadioOptions" id="inlineRadio1"
-								value="option1">있다
-							</label> <label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions" id="inlineRadio2" value="option2">없다
-							</label>
+							<label for="birthdate" class="col-sm-2 control-label">기타</label>
+							<div class="col-sm-4">
+								<textarea class="form-control" rows="3" placeholder="기타 사항을 입력해주세요"></textarea>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="use" class="col-sm-2 control-label">이용약관</label>

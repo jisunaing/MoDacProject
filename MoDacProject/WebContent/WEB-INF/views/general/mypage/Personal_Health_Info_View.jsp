@@ -41,11 +41,15 @@ tr th {
 								<td>70kg</td>
 							</tr>
 							<tr>
+								<th>임신여부 및 가능성</th>
+								<td>없음</td>
+							</tr>
+							<tr>
 								<th>현재 복용중인 약</th>
 								<td>없음</td>
 							</tr>
 							<tr>
-								<th>임신여부 및 가능성</th>
+								<th>기타</th>
 								<td>없음</td>
 							</tr>
 

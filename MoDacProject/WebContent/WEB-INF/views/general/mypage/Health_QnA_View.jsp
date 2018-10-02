@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="<c:url value='/css/bootstrap-table-expandable.css'/>">
+<script src="<c:url value='/js/bootstrap-table-expandable.js'/>"></script>
 
 <style>
 tr th {
@@ -89,31 +91,125 @@ tr th {
 			<div class="row">
 				<h3 class="text-center">의사선생님과 소통하세요!</h3>
 				<br />
-				<form class="form-inline" id="frm">
-					<!-- 수정 및 삭제용 파라미터 -->
-					<input placeholder="댓글을 입력하세요" id="title" class="form-control"
-						type="text" size="50" name="onelinecomment" /> <input
-						class="btn btn-success" id="submit" type="button" value="등록" />
-
-				</form>
-
-			</div>
-			<br>
-			<br>
-			<div class="row" id="comments">
-				<div class="table-responsive  col-sm-8 col-sm-offset-2">
-					<table class="table table-bordered">
-						<tr>
-							<th>답변</th>
-
-						</tr>
-
-						<tr>
-							<td>내용 내용 내용내용 내용</td>
-						</tr>
-					</table>
+				<div class="row">
+					<form class="form-horizontal" method="post" action="#">
+			
+						<div class="form-group">
+							<label for="title" class="col-sm-2  control-label">제목</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+							</div>
+						</div>
+			
+						<div class="form-group">
+							<label for="content" class="col-sm-2  control-label">내용</label>
+							<div class="col-sm-7">
+								<textarea rows="10" class="form-control" id="summernote" name="content"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-5 col-sm-10">
+								<button type="submit" class="btn btn-primary">등록</button>
+							</div>
+						</div>
+					</form>
+			
 				</div>
+
 			</div>
+			<br>
+			<br>
+			<!-- 테이블 시작 -->
+			<div class="col-sm-7">
+				<table class="table table-hover table-expandable">
+					<thead>
+						<tr>
+							<th>예약신청일</th>
+							<th>병원명</th>
+							<th>진료과</th>
+							<th>예약자</th>
+							<th>예약구분</th>
+							<th>상태</th>
+							<th>취소</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>2018-11-15</td>
+							<td>우리들병원</td>
+							<td>정형외과</td>
+							<td>홍길동</td>
+							<td>예약</td>
+							<td>신청</td>
+							<td><input type="button" value="취소" /></td>
+						</tr>
+						<tr>
+						  <td colspan="7">
+						  	<div>
+						  		<br/><br/>
+						  		내원이유: 머리가 아파요
+						  		<br/><br/><br/>
+						  	</div>
+						  </td>
+						</tr>
+						<tr>
+							<td>2018-11-16</td>
+							<td>산들희병원</td>
+							<td>치과</td>
+							<td>홍길동</td>
+							<td>접수</td>
+							<td>취소</td>
+							<td>취소불가</td>
+						</tr>
+						<tr>
+						  <td colspan="7">
+						  	<div>
+						  		<br/><br/>
+						  		내원이유: 머리가 아파요
+						  		<br/><br/><br/>
+						  	</div>
+						  </td>
+						</tr>
+						<tr>
+							<td>2018-11-17</td>
+							<td>을지병원</td>
+							<td>성형외과</td>
+							<td>홍길동</td>
+							<td>예약</td>
+							<td>완료</td>
+							<td>취소불가</td>
+						</tr>
+						<tr>
+						  <td colspan="7">
+						  	<div>
+						  		<br/><br/>
+						  		내원이유: 머리가 아파요
+						  		<br/><br/><br/>
+						  	</div>
+						  </td>
+						</tr>
+						<tr>
+							<td>2018-11-17</td>
+							<td>을지병원</td>
+							<td>성형외과</td>
+							<td>홍길동</td>
+							<td>예약</td>
+							<td>거절</td>
+							<td>취소불가</td>
+						</tr>
+						<tr>
+						  <td colspan="7">
+						  	<div>
+						  		<br/><br/>
+						  		내원이유: 머리가 아파요
+						  		<br/><br/><br/>
+						  	</div>
+						  </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 테이블 끝 -->
 
 			<br />
 			<br />

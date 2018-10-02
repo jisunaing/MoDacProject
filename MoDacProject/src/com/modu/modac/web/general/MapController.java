@@ -16,16 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MapController {
 	
 
-	
-
 	// [과목 선택 페이지로 이동]
-	public String subHosMapPage(@RequestParam Map map,Model model) throws Exception {
-		//마이페이지에서 넘어올때 alert띄워줄때 필요함 
-		model.addAttribute("message", "예약/접수를 위해 병원 선택 페이지로 이동합니다");
-	}	
-				
-
-	public String selectSubjectPage() throws Exception {
+	@RequestMapping("/general/hospital/SelectSubject.do")
+	public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
+		
 		return "general/hospital/SelectSubject.tiles";
 	}
 	

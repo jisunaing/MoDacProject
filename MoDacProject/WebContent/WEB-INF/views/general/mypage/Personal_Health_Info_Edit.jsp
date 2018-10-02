@@ -6,7 +6,7 @@
 <title>내 건강정보</title>
 <style>
 form {
-	margin-left: 21%;
+	margin-left: 14%;
 }
 
 .panel {
@@ -50,7 +50,7 @@ form {
 				</div>
 				<form class="form-horizontal">
 					<label for="id" class="col-sm-3 control-label">혈액형</label>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<select class=" form-control" id="select">
 							<option>혈액형을 입력하세요</option>
 							<option>A</option>
@@ -64,7 +64,7 @@ form {
 
 					<div class="form-group">
 						<label for="pwd" class="col-sm-3 control-label" id="height">키</label>
-						<div class="input-group col-sm-3">
+						<div class="input-group col-sm-4">
 							<input type="text" class="form-control" id="heightinput"
 								placeholder="키 입력">
 							<div class="input-group-addon">cm</div>
@@ -74,18 +74,10 @@ form {
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label" id="weight">몸무게</label>
 
-						<div class="input-group col-sm-3">
+						<div class="input-group col-sm-4">
 							<input type="text" class="form-control" id="weightinput"
 								placeholder="몸무게 입력">
 							<div class="input-group-addon">kg</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="birthdate" class="col-sm-3 control-label">현재
-							복용중인 약</label>
-						<div class="col-sm-4">
-							<textarea class="form-control" rows="3"
-								placeholder="현재 복용중인 약을 작성하세요"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -99,7 +91,22 @@ form {
 					</div>
 					<br />
 					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-10">
+						<label for="birthdate" class="col-sm-3 control-label">현재
+							복용중인 약</label>
+						<div class="col-sm-5">
+							<textarea class="form-control" rows="3"
+								placeholder="현재 복용중인 약을 작성하세요"></textarea>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="birthdate" class="col-sm-3 control-label">기타 </label>
+						<div class="col-sm-5">
+							<textarea class="form-control" rows="3" placeholder="기타 사항을 입력해주세요"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-10">
 							<button type="submit" class="btn btn-primary">수정하기</button>
 						</div>
 					</div>

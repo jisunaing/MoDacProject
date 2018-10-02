@@ -38,7 +38,16 @@ hr{
 	align-content: center 
 }
 </style>
+<script>
 
+$(function(){
+	//예약/접수 버튼 클릭시 alert창 띄워주기 위함
+	$('#reservation').click(function() {
+		alert("예약/접수를 위해 병원 선택 페이지로 이동합니다");
+	})	
+});
+
+</script>
 <!-- body 시작 -->
 <div class="container-fluid" style="background-image: url('Images/greenapple.jpg')">
 <br/>
@@ -139,7 +148,7 @@ hr{
 						</p>
 						<form  method="get" action="<c:url value='/general/hospital/SelectSubject.do'/>" >
 							<input type="hidden" name="where" value="mypage">
-							<button tabindex="-1" type="submit" class="btn btn-primary"> 
+							<button id="reservation" tabindex="-1" type="submit" class="btn btn-primary"> 
 								<i class="far fa-hospital"></i> 예약/접수
 							</button>
 							

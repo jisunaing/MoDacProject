@@ -87,20 +87,7 @@
 }
 
 </style>
-<script>
 
-$(function(){
-	
-		var message='${message}';
-		alert(message);
-	
-	
-});
-
-
-	
-
-</script>
 
 	<!-- TOP 영역 -->
 	<div class="topMenu">
