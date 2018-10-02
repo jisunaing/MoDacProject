@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <title> 병원 정보 </title>
+  <title> 병원 정보_상세보기 </title>
   	
     <!-- 부트스트랩 -->
     <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
@@ -49,7 +49,7 @@ li {list-style:none;}
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 1100px;	
+	height: 900px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -61,7 +61,7 @@ label {
 	left:13px;
 	/* 화면 전이가 일어나기 전의 스타일 정의 */
 	/* 레이블 위치 스타일 정의 */
-	-webkit-transform: translateY(6px); 
+	-webkit-transform: translateY(6px);
 	transform: translateY(6px);
 	color: black;
 	font-size: 16px;
@@ -116,13 +116,26 @@ input:focus{ outline: 0; border-color: black; }
 
 }
  
+	/* 아래는 휴일 모달창 스타일  */
 
+    #selectable { list-style-type: none; margin: 0; padding: 0; width: 550px; }
+
+    #selectable li { margin: 0px 0px 0px 18px; padding: 11px; float: left; width: 50px; height: 120px; 
+    
+    font-size: 1.5em; text-align: center; border: 1px solid black; border-radius: 10px; }
+    
+    .modal-footer{margin-top: 130px; }
+    
+     #selectable li:hover {background-color: #79ABFF; color : white; }
+    
+    /* 휴일 모달창 스타일 끝  */
 
     </style>
 
+  <script>
+  
+  $(function() {
 
-
-<script>
 		/*모달용 함수 시작 */
 
 			$("#selectable").selectable();
@@ -186,6 +199,7 @@ input:focus{ outline: 0; border-color: black; }
 						
 					}
 
+
 				});
 				
 				
@@ -216,53 +230,54 @@ input:focus{ outline: 0; border-color: black; }
 			});///최상위
 		</script>
 
-
 </head>
 
 <body translate="no" >
 
   <!-- form -->
-	<div class="container">
-		<div class="row">
-			<div class="form-box">
-			
-				<h2> 병원 정보<small> 정보 보기</small> </h2>
+<div class="container">
+			<div class="row">
+<div class="form-box">
 
-					<div class="col-sm-12">
-						<hr style="border: 1px dashed; margin-left: -16px;" class="col-sm-12" />
-					</div>
+		 
+			
+			<h2> 병원 정보<small> 상세 보기</small></h2>
+
+				<div class="col-sm-12">
+					<hr style="border: 1px dashed; margin-left: -16px;"	class="col-sm-12" />
+				</div>
 
 				<form action="/" method="post">
+			 
+
 				
-				
-
-
-
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-8">
-								<span class="sp">병원 명</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
+				<div class="form-group">				
+					<div class="col-sm-6">
+					<div class="col-sm-8">
+						<span class="sp">병원 명</span> 
+						<label for="email2"> 병원 명 <span class="req">*</span> </label>
+						<input type="text" class="form-control" name="id" id="id" value="" >
 						</div>
 					</div>
-
-					<div class="form-group">
-						<div class="col-sm-4 col-sm-pull-1">
-							<div class="col-sm-12">
-								<span class="sp">병원 연락처</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
+				</div>
+				
+				<div class="form-group">				
+					<div class="col-sm-4 col-sm-pull-1">			
+					<div class="col-sm-12">
+						<span class="sp">병원 연락처</span> 
+						<label for="email2"> 병원 연락처 <span class="req">*</span> </label>
+						<input type="text" class="form-control" name="id" id="id" value="" >
 						</div>
 					</div>
+				</div>
 
 
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-10">
-								<span class="sp">진료 과목</span> <label for="email2"> </label> <input
-									type="text" class="form-control" name="id" id="id" value=""
-									disabled>
+								<span class="sp">진료 과목</span> <label for="email2"> 진료 과목
+									<span class="req">*</span>
+								</label> <input type="text" class="form-control" name="id" id="id" value="">
 							</div>
 						</div>
 					</div>
@@ -270,56 +285,98 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-8">
-								<span class="sp">병원 주소</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
+								<span class="sp">병원 주소</span> 
+								<label for="email2"> 병원 주소 <span class="req">*</span> </label>
+								 <input type="text" class="form-control" name="id" id="id" value="">																	
 							</div>
 						</div>
 					</div>
 
-
-
-					<div class="form-group"> 
 					
-						<div class="col-sm-12">  
-						
-						<div class="col-sm-12">
-							<span class="sp" style="text-align: center;">진료 시간</span>  
-							</div> 
-								 
-							<div style="margin-left: 30px;" class="col-sm-5">
-								월요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								화요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div>
-							
-							<div style="margin-left: 30px;" class="col-sm-5">
-								수요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								목요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div>
-							<div style="margin-left: 30px;" class="col-sm-5">
-								금요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								토요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div>
-							<div style="margin-left: 30px;" class="col-sm-5">
-								일요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								공휴일	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
-							</div>
-							
-							<div style="margin-left: 30px;" class="col-sm-5">
-								휴무일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								점심시간	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
-							</div>
-						</div> 
+					
+					
+					
+					<div class="form-group" >
+				<div class="col-sm-6">				
+					<div class="col-sm-12">
+						<span class="sp">진료 시간</span> 
+						<label for="email2"> ex)오전 9시 30분 ~ 오후 7시 30분 <span class="req">*</span> </label>
+						<input type="text" class="form-control" name="id" id="id" value="" >
 					</div>
+					</div>
+				</div>
+				
+				<div class="form-group">	
+					<div class="col-sm-6">			
+						<div class="col-sm-12">
+							<span class="sp">점심 시간</span> 
+							<label for="email2">ex)오후 12시 30분 ~ 오후 1시 30분 <span class="req">*</span> </label>
+							<input type="text" class="form-control" name="id" id="id" value="" >
+						</div> 
+					</div>	
+				</div>
+					
+		
+				
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<div class="col-sm-5">
+								<span class="sp">휴무 안내</span> 
+							
+								 <input type="text" class="form-control" name="humoo" id="humoo" value="" disabled>
+							</div>
+							<div class="col-sm-7">					
+								<button style="margin-top: 25px; margin-left: -15px;" 
+								type="button" class="btn btn-primary testbtn" data-toggle="modal" data-target="#basicModal" > 휴무일 선택 </button>
+							</div>
+						</div>
+					</div>
+					
+												<!-- 모달 창 -->
+							<div class="modal fade" id="basicModal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<!-- 모달닫기:data-dismiss="modal" -->
+											<button class="close" data-dismiss="modal">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title">휴무일을 선택해주세요 </h4>
+										</div>
+										<div class="modal-body" >
+										
+										<ol id="selectable">	
+										
+										  <li class="ui-state-default" >일요일</li>
+										
+										  <li class="ui-state-default" >월요일</li>
+										  
+										  <li class="ui-state-default">화요일</li>
+										  
+										  <li class="ui-state-default" >수요일</li>
+										  
+										  <li class="ui-state-default">목요일</li>
+										  
+										  <li class="ui-state-default" >금요일</li>
+										  
+										  <li class="ui-state-default" >토요일</li>
+										  
+										  <li class="ui-state-default" >공휴일</li>
+											
+										</ol>
+
+										</div>
+										<div class="modal-footer">
+											<button id="okbutton" class="btn btn-primary" data-dismiss="modal">확 인</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
 
 
 
@@ -327,7 +384,7 @@ input:focus{ outline: 0; border-color: black; }
 						<div class="col-sm-12">
 							<div class="col-sm-12">
 								<span class="sp">병원 안내글</span>
-								<textarea rows="10" class="form-control" id="greeting" name="greeting" disabled></textarea>
+								<textarea rows="10" class="form-control" id="greeting" name="greeting"></textarea>
 							</div>
 						</div>
 					</div>
@@ -346,17 +403,55 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="col-sm-12">
 						<hr style="border: 1px dashed; margin-left: -16px;" class="col-sm-12" />
 					</div>
-					
 				</form>
-
-			</div>
-
+		
 		</div>
-
+			
+	</div>	
+	
 	</div>
 	
+		
+<!--  내용 끝   -->
 
-	<!--  내용 끝   -->
 
+
+
+
+
+  
+
+    <script >
+      var formTarget = $('.form-box').find('input, textarea');
+formTarget.on('keyup blur focus', function (e) {
+
+	var $this = $(this),
+	label = $this.prev('label');
+
+	if (e.type === 'keyup') {
+		if ($this.val() === '') {
+			label.removeClass('active highlight');
+		} else {
+			label.addClass('active highlight');
+		}
+	} else if (e.type === 'blur') {
+		if ($this.val() === '') {
+			label.removeClass('active highlight');
+		} else {
+			label.removeClass('highlight');
+		}
+	} else if (e.type === 'focus') {
+
+		if ($this.val() === '') {
+			label.removeClass('highlight');
+		} else
+		if ($this.val() !== '') {
+			label.addClass('highlight');
+		}
+	}
+
+});
+
+    </script>
 </body>
 </html>

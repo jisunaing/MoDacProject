@@ -11,9 +11,25 @@ form{
 	padding-top:20px;
 	padding-bottom:20px
 }
+#email{
+	padding-left:15px
+}
 </style>
-<title>회원가입</title>
-
+<!-- datepicker 시작 -->
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+<script>
+$( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+</script>
+<!-- datepicker 끝-->
 <!-- body 시작 -->
 <div class="container">
 	
@@ -60,6 +76,7 @@ form{
 				<div class="form-group">
 					<label for="birthdate" class="col-sm-3 control-label">생년월일</label>
 					<div class="col-sm-6">
+					    <input type="text" id="datepicker">
 						<input type="text" class="form-control" id="birthdate">
 					</div>
 				</div>
@@ -76,8 +93,13 @@ form{
 				<div class="form-group">
 					<label for="email" class="col-sm-3 control-label">이메일</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="email"
-							placeholder="abcd@***.com">
+						<input type="text" class="form-control" id="email" placeholder="modacS2@modu.com">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="tel" class="col-sm-3 control-label">전화번호</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="tel" placeholder="01012345678">
 					</div>
 				</div>
 				<div class="form-group">
@@ -104,8 +126,5 @@ form{
 			</form>
 	  </div>
 	</div>
-	
-
-
 </div>
 <!-- container -->

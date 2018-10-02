@@ -24,17 +24,15 @@ tr th{
 	margin-top:50px
 }
 #frm{
-	margin-left: 25%
+	margin-left: 18%
 }
 </style>
-<script>
-	/* $(document).ready(function() {
-		  $('#summernote').summernote();
-		}); */
-</script>
+
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+
 
 <!-- body 시작 -->
 <div id="contain"class="container">
@@ -44,11 +42,15 @@ tr th{
 		회원님의 의견을 적극 수렴하겠습니다!<br /> 
 		
 	</p><br/>
+	
 	<hr id="hr1"><br/><br/>
+ <div class="main_column">
+       
+       <div class="text_light">
 	<div class="row">
-		<!-- 테이블전체 가로폭은 테이블을 감싸는  div에 col-*-*로 조정 -->
+		
 		<div>
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered" style="width: 80%; margin-left:10%">
 				<tr>
 					<th class="col-md-2 text-center">번호</th>
 					<td>1</td>
@@ -124,5 +126,9 @@ tr th{
 	<br/><br/><br/><br/>
 	
 	</div>
-	
+	</div>
+	<!-- 사이드 바 -->
+<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
+<!-- 사이드바 끝 -->
+	</div>
 	<!-- container -->

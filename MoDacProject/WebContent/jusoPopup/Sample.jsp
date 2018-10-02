@@ -66,10 +66,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								<input type="text" class="form-control" name="zipNo" id="zipNo" disabled>
 							</div>
 				
-
-
-
-
 </form>
 </body>
 </html>

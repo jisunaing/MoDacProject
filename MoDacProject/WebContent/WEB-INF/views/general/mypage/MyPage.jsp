@@ -38,7 +38,16 @@ hr{
 	align-content: center 
 }
 </style>
+<script>
 
+$(function(){
+	//예약/접수 버튼 클릭시 alert창 띄워주기 위함
+	$('#reservation').click(function() {
+		alert("예약/접수를 위해 병원 선택 페이지로 이동합니다");
+	})	
+});
+
+</script>
 <!-- body 시작 -->
 <div class="container-fluid" style="background-image: url('Images/greenapple.jpg')">
 <br/>
@@ -137,12 +146,18 @@ hr{
 							<h2>접수/예약 내역</h2>
 							그동안의 진료내역과 예약을 한번에 확인하세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/pharm/pharmMap.do'/>"> 
-							<i class="far fa-hospital"></i></i> 예약/접수
-						</a>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/reservationlist.do'/>"> 
-							<i class="far fa-hospital"></i></i> 진료내역
-						</a>
+						<form  method="get" action="<c:url value='/general/hospital/SelectSubject.do'/>" >
+							<input type="hidden" name="where" value="mypage">
+							<button id="reservation" tabindex="-1" type="submit" class="btn btn-primary"> 
+								<i class="far fa-hospital"></i> 예약/접수
+							</button>
+							
+							<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/reservation/reservationlist.do'/>"> 
+								<i class="far fa-hospital"></i> 진료내역
+							</a>
+						</form>
+						
+						
 						
 					</div>
 				</div>
@@ -159,7 +174,7 @@ hr{
 				<div class="masongram-image-caption">
 					<div class="text-center">
 						<p>
-							<h2>건강문의</h2>
+							<h2>증상문의</h2>
 							의사 선생님께 내 상태에 대해 직접 물어보세요
 						</p>
 						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnahealth/health_qna_list.do'/>"> 
