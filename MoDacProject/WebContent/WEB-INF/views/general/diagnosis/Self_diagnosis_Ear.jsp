@@ -31,7 +31,70 @@ $(function() {
 
 
 </script>
+
+<style>
+
+
+      *, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+
+.form-box {
+	background: #F6F6F6; 
+	padding: 40px;
+	height: 960px;
+	max-width: 1000px;
+	margin: 68px auto; 
+	border-radius: 20px; 
+	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);
+	
+	
+}
+
+ 
+small {	
+	color: black;
+	font-weight: 150;
+	margin-bottom: 40px;
+}
+
+
+
+#h2id{
+
+text-align: center;
+font-size: 2.5em;
+
+}
+#h4id{
+
+text-align: center;
+margin-top: 10px;
+}
+
+.title_result{
+
+margin-top: 25px;
+border: 1px dashed;
+text-align: center;
+ 
+} 
+
+#btn_main{
+
+text-align: center;
+margin-top: 15px;
+
+}
+
+</style>
 <body>
+
+<c:if test="${empty selfresult}" var="selfresult">
 
 	<article data-page-id="84588067" class="survey-page survey-page-white">
 		<header class="survey-page-header"> </header>
@@ -90,11 +153,11 @@ $(function() {
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														그렇다</td>
+														잘 모르겠다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														잘 모르겠다</td>
+														그렇다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
@@ -1256,6 +1319,92 @@ $(function() {
 
 
 	</article>
+	
+	</c:if>
+	
+	<c:if test="${!selfresult}">
+	
+	<div class="form-box">
+	
+	<h2 id="h2id">자가진단 <small>결과</small></h2>
+	
+	<hr style="border: 1px solid;"/>
+	 
+	<h4 id="h4id">※ 현재 결과는 100% 정확한 결과가 아닙니다!! 무엇보다 전문의료진의 상담과 진료를 통하여 치료받으시길 권장드립니다.※</h4>
+	
+		<div class="title_result"> 
+	
+	<h3>중이염</h3> 
+	
+	귓속 중이(고막에서 달팽이관까지의 공간)에 염증이 생긴 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+		<div class="title_result"> 
+	 
+	<h3>외이도염</h3> 
+	
+	귀의 바깥쪽인 외이도(귓바퀴에서 고막직선까지의 통로)에 염증이 생긴 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	 
+	
+	</div>
+	
+	<div class="title_result"> 
+	
+	<h3>타석증</h3> 
+	
+	침샘(침을 생성) 및 침샘관(침이 이동하는 통로)에 돌이 생겨 막힌 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+	
+		<div class="title_result">
+	
+	<h3>볼거리</h3>
+	
+	볼거리를 일으키는 바이러스에 의한 급성 유행성 전염병
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+		<div class="title_result">
+	
+	<h3>뇌좌상</h3>
+	
+	뇌가 충격을 받아 뇌조직에 점상의 출혈이 일어나서 귀까지 통증이 오는 상태, 기질적 손상 동반
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+		<div class="title_result">
+	
+	<h3>메니에르병</h3>
+	
+	귓속 내이(소리를 듣거나 평형감각을 유지하는 기관)에 발생하는 질환으로 어지러움, 이명등의 증상이 발생할 수 있는 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div> 
+	
+	<div id="btn_main"> 
+	<a href="<c:url value='/home/index.do'/>"><input style="margin-bottom: 10px;" type="button" class="btn btn-primary" value="메인으로 이동"></a> 
+	</div>
+	</div>
+	
+	
+	
+	
+	</c:if>
 
 
 

@@ -30,11 +30,72 @@ $(function() {
 
 
 
-</script>    
+</script>
+
+<style>
+
+
+      *, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+
+.form-box {
+	background: #F6F6F6; 
+	padding: 40px;
+	height: 840px;
+	max-width: 1000px;
+	margin: 68px auto; 
+	border-radius: 20px; 
+	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);
+	
+	
+}
+
+ 
+small {	
+	color: black;
+	font-weight: 150;
+	margin-bottom: 40px;
+}
+
+
+
+#h2id{
+
+text-align: center;
+font-size: 2.5em;
+
+}
+#h4id{
+
+text-align: center;
+margin-top: 10px;
+}
+
+.title_result{
+
+margin-top: 25px;
+border: 1px dashed;
+text-align: center;
+ 
+} 
+
+#btn_main{
+
+text-align: center;
+margin-top: 15px;
+
+}
+
+</style>    
     
 
 <body>
-
+<c:if test="${empty selfresult}" var="selfresult">
 	<article data-page-id="84588067" class="survey-page survey-page-white">
 		<header class="survey-page-header"> </header>
 		<section class="survey-page-body">
@@ -92,11 +153,11 @@ $(function() {
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														그렇다</td>
+														잘 모르겠다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														잘 모르겠다</td>
+														그렇다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
@@ -1396,8 +1457,85 @@ $(function() {
 
 			</form>
 		</section>
-
-
-	</article>    
+	</article>
+	</c:if>
+	
+	<c:if test="${!selfresult}">
+	
+	<div class="form-box">
+	
+	<h2 id="h2id">자가진단 <small>결과</small></h2>
+	
+	<hr style="border: 1px solid;"/>
+	 
+	<h4 id="h4id">※ 현재 결과는 100% 정확한 결과가 아닙니다!! 무엇보다 전문의료진의 상담과 진료를 통하여 치료받으시길 권장드립니다.※</h4>
+	
+		<div class="title_result"> 
+	
+	<h3>편도 결석</h3> 
+	
+	입안 편도 주위 조직에 음식찌꺼기가 뭉쳐쌀알 모양의 알갱이가 생긴 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+		<div class="title_result"> 
+	 
+	<h3>역류성 식도염</h3> 
+	
+	하부식도괄약근이 잘 조여지지 않아 위액이나 음식물이 식도로 엮류하여 식도에 염증이 발생한 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	 
+	
+	</div>
+	
+	<div class="title_result"> 
+	
+	<h3>타석증</h3> 
+	
+	침샘(침을 생성)및 침샘관(침이 이동하는 통로)에 돌이 생겨 막힌 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+	
+		<div class="title_result">
+	
+	<h3>편도 염</h3>
+	
+	세균이나 바이러스 감염에 의한 입안 편도조직에 염증이 생긴 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+		<div class="title_result">
+	
+	<h3>갑상선암</h3>
+	
+	갑상선호르몬(신진대사 및 심박수 등에 영향을 끼침)을 생산 및 저장했다가 필요한 기관에 보내는 기능을 하는 갑성선에 발생한 암
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+	
+	
+	<div id="btn_main"> 
+	<a href="<c:url value='/home/index.do'/>"><input style="margin-bottom: 10px;" type="button" class="btn btn-primary" value="메인으로 이동"></a> 
+	</div>
+	</div>
+	
+	
+	
+	
+	</c:if>
+	
+	    
   </body>
 </html>

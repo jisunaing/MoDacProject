@@ -49,7 +49,7 @@ li {list-style:none;}
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 900px;	
+	height: 1100px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -61,7 +61,7 @@ label {
 	left:13px;
 	/* 화면 전이가 일어나기 전의 스타일 정의 */
 	/* 레이블 위치 스타일 정의 */
-	-webkit-transform: translateY(6px);
+	-webkit-transform: translateY(6px); 
 	transform: translateY(6px);
 	color: black;
 	font-size: 16px;
@@ -199,12 +199,6 @@ input:focus{ outline: 0; border-color: black; }
 						
 					}
 
-				console.log('어떤새끼냐  ghd : '+ghd.length);
-				
-				console.log('어떤새끼냐 dydlf : '+dydlf.length);
-				
-				//console.log('어떤새끼냐 2 : '+dkd);
-				//console.log('어떤새끼냐 3 : '+dydlf);
 				});
 				
 				
@@ -251,6 +245,8 @@ input:focus{ outline: 0; border-color: black; }
 					</div>
 
 				<form action="/" method="post">
+				
+				
 
 
 
@@ -294,36 +290,49 @@ input:focus{ outline: 0; border-color: black; }
 
 
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-12">
-								<span class="sp">진료 시간</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-12">
-								<span class="sp">점심 시간</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
-						</div>
-					</div>
-
-
-
-
-					<div class="form-group">
+					<div class="form-group"> 
+					
+						<div class="col-sm-12">  
+						
 						<div class="col-sm-12">
-							<div class="col-sm-5">
-								<span class="sp">휴무 안내</span> <input type="text"
-									class="form-control" name="humoo" id="humoo" value="" disabled>
+							<span class="sp" style="text-align: center;">진료 시간</span>  
+							</div> 
+								 
+							<div style="margin-left: 30px;" class="col-sm-5">
+								월요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								화요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div>
-
-						</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								수요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								목요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								금요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								토요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								일요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								공휴일	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
+							</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								휴무일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								점심시간	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
+							</div>
+						</div> 
 					</div>
+
 
 
 					<div class="form-group">
