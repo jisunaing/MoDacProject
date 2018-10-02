@@ -26,8 +26,8 @@ public class MapController {
 		String phname = map.get("phname").toString();
 		String pharmacy = map.get("pharmacy").toString();
 		
-		model.addAttribute("phname",phname);
-		model.addAttribute("pharmacy",pharmacy);
+		model.addAttribute("phname", phname);
+		model.addAttribute("pharmacy", pharmacy);
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}
