@@ -47,24 +47,29 @@
 <div class="row1">
 	<form class="form-inline" action="<c:url value='/general/pharm/SearchPharm.do'/>">
 		<div class="btn-group">
-		  <a class="btn btn-primary" href="<c:url value='/general/pharm/AllDayPharm.do'/>" role="button"> 심야약국 </a>
+		  <a class="btn btn-primary" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 모든약국 </a>
 		</div>
 		<div class="btn-group">
-		  <a class="btn btn-primary" href="<c:url value='/general/pharm/CommonPharm.do'/>" role="button"> 일반약국 </a>
+		  <a class="btn btn-primary" href="<c:url value='/general/pharm/NightPharm.do?pharmacy=심야약국'/>" role="button"> 심야약국 </a>
 		</div>
 	    <div class="input-group">
-	      <input type="text" class="form-control" name="pharmName" placeholder="약국 이름으로 검색"/>
+	      <input type="text" class="form-control" name="phname" placeholder="약국 이름으로 검색"/>
+	      <input type="hidden" name="pharmacy" value="${requestScope.pharmacy}"/>
 	      <span class="input-group-btn">
 	        <button class="btn btn-primary" type="submit"> 검색 </button>
 	      </span>
 	    </div>
 	    <div class="btn-group" id="searchtoggle">
 		  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 약국검색 </a>
 		</div>
 	</form>
 </div>
-<br/>
+
+<div class="row1">
+	<h4># 검색 키워드 : ${requestScope.pharmacy} ${requestScope.phname}</h4>
+</div>
+
 <div class="row2">
 	<div id="map"></div>
 </div>	

@@ -70,7 +70,7 @@
 						찾기
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="<c:url value='/general/pharm/pharmMap.do'/>">약국찾기</a></li>
+						<li><a href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>">약국찾기</a></li>
 						<li class="divider"></li>
 						<li><a href="<c:url value='/general/hospital/SelectSubject.do'/>">병원찾기</a></li>
 					</ul>
