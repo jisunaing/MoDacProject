@@ -17,8 +17,49 @@
 
   <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
 
+<!-- (2) LoginWithNaverId Javscript SDK -->
+  <script src="<c:url value='/js/naveridlogin_js_sdk_2.0.0.js'/>"></script>
+  <!-- (3) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+ <script>
+		
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "jyvqXeaVOVmV",
+				callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/oauth/sample/callback.html",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 60}
+			}
+		);
+		/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+		naverLogin.init();
+		
+		/* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
+		$("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
 
-  
+		/* (5) 현재 로그인 상태를 확인 */
+		window.addEventListener('load', function () {
+			naverLogin.getLoginStatus(function (status) {
+				if (status) {
+					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+					setLoginStatus();
+				}
+			});
+		});
+
+		/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+		function setLoginStatus() {
+			var profileImage = naverLogin.user.getProfileImage();
+			var nickName = naverLogin.user.getNickName();
+			$("#naverIdLogin_loginButton").html('<br><br><img src="' + profileImage + '" height=50 /> <p>' + nickName + '님 반갑습니다.</p>');
+			$("#gnbLogin").html("Logout");
+			$("#gnbLogin").attr("href", "#");
+			/* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
+			$("#gnbLogin").click(function () {
+				naverLogin.logout();
+				location.reload();
+			});
+		}
+	</script> 
   <title>모닥으로 로그인 중!!!</title>
   
   
@@ -254,7 +295,7 @@ textarea {
 	</ul>
 	<!-- //tab -->
 	
-	<!-- tab-cotent -->
+	<!-- tab-cotent --->
 	<div class="tab-content">
 		<!-- Sign Up for Free -->
 		<div id="signup">
@@ -274,15 +315,26 @@ textarea {
 					<input name="pwd"type="password" id="pwd2" required autocomplete="off">
 				</div>
 				
-				<div class="col-sm-offset-3">
-					<button type="submit" class="button button-block">로 그 인</button>
+				<div >
+					<button type="submit" class="button button-block" style="width:420px">로 그 인</button>
 				</div>
 				
 			</form>
-				<div class="col-sm-offset-3">
-					<a href='<c:url value='/general/member/signup/gen_signup_write.do'/>'><button type="submit" class="button button-block" style="margin-top: 13px;">회원 가입</button></a>					
+				<div class="col-sm-offset-4" style="margin-top: 13px;">
+				
+					<a href="<c:url value='/general/member/signup/gen_signup_write.do'/>" style="color: black">
+						회원가입
+					</a>	
+					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href='#' style="color: black">
+					<!-- 이메일로 비밀번호 재 설정할 수 있는 링크 보내주기? -->
+						비밀번호 찾기
+					</a>				
 				</div>
-			
+				<div >
+					<!-- (1) 버튼 event 처리를 위하여 id를 지정 id=loginButton -->
+					<div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#"><img src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60" style="margin-top: 13px;width:420px"></a></div>
+				</div>
 		</div>
 		<!-- // Sign Up for Free -->
 		
@@ -311,7 +363,9 @@ textarea {
 				
 			</form>
 				<div class="col-sm-offset-3">
-					<a href='<c:url value='/general/member/signup/Join_P.do'/>'><button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button></a>
+					<a href='<c:url value='general/member/join_P.do'/>'>
+						<button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button>
+					</a>
 				</div>
 
 			</div>
