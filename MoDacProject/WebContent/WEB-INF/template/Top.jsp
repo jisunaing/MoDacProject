@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <style>
-	body{
+	body{      
 		padding-top:100px;
 	}
 	.active{
@@ -75,6 +75,19 @@
 						<li><a href="<c:url value='/general/hospital/SelectSubject.do'/>">병원찾기</a></li>
 					</ul>
 				</li>
+
+			
+				<li class="dropdown">
+					<a href="#" class="dropdown-category navmenus" id="dropdownCategoryMenu" data-toggle="dropdown">
+						문의
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
+						<li><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
+						<li class="divider"></li>
+						<li><a href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>">병원에증상문의</a></li>
+					</ul>
+				</li>
+
 				<li id="navbar-page"><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
 				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>

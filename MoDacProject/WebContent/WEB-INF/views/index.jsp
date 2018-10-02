@@ -124,8 +124,6 @@
 </head>
 
 <body>
-	
-		
 	<!-- topMenu -->
 	<%-- 
 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>

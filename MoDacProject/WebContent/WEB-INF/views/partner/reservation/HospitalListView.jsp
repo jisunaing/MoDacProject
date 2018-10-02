@@ -29,12 +29,32 @@
 /*가운데 배치를 위핸 CSS*/
 /*테이블 센터를 위한 css 시작*/
 table{
- background-color: aqua;
+ border:1px solid black;
 }
 
 table th {
  text-align: center;
+ border:1px solid black;
 }
+table tr {
+ border:1px solid black;
+}
+table tr:nth-child(odd) {
+ background-color: #cee3f6;
+}
+table tr:nth-child(even) {
+ background-color: white;
+}
+table td{
+ border:1px solid black;
+}
+#top1{
+ border:1px solid black;
+}
+#top2{
+ border:1px solid black;
+}
+
 /*테이블 센터를 위한 css 끝*/
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
 .form-group{
@@ -68,10 +88,10 @@ table th {
 			<div class="row">
 				<div class="in">
 					<h2>상세보기페이지</h2><br/><br/><br/>
-						<table class="table table-hover table-bordered">
+						<table class="table table-hover">
 							<tr>
-								<th class="col-md-2 text-center">성함</th>
-								<td>홍길동</td>
+								<th class="col-md-2 text-center" id="top1">성함</th>
+								<td id="top2">홍길동</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">연락처</th>

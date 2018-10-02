@@ -10,7 +10,7 @@ tr th{
 }
 .panel{
 	margin-top:50px;
-	margin-left: 15%;
+	margin-left: 8%;
 	padding-top:20px;
 }
 
@@ -22,7 +22,9 @@ tr th{
 
 <!-- body 시작 -->
 <div class="container">
-	
+	<div class="main_column">
+        
+<div class="text_light">
 	<div class="panel panel-default" style="width: 70%">
 	  <div class="panel-body">
 	  	<div class="page-header text-center">
@@ -85,13 +87,22 @@ tr th{
 		  </table>
 		  <br/><br/>
 		  <div class="row">
-		  	<a class="btn btn-warning col-sm-offset-5" href="<c:url value='/general/mypage/personalinfo_edit.do'/>" >수정하기</a>
+		  	<a class="btn btn-warning col-sm-offset-4" href="<c:url value='/general/mypage/personalinfo_edit.do'/>" >수정하기</a>
+		  	<a class="btn btn-warning" href="#" >탈퇴하기</a>
 		  </div>
 		  <br/><br/><br/>
 		</div>
 	   	</div>	
 	</div>
+</div>
+</div>
+<!-- 사이드 바 -->
+<div style="padding-top:15%">
 
+<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
+</div>
+
+<!-- 사이드바 끝 -->
 </div>
 <!-- container -->
 

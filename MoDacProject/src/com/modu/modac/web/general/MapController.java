@@ -1,10 +1,8 @@
 package com.modu.modac.web.general;
 
-import java.util.HashMap;
+
 import java.util.Map;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MapController {
 	
+
 	// [과목 선택 페이지로 이동]
 	@RequestMapping("/general/hospital/SelectSubject.do")
-	public String selectSubjectPage() throws Exception {
+	public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
+		
 		return "general/hospital/SelectSubject.tiles";
 	}
 	
