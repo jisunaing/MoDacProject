@@ -295,7 +295,7 @@ textarea {
 	</ul>
 	<!-- //tab -->
 	
-	<!-- tab-cotent -->
+	<!-- tab-cotent --->
 	<div class="tab-content">
 		<!-- Sign Up for Free -->
 		<div id="signup">
