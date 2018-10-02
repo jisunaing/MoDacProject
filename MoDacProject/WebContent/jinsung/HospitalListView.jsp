@@ -46,7 +46,7 @@ table th {
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
 
 </style>
-<title>병원 관리자 페이지</title>
+<title>병원 관리자 페이지 </title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
 <!-- 부트스트랩으로 삭제 x-->
 <link rel="stylesheet"	href="Bootstrap/css/bootstrap.css">

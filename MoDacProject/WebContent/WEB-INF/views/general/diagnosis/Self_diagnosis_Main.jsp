@@ -1,22 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-    
-    
-    
-
-
-	
-
-	
-
     
     <style>
 
     #selectable { list-style-type: none; margin: 0; padding: 0;}
 
-    #selectable button { margin: 15px 50px -15px 0px; float: left; width: 200px; height: 260px; border: 0px solid white; 
+    #selectable button { margin: 15px 50px -2px 0px; float: left; width: 200px; height: 260px; border: 0px solid white; 
     
     background-color: white;
     

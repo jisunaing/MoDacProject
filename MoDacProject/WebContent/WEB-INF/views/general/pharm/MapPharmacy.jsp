@@ -45,23 +45,23 @@
 
 <!-- BODY 영역 -->
 <div class="row1">
-	<form class="form-inline">
-	<div class="btn-group">
-	  <a class="btn btn-primary" href="?pharmacyoption=simya" role="button"> 심야약국 </a>
-	</div>
-	<div class="btn-group">
-	  <a class="btn btn-primary" href="?pharmacyoption=ilban" role="button"> 일반약국 </a>
-	</div>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="약국 이름으로 검색"/>
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button"> 검색 </button>
-      </span>
-    </div>
-    <div class="btn-group" id="searchtoggle">
-	  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-	  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
-	</div>
+	<form class="form-inline" action="<c:url value='/general/pharm/SearchPharm.do'/>">
+		<div class="btn-group">
+		  <a class="btn btn-primary" href="<c:url value='/general/pharm/AllDayPharm.do'/>" role="button"> 심야약국 </a>
+		</div>
+		<div class="btn-group">
+		  <a class="btn btn-primary" href="<c:url value='/general/pharm/CommonPharm.do'/>" role="button"> 일반약국 </a>
+		</div>
+	    <div class="input-group">
+	      <input type="text" class="form-control" name="pharmName" placeholder="약국 이름으로 검색"/>
+	      <span class="input-group-btn">
+	        <button class="btn btn-primary" type="submit"> 검색 </button>
+	      </span>
+	    </div>
+	    <div class="btn-group" id="searchtoggle">
+		  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
+		</div>
 	</form>
 </div>
 <br/>
@@ -120,8 +120,7 @@
 		map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
 		averageCenter : true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
 		minLevel : 6, // 클러스터 할 최소 지도 레벨
-		disableClickZoom : true
-	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+		disableClickZoom : true	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	});
 	
 	var count = 0;
@@ -213,12 +212,17 @@
 		function openOverlayListener(map, marker) {
 
 			return function() {
-
+				
 				for (var i = 0; i < posArray.length; i++) {
 
 					if (marker.getPosition().getLat() == markers[i].getPosition().getLat()) {
-
-						console.log('리스너 함수 if문');
+						
+						map.setCenter(marker.getPosition());
+						var xPos = marker.getPosition().getLat();
+						var yPos = marker.getPosition().getLng();
+						var northXpos = map.getBounds().getNorthEast().getLat();
+						xPos = xPos + (northXpos-xPos)/2;
+						map.setCenter(new daum.maps.LatLng(xPos, yPos));
 						
 						var content =
 						'<div class="wrap">' + 
@@ -226,7 +230,7 @@
 			            '        <div class="title"> 약국 이름이 들어갑니다 </div>' + 
 			            '        <div class="body">' + 
 			            '            <div class="img">' +
-			            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+			            '                <img src="'+'<c:url value="/Images/BasicPharmacy.png"/>'+'" width="73"; height="70">' +
 			            '            </div>' + 
 			            '            <div class="desc">' + 
 			            '                <div class="smalltitle"> [주소] </div>' + 
@@ -274,3 +278,4 @@
 	}
 </script>
 
+s
