@@ -4,8 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript">
+$(function(){
+	$('td').click(function(){
+		console.log('테이블이 클릭됨');
+		location.replace("<c:url value='/partner/hospital/ReceiptHistoryViewMove.do'/>");
+	});
+});
+</script>
 <style>
 /*가운데 정렬을 위한 CSS*/
 .container {
@@ -25,12 +34,45 @@
 /*가운데 정렬을 위한 CSS*/
 /*테이블 센터를 위한 css 시작*/
 table th {
- text-align: center;
+	 text-align: center;
+}
+table td{
+	text-align: center;
 }
 table{
 	min-width: 400px;
 }
 /*테이블 센터를 위한 css 끝*/
+/*새로운 테이블 CSS*/
+table.type10 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
+}
+table.type10 thead th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #2b68a7;
+    margin: 20px 10px;
+}
+table.type10 tbody th {
+    width: 150px;
+    padding: 10px;
+}
+table.type10 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+tbody tr:nth-child(even) {
+    background-color: #cee3f6;
+}
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
@@ -55,12 +97,13 @@ table{
 			<div class="container">
 				<div class="row">
 				<h2>병원예약했던 내역</h2><br/><br/><br/>
-					<table class="table table-hover">
-					<thead>
+					<table class="type10 table-hover">
+					    <thead>
 						<tr>
 							<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th><th>구분</th>
 						</tr>
-					</thead>
+						</thead>
+						<tbody>
 						<tr>
 							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>수락</td>
 						</tr>
@@ -75,7 +118,8 @@ table{
 						</tr>
 						<tr>
 							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>거절</td>
-						</tr>																								
+						</tr>	
+						</tbody>																							
 					</table>	
 					<!-- 임시 페이징 시작 -->
 					<nav aria-label="Page navigation example">

@@ -32,7 +32,19 @@ public class PartnerController {
 	public String hospitalReceiptHistoryPage() throws Exception {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
+	//병원 접수 상세보기 페이지
+	@RequestMapping("/partner/hospital/ReceiptViewMove.do")
+	public String hospitalViewPage() throws Exception {
+		return "/partner/reservation/HospitalListView";
+	}	
+	//병원 접수 지낸내역 상세보기 페이지
+	@RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
+	public String hospitalHistoryViewPage() throws Exception {
+		return "/partner/reservation/HospitalView";
+	}	
 	
+	
+	//로그아웃 처리
 	@RequestMapping("/partner/hospital/Logout.do")
 	public String logout()throws Exception{
 		return "general/member/Login.tiles";
