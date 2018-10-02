@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+   	
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    
 <script>
@@ -47,11 +49,16 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		nujeok += $(this).html()+",";
 		
 		change = nujeok.substring(0,nujeok.lastIndexOf(','));
-		$(this).hide(1000);
+				
 		
-		$(this).show(1000);
 		
+		
+		$(this).hide(1000);		
+			 
 	 $('#jin').attr('value',change);
+	 
+	 
+	 
 	 
 	 
 	});	
@@ -83,12 +90,14 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     font-size: 1em; text-align: center; border: 1px solid black; border-radius: 10px; }
     
     .modal-footer{margin-top: 290px; }
-
+    
     h1{
     
     margin: 5px 0px 45px 0px;
     
     }
+    
+   
  
 </style>
 
@@ -99,6 +108,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
   	<div class="container">
 			<div class="row">
 				<div class="col-md-12">
+				
 				 <h1>제휴 문의<small> 병원 제휴</small></h1>
 					
 					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='#'/>" >
@@ -230,6 +240,14 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								<input type="text" class=" form-control" name="ptel" id="ptel" placeholder="연락처를 입력하세요">
 							</div>
 						  </div>
+						  
+						  
+						<div class="form-group">
+							<label for="id" class="col-sm-2  control-label">담당자 이메일 </label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" name="name" id="id" placeholder="이메일을 입력해주세요">
+							</div>
+						</div>
 
 					
 						
@@ -280,6 +298,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			</div>
 	    </div>
     	 <!-- 내용 끝 -->
+
 
   </body>
 </html>

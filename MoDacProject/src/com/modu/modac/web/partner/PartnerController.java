@@ -32,6 +32,28 @@ public class PartnerController {
 	public String hospitalReceiptHistoryPage() throws Exception {
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
+	//병원 접수 상세보기 페이지
+	@RequestMapping("/partner/hospital/ReceiptViewMove.do")
+	public String hospitalViewPage() throws Exception {
+		return "/partner/reservation/HospitalListView";
+	}	
+	//병원 접수 지낸내역 상세보기 페이지
+	@RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
+	public String hospitalHistoryViewPage() throws Exception {
+		return "/partner/reservation/HospitalView";
+	}	
+	
+	
+	//로그아웃 처리
+	@RequestMapping("/partner/hospital/Logout.do")
+	public String logout()throws Exception{
+		return "general/member/Login.tiles";
+	}
+	
+	
+	
+	//제휴 가입 페이지
+	
 	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
@@ -45,10 +67,65 @@ public class PartnerController {
 		
 		return "/partner/mypage/partnerInfoEdit";
 	}
-	
+	//병원 문의 페이지
 	@RequestMapping("/partner/partnerQnA/partner_QnA.do")
 	public String partner_QnA() throws Exception {
 		
 		return "/partner/partnerQnA/partner_QnA";
 	}
+	
+	//병원 문의 상세 페이지
+	@RequestMapping("/partner/partnerQnA/partner_QnA_View.do")
+	public String admin_QnA_View() throws Exception {
+		
+		return "/partner/partnerQnA/partner_QnA_View";
+	}
+	
+	//관리자 문의 페이지
+	@RequestMapping("/partner/partnerQnA/admin_QnA.do")
+	public String admin_QnA_List() throws Exception {
+		
+		return "/partner/partnerQnA/admin_QnA_List";
+	}
+	
+	//관리자  문의 상세 페이지
+	@RequestMapping("/partner/partnerQnA/admin_QnA_View.do")
+	public String partner_QnA_View() throws Exception {
+		
+		return "/partner/partnerQnA/admin_QnA_View";
+	}
+	
+	//관리자에게 문의작성 페이지
+	@RequestMapping("/partner/partnerQnA/admin_QnA_Write.do")
+	public String partner_QnA_Write() throws Exception {
+		
+		return "/partner/partnerQnA/admin_QnA_Write";
+	}
+	
+
+	//병원 회원탈퇴 신청 페이지
+	@RequestMapping("/partner/withdrawal/partner_withdrawal.do")
+	public String withdrawal() throws Exception {
+		
+		return "/partner/withdrawal/partner_withdrawal";
+	}
+	
+	
+	//병원 회원탈퇴 버튼 눌렀을때 오는 맵핑
+	@RequestMapping("/partner/withdrawal/partner_withdrawalREQ.do")
+	public String withdrawalREQ() throws Exception {
+		
+		//현재 메인페이지로 보내야 하는 부분이 임시적이기 때문에 여기 또한 임시로 메인으로 보냄
+		return "/index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

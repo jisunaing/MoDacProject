@@ -49,7 +49,7 @@ li {list-style:none;}
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 900px;	
+	height: 1100px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -61,7 +61,7 @@ label {
 	left:13px;
 	/* 화면 전이가 일어나기 전의 스타일 정의 */
 	/* 레이블 위치 스타일 정의 */
-	-webkit-transform: translateY(6px);
+	-webkit-transform: translateY(6px); 
 	transform: translateY(6px);
 	color: black;
 	font-size: 16px;
@@ -116,11 +116,118 @@ input:focus{ outline: 0; border-color: black; }
 
 }
  
+	/* 아래는 휴일 모달창 스타일  */
 
+    #selectable { list-style-type: none; margin: 0; padding: 0; width: 550px; }
+
+    #selectable li { margin: 0px 0px 0px 18px; padding: 11px; float: left; width: 50px; height: 120px; 
+    
+    font-size: 1.5em; text-align: center; border: 1px solid black; border-radius: 10px; }
+    
+    .modal-footer{margin-top: 130px; }
+    
+     #selectable li:hover {background-color: #79ABFF; color : white; }
+    
+    /* 휴일 모달창 스타일 끝  */
 
     </style>
 
+  <script>
+  
+  $(function() {
 
+		/*모달용 함수 시작 */
+
+			$("#selectable").selectable();
+		
+			var nujeok= new Array();
+							
+			var dydlf = new Array();
+			
+			var cut = new Array();
+			
+			var dkd = "";
+			
+			var ghd = "";
+			
+			
+			
+		
+				$('li').click(function() {
+					cut = $(this).html();
+
+					if ($(this).val() == 0) {
+
+						$(this).css({
+							'background-color' : '#79ABFF',
+							'color' : 'white'
+						});
+						
+						$(this).attr('value', 1);
+						
+											
+						
+						
+						nujeok += cut+",";	
+						
+						dkd = nujeok.substring(0,nujeok.lastIndexOf(','));
+						
+						ghd = dkd.split(','); //배열로 만듬
+				
+			
+					} 
+					else {
+
+						$(this).css({
+							'background-color' : 'white',
+							'color' : 'black'
+						});
+
+						$(this).attr('value', 0);
+						
+
+						ghd.forEach(function(value,index) {
+							
+						if(value == cut){
+
+							ghd.splice(index);
+					
+						}
+
+						});
+
+						
+					}
+
+				});
+				
+				
+				
+				$('#okbutton').click(function() {
+					
+					$('#humoo').val(ghd);
+				
+				});
+				
+			
+								
+			
+				
+				
+				
+				
+				
+				
+				/*모달용 함수 끝 */
+
+				
+	  $('input[type="text"]').css('margin-bottom','23px');		
+		
+				
+				
+				
+			});///최상위
+		</script>
 
 </head>
 
@@ -138,6 +245,8 @@ input:focus{ outline: 0; border-color: black; }
 					</div>
 
 				<form action="/" method="post">
+				
+				
 
 
 
@@ -181,36 +290,49 @@ input:focus{ outline: 0; border-color: black; }
 
 
 
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-12">
-								<span class="sp">진료 시간</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-6">
-							<div class="col-sm-12">
-								<span class="sp">점심 시간</span> <input type="text"
-									class="form-control" name="id" id="id" value="" disabled>
-							</div>
-						</div>
-					</div>
-
-
-
-
-					<div class="form-group">
+					<div class="form-group"> 
+					
+						<div class="col-sm-12">  
+						
 						<div class="col-sm-12">
-							<div class="col-sm-5">
-								<span class="sp">휴무 안내</span> <input type="text"
-									class="form-control" name="humoo" id="humoo" value="" disabled>
+							<span class="sp" style="text-align: center;">진료 시간</span>  
+							</div> 
+								 
+							<div style="margin-left: 30px;" class="col-sm-5">
+								월요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								화요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div>
-
-						</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								수요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								목요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								금요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								토요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								일요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								공휴일	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
+							</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								휴무일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								점심시간	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
+							</div>
+						</div> 
 					</div>
+
 
 
 					<div class="form-group">
@@ -248,5 +370,44 @@ input:focus{ outline: 0; border-color: black; }
 
 	<!--  내용 끝   -->
 
+
+
+
+
+
+  
+
+    <script >
+      var formTarget = $('.form-box').find('input, textarea');
+formTarget.on('keyup blur focus', function (e) {
+
+	var $this = $(this),
+	label = $this.prev('label');
+
+	if (e.type === 'keyup') {
+		if ($this.val() === '') {
+			label.removeClass('active highlight');
+		} else {
+			label.addClass('active highlight');
+		}
+	} else if (e.type === 'blur') {
+		if ($this.val() === '') {
+			label.removeClass('active highlight');
+		} else {
+			label.removeClass('highlight');
+		}
+	} else if (e.type === 'focus') {
+
+		if ($this.val() === '') {
+			label.removeClass('highlight');
+		} else
+		if ($this.val() !== '') {
+			label.addClass('highlight');
+		}
+	}
+
+});
+
+    </script>
 </body>
 </html>
