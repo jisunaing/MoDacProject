@@ -12,8 +12,10 @@ import com.modu.modac.service.TestService;
 @Controller
 public class TestController {
 
+	/* 리소스 추가 */
 	@Resource(name="testService")
 	private TestService testService;
+	
 	
 	@RequestMapping("/Test/Test.do")
 	public String test(Model model) throws Exception {
@@ -22,4 +24,4 @@ public class TestController {
 		
 		return "/index"; // WEB-INF아래 위치한 index.jsp
 	} // test
-} // classr
+} // class
