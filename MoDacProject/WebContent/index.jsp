@@ -135,7 +135,11 @@
       <jsp:include page="/WEB-INF/template/Top.jsp"/>
       
    </div><!-- topMennu -->
+   
+   <%--
    <c:set value="claire" var="USER_ID" scope="session"/> 
+   --%>
+   
    <!-- 병원페이지 일반페이지 분기~ -->
    <c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
       <!-- 병원페이지 이동용 인덱스페이지_body시작 -->
