@@ -226,8 +226,8 @@
 						var xPos = marker.getPosition().getLat();
 						var yPos = marker.getPosition().getLng();
 						var northXpos = map.getBounds().getNorthEast().getLat();
-						xPos = xPos + (northXpos-xPos)/2;
-						map.setCenter(new daum.maps.LatLng(xPos, yPos));
+						var editxPos = xPos + (northXpos-xPos)/2;
+						map.setCenter(new daum.maps.LatLng(editxPos, yPos));
 						
 						var content =
 						'<div class="wrap">' + 
@@ -259,7 +259,7 @@
 			            '                	</tr>' + 
 			            '                </table><br/><hr/><br/>' + 
 			            '                <div class="btn-group">' + 
-				        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/카카오판교오피스,37.402056,127.108212" role="button"> 길찾기 </a>' + 
+				        '	                  <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/약국이름,'+xPos+','+yPos+'"> 길찾기 </a>'  + 
 			            '            	 </div>' + 
 			            '            </div>' + 
 			            '        </div>' + 
