@@ -124,29 +124,23 @@
 </head>
 
 <body>
+
 	<!-- topMenu -->
-	<%-- 
-	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
-	--%>	
-	
- 	<!-- topMenu -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
-	</div>
-	<!-- topMennu -->
-	
+	</div><!-- topMennu -->
 	<!-- 병원페이지 일반페이지 분기~ -->
 	<c:if test="${not empty PARTNER_ID}" var="isPartnerPage">
 		<!-- 병원페이지 이동용 인덱스페이지_body시작 -->
+		
 		<jsp:forward page="/WEB-INF/views/partner/HospitalSystem.jsp"></jsp:forward>
 		<!-- 병원페이지 이동용 인덱스페이지_body끝 -->
 	</c:if>
-	
 	<c:if test="${not isPartnerPage}">	
 		<!-- 일반페이지 body 시작 -->
 		<div class="container">
 			<!-- 테스트컨트롤러_테스트용스팬 -->
-			<span style="color:pink;font-size:3em;">${testvar}</span>
+			<span style="color:pink;font-size:3em;">${testvar }</span>
 			<div class="row">
 				<!-- slider -->
 				<div id="my-slider" class="crs-wrap">
