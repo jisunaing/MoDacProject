@@ -2,15 +2,20 @@ package com.modu.modac.web.general;
 
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.modu.modac.service.ReservationService;
 
 @Controller
 public class GenenralController {
 	
 	//진성 영역 시작
-	
+	@Resource(name="reservationService")
+	private ReservationService reservationService;
 	//리스트로 이동하는 것
 	@RequestMapping("/general/reservation/reservationlist.do")
 	public String reservationList() throws Exception {
@@ -20,13 +25,18 @@ public class GenenralController {
 	//접수 버튼을 누르면 실행되는 것
 	@RequestMapping("/general/receipt/ReceiptListResult.do")
 	public String ReceiptListResult(@RequestParam Map map)throws Exception{
+		System.out.println(map);
 		
+		reservationService.receiptInsert(map);
 		
 		return "general/reservation/Reservation_List.tiles";
 	}
+	
 	//예약 버튼을 부르면 실행되는 것
 	@RequestMapping("/general/receipt/ReservationListResult.do")
-	public String ReservationListResult()throws Exception{
+	public String ReservationListResult(@RequestParam Map map)throws Exception{
+		System.out.println(map);
+		
 		return "general/reservation/Reservation_List.tiles";
 	}	
 	

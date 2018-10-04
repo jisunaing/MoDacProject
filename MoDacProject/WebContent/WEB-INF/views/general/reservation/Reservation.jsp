@@ -82,34 +82,7 @@ table{
 			$('#phone').val($('#phones').html());
 			$('#email').val($('#emails').html());
 		});
-		
-		//접수버튼을 클릭하였을 시[유효성 검사 후 이동]
-		$('#receipt').click(function(){
-			if($('#recname').val()==""){
-				alert('아이디를 입력하여주세요');
-				$('#recname').focus();
-			}
-			else if($('#phone').val()==""){
-				alert('전화번호를 입력하여주세요');
-				$('#phone').focus();
-			}
-			else if($('#email').val()==""){
-				alert('이메일를 입력하여주세요');
-				$('#email').focus();
-			}
-			else if($('#contens').val()==""){
-				alert('상담내용을 입력하여주세요');
-				$('#contens').focus();
-			}
-			else if(!$('input:checkbox[name="checkbox_name"]').is(":checked")){
-				alert('개인정보 수집을 동의하여주세요');
-			}
-			else{
-				//유효성 검사 완료 후 데이터 베이스에 집어 넣은 후 예약 목록으로 이동
-				location.href="<c:url value='/general/receipt/ReceiptListResult.do'/>";
-			}
-		});
-		
+
 		
 	});
 	</script>
@@ -148,8 +121,9 @@ table{
 			</div>
 		</div>
 		<br /> <br />
-		<form class="form-horizontal">
-		<input type="hidden" name="Reservation"/>
+		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do'/>">
+		<input type="hidden" id="genid" value="${genid}">
+		<input type="hidden" id="pid" value="${id}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
@@ -172,7 +146,7 @@ table{
 				<div class="col-sm-10">
 					<div class="size3">
 						<div id="picker">
-							<input type="hidden" id="result" value="" />
+							
 						</div>
 					</div>
 				</div>
@@ -194,11 +168,12 @@ table{
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
+			<input type="checkbox" name="checkbox_name" />
+			<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
+			<button type="submit" class="btn btn-default" id="receipt">예약</button>
 		</form>
 
-		<input type="checkbox" name="checkbox_name" />
-		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
-		<button type="button" class="btn btn-default" id="receipt">예약</button>
+
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

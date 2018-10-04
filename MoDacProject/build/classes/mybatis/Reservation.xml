@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.MoDac_myBatis.Reservation">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
+	<!-- 쿼리 작성 -->
+	<insert id="receiptInsert" parameterType="java.util.Map">
+	INSERT INTO RECEPTION VALUES(#{genid},#{pid},seq_reception.nextval ,#{recname},#{email},#{phone},#{reccontens},#{addr})
+	</insert>
+	
+</mapper>

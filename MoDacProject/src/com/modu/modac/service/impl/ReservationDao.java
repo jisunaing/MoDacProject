@@ -7,20 +7,20 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.modu.modac.service.TestService;
+import com.modu.modac.service.ReservationService;
 
-/* Repository어노테이션 */
 @Repository
-public class TestDao implements TestService {
-	/* SqlSessionTeplate선언 - 리소스 등록 */
+public class ReservationDao implements ReservationService{
+	
 	@Resource(name="template")
 	private SqlSessionTemplate template;
-
-	/* 메소드 오버라이딩 */
+	
 	@Override
-	public int testdb() {
-		return template.selectOne("dbtest");
+	public void receiptInsert(Map map) {
+		System.out.println("ReservationDao :"+map);
+		template.insert("receiptInsert",map);
 	}
-
-
+	
+	
+	
 }

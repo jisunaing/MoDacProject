@@ -21,5 +21,8 @@
 	-->
 	<mappers>
 		<mapper resource="mybatis/Test.xml" />
+		<mapper resource="mybatis/Reservation.xml" />
 	</mappers>
+	
+	
 </configuration>
