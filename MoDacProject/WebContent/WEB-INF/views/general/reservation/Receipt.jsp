@@ -54,6 +54,7 @@ table{
 }
 #nameUrl{
 	width: 100%;
+	cursor: pointer;
 }
 </style>
 <!-- 달력 라이브러리 시작-->
@@ -125,25 +126,21 @@ table{
 		<div id="float-right">
 			<input id="toggles" type="button" class="btn btn-default" value="가족 정보보기"/>
 			<div id="tabletoggles" class="table-responsive">
-				<table class="table">
-					<tr>
-						<th>이름</th>
-						<th>전화번호</th>
-						<th>이메일</th>
-						<th>생년월일</th>
-					</tr>
-					<tr id="nameUrl">
-						<td id="names">홍길동</td>
-						<td id="phones">010-7777-7777</td>
-						<td id="emails">abcd1234@naver.com</td>
-						<td id="birthdays">1967-08-30</td>
-					</tr>
-					<tr>
-						<td>나길동</td>
-						<td>010-7777-7777</td>
-						<td>grdawf777@naver.com</td>
-						<td>1989-01-21</td>
-					</tr>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>이름</th>
+							<th>전화번호</th>
+							<th>생년월일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="nameUrl">
+							<td id="names">홍길동${fname}</td>
+							<td id="phones">010-7777-7777${fphone}</td>
+							<td id="birthdays">1967-08-30${fbirthdate}</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -154,7 +151,7 @@ table{
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="name" name="name">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력" id="name" name="recname" value="${genname}"/>
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -162,7 +159,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control size1" placeholder="연락처 입력"id="phone" name="phone">
+					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone"/>
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
@@ -171,7 +168,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control size4" placeholder="이메일 입력"id="email" name="email" >
+					<input type="email" class="form-control size4" placeholder="이메일 입력" id="email" name="email"/>
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->
@@ -182,7 +179,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">상담내용</label>
 				<div class="col-sm-10">
-					<textarea class="form-control size5" rows="10"id="contens" name="contens"></textarea>
+					<textarea class="form-control size5" rows="10" id="contens" name="contens"></textarea>
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
