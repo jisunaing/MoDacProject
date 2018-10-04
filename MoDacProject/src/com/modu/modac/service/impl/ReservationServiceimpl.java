@@ -21,4 +21,16 @@ public class ReservationServiceimpl implements ReservationService {
 		dao.receiptInsert(map);
 	}
 
+
+	@Override
+	public void reservationInset(Map map) {
+		dao.reservationInset(map);
+	}
+
+
+	@Override
+	public void reservationDelete(Map map) {
+		dao.reservationDelete(map);
+	}
+
 }

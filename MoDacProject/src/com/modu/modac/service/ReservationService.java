@@ -19,7 +19,8 @@ public interface ReservationService {
 	int update(Map map);
 	*/
 	void receiptInsert(Map map);
-	
+	void reservationInset(Map map);
+	void reservationDelete(Map map);
 	
 	
 }

@@ -20,6 +20,16 @@ public class ReservationDao implements ReservationService{
 		System.out.println("ReservationDao :"+map);
 		template.insert("receiptInsert",map);
 	}
+
+	@Override
+	public void reservationInset(Map map) {
+		template.insert("reservationInsert",map);
+	}
+
+	@Override
+	public void reservationDelete(Map map) {
+		template.delete("reservationDelete",map);		
+	}
 	
 	
 	

@@ -59,9 +59,10 @@ table{
 <!-- 달력 라이브러리 시작-->
 	<script type="text/javascript">
     $(document).ready( function () {
-        $('#picker').dateTimePicker();
-        $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY'});
+        $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko'});
+
     })
+    
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
@@ -81,9 +82,15 @@ table{
 			$('#recname').val($('#names').html());
 			$('#phone').val($('#phones').html());
 			$('#email').val($('#emails').html());
+			console.log($('#picker').val());
+			console.log($('#picker').html());
+			console.log($('#result').val());
+			console.log($('#result').html());
+			
 		});
-
 		
+		
+
 	});
 	</script>
 <div class="container">
@@ -107,7 +114,7 @@ table{
 					</tr>
 					<tr id="nameUrl">
 						<td id="names">홍길동</td>
-						<td id="phones">010-7777-7777</td>
+						<td id="phones">01077777777</td>
 						<td id="emails">abcd1234@naver.com</td>
 						<td id="birthdays">1967-08-30</td>
 					</tr>
@@ -121,7 +128,7 @@ table{
 			</div>
 		</div>
 		<br /> <br />
-		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do'/>">
+		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do?date=${date}'/>">
 		<input type="hidden" id="genid" value="${genid}">
 		<input type="hidden" id="pid" value="${id}">
 			<!-- 예약자 성함 -->
@@ -145,9 +152,9 @@ table{
 				<label for="inputPassword" class="col-sm-2 control-label">예약시간</label>
 				<div class="col-sm-10">
 					<div class="size3">
-						<div id="picker">
-							
-						</div>
+						<div id="picker"></div>
+						<input type="hidden"  id="result" name="resdate"/>
+						
 					</div>
 				</div>
 			</div>

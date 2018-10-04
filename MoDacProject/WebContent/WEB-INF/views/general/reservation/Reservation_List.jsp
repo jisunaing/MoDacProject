@@ -54,7 +54,8 @@ table{
 						<td>홍길동</td>
 						<td>예약</td>
 						<td>신청</td>
-						<td><input type="button" value="취소" /></td>
+						
+						<td><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${resnum}}'/>"><input type="button" value="취소" /></a></td>
 					</tr>
 					<tr>
 					  <td colspan="7">

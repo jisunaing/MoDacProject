@@ -9,4 +9,12 @@
 	INSERT INTO RECEPTION VALUES(#{genid},#{pid},seq_reception.nextval ,#{recname},#{email},#{phone},#{reccontens},#{addr})
 	</insert>
 	
+	<insert id="reservationInsert" parameterType="java.util.Map">
+	INSERT INTO RESERVATION VALUES(seq_reservation.nextval,#{genid},#{pid},#{rescontents},#{resname},#{phone},#{addr},'신청',#{resdate},#{email})
+	</insert>
+	
+	<delete id="reservationDelete" parameterType="java.util.Map">
+	DELETE FROM RESERVATION WHERE ID = #{resnum}
+	</delete>
+	
 </mapper>

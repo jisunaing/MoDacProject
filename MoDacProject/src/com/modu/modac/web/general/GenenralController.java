@@ -1,5 +1,7 @@
 package com.modu.modac.web.general;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -16,6 +18,7 @@ public class GenenralController {
 	//진성 영역 시작
 	@Resource(name="reservationService")
 	private ReservationService reservationService;
+	
 	//리스트로 이동하는 것
 	@RequestMapping("/general/reservation/reservationlist.do")
 	public String reservationList() throws Exception {
@@ -26,19 +29,34 @@ public class GenenralController {
 	@RequestMapping("/general/receipt/ReceiptListResult.do")
 	public String ReceiptListResult(@RequestParam Map map)throws Exception{
 		System.out.println(map);
-		
+		//데이터베이스에 집어 넣기
 		reservationService.receiptInsert(map);
 		
-		return "general/reservation/Reservation_List.tiles";
+		return "forward:/general/reservation/reservationlist.do";
 	}
 	
 	//예약 버튼을 부르면 실행되는 것
 	@RequestMapping("/general/receipt/ReservationListResult.do")
 	public String ReservationListResult(@RequestParam Map map)throws Exception{
 		System.out.println(map);
+		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
+			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()));
+		}//if
+		//데이터베이스에 집어 넣기
+		reservationService.reservationInset(map);
 		
-		return "general/reservation/Reservation_List.tiles";
-	}	
+		return "forward:/general/reservation/reservationlist.do";
+	}
+	
+	//예약 삭제 부분
+	@RequestMapping("/general/receipt/ReservationCancel.do")
+	public String ReservationCancel(@RequestParam Map map)throws Exception{
+		
+		reservationService.reservationDelete(map);
+		
+		return "forward:/general/reservation/reservationlist.do";
+	}
+	
 	
 	//진성 영역 끝
 	
