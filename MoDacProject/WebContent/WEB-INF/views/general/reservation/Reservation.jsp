@@ -54,6 +54,7 @@ table{
 }
 #nameUrl{
 	width: 100%;
+	cursor: pointer;
 }
 </style>
 <!-- 달력 라이브러리 시작-->
@@ -80,7 +81,6 @@ table{
 		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
 			$('#name').val($('#names').html());
 			$('#phone').val($('#phones').html());
-			$('#email').val($('#emails').html());
 		});
 		
 		//접수버튼을 클릭하였을 시[유효성 검사 후 이동]
@@ -106,7 +106,7 @@ table{
 			}
 			else{
 				//유효성 검사 완료 후 데이터 베이스에 집어 넣은 후 예약 목록으로 이동
-				location.href="<c:url value='/general/receipt/ReceiptListResult.do'/>";
+				location.href="<c:url value='/general/receipt/ReservationListResult.do'/>";
 			}
 		});
 		
@@ -116,7 +116,7 @@ table{
 <div class="container">
 	<div class="row">
 		<div class="page-header">
-		  <h1>예약 병원 이름 <small>성형외과</small></h1>
+		  <h1>예약 병원 이름${hosmanager}<small>성형외과</small></h1>
 		</div>
 	</div>
 	<div class="row">
@@ -125,25 +125,21 @@ table{
 		<div id="float-right">
 			<input id="toggles" type="button" class="btn btn-default" value="가족 정보보기"/>
 			<div id="tabletoggles" class="table-responsive">
-				<table class="table">
-					<tr>
-						<th>이름</th>
-						<th>전화번호</th>
-						<th>이메일</th>
-						<th>생년월일</th>
-					</tr>
-					<tr id="nameUrl">
-						<td id="names">홍길동</td>
-						<td id="phones">010-7777-7777</td>
-						<td id="emails">abcd1234@naver.com</td>
-						<td id="birthdays">1967-08-30</td>
-					</tr>
-					<tr>
-						<td>나길동</td>
-						<td>010-7777-7777</td>
-						<td>grdawf777@naver.com</td>
-						<td>1989-01-21</td>
-					</tr>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>이름</th>
+							<th>전화번호</th>
+							<th>생년월일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="nameUrl">
+							<td id="names">홍길동${fname}</td>
+							<td id="phones">010-7777-7777${fphone}</td>
+							<td id="birthdays">1967-08-30${fbirthdate}</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
@@ -154,7 +150,7 @@ table{
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="name" name="name">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="name" name="resname" value="${genname}">
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -162,7 +158,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone">
+					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone" value="${phone}">
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
@@ -172,7 +168,7 @@ table{
 				<div class="col-sm-10">
 					<div class="size3">
 						<div id="picker">
-							<input type="hidden" id="result" value="" />
+							<input type="hidden" id="result" name="resdate" value="" />
 						</div>
 					</div>
 				</div>
@@ -182,7 +178,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control size4" placeholder="이메일 입력"id="email" name="email">
+					<input type="email" class="form-control size4" placeholder="이메일 입력"id="email" name="email" value="${email}">
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->
