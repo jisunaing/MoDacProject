@@ -79,16 +79,16 @@ table{
 		});
 		$('label').css('minWidth', '90px');
 		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#name').val($('#names').html());
+			$('#recname').val($('#names').html());
 			$('#phone').val($('#phones').html());
 			$('#email').val($('#emails').html());
 		});
 		
 		//접수버튼을 클릭하였을 시[유효성 검사 후 이동]
 		$('#receipt').click(function(){
-			if($('#name').val()==""){
+			if($('#recname').val()==""){
 				alert('아이디를 입력하여주세요');
-				$('#name').focus();
+				$('#recname').focus();
 			}
 			else if($('#phone').val()==""){
 				alert('전화번호를 입력하여주세요');
@@ -151,7 +151,7 @@ table{
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력" id="name" name="recname" value="${genname}"/>
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력" id="recname" name="recname" value="${genname}"/>
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
