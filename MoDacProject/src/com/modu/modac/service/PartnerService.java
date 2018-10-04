@@ -3,7 +3,7 @@ package com.modu.modac.service;
 public interface PartnerService {
 	/* dao와 impl에서 오버라이딩할 추상메소드 */
 	/*
-	//로그인 용]
+	//로그인 용
 	boolean isMember(Map map);
 	//목록용]
 	List<dto타입> selectList(Map map);
