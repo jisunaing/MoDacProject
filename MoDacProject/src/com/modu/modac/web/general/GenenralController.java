@@ -1,23 +1,34 @@
 package com.modu.modac.web.general;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GenenralController {
 	
 	//진성 영역 시작
 	
+	//리스트로 이동하는 것
 	@RequestMapping("/general/reservation/reservationlist.do")
 	public String reservationList() throws Exception {
 		return "general/reservation/Reservation_List.tiles";
 	}
 
-	//예약,접수 완료 버튼 클릭 시 이것이 실행됨
+	//접수 버튼을 누르면 실행되는 것
 	@RequestMapping("/general/receipt/ReceiptListResult.do")
-	public String ReceiptListResult()throws Exception{
+	public String ReceiptListResult(@RequestParam Map map)throws Exception{
+		
+		
 		return "general/reservation/Reservation_List.tiles";
 	}
+	//예약 버튼을 부르면 실행되는 것
+	@RequestMapping("/general/receipt/ReservationListResult.do")
+	public String ReservationListResult()throws Exception{
+		return "general/reservation/Reservation_List.tiles";
+	}	
 	
 	//진성 영역 끝
 	
