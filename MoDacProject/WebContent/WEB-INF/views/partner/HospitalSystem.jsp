@@ -25,13 +25,13 @@
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
 			[ 'Task', 'Hours per Day' ],
-			[ '월요일', 11 ],
-			[ '화요일', 2 ],
-			[ '수요일', 10 ],
-			[ '목요일', 15 ],
-			[ '금요일', 7 ],
-			[ '토요일', 2 ],
-			[ '일요일', 1 ]
+			[ '월요일', ${mon} ],
+			[ '화요일', ${tue} ],
+			[ '수요일', ${wed} ],
+			[ '목요일', ${thu} ],
+			[ '금요일', ${fri} ],
+			[ '토요일', ${dat} ],
+			[ '일요일', ${sun} ]
 		]);
 		var options = {
 			title : '요일별 고객 현황',

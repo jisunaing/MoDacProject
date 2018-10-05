@@ -1,5 +1,6 @@
 package com.modu.modac.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -17,7 +18,7 @@ public class ReservationDao implements ReservationService{
 	
 	@Override
 	public void receiptInsert(Map map) {
-		System.out.println("ReservationDao :"+map);
+		System.out.println("ReservationDao"+map);
 		template.insert("receiptInsert",map);
 	}
 
@@ -29,6 +30,16 @@ public class ReservationDao implements ReservationService{
 	@Override
 	public void reservationDelete(Map map) {
 		template.delete("reservationDelete",map);		
+	}
+
+	@Override
+	public List<Map> reservationList(Map map) {
+		return template.selectList("reservationList", map);
+	}
+
+	@Override
+	public List<Map> receiptList(Map map) {
+		return template.selectList("receiptList", map);
 	}
 	
 	

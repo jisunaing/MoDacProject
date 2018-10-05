@@ -54,62 +54,7 @@ table{
 						<td>홍길동</td>
 						<td>예약</td>
 						<td>신청</td>
-						
 						<td><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${resnum}}'/>"><input type="button" value="취소" /></a></td>
-					</tr>
-					<tr>
-					  <td colspan="7">
-					  	<div>
-					  		<br/><br/>
-					  		내원이유: 머리가 아파요
-					  		<br/><br/><br/>
-					  	</div>
-					  </td>
-					</tr>
-					<tr>
-						<td>2018-11-16</td>
-						<td>산들희병원</td>
-						<td>치과</td>
-						<td>홍길동</td>
-						<td>접수</td>
-						<td>취소</td>
-						<td>취소불가</td>
-					</tr>
-					<tr>
-					  <td colspan="7">
-					  	<div>
-					  		<br/><br/>
-					  		내원이유: 머리가 아파요
-					  		<br/><br/><br/>
-					  	</div>
-					  </td>
-					</tr>
-					<tr>
-						<td>2018-11-17</td>
-						<td>을지병원</td>
-						<td>성형외과</td>
-						<td>홍길동</td>
-						<td>예약</td>
-						<td>완료</td>
-						<td>취소불가</td>
-					</tr>
-					<tr>
-					  <td colspan="7">
-					  	<div>
-					  		<br/><br/>
-					  		내원이유: 머리가 아파요
-					  		<br/><br/><br/>
-					  	</div>
-					  </td>
-					</tr>
-					<tr>
-						<td>2018-11-17</td>
-						<td>을지병원</td>
-						<td>성형외과</td>
-						<td>홍길동</td>
-						<td>예약</td>
-						<td>거절</td>
-						<td>취소불가</td>
 					</tr>
 					<tr>
 					  <td colspan="7">

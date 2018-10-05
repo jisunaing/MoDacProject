@@ -119,9 +119,9 @@ table{
 		</div>
 		<br /> <br />
 		<form class="form-horizontal" action="<c:url value='/general/receipt/ReceiptListResult.do'/>">
-			<input type="hidden" id="genid" name="genid" value="${genid}grnidKIM">
-			<input type="hidden" id="pid" name="pid" value="${id}pID">
-			<input type="hidden" id="addr" name="addr" value="${addr}서울특별시 강남구 논현동">
+			<input type="hidden" id="genid" name="genid" value="${genid}">
+			<input type="hidden" id="pid" name="pid" value="${id}">
+			<input type="hidden" id="addr" name="addr" value="${addr}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>

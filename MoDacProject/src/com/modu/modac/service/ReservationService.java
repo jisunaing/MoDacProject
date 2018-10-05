@@ -1,5 +1,6 @@
 package com.modu.modac.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ReservationService {
@@ -21,6 +22,8 @@ public interface ReservationService {
 	void receiptInsert(Map map);
 	void reservationInset(Map map);
 	void reservationDelete(Map map);
+	List<Map> reservationList(Map map);
+	List<Map> receiptList(Map map);
 	
 	
 }

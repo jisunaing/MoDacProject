@@ -17,4 +17,16 @@
 	DELETE FROM RESERVATION WHERE ID = #{resnum}
 	</delete>
 	
+	<select id="reservationList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT * FROM RESERVATION
+	</select>
+	
+	<select id="receiptList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT
+	RESDATE, HOSPITAL.HOSNAME,SUBJECT.SUBNAME, RESNAME, RESACCEPT
+	FROM
+	RESERVATION JOIN HOSPITAL ON RESERVATION.RESNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RESERVATION.RESNUM = SUBJECT.SUBJECTCODE
+	WHERE GENID = ${genid} ORDER BY RESDATE DESC;
+	</select>
+	
 </mapper>
