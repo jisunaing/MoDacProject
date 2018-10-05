@@ -37,7 +37,6 @@
 			title : '요일별 고객 현황',
 			is3D : true,
 		};
-
 		var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
 		chart.draw(data, options);
 	}
