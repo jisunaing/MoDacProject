@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis/MapPharmacy.xml">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="MapPharmacyDtoResult" type="MapPharmacyDto">
+		<result property="nphno" column="phno"/>
+		<result property="nphname" column="phname"/>
+		<result property="nphaddr" column="phaddr"/>
+		<result property="npholiday" column="pholiday"/>
+		<result property="nphphone" column="phphone"/>
+		<result property="nphmon" column="phmon"/>
+		<result property="nphtue" column="phtue"/>
+		<result property="nphwed" column="phwed"/>
+		<result property="nphthu" column="phthu"/>
+		<result property="nphfri" column="phfri"/>
+		<result property="nphsat" column="phsat"/>
+		<result property="nphsun" column="phsun"/>
+	</resultMap>
+	
+	<!-- 쿼리 작성 -->
+	<select id="dbtest" resultType="int">
+		SELECT COUNT(*) FROM test
+	</select>
+</mapper>
