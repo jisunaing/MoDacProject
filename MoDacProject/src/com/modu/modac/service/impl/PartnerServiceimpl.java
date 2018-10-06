@@ -50,10 +50,17 @@ public class PartnerServiceimpl implements PartnerService {
 		return partnerdao.insert(map);
 	}
 
+
 	@Override
-	public int update(Map map) {
+	public int updateone(Map map) {
 		
-		return partnerdao.update(map);
+		return partnerdao.updateone(map);
+	}
+
+	@Override
+	public int updatetwo(Map map) {
+	
+		return partnerdao.updatetwo(map);
 	}
 	
 	

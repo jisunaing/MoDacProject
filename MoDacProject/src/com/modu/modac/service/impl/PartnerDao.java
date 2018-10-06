@@ -38,7 +38,7 @@ public class PartnerDao implements PartnerService {
 
 	@Override
 	public PartnerDto selectOne(Map map) {						
-		return template.selectOne("ReplyBBSOne",map);
+		return template.selectOne("PartnerSelectOne",map);
 	}//selectOne
 
 	@Override
@@ -54,9 +54,15 @@ public class PartnerDao implements PartnerService {
 	}
 
 	@Override
-	public int update(Map map) {
+	public int updateone(Map map) {
 		
-		return 0;
+		return template.update("Partnerfirst",map);
+	}
+
+	@Override
+	public int updatetwo(Map map) {
+		
+		return template.update("Partnersecond",map);
 	}
 	
 

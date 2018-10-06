@@ -17,7 +17,8 @@ public interface PartnerService {
 	//입력/수정/삭제용]
 	int delete(Map map);
 	int insert(Map map);
-	int update(Map map);
+	int updateone(Map map);
+	int updatetwo(Map map);
 	
 	//전체 레코드 수]
 	int getTotalRecord(Map map);

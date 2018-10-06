@@ -28,6 +28,7 @@ public class PartnerDto {
 	private String holiday;
 	private String lunch;
 	private String info;
+	private String personalday;
 	
 	
 	
@@ -37,6 +38,12 @@ public class PartnerDto {
 	
 	public String getPid() {
 		return pid;
+	}
+	public String getPersonalday() {
+		return personalday;
+	}
+	public void setPersonalday(String personalday) {
+		this.personalday = personalday;
 	}
 	public String getHosno() {
 		return hosno;

@@ -1,10 +1,26 @@
 package com.modu.modac.web.partner;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.modu.modac.service.PartnerDto;
+import com.modu.modac.service.PartnerService;
+
+@SessionAttributes("pid")
 @Controller
 public class PartnerController {
+	
+	@Resource(name="partnerService")
+	private PartnerService service;
+	
+	
 	//병원 메인 페이지로 이동
 	@RequestMapping("/partner/hospital/MainMove.do")
 	public String hospitalMainPage() throws Exception {
@@ -48,16 +64,20 @@ public class PartnerController {
 	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
-	public String partnerInfo() throws Exception {
+	public String partnerInfo(@ModelAttribute("pid")String pid,Map map) throws Exception {
+		
+		PartnerDto dto;
+		
+		map.put("pid",pid);
+	
+		dto = service.selectOne(map);
+		
+		map.put("partner", dto);
+				
+		
 		return "/partner/mypage/partnerInfo";
 	}
-	
-	//병원 정보 수정페이지
-	@RequestMapping("/partner/mypage/partnerInfoEdit.do")
-	public String partnerInfoEdit() throws Exception {
-		
-		return "/partner/mypage/partnerInfoEdit";
-	}
+
 	//병원 문의 페이지
 	@RequestMapping("/partner/partnerQnA/partner_QnA.do")
 	public String partner_QnA() throws Exception {

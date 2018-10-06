@@ -19,6 +19,7 @@
     	<result property="accept" column="accept"/>
     	<result property="hosno" column="hosno"/>
     	
+    	
     	<!-- 제휴 가입 성공 후 수정하는 부분 -->
     	<result property="mon" column="mon"/>
     	<result property="tue" column="tue"/>
@@ -30,6 +31,7 @@
     	<result property="holiday" column="holiday"/>
     	<result property="lunch" column="lunch"/>
     	<result property="info" column="info"/>
+    	<result property="personalday" column="personalday"/>
     	
     </resultMap>
     
@@ -48,6 +50,26 @@
 	<select id="PartnerIsMember" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd}
 	</select>  
+	
+	<!-- 제휴회원 1명의 데이터 가져오기 -->
+	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
+	SELECT P.INFO,P.SUBJECTLIST,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
+	</select>
+	
+	<update id="Partnerfirst" parameterType="java.util.Map">
+	
+	UPDATE HOSPITAL SET HOSADDR=#{hosaddr},HOSNAME=#{hosname},HOSPHONE=#{hosphone},
+	MON=#{mon},TUE=#{tue},WED=#{wed},THU=#{thu},FRI=#{fri},SAT=#{sat},SUN=#{sun},HOLIDAY=#{holiday}	WHERE HOSNO=#{hosno}
+
+	</update>
+	
+	
+	<update id="Partnersecond" parameterType="java.util.Map">
+	
+	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},SUBJECTLIST=#{subjectlist},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
+		
+	</update>
+	
 	
 	
 

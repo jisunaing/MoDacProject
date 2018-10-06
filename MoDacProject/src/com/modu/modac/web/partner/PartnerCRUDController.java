@@ -11,22 +11,28 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.modu.modac.service.ChartService;
+import com.modu.modac.service.PartnerDto;
 import com.modu.modac.service.PartnerService;
 
+@SessionAttributes("pid")
 @Controller
 public class PartnerCRUDController {
 	
 	//진성 데이터 베이스를 위한 설정
 	//진성 영역 
+	/*
 	@Resource(name="chartService")
 	private ChartService chartService;
 	//병원이동시 차트를 위한 변수선언-박진성
 	private int mon,tue,wed,thu,fri,dat,sun;
+	*/
 	//진성영역 끝
 	
 	//서비스 주입]
@@ -126,6 +132,46 @@ public class PartnerCRUDController {
 		return "forward:/";
 	}/////////////// logout()
 	
+	
+	
+	// 병원 정보 수정페이지
+	@RequestMapping("/partner/mypage/partnerInfoEdit.do")
+	public String partnerInfoEdit(@RequestParam Map map,Map maps,Model model) throws Exception {
+
+			
+			maps.put("partner",map);
+			
+			model.addAllAttributes(maps);			
+	
+
+		return "/partner/mypage/partnerInfoEdit";
+	}
+	
+	@RequestMapping("/partner/mypage/partnerInfoEditOK.do")
+	public String partnerInfoEditOK(@RequestParam Map map,Map maps,Model model,@ModelAttribute("pid")String pid) throws Exception {
+		
+		
+		maps.put("pid",pid);
+		
+		System.out.println("pid : "+pid);
+	
+		PartnerDto dto = service.selectOne(maps);
+		
+		
+		map.put("hosno",dto.getHosno());	
+		
+		System.out.println("HOSNO = "+dto.getHosno());
+		
+					
+		int updateone = service.updateone(map);
+		
+
+		
+		int updatetwo = service.updatetwo(map);
+				
+		
+		return "forward:/partner/mypage/partnerInfo.do";
+	}
 	
 	
 	
