@@ -9,22 +9,22 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapPharmacyDto;
+import com.modu.modac.service.MapPharmacyService;
 
-@Service("mapPharmacyService")
+@Service("pharmacyService")
 public class MapPharmacyServiceImpl implements MapPharmacyService {
 	
 	@Resource(name="mapPharmacyDao")
 	private MapPharmacyDao dao;
 	
 	@Override
-	public List<MapHospitalDto> selectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MapPharmacyDto> selectList(Map map) {
+		System.out.println("서비스 임플 : List");
+		return dao.selectList(map);
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

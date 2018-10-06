@@ -1,16 +1,25 @@
 package com.modu.modac.web.general;
 
 
+import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.modu.modac.service.MapPharmacyDto;
+import com.modu.modac.service.MapPharmacyService;
+
 @Controller
 public class MapController {
 	
+	// 서비스 주입
+	@Resource(name="pharmacyService")
+	private MapPharmacyService service;
 
 	// [과목 선택 페이지로 이동]
 	@RequestMapping("/general/hospital/SelectSubject.do")
@@ -26,6 +35,9 @@ public class MapController {
 		String phname = map.get("phname").toString();
 		String pharmacy = map.get("pharmacy").toString();
 		
+		
+		
+		
 		model.addAttribute("phname", phname);
 		model.addAttribute("pharmacy", pharmacy);
 		
@@ -38,6 +50,9 @@ public class MapController {
 	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
 		
 		String pharmacy = map.get("pharmacy").toString();
+		
+		List<MapPharmacyDto> records = service.selectList(map);
+		System.out.println("레코드 수 : "+records.size());
 		
 		model.addAttribute("pharmacy",pharmacy);
 		

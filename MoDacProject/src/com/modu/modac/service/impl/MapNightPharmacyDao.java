@@ -10,9 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapNightPharmacyDto;
+import com.modu.modac.service.MapNightPharmacyService;
 
 @Repository
-public class MapNightPharmacyDao implements MapNightPharmacy{
+public class MapNightPharmacyDao implements MapNightPharmacyService{
 	
 	@Resource(name="template")
 	private SqlSessionTemplate template;

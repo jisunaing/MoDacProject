@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapNightPharmacyDto;
+import com.modu.modac.service.MapNightPharmacyService;
 
 @Service("mapNightPharmacyService")
-public class MapNightPharmacyServiceImpl implements MapNightPharmacy{
+public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 
 	@Resource(name="mapNightPharmacyDao")
 	private MapNightPharmacyDao dao;
