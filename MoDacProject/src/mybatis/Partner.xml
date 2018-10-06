@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mybatis.Partner">
+
+	<resultMap type="PartnerDto" id="PartnerResult">
+		<!--제휴 가입 신청에 필요한 데이터들  -->
+    	<result property="pid" column="pid"/>
+    	<result property="hpwd" column="hpwd"/>
+    	<result property="hosname" column="hosname"/>
+    	<result property="subjectlist" column="subjectlist"/>
+    	<result property="hosmanager" column="hosmanager"/>
+    	<result property="hosphone" column="hosphone"/>
+    	<result property="pemail" column="pemail"/>
+    	<result property="hosaddr" column="hosaddr"/>
+    	<result property="businessnum" column="businessnum"/>
+    	<result property="request" column="request"/>
+    	<result property="accept" column="accept"/>
+    	<result property="hosno" column="hosno"/>
+    	
+    	<!-- 제휴 가입 성공 후 수정하는 부분 -->
+    	<result property="mon" column="mon"/>
+    	<result property="tue" column="tue"/>
+    	<result property="wed" column="wed"/>
+    	<result property="thu" column="thu"/>
+    	<result property="fri" column="fri"/>
+    	<result property="sat" column="sat"/>
+    	<result property="sun" column="sun"/>
+    	<result property="holiday" column="holiday"/>
+    	<result property="lunch" column="lunch"/>
+    	<result property="info" column="info"/>
+    	
+    </resultMap>
+    
+    <!--  제휴가입하는 부분 -->
+	<insert id="PartnerJoin" parameterType="java.util.Map">
+
+	INSERT ALL INTO HOSPITAL(HOSNO,HOSADDR,HOSNAME,HOSPHONE)
+	VALUES(SEQ_JIHUNTEST.NEXTVAL,#{hosaddr},#{hosname},#{hosphone})	
+	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,HOSPHONE,SUBJECTLIST)
+	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{hosphone},#{subjectlist})
+	SELECT * FROM DUAL
+		
+	</insert>
+	
+	<!-- IsMember 부분 -->
+	<select id="PartnerIsMember" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd}
+	</select>  
+	
+	
+
+
+
+    
+    
+    
+       
+    
+   
+
+
+
+
+
+
+	
+	
+</mapper>

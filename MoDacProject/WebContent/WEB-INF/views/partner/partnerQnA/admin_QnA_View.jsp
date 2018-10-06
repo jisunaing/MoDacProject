@@ -21,7 +21,7 @@
 
 
 .form-box {
-	background: #F6F6F6; 
+	background-color:white;
 	padding: 20px;
 	width: 900px;
 	height: 930px;	
@@ -35,13 +35,16 @@ tr th{
 	text-align: center
 }
 #hr1{
-	margin-left: 40%;
+	
 	border: solid 1px black; 
-	width: 20%
+	width: 45%;
+	margin-top: -4px;
+	text-align: center;
+
 }
 #hr2{
 	margin-left: 10%;
-	border: solid 1px black; 
+	border: dashed 1px black; 
 	width: 80%;
 	margin-top: 30px;
 	margin-bottom:30px
@@ -66,11 +69,12 @@ tr th{
 		<!-- 카테고리 -->
 		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
 		<!-- 카테고리 -->
-		
 		<div class="content-wrapper">
 	
+		
+
 <!-- body 시작 -->
-<div id="contain"class="container">
+<div id="contain"class="container" >
 <div class="row">
 			<div class="form-box">
 	<h2 style="text-align: center">관리자에게 한 문의 확인 하기</h2>
@@ -78,13 +82,13 @@ tr th{
 	<p style="text-align: center;">
 		제휴회원님과 관리자만 이용 가능한 페이지 입니다.<br /> 
 		
-	</p><br/>
-	<hr id="hr1"><br/><br/>
+	</p>
+	<hr id="hr1" ><br/><br/>
 	<div class="row">
 		<!-- 테이블전체 가로폭은 테이블을 감싸는  div에 col-*-*로 조정 -->
 		<div>
 			<table class="table table-striped table-bordered">
-				<tr>
+				<tr style="background-color: #79ABFF;">
 					<th class="col-md-2 text-center">번호</th>
 					<td>1</td>
 				</tr>
@@ -92,7 +96,7 @@ tr th{
 					<th class="col-md-2 text-center">제목</th>
 					<td>제목</td>
 				</tr>
-				<tr>
+				<tr style="background-color: #79ABFF;">
 					<th class="col-md-2 text-center">작성자</th>
 					<td>홍길동</td>
 				</tr>
@@ -101,7 +105,7 @@ tr th{
 					<th class="col-md-2 text-center">등록일</th>
 					<td>2018-08-08</td>
 				</tr>
-				<tr>
+				<tr style="background-color: #79ABFF;">
 					<th colspan="2" class="text-center">내용</th>
 				</tr>
 				<tr>
@@ -134,6 +138,9 @@ tr th{
 			<div class="table-responsive  col-sm-8 col-sm-offset-2">
 			  <table class="table table-bordered" >
 			    <tr>
+			     <th>
+			   		 작성자
+			    	</th>
 			    	 <th>
 			   		 답변
 			    	</th>
@@ -141,6 +148,7 @@ tr th{
 			    </tr>
 			   
 			    <tr>
+			    <td>홍길똥</td>
 			    	<td>
 			    		내용
 			    		내용

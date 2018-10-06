@@ -44,15 +44,6 @@ public class PartnerController {
 	}	
 	
 	
-	//로그아웃 처리
-	@RequestMapping("/partner/hospital/Logout.do")
-	public String logout()throws Exception{
-		return "general/member/Login.tiles";
-	}
-	
-	
-	
-	//제휴 가입 페이지
 	
 	
 	//병원 정보 페이지
@@ -118,6 +109,9 @@ public class PartnerController {
 		//현재 메인페이지로 보내야 하는 부분이 임시적이기 때문에 여기 또한 임시로 메인으로 보냄
 		return "/index";
 	}
+	
+
+	
 	
 	
 	

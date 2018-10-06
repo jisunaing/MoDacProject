@@ -4,15 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.modu.modac.service.ChartService;
 
 @Controller
@@ -55,6 +52,15 @@ public class HomeController {
 		
 		return "general/member/signup/Gen_SignUp_Write.tiles";
 	}
+	
+	//제휴 회원가입 신청 폼
+	@RequestMapping("/general/member/signup/partnerJoin.do")
+	public String partnerJoin() throws Exception {
+		return "general/member/signup/Join_P.tiles";
+	}
+	
+	
+	
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginProcess.do")
 	public String loginProcess(@RequestParam Map map, HttpSession session, Model model) throws Exception {//일반사용자 로그인시 일반사용자 화면으로 이동
@@ -62,47 +68,15 @@ public class HomeController {
 			session.setAttribute("USER_ID", "USER");
 			return "/index";
 		}
-		else if(map.get("id").toString().equalsIgnoreCase("PARTNER") && map.get("pwd").equals("1234")) {//병원 로그인시 병원 관리자페이지로 바로 이동
-			session.setAttribute("PARTNER_ID", "PARTNER");
-			//여기 맵에 ! 반드시 세션[병원아이디]를 넣어주세요
-			map.put("pid", "PARTNER");
-			//병원 차트를 가져오기 위한 부분
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			Calendar cal = Calendar.getInstance();
-			List<Map> list;
-			list = chartService.dayList(map);
-			for(int i=0;i<list.size();i++) {
-				cal.setTime(dateFormat.parse(list.get(i).toString()));
-				switch (cal.get(Calendar.DAY_OF_WEEK)) {
-				case 1:	sun++;	break;
-				case 2:	mon++;	break;
-				case 3:	tue++;	break;
-				case 4:	wed++;	break;
-				case 5:	thu++;	break;
-				case 6:	fri++;	break;
-				case 7:	dat++;	break;
 
-				}//switch
-			}//for
-			//병원 차트를 가져오기 위한 부분
-			//병원 차트 요일별 저장하기
-			model.addAttribute("mon", mon);
-			model.addAttribute("tue", tue);
-			model.addAttribute("wed", wed);
-			model.addAttribute("thu", thu);
-			model.addAttribute("fri", fri);
-			model.addAttribute("dat", dat);
-			model.addAttribute("sun", sun);
-			
-			return "/partner/HospitalSystem";
-		}//else if
 		return "/index";
 	}
+	
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginout.do")
 	public String logoutProcess(HttpSession session) throws Exception {
 		session.removeAttribute("USER_ID");
-		session.removeAttribute("PARTNER_ID");
+		//session.removeAttribute("PARTNER_ID");  제휴회원 로그인 처리 끝 임시로 사용 안해도됨 추후에 이 부분 삭제할꺼임
 		return "/index";
 	}
 

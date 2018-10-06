@@ -19,7 +19,9 @@
 #hr{
 	margin-left: 40%;
 	border: solid 1px black; 
-	width: 20%
+	width: 20%;
+	margin-top: -6px;
+	
 }
 #dv{
 	padding-top: 50px
@@ -40,7 +42,7 @@
 </style>
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" >
 	<div class="wrapper">
 
 		<!-- 여기까지가 탑이랑 카테고리 부분으로 추정 됨 -->
@@ -51,21 +53,20 @@
 		<!-- 카테고리 -->
 		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
 		<!-- 카테고리 -->
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="background-color: white;">
 		
 		
 		
 <!-- body 시작 -->
-<div class="container" id="dv">
+<div class="container" id="dv" >
 <div class="row">
-			<div class="form-box">
+			<div>
 
 	<h2 style="text-align: center">사이트 문의하기</h2>
 	<br />
 	<p style="text-align: center;">
 		언제든지 궁금한걸 물어보세요~
 	</p>
-	<br />
 	<hr id="hr">
 	<br />
 	<br />
@@ -78,24 +79,24 @@
 				
 				<table class="table">
 					<thead>
-						<tr>
+						<tr style="background-color: #79ABFF;">
 							<th style="text-align: center">작성일</th>
 							<th style="text-align: center">제목</th>
 							<th style="text-align: center">답변여부</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="success">
+						<tr>
 							<td>2018-09-15</td>
 							<td><a style=" color: black" href="<c:url value='/partner/partnerQnA/admin_QnA_View.do'/>">제목1</a></td>
-							<td>답변완료</td>
+							<td >답변완료</td>
 						</tr>
-						<tr class="danger">
+						<tr>
 							<td>2018-09-15</td>
 							<td>제목2</td>
 							<td>답변 준비중</td>
 						</tr>
-						<tr class="success">
+						<tr>
 							<td>2018-09-15</td>
 							<td>제목3</td>
 							<td>답변완료</td>
