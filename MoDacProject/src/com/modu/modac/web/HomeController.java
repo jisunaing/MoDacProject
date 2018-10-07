@@ -25,7 +25,7 @@ public class HomeController {
 	@Resource(name="chartService")
 	private ChartService chartService;
 	//병원이동시 차트를 위한 변수선언-박진성
-	private int mon = 0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
+	private int mon=0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
 	//진성영역 끝
 	
 	
@@ -67,29 +67,27 @@ public class HomeController {
 			//여기 맵에 ! 반드시 세션[병원아이디]를 넣어주세요
 			map.put("pid", "uesr");
 			//병원 차트를 가져오기 위한 부분
-			//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			//Calendar cal = Calendar.getInstance();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			Calendar cal = Calendar.getInstance();
 			List<Map> list;
 			list = chartService.dayList(map);
-			/*
-			for(int i=0;i<list.size();i++) {
-				cal.setTime(dateFormat.parse(list.get(i).toString()));
-				switch (cal.get(Calendar.DAY_OF_WEEK)) {
-				case 1:	sun++;	break;
-				case 2:	mon++;	break;
-				case 3:	tue++;	break;
-				case 4:	wed++;	break;
-				case 5:	thu++;	break;
-				case 6:	fri++;	break;
-				case 7:	dat++;	break;
-
-				}//switch
-			}//for
-			*/
+			System.out.println(list);
+			if(list!=null) {
+				for(int i=0;i<list.size();i++) {
+					cal.setTime(dateFormat.parse(list.get(i).toString()));
+					switch (cal.get(Calendar.DAY_OF_WEEK)) {
+					case 1:	sun++;	break;
+					case 2:	mon++;	break;
+					case 3:	tue++;	break;
+					case 4:	wed++;	break;
+					case 5:	thu++;	break;
+					case 6:	fri++;	break;
+					case 7:	dat++;	break;
+					}//switch
+				}//for
+			}//if
 			//병원 차트를 가져오기 위한 부분
 			//병원 차트 요일별 저장하기
-			
-			System.out.println(mon);
 			model.addAttribute("mon", mon);
 			model.addAttribute("tue", tue);
 			model.addAttribute("wed", wed);

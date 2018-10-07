@@ -9,5 +9,14 @@
 	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
 	</select>
 	
+	<!-- 병원에서 예약 신청목록 리스트 볼때 -->
+	<select id="hospitalReservationList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	</select>
+	
+	<!-- 병원에서 접수 신청목록 리스트 볼떄 -->
+	<select id="hospitalReceiptList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '접수신청' ORDER BY RESDATE DESC
+	</select>
 	
 </mapper>

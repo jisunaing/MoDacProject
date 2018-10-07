@@ -1,30 +1,104 @@
 package com.modu.modac.web.partner;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.text.SimpleDateFormat;
 
+
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.modu.modac.service.ChartService;
+import com.modu.modac.service.PartnerService;
+
+
+@SessionAttributes("PARTNER_ID")
 @Controller
 public class PartnerController {
+	private int mon=0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
+	
+	@Resource(name="chartService")
+	private ChartService chartService;
+	
+	@Resource(name="partnerService")
+	private PartnerService partnerService;
+	
 	//병원 메인 페이지로 이동
 	@RequestMapping("/partner/hospital/MainMove.do")
-	public String hospitalMainPage() throws Exception {
+	public String hospitalMainPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+		Map map =new HashMap();
+		map.put("pid", pid);
+		//병원 차트를 가져오기 위한 부분
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Calendar cal = Calendar.getInstance();
+		List<Map> list;
+		list = chartService.dayList(map);
+		System.out.println(list);
+		if(list!=null) {
+			for(int i=0;i<list.size();i++) {
+				cal.setTime(dateFormat.parse(list.get(i).toString()));
+				switch (cal.get(Calendar.DAY_OF_WEEK)) {
+				case 1:	sun++;	break;
+				case 2:	mon++;	break;
+				case 3:	tue++;	break;
+				case 4:	wed++;	break;
+				case 5:	thu++;	break;
+				case 6:	fri++;	break;
+				case 7:	dat++;	break;
+	
+				}//switch
+			}//for
+		}
+		//병원 차트를 가져오기 위한 부분
+		//병원 차트 요일별 저장하기
+		
+		System.out.println(mon);
+		model.addAttribute("mon", mon);
+		model.addAttribute("tue", tue);
+		model.addAttribute("wed", wed);
+		model.addAttribute("thu", thu);
+		model.addAttribute("fri", fri);
+		model.addAttribute("dat", dat);
+		model.addAttribute("sun", sun);
+
 		return "/partner/HospitalSystem";
 	}
+	
+	
 	//병원 예약 관리 페이지
 	@RequestMapping("/partner/hospital/ReservationMove.do")
-	public String hospitalReservationPage() throws Exception {
+	public String hospitalReservationPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+		Map map = new HashMap();
+		map.put("pid", pid);
+		List<Map> list;
+		list = partnerService.hospitalReservationList(map);
+		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReservation";
 	}
 	
 	//병원 예약 지낸 내역 페이지
 	@RequestMapping("/partner/hospital/ReservationListMove.do")
-	public String hospitalReservationHistoryPage() throws Exception {
+	public String hospitalReservationHistoryPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+
 		return "/partner/reservation/HospitalReservationHistory";
 	}
 
 	//병원 접수 관리 페이지
 	@RequestMapping("/partner/hospital/ReceiptMove.do")
-	public String hospitalReceiptPage() throws Exception {
+	public String hospitalReceiptPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+		Map map = new HashMap();
+		map.put("pid", pid);
+		List<Map> list;
+		list = partnerService.hospitalReceiptList(map);
+		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReceipt";
 	}
 	//병원 접수 지난내역 페이지
