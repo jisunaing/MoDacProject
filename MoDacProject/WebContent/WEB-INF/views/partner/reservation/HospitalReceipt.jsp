@@ -7,14 +7,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script type="text/javascript">
-$(function(){
-	$('td').click(function(){
-		console.log('테이블이 클릭됨');
-		location.replace("<c:url value='/partner/hospital/ReceiptViewMove.do'/>");
-	});
-});
-</script>
 <style>
 /*가운데 배치를 위핸 CSS*/
 .container {
@@ -111,15 +103,18 @@ tbody tr:nth-child(even) {
 									<td>등록된 게시물이 없어요</td>
 									<td></td>
 									<td></td>
+									<td></td>
 								</tr>
 							</c:if>
 							<c:if test="${not isEmpty}">
 							<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr>
+								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${recnum}&receipt=yes'/>">
 								<td>${record.recname}</td>
 								<td>${record.recdate}</td>
 								<td>${record.phone}</td>
 								<td>${record.email}</td>
+								</a>
 							</tr>
 							</c:forEach>
 							</c:if>

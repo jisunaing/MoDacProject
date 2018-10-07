@@ -14,10 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.PartnerService;
+import com.modu.modac.service.ReceptionDto;
+import com.sun.org.apache.xml.internal.dtm.DTMDOMException;
 
 
 @SessionAttributes("PARTNER_ID")
@@ -86,8 +89,11 @@ public class PartnerController {
 	
 	//병원 예약 지낸 내역 페이지
 	@RequestMapping("/partner/hospital/ReservationListMove.do")
-	public String hospitalReservationHistoryPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
-
+	public String hospitalReservationHistoryPage(@ModelAttribute("PARTNER_ID") String pid, @RequestParam Map map, Model model) throws Exception {
+		map.put("pid", pid);
+		List<Map> list;
+		list = partnerService.hospitalreservationHistory(map);
+		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReservationHistory";
 	}
 
@@ -103,19 +109,47 @@ public class PartnerController {
 	}
 	//병원 접수 지난내역 페이지
 	@RequestMapping("/partner/hospital/ReceiptListMove.do")
-	public String hospitalReceiptHistoryPage() throws Exception {
+	public String hospitalReceiptHistoryPage(@ModelAttribute("PARTNER_ID") String pid, @RequestParam Map map, Model model) throws Exception {
+		map.put("pid", pid);
+		List<Map> list;
+		list = partnerService.hospitalreceiptHistory(map);
+		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
+	
 	//병원 접수 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptViewMove.do")
-	public String hospitalViewPage() throws Exception {
+	public String hospitalReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
+		
+		model.addAttribute("receipt", "yes");
+		ReceptionDto dto;
+		
+		dto = partnerService.hospitalReceiptView(map);
+		
+		dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
+		model.addAttribute("record", dto);
+		
+		
 		return "/partner/reservation/HospitalListView";
-	}	
+	}
 	//병원 접수 지낸내역 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
-	public String hospitalHistoryViewPage() throws Exception {
+	public String hospitalHistoryReceiptViewPage() throws Exception {
 		return "/partner/reservation/HospitalView";
-	}	
+	}
+	//병원 예약 상세보기 페이지
+	@RequestMapping("/partner/hospital/ReservationViewMove.do")
+	public String hospitalReservationViewPage() throws Exception {
+		return "/partner/reservation/HospitalListView";
+	}
+	//병원 예약 지난애역 상세보기 페이지
+	@RequestMapping("/partner/hospital/ReservationHistoryViewMove.do")
+	public String hospitalReservationHistoryViewPage() throws Exception {
+		return "/partner/reservation/HospitalView";
+	}
+	
+	
+	
 	
 	
 	//로그아웃 처리

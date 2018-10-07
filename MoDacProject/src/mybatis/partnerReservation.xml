@@ -14,9 +14,24 @@
 	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
 	</select>
 	
+	<!-- 병원 예약 지난 내역 리스트 볼때 -->
+	<select id="hospitalreservationHistory" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL, RESACCEPT FROM RESERVATION WHERE PID = #{pid} AND NOT RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	</select>
+	
 	<!-- 병원에서 접수 신청목록 리스트 볼떄 -->
 	<select id="hospitalReceiptList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '접수신청' ORDER BY RESDATE DESC
+	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RECEPTION WHERE PID = #{pid} AND RECACCEPT = '접수신청' ORDER BY RECDATE DESC
+	</select>
+	
+	<!-- 병원 접수 지난 내역 리스트 볼때 -->
+	<select id="hospitalreceiptHistory" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL, RECACCEPT FROM RECEPTION WHERE PID = #{pid} AND NOT RECACCEPT = '접수신청' ORDER BY RECDATE DESC
+	</select>
+	
+	<!-- 접수 상세내역 -->
+	<select id="hospitalReceiptView" parameterType="java.util.Map" resultType="receptionDto">
+	SELECT RECNAME, PHONE, EMAIL, RECDATE, RECCONTENTS FROM RECEPTION WHERE RECNUM=${recnum}
 	</select>
 	
 </mapper>

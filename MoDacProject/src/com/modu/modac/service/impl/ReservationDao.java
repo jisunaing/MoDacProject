@@ -47,7 +47,6 @@ public class ReservationDao implements ReservationService{
 		return template.selectList("receiptList", map);
 	}
 
-
 	
 	
 	

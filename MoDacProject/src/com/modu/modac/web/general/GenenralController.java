@@ -36,8 +36,6 @@ public class GenenralController {
 		model.addAttribute("receiptList", receiptList);
 		model.addAttribute("reservationList", reservationList);
 		
-		
-		
 		return "general/reservation/Reservation_List.tiles";
 	}
 
