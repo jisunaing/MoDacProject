@@ -94,7 +94,7 @@ form{
 			<hr>
 		</div>
 		<br/>
-	   		<form class="form-horizontal" id="frm" action="<c:url value=''/>">
+	   		<form class="form-horizontal" id="frm" action="<c:url value='/general/mypage/personalinfo.do'/>">
 				<div class="form-group center-block">
 					<label class="col-sm-3 control-label">아이디</label>
 					<div class="col-sm-4">
@@ -126,33 +126,28 @@ form{
 				<div class="form-group">
 					<label for="birthdate" class="col-sm-3 control-label">생년월일</label>
 					<div class="col-sm-2">
-					    <select class="form-control">
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
+						<input type="text" class="form-control" id="year" placeholder="년(4자)">
+					</div>
+					<div class="col-sm-2">
+					    <select class="form-control" >
+						  <option>월</option>
+						  <option>01</option>
+						  <option>02</option>
+						  <option>03</option>
+						  <option>04</option>
+						  <option>05</option>
 						</select>
-						
-					</div><div>년</div>
-					<div class="col-sm-1">
+					</div>
+					<div class="col-sm-2">
 					    <select class="form-control">
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
+						  <option>일</option>
+						  <option>01</option>
+						  <option>02</option>
+						  <option>03</option>
+						  <option>04</option>
+						  <option>05</option>
 						</select>
-					</div>월
-					<div class="col-sm-1">
-					    <select class="form-control">
-						  <option>1</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						</select>
-					</div>일
+					</div>
 					
 				</div>
 				<div class="form-group">
