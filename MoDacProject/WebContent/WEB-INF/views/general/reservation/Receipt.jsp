@@ -99,21 +99,25 @@ table{
 		<div id="float-right">
 			<input id="toggles" type="button" class="btn btn-default" value="가족 정보보기"/>
 			<div id="tabletoggles" class="table-responsive">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>이름</th>
-							<th>전화번호</th>
-							<th>생년월일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr id="nameUrl">
-							<td id="names">홍길동${fname}</td>
-							<td id="phones">010-7777-7777${fphone}</td>
-							<td id="birthdays">1967-08-30${fbirthdate}</td>
-						</tr>
-					</tbody>
+				<table class="table">
+					<tr>
+						<th>이름</th>
+						<th>전화번호</th>
+						<th>이메일</th>
+						<th>생년월일</th>
+					</tr>
+					<tr id="nameUrl">
+						<td id="names">홍길동</td>
+						<td id="phones">01077777777</td>
+						<td id="emails">abcd1234@naver.com</td>
+						<td id="birthdays">1967-08-30</td>
+					</tr>
+					<tr>
+						<td>나길동</td>
+						<td>010-7777-7777</td>
+						<td>grdawf777@naver.com</td>
+						<td>1989-01-21</td>
+					</tr>
 				</table>
 			</div>
 		</div>

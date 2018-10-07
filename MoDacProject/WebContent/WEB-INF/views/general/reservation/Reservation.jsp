@@ -82,11 +82,6 @@ table{
 			$('#recname').val($('#names').html());
 			$('#phone').val($('#phones').html());
 			$('#email').val($('#emails').html());
-			console.log($('#picker').val());
-			console.log($('#picker').html());
-			console.log($('#result').val());
-			console.log($('#result').html());
-			
 		});
 		
 		

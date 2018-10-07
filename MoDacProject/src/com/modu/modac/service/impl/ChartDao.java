@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.ChartService;
 
@@ -19,7 +18,8 @@ public class ChartDao implements ChartService {
 
 	@Override
 	public List<Map> dayList(Map map) {
-		return template.selectList("chartList");
+		System.out.println("dao로 들어옴");
+		return template.selectOne("chartList");
 	}
 
 }

@@ -21,7 +21,8 @@ public interface ReservationService {
 	*/
 	void receiptInsert(Map map);
 	void reservationInset(Map map);
-	void reservationDelete(Map map);
+	int reservationCancel(Map map);
+	int receptCancel(Map map);
 	List<Map> reservationList(Map map);
 	List<Map> receiptList(Map map);
 	

@@ -28,8 +28,13 @@ public class ReservationServiceimpl implements ReservationService {
 	}
 
 	@Override
-	public void reservationDelete(Map map) {
-		dao.reservationDelete(map);
+	public int reservationCancel(Map map) {
+		return dao.reservationCancel(map);
+	}
+	
+	@Override
+	public int receptCancel(Map map) {
+		return dao.receptCancel(map);
 	}
 
 	@Override
@@ -41,5 +46,7 @@ public class ReservationServiceimpl implements ReservationService {
 	public List<Map> receiptList(Map map) {
 		return dao.receiptList(map);
 	}
+
+
 
 }

@@ -5,28 +5,40 @@
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
 	<!-- 쿼리 작성 -->
+	<!-- 접수 데이터에 넣기 -->
 	<insert id="receiptInsert" parameterType="java.util.Map">
-	INSERT INTO RECEPTION VALUES(#{genid},#{pid},seq_reception.nextval ,#{recname},#{email},#{phone},#{reccontens},#{addr})
+	INSERT INTO RECEPTION VALUES(#{genid},#{pid},seq_reception.nextval ,#{recname},#{email},#{phone},#{reccontens},#{addr},SYSDATE, '접수신청')
 	</insert>
-	
+	<!-- 예약 데이터에 넣기 -->
 	<insert id="reservationInsert" parameterType="java.util.Map">
-	INSERT INTO RESERVATION VALUES(seq_reservation.nextval,#{genid},#{pid},#{rescontents},#{resname},#{phone},#{addr},'신청',#{resdate},#{email})
+	INSERT INTO RESERVATION VALUES(seq_reservation.nextval,#{genid},#{pid},#{rescontents},#{resname},#{phone},#{addr},'예약신청',#{resdate},#{email})
 	</insert>
 	
-	<delete id="reservationDelete" parameterType="java.util.Map">
-	DELETE FROM RESERVATION WHERE ID = #{resnum}
-	</delete>
+	<!-- 예약취소 취소버튼 클릭 시 -->
+	<update id="reservationCancel" parameterType="java.util.Map">
+	UPDATE FROM RESERVATION SET RECACCEPT = '예약취소' WHERE RECNUM = #{recnum}
+	</update>
 	
+	<!-- 접수취소 취소버튼 클릭 시 -->
+	<update id="receptCancel" parameterType="java.util.Map">
+	UPDATE FROM RECEPTION SET RECACCEPT = '접수취소' WHERE RECNUM = #{resnum}
+	</update>
+	
+	<!-- 접수내역 얻어오기 -->
 	<select id="reservationList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT * FROM RESERVATION
-	</select>
-	
-	<select id="receiptList" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT
-	RESDATE, HOSPITAL.HOSNAME,SUBJECT.SUBNAME, RESNAME, RESACCEPT
+	RECNUM ,RECDATE, HOSPITAL.HOSNAME, SUBJECT.SUBNAME, RECNAME, RECACCEPT, RECCONTENTS
 	FROM
-	RESERVATION JOIN HOSPITAL ON RESERVATION.RESNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RESERVATION.RESNUM = SUBJECT.SUBJECTCODE
-	WHERE GENID = ${genid} ORDER BY RESDATE DESC;
+	RECEPTION JOIN HOSPITAL ON RECEPTION.RECNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RECEPTION.RECNUM = SUBJECT.SUBJECTCODE
+	WHERE GENID = ${genid} ORDER BY RECDATE DESC
+	</select>
+	<!-- 예약 내역 얻어오기 -->
+	<select id="receiptList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT 
+	RESNUM ,RESDATE, HOSPITAL.HOSNAME,SUBJECT.SUBNAME, RESNAME, RESACCEPT 
+	FROM 
+	RESERVATION JOIN HOSPITAL ON RESERVATION.RESNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RESERVATION.RESNUM = SUBJECT.SUBJECTCODE 
+	WHERE GENID = ${genid} ORDER BY RESDATE DESC
 	</select>
 	
 </mapper>

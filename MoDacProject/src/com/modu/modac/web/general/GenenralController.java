@@ -3,11 +3,13 @@ package com.modu.modac.web.general;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,10 +26,17 @@ public class GenenralController {
 	
 	//접수,예약 내역으로 이동하는 컨트롤러
 	@RequestMapping("/general/reservation/reservationlist.do")
-	public String reservationList(@ModelAttribute("USER_ID") String genid, Map map) throws Exception {
+	public String reservationList(@ModelAttribute("USER_ID") String genid, Map map, Model model) throws Exception {
 		map.put("genid", genid);
-		reservationService.receiptInsert(map);
-		reservationService.reservationList(map);
+		//접수내역 얻어오기
+		List<Map> receiptList = reservationService.receiptList(map);
+		//예약내역 얻어오기
+		List<Map> reservationList = reservationService.reservationList(map);
+		
+		model.addAttribute("receiptList", receiptList);
+		model.addAttribute("reservationList", reservationList);
+		
+		
 		
 		return "general/reservation/Reservation_List.tiles";
 	}
@@ -45,8 +54,6 @@ public class GenenralController {
 	//예약 버튼을 부르면 실행되는 것
 	@RequestMapping("/general/receipt/ReservationListResult.do")
 	public String ReservationListResult(@RequestParam Map map,@ModelAttribute("USER_ID") String genid)throws Exception{
-		System.out.println(genid);
-		System.out.println(map);
 		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
 			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()));
 		}//if
@@ -55,14 +62,20 @@ public class GenenralController {
 		return "forward:/general/reservation/reservationlist.do";
 	}
 	
-	//예약 삭제 부분
+	//예약 취소 클릭시
 	@RequestMapping("/general/receipt/ReservationCancel.do")
 	public String ReservationCancel(@RequestParam Map map,@ModelAttribute("USER_ID") String genid)throws Exception{
-		System.out.println(genid);
-		reservationService.reservationDelete(map);
+		reservationService.reservationCancel(map);
 		return "forward:/general/reservation/reservationlist.do";
 	}
 	
+	//접수 취소 클릭시
+	@RequestMapping("/general/receipt/ReceiptCancel.do")
+	public String ReceptCancel()throws Exception{
+		
+		
+		return "forward:/general/reservation/reservationlist.do";
+	}
 	
 	//진성 영역 끝
 	
