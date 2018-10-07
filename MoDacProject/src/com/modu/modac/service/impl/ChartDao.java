@@ -19,7 +19,10 @@ public class ChartDao implements ChartService {
 
 	@Override
 	public List<Map> dayList(Map map) {
-		return template.selectList("chartList");
+		
+		
+		return template.selectList("chartList",map);
+		
 	}
 
 }

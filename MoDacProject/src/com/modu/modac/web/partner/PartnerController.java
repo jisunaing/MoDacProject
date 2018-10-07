@@ -59,9 +59,6 @@ public class PartnerController {
 		return "/partner/reservation/HospitalView";
 	}	
 	
-	
-	
-	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
 	public String partnerInfo(@ModelAttribute("pid")String pid,Map map) throws Exception {
@@ -91,28 +88,6 @@ public class PartnerController {
 		
 		return "/partner/partnerQnA/partner_QnA_View";
 	}
-	
-	//관리자 문의 페이지
-	@RequestMapping("/partner/partnerQnA/admin_QnA.do")
-	public String admin_QnA_List() throws Exception {
-		
-		return "/partner/partnerQnA/admin_QnA_List";
-	}
-	
-	//관리자  문의 상세 페이지
-	@RequestMapping("/partner/partnerQnA/admin_QnA_View.do")
-	public String partner_QnA_View() throws Exception {
-		
-		return "/partner/partnerQnA/admin_QnA_View";
-	}
-	
-	//관리자에게 문의작성 페이지
-	@RequestMapping("/partner/partnerQnA/admin_QnA_Write.do")
-	public String partner_QnA_Write() throws Exception {
-		
-		return "/partner/partnerQnA/admin_QnA_Write";
-	}
-	
 
 	//병원 회원탈퇴 신청 페이지
 	@RequestMapping("/partner/withdrawal/partner_withdrawal.do")

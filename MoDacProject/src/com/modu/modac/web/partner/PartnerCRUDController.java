@@ -27,17 +27,17 @@ public class PartnerCRUDController {
 	
 	//진성 데이터 베이스를 위한 설정
 	//진성 영역 
-	/*
+	
 	@Resource(name="chartService")
 	private ChartService chartService;
 	//병원이동시 차트를 위한 변수선언-박진성
 	private int mon,tue,wed,thu,fri,dat,sun;
-	*/
+	
 	//진성영역 끝
 	
 	//서비스 주입]
 	@Resource(name="partnerService")
-	private PartnerService service ;
+	private PartnerService service;
 	
 	
 	//병원 제휴신청 처리용
@@ -77,13 +77,18 @@ public class PartnerCRUDController {
 				
 				
 				
+				
 				/* HomeController 부분에 병원쪽 부분이 있길래 가져옴
-				 * 내가 작업한 부분이 아니라 오류 떠서 주석처리 했음
+				  내가 작업한 부분이 아니라 오류 떠서 주석처리 했음*/
 				  
-				//병원 차트를 가져오기 위한 부분
+				//병원 차트를 가져오기 위한 부분 
+				 
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				Calendar cal = Calendar.getInstance();
 				List<Map> list;
+				
+				
+							
 				list = chartService.dayList(map);
 				for(int i=0;i<list.size();i++) {
 					cal.setTime(dateFormat.parse(list.get(i).toString()));
@@ -107,7 +112,7 @@ public class PartnerCRUDController {
 				model.addAttribute("fri", fri);
 				model.addAttribute("dat", dat);
 				model.addAttribute("sun", sun);
-				*/				
+							
 										
 			}
 			else {//비회원
@@ -137,12 +142,10 @@ public class PartnerCRUDController {
 	// 병원 정보 수정페이지
 	@RequestMapping("/partner/mypage/partnerInfoEdit.do")
 	public String partnerInfoEdit(@RequestParam Map map,Map maps,Model model) throws Exception {
-
 			
 			maps.put("partner",map);
 			
-			model.addAllAttributes(maps);			
-	
+			model.addAllAttributes(maps);				
 
 		return "/partner/mypage/partnerInfoEdit";
 	}

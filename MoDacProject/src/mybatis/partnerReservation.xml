@@ -6,7 +6,7 @@
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
 	<!-- 쿼리 작성 -->
 	<select id="chartList" resultType="java.util.Map" parameterType="java.util.Map">
-	SELECT RESDATE FROM RESERVATION WHERE=#{pid}
+	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
 	</select>
 	
 	

@@ -9,7 +9,9 @@
 	<!-- 자바빈별칭: 매퍼파일에서 환결설정 파일로 위치됨 -->
 	<typeAliases>
 		<typeAlias type="com.modu.modac.service.TestDto" alias="testDto"/>
-		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/>  
+		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>      
 		
 		
 	</typeAliases>
@@ -25,6 +27,8 @@
 	<mappers>
 		<mapper resource="mybatis/Test.xml" />
 		<mapper resource="mybatis/Partner.xml"/>
+		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
+		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
 		<mapper resource="mybatis/Reservation.xml" />
 		<mapper resource="mybatis/partnerReservation.xml" />
 		
