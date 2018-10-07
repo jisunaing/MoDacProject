@@ -23,5 +23,9 @@
 	<mappers>
 		<mapper resource="mybatis/Test.xml" />
 		<mapper resource="mybatis/Genmember.xml" />
+		<mapper resource="mybatis/Reservation.xml" />
+		<mapper resource="mybatis/partnerReservation.xml" />
 	</mappers>
+	
+	
 </configuration>
