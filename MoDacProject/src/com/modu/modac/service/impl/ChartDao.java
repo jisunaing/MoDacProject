@@ -1,26 +1,25 @@
 package com.modu.modac.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-import com.modu.modac.service.TestService;
+import com.modu.modac.service.ChartService;
 
-/* Repository어노테이션 */
 @Repository
-public class TestDao implements TestService {
-	/* SqlSessionTeplate선언 - 리소스 등록 */
+public class ChartDao implements ChartService {
+	
 	@Resource(name="template")
 	private SqlSessionTemplate template;
 
-	/* 메소드 오버라이딩 */
 	@Override
-	public int testdb() {
-		return template.selectOne("dbtest");
+	public List<Map> dayList(Map map) {
+		return template.selectList("chartList");
 	}
-
 
 }

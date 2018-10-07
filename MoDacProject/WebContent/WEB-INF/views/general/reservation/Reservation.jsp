@@ -59,9 +59,10 @@ table{
 <!-- 달력 라이브러리 시작-->
 	<script type="text/javascript">
     $(document).ready( function () {
-        $('#picker').dateTimePicker();
-        $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY'});
+        $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko'});
+
     })
+    
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
@@ -78,39 +79,18 @@ table{
 		});
 		$('label').css('minWidth', '90px');
 		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#name').val($('#names').html());
+			$('#recname').val($('#names').html());
 			$('#phone').val($('#phones').html());
 			$('#email').val($('#emails').html());
-		});
-		
-		//접수버튼을 클릭하였을 시[유효성 검사 후 이동]
-		$('#receipt').click(function(){
-			if($('#name').val()==""){
-				alert('아이디를 입력하여주세요');
-				$('#name').focus();
-			}
-			else if($('#phone').val()==""){
-				alert('전화번호를 입력하여주세요');
-				$('#phone').focus();
-			}
-			else if($('#email').val()==""){
-				alert('이메일를 입력하여주세요');
-				$('#email').focus();
-			}
-			else if($('#contens').val()==""){
-				alert('상담내용을 입력하여주세요');
-				$('#contens').focus();
-			}
-			else if(!$('input:checkbox[name="checkbox_name"]').is(":checked")){
-				alert('개인정보 수집을 동의하여주세요');
-			}
-			else{
-				//유효성 검사 완료 후 데이터 베이스에 집어 넣은 후 예약 목록으로 이동
-				location.href="<c:url value='/general/receipt/ReceiptListResult.do'/>";
-			}
+			console.log($('#picker').val());
+			console.log($('#picker').html());
+			console.log($('#result').val());
+			console.log($('#result').html());
+			
 		});
 		
 		
+
 	});
 	</script>
 <div class="container">
@@ -134,7 +114,7 @@ table{
 					</tr>
 					<tr id="nameUrl">
 						<td id="names">홍길동</td>
-						<td id="phones">010-7777-7777</td>
+						<td id="phones">01077777777</td>
 						<td id="emails">abcd1234@naver.com</td>
 						<td id="birthdays">1967-08-30</td>
 					</tr>
@@ -148,13 +128,14 @@ table{
 			</div>
 		</div>
 		<br /> <br />
-		<form class="form-horizontal">
-		<input type="hidden" name="Reservation"/>
+		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do?date=${date}'/>">
+		<input type="hidden" id="genid" value="${genid}">
+		<input type="hidden" id="pid" value="${id}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="name" name="name">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="recname" name="recname">
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -171,9 +152,9 @@ table{
 				<label for="inputPassword" class="col-sm-2 control-label">예약시간</label>
 				<div class="col-sm-10">
 					<div class="size3">
-						<div id="picker">
-							<input type="hidden" id="result" value="" />
-						</div>
+						<div id="picker"></div>
+						<input type="hidden"  id="result" name="resdate"/>
+						
 					</div>
 				</div>
 			</div>
@@ -194,11 +175,12 @@ table{
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
+			<input type="checkbox" name="checkbox_name" />
+			<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
+			<button type="submit" class="btn btn-default" id="receipt">예약</button>
 		</form>
 
-		<input type="checkbox" name="checkbox_name" />
-		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
-		<button type="button" class="btn btn-default" id="receipt">예약</button>
+
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

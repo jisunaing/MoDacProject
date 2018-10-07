@@ -24,8 +24,15 @@
 	-->
 	<mappers>
 		<mapper resource="mybatis/Test.xml" />
+<<<<<<< HEAD
 		<mapper resource="mybatis/MapHospital.xml" />
 		<mapper resource="mybatis/MapPharmacy.xml" />
 		<mapper resource="mybatis/MapNightPharmacy.xml" />
+=======
+		<mapper resource="mybatis/Reservation.xml" />
+		<mapper resource="mybatis/partnerReservation.xml" />
+>>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
 	</mappers>
+	
+	
 </configuration>
