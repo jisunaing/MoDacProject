@@ -19,8 +19,6 @@ import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
 import com.modu.modac.service.GenmemberDto;
 
-import javafx.scene.control.Alert;
-
 @Controller
 public class HomeController {
 	
