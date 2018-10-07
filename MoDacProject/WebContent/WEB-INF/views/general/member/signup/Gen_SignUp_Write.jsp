@@ -31,39 +31,43 @@
 			minlength:최소수		
 		*/
 		//1]input type="submit"버튼 일때
-		$('#frm').validate({rules:{
-			name:'required',
-			id:{required:true,minlength:3},
+		$('.frm').validate({rules:{
+			genid:{required:true,minlength:3},
 		    pwd:{required:true,minlength:5},
 		    pwd2:{required:true,minlength:5,equalTo:'#pwd'},
-		    inter:{required:true,minlength:2},
-		    sex:'required',
-		    sel:'required',
-		    file:'required',
-		    self:'required'
-		    
+		    genname:'required',
+		    year:{required:true,minlength:4},
+		    month:'required',
+		    day:'required',
+		   	gen:'required',
+		    email:{required:true,minlength:3},
+		    phone:{required:true,minlength:5},
+		    addr:'required'
 		},messages:{
-			name:'이름을 입력하세요',
-			id:{required:'아이디를 입력하세요',minlength:'아이디는 최소 3자이상 입력..'},
-			pwd:{required:'비번을 입력하세요',minlength:'비번는 최소 5자이상 입력..'},
-			pwd2:{required:'비번확인을 입력하세요',minlength:'비번는 최소 5자이상 입력..',equalTo:'비번이 일치하지 않아요'},
-			inter:{required:'관심사항을 선택하세요',minlength:'최소 2개이상 선택하세요'},
-			sex:{required:'성별을 선택하세요'},
-			sel:{required:'학력을 선택하세요'},
-			file:{required:'파일을 첨부하세요'},
-			self:{required:'자기소개를 입력하세요'}
+			genid:{required:'아이디를 입력하세요',minlength:'아이디는 최소 3자이상 입력..'},
+		    pwd:{required:'비번을 입력하세요',minlength:'비번는 최소 5자이상 입력..'},
+		    pwd2:{required:'비번확인을 입력하세요',minlength:'비번는 최소 5자이상 입력..',equalTo:'비번이 일치하지 않아요'},
+		    genname:'이름을 입력하세요',
+		    year:{required:'태어난 년도를 입력하세요',minlength:'4자리를 입력하세요'},
+		    month:{required:'태어난 월을 입력하세요'},
+		    day:{required:'태어난 일을 입력하세요'},
+		   	gen:{required:'성별을 선택하세요'},
+		    email:{required:'이메일을 입력하세요',contains('@'):'올바른 이메일 주소를 입력하세요'},
+		    phone:'전화번호를 입력하세요',
+		    addr:'주소를 입력하세요'
+		    
 		}});
 		
 		//2]input type="submit"버튼이 아닐때
 		//Step1] $(폼객체 선택자).validate()적용
 		//Step2] $(폼객체 선택자).valid()호출 
 		//       true반환시 $(폼객체 선택자).submit()호출한다
-		$(':button:last').click(function(){
-			if($('#frm').valid()){
-				$('#frm').submit();
+		/* $('#submitbutton').click(function(){
+			if($('.frm').valid()){
+				$('.frm').submit();
 			}
 			
-		});
+		}); */
 		
 	});
 </script>
@@ -94,7 +98,7 @@ form{
 			<hr>
 		</div>
 		<br/>
-	   		<form class="form-horizontal" id="frm" action="<c:url value='/general/mypage/personalinfo.do'/>">
+	   		<form class="form-horizontal" id="frm" action="<c:url value='/general/member/signup/genSignupProcess.do'/>" method="post">
 				<div class="form-group center-block">
 					<label class="col-sm-3 control-label">아이디</label>
 					<div class="col-sm-4">
@@ -105,31 +109,31 @@ form{
 				<div class="form-group">
 					<label for="pwd" class="col-sm-3 control-label">비밀번호</label>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" id="pwd"
+						<input type="password" class="form-control" id="pwd" name="pwd"
 							placeholder="비밀번호를 입력하세요">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="pwd2" class="col-sm-3 control-label">비밀번호 확인</label>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" id="pwd2"
+						<input type="password" class="form-control" id="pwd2" name="pwd2"
 							placeholder="비밀번호를 다시 입력하세요">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="col-sm-3 control-label">이름</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="name"
+						<input type="text" class="form-control" id="name" name="genname"
 							placeholder="이름을 입력하세요">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="birthdate" class="col-sm-3 control-label">생년월일</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="year" placeholder="년(4자)">
+						<input type="text" class="form-control" id="year" name="year" placeholder="년(4자)">
 					</div>
 					<div class="col-sm-2">
-					    <select class="form-control" >
+					    <select class="form-control" name="month">
 						  <option>월</option>
 						  <option>01</option>
 						  <option>02</option>
@@ -139,7 +143,7 @@ form{
 						</select>
 					</div>
 					<div class="col-sm-2">
-					    <select class="form-control">
+					    <select class="form-control" name="day">
 						  <option>일</option>
 						  <option>01</option>
 						  <option>02</option>
@@ -154,28 +158,28 @@ form{
 					<label for="use" class="col-sm-3 control-label">성별</label>
 					&nbsp;&nbsp;&nbsp;
 					<label class="radio-inline"> 
-						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">여자
+						<input type="radio" name="gender" id="inlineRadio1" value="F">여자
 					</label> 
 					<label class="radio-inline"> 
-						<input type="radio"	name="inlineRadioOptions" id="inlineRadio2" value="option2">남자
+						<input type="radio"	name="gender" id="inlineRadio2" value="M">남자
 					</label>
 				</div>
 				<div class="form-group">
 					<label for="email" class="col-sm-3 control-label">이메일</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="email" placeholder="modacS2@modu.com">
+						<input type="text" class="form-control" id="email" name="email" placeholder="modacS2@modu.com">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="tel" class="col-sm-3 control-label">전화번호</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="tel" placeholder="01012345678">
+						<input type="text" class="form-control" id="tel" name="phone" placeholder="01012345678">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="addr" class="col-sm-3 control-label">주소</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="addr"placeholder="주소를 입력하세요">
+						<input type="text" class="form-control" id="addr" name="addr" placeholder="주소를 입력하세요">
 					</div>
 				</div>
 				<div class="form-group">
@@ -190,7 +194,7 @@ form{
 				</div><br/>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-10">
-						<button type="submit" class="btn btn-primary">회원가입하기</button>
+						<button type="submit" class="btn btn-primary" name="submitbutton">회원가입하기</button>
 					</div>
 				</div>
 			</form>

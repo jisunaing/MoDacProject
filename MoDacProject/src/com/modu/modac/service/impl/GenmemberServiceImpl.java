@@ -12,12 +12,13 @@ import com.modu.modac.service.GenmemberDto;
 
 @Service("generalService")
 public class GenmemberServiceImpl implements GeneralService{
+	//DAO계열 클래스 주입받기]
 	@Resource(name="genmemberDao")
 	private GenmemberDao dao;
 	
 	@Override
 	public boolean isMember(Map map) {
-		return false;
+		return dao.isMember(map);
 	}
 
 	@Override
@@ -51,6 +52,23 @@ public class GenmemberServiceImpl implements GeneralService{
 	}
 	public void update1() {
 		
+	}
+
+	@Override
+	public int insert(GenmemberDto dto) {
+		return dao.insert(dto);
+	}
+
+	@Override
+	public int delete(GenmemberDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(GenmemberDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

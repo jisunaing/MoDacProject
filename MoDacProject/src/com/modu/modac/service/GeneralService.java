@@ -20,4 +20,7 @@ public interface GeneralService {
 	int insert(Map map);
 	int update(Map map);
 	
+	int insert(GenmemberDto dto);
+	int delete(GenmemberDto dto);
+	int update(GenmemberDto dto);
 }

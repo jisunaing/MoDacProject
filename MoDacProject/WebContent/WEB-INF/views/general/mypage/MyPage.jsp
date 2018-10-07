@@ -57,7 +57,7 @@ $(function(){
 		
 		<div class="top" style="text-align: center">
 			<h1>
-				${USER_ID}님의 <small>MyPage</small>
+				${genid}님의 <small>MyPage</small>
 			</h1>
 			<br/>
 			<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>

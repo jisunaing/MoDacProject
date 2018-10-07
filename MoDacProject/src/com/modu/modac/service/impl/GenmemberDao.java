@@ -18,7 +18,7 @@ public class GenmemberDao implements GeneralService{
 
 	@Override
 	public boolean isMember(Map map) {
-		return (Integer)template.selectOne("genmmemberIsMember",map)==0?false:true;
+		return (Integer)template.selectOne("genmmemberIsMember",map)==1?true:false;
 	}
 
 	@Override
@@ -47,13 +47,29 @@ public class GenmemberDao implements GeneralService{
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int update(Map map) {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insert(GenmemberDto dto) {
+		// TODO Auto-generated method stub
+		return template.insert("GenmemberInsert",dto);
+	}
+
+	@Override
+	public int delete(GenmemberDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(GenmemberDto dto) {
 		return 0;
 	}
 	
