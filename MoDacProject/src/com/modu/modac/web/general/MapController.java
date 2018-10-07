@@ -1,11 +1,15 @@
 package com.modu.modac.web.general;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.modu.modac.service.MapPharmacyDto;
 import com.modu.modac.service.MapPharmacyService;
+
 
 @Controller
 public class MapController {
@@ -35,9 +40,6 @@ public class MapController {
 		String phname = map.get("phname").toString();
 		String pharmacy = map.get("pharmacy").toString();
 		
-		
-		
-		
 		model.addAttribute("phname", phname);
 		model.addAttribute("pharmacy", pharmacy);
 		
@@ -49,12 +51,28 @@ public class MapController {
 	@RequestMapping("/general/pharm/AllPharm.do")
 	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
 		
-		String pharmacy = map.get("pharmacy").toString();
-		
 		List<MapPharmacyDto> records = service.selectList(map);
-		System.out.println("레코드 수 : "+records.size());
 		
-		model.addAttribute("pharmacy",pharmacy);
+		List<Map> collections = new Vector<Map>();
+		for(MapPharmacyDto dto : records) {
+			Map record = new HashMap();
+			record.put("no", dto.getPhno());
+			record.put("name", dto.getPhname());
+			record.put("addr", dto.getPhaddr());
+			record.put("phone", dto.getPhphone());
+			record.put("mon", dto.getPhmon());
+			record.put("tue", dto.getPhmon());
+			record.put("wed", dto.getPhmon());
+			record.put("thu", dto.getPhmon());
+			record.put("fri", dto.getPhmon());
+			record.put("sat", dto.getPhmon());
+			record.put("sun", dto.getPhmon());
+			record.put("holiday", dto.getPhmon());
+			collections.add(record);
+		}
+		
+		model.addAttribute("records", JSONArray.toJSONString(collections));
+		model.addAttribute("size",records.size());
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}

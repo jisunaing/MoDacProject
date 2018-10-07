@@ -52,4 +52,9 @@ public class MapPharmacyServiceImpl implements MapPharmacyService {
 		return 0;
 	}
 
+	@Override
+	public void close() {
+		
+	}
+
 }

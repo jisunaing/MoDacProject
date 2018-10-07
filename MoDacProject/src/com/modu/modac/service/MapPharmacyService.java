@@ -19,4 +19,6 @@ public interface MapPharmacyService {
 	int delete(Map map);
 	int insert(Map map);
 	int update(Map map);
+	
+	void close();
 }
