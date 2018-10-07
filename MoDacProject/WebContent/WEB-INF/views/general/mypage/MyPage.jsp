@@ -57,7 +57,7 @@ $(function(){
 		
 		<div class="top" style="text-align: center">
 			<h1>
-				${USER_ID}님의 <small>MyPage</small>
+				${genid}님의 <small>MyPage</small>
 			</h1>
 			<br/>
 			<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>
@@ -109,7 +109,6 @@ $(function(){
 
 		</div>
 		<!-- 가족정보관리 끝-->
-		
 		<!-- 접수/예약 내역 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution"
@@ -132,8 +131,6 @@ $(function(){
 								<i class="far fa-hospital"></i> 진료내역
 							</a>
 						</form>
-						
-						
 						
 					</div>
 				</div>

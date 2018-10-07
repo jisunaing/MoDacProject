@@ -279,7 +279,17 @@ textarea {
     window.parent.postMessage("resize", "*");
   }
 </script>
-
+<!--로그인 정보 틀렸을때  -->
+<script>
+/* $(function(){
+	String msg = ${loginError};
+	if(msg!=null){
+		$('.genmemberlogin').html(${loginError});
+	}
+});
+ */
+	
+</script>
 
 </head>
 
@@ -300,19 +310,19 @@ textarea {
 		<!-- Sign Up for Free -->
 		<div id="signup">
 			<h1>환영 합니다!!</h1>
-			<small>이곳은  <span id="sp1">일반회원</span> 전용 로그인 입니다</small>
+			<small id="genmemberlogin">이곳은  <span id="sp1">일반회원</span> 전용 로그인 입니다</small>
 			<form action="<c:url value='/home/loginProcess.do'/>" method="post">
 				
 				<div class="field-wrap">
 					<label for="email2"> 아이디 <span class="req">*</span>
 					</label>
-					<input name="id" type="text" id="email2" required autocomplete="off">
+					<input name="genid" type="text" id="email2" required autocomplete="off">
 				</div>
 				
 				<div class="field-wrap">
 					<label for="pwd2"> 비밀번호 <span class="req">*</span>
 					</label>
-					<input name="pwd"type="password" id="pwd2" required autocomplete="off">
+					<input name="pwd" type="password" id="pwd2" required autocomplete="off">
 				</div>
 				
 				<div >
