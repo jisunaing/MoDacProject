@@ -3,36 +3,50 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 일반사용자 예약 목록 페이지입니다.-->
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
-<link rel="stylesheet" href="<c:url value='/css/bootstrap-table-expandable.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/css/bootstrap-table-expandable.css'/>">
 <script src="<c:url value='/js/bootstrap-table-expandable.js'/>"></script>
 
 <style>
 .row {
- margin: 0 auto;
- text-align: center;
+	margin: 0 auto;
+	text-align: center;
 }
 
+#dv {
+	padding-top: 50px
+}
+
+#table1 {
+	margin-top: 3%;
+	margin-left: 7%;
+	width: 90%
+}
 /*테이블 센터를 위한 css 시작*/
 table th {
- text-align: center;
+	text-align: center;
 }
-table{
+
+table {
 	min-width: 500px;
 }
 
 /*테이블 센터를 위한 css 끝*/
 </style>
-	<!-- body 시작 -->
-	<!-- 가운데 정렬을 위한 DIV -->
-	<div class="container">
-		<div class="row">
-			<!-- 가운데 정렬을 위한 DIV -->
-			<!-- 가운데 정렬 시작 -->
-			<!-- 부트스트랩 점보트론 시작 -->
-			<div class="jumbotron">
-				<h2 class="display-3">예약 및 접수 목록 페이지</h2>
-			</div>
-			<!-- 부트스트랩 점보트론 끝-->
+<!-- body 시작 -->
+<!-- 가운데 정렬을 위한 DIV -->
+<div class="container" id="dv">
+<!-- 부트스트랩 점보트론 시작 -->
+	<div class="jumbotron" style="width: 100%;text-align: center">
+		<h2 class="display-3">예약 및 접수 목록 페이지</h2>
+	</div>
+	<!-- 부트스트랩 점보트론 끝-->
+	<div class="main_column">
+		<div class="text_light">
+			<div class="row">
+				<!-- 가운데 정렬을 위한 DIV -->
+				<!-- 가운데 정렬 시작 -->
+				
 			<!-- 테이블 시작 -->
 			<table class="table table-hover table-expandable">
 				<thead>
@@ -120,7 +134,13 @@ table{
 			<!-- 가운데 정렬을 위한 DIV -->
 		</div>
 	</div>
-	<!-- 가운데 정렬을 위한 DIV -->
+	<!-- 사이드 바 -->
+	
+	<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp"%>
+	
+	<!-- 사이드바 끝 -->
+</div>
+<!-- 가운데 정렬을 위한 DIV -->
 
-	<!-- body 끝 -->
+<!-- body 끝 -->
 
