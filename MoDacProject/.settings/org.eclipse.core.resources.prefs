@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/com/modu/modac=UTF-8
+encoding//src/com/modu/modac/service=UTF-8
+encoding//src/com/modu/modac/service/impl/PagingUtil.java=UTF-8
+encoding//src/com/modu/modac/service/package-info.java=UTF-8
 encoding//src/com/modu/modac/web=UTF-8
 encoding//src/com/modu/modac/web/general=UTF-8
