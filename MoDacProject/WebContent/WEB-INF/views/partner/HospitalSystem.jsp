@@ -58,16 +58,6 @@
       <!-- 바디 -->
       <div class="content-wrapper">
          <div id="piechart_3d"></div>
-         
-                  
-         <!-- 아래부분 필요없으면 삭제해도 상관없음 그냥 세션아이디 확인용  -->
-         <c:if test="${!empty test}">
-         
-         <h2> 현재 세션 아이디 : ${sessionScope.pid} 입니다</h2>
-         </c:if>
-		<!-- 여기까지  -->
-
-         
       </div>
       <!-- 바디 -->
       <!-- 퓨터-->
