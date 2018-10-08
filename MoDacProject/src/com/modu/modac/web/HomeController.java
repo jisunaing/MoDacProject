@@ -4,15 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
 import com.modu.modac.service.GenmemberDto;
@@ -60,6 +57,7 @@ public class HomeController {
 		
 		return "general/member/signup/Gen_SignUp_Write.tiles";
 	}
+
 	//일반 회원가입 신청 
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
 	public String genSignupProcess(@RequestParam Map map, Model model,GenmemberDto dto) throws Exception {
@@ -79,6 +77,16 @@ public class HomeController {
 		
 		return "forward:/general/mypage/personalinfo.do";
 	}
+
+	
+	//제휴 회원가입 신청 폼
+	@RequestMapping("/general/member/signup/partnerJoin.do")
+	public String partnerJoin() throws Exception {
+		return "general/member/signup/Join_P.tiles";
+	}
+	
+
+	
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginProcess.do")
 	public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
@@ -98,53 +106,24 @@ public class HomeController {
 				model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
 				return "forward:/home/loginmain.do";
 			}
-		}
-		if(map.get("PARTNER")!=null) {
-			System.out.println("병원사용자로 들어옴");
-			session.setAttribute("PARTNER_ID", "PARTNER");
-			//여기 맵에 ! 반드시 세션[병원아이디]를 넣어주세요
-			map.put("pid", "uesr");
-			//병원 차트를 가져오기 위한 부분
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			Calendar cal = Calendar.getInstance();
-			List<Map> list;
-			list = chartService.dayList(map);
-			System.out.println(list);
-			if(list!=null) {
-				for(int i=0;i<list.size();i++) {
-					cal.setTime(dateFormat.parse(list.get(i).toString()));
-					switch (cal.get(Calendar.DAY_OF_WEEK)) {
-					case 1:	sun++;	break;
-					case 2:	mon++;	break;
-					case 3:	tue++;	break;
-					case 4:	wed++;	break;
-					case 5:	thu++;	break;
-					case 6:	fri++;	break;
-					case 7:	dat++;	break;
-					}//switch
-				}//for
-			}//if
-			//병원 차트를 가져오기 위한 부분
-			//병원 차트 요일별 저장하기
-			model.addAttribute("mon", mon);
-			model.addAttribute("tue", tue);
-			model.addAttribute("wed", wed);
-			model.addAttribute("thu", thu);
-			model.addAttribute("fri", fri);
-			model.addAttribute("dat", dat);
-			model.addAttribute("sun", sun);
-			
-			return "/partner/HospitalSystem";
-		}
-		return null;
-		
-	}
+		}//if
+
+		return "/index";
+
+	}///loginProcess
+	
+	
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginout.do")
 	public String logoutProcess(HttpSession session) throws Exception {
+
 		session.removeAttribute("genid");
+
+		session.removeAttribute("USER_ID");
+		//session.removeAttribute("PARTNER_ID");  제휴회원 로그인 처리 끝 임시로 사용 안해도됨 추후에 이 부분 삭제할꺼임
+
 		return "/index";
-	}
+	}//logoutProcess
 
 	
 //	@RequestMapping("/general/pharm/pharmMap.do")

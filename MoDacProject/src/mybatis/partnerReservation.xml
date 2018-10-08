@@ -5,7 +5,8 @@
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
 	<!-- 쿼리 작성 -->
-	<select id="chartList" parameterType="java.util.Map" resultType="java.util.Map">
+
+	<select id="chartList" resultType="java.util.Map" parameterType="java.lang.String">
 	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
 	</select>
 	

@@ -68,31 +68,33 @@ margin: 150px auto;
 
 <div id="contain" class="panel panel-default" style="width: 70%;">
 	<br/><br/>
-	<h2 style="text-align: center">관리자에게 문의하기</h2><br/>
+	<h2 style="text-align: center">문의 수정</h2><br/>
 	<p style="text-align: center;">
 	관리자에게 문의가능한 페이지 입니다 언제든지 문의하세요~!
 	</p><br/>
 	<hr id="hr"><br/><br/>
 	<div class="row">
-		<form class="form-horizontal" method="post" action="<c:url value='/partner/partnerQnA/admin_QnA_WriteOK.do'/>">
+		<form class="form-horizontal" method="post" action="<c:url value='/partner/partnerQnA/admin_QnA_Edit.do'/>">
+		
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			<input type="hidden" name="no" value="${record.no}" />
 
 			<div class="form-group">
 				<label for="title" class="col-sm-2  control-label">제목</label>
 				<div class="col-sm-7">
-					<input type="text" class="form-control" id="title" name="title"
-						placeholder="제목을 입력하세요">
+					<input type="text" class="form-control" id="title" name="title" value="${record.title}">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="content" class="col-sm-2  control-label">내용</label>
 				<div class="col-sm-7">
-					<textarea rows="10" class="form-control" id="content" name="content"></textarea>
+					<textarea rows="10" class="form-control" id="content" name="content">${record.content}</textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-5 col-sm-10">
-					<button type="submit" class="btn btn-primary">등록</button>
+					<button type="submit" class="btn btn-primary">수정 완료</button>
 				</div>
 			</div>
 		</form>
@@ -103,22 +105,6 @@ margin: 150px auto;
 </div><!-- container -->
 
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			
 		</div>
 		<!-- 여기까지가 바디로 추정됨 -->
 		<!-- 여기부터 퓨터로 추정됨 -->
