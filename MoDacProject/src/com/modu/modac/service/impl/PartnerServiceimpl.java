@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.PartnerService;
 import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReservationDto;
 
 @Service("partnerService")
 public class PartnerServiceimpl implements PartnerService {
@@ -39,6 +40,21 @@ public class PartnerServiceimpl implements PartnerService {
 	@Override
 	public ReceptionDto hospitalReceiptView(Map map) {
 		return dao.hospitalReceiptView(map);
+	}
+
+	@Override
+	public ReservationDto hospitalReservationView(Map map) {
+		return dao.hospitalReservationView(map);
+	}
+
+	@Override
+	public ReceptionDto hospitalReceiptHistoryView(Map map) {
+		return dao.hospitalReceiptHistoryView(map);
+	}
+
+	@Override
+	public ReservationDto hospitalReservationHistoryView(Map map) {
+		return dao.hospitalReservationHistoryView(map);
 	}
 
 }

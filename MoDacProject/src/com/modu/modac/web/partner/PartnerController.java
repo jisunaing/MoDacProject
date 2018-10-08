@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.PartnerService;
 import com.modu.modac.service.ReceptionDto;
-import com.sun.org.apache.xml.internal.dtm.DTMDOMException;
+import com.modu.modac.service.ReservationDto;
 
 
 @SessionAttributes("PARTNER_ID")
@@ -120,37 +120,45 @@ public class PartnerController {
 	//병원 접수 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptViewMove.do")
 	public String hospitalReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
-		
 		model.addAttribute("receipt", "yes");
 		ReceptionDto dto;
-		
 		dto = partnerService.hospitalReceiptView(map);
-		
 		dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
 		model.addAttribute("record", dto);
-		
-		
 		return "/partner/reservation/HospitalListView";
 	}
+	
 	//병원 접수 지낸내역 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
-	public String hospitalHistoryReceiptViewPage() throws Exception {
-		return "/partner/reservation/HospitalView";
+	public String hospitalHistoryReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
+		model.addAttribute("receiptHistory", "yes");
+		ReceptionDto dto;
+		dto = partnerService.hospitalReceiptHistoryView(map);
+		dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
+		model.addAttribute("record", dto);
+		return "/partner/reservation/HospitalHistoryListView";
 	}
+	
 	//병원 예약 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReservationViewMove.do")
-	public String hospitalReservationViewPage() throws Exception {
+	public String hospitalReservationViewPage(@RequestParam Map map, Model model) throws Exception {
+		model.addAttribute("reservation", "yes");
+		ReservationDto dto;
+		dto = partnerService.hospitalReservationView(map);
+		dto.setRescontens(dto.getRescontens().replace("\r\n","<br/>"));
+		model.addAttribute("record", dto);
 		return "/partner/reservation/HospitalListView";
 	}
+	
 	//병원 예약 지난애역 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReservationHistoryViewMove.do")
-	public String hospitalReservationHistoryViewPage() throws Exception {
-		return "/partner/reservation/HospitalView";
+	public String hospitalReservationHistoryViewPage(@RequestParam Map map, Model model) throws Exception {
+		model.addAttribute("reservationHistory", "yes");
+		ReservationDto dto;
+		dto = partnerService.hospitalReservationHistoryView(map);
+		model.addAttribute("record", dto);
+		return "/partner/reservation/HospitalHistoryListView";
 	}
-	
-	
-	
-	
 	
 	//로그아웃 처리
 	@RequestMapping("/partner/hospital/Logout.do")

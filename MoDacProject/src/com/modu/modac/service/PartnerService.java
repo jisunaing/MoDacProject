@@ -26,6 +26,10 @@ public interface PartnerService {
 	List<Map> hospitalreceiptHistory(Map map);
 	
 	ReceptionDto hospitalReceiptView(Map map);
+	ReservationDto hospitalReservationView(Map map);
+	
+	ReceptionDto hospitalReceiptHistoryView(Map map);
+	ReservationDto hospitalReservationHistoryView(Map map);
 	
 	
 }

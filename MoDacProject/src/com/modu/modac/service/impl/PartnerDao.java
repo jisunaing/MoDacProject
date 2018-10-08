@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.PartnerService;
 import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReservationDto;
 
 @Repository
 public class PartnerDao implements PartnerService {
@@ -40,6 +41,21 @@ public class PartnerDao implements PartnerService {
 	@Override
 	public ReceptionDto hospitalReceiptView(Map map) {
 		return template.selectOne("hospitalReceiptView",map);
+	}
+
+	@Override
+	public ReservationDto hospitalReservationView(Map map) {
+		return template.selectOne("hospitalReservationView",map);
+	}
+
+	@Override
+	public ReceptionDto hospitalReceiptHistoryView(Map map) {
+		return template.selectOne("hospitalReceiptHistoryView", map);
+	}
+
+	@Override
+	public ReservationDto hospitalReservationHistoryView(Map map) {
+		return template.selectOne("hospitalReservationHistoryView", map);
 	}
 
 }

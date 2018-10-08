@@ -82,62 +82,17 @@ public class HomeController {
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginProcess.do")
 	public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-		//System.out.println(map.get("GENERAL").toString());
-		//System.out.println(map.get("PARTNER").toString());
-		
-		if(map.get("GENERAL")!=null) {
-			System.out.println("일반사용자로 들어옴");
-			//일반사용자 로그인 처리 부분 시작
-			boolean ismember = generalService.isMember(map);
-			if(ismember) {
-				model.addAllAttributes(map);
-				session.setAttribute("genid", map.get("genid"));
-				return "/index";
-			}
-			else {
-				model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
-				return "forward:/home/loginmain.do";
-			}
+		//일반사용자 로그인 처리 부분 시작
+		boolean ismember = generalService.isMember(map);
+		if(ismember) {
+			model.addAllAttributes(map);
+			session.setAttribute("genid", map.get("genid"));
+			return "/index";
 		}
-		if(map.get("PARTNER")!=null) {
-			System.out.println("병원사용자로 들어옴");
-			session.setAttribute("PARTNER_ID", "PARTNER");
-			//여기 맵에 ! 반드시 세션[병원아이디]를 넣어주세요
-			map.put("pid", "uesr");
-			//병원 차트를 가져오기 위한 부분
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			Calendar cal = Calendar.getInstance();
-			List<Map> list;
-			list = chartService.dayList(map);
-			System.out.println(list);
-			if(list!=null) {
-				for(int i=0;i<list.size();i++) {
-					cal.setTime(dateFormat.parse(list.get(i).toString()));
-					switch (cal.get(Calendar.DAY_OF_WEEK)) {
-					case 1:	sun++;	break;
-					case 2:	mon++;	break;
-					case 3:	tue++;	break;
-					case 4:	wed++;	break;
-					case 5:	thu++;	break;
-					case 6:	fri++;	break;
-					case 7:	dat++;	break;
-					}//switch
-				}//for
-			}//if
-			//병원 차트를 가져오기 위한 부분
-			//병원 차트 요일별 저장하기
-			model.addAttribute("mon", mon);
-			model.addAttribute("tue", tue);
-			model.addAttribute("wed", wed);
-			model.addAttribute("thu", thu);
-			model.addAttribute("fri", fri);
-			model.addAttribute("dat", dat);
-			model.addAttribute("sun", sun);
-			
-			return "/partner/HospitalSystem";
+		else {
+			model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
+			return "forward:/home/loginmain.do";
 		}
-		return null;
-		
 	}
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginout.do")

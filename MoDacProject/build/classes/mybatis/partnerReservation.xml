@@ -34,4 +34,19 @@
 	SELECT RECNAME, PHONE, EMAIL, RECDATE, RECCONTENTS FROM RECEPTION WHERE RECNUM=${recnum}
 	</select>
 	
+	<!-- 예약 상세내역 -->
+	<select id="hospitalReservationView" parameterType="java.util.Map" resultType="reservationDto">
+	SELECT RESNAME, PHONE, EMAIL, RESDATE, RESCONTENTS FROM RESERVATION WHERE RESNUM=${resnum}
+	</select>	
+
+	<!-- 접수했던 상세내역 -->
+	<select id="hospitalReceiptHistoryView" parameterType="java.util.Map" resultType="receptionDto">
+	SELECT RECNAME, PHONE, EMAIL, RECDATE, RECCONTENTS FROM RECEPTION WHERE RECNUM=${recnum} AND NOT RECACCEPT = '접수신청'
+	</select>
+	
+	<!-- 예약했던 상세내역 -->
+	<select id="hospitalReservationHistoryView" parameterType="java.util.Map" resultType="reservationDto">
+	SELECT RESNAME, PHONE, EMAIL, RESDATE, RESCONTENTS FROM RESERVATION WHERE RESNUM=${resnum} AND NOT RESACCEPT = '예약신청'
+	</select>		
+	
 </mapper>
