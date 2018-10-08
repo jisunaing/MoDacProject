@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MapController {
 	
 
-	// [과목 선택 페이지로 이동]
+	// [과목 선택 페이지로 이동 ]
 	@RequestMapping("/general/hospital/SelectSubject.do")
 	public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
 		

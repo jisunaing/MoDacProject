@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.MapPharmacy">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="MapPharmacyDtoResult" type="MapPharmacyDto">
+		<result property="phno" column="phno"/>
+		<result property="phname" column="phname"/>
+		<result property="phaddr" column="phaddr"/>
+		<result property="pholiday" column="pholiday"/>
+		<result property="phphone" column="phphone"/>
+		<result property="phmon" column="phmon"/>
+		<result property="phtue" column="phtue"/>
+		<result property="phwed" column="phwed"/>
+		<result property="phthu" column="phthu"/>
+		<result property="phfri" column="phfri"/>
+		<result property="phsat" column="phsat"/>
+		<result property="phsun" column="phsun"/>
+	</resultMap>
+	
+	<!-- 쿼리 작성 -->
+	<select id="MapPharmacyList" parameterType="java.util.Map" resultType="MapPharmacyDto">
+		SELECT * FROM phramacyc WHERE phaddr LIKE '%' || #{address} || '%' 
+	</select>
+</mapper>

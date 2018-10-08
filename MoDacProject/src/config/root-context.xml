@@ -5,6 +5,31 @@
 	<!-- 
 		각 디스패처 서블릿에 의해 생성된
 		WebApplicationContext영역(컨텍스트 영역)에서 공통으로 사용할 빈 등록
-	 -->
+	-->
+	 
+	<!-- DataSource using Spring JNDI -->
+	<bean id="datasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/mdadmin"></property>
+		<!-- resourceRef등록 - was의 루트 디렉토리 생략가능 -->
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
 	
+	<!-- 마이바티스 지원하는 빈 -->
+	
+	<!-- 1.SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 데이터소스:db연결정보 -->
+		<property name="dataSource" ref="datasource"/>
+		<!-- 환경설정파일위치 -->
+		<property name="configLocation" value="classpath:mybatis/configuration.xml"/>
+		
+	</bean>
+	
+	<!-- 2.SqlSessionTemplate -->
+	<bean id="template" class="org.mybatis.spring.SqlSessionTemplate">
+		<!-- 생성자인젝션 이용 - "sqlSessionFactory주입 -->
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
 </beans>
