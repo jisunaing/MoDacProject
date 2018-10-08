@@ -85,7 +85,7 @@ public class PartnerCRUDController {
 				 
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				Calendar cal = Calendar.getInstance();
-				List<Map> list;
+				List<String> list;
 				
 				
 							

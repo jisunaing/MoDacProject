@@ -18,7 +18,7 @@ public class ChartDao implements ChartService {
 	private SqlSessionTemplate template;
 
 	@Override
-	public List<Map> dayList(Map map) {
+	public List<String> dayList(Map map) {
 		
 		
 		return template.selectList("chartList",map);
