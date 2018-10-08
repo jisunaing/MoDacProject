@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.MapHospitalDto;
+import com.modu.modac.service.MapHospitalService;
 
 @Repository
 public class MapHospitalDao implements MapHospitalService {

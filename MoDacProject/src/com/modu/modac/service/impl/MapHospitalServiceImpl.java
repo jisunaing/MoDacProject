@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.MapHospitalDto;
+import com.modu.modac.service.MapHospitalService;
 
 @Service("mapHospitalService")
 public class MapHospitalServiceImpl implements MapHospitalService {

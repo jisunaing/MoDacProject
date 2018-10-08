@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapPharmacyDto;
+import com.modu.modac.service.MapPharmacyService;
 
 @Repository
 public class MapPharmacyDao implements MapPharmacyService {
@@ -18,14 +19,12 @@ public class MapPharmacyDao implements MapPharmacyService {
 	private SqlSessionTemplate template;
 	
 	@Override
-	public List<MapHospitalDto> selectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MapPharmacyDto> selectList(Map map) {
+		return template.selectList("MapPharmacyList",map);
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -51,6 +50,11 @@ public class MapPharmacyDao implements MapPharmacyService {
 	public int update(Map map) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void close() {
+		
 	}
 
 }
