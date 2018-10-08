@@ -86,34 +86,26 @@ public class HomeController {
 	}
 	
 
+	  //임의로 로그인 처리함
+	   @RequestMapping("/home/loginProcess.do")
+	   public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
+	      //일반사용자 로그인 처리 부분 시작
+	      boolean ismember = generalService.isMember(map);
+	      if(ismember) {
+	         model.addAllAttributes(map);
+	         session.setAttribute("genid", map.get("genid"));
+	         return "/index";
+	      }
+	      else {
+	         model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
+	         return "forward:/home/loginmain.do";
+	      }
+	   }
 	
-	//임의로 로그인 처리함
-	@RequestMapping("/home/loginProcess.do")
-	public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-		//System.out.println(map.get("GENERAL").toString());
-		//System.out.println(map.get("PARTNER").toString());
-		
-		if(map.get("GENERAL")!=null) {
-			System.out.println("일반사용자로 들어옴");
-			//일반사용자 로그인 처리 부분 시작
-			boolean ismember = generalService.isMember(map);
-			if(ismember) {
-				model.addAllAttributes(map);
-				session.setAttribute("genid", map.get("genid"));
-				return "/index";
-			}
-			else {
-				model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
-				return "forward:/home/loginmain.do";
-			}
-		}//if
 
-		return "/index";
-
-	}///loginProcess
 	
 	
-	//임의로 로그인 처리함
+	//임의로 로그아웃 처리함
 	@RequestMapping("/home/loginout.do")
 	public String logoutProcess(HttpSession session) throws Exception {
 

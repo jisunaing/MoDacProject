@@ -82,42 +82,39 @@ public class PartnerCRUDController {
 				  
 				//병원 차트를 가져오기 위한 부분 
 				
-				/*
+			
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				Calendar cal = Calendar.getInstance();
-				List<String> list;		
-			
-				
-				//map.put("pid",pid);
+				List<String> list;
+			      list = chartService.dayList(map);
+			      if(list!=null) {
+			         for(int i=0;i<list.size();i++) {
+			            cal.setTime(dateFormat.parse(list.get(i).toString()));
+			            switch (cal.get(Calendar.DAY_OF_WEEK)) {
+			            case 1:   sun++;   break;
+			            case 2:   mon++;   break;
+			            case 3:   tue++;   break;
+			            case 4:   wed++;   break;
+			            case 5:   thu++;   break;
+			            case 6:   fri++;   break;
+			            case 7:   dat++;   break;
+			            }//switch
+			         }//for
+			      }//if
+			      else {
+			         model.addAttribute("chartError", "불러올 차트가 없어요");
+			      }
+			      //병원 차트를 가져오기 위한 부분
+			      //병원 차트 요일별 저장하기
+			      model.addAttribute("mon", mon);
+			      model.addAttribute("tue", tue);
+			      model.addAttribute("wed", wed);
+			      model.addAttribute("thu", thu);
+			      model.addAttribute("fri", fri);
+			      model.addAttribute("dat", dat);
+			      model.addAttribute("sun", sun);
+					
 		
-				list = chartService.dayList(map);
-	
-				
-				for(int i=0;i<list.size();i++) {
-					cal.setTime(dateFormat.parse(list.get(i).toString()));
-					switch (cal.get(Calendar.DAY_OF_WEEK)) {
-					case 1:	sun++;	break;
-					case 2:	mon++;	break;
-					case 3:	tue++;	break;
-					case 4:	wed++;	break;
-					case 5:	thu++;	break;
-					case 6:	fri++;	break;
-					case 7:	dat++;	break;
-
-					}//switch
-					System.out.println("여기까지 문제 없음4");
-				}//for
-				//병원 차트를 가져오기 위한 부분
-				//병원 차트 요일별 저장하기
-				model.addAttribute("mon", mon);
-				model.addAttribute("tue", tue);
-				model.addAttribute("wed", wed);
-				model.addAttribute("thu", thu);
-				model.addAttribute("fri", fri);
-				model.addAttribute("dat", dat);
-				model.addAttribute("sun", sun);	
-				
-				*/
 										
 			}
 			else {//비회원

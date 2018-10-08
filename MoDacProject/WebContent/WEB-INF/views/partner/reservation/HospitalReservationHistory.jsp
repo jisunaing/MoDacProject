@@ -7,14 +7,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script type="text/javascript">
-$(function(){
-	$('td').click(function(){
-		console.log('테이블이 클릭됨');
-		location.replace("<c:url value='/partner/hospital/ReceiptHistoryViewMove.do'/>");
-	});
-});
-</script>
 <style>
 /*가운데 정렬을 위한 CSS*/
 .container {
@@ -104,21 +96,25 @@ tbody tr:nth-child(even) {
 						</tr>
 						</thead>
 						<tbody>
+						<c:if test="${empty requestScope.list }" var="isEmpty">
 						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>수락</td>
+						<td>등록된 게시글이 없습니다</td>
 						</tr>
+						</c:if>
+						<c:if test="${not isEmpty}">
+						<c:forEach var="record" items="${list}" varStatus="loop">
 						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>수락</td>
+							<a href="<c:url value='/partner/hospital/ReservationHistoryViewMove.do?resnum=${resnum}&reservation=yes'/>">
+							<td>${record.resname}</td>
+							<td>${record.resdate}</td>
+							<td>${record.phone}</td>
+							<td>${record.email}</td>
+							<td>${record.resaccept}</td>
+							</a>
 						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>수락</td>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>거절</td>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td><td>거절</td>
-						</tr>	
+						</c:forEach>
+						</c:if>
+						
 						</tbody>																							
 					</table>	
 					<!-- 임시 페이징 시작 -->

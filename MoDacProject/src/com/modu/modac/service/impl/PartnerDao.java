@@ -6,15 +6,6 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.modu.modac.service.PartnerService;
-
-
-
-
-import javax.annotation.Resource;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
 import com.modu.modac.service.PartnerService;
 import com.modu.modac.service.PartnerDto;
 

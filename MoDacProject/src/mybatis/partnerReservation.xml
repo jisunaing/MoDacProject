@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.MoDac_myBatis.Reservation">
+<mapper namespace="mybatis.MoDac_myBatis.partnerReservation.xml">
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
 	<!-- 쿼리 작성 -->
 
-	<select id="chartList" resultType="java.util.Map" parameterType="java.lang.String">
+	
+	<!-- 차트 가져오기 -->
+	<select id="chartList" parameterType="java.util.Map" resultType="java.lang.String">
 	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
 	</select>
 	
@@ -15,9 +17,39 @@
 	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
 	</select>
 	
+	<!-- 병원 예약 지난 내역 리스트 볼때 -->
+	<select id="hospitalreservationHistory" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL, RESACCEPT FROM RESERVATION WHERE PID = #{pid} AND NOT RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	</select>
+	
 	<!-- 병원에서 접수 신청목록 리스트 볼떄 -->
 	<select id="hospitalReceiptList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '접수신청' ORDER BY RESDATE DESC
+	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RECEPTION WHERE PID = #{pid} AND RECACCEPT = '접수신청' ORDER BY RECDATE DESC
 	</select>
+	
+	<!-- 병원 접수 지난 내역 리스트 볼때 -->
+	<select id="hospitalreceiptHistory" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL, RECACCEPT FROM RECEPTION WHERE PID = #{pid} AND NOT RECACCEPT = '접수신청' ORDER BY RECDATE DESC
+	</select>
+	
+	<!-- 접수 상세내역 -->
+	<select id="hospitalReceiptView" parameterType="java.util.Map" resultType="receptionDto">
+	SELECT RECNAME, PHONE, EMAIL, RECDATE, RECCONTENTS FROM RECEPTION WHERE RECNUM=${recnum}
+	</select>
+	
+	<!-- 예약 상세내역 -->
+	<select id="hospitalReservationView" parameterType="java.util.Map" resultType="reservationDto">
+	SELECT RESNAME, PHONE, EMAIL, RESDATE, RESCONTENTS FROM RESERVATION WHERE RESNUM=${resnum}
+	</select>	
+
+	<!-- 접수했던 상세내역 -->
+	<select id="hospitalReceiptHistoryView" parameterType="java.util.Map" resultType="receptionDto">
+	SELECT RECNAME, PHONE, EMAIL, RECDATE, RECCONTENTS FROM RECEPTION WHERE RECNUM=${recnum} AND NOT RECACCEPT = '접수신청'
+	</select>
+	
+	<!-- 예약했던 상세내역 -->
+	<select id="hospitalReservationHistoryView" parameterType="java.util.Map" resultType="reservationDto">
+	SELECT RESNAME, PHONE, EMAIL, RESDATE, RESCONTENTS FROM RESERVATION WHERE RESNUM=${resnum} AND NOT RESACCEPT = '예약신청'
+	</select>		
 	
 </mapper>
