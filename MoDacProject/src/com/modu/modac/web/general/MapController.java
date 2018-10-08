@@ -148,7 +148,7 @@ public class MapController {
 	@RequestMapping("/general/reservation/reservation.do")
 	public String reservation(HttpSession session, Model model, @RequestParam Map map) throws Exception {
 	
-		if(session.getAttribute("USER_ID") == null) {
+		if(session.getAttribute("genid") == null) {
 			
 			return "general/member/Login.tiles";
 		}
@@ -162,7 +162,7 @@ public class MapController {
 	@RequestMapping("/general/reservation/reception.do")
 	public String reception(HttpSession session) throws Exception {
 		
-		if(session.getAttribute("USER_ID") == null) {
+		if(session.getAttribute("genid") == null) {
 			
 			return "general/member/Login.tiles";
 		}
