@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.modu.modac.service.ChartService;
-import com.modu.modac.service.PartnerService;
+import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReservationDto;
 
@@ -31,8 +31,8 @@ public class PartnerController {
 	@Resource(name="chartService")
 	private ChartService chartService;
 	
-	@Resource(name="partnerService")
-	private PartnerService partnerService;
+	@Resource(name="partnerReservationService")
+	private PartnerReservationService partnerReservationService;
 	
 	//병원 메인 페이지로 이동
 	@RequestMapping("/partner/hospital/MainMove.do")
@@ -79,7 +79,7 @@ public class PartnerController {
 		Map map = new HashMap();
 		map.put("pid", pid);
 		List<Map> list;
-		list = partnerService.hospitalReservationList(map);
+		list = partnerReservationService.hospitalReservationList(map);
 		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReservation";
 	}
@@ -89,7 +89,7 @@ public class PartnerController {
 	public String hospitalReservationHistoryPage(@ModelAttribute("PARTNER_ID") String pid, @RequestParam Map map, Model model) throws Exception {
 		map.put("pid", pid);
 		List<Map> list;
-		list = partnerService.hospitalreservationHistory(map);
+		list = partnerReservationService.hospitalreservationHistory(map);
 		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReservationHistory";
 	}
@@ -100,7 +100,7 @@ public class PartnerController {
 		Map map = new HashMap();
 		map.put("pid", pid);
 		List<Map> list;
-		list = partnerService.hospitalReceiptList(map);
+		list = partnerReservationService.hospitalReceiptList(map);
 		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReceipt";
 	}
@@ -109,7 +109,7 @@ public class PartnerController {
 	public String hospitalReceiptHistoryPage(@ModelAttribute("PARTNER_ID") String pid, @RequestParam Map map, Model model) throws Exception {
 		map.put("pid", pid);
 		List<Map> list;
-		list = partnerService.hospitalreceiptHistory(map);
+		list = partnerReservationService.hospitalreceiptHistory(map);
 		model.addAllAttributes(list);
 		return "/partner/reservation/HospitalReceiptHistory";
 	}
@@ -119,7 +119,7 @@ public class PartnerController {
 	public String hospitalReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
 		model.addAttribute("receipt", "yes");
 		ReceptionDto dto;
-		dto = partnerService.hospitalReceiptView(map);
+		dto = partnerReservationService.hospitalReceiptView(map);
 		dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
 		model.addAttribute("record", dto);
 		return "/partner/reservation/HospitalListView";
@@ -130,7 +130,7 @@ public class PartnerController {
 	public String hospitalHistoryReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
 		model.addAttribute("receiptHistory", "yes");
 		ReceptionDto dto;
-		dto = partnerService.hospitalReceiptHistoryView(map);
+		dto = partnerReservationService.hospitalReceiptHistoryView(map);
 		dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
 		model.addAttribute("record", dto);
 		return "/partner/reservation/HospitalHistoryListView";
@@ -141,7 +141,7 @@ public class PartnerController {
 	public String hospitalReservationViewPage(@RequestParam Map map, Model model) throws Exception {
 		model.addAttribute("reservation", "yes");
 		ReservationDto dto;
-		dto = partnerService.hospitalReservationView(map);
+		dto = partnerReservationService.hospitalReservationView(map);
 		dto.setRescontens(dto.getRescontens().replace("\r\n","<br/>"));
 		model.addAttribute("record", dto);
 		return "/partner/reservation/HospitalListView";
@@ -152,7 +152,7 @@ public class PartnerController {
 	public String hospitalReservationHistoryViewPage(@RequestParam Map map, Model model) throws Exception {
 		model.addAttribute("reservationHistory", "yes");
 		ReservationDto dto;
-		dto = partnerService.hospitalReservationHistoryView(map);
+		dto = partnerReservationService.hospitalReservationHistoryView(map);
 		model.addAttribute("record", dto);
 		return "/partner/reservation/HospitalHistoryListView";
 	}

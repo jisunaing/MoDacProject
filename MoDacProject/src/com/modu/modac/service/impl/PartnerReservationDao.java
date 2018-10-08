@@ -8,12 +8,12 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.modu.modac.service.PartnerService;
+import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReservationDto;
 
 @Repository
-public class PartnerDao implements PartnerService {
+public class PartnerReservationDao implements PartnerReservationService {
 	
 	@Resource(name="template")
 	private SqlSessionTemplate template;

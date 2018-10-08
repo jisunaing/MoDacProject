@@ -7,15 +7,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.modu.modac.service.PartnerService;
+import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReservationDto;
 
-@Service("partnerService")
-public class PartnerServiceimpl implements PartnerService {
+@Service("partnerReservationService")
+public class PartnerReservationServiceimpl implements PartnerReservationService {
 	
-	@Resource(name="partnerDao")
-	private PartnerDao dao;
+	@Resource(name="partnerReservationDao")
+	private PartnerReservationDao dao;
 	
 	@Override
 	public List<Map> hospitalReservationList(Map map) {

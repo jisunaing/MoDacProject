@@ -15,7 +15,6 @@
 		<typeAlias type="com.modu.modac.service.GenmemberDto" alias="genmemberDto"/> 
 		<typeAlias type="com.modu.modac.service.ReceptionDto" alias="receptionDto"/>
 		<typeAlias type="com.modu.modac.service.ReservationDto" alias="reservationDto"/>
-
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
