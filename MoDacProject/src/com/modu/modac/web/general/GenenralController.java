@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.modu.modac.service.ReservationService;
-@SessionAttributes("USER_ID")
+@SessionAttributes("genid")
 @Controller
 public class GenenralController {
 	
@@ -26,7 +26,7 @@ public class GenenralController {
 	
 	//접수,예약 내역으로 이동하는 컨트롤러
 	@RequestMapping("/general/reservation/reservationlist.do")
-	public String reservationList(@ModelAttribute("USER_ID") String genid, Map map, Model model) throws Exception {
+	public String reservationList(@ModelAttribute("genid") String genid, Map map, Model model) throws Exception {
 		map.put("genid", genid);
 		//접수내역 얻어오기
 		List<Map> receiptList = reservationService.receiptList(map);
@@ -41,7 +41,7 @@ public class GenenralController {
 
 	//접수 버튼을 누르면 실행되는 것
 	@RequestMapping("/general/receipt/ReceiptListResult.do")
-	public String ReceiptListResult(@RequestParam Map map,@ModelAttribute("USER_ID") String genid)throws Exception{
+	public String ReceiptListResult(@RequestParam Map map,@ModelAttribute("genid") String genid)throws Exception{
 		System.out.println(genid);
 		System.out.println(map);
 		//데이터베이스에 집어 넣기
@@ -51,7 +51,7 @@ public class GenenralController {
 	
 	//예약 버튼을 부르면 실행되는 것
 	@RequestMapping("/general/receipt/ReservationListResult.do")
-	public String ReservationListResult(@RequestParam Map map,@ModelAttribute("USER_ID") String genid)throws Exception{
+	public String ReservationListResult(@RequestParam Map map,@ModelAttribute("genid") String genid)throws Exception{
 		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
 			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()));
 		}//if
@@ -62,7 +62,7 @@ public class GenenralController {
 	
 	//예약 취소 클릭시
 	@RequestMapping("/general/receipt/ReservationCancel.do")
-	public String ReservationCancel(@RequestParam Map map,@ModelAttribute("USER_ID") String genid)throws Exception{
+	public String ReservationCancel(@RequestParam Map map,@ModelAttribute("genid") String genid)throws Exception{
 		reservationService.reservationCancel(map);
 		return "forward:/general/reservation/reservationlist.do";
 	}

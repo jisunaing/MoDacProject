@@ -38,13 +38,13 @@ public class PartnerController {
 	@RequestMapping("/partner/hospital/MainMove.do")
 	public String hospitalMainPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
 		Map map =new HashMap();
-		map.put("pid", pid);
+		//map.put("pid", pid);
+		map.put("pid", "test");
 		//병원 차트를 가져오기 위한 부분
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Calendar cal = Calendar.getInstance();
-		List<Map> list;
+		List<String> list;
 		list = chartService.dayList(map);
-		System.out.println(list);
 		if(list!=null) {
 			for(int i=0;i<list.size();i++) {
 				cal.setTime(dateFormat.parse(list.get(i).toString()));
@@ -56,14 +56,11 @@ public class PartnerController {
 				case 5:	thu++;	break;
 				case 6:	fri++;	break;
 				case 7:	dat++;	break;
-	
 				}//switch
 			}//for
-		}
+		}//if
 		//병원 차트를 가져오기 위한 부분
 		//병원 차트 요일별 저장하기
-		
-		System.out.println(mon);
 		model.addAttribute("mon", mon);
 		model.addAttribute("tue", tue);
 		model.addAttribute("wed", wed);

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.MapHospital">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="MapHospitalDtoResult" type="MapHospitalDto">
+		<result property="hosno" column="hosno"/>
+		<result property="hosaddr" column="hosaddr"/>
+		<result property="hosname" column="hosname"/>
+		<result property="hosphone" column="hosphone"/>
+		<result property="mon" column="mon"/>
+		<result property="tue" column="tue"/>
+		<result property="wed" column="wed"/>
+		<result property="thu" column="thu"/>
+		<result property="fri" column="fri"/>
+		<result property="sat" column="sat"/>
+		<result property="sun" column="sun"/>
+		<result property="holiday" column="holiday"/>
+		<result property="subjectcode" column="subjectcode"/>
+		<result property="subname" column="subname"/>
+		<result property="pid" column="pid"/>
+		<result property="lunch" column="lunch"/>
+		<result property="pwebsite" column="pwebsite"/>
+	</resultMap>
+	
+	<!-- 쿼리 작성 -->
+	<select id="dbtest" resultType="int">
+		SELECT COUNT(*) FROM test
+	</select>
+</mapper>
