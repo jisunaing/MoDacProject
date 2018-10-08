@@ -70,7 +70,7 @@
 						찾기
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>">약국찾기</a></li>
+						<li><a href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>">약국찾기</a></li>
 						<li class="divider"></li>
 						<li><a href="<c:url value='/general/hospital/SelectSubject.do'/>">병원찾기</a></li>
 					</ul>
@@ -89,7 +89,7 @@
 				</li>
 
 				<li id="navbar-page"><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
-				<c:if test="${not empty sessionScope.USER_ID}" var="isMember">
+				<c:if test="${not empty genid}" var="isMember">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	

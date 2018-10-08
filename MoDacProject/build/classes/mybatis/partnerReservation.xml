@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.MoDac_myBatis.Reservation">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
+	<!-- 쿼리 작성 -->
+	<select id="chartList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
+	</select>
+	
+	<!-- 병원에서 예약 신청목록 리스트 볼때 -->
+	<select id="hospitalReservationList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	</select>
+	
+	<!-- 병원에서 접수 신청목록 리스트 볼떄 -->
+	<select id="hospitalReceiptList" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '접수신청' ORDER BY RESDATE DESC
+	</select>
+	
+</mapper>
