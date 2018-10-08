@@ -12,6 +12,7 @@
 		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
 		<typeAlias type="com.modu.modac.service.MapPharmacyDto" alias="MapPharmacyDto"/> 
 		<typeAlias type="com.modu.modac.service.MapNightPharmacyDto" alias="MapNightPharmacyDto"/> 
+		<typeAlias type="com.modu.modac.service.GenmemberDto" alias="genmemberDto"/> 
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
@@ -24,6 +25,9 @@
 	-->
 	<mappers>
 		<mapper resource="mybatis/Test.xml" />
+		<mapper resource="mybatis/Genmember.xml" />
+		<mapper resource="mybatis/Reservation.xml" />
+		<mapper resource="mybatis/partnerReservation.xml" />
 		<mapper resource="mybatis/MapHospital.xml" />
 		<mapper resource="mybatis/MapPharmacy.xml" />
 		<mapper resource="mybatis/MapNightPharmacy.xml" />

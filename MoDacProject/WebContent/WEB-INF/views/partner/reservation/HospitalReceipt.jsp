@@ -105,21 +105,24 @@ tbody tr:nth-child(even) {
 							</tr>
 						</thead>
 						<tbody>
+							<c:if test="${empty requestScope.list }" var="isEmpty">
+								<tr>
+									<td></td>
+									<td>등록된 게시물이 없어요</td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:if>
+							<c:if test="${not isEmpty}">
+							<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr>
-								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
+								<td>${record.recname}</td>
+								<td>${record.recdate}</td>
+								<td>${record.phone}</td>
+								<td>${record.email}</td>
 							</tr>
-							<tr>
-								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-							</tr>
-							<tr>
-								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-							</tr>
-							<tr>
-								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-							</tr>
-							<tr>
-								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-							</tr>
+							</c:forEach>
+							</c:if>
 						</tbody>																								
 					</table>	
 					<!-- 임시 페이징 시작 -->

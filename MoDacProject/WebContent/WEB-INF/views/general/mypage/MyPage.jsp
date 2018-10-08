@@ -57,7 +57,7 @@ $(function(){
 		
 		<div class="top" style="text-align: center">
 			<h1>
-				${USER_ID}님의 <small>MyPage</small>
+				${genid}님의 <small>MyPage</small>
 			</h1>
 			<br/>
 			<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>
@@ -109,35 +109,10 @@ $(function(){
 
 		</div>
 		<!-- 가족정보관리 끝-->
-		<!-- 자가진단-->
-		<div tabindex="0"
-			class="masongram-image-container masongram-image-size-standard_resolution"
-			style="position: absolute; left: 65%; top: 30px;">
-
-			<img src="<c:url value='/Images/slanted.jpg'/>" class="masongram-image" width="640"
-				height="800">
-			<div class="masongram-image-caption-container">
-
-				<div class="masongram-image-caption">
-					<div class="text-center">
-
-						<p>
-						<h2>자가 진단</h2>
-						회원님의 증상을 바탕으로 간편하게 진단해보세요
-						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>" target="_blank">
-							<i class="fas fa-heartbeat"></i> 자가진단하기
-						</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!--자가진단 끝-->
 		<!-- 접수/예약 내역 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution"
-			style="position: absolute; left: 5%; top: 10.7%;">
+			style="position: absolute; left: 65%; top: 30px;">
 			<img src="<c:url value='/Images/doclookingforinfo.jpg'/>" class="masongram-image">
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
@@ -157,8 +132,6 @@ $(function(){
 							</a>
 						</form>
 						
-						
-						
 					</div>
 				</div>
 			</div>
@@ -168,7 +141,7 @@ $(function(){
 		<!-- 건강 문의 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution"
-			style="position: absolute; left: 35%; top: 10.7%;">
+			style="position: absolute; left: 20%; top: 10.7%;">
 			<img src="<c:url value='/Images/stet.jpg'/>" class="masongram-image">
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
@@ -188,7 +161,7 @@ $(function(){
 		<!-- 사이트 문의 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution" 
-			style="position: absolute; left: 65%; top: 10.7%;">
+			style="position: absolute; left: 50%; top: 10.7%;">
 			<img src="<c:url value='/Images/sayingbubble.jpg'/>" class="masongram-image">
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
