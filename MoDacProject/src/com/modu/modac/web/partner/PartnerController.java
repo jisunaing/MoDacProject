@@ -23,7 +23,7 @@ import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReservationDto;
 
 
-@SessionAttributes("PARTNER_ID")
+@SessionAttributes("pid")
 @Controller
 public class PartnerController {
 	private int mon=0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
@@ -36,7 +36,7 @@ public class PartnerController {
 	
 	//병원 메인 페이지로 이동
 	@RequestMapping("/partner/hospital/MainMove.do")
-	public String hospitalMainPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+	public String hospitalMainPage(@ModelAttribute("pid") String pid, Model model) throws Exception {
 		Map map =new HashMap();
 		//map.put("pid", pid);
 		map.put("pid", "test");
@@ -59,6 +59,9 @@ public class PartnerController {
 				}//switch
 			}//for
 		}//if
+		else {
+			model.addAttribute("chartError", "불러올 차트가 없어요");
+		}
 		//병원 차트를 가져오기 위한 부분
 		//병원 차트 요일별 저장하기
 		model.addAttribute("mon", mon);
@@ -75,7 +78,7 @@ public class PartnerController {
 	
 	//병원 예약 관리 페이지
 	@RequestMapping("/partner/hospital/ReservationMove.do")
-	public String hospitalReservationPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+	public String hospitalReservationPage(@ModelAttribute("pid") String pid, Model model) throws Exception {
 		Map map = new HashMap();
 		map.put("pid", pid);
 		List<Map> list;
@@ -86,7 +89,7 @@ public class PartnerController {
 	
 	//병원 예약 지낸 내역 페이지
 	@RequestMapping("/partner/hospital/ReservationListMove.do")
-	public String hospitalReservationHistoryPage(@ModelAttribute("PARTNER_ID") String pid, @RequestParam Map map, Model model) throws Exception {
+	public String hospitalReservationHistoryPage(@ModelAttribute("pid") String pid, @RequestParam Map map, Model model) throws Exception {
 		map.put("pid", pid);
 		List<Map> list;
 		list = partnerReservationService.hospitalreservationHistory(map);
@@ -96,7 +99,7 @@ public class PartnerController {
 
 	//병원 접수 관리 페이지
 	@RequestMapping("/partner/hospital/ReceiptMove.do")
-	public String hospitalReceiptPage(@ModelAttribute("PARTNER_ID") String pid, Model model) throws Exception {
+	public String hospitalReceiptPage(@ModelAttribute("pid") String pid, Model model) throws Exception {
 		Map map = new HashMap();
 		map.put("pid", pid);
 		List<Map> list;
@@ -106,7 +109,7 @@ public class PartnerController {
 	}
 	//병원 접수 지난내역 페이지
 	@RequestMapping("/partner/hospital/ReceiptListMove.do")
-	public String hospitalReceiptHistoryPage(@ModelAttribute("PARTNER_ID") String pid, @RequestParam Map map, Model model) throws Exception {
+	public String hospitalReceiptHistoryPage(@ModelAttribute("pid") String pid, @RequestParam Map map, Model model) throws Exception {
 		map.put("pid", pid);
 		List<Map> list;
 		list = partnerReservationService.hospitalreceiptHistory(map);
