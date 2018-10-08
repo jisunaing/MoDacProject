@@ -11,7 +11,7 @@
 
 <script>
 var receipt = function(){
-	if('${sessionScope.USER_ID}' == '') {
+	if('${sessionScope.genid}' == '') {
 		alert('병원 접수를 하기 위해서는 반드시 로그인이 필요합니다.');	
 	} else {
 		location.href='<c:url value="/general/reservation/reception.do?subname=${requestScope.subname}"/>';
@@ -19,7 +19,7 @@ var receipt = function(){
 	
 };
 var reserve = function(){
-	if('${sessionScope.USER_ID}' == '') {
+	if('${sessionScope.genid}' == '') {
 		alert('병원 예약을 하기 위해서는 반드시 로그인이 필요합니다.');	
 	} else {
 		location.href='<c:url value="/general/reservation/reservation.do?subname=${requestScope.subname}"/>';

@@ -15,6 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.modu.modac.service.MapHospitalService;
+import com.modu.modac.service.MapNightPharmacyDto;
+import com.modu.modac.service.MapNightPharmacyService;
 import com.modu.modac.service.MapPharmacyDto;
 import com.modu.modac.service.MapPharmacyService;
 
@@ -24,7 +27,12 @@ public class MapController {
 	
 	// 서비스 주입
 	@Resource(name="pharmacyService")
-	private MapPharmacyService service;
+	private MapPharmacyService servicePH;
+	@Resource(name="nightPharmacyService")
+	private MapNightPharmacyService serviceNPH;
+	@Resource(name="hospitalService")
+	private MapHospitalService serviceHOS;
+	
 
 	// [과목 선택 페이지로 이동]
 	@RequestMapping("/general/hospital/SelectSubject.do")
@@ -51,7 +59,7 @@ public class MapController {
 	@RequestMapping("/general/pharm/AllPharm.do")
 	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
 		
-		List<MapPharmacyDto> records = service.selectList(map);
+		List<MapPharmacyDto> records = servicePH.selectList(map);
 		
 		List<Map> collections = new Vector<Map>();
 		for(MapPharmacyDto dto : records) {
@@ -61,13 +69,13 @@ public class MapController {
 			record.put("addr", dto.getPhaddr());
 			record.put("phone", dto.getPhphone());
 			record.put("mon", dto.getPhmon());
-			record.put("tue", dto.getPhmon());
-			record.put("wed", dto.getPhmon());
-			record.put("thu", dto.getPhmon());
-			record.put("fri", dto.getPhmon());
-			record.put("sat", dto.getPhmon());
-			record.put("sun", dto.getPhmon());
-			record.put("holiday", dto.getPhmon());
+			record.put("tue", dto.getPhtue());
+			record.put("wed", dto.getPhwed());
+			record.put("thu", dto.getPhthu());
+			record.put("fri", dto.getPhfri());
+			record.put("sat", dto.getPhsat());
+			record.put("sun", dto.getPhsun());
+			record.put("holiday", dto.getPholiday());
 			collections.add(record);
 		}
 		
@@ -82,9 +90,28 @@ public class MapController {
 	@RequestMapping("/general/pharm/NightPharm.do")
 	public String searchAlldayPharm(@RequestParam Map map, Model model) throws Exception {
 		
-		String pharmacy = map.get("pharmacy").toString();
+		List<MapNightPharmacyDto> records = serviceNPH.selectList(map);
 		
-		model.addAttribute("pharmacy",pharmacy);		
+		List<Map> collections = new Vector<Map>();
+		for(MapNightPharmacyDto dto : records) {
+			Map record = new HashMap();
+			record.put("no", dto.getNphno());
+			record.put("name", dto.getNphname());
+			record.put("addr", dto.getNphaddr());
+			record.put("phone", dto.getNphphone());
+			record.put("mon", dto.getNphmon());
+			record.put("tue", dto.getNphtue());
+			record.put("wed", dto.getNphwed());
+			record.put("thu", dto.getNphthu());
+			record.put("fri", dto.getNphfri());
+			record.put("sat", dto.getNphsat());
+			record.put("sun", dto.getNphsun());
+			record.put("holiday", dto.getNpholiday());
+			collections.add(record);
+		}
+		
+		model.addAttribute("records", JSONArray.toJSONString(collections));
+		model.addAttribute("size",records.size());		
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}

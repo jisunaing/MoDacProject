@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapHospitalService;
 
-@Service("mapHospitalService")
+@Service("hospitalService")
 public class MapHospitalServiceImpl implements MapHospitalService {
 	
 	@Resource(name="mapHospitalDao")
@@ -18,38 +18,37 @@ public class MapHospitalServiceImpl implements MapHospitalService {
 	
 	@Override
 	public List<MapHospitalDto> selectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectList(map);
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.getTotalRecord(map);
 	}
 
 	@Override
 	public MapHospitalDto selectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOne(map);
 	}
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(map);
 	}
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(map);
 	}
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+		return dao.update(map);
+	}
+
+	@Override
+	public void close() {
 	}
 
 }
