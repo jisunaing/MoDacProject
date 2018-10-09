@@ -4,15 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
 import com.modu.modac.service.GenmemberDto;
@@ -60,6 +57,7 @@ public class HomeController {
 		
 		return "general/member/signup/Gen_SignUp_Write.tiles";
 	}
+
 	//일반 회원가입 신청 
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
 	public String genSignupProcess(@RequestParam Map map, Model model,GenmemberDto dto) throws Exception {
@@ -79,27 +77,45 @@ public class HomeController {
 		
 		return "forward:/general/mypage/personalinfo.do";
 	}
-	//임의로 로그인 처리함
-	@RequestMapping("/home/loginProcess.do")
-	public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-		//일반사용자 로그인 처리 부분 시작
-		boolean ismember = generalService.isMember(map);
-		if(ismember) {
-			model.addAllAttributes(map);
-			session.setAttribute("genid", map.get("genid"));
-			return "/index";
-		}
-		else {
-			model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
-			return "forward:/home/loginmain.do";
-		}
+
+	
+	//제휴 회원가입 신청 폼
+	@RequestMapping("/general/member/signup/partnerJoin.do")
+	public String partnerJoin() throws Exception {
+		return "general/member/signup/Join_P.tiles";
 	}
-	//임의로 로그인 처리함
+	
+
+	  //임의로 로그인 처리함
+	   @RequestMapping("/home/loginProcess.do")
+	   public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
+	      //일반사용자 로그인 처리 부분 시작
+	      boolean ismember = generalService.isMember(map);
+	      if(ismember) {
+	         model.addAllAttributes(map);
+	         session.setAttribute("genid", map.get("genid"));
+	         return "/index";
+	      }
+	      else {
+	         model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
+	         return "forward:/home/loginmain.do";
+	      }
+	   }
+	
+
+	
+	
+	//임의로 로그아웃 처리함
 	@RequestMapping("/home/loginout.do")
 	public String logoutProcess(HttpSession session) throws Exception {
+
 		session.removeAttribute("genid");
+
+		session.removeAttribute("USER_ID");
+		//session.removeAttribute("PARTNER_ID");  제휴회원 로그인 처리 끝 임시로 사용 안해도됨 추후에 이 부분 삭제할꺼임
+
 		return "/index";
-	}
+	}//logoutProcess
 
 	
 //	@RequestMapping("/general/pharm/pharmMap.do")

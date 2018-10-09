@@ -2,23 +2,21 @@ package com.modu.modac.web.general;
 
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.modu.modac.service.ReservationService;
+
 @SessionAttributes("genid")
+
 @Controller
 public class GenenralController {
 	

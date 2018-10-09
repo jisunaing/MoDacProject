@@ -16,6 +16,9 @@
 		<typeAlias type="com.modu.modac.service.MapNightPharmacyDto" alias="MapNightPharmacyDto"/>  
 		<typeAlias type="com.modu.modac.service.ReceptionDto" alias="receptionDto"/>
 		<typeAlias type="com.modu.modac.service.ReservationDto" alias="reservationDto"/>	
+		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>    
 
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
@@ -36,6 +39,11 @@
 		<mapper resource="mybatis/MapNightPharmacy.xml" />
 		<mapper resource="mybatis/Reservation.xml" />
 		<mapper resource="mybatis/partnerReservation.xml" />		
+		<mapper resource="mybatis/Partner.xml"/>
+		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
+		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
+
+		
 		
 	</mappers>
 </configuration>
