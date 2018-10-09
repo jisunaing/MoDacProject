@@ -16,7 +16,6 @@ public class ChartServiceimpl implements ChartService {
 
 	@Override
 	public List<String> dayList(Map map) {
-
 		return dao.dayList(map);
 	}// dayList
 
