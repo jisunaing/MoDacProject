@@ -40,7 +40,7 @@ public class PartnerCRUDController {
 	private PartnerService service;
 	
 	
-	//병원 제휴신청 처리용
+	//병원 임시 제휴가입
 	@RequestMapping("/partner/member/singup/joinrequest.do")
 	public String joinrequest(@RequestParam Map map) throws Exception {
 		
