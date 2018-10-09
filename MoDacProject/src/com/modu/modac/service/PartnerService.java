@@ -10,8 +10,13 @@ public interface PartnerService {
 	
 	//로그인 용
 	boolean isMember(Map map);
+	
+	//회원 선별용
+	boolean isAccept(Map map);
+		
 	//목록용]
 	List<PartnerDto> selectList(Map map);
+	
 	//상세보기용]
 	PartnerDto selectOne(Map map);
 	//입력/수정/삭제용]
@@ -22,4 +27,8 @@ public interface PartnerService {
 	
 	//전체 레코드 수]
 	int getTotalRecord(Map map);
+	
+	//탈퇴 신청용
+	int withdrawal(Map map);
+	
 }

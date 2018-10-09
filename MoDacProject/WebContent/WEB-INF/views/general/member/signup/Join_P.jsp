@@ -225,7 +225,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						    
 						    <label for="hosphone" class="col-sm-pull-1 col-sm-2  control-label">연락처</label>
 							<div class="col-sm-2 col-sm-pull-1">
-								<input type="text" class=" form-control" name="hosphone" id="hosphone" placeholder="연락처를 입력하세요">
+								<input type="text" class=" form-control" name="pphone" id="pphone" placeholder="연락처를 입력하세요">
+								<input type="hidden" class=" form-control" name="hosphone" id="hosphone" value="02-123-4567">
 							</div>
 						  </div>
 						  

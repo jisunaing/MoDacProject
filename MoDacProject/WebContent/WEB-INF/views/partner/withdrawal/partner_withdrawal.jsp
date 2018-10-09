@@ -75,16 +75,18 @@ body {
 							<div class="form-group">
 								<div class="col-sm-12">
 									<div class="col-sm-6">
-										<span class="margins">병원 명</span> <input type="text"
-											class="form-control" name="id" id="id" disabled>
+										<span class="margins">병원 명</span>
+										 <input type="text" class="form-control" value="${partner.hosname}"  disabled>
+										 <input type="hidden" name="hosname" id="hosname">
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
 									<div class="col-sm-6" style="margin-top: 10px;">
-										<span class="margins">아이디</span> <input type="text"
-											class="form-control" name="id" id="id" disabled>
+										<span class="margins">아이디</span>
+										 <input type="text" class="form-control" value="${partner.pid}" disabled>
+										 <input type="hidden" name="pid" id="pid">
 									</div>
 								</div>
 							</div>
@@ -93,8 +95,7 @@ body {
 								<div class="col-sm-12">
 									<div class="col-sm-12" style="margin-top: 10px;">
 										<span class="sp">탈퇴 이유</span>
-										<textarea style="margin-top: 5px;" rows="10"
-											class="form-control" id="greeting" name="greeting"></textarea>
+										<textarea style="margin-top: 5px;" rows="10" class="form-control" id="greeting" name="greeting"></textarea>
 									</div>
 								</div>
 							</div>

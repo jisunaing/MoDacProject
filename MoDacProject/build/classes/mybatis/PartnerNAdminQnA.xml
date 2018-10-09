@@ -7,14 +7,18 @@
     
     <!-- 전체 리스트 불러오는 부분 -->
     <select id="PartnerNAdminQnAList" parameterType="java.util.Map" resultType="PartnerNAdminQnA">	
-	SELECT * FROM 
-	(SELECT T.*,ROWNUM R FROM 
-	(SELECT Q.*,(SELECT COUNT(*) FROM PREPLYQNA
-    WHERE NO=Q.NO) commentCount 
-    FROM PQNA Q JOIN PARTNERS P ON Q.PID = P.PID WHERE Q.PID = #{pid}
+    
+<!-- 	SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT Q.*,(SELECT COUNT(*) FROM PREPLYQNA Q WHERE NO= #{no} ) commentCount 
+    FROM PQNA Q JOIN PARTNERS P ON Q.PID = P.PID WHERE Q.PID = #{pid} -->
+    
+    SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM PREPLYQNA WHERE NO = O.NO) commentCount 
+    FROM PQNA O JOIN PARTNERS M ON O.PID = M.PID WHERE M.PID= #{pid} 
+ 
     
     <if test="searchColumn !=null">
-    		WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
+    
+    	AND ${searchColumn} LIKE '%' || #{searchWord} || '%'
+    		
     </if>
    
     ORDER BY no DESC)T) WHERE R BETWEEN #{start} AND #{end}
@@ -53,7 +57,7 @@
 	
 	<!--  문의 글 삭제 -->
 	<delete id="PartnerNAdminQnADelete" parameterType="java.util.Map">	
-	DELETE PQNA WHERE no=#{no}
+	DELETE PQNA WHERE no = #{no}
 	</delete>
 	
     

@@ -20,6 +20,13 @@ public class PartnerServiceimpl implements PartnerService {
 		
 		return partnerdao.isMember(map);
 	}
+	
+
+	@Override
+	public boolean isAccept(Map map) {
+		
+		return partnerdao.isAccept(map);
+	}
 
 	@Override
 	public List<PartnerDto> selectList(Map map) {
@@ -62,6 +69,14 @@ public class PartnerServiceimpl implements PartnerService {
 	
 		return partnerdao.updatetwo(map);
 	}
+
+
+	@Override
+	public int withdrawal(Map map) {
+		
+		return partnerdao.withdrawal(map);
+	}
+
 	
 	
 	

@@ -63,58 +63,74 @@ public class PartnerCRUDController {
 	@RequestMapping("/partner/member/loginProcess.do")
 		public String process(@RequestParam Map map,Model model,HttpServletRequest req) throws Exception{
 			
-			boolean isLogin = service.isMember(map);
-			
-			if(isLogin) {//회원인 경우
-				
-				HttpSession session = req.getSession();
-				
-				session.setAttribute("pid",map.get("pid"));
-				
-				model.addAttribute("test","test");
-				
-				// ↑ 세션 확인용 추후에 test부분 삭제할꺼임
-				
-				
-				
-				
-				/* HomeController 부분에 병원쪽 부분이 있길래 가져옴
-				  내가 작업한 부분이 아니라 오류 떠서 주석처리 했음*/
-				  
-				//병원 차트를 가져오기 위한 부분 
-				 
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-				Calendar cal = Calendar.getInstance();
-				List<String> list;
-				
-				
-							
-				list = chartService.dayList(map);
-				for(int i=0;i<list.size();i++) {
-					cal.setTime(dateFormat.parse(list.get(i).toString()));
-					switch (cal.get(Calendar.DAY_OF_WEEK)) {
-					case 1:	sun++;	break;
-					case 2:	mon++;	break;
-					case 3:	tue++;	break;
-					case 4:	wed++;	break;
-					case 5:	thu++;	break;
-					case 6:	fri++;	break;
-					case 7:	dat++;	break;
 
-					}//switch
-				}//for
-				//병원 차트를 가져오기 위한 부분
-				//병원 차트 요일별 저장하기
-				model.addAttribute("mon", mon);
-				model.addAttribute("tue", tue);
-				model.addAttribute("wed", wed);
-				model.addAttribute("thu", thu);
-				model.addAttribute("fri", fri);
-				model.addAttribute("dat", dat);
-				model.addAttribute("sun", sun);
-							
+		
+			boolean isLogin = service.isMember(map);
+
+			
+			if(isLogin) { //회원은 맞지만 수락 여부 확인은 X
+				
+					boolean isAccept = service.isAccept(map);
+					
+					if(isAccept) { // 회원도 맞고 제휴 수락도 Y인 경우
+					
+					HttpSession session = req.getSession();
+					
+					session.setAttribute("pid",map.get("pid"));
+					
+					model.addAttribute("test","test");
+					
+					// ↑ 세션 확인용 추후에 test부분 삭제할꺼임
+					
+					
+					
+					
+					/* HomeController 부분에 병원쪽 부분이 있길래 가져옴
+					  내가 작업한 부분이 아니라 오류 떠서 주석처리 했음*/
+					  
+					//병원 차트를 가져오기 위한 부분 
+					 
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+					Calendar cal = Calendar.getInstance();
+					List<String> list;
+					
+					
+								
+					list = chartService.dayList(map);
+					for(int i=0;i<list.size();i++) {
+						cal.setTime(dateFormat.parse(list.get(i).toString()));
+						switch (cal.get(Calendar.DAY_OF_WEEK)) {
+						case 1:	sun++;	break;
+						case 2:	mon++;	break;
+						case 3:	tue++;	break;
+						case 4:	wed++;	break;
+						case 5:	thu++;	break;
+						case 6:	fri++;	break;
+						case 7:	dat++;	break;
+	
+						}//switch
+					}//for
+					//병원 차트를 가져오기 위한 부분
+					//병원 차트 요일별 저장하기
+					model.addAttribute("mon", mon);
+					model.addAttribute("tue", tue);
+					model.addAttribute("wed", wed);
+					model.addAttribute("thu", thu);
+					model.addAttribute("fri", fri);
+					model.addAttribute("dat", dat);
+					model.addAttribute("sun", sun);
+				}// 회원도 맞고 제휴 수락도 Y인 경우
+					else {
+						
+						model.addAttribute("loginError", "현재 제휴승인 대기중입니다.. 조금만 더 기달려주세요.");
+
+						return "/general/member/Login.tiles";
+						
+						
+					}
 										
-			}
+			}/////회원은 맞지만 수락 여부 확인은 X
+		
 			else {//비회원
 				model.addAttribute("loginError", "아이디 혹은 비밀번호가 일치하지 않습니다.");
 

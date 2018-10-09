@@ -23,6 +23,13 @@ public class PartnerDao implements PartnerService {
 		
 	}////isMember
 	
+	@Override
+	public boolean isAccept(Map map) {
+		
+		int count =template.selectOne("IsAccept",map);
+		return count==1 ? true : false ;
+	}
+	
 
 	@Override
 	public List<PartnerDto> selectList(Map map) {
@@ -64,6 +71,15 @@ public class PartnerDao implements PartnerService {
 		
 		return template.update("Partnersecond",map);
 	}
+
+	@Override
+	public int withdrawal(Map map) {
+		
+		return template.update("Partnerwithdrawal",map);
+	}
+
+
+
 	
 
 	
