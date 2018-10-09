@@ -3,6 +3,7 @@ package com.modu.modac.service.impl;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+import javax.swing.table.TableColumnModel;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;

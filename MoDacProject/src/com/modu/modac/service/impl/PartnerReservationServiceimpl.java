@@ -82,4 +82,25 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	}
 
 
+	@Override
+	public void receptListYes(Map map) {
+		dao.receptListYes(map);
+	}
+
+	@Override
+	public void reservationListYes(Map map) {
+		dao.reservationListYes(map);
+	}
+
+	@Override
+	public void receptListNo(Map map) {
+		dao.receptListNo(map);
+	}
+
+	@Override
+	public void reservationListNo(Map map) {
+		dao.reservationListNo(map);
+	}
+
+
 }

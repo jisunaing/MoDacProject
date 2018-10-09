@@ -82,4 +82,25 @@ public class PartnerReservationDao implements PartnerReservationService {
 		return template.selectOne("getTotalReceptionHistoryRecord", map);
 	}
 
+	@Override
+	public void receptListYes(Map map) {
+		template.update("receptListYes",map);
+	}
+
+	@Override
+	public void reservationListYes(Map map) {
+		template.update("reservationListYes", map);
+	}
+
+	@Override
+	public void receptListNo(Map map) {
+		template.update("receptListNo", map);
+	}
+
+	@Override
+	public void reservationListNo(Map map) {
+		template.update("reservationListNo", map);
+	}
+	
+
 }

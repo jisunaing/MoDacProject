@@ -19,26 +19,22 @@ public class PartnerServiceimpl implements PartnerService {
 	
 	@Override
 	public boolean isMember(Map map) {
-		
 		return partnerdao.isMember(map);
 	}
 
 	@Override
 	public List<PartnerDto> selectList(Map map) {
-		
 		return partnerdao.selectList(map);
 	}
 
 
 	@Override
 	public PartnerDto selectOne(Map map) {
-		
 		return partnerdao.selectOne(map);
 	}
 
 	@Override
 	public int delete(Map map) {
-		
 		return partnerdao.delete(map);
 	}
 
@@ -50,23 +46,13 @@ public class PartnerServiceimpl implements PartnerService {
 
 	@Override
 	public int updateone(Map map) {
-		
 		return partnerdao.updateone(map);
 	}
 
 	@Override
 	public int updatetwo(Map map) {
-	
 		return partnerdao.updatetwo(map);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }//PartnerServiceimpl
 

@@ -19,6 +19,10 @@ public interface PartnerReservationService {
 	int getTotalReservationHistoryRecord(Map map);
 	int getTotalReceptionRecord(Map map);
 	int getTotalReceptionHistoryRecord(Map map);
+	void receptListYes(Map map);
+	void reservationListYes(Map map);
+	void receptListNo(Map map);
+	void reservationListNo(Map map);
 	
 	
 }

@@ -113,9 +113,9 @@ table td{
 							</tr>
 						</table>
 					<!-- 버튼들 -->
-						<input type="button" class="btn btn-default" value="수락"/>
-						<input type="button" class="btn btn-default" value="거절"/>
-						<input type="button" class="btn btn-default" value="목록"/>
+						<a href="<c:url value='/partner/hospital/yes.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="수락"/></a>
+						<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
+						<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
 					<!-- 버튼들 -->
 				</div>
 			</div>

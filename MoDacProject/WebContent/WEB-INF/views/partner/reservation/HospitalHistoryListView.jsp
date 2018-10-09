@@ -88,32 +88,32 @@ table td{
 			<div class="row">
 				<div class="in">
 					<h2>상세보기페이지</h2><br/><br/><br/>
-						<table class="table table-hover">
-							<tr>
-								<th class="col-md-2 text-center" id="top1">성함</th>
-								<td id="top2">${record.resname} ${record.recname}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">연락처</th>
-								<td>${record.phone}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">이메일</th>
-								<td>${record.email}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">예약시간</th>
-								<td>${record.resdate}${record.recdate}</td>
-							</tr>
-							<tr>
-								<th colspan="2" class="text-center">상담내용</th>
-							</tr>
-							<tr>
-								<td colspan="2">${record.rescontens}${record.reccontens}</td>
-							</tr>
-						</table>
+					<table class="table table-hover">
+						<tr>
+							<th class="col-md-2 text-center" id="top1">성함</th>
+							<td id="top2">${record.resname} ${record.recname}</td>
+						</tr>
+						<tr>
+							<th class="col-md-2 text-center">연락처</th>
+							<td>${record.phone}</td>
+						</tr>
+						<tr>
+							<th class="col-md-2 text-center">이메일</th>
+							<td>${record.email}</td>
+						</tr>
+						<tr>
+							<th class="col-md-2 text-center">예약시간</th>
+							<td>${record.resdate}${record.recdate}</td>
+						</tr>
+						<tr>
+							<th colspan="2" class="text-center">상담내용</th>
+						</tr>
+						<tr>
+							<td colspan="2">${record.rescontens}${record.reccontens}</td>
+						</tr>
+					</table>
 					<!-- 버튼들 -->
-						<input type="button" class="btn btn-default" value="목록"/>
+					<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
 					<!-- 버튼들 -->
 				</div>
 			</div>

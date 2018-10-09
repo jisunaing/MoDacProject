@@ -89,4 +89,23 @@
 	SELECT RESNAME, PHONE, EMAIL, RESDATE, RESCONTENTS FROM RESERVATION WHERE RESNUM=${resnum} AND NOT RESACCEPT = '예약신청'
 	</select>		
 	
+	<!-- 병원측에서 접수를 수락하였을 경우 -->
+	<update id="receptListYes" parameterType="java.util.Map">
+	UPDATE RECEPTION SET RECACCEPT = '접수수락' WHERE RECNUM= ${recnum}
+	</update>
+	<!-- 병원측에서 예약을 수락하였을 경우 -->
+	<update id="reservationListYes" parameterType="java.util.Map">
+	UPDATE RESERVATION SET RECACCEPT = '예약수락' WHERE RECNUM= ${resnum}
+	</update>
+	
+	<!-- 병원측에서 접수를 거절하였을 경우 -->
+	<update id="receptListNo" parameterType="java.util.Map">
+	UPDATE RECEPTION SET RECACCEPT = '접수거절' WHERE RECNUM= ${recnum}
+	</update>
+	<!-- 병원측에서 예약을 거절하였을 경우 -->
+	<update id="reservationListNo" parameterType="java.util.Map">
+	UPDATE RESERVATION SET RECACCEPT = '예약거절' WHERE RECNUM= ${resnum}
+	</update>	
+	
+	
 </mapper>

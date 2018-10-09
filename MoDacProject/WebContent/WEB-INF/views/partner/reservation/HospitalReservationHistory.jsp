@@ -98,13 +98,17 @@ tbody tr:nth-child(even) {
 						<tbody>
 						<c:if test="${empty requestScope.list }" var="isEmpty">
 						<tr>
+						<td></td>
+						<td></td>
 						<td>등록된 게시글이 없습니다</td>
+						<td></td>
+						<td></td>
 						</tr>
 						</c:if>
 						<c:if test="${not isEmpty}">
 						<c:forEach var="record" items="${list}" varStatus="loop">
 						<tr>
-							<a href="<c:url value='/partner/hospital/ReservationHistoryViewMove.do?resnum=${resnum}&reservation=yes'/>">
+							<a href="<c:url value='/partner/hospital/ReservationHistoryViewMove.do?resnum=${resnum}&where=${moveWhere}'/>">
 							<td>${record.resname}</td>
 							<td>${record.resdate}</td>
 							<td>${record.phone}</td>

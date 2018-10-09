@@ -103,13 +103,12 @@ tbody tr:nth-child(even) {
 									<td>등록된 게시물이 없어요</td>
 									<td></td>
 									<td></td>
-									<td></td>
 								</tr>
 							</c:if>
 							<c:if test="${not isEmpty}">
 							<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr>
-								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${recnum}&receipt=yes'/>">
+								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${recnum}&where=${moveWhere}'/>">
 								<td>${record.recname}</td>
 								<td>${record.recdate}</td>
 								<td>${record.phone}</td>

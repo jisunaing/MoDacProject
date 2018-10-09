@@ -39,9 +39,9 @@ import com.modu.modac.service.impl.PagingUtil;
 public class PartnerController {
 	private int mon=0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
 	
-	@Value("${PAGESIZE}")
+	@Value("${PAGE_SIZE}")
 	private int pageSize;
-	@Value("${BLOCKPAGE}")
+	@Value("${BLOCK_SIZE}")
 	private int blockPage;
 
 	//지훈
@@ -229,7 +229,7 @@ public class PartnerController {
 	   //병원 접수 상세보기 페이지
 	   @RequestMapping("/partner/hospital/ReceiptViewMove.do")
 	   public String hospitalReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
-	      model.addAttribute("receipt", "yes");
+	      model.addAttribute("moveWhere", "receipt");
 	      ReceptionDto dto;
 	      dto = partnerReservationService.hospitalReceiptView(map);
 	      dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
@@ -240,7 +240,7 @@ public class PartnerController {
 	   //병원 접수 지낸내역 상세보기 페이지
 	   @RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
 	   public String hospitalHistoryReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
-	      model.addAttribute("receiptHistory", "yes");
+	      model.addAttribute("moveWhere", "receiptHistory");
 	      ReceptionDto dto;
 	      dto = partnerReservationService.hospitalReceiptHistoryView(map);
 	      dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
@@ -251,7 +251,7 @@ public class PartnerController {
 	   //병원 예약 상세보기 페이지
 	   @RequestMapping("/partner/hospital/ReservationViewMove.do")
 	   public String hospitalReservationViewPage(@RequestParam Map map, Model model) throws Exception {
-	      model.addAttribute("reservation", "yes");
+	      model.addAttribute("moveWhere", "reservation");
 	      ReservationDto dto;
 	      dto = partnerReservationService.hospitalReservationView(map);
 	      dto.setRescontens(dto.getRescontens().replace("\r\n","<br/>"));
@@ -259,17 +259,65 @@ public class PartnerController {
 	      return "/partner/reservation/HospitalListView";
 	   }
 	   
-	   //병원 예약 지난애역 상세보기 페이지
+	   //병원 예약 지난내역 상세보기 페이지
 	   @RequestMapping("/partner/hospital/ReservationHistoryViewMove.do")
 	   public String hospitalReservationHistoryViewPage(@RequestParam Map map, Model model) throws Exception {
-	      model.addAttribute("reservationHistory", "yes");
+	      model.addAttribute("moveWhere", "reservationHistory");
 	      ReservationDto dto;
 	      dto = partnerReservationService.hospitalReservationHistoryView(map);
 	      model.addAttribute("record", dto);
 	      return "/partner/reservation/HospitalHistoryListView";
 	   }
 
-	
+	   //상세보기에서 접수,예약 목록으로 이동하는 컨트롤러
+	   @RequestMapping("/partner/hospital/ListMove.do")
+	   public String ViewNListMove(@RequestParam Map map)throws Exception{
+		   if(map.get("receipt").equals("receipt")) {
+			   //접수내역으로 이동
+			   return "forward:/partner/hospital/ReceiptMove.do";
+		   }
+		   else if(map.get("receiptHistory").equals("receiptHistory")) {
+			   //접수 지난 내역으로 이동
+			   return "forward:/partner/hospital/ReceiptListMove.do";
+		   }
+		   else  if(map.get("reservation").equals("reservation")) {
+			   //예약 내역으로 이동
+			   return "forward:/partner/hospital/ReservationMove.do";
+		   }
+		   else {
+			   //예약 지난 내역으로 이동
+			   return "forward:/partner/hospital/ReceiptListMove.do";
+		   }
+		   
+	   }
+	   
+	   //병원에서 접수나 예약을 수락하였을 때
+	   @RequestMapping("/partner/hospital/yes.do")
+	   public String listYes(@RequestParam Map map)throws Exception{
+		   //병원이 접수를 수락하였을 때
+		   if(map.get("receipt").equals("receipt")) {
+			   partnerReservationService.receptListYes(map);
+			   return "forward:/partner/hospital/ReceiptMove.do";
+		   }
+		   //병원이 예약을 수락하였을 떄
+		   else {
+			   partnerReservationService.reservationListYes(map);
+			   return "forward:/partner/hospital/ReservationMove.do";
+		   }
+	   }
+	   
+	   //병원에서 접수나 예약을 거절하였을떄
+	   @RequestMapping("/partner/hospital/no.do")
+	   public String listNo(@RequestParam Map map)throws Exception{
+		   if(map.get("receipt").equals("receipt")) {
+			   partnerReservationService.receptListNo(map);
+			   return "forward:/partner/hospital/ReceiptMove.do";
+		   }
+		   else {
+			   partnerReservationService.reservationListNo(map);
+			   return "forward:/partner/hospital/ReservationMove.do";
+		   }
+	   }	   
 	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
