@@ -15,6 +15,7 @@ public interface PartnerReservationService {
 	
 	ReceptionDto hospitalReceiptHistoryView(Map map);
 	ReservationDto hospitalReservationHistoryView(Map map);
+	int getTotalRecord(Map map);
 	
 	
 }

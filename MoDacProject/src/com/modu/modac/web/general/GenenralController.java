@@ -125,7 +125,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("reccontens").toString().trim().length()==0) {//내용을 입력하지 않았을떄
+		else if(map.get("reccontents").toString().trim().length()==0) {//내용을 입력하지 않았을떄
 			out.println("<script>");
 			out.println("alert('내용을 입력하지 않았습니다 :(');");
 			out.println("history.back();");

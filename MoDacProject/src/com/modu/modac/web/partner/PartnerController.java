@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +29,11 @@ import com.modu.modac.service.ReservationDto;
 @Controller
 public class PartnerController {
 	private int mon=0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
+	
+	@Value("${PAGESIZE}")
+	private int pageSize;
+	@Value("${BLOCKPAGE}")
+	private int blockPage;
 	
 	@Resource(name="chartService")
 	private ChartService chartService;
@@ -78,8 +85,25 @@ public class PartnerController {
 	
 	//병원 예약 관리 페이지
 	@RequestMapping("/partner/hospital/ReservationMove.do")
-	public String hospitalReservationPage(@ModelAttribute("pid") String pid, Model model) throws Exception {
-		Map map = new HashMap();
+	public String hospitalReservationPage(
+			@ModelAttribute("pid") String pid,
+			Model model,
+			@RequestParam Map map,
+			HttpServletRequest req,
+			@RequestParam(required=false,defaultValue="1") int nowPage
+			) throws Exception {
+		//페이징을 위한 로직 시작]
+		//전체 레코드 수
+		int totalRecordCount= partnerReservationService.getTotalRecord(map);			
+		//시작 및 끝 ROWNUM구하기]
+		int start = (nowPage-1)*pageSize+1;
+		int end   = nowPage*pageSize;
+		map.put("start",start);
+		map.put("end",end);
+		//페이징을 위한 로직 끝]	
+		List<OneMemoDTO> list= memoService.selectList(map);
+		
+		
 		map.put("pid", pid);
 		List<Map> list;
 		list = partnerReservationService.hospitalReservationList(map);

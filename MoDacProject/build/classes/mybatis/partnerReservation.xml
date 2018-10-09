@@ -16,6 +16,11 @@
 	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
 	</select>
 	
+	<select id="getTotalRecord" parameterType="java.util.Map">
+	SELECT COUNT(*) FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청'
+	</select>
+	
+	
 	<!-- 병원 예약 지난 내역 리스트 볼때 -->
 	<select id="hospitalreservationHistory" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL, RESACCEPT FROM RESERVATION WHERE PID = #{pid} AND NOT RESACCEPT = '예약신청' ORDER BY RESDATE DESC

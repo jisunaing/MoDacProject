@@ -58,4 +58,9 @@ public class PartnerReservationDao implements PartnerReservationService {
 		return template.selectOne("hospitalReservationHistoryView", map);
 	}
 
+	@Override
+	public int getTotalRecord(Map map) {
+		return template.selectOne("getTotalRecord", map);
+	}
+
 }

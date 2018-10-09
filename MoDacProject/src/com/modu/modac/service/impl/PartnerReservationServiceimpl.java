@@ -57,4 +57,9 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 		return dao.hospitalReservationHistoryView(map);
 	}
 
+	@Override
+	public int getTotalRecord(Map map) {
+		return dao.getTotalRecord(map);
+	}
+
 }
