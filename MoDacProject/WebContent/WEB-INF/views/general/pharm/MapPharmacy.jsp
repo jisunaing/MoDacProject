@@ -45,7 +45,7 @@
 
 <!-- BODY 영역 -->
 <div class="row1">
-	<form class="form-inline" action="<c:url value='/general/pharm/SearchPharm.do'/>">
+	<form class="form-inline" action="<c:url value='/general/pharm/AllPharm.do'/>">
 		<div class="btn-group">
 		  <a class="btn btn-primary" href="<c:url value='/general/pharm/NightPharm.do?pharmacy=심야약국'/>" role="button"> 심야약국 </a>
 		</div>
@@ -94,15 +94,14 @@
 	    </div>
 	    <div class="btn-group" id="searchtoggle">
 		  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 약국검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
 		</div>
 	</form>
 </div>
 
 <div class="row1">
-	<h4># 검색 키워드 : ${requestScope.pharmacy} ${requestScope.phname}, 총 ${requestScope.size}개의 약국이 검색되었습니다.</h4>
+	<h4># 검색 키워드 : ${requestScope.paramValue}</h4>
 </div>
-
 <div class="row2">
 	<div id="map"></div>
 </div>	
@@ -141,8 +140,7 @@
 	});
 	
 	var dataIndex = 0;
-	var count = 0;
-	var posArray = new Array();
+	var posArray = [];
 	var geocoder = new daum.maps.services.Geocoder();
 	/*
 	for(var i = 0; i < addrs.length; i++) {
@@ -171,7 +169,6 @@
 	            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 	            editDatas[dataIndex] = datas[index];
 	            posArray[dataIndex] = coords;
-	            console.log(editDatas[dataIndex]['name']+result[0].y+result[0].x);
 	            dataIndex++;
 	        }  
 	        
@@ -304,7 +301,7 @@
 			            
 			            if(customOverlay[i].getMap() == null) {
 			            	customOverlay[i].setContent(content);
-			            	customOverlay[i].setZIndex(99999);
+			            	customOverlay[i].setZIndex(999999);
 							customOverlay[i].setMap(map);
 			            } else {
 			            	customOverlay[i].setMap(null);

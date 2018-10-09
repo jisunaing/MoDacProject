@@ -165,35 +165,14 @@ var reserve = function(){
 
 <!-- KAKAO MAP API -->
 <script>
-// 병원 데이터 예
-var datas = [
-	"서울특별시 광진구 능동로 415, 참존빌딩 3층 (중곡동)",
-	"서울특별시 광진구 동일로 74 (자양동)",
-	"서울특별시 강동구 상암로11길 5, 2층 (암사동)",
-	"서울특별시 동작구 상도로 146 (상도동)",
-	"서울특별시 강동구 천호대로 1087, 2층 201호 (천호동, 진넥스빌Ⅲ)",
-	"서울특별시 동대문구 서울시립대로 42, (전농동)",
-	"서울특별시 동대문구 무학로26길 5, 1층 (용두동)",
-	"서울특별시 동대문구 망우로 78 (휘경동) 1층",
-	"서울특별시 동대문구 망우로 77, 1층 (휘경동)",
-	"서울특별시 동대문구 답십리로 252 (장안동) 1층",
-	"서울특별시 동작구 동작대로25길 39, (사당동)",
-	"서울특별시 강서구 등촌로13길 31, (화곡동)",
-	"서울특별시 영등포구 디지털로37길 20 (대림동)",
-	"서울특별시 영등포구 도림로41길 20",
-	"서울특별시 영등포구 도림로38길 4, (대림동)",
-	"서울특별시 성북구 보문로34길 59, 1층(동선동1가)",
-	"서울특별시 성북구 동소문로20길 43 (동선동1가)",
-	"서울특별시 성북구 동소문로20가길 51 (동선동1가)",
-	"서울특별시 성북구 동소문로 321 (길음동)",
-	"서울특별시 중구 동호로11길 43",
-	"서울특별시 중구 동호로 171, (신당동)",
-	"서울특별시 성북구 돌곶이로22길 49, (석관동)",
-	"서울특별시 중구 다산로 215, 경북여인숙 1층 (신당동)",
-	"서울특별시 도봉구 우이천로4길 32, 1층 (창동)",
-	"서울특별시 동대문구 고산자로 410, 1층 (용두동)",
-	"서울특별시 송파구 거마로 60, 1층(마천동)"
-];
+//[컨트롤러로 부터 데이터 받아 세팅]
+var datas = JSON.parse('${records}');
+var editDatas = [];
+
+var addrs = [];
+for(var i = 0; i < datas.length; i++) {
+	addrs[i] = datas[i]['addr'];
+}
 
 
 // [지도 생성]
@@ -214,30 +193,26 @@ var clusterer = new daum.maps.MarkerClusterer({
 // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 });
 
-var count = 0; // 콜백함수 관련 변수
+var dataIndex = 0;
 var posArray = []; // 좌표객체 저장할 배열 선언
-
 var geocoder = new daum.maps.services.Geocoder(); // 주소 => 좌표 변환 변수 선언
 
-datas.forEach(function(addr, index) {
-	
-    geocoder.addressSearch(addr, function(result, status) {
+$.each(addrs,function(index,value){
+	geocoder.addressSearch(value, function(result, status) {
     	
-        if (status === daum.maps.services.Status.OK) {
-        	
+        if(status === daum.maps.services.Status.OK) {
             var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-            posArray.push(coords);
-            console.log("posArray[count]",posArray[count])
-            count++;
-			
-            // 콜벡함수 (geocoder.addressSearch()) 호출 횟수와 병원 수가 일치되었을 때 다음 코드로 진행되게끔 처리
-            // 그렇지 않을 경우 아래쪽 코드(doNext() 이후)가 먼저 실행되어 오류 발생
-            if(count === datas.length) {
-				doNext(posArray);            	
-            }
-        } 
+            editDatas[dataIndex] = datas[index];
+            posArray[dataIndex] = coords;
+            console.log(editDatas[dataIndex]['name']+result[0].y+result[0].x);
+            dataIndex++;
+        }  
+        
+        if(index == addrs.length-1){
+        	doNext(posArray);
+        }
     });
-});
+})
 
 function doNext(posArray) {
 	
@@ -260,16 +235,12 @@ function doNext(posArray) {
 		  markers[i] = new daum.maps.Marker({
                 map: map,
                 image: markerImage,
-                position: posArray[i]
+                position: posArray[i],
+                zIndex: editDatas[i]['no']
            });
-		 
-		  console.log("markers[i]", markers[i]);
 		 
 	}
 	clusterer.addMarkers(markers); // 클러스터러에 마커들을 추가
-	
-	console.log("clusterer")
-	console.log("markers", markers);
 	
 	// 마커 클러스터러에 클릭이벤트를 등록
 	// 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
@@ -312,7 +283,7 @@ function doNext(posArray) {
 			for (var i = 0; i < posArray.length; i++) {
 				
 				// 클릭한 마커의 위치정보와 저장된 마커의 위치정보를 비교하여 클릭한 마커에 해당하는 정보를 가져온다.
-				if (marker.getPosition().getLat() == markers[i].getPosition().getLat()) {
+				if (marker.getZIndex() === markers[i].getZIndex()) {
 						
 						// 마커를 클릭했을 때 마커가 지도 중심부로 향하도록 셋팅
 						map.setCenter(marker.getPosition());
@@ -322,36 +293,46 @@ function doNext(posArray) {
 						var editxPos = xPos + (northXpos-xPos)/2;
 						map.setCenter(new daum.maps.LatLng(editxPos, yPos));
 						
+						var name = editDatas[i]['name'];
+						var addr = editDatas[i]['addr'];
+						var phone = editDatas[i]['phone'];
+						var mon = editDatas[i]['mon'];
+						var tue = editDatas[i]['tue'];
+						var wed = editDatas[i]['wed'];
+						var thu = editDatas[i]['thu'];
+						var fri = editDatas[i]['fri'];
+						var sat = editDatas[i]['sat'];
+						var sun = editDatas[i]['sun'];
+						var holiday = editDatas[i]['holiday'];
 						
 						var content =
 							'<div class="wrap">' + 
 				            '    <div class="info">' + 
-				            '        <div class="title"> 병원 이름이 들어갑니다 </div>' + 
+				            '        <div class="title"> '+name+' </div>' + 
 				            '        <div class="body">' + 
 				            '            <div class="img">' +
 				            '                <img src="'+'<c:url value="/Images/BasicHospital.png"/>'+'" width="70" height="70">' +
 				            '            </div>' + 
 				            '            <div class="desc">' + 
 				            '                <div class="smalltitle"> [주소] </div>' + 
-				            '                <div class="ellipsis"> 서울특별시 광진구 능동로 415 </div>' +
-				            '                <div class="ellipsis"> 참존빌딩 3층 (중곡동) </div>' + 
+				            '                <div class="ellipsis"> '+addr+' </div>' +
 				            '                <div class="smalltitle"> [전화번호] </div>' + 
-				            '                <div class="ellipsis"> 02-1234-5678 </div>' + 
+				            '                <div class="ellipsis"> '+phone+' </div>' + 
 				            '                <div class="smalltitle"> [홈페이지] </div>' + 
 				            '                <div class="ellipsis"> <a href="http://www.daum.net">www.daum.net</a> </div>' + 
 				            '                <div class="smalltitle"> [진료시간] </div>' + 
 				            '                <table class="schedule">' + 
 				            '                	<tr>' + 
-				            '                		<td> 월요일: 9:00 ~ 18:00 </td> <td> 화요일: 9:00 ~ 18:00</td>' + 
+				            '                		<td> 월요일: '+mon+' </td> <td> 화요일: '+tue+' </td>' + 
 				            '              	    </tr>' + 
 				            '                   <tr>' + 
-				            '                		<td> 수요일: 9:00 ~ 18:00 </td> <td> 목요일: 9:00 ~ 18:00</td>' + 
+				            '                		<td> 수요일: '+wed+' </td> <td> 목요일: '+thu+' </td>' + 
 				            '                	</tr>' + 
 				            '                   <tr>' + 
-				            '                		<td> 금요일: 9:00 ~ 18:00 </td> <td> 토요일: 10:00 ~ 14:00</td>' + 
+				            '                		<td> 금요일: '+fri+' </td> <td> 토요일: '+sat+'</td>' + 
 				            '                	</tr>' + 
 				            '                   <tr>' + 
-				            '                		<td> 일요일: 휴무 </td> <td> 공휴일: 휴무 </td>' + 
+				            '                		<td> 일요일: '+sun+' </td> <td> 공휴일: '+holiday+' </td>' + 
 				            '                	</tr>' + 
 				            '                </table><br/><hr/><br/>' + 
 				            '                <div class="btn-group">' + 
@@ -361,7 +342,7 @@ function doNext(posArray) {
 				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:receipt()"> 접수하기 </a>' +
 				            '            	 </div>' +
 				            '                <div class="btn-group">' + 
-					        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/병원이름,'+xPos+','+yPos+'"> 길찾기 </a>' + 
+					        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>' + 
 				            '            	 </div>' + 
 				            '            </div>' + 
 				            '        </div>' + 
@@ -370,6 +351,7 @@ function doNext(posArray) {
 			           
 			            if(customOverlay[i].getMap() == null) {
 			            	customOverlay[i].setContent(content);
+			            	customOverlay[i].setZIndex(999999);
 							customOverlay[i].setMap(map);
 			            } else {
 			            	customOverlay[i].setMap(null);

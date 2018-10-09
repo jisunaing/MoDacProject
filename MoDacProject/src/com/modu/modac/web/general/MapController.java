@@ -45,11 +45,26 @@ public class MapController {
 	@RequestMapping("/general/pharm/SearchPharm.do")
 	public String searchPharmName(@RequestParam Map map, Model model) throws Exception {
 		
-		String phname = map.get("phname").toString();
-		String pharmacy = map.get("pharmacy").toString();
+		MapPharmacyDto dto = servicePH.selectOne(map);
 		
-		model.addAttribute("phname", phname);
-		model.addAttribute("pharmacy", pharmacy);
+		List<Map> collections = new Vector<Map>();
+		Map record = new HashMap();
+		record.put("no", dto.getPhno());
+		record.put("name", dto.getPhname());
+		record.put("addr", dto.getPhaddr());
+		record.put("phone", dto.getPhphone());
+		record.put("mon", dto.getPhmon());
+		record.put("tue", dto.getPhtue());
+		record.put("wed", dto.getPhwed());
+		record.put("thu", dto.getPhthu());
+		record.put("fri", dto.getPhfri());
+		record.put("sat", dto.getPhsat());
+		record.put("sun", dto.getPhsun());
+		record.put("holiday", dto.getPholiday());
+		collections.add(record);
+		
+		model.addAttribute("records", JSONArray.toJSONString(collections));
+		model.addAttribute("size",record.size());
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}
@@ -58,6 +73,13 @@ public class MapController {
 	// [일반약국 검색]
 	@RequestMapping("/general/pharm/AllPharm.do")
 	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
+		
+		String paramValue = null;
+		if(map.get("address") != null) { 
+			paramValue = map.get("address").toString();
+		} else if(map.get("phname") != null) {
+			paramValue = map.get("phname").toString();
+		}
 		
 		List<MapPharmacyDto> records = servicePH.selectList(map);
 		
@@ -79,8 +101,8 @@ public class MapController {
 			collections.add(record);
 		}
 		
+		model.addAttribute("paramValue",paramValue);
 		model.addAttribute("records", JSONArray.toJSONString(collections));
-		model.addAttribute("size",records.size());
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}
@@ -89,6 +111,11 @@ public class MapController {
 	// [심야약국 검색]
 	@RequestMapping("/general/pharm/NightPharm.do")
 	public String searchAlldayPharm(@RequestParam Map map, Model model) throws Exception {
+		
+		String paramValue = null;
+		if(map.get("pharmacy") != null) { 
+			paramValue = map.get("pharmacy").toString();
+		}
 		
 		List<MapNightPharmacyDto> records = serviceNPH.selectList(map);
 		
@@ -111,7 +138,7 @@ public class MapController {
 		}
 		
 		model.addAttribute("records", JSONArray.toJSONString(collections));
-		model.addAttribute("size",records.size());		
+		model.addAttribute("paramValue",paramValue);
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}
