@@ -14,27 +14,59 @@
 	
 	<!-- 병원에서 예약 신청목록 리스트 볼때 -->
 	<select id="hospitalReservationList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	SELECT * FROM (SELECT T.*,ROWNUM R FROM 
+	(SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL 
+	FROM 
+	RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC)T)
+	WHERE R BETWEEN #{start} AND #{end}
 	</select>
-	
-	<select id="getTotalRecord" parameterType="java.util.Map">
-	SELECT COUNT(*) FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청'
-	</select>
-	
 	
 	<!-- 병원 예약 지난 내역 리스트 볼때 -->
 	<select id="hospitalreservationHistory" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL, RESACCEPT FROM RESERVATION WHERE PID = #{pid} AND NOT RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	SELECT * FROM (SELECT T.*,ROWNUM R FROM 
+	(SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL ,RESACCEPT
+	FROM 
+	RESERVATION WHERE PID = #{pid} AND NOT RESACCEPT = '예약신청' ORDER BY RESDATE DESC)T)
+	WHERE R BETWEEN #{start} AND #{end}
 	</select>
 	
 	<!-- 병원에서 접수 신청목록 리스트 볼떄 -->
 	<select id="hospitalReceiptList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RECEPTION WHERE PID = #{pid} AND RECACCEPT = '접수신청' ORDER BY RECDATE DESC
+	SELECT * FROM (SELECT T.*,ROWNUM R FROM 
+	(SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL 
+	FROM 
+	RECEPTION WHERE PID = #{pid} AND RECACCEPT = '접수신청' ORDER BY RECDATE DESC)T)
+	WHERE R BETWEEN #{start} AND #{end}
 	</select>
 	
 	<!-- 병원 접수 지난 내역 리스트 볼때 -->
-	<select id="hospitalreceiptHistory" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL, RECACCEPT FROM RECEPTION WHERE PID = #{pid} AND NOT RECACCEPT = '접수신청' ORDER BY RECDATE DESC
+	<select id="hospitalReceiptHistory" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT * FROM (SELECT T.*,ROWNUM R FROM 
+	(SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL 
+	FROM 
+	RECEPTION WHERE PID = #{pid} AND RECACCEPT = '접수신청' ORDER BY RECDATE DESC)T)
+	WHERE R BETWEEN #{start} AND NOT #{end}
+	</select>
+	
+	<!-- 예약 신청 내역 총 레코드 수 얻어오기 -->
+	<select id="getTotalReservationRecord" parameterType="java.util.Map" resultType="int">
+	SELECT COUNT(*) FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청'
+	</select>
+	
+	<!-- 예약 지낸내역 총 레코스 수 얻어오기 -->
+	<select id="getTotalReservationHistoryRecord" parameterType="java.util.Map" resultType="int">
+	SELECT COUNT(*) FROM RESERVATION WHERE PID = #{pid} AND NOT RESACCEPT = '예약신청'
+	</select>
+	
+	
+	<!-- 접수 신청 총 레코드 수 얻어오기 -->
+	<select id="getTotalReceptionRecord" parameterType="java.util.Map" resultType="int">
+	SELECT COUNT(*) FROM RECEPTION WHERE PID = #{pid} AND RECACCEPT = '접수신청'
+	</select>
+	
+	<!-- 접수 지난내역 총 레코드 수 얻어오기 -->
+	<select id="getTotalReceptionHistoryRecord" parameterType="java.util.Map" resultType="int">
+	SELECT COUNT(*) FROM RECEPTION WHERE PID = #{pid} AND NOT RECACCEPT = '접수신청'
 	</select>
 	
 	<!-- 접수 상세내역 -->

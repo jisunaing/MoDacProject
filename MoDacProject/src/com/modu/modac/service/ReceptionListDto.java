@@ -1,22 +1,23 @@
 package com.modu.modac.service;
 
-public class ReservationListDto {
+public class ReceptionListDto {
 	
-	private String resname;
-	private String resdate;
+	private String recname;
+	private String recdate;
 	private String phone;
 	private String email;
-	public String getResname() {
-		return resname;
+	
+	public String getRecname() {
+		return recname;
 	}
-	public void setResname(String resname) {
-		this.resname = resname;
+	public void setRecname(String recname) {
+		this.recname = recname;
 	}
-	public String getResdate() {
-		return resdate;
+	public String getRecdate() {
+		return recdate;
 	}
-	public void setResdate(String resdate) {
-		this.resdate = resdate;
+	public void setRecdate(String recdate) {
+		this.recdate = recdate;
 	}
 	public String getPhone() {
 		return phone;
@@ -30,8 +31,5 @@ public class ReservationListDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
 	
 }

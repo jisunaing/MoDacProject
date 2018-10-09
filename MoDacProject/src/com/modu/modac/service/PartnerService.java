@@ -20,7 +20,5 @@ public interface PartnerService {
 	int updateone(Map map);
 	int updatetwo(Map map);
 	
-	//전체 레코드 수]
-	int getTotalRecord(Map map);
 
 }

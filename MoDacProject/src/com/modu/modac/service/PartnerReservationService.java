@@ -5,17 +5,20 @@ import java.util.Map;
 
 public interface PartnerReservationService {
 	
-	List<Map> hospitalReservationList(Map map);
-	List<Map> hospitalreservationHistory(Map map);
-	List<Map> hospitalReceiptList(Map map);
-	List<Map> hospitalreceiptHistory(Map map);
+	List<ReservationListDto> hospitalReservationList(Map map);
+	List<ReservationHistoryListDto> hospitalreservationHistory(Map map);
+	List<ReceptionListDto> hospitalReceiptList(Map map);
+	List<ReceptionHistoryListDto> hospitalreceiptHistory(Map map);
 	
 	ReceptionDto hospitalReceiptView(Map map);
 	ReservationDto hospitalReservationView(Map map);
 	
 	ReceptionDto hospitalReceiptHistoryView(Map map);
 	ReservationDto hospitalReservationHistoryView(Map map);
-	int getTotalRecord(Map map);
+	int getTotalReservationRecord(Map map);
+	int getTotalReservationHistoryRecord(Map map);
+	int getTotalReceptionRecord(Map map);
+	int getTotalReceptionHistoryRecord(Map map);
 	
 	
 }

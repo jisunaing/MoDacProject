@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReceptionHistoryListDto;
+import com.modu.modac.service.ReceptionListDto;
 import com.modu.modac.service.ReservationDto;
+import com.modu.modac.service.ReservationHistoryListDto;
+import com.modu.modac.service.ReservationListDto;
 
 @Service("partnerReservationService")
 public class PartnerReservationServiceimpl implements PartnerReservationService {
@@ -18,22 +22,22 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	private PartnerReservationDao dao;
 	
 	@Override
-	public List<Map> hospitalReservationList(Map map) {
+	public List<ReservationListDto> hospitalReservationList(Map map) {
 		return dao.hospitalReservationList(map);
 	}
 
 	@Override
-	public List<Map> hospitalReceiptList(Map map) {
+	public List<ReceptionListDto> hospitalReceiptList(Map map) {
 		return dao.hospitalReceiptList(map);
 	}
 
 	@Override
-	public List<Map> hospitalreservationHistory(Map map) {
+	public List<ReservationHistoryListDto> hospitalreservationHistory(Map map) {
 		return dao.hospitalreservationHistory(map);
 	}
 
 	@Override
-	public List<Map> hospitalreceiptHistory(Map map) {
+	public List<ReceptionHistoryListDto> hospitalreceiptHistory(Map map) {
 		return dao.hospitalreceiptHistory(map);
 	}
 
@@ -58,8 +62,24 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	}
 
 	@Override
-	public int getTotalRecord(Map map) {
-		return dao.getTotalRecord(map);
+	public int getTotalReservationRecord(Map map) {
+		return dao.getTotalReservationRecord(map);
 	}
+
+	@Override
+	public int getTotalReservationHistoryRecord(Map map) {
+		return dao.getTotalReservationHistoryRecord(map);
+	}
+
+	@Override
+	public int getTotalReceptionRecord(Map map) {
+		return dao.getTotalReceptionRecord(map);
+	}
+
+	@Override
+	public int getTotalReceptionHistoryRecord(Map map) {
+		return dao.getTotalReceptionHistoryRecord(map);
+	}
+
 
 }

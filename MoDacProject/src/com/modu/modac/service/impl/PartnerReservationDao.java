@@ -10,7 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReceptionHistoryListDto;
+import com.modu.modac.service.ReceptionListDto;
 import com.modu.modac.service.ReservationDto;
+import com.modu.modac.service.ReservationHistoryListDto;
+import com.modu.modac.service.ReservationListDto;
 
 @Repository
 public class PartnerReservationDao implements PartnerReservationService {
@@ -19,22 +23,22 @@ public class PartnerReservationDao implements PartnerReservationService {
 	private SqlSessionTemplate template;
 	
 	@Override
-	public List<Map> hospitalReservationList(Map map) {
+	public List<ReservationListDto> hospitalReservationList(Map map) {
 		return template.selectList("hospitalReservationList", map);
 	}
 
 	@Override
-	public List<Map> hospitalreservationHistory(Map map) {
+	public List<ReservationHistoryListDto> hospitalreservationHistory(Map map) {
 		return template.selectList("hospitalreservationHistory",map);
 	}
 	
 	@Override
-	public List<Map> hospitalReceiptList(Map map) {
+	public List<ReceptionListDto> hospitalReceiptList(Map map) {
 		return template.selectList("hospitalReceiptList", map);
 	}
 
 	@Override
-	public List<Map> hospitalreceiptHistory(Map map) {
+	public List<ReceptionHistoryListDto> hospitalreceiptHistory(Map map) {
 		return template.selectList("hospitalreceiptHistory", map);
 	}
 
@@ -59,8 +63,23 @@ public class PartnerReservationDao implements PartnerReservationService {
 	}
 
 	@Override
-	public int getTotalRecord(Map map) {
-		return template.selectOne("getTotalRecord", map);
+	public int getTotalReservationRecord(Map map) {
+		return template.selectOne("getTotalReservationRecord", map);
+	}
+
+	@Override
+	public int getTotalReservationHistoryRecord(Map map) {
+		return template.selectOne("getTotalReservationHistoryRecord",map);
+	}
+
+	@Override
+	public int getTotalReceptionRecord(Map map) {
+		return template.selectOne("getTotalReceptionRecord", map);
+	}
+
+	@Override
+	public int getTotalReceptionHistoryRecord(Map map) {
+		return template.selectOne("getTotalReceptionHistoryRecord", map);
 	}
 
 }

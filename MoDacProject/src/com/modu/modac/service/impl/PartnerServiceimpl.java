@@ -29,11 +29,6 @@ public class PartnerServiceimpl implements PartnerService {
 		return partnerdao.selectList(map);
 	}
 
-	@Override
-	public int getTotalRecord(Map map) {
-		
-		return partnerdao.getTotalRecord(map);
-	}
 
 	@Override
 	public PartnerDto selectOne(Map map) {
