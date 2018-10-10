@@ -12,16 +12,14 @@ import com.modu.modac.service.ChartService;
 
 @Repository
 public class ChartDao implements ChartService {
-
-	@Resource(name = "template")
+	
+	@Resource(name="template")
 	private SqlSessionTemplate template;
 
 	@Override
-	
-	public List<String> dayList(Map map) {
-
+	public List<Map> dayList(Map map) {
+		System.out.println("dao로 들어옴");
 		return template.selectOne("chartList",map);
-
 	}
 
 }

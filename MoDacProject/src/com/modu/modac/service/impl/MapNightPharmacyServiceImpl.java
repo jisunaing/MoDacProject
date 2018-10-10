@@ -7,47 +7,50 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapNightPharmacyDto;
 import com.modu.modac.service.MapNightPharmacyService;
 
-@Service("nightPharmacyService")
+@Service("mapNightPharmacyService")
 public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 
 	@Resource(name="mapNightPharmacyDao")
 	private MapNightPharmacyDao dao;
 	
 	@Override
-	public List<MapNightPharmacyDto> selectList(Map map) {
-		return dao.selectList(map);
+	public List<MapHospitalDto> selectList(Map map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		return dao.getTotalRecord(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public MapNightPharmacyDto selectOne(Map map) {
-		return dao.selectOne(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int delete(Map map) {
-		return dao.delete(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int insert(Map map) {
-		return dao.insert(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int update(Map map) {
-		return dao.update(map);
-	}
-
-	@Override
-	public void close() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
