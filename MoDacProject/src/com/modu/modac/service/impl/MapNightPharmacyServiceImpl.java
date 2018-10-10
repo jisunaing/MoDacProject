@@ -18,7 +18,7 @@ public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 	private MapNightPharmacyDao dao;
 	
 	@Override
-	public List<MapHospitalDto> selectList(Map map) {
+	public List<MapNightHospitalDto> selectList(Map map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,6 +51,12 @@ public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 	public int update(Map map) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
