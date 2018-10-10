@@ -30,10 +30,70 @@ $(function() {
 
 
 
-</script>    
-    
+</script> 
 
+<style>
+
+
+      *, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+
+.form-box {
+	background: #F6F6F6; 
+	padding: 40px;
+	height: 960px;
+	max-width: 1000px;
+	margin: 68px auto; 
+	border-radius: 20px; 
+	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);
+	
+	
+}
+
+ 
+small {	
+	color: black;
+	font-weight: 150;
+	margin-bottom: 40px;
+}
+
+
+
+#h2id{
+
+text-align: center;
+font-size: 2.5em;
+
+}
+#h4id{
+
+text-align: center;
+margin-top: 10px;
+}
+
+.title_result{
+
+margin-top: 25px;
+border: 1px dashed;
+text-align: center;
+ 
+} 
+
+#btn_main{
+
+text-align: center;
+margin-top: 15px;
+
+}
+
+</style>
 <body>
+<c:if test="${empty selfresult}" var="selfresult">
 
 	<article data-page-id="84588067" class="survey-page survey-page-white">
 		<header class="survey-page-header"> </header>
@@ -92,11 +152,11 @@ $(function() {
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														그렇다</td>
+														잘 모르겠다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														잘 모르겠다</td>
+														그렇다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
@@ -1168,9 +1228,92 @@ $(function() {
 
 			</form>
 		</section>
-
-
-
 	</article>
+	</c:if>
+	<c:if test="${!selfresult}">
+	
+	<div class="form-box">
+	
+	<h2 id="h2id">자가진단 <small>결과</small></h2>
+	
+	<hr style="border: 1px solid;"/>
+	 
+	<h4 id="h4id">※ 현재 결과는 100% 정확한 결과가 아닙니다!! 무엇보다 전문의료진의 상담과 진료를 통하여 치료받으시길 권장드립니다.※</h4>
+	
+		<div class="title_result"> 
+	
+	<h3>결막염</h3> 
+	
+	결막(눈 흰자위와 눈꺼풀 안쪽의 분홍 점막)에 생긴염증
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+		<div class="title_result"> 
+	 
+	<h3>각막염</h3> 
+	
+	각막(눈동자, 즉 검은자 위를 덮고 있는 투명한 막)에 생긴 염증
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	 
+	
+	</div>
+	
+	<div class="title_result"> 
+	
+	<h3>녹내장</h3> 
+	
+	안압이 상승하면서 시신경 기능에 이상이 생겨 시력 및 시야에 문제가 발생한 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+	
+		<div class="title_result">
+	
+	<h3>안검염</h3>
+	
+	눈꺼풀의 피부와 속눈썹 부분에 염증이 만성적으로 생기는 질병
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+		<div class="title_result">
+	
+	<h3>안구건조증</h3>
+	
+	분비되는 눈물의 양이 적거나 눈물이 빨리 말라 눈이 건조하게 되어 이물감이나 통증을 느끼는 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+		<div class="title_result">
+	
+	<h3>시신경염</h3>
+	
+	시각정보를 뇌로 전달해주는 시신경이 염증이나 상처로 인해 손상된 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div> 
+	
+	<div id="btn_main"> 
+	<a href="<c:url value='/home/index.do'/>"><input style="margin-bottom: 10px;" type="button" class="btn btn-primary" value="메인으로 이동"></a> 
+	</div>
+	</div>
+	
+	
+	
+	
+	</c:if>
+	
+	
   </body>
 </html>

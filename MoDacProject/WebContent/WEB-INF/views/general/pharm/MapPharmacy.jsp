@@ -45,62 +45,79 @@
 
 <!-- BODY 영역 -->
 <div class="row1">
-	<form class="form-inline">
-	<div class="btn-group">
-	  <a class="btn btn-primary" href="?pharmacyoption=simya" role="button"> 심야약국 </a>
-	</div>
-	<div class="btn-group">
-	  <a class="btn btn-primary" href="?pharmacyoption=ilban" role="button"> 일반약국 </a>
-	</div>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="약국 이름으로 검색"/>
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button"> 검색 </button>
-      </span>
-    </div>
-    <div class="btn-group" id="searchtoggle">
-	  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-	  <a class="btn btn-default" href="<c:url value='/general/pharm/pharmMap.do'/>" role="button"> 약국검색 </a>
-	</div>
+	<form class="form-inline" action="<c:url value='/general/pharm/SearchPharm.do'/>">
+		<div class="btn-group">
+		  <a class="btn btn-primary" href="<c:url value='/general/pharm/NightPharm.do?pharmacy=심야약국'/>" role="button"> 심야약국 </a>
+		</div>
+		<div class="btn-group">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dLabel">
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>">강남구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=강동구'/>">강동구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=강북구'/>">강북구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=강서구'/>">강서구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=관악구'/>">관악구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=광진구'/>">광진구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=구로구'/>">구로구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=금천구'/>">금천구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=노원구'/>">노원구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=도봉구'/>">도봉구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=동대문구'/>">동대문구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=동작구'/>">동작구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=마포구'/>">마포구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=서대문구'/>">서대문구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=서초구'/>">서초구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=성동구'/>">성동구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=성북구'/>">성북구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=송파구'/>">송파구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=양천구'/>">양천구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=영등포구'/>">영등포구</a></li>
+			    <li class="divider"></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=용산구'/>">용산구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=은평구'/>">은평구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=종로구'/>">종로구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=중구'/>">중구</a></li>
+			    <li><a href="<c:url value='/general/pharm/AllPharm.do?address=중랑구'/>">중랑구</a></li>
+			  </ul>
+		</div>
+	    <div class="input-group">
+	      <input type="text" class="form-control" name="phname" placeholder="약국 이름으로 검색"/>
+	      <input type="hidden" name="pharmacy" value="${requestScope.pharmacy}"/>
+	      <span class="input-group-btn">
+	        <button class="btn btn-primary" type="submit"> 검색 </button>
+	      </span>
+	    </div>
+	    <div class="btn-group" id="searchtoggle">
+		  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 약국검색 </a>
+		</div>
 	</form>
 </div>
-<br/>
+
+<div class="row1">
+	<h4># 검색 키워드 : ${requestScope.pharmacy} ${requestScope.phname}, 총 ${requestScope.size}개의 약국이 검색되었습니다.</h4>
+</div>
+
 <div class="row2">
 	<div id="map"></div>
 </div>	
 	
 <!-- KAKAO MAP API -->
 <script>
-	// 약국 데이터 예
-	var datas = [
-		"서울특별시 광진구 능동로 415, 참존빌딩 3층 (중곡동)",
-		"서울특별시 광진구 동일로 74 (자양동)",
-		"서울특별시 강동구 상암로11길 5, 2층 (암사동)",
-		"서울특별시 동작구 상도로 146 (상도동)",
-		"서울특별시 강동구 천호대로 1087, 2층 201호 (천호동, 진넥스빌Ⅲ)",
-		"서울특별시 동대문구 서울시립대로 42, (전농동)",
-		"서울특별시 동대문구 무학로26길 5, 1층 (용두동)",
-		"서울특별시 동대문구 망우로 78 (휘경동) 1층",
-		"서울특별시 동대문구 망우로 77, 1층 (휘경동)",
-		"서울특별시 동대문구 답십리로 252 (장안동) 1층",
-		"서울특별시 동작구 동작대로25길 39, (사당동)",
-		"서울특별시 강서구 등촌로13길 31, (화곡동)",
-		"서울특별시 영등포구 디지털로37길 20 (대림동)",
-		"서울특별시 영등포구 도림로41길 20",
-		"서울특별시 영등포구 도림로38길 4, (대림동)",
-		"서울특별시 성북구 보문로34길 59, 1층(동선동1가)",
-		"서울특별시 성북구 동소문로20길 43 (동선동1가)",
-		"서울특별시 성북구 동소문로20가길 51 (동선동1가)",
-		"서울특별시 성북구 동소문로 321 (길음동)",
-		"서울특별시 중구 동호로11길 43",
-		"서울특별시 중구 동호로 171, (신당동)",
-		"서울특별시 성북구 돌곶이로22길 49, (석관동)",
-		"서울특별시 중구 다산로 215, 경북여인숙 1층 (신당동)",
-		"서울특별시 도봉구 우이천로4길 32, 1층 (창동)",
-		"서울특별시 동대문구 고산자로 410, 1층 (용두동)",
-		"서울특별시 송파구 거마로 60, 1층(마천동)"
-	];
 	
+	// [컨트롤러로 부터 데이터 받아 세팅]
+	var datas = JSON.parse('${records}');
+	var editDatas = [];
+	
+	var addrs = [];
+	for(var i = 0; i < datas.length; i++) {
+		addrs[i] = datas[i]['addr'];
+	}
 	
 	// [지도 생성]
 	var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
@@ -119,34 +136,43 @@
 	var clusterer = new daum.maps.MarkerClusterer({
 		map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
 		averageCenter : true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-		minLevel : 6, // 클러스터 할 최소 지도 레벨
-		disableClickZoom : true
-	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
+		minLevel : 4, // 클러스터 할 최소 지도 레벨
+		disableClickZoom : true	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	});
 	
+	var dataIndex = 0;
 	var count = 0;
 	var posArray = [];
-	
 	var geocoder = new daum.maps.services.Geocoder();
 	
-	datas.forEach(function(addr, index) {
+	for(var i = 0; i < addrs.length; i++) {
 		
-	    geocoder.addressSearch(addr, function(result, status) {
+	    geocoder.addressSearch(addrs[count], function(result, status) {
 	    	
-	        if (status === daum.maps.services.Status.OK) {
+	        if(status === daum.maps.services.Status.OK) {
 	        	
+			    console.log("%s // %s",addrs[count],result);    	
+			    
 	            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 	            posArray.push(coords);
-	            console.log("posArray[count]",posArray[count])
-	            count++;
 	            
-	            if(count === datas.length) {
-					doNext(posArray);            	
-	            }
-	         	
-	        } 
+	            console.log(posArray[count]);
+	            
+	            editDatas[dataIndex] = datas[count];
+	            
+	            dataIndex++;
+	        }
+	        
+		    count++;
+		    
+	        if(count == addrs.length) {
+	        	console.log(posArray.length);
+				doNext(posArray);            	
+            }
+	        
 	    });
-	});
+	    
+	}
 	
 	var imageSrc = '<c:url value="/Images/MarkerPharmacy.png"/>', // 마커이미지의 주소입니다    
    	imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
@@ -158,23 +184,16 @@
 		
 		var markers = [];
 		for(var i = 0; i < posArray.length; i++) {
-			
-			console.log("posArray[i]",posArray[i]);
-			
-			  markers[i] = new daum.maps.Marker({
-	                map: map,
-	                image: markerImage,
-	                position: posArray[i]
-	           });
-			 
-			  console.log("markers[i]", markers[i]);
-			  
+		   markers[i] = new daum.maps.Marker({
+                map: map,
+                image: markerImage,
+                position: posArray[i],
+                zIndex: editDatas[i]['no']
+           });
 		}
+		
 		// 클러스터러에 마커들을 추가
 		clusterer.addMarkers(markers); 
-		
-		console.log("clusterer")
-   		console.log("markers", markers);
 		
 		// 마커 클러스터러에 클릭이벤트를 등록
 		// 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
@@ -193,13 +212,12 @@
 		// [커스텀 오버레이]
 		var customOverlay = [];
 		for (var i = 0; i < posArray.length; i++) {
-			
 			customOverlay[i] = new daum.maps.CustomOverlay({
 				position : posArray[i]
 			});
 
 			daum.maps.event.addListener(markers[i], 'click', openOverlayListener(map, markers[i]));
-
+				
 		}
 		
 		daum.maps.event.addListener(map,'rightclick',function() {
@@ -213,44 +231,61 @@
 		function openOverlayListener(map, marker) {
 
 			return function() {
+				
+				for (var i = 0; i < markers.length; i++) {
 
-				for (var i = 0; i < posArray.length; i++) {
-
-					if (marker.getPosition().getLat() == markers[i].getPosition().getLat()) {
-
-						console.log('리스너 함수 if문');
+					if (marker.getZIndex() == markers[i].getZIndex()) {
+						
+						// 마커를 화면의 중심으로 설정
+						map.setCenter(marker.getPosition());
+						var xPos = marker.getPosition().getLat();
+						var yPos = marker.getPosition().getLng();
+						var northXpos = map.getBounds().getNorthEast().getLat();
+						var editxPos = xPos + (northXpos-xPos)/2;
+						map.setCenter(new daum.maps.LatLng(editxPos, yPos));
+						
+						var name = editDatas[i]['name'];
+						var addr = editDatas[i]['addr'];
+						var phone = editDatas[i]['phone'];
+						var mon = editDatas[i]['mon'];
+						var tue = editDatas[i]['tue'];
+						var wed = editDatas[i]['wed'];
+						var thu = editDatas[i]['thu'];
+						var fri = editDatas[i]['fri'];
+						var sat = editDatas[i]['sat'];
+						var sun = editDatas[i]['sun'];
+						var holiday = editDatas[i]['holiday'];
 						
 						var content =
 						'<div class="wrap">' + 
 			            '    <div class="info">' + 
-			            '        <div class="title"> 약국 이름이 들어갑니다 </div>' + 
+			            '        <div class="title"> '+name+' </div>' + 
 			            '        <div class="body">' + 
 			            '            <div class="img">' +
-			            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+			            '                <img src="'+'<c:url value="/Images/BasicPharmacy.png"/>'+'" width="73"; height="70">' +
 			            '            </div>' + 
 			            '            <div class="desc">' + 
 			            '                <div class="smalltitle"> [주소] </div>' + 
-			            '                <div class="ellipsis"> 서울특별시 광진구 능동로 415 </div>' +
-			            '                <div class="ellipsis"> 참존빌딩 3층 (중곡동) </div>' + 
+			            '                <div class="ellipsis"> '+addr+' </div>' +
 			            '                <div class="smalltitle"> [전화번호] </div>' + 
-			            '                <div class="ellipsis"> 02-1234-5678 </div>' + 
+			            '                <div class="ellipsis"> '+phone+' </div>' + 
 			            '                <div class="smalltitle"> [진료시간] </div>' + 
 			            '                <table class="schedule">' + 
 			            '                	<tr>' + 
-			            '                		<td> 월요일: 9:00 ~ 18:00 </td> <td> 화요일: 9:00 ~ 18:00</td>' + 
+			            '                		<td> 월요일: '+mon+' </td> <td> 화요일: '+tue+'</td>' + 
 			            '              	    </tr>' + 
 			            '                   <tr>' + 
-			            '                		<td> 수요일: 9:00 ~ 18:00 </td> <td> 목요일: 9:00 ~ 18:00</td>' + 
+			            '                		<td> 수요일: '+wed+' </td> <td> 목요일: '+thu+'</td>' + 
 			            '                	</tr>' + 
 			            '                   <tr>' + 
-			            '                		<td> 금요일: 9:00 ~ 18:00 </td> <td> 토요일: 10:00 ~ 14:00</td>' + 
+			            '                		<td> 금요일: '+fri+' </td> <td> 토요일: '+sat+'</td>' + 
 			            '                	</tr>' + 
 			            '                   <tr>' + 
-			            '                		<td> 일요일: 휴무 </td> <td> 공휴일: 휴무</td>' + 
+			            '                		<td> 일요일: '+sun+' </td> <td> 공휴일: '+holiday+'</td>' + 
 			            '                	</tr>' + 
 			            '                </table><br/><hr/><br/>' + 
 			            '                <div class="btn-group">' + 
-				        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/카카오판교오피스,37.402056,127.108212" role="button"> 길찾기 </a>' + 
+				        '	                  <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>'  + 
 			            '            	 </div>' + 
 			            '            </div>' + 
 			            '        </div>' + 
@@ -259,6 +294,7 @@
 			            
 			            if(customOverlay[i].getMap() == null) {
 			            	customOverlay[i].setContent(content);
+			            	customOverlay[i].setZIndex(datas.length);
 							customOverlay[i].setMap(map);
 			            } else {
 			            	customOverlay[i].setMap(null);
@@ -270,7 +306,6 @@
 				}
 			}
 		};
+	};
 		
-	}
 </script>
-

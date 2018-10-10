@@ -30,10 +30,71 @@ $(function() {
 
 
 
-</script>    
+</script>
+
+<style>
+
+
+      *, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+
+.form-box {
+	background: #F6F6F6; 
+	padding: 40px;
+	height: 710px;
+	max-width: 1000px;
+	margin: 68px auto; 
+	border-radius: 20px; 
+	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);
+	
+	
+}
+
+ 
+small {	
+	color: black;
+	font-weight: 150;
+	margin-bottom: 40px;
+}
+
+
+
+#h2id{
+
+text-align: center;
+font-size: 2.5em;
+
+}
+#h4id{
+
+text-align: center;
+margin-top: 10px;
+}
+
+.title_result{
+
+margin-top: 25px;
+border: 1px dashed;
+text-align: center;
+ 
+} 
+
+#btn_main{
+
+text-align: center;
+margin-top: 15px;
+
+}
+
+</style>    
 
 <body>
-
+<c:if test="${empty selfresult}" var="selfresult">
 	<article data-page-id="84588067" class="survey-page survey-page-white">
 		<header class="survey-page-header"> </header>
 		<section class="survey-page-body">
@@ -91,11 +152,11 @@ $(function() {
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														그렇다</td>
+														잘 모르겠다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
-														잘 모르겠다</td>
+														그렇다</td>
 
 													<td style="width: 14%;"
 														class="matrix-col-label question-body-font-theme user-generated">
@@ -1343,10 +1404,74 @@ $(function() {
 
 			</form>
 		</section>
-
-
-
 	</article>
+	</c:if>
+	<c:if test="${!selfresult}">
+	
+	<div class="form-box">
+	
+	<h2 id="h2id">자가진단 <small>결과</small></h2>
+	
+	<hr style="border: 1px solid;"/>
+	 
+	<h4 id="h4id">※ 현재 결과는 100% 정확한 결과가 아닙니다!! 무엇보다 전문의료진의 상담과 진료를 통하여 치료받으시길 권장드립니다.※</h4>
+	
+		<div class="title_result"> 
+	
+	<h3>인두염</h3> 
+	
+	목젖 안쪽 조직인 인두에 염증이 생긴 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+		<div class="title_result"> 
+	 
+	<h3>역류성 식도염</h3> 
+	
+	하부식도괄약근이 잘 조여지지 않아 위액이나 음식물이 식도로 엮류하여 식도에 염증이 발생한 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	 
+	
+	</div>
+	
+	<div class="title_result"> 
+	
+	<h3>식도 암</h3> 
+	
+	식도에 발생한 악성종양으로 병이 상당히 진행될 때까지 증상이 없음
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	
+	</div>
+	
+	
+		<div class="title_result">
+	
+	<h3>편도 암</h3>
+	
+	입안 편도조직에 악성 종양이 생긴 상태
+	
+	<input style="margin-bottom: 10px;" type="button" class="btn btn-danger" value="병원 찾기"> 
+	
+	</div>
+	
+	
+	
+	<div id="btn_main"> 
+	<a href="<c:url value='/home/index.do'/>"><input style="margin-bottom: 10px;" type="button" class="btn btn-primary" value="메인으로 이동"></a> 
+	</div>
+	</div>
+	
+	
+	
+	
+	</c:if>
+	
        
   </body>
 </html>

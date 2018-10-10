@@ -1,21 +1,96 @@
 package com.modu.modac.web.general;
 
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.modu.modac.service.MapPharmacyDto;
+import com.modu.modac.service.MapPharmacyService;
+
 
 @Controller
 public class MapController {
 	
+	// 서비스 주입
+	@Resource(name="pharmacyService")
+	private MapPharmacyService service;
+
+	// [과목 선택 페이지로 이동 ]
 	@RequestMapping("/general/hospital/SelectSubject.do")
-	public String subHosMapPage() throws Exception {
+	public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
+		
 		return "general/hospital/SelectSubject.tiles";
 	}
 	
-	@RequestMapping("/general/pharm/pharmMap.do")
-	public String pharmMapPage() throws Exception {
+	// [약국이름으로 검색]
+	@RequestMapping("/general/pharm/SearchPharm.do")
+	public String searchPharmName(@RequestParam Map map, Model model) throws Exception {
+		
+		String phname = map.get("phname").toString();
+		String pharmacy = map.get("pharmacy").toString();
+		
+		model.addAttribute("phname", phname);
+		model.addAttribute("pharmacy", pharmacy);
+		
 		return "general/pharm/MapPharmacy.tiles";
 	}
 	
+	
+	// [일반약국 검색]
+	@RequestMapping("/general/pharm/AllPharm.do")
+	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
+		
+		List<MapPharmacyDto> records = service.selectList(map);
+		
+		List<Map> collections = new Vector<Map>();
+		for(MapPharmacyDto dto : records) {
+			Map record = new HashMap();
+			record.put("no", dto.getPhno());
+			record.put("name", dto.getPhname());
+			record.put("addr", dto.getPhaddr());
+			record.put("phone", dto.getPhphone());
+			record.put("mon", dto.getPhmon());
+			record.put("tue", dto.getPhmon());
+			record.put("wed", dto.getPhmon());
+			record.put("thu", dto.getPhmon());
+			record.put("fri", dto.getPhmon());
+			record.put("sat", dto.getPhmon());
+			record.put("sun", dto.getPhmon());
+			record.put("holiday", dto.getPhmon());
+			collections.add(record);
+		}
+		
+		model.addAttribute("records", JSONArray.toJSONString(collections));
+		model.addAttribute("size",records.size());
+		
+		return "general/pharm/MapPharmacy.tiles";
+	}
+
+	
+	// [심야약국 검색]
+	@RequestMapping("/general/pharm/NightPharm.do")
+	public String searchAlldayPharm(@RequestParam Map map, Model model) throws Exception {
+		
+		String pharmacy = map.get("pharmacy").toString();
+		
+		model.addAttribute("pharmacy",pharmacy);		
+		
+		return "general/pharm/MapPharmacy.tiles";
+	}
+	
+	
+	// [병원지도로 이동]
 	@RequestMapping("/general/hospital/hosMap.do")
 	public String hosMapPage() throws Exception {
 		
@@ -23,16 +98,81 @@ public class MapController {
 	}
 	
 	
-	@RequestMapping("/general/reservation/reception.do")
-	public String reception() throws Exception {
-		return "general/reservation/Receipt.tiles";
+	// [과목명으로 병원 검색] 
+	@RequestMapping("/general/hospital/SearchSubject.do")
+	public String searchSubject(@RequestParam Map map, Model model) throws Exception {
+		
+		String subname = map.get("subname").toString();
+		
+		System.out.println("과목명 : "+subname);
+		
+		model.addAttribute("subname", subname);
+		
+		return "general/hospital/MapHospital.tiles";
 	}
 	
+	
+	// [장소로 병원 검색] 
+	@RequestMapping("/general/hospital/SearchAddress.do")
+	public String searchReplace(@RequestParam Map map, Model model) throws Exception {
+		
+		String address = map.get("address").toString();
+		String subname = map.get("subname").toString();
+		
+		System.out.println("장소 : "+address);
+		System.out.println("과목명 : "+subname);
+		
+		model.addAttribute("address",address);
+		model.addAttribute("subname",subname);
+		
+		return "general/hospital/MapHospital.tiles";
+	}
+	
+	
+	// [병원이름으로 검색]
+	@RequestMapping("/general/pharm/SearchHospital.do")
+	public String searchHospitalName(@RequestParam Map map, Model model) throws Exception {
+		
+		String hosname = map.get("hosname").toString();
+		String subname = map.get("subname").toString();
+		
+		model.addAttribute("hosname",hosname);
+		model.addAttribute("subname",subname);
+		
+		return "general/hospital/MapHospital.tiles";
+	}
+	
+	
+
+	// [예약페이지로 이동]
 	@RequestMapping("/general/reservation/reservation.do")
-	public String reservation() throws Exception {
+	public String reservation(HttpSession session, Model model, @RequestParam Map map) throws Exception {
+	
+		if(session.getAttribute("genid") == null) {
+			
+			return "general/member/Login.tiles";
+		}
+		
 		return "general/reservation/Reservation.tiles";
 	}
 	
+	
+	
+	// [접수페이지로 이동]
+	@RequestMapping("/general/reservation/reception.do")
+	public String reception(HttpSession session) throws Exception {
+		
+		if(session.getAttribute("genid") == null) {
+			
+			return "general/member/Login.tiles";
+		}
+		
+		return "general/reservation/Receipt.tiles";
+		
+	}
+	
+	
+
 	
 	
 	
