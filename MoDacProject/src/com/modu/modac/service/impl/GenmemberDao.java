@@ -26,8 +26,7 @@ public class GenmemberDao implements GeneralService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
+	@Override     
 	public List<GenmemberDto> selectList(Map map) {
 		// TODO Auto-generated method stub
 		return null;

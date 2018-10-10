@@ -26,5 +26,4 @@ public interface ReservationService {
 	List<Map> reservationList(Map map);
 	List<Map> receiptList(Map map);
 	
-	
 }

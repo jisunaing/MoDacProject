@@ -9,13 +9,19 @@
 	<!-- 자바빈별칭: 매퍼파일에서 환결설정 파일로 위치됨 -->
 	<typeAliases>
 		<typeAlias type="com.modu.modac.service.TestDto" alias="testDto"/> 
-		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
-		<typeAlias type="com.modu.modac.service.MapPharmacyDto" alias="MapPharmacyDto"/> 
-		<typeAlias type="com.modu.modac.service.MapNightPharmacyDto" alias="MapNightPharmacyDto"/> 
 		<typeAlias type="com.modu.modac.service.GenmemberDto" alias="genmemberDto"/> 
 		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
 		<typeAlias type="com.modu.modac.service.MapPharmacyDto" alias="MapPharmacyDto"/> 
-		<typeAlias type="com.modu.modac.service.MapNightPharmacyDto" alias="MapNightPharmacyDto"/> 
+		<typeAlias type="com.modu.modac.service.MapNightPharmacyDto" alias="MapNightPharmacyDto"/>  
+		<typeAlias type="com.modu.modac.service.ReceptionDto" alias="receptionDto"/>
+		<typeAlias type="com.modu.modac.service.ReservationDto" alias="reservationDto"/>
+		<typeAlias type="com.modu.modac.service.ReservationListDto" alias="reservationListDto"/>
+		<typeAlias type="com.modu.modac.service.ReceptionHistoryListDto" alias="receptionHistoryListDto"/>
+		<typeAlias type="com.modu.modac.service.ReservationHistoryListDto" alias="reservationHistoryListDto"/>
+		<typeAlias type="com.modu.modac.service.ReceptionListDto" alias="receptionListDto"/>
+		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
@@ -27,12 +33,16 @@
 		매퍼파일(sql쿼리와 자바빈 매핑) 정보 설정
 	-->
 	<mappers>
+
 		<mapper resource="mybatis/Test.xml" />
 		<mapper resource="mybatis/Genmember.xml" />
 		<mapper resource="mybatis/MapHospital.xml" />
 		<mapper resource="mybatis/MapPharmacy.xml" />
 		<mapper resource="mybatis/MapNightPharmacy.xml" />
 		<mapper resource="mybatis/Reservation.xml" />
-		<mapper resource="mybatis/partnerReservation.xml" />
+		<mapper resource="mybatis/partnerReservation.xml" />		
+		<mapper resource="mybatis/Partner.xml"/>
+		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
+		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
 	</mappers>
 </configuration>

@@ -74,7 +74,7 @@ margin: 150px auto;
 	</p><br/>
 	<hr id="hr"><br/><br/>
 	<div class="row">
-		<form class="form-horizontal" method="post" action="#">
+		<form class="form-horizontal" method="post" action="<c:url value='/partner/partnerQnA/admin_QnA_WriteOK.do'/>">
 
 			<div class="form-group">
 				<label for="title" class="col-sm-2  control-label">제목</label>
@@ -87,7 +87,7 @@ margin: 150px auto;
 			<div class="form-group">
 				<label for="content" class="col-sm-2  control-label">내용</label>
 				<div class="col-sm-7">
-					<textarea rows="10" class="form-control" id="summernote" name="content"></textarea>
+					<textarea rows="10" class="form-control" id="content" name="content"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
