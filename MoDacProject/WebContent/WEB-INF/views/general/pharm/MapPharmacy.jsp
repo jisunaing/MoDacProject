@@ -87,7 +87,6 @@
 		</div>
 	    <div class="input-group">
 	      <input type="text" class="form-control" name="phname" placeholder="약국 이름으로 검색"/>
-	      <input type="hidden" name="pharmacy" value="${requestScope.pharmacy}"/>
 	      <span class="input-group-btn">
 	        <button class="btn btn-primary" type="submit"> 검색 </button>
 	      </span>
@@ -143,6 +142,7 @@
 	var posArray = [];
 	var geocoder = new daum.maps.services.Geocoder();
 	/*
+	var count = 0;
 	for(var i = 0; i < addrs.length; i++) {
 		
 	    geocoder.addressSearch(addrs[i], function(result, status) {
@@ -160,8 +160,8 @@
 		    
 	    });
 	    
-	}
-	*/
+	}*/
+	
 	$.each(addrs,function(index,value){
 		geocoder.addressSearch(value, function(result, status) {
 	    	

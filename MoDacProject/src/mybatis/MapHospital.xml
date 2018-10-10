@@ -45,6 +45,15 @@
 		</if>
 	</select>
 	
+	<select id="HospitalOne" parameterType="java.util.Map" resultType="MapHospitalDto">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE SB.SUBNAME = #{subname}
+	
+	</select>
+	
 	
 	
 	

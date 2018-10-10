@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.modu.modac.service.GeneralService;
+import com.modu.modac.service.GenmemberDto;
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapHospitalService;
 import com.modu.modac.service.MapNightPharmacyDto;
@@ -33,55 +35,26 @@ public class MapController {
 	private MapNightPharmacyService serviceNPH;
 	@Resource(name="hospitalService")
 	private MapHospitalService serviceHOS;
+	@Resource(name="generalService")
+	private GeneralService serviceGS;
 	
 
 	// [과목 선택 페이지로 이동 ]
 	@RequestMapping("/general/hospital/SelectSubject.do")
 	public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
-		
 		return "general/hospital/SelectSubject.tiles";
 	}
 	
-	// [약국이름으로 검색]
-	@RequestMapping("/general/pharm/SearchPharm.do")
-	public String searchPharmName(@RequestParam Map map, Model model) throws Exception {
-		
-		MapPharmacyDto dto = servicePH.selectOne(map);
-		
-		List<Map> collections = new Vector<Map>();
-		Map record = new HashMap();
-		record.put("no", dto.getPhno());
-		record.put("name", dto.getPhname());
-		record.put("addr", dto.getPhaddr());
-		record.put("phone", dto.getPhphone());
-		record.put("mon", dto.getPhmon());
-		record.put("tue", dto.getPhtue());
-		record.put("wed", dto.getPhwed());
-		record.put("thu", dto.getPhthu());
-		record.put("fri", dto.getPhfri());
-		record.put("sat", dto.getPhsat());
-		record.put("sun", dto.getPhsun());
-		record.put("holiday", dto.getPholiday());
-		collections.add(record);
-		
-		model.addAttribute("records", JSONArray.toJSONString(collections));
-		model.addAttribute("size",record.size());
-		
-		return "general/pharm/MapPharmacy.tiles";
-	}
-	
-	
-	// [일반약국 검색]
+	// [일반약국 주소 및 이름으로 검색]
 	@RequestMapping("/general/pharm/AllPharm.do")
 	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
 		
-		String phname = "";
-		String address = "";
+		
+		String paramValue = "";
 		if(map.get("address") != null) { 
-			address = map.get("address").toString();
-		}
-		if(map.get("phname") != null) {
-			phname = map.get("phname").toString();
+			paramValue = map.get("address").toString();
+		} else if(map.get("phname") != null){
+			paramValue = map.get("phname").toString();
 		}
 		
 		List<MapPharmacyDto> records = servicePH.selectList(map);
@@ -106,8 +79,7 @@ public class MapController {
 		
 		
 		model.addAttribute("records", JSONArray.toJSONString(collections));
-		model.addAttribute("address",address);
-		model.addAttribute("phname",phname);
+		model.addAttribute("paramValue",paramValue);
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}
@@ -146,13 +118,6 @@ public class MapController {
 		model.addAttribute("paramValue",paramValue);
 		
 		return "general/pharm/MapPharmacy.tiles";
-	}
-	
-	
-	// [병원지도로 이동]
-	@RequestMapping("/general/hospital/hosMap.do")
-	public String hosMapPage() throws Exception {
-		return "general/hospital/MapHospital.tiles";
 	}
 	
 	// [과목명 및 주소로 병원 검색] 
@@ -205,30 +170,40 @@ public class MapController {
 		
 		return "general/hospital/MapHospital.tiles";
 	}
-	
-	// [병원이름으로 검색]
-	@RequestMapping("/general/pharm/SearchHospital.do")
-	public String searchHospitalName(@RequestParam Map map, Model model) throws Exception {
-		
-		String hosname = map.get("hosname").toString();
-		String subname = map.get("subname").toString();
-		
-		model.addAttribute("hosname",hosname);
-		model.addAttribute("subname",subname);
-		
-		return "general/hospital/MapHospital.tiles";
-	}
-	
-	
 
 	// [예약페이지로 이동]
 	@RequestMapping("/general/reservation/reservation.do")
 	public String reservation(HttpSession session, Model model, @RequestParam Map map) throws Exception {
-	
-		if(session.getAttribute("genid") == null) {
-			
-			return "general/member/Login.tiles";
-		}
+		
+		String hosno = map.get("hosno").toString();
+		
+		/*
+		MapHospitalDto hosRecord = serviceHOS.selectOne(map);
+		GenmemberDto genRecord = serviceGS.selectOne(map);
+		
+		Map record = new HashMap();
+		record.put("pid", hosRecord.getPid());
+		record.put("hosname", hosRecord.getHosname());
+		record.put("subname", hosRecord.getSubname());
+		record.put("mon", hosRecord.getMon());
+		record.put("tue", hosRecord.getTue());
+		record.put("wed", hosRecord.getWed());
+		record.put("thu", hosRecord.getThu());
+		record.put("fri", hosRecord.getFri());
+		record.put("sat", hosRecord.getSat());
+		record.put("sun", hosRecord.getSun());
+		record.put("holiday", hosRecord.getHoliday());
+		
+		record.put("genname", value)
+		record.put("email", value)
+		record.put("phone", value)
+		record.put("addr", value)
+		
+		record.put("fname", value)
+		record.put("fphone", value)
+		record.put("fbirthdate", value)
+		*/
+		
 		
 		return "general/reservation/Reservation.tiles";
 	}
@@ -239,10 +214,6 @@ public class MapController {
 	@RequestMapping("/general/reservation/reception.do")
 	public String reception(HttpSession session) throws Exception {
 		
-		if(session.getAttribute("genid") == null) {
-			
-			return "general/member/Login.tiles";
-		}
 		
 		return "general/reservation/Receipt.tiles";
 		

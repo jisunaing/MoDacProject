@@ -12,7 +12,7 @@ import com.modu.modac.service.MapHospitalService;
 
 @Service("hospitalService")
 public class MapHospitalServiceImpl implements MapHospitalService {
-	//
+	
 	@Resource(name="mapHospitalDao")
 	private MapHospitalDao dao;
 	

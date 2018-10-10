@@ -10,21 +10,35 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 <script>
-var receipt = function(){
-	if('${sessionScope.genid}' == '') {
+var receipt = function(hosno, pid){
+	if(pid == null){
+		alert('제휴병원만 접수가 가능합니다.');
+	} else if('${sessionScope.genid}' == '') {
 		alert('병원 접수를 하기 위해서는 반드시 로그인이 필요합니다.');	
 	} else {
-		location.href='<c:url value="/general/reservation/reception.do?subname=${requestScope.subname}"/>';
+		location.href='<c:url value="/general/reservation/reception.do?hosno='+hosno+'"/>';
 	}
 	
 };
-var reserve = function(){
-	if('${sessionScope.genid}' == '') {
+var reserve = function(hosno, pid){
+	if(pid == null) {
+		alert('제휴병원만 예약이 가능합니다.');	
+	} else if('${sessionScope.genid}' == '') {
 		alert('병원 예약을 하기 위해서는 반드시 로그인이 필요합니다.');	
-	} else {
-		location.href='<c:url value="/general/reservation/reservation.do?subname=${requestScope.subname}"/>';
+	}	else {
+		location.href='<c:url value="/general/reservation/reservation.do?hosno='+hosno+'"/>';
 	}
 };
+var website = function(website) {
+	if(website == null) {
+		alert('홈페이지가 등록되어 있지 않습니다.');
+	} else {
+		location.href = website;
+	}
+	
+}
+
+
 </script>
 
 <style>
@@ -74,7 +88,7 @@ var reserve = function(){
 
 <!-- BODY 영역 -->
 	<div class="row">
-		<form class="form-inline" action="<c:url value='/general/pharm/SearchHospital.do'/>">
+		<form class="form-inline" action="<c:url value='/general/hospital/SearchSubject.do'/>">
 		  <div class="btn-group">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			    	진료과목으로 검색 &nbsp;&nbsp; <span class="caret"></span>
@@ -143,14 +157,13 @@ var reserve = function(){
 		</div>
 	    <div class="input-group">
 		      <input type="text" class="form-control" name="hosname" placeholder="병원 이름으로 검색"/>
-		      <input type="hidden" name="subname" value="${requestScope.subname}"/>
 		      <span class="input-group-btn">
 		        <button class="btn btn-primary" type="submit"> 검색 </button>
 		      </span>
 	    </div>
 	    <div class="btn-group btngroup" id="searchtoggle">
 			  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 약국검색 </a>
+		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
 		</div>
 	</form>
 </div>
@@ -221,7 +234,7 @@ function doNext(posArray) {
 	for(var i = 0; i < posArray.length; i++) {
 		
 		var imageSrc;
-		if(false) {
+		if(editDatas[i]['pid'] == null) {
 			imageSrc = '<c:url value="/Images/MarkerHospital.png"/>'; // 마커이미지의 주소입니다    
 		} else {
 			imageSrc = '<c:url value="/Images/MarkerPartner.png"/>';
@@ -285,7 +298,7 @@ function doNext(posArray) {
 				// 클릭한 마커의 위치정보와 저장된 마커의 위치정보를 비교하여 클릭한 마커에 해당하는 정보를 가져온다.
 				if (marker.getZIndex() === markers[i].getZIndex()) {
 						
-						// 마커를 클릭했을 때 마커가 지도 중심부로 향하도록 셋팅
+						// 마커를 클릭했을 때 마커가 지도 중심부로 향하도록 설정
 						map.setCenter(marker.getPosition());
 						var xPos = marker.getPosition().getLat();
 						var yPos = marker.getPosition().getLng();
@@ -304,6 +317,9 @@ function doNext(posArray) {
 						var sat = editDatas[i]['sat'];
 						var sun = editDatas[i]['sun'];
 						var holiday = editDatas[i]['holiday'];
+						var pid = editDatas[i]['pid'];
+						var hosno = editDatas[i]['hosno'];
+						var pwebsite = editDatas[i]['pwebsite'];
 						
 						var content =
 							'<div class="wrap">' + 
@@ -319,7 +335,7 @@ function doNext(posArray) {
 				            '                <div class="smalltitle"> [전화번호] </div>' + 
 				            '                <div class="ellipsis"> '+phone+' </div>' + 
 				            '                <div class="smalltitle"> [홈페이지] </div>' + 
-				            '                <div class="ellipsis"> <a href="http://www.daum.net">www.daum.net</a> </div>' + 
+				            '                <div class="ellipsis"> <a href="javascript:website('+pwebsite+')">홈페이지</a> </div>' + 
 				            '                <div class="smalltitle"> [진료시간] </div>' + 
 				            '                <table class="schedule">' + 
 				            '                	<tr>' + 
@@ -336,10 +352,10 @@ function doNext(posArray) {
 				            '                	</tr>' + 
 				            '                </table><br/><hr/><br/>' + 
 				            '                <div class="btn-group">' + 
-				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:reserve()"> 예약하기 </a>' +
+				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:reserve('+hosno+','+pid+')"> 예약하기 </a>' +
 				            '            	 </div>' + 
 				            '                <div class="btn-group">' + 
-				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:receipt()"> 접수하기 </a>' +
+				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:receipt('+hosno+','+pid+')"> 접수하기 </a>' +
 				            '            	 </div>' +
 				            '                <div class="btn-group">' + 
 					        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>' + 

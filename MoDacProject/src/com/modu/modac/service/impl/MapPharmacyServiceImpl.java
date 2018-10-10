@@ -19,7 +19,6 @@ public class MapPharmacyServiceImpl implements MapPharmacyService {
 	
 	@Override
 	public List<MapPharmacyDto> selectList(Map map) {
-		System.out.println("서비스 임플 : List");
 		return dao.selectList(map);
 	}
 
