@@ -69,7 +69,6 @@ table{
 	<script>
 	$(function(){
 		$( "#tabletoggles" ).hide();
-		
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
 				var text = $('input:eq(0)').val();
@@ -82,8 +81,6 @@ table{
 			$('#recname').val($('#names').html());
 			$('#phone').val($('#phones').html());
 		});
-		
-		
 	});
 	</script>
 <div class="container">
@@ -168,8 +165,6 @@ table{
 			<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
 			<button type="submit" class="btn btn-default" id="receipt">접수</button>
 		</form>
-
-
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

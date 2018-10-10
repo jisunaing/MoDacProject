@@ -60,16 +60,13 @@ table{
 	<script type="text/javascript">
     $(document).ready( function () {
         $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko'});
-
     })
-    
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
 	<script>
 	$(function(){
 		$( "#tabletoggles" ).hide();
-		
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
 				var text = $('input:eq(0)').val();
