@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,8 @@ public class PartnerCRUDController {
 	@RequestMapping("/partner/member/singup/joinrequest.do")
 	public String joinrequest(@RequestParam Map map) throws Exception {
 		
+		
+		
 		//백앤드에서 처리해야하지만 현재는 제휴신청 누르면 회원가입으로 처리하겠음
 		String fulladdr;
 		String addr1 = map.get("hosaddr").toString();
@@ -53,7 +56,86 @@ public class PartnerCRUDController {
 				
 		map.put("hosaddr", fulladdr);					
 		
-		service.insert(map);
+		service.insert(map); // partner 기본정보 가입
+		
+		System.out.println("가입 완료");
+		
+		
+		PartnerDto dto = service.selectOne(map);
+		
+		//subject에 따른 추가 insert
+		
+		String hosno = dto.getHosno();
+		String subject = map.get("subjectlist").toString();	
+		
+		map.put("pid",dto.getPid());
+		map.put("hosno",hosno);
+		
+		StringTokenizer subjectToken = new StringTokenizer(subject , ",");
+		int count = subjectToken.countTokens();
+		String subjectArray[] = new String[count];
+		
+		
+		
+		for(int i = 0; i < count; i++) {
+			
+			subjectArray[i] = subjectToken.nextToken();
+										
+			switch (subjectArray[i]) {
+		
+			case "가정의학과":  map.put("subjectcode",10); service.subjectList(map);  break; // service.subjectList(map);
+			
+			case "결핵과":  map.put("subjectcode",20); service.subjectList(map);  break;
+			
+			case "내과":  map.put("subjectcode",30); service.subjectList(map);  break;
+			
+			case "마취통증의학과":  map.put("subjectcode",40); service.subjectList(map);  break;
+			
+			case "비뇨의학과":  map.put("subjectcode",50); service.subjectList(map);  break;
+			
+			case "산부인과":  map.put("subjectcode",60); service.subjectList(map);  break;
+			
+			case "성형외과":  map.put("subjectcode",70); service.subjectList(map);  break;
+			
+			case "소아청소년과":  map.put("subjectcode",80); service.subjectList(map);  break;
+			
+			case "신경외과":  map.put("subjectcode",90); service.subjectList(map);  break;
+			
+			case "안과":  map.put("subjectcode",100); service.subjectList(map);  break;
+			
+			case "영상의학과":  map.put("subjectcode",110); service.subjectList(map);  break;
+			
+			case "외과":  map.put("subjectcode",120); service.subjectList(map);  break;
+			
+			case "이비인후과":  map.put("subjectcode",130); service.subjectList(map);  break;
+			
+			case "재활의학과":  map.put("subjectcode",140); service.subjectList(map);  break;
+			
+			case "정신건강의학과":  map.put("subjectcode",150); service.subjectList(map);  break;
+			
+			case "정형외과":  map.put("subjectcode",160); service.subjectList(map);  break;
+			
+			case "치과":  map.put("subjectcode",170); service.subjectList(map);  break;
+			
+			case "피부과":  map.put("subjectcode",180); service.subjectList(map);  break;
+			
+			case "한방과":  map.put("subjectcode",190); service.subjectList(map);  break;
+			
+			case "흉부외과":  map.put("subjectcode",200); service.subjectList(map);  break;
+					
+			default :  map.put("subjectcode",0); service.subjectList(map);  
+			
+			}///switch
+															
+		}///for문
+		
+		
+		
+		
+		
+		
+		
+		
 
 		return "/index";
 	}

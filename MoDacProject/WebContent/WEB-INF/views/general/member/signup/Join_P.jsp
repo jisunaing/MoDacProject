@@ -172,15 +172,15 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 												
 												  <li class="ui-state-default" value="3">내과</li>
 												
-												  <li class="ui-state-default" value="4" >마취통증과</li> 
+												  <li class="ui-state-default" value="4" >마취통증의학과</li> 
 												
-												  <li class="ui-state-default" value="5">비뇨기과</li>
+												  <li class="ui-state-default" value="5">비뇨의학과</li>
 												
 												  <li class="ui-state-default" value="6">산부인과</li>
 												
 												  <li class="ui-state-default" value="7">성형외과</li>
 												
-												  <li class="ui-state-default" value="8">소아과</li>
+												  <li class="ui-state-default" value="8">소아청소년과</li>
 												  
 												  <li class="ui-state-default" value="9">신경외과</li>
 												  
@@ -194,7 +194,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 												
 												  <li class="ui-state-default" value="14">재활의학과</li>
 												
-												  <li class="ui-state-default" value="15">정신건강과</li>
+												  <li class="ui-state-default" value="15">정신건강의학과</li>
 												  
 												  <li class="ui-state-default" value="16">정형외과</li>
 												  

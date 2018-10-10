@@ -28,7 +28,9 @@
   
     <!--  레코드 수 가져오는 부분 -->
    	<select id="PartnerNAdminQnATotalRecord"  parameterType="java.util.Map" resultType="int">
+   	
 	SELECT COUNT(*) FROM PQNA Q JOIN PARTNERS P ON Q.PID=P.PID
+	
 	<if test="searchColumn !=null">
    		WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
    	</if>

@@ -78,6 +78,12 @@ public class PartnerDao implements PartnerService {
 		return template.update("Partnerwithdrawal",map);
 	}
 
+	@Override
+	public int subjectList(Map map) {
+	
+		return template.update("PartnerSubjectList",map);
+	}
+
 
 
 	

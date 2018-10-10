@@ -17,6 +17,9 @@ public interface PartnerService {
 	//목록용]
 	List<PartnerDto> selectList(Map map);
 	
+	// Subject Insert용
+	int subjectList(Map map);
+	
 	//상세보기용]
 	PartnerDto selectOne(Map map);
 	//입력/수정/삭제용]

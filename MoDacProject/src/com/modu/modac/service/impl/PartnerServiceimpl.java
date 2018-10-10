@@ -77,6 +77,13 @@ public class PartnerServiceimpl implements PartnerService {
 		return partnerdao.withdrawal(map);
 	}
 
+
+	@Override
+	public int subjectList(Map map) {
+		
+		return partnerdao.subjectList(map);
+	}
+
 	
 	
 	

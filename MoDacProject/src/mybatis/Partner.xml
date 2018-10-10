@@ -60,6 +60,12 @@
 		
 	</update>
 	
+	<insert id="PartnerSubjectList" parameterType="java.util.Map">
+	
+	INSERT INTO HOSSUBJECT VALUES(#{subjectcode},#{hosno})
+	
+	</insert>
+	
 	
 	
 	
