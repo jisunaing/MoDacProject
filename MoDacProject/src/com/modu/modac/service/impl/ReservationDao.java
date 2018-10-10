@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReservationDto;
 import com.modu.modac.service.ReservationService;
 
 @Repository
@@ -37,12 +39,12 @@ public class ReservationDao implements ReservationService{
 	}
 
 	@Override
-	public List<Map> reservationList(Map map) {
+	public List<ReceptionDto> reservationList(Map map) {
 		return template.selectList("reservationList", map);
 	}
 
 	@Override
-	public List<Map> receiptList(Map map) {
+	public List<ReservationDto> receiptList(Map map) {
 		return template.selectList("receiptList", map);
 	}
 

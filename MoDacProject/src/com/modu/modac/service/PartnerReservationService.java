@@ -12,9 +12,10 @@ public interface PartnerReservationService {
 	
 	ReceptionDto hospitalReceiptView(Map map);
 	ReservationDto hospitalReservationView(Map map);
-	
 	ReceptionDto hospitalReceiptHistoryView(Map map);
 	ReservationDto hospitalReservationHistoryView(Map map);
+	
+	
 	int getTotalReservationRecord(Map map);
 	int getTotalReservationHistoryRecord(Map map);
 	int getTotalReceptionRecord(Map map);
