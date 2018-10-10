@@ -18,7 +18,6 @@ public class ReservationDao implements ReservationService{
 	
 	@Override
 	public void receiptInsert(Map map) {
-		System.out.println("ReservationDao"+map);
 		template.insert("receiptInsert",map);
 	}
 
@@ -46,7 +45,6 @@ public class ReservationDao implements ReservationService{
 	public List<Map> receiptList(Map map) {
 		return template.selectList("receiptList", map);
 	}
-
 
 	
 	

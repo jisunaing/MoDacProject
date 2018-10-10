@@ -110,35 +110,35 @@ var reserve = function(){
 			     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dLabel">
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강남구&subname=${requestScope.subname}'/>">강남구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강동구&subname=${requestScope.subname}'/>">강동구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강북구&subname=${requestScope.subname}'/>">강북구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강서구&subname=${requestScope.subname}'/>">강서구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=관악구&subname=${requestScope.subname}'/>">관악구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강남구&subname=${requestScope.subname}'/>">강남구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강동구&subname=${requestScope.subname}'/>">강동구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강북구&subname=${requestScope.subname}'/>">강북구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강서구&subname=${requestScope.subname}'/>">강서구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=관악구&subname=${requestScope.subname}'/>">관악구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=광진구&subname=${requestScope.subname}'/>">광진구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=구로구&subname=${requestScope.subname}'/>">구로구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=금천구&subname=${requestScope.subname}'/>">금천구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=노원구&subname=${requestScope.subname}'/>">노원구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=도봉구&subname=${requestScope.subname}'/>">도봉구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=광진구&subname=${requestScope.subname}'/>">광진구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=구로구&subname=${requestScope.subname}'/>">구로구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=금천구&subname=${requestScope.subname}'/>">금천구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=노원구&subname=${requestScope.subname}'/>">노원구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=도봉구&subname=${requestScope.subname}'/>">도봉구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=동대문구&subname=${requestScope.subname}'/>">동대문구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=동작구&subname=${requestScope.subname}'/>">동작구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=마포구&subname=${requestScope.subname}'/>">마포구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=서대문구&subname=${requestScope.subname}'/>">서대문구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=서초구&subname=${requestScope.subname}'/>">서초구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=동대문구&subname=${requestScope.subname}'/>">동대문구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=동작구&subname=${requestScope.subname}'/>">동작구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=마포구&subname=${requestScope.subname}'/>">마포구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=서대문구&subname=${requestScope.subname}'/>">서대문구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=서초구&subname=${requestScope.subname}'/>">서초구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=성동구&subname=${requestScope.subname}'/>">성동구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=성북구&subname=${requestScope.subname}'/>">성북구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=송파구&subname=${requestScope.subname}'/>">송파구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=양천구&subname=${requestScope.subname}'/>">양천구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=영등포구&subname=${requestScope.subname}'/>">영등포구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=성동구&subname=${requestScope.subname}'/>">성동구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=성북구&subname=${requestScope.subname}'/>">성북구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=송파구&subname=${requestScope.subname}'/>">송파구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=양천구&subname=${requestScope.subname}'/>">양천구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=영등포구&subname=${requestScope.subname}'/>">영등포구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=용산구&subname=${requestScope.subname}'/>">용산구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=은평구&subname=${requestScope.subname}'/>">은평구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=종로구&subname=${requestScope.subname}'/>">종로구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=중구&subname=${requestScope.subname}'/>">중구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=중랑구&subname=${requestScope.subname}'/>">중랑구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=용산구&subname=${requestScope.subname}'/>">용산구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=은평구&subname=${requestScope.subname}'/>">은평구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=종로구&subname=${requestScope.subname}'/>">종로구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=중구&subname=${requestScope.subname}'/>">중구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=중랑구&subname=${requestScope.subname}'/>">중랑구</a></li>
 			  </ul>
 		</div>
 	    <div class="input-group">

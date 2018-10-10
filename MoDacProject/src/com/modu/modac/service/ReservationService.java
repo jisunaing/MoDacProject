@@ -25,6 +25,6 @@ public interface ReservationService {
 	int receptCancel(Map map);
 	List<Map> reservationList(Map map);
 	List<Map> receiptList(Map map);
-	
+
 	
 }

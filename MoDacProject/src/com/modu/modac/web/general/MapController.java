@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapHospitalService;
 import com.modu.modac.service.MapNightPharmacyDto;
 import com.modu.modac.service.MapNightPharmacyService;
@@ -34,7 +35,7 @@ public class MapController {
 	private MapHospitalService serviceHOS;
 	
 
-	// [과목 선택 페이지로 이동]
+	// [과목 선택 페이지로 이동 ]
 	@RequestMapping("/general/hospital/SelectSubject.do")
 	public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
 		
@@ -74,11 +75,13 @@ public class MapController {
 	@RequestMapping("/general/pharm/AllPharm.do")
 	public String searchCommonPharm(@RequestParam Map map, Model model) throws Exception {
 		
-		String paramValue = null;
+		String phname = "";
+		String address = "";
 		if(map.get("address") != null) { 
-			paramValue = map.get("address").toString();
-		} else if(map.get("phname") != null) {
-			paramValue = map.get("phname").toString();
+			address = map.get("address").toString();
+		}
+		if(map.get("phname") != null) {
+			phname = map.get("phname").toString();
 		}
 		
 		List<MapPharmacyDto> records = servicePH.selectList(map);
@@ -101,8 +104,10 @@ public class MapController {
 			collections.add(record);
 		}
 		
-		model.addAttribute("paramValue",paramValue);
+		
 		model.addAttribute("records", JSONArray.toJSONString(collections));
+		model.addAttribute("address",address);
+		model.addAttribute("phname",phname);
 		
 		return "general/pharm/MapPharmacy.tiles";
 	}
@@ -112,8 +117,8 @@ public class MapController {
 	@RequestMapping("/general/pharm/NightPharm.do")
 	public String searchAlldayPharm(@RequestParam Map map, Model model) throws Exception {
 		
-		String paramValue = null;
-		if(map.get("pharmacy") != null) { 
+		String paramValue = "";
+		if(map.get("pharmacy") != "") { 
 			paramValue = map.get("pharmacy").toString();
 		}
 		
@@ -147,41 +152,59 @@ public class MapController {
 	// [병원지도로 이동]
 	@RequestMapping("/general/hospital/hosMap.do")
 	public String hosMapPage() throws Exception {
-		
 		return "general/hospital/MapHospital.tiles";
 	}
 	
-	
-	// [과목명으로 병원 검색] 
+	// [과목명 및 주소로 병원 검색] 
 	@RequestMapping("/general/hospital/SearchSubject.do")
 	public String searchSubject(@RequestParam Map map, Model model) throws Exception {
 		
-		String subname = map.get("subname").toString();
+		String address = "";
+		String hosname = "";
+		String subname = "";
 		
-		System.out.println("과목명 : "+subname);
+		if(map.get("subname") != null) {
+			subname = map.get("subname").toString();
+		}
+		if(map.get("hosname") != null) {
+			hosname = map.get("hosname").toString();
+		}
+		if(map.get("address") != null) {
+			address = map.get("address").toString();
+		}
 		
+		List<MapHospitalDto> records = serviceHOS.selectList(map);
+		
+		List<Map> collections = new Vector<Map>();
+		for(MapHospitalDto dto : records) {
+			Map record = new HashMap();
+			record.put("no", dto.getHosno());
+			record.put("name", dto.getHosname());
+			record.put("addr", dto.getHosaddr());
+			record.put("phone", dto.getHosphone());
+			record.put("mon", dto.getMon());
+			record.put("tue", dto.getTue());
+			record.put("wed", dto.getWed());
+			record.put("thu", dto.getThu());
+			record.put("fri", dto.getFri());
+			record.put("sat", dto.getSat());
+			record.put("sun", dto.getSun());
+			record.put("holiday", dto.getHoliday());
+			record.put("subname", dto.getHoliday());
+			record.put("pid", dto.getPid());
+			record.put("lunch", dto.getLunch());
+			record.put("website", dto.getPwebsite());
+			
+			collections.add(record);
+		}
+		
+		model.addAttribute("records", JSONArray.toJSONString(collections));
 		model.addAttribute("subname", subname);
+		model.addAttribute("hosname", hosname);
+		model.addAttribute("address", address);
 		
 		return "general/hospital/MapHospital.tiles";
 	}
-	
-	
-	// [장소로 병원 검색] 
-	@RequestMapping("/general/hospital/SearchAddress.do")
-	public String searchReplace(@RequestParam Map map, Model model) throws Exception {
-		
-		String address = map.get("address").toString();
-		String subname = map.get("subname").toString();
-		
-		System.out.println("장소 : "+address);
-		System.out.println("과목명 : "+subname);
-		
-		model.addAttribute("address",address);
-		model.addAttribute("subname",subname);
-		
-		return "general/hospital/MapHospital.tiles";
-	}
-	
 	
 	// [병원이름으로 검색]
 	@RequestMapping("/general/pharm/SearchHospital.do")

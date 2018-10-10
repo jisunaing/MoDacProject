@@ -79,7 +79,7 @@ table{
 		});
 		$('label').css('minWidth', '90px');
 		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#recname').val($('#names').html());
+			$('#resname').val($('#names').html());
 			$('#phone').val($('#phones').html());
 			$('#email').val($('#emails').html());
 		});
@@ -126,11 +126,12 @@ table{
 		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do?date=${date}'/>">
 		<input type="hidden" id="genid" value="${genid}">
 		<input type="hidden" id="pid" value="${id}">
+		<input type="hidden" id="addr" value="${addr}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="recname" name="recname">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="resname" name="resname">
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -166,7 +167,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">상담내용</label>
 				<div class="col-sm-10">
-					<textarea class="form-control size5" rows="10" id="contens" name="contens"></textarea>
+					<textarea class="form-control size5" rows="10" id="rescontents" name="rescontents"></textarea>
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->

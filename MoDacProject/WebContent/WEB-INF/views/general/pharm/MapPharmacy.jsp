@@ -151,7 +151,6 @@
 	            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 	            editDatas[dataIndex] = datas[count];
 	            posArray[dataIndex] = coords;
-	            console.log(editDatas[dataIndex]['name']+result[0].y+result[0].x);
 	            dataIndex++;
 	        }
 	        count++;
@@ -161,7 +160,8 @@
 		    
 	    });
 	    
-	}*/
+	}
+	*/
 	$.each(addrs,function(index,value){
 		geocoder.addressSearch(value, function(result, status) {
 	    	
