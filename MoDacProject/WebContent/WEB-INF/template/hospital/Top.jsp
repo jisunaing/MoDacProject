@@ -4,7 +4,7 @@
 		<!-- 탑부분 시작 -->
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+			<a href="<c:url value='/partner/hospital/MainMove.do'/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
 				<!-- logo for regular state and mobile devices --> <span
 				class="logo-lg"><b>병원관리자</b>페이지</span>
 			</a>
@@ -13,7 +13,6 @@
 				<!-- Sidebar toggle button-->
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-
 						<li class="dropdown user user-menu">
 						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
 							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
@@ -28,7 +27,7 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">로그아웃</a>
+										<a href="<c:url value='/partner/hospital/Logout.do'/>" class="btn btn-default btn-flat">로그아웃</a>
 									</div>
 								</li>
 							</ul></li>

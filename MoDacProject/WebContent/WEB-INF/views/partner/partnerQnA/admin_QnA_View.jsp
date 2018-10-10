@@ -15,13 +15,15 @@
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 
 <style>
 
 
 
 .form-box {
-	background: #F6F6F6; 
+	background-color:white;
 	padding: 20px;
 	width: 900px;
 	height: 930px;	
@@ -35,13 +37,16 @@ tr th{
 	text-align: center
 }
 #hr1{
-	margin-left: 40%;
+	
 	border: solid 1px black; 
-	width: 20%
+	width: 45%;
+	margin-top: -4px;
+	text-align: center;
+
 }
 #hr2{
 	margin-left: 10%;
-	border: solid 1px black; 
+	border: dashed 1px black; 
 	width: 80%;
 	margin-top: 30px;
 	margin-bottom:30px
@@ -53,224 +58,216 @@ tr th{
 	margin-left: 25%
 }
 </style>
-
 </head>
+<script>
+	
+	//해당 글번호에 대한 코멘트 목록을 가져오는 함수 
+	var showComments = function(key){		
+		$.ajax({
+			url:"<c:url value='/Comment/List.bbs'/>",
+			data:{no:key},
+			dataType:'json',
+			type:'post',
+			success:displayComments			
+		});
+	};
+	//해당 글번호에 대한 코멘트 목록을 뿌려주는 함수 
+	//data는 아래 형태로 
+	//[{"NO":2,"ONELINECOMMENT":"댓글2","CPOSTDATE":"2018-09-12","CNO":3,"ID":"LEE","NAME":"이길동"},{"NO":2,"ONELINECOMMENT":"댓글1","CPOSTDATE":"2018-09-12","CNO":2,"ID":"PARK","NAME":"박길동"}]
+	var displayComments	 = function(data){
+		console.log(JSON.stringify(data));
+		var commentString="<h2>한줄 댓글 목록</h2>";
+		commentString+='<table class="table table-bordered">';
+		commentString+='<tr><th width="15%">작성자</th><th width="50%">코멘트</th><th width="20%">작성일</th><th>삭제</th></tr>';
+		if(data.length==0){
+			commentString+="<tr><td colspan='4'>등록된 댓글이 없어요</td></tr>";
+		}
+		$.each(data,function(index,comment){			
+			commentString+='<tr><td>'+comment['pid']+'</td>';
+			if('${sessionScope.id}' != comment["pid"])
+				commentString+='<td align="left">'+comment['rcontents']+'</td>'; 
+			else
+				commentString+='<td align="left"><span style="cursor:pointer" class="commentEdit" title="'+comment["CNO"]+'">'+comment['rcontents']+'</span></td>'; 		
+			commentString+='<td>'+comment['REPLYDATE']+'</td>';
+			commentString+='<td>';
+			if('${sessionScope.id}' == comment["pid"])
+				commentString+='<span  class="commentDelete" title="'+comment["CNO"]+'" style="cursor: pointer; color: green; font-size: 1.4em; font-weight: bold">삭제</span>';
+			else
+				commentString+='<span style="color: gray; font-size: 0.7em; font-weight: bold">삭제불가</span>';
+			commentString+='</td></tr>';
+		});		
+		commentString+='</table>';
+		
+		$('#comments').html(commentString);
+		
+		
+		
+		//코멘트 수정/삭제 처리
+		$('.commentEdit').click(function(){
+			//cno값 출력
+			console.log($(this).attr("title"));
+			
+			$('#title').val($(this).html());
+			$('#submit').val('수정');
+			
+			//form의 hidden속성중 name="cno"값 설정
+			$('input[name=cno]').val($(this).attr("title"));
+			
+		});
+		
+		$('.commentDelete').click(function(){			
+			var cno_value = $(this).attr("title");
+			
+			$.ajax({
+				url:"<c:url value='/Comment/Delete.bbs'/>",
+				data:{cno:cno_value,no:${record.no} },
+				dataType:'text',
+				type:'post',
+				success:function(key){					
+					showComments(key);					
+				}		
+			});		
+			
+			
+		});
+
+	};
+	
+	
+	
+
+	$(function(){
+		//페이지 로드시 코멘트 목록 뿌려주기
+		showComments(${record.no});
+	
+		
+		
+		//코멘트 입력처리]
+		$('#submit').click(function(){	
+			
+			if($(this).val()=='등록')
+				var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.no}'/>";
+			else
+				var action="<c:url value='/Comment/Edit.bbs'/>";	
+			
+			$.ajax({
+				url:action,
+				data:$('#frm').serialize(),
+				dataType:'text',
+				type:'post',
+				success:function(key){					
+					showComments(key);
+					if($('#submit').val()=='수정'){						
+						$('#submit').val('등록');
+						$('#title').val('');
+					}
+					
+				}		
+			});		
+			
+		});
+		
+		//메모글 삭제처리]
+		$('#delbtn').on('click',function(){
+			if(confirm('정말로 삭제할래?')){
+				location.replace("<c:url value='/partner/partnerQnA/admin_QnA_Delete.do?no=${record.no}'/>");				
+			}
+		});
+		
+		
+});
+</script>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<!-- 여기부터가 탑 부분임 -->
-		<header class="main-header">
-			<!-- Logo -->
-			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<!-- logo for regular state and mobile devices --> <span
-				class="logo-lg"><b>병원관리자</b>페이지</span>
-			</a>
-			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
 
-						<li class="dropdown user user-menu">
-						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
-							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-							<span class="hidden-xs">병원이름</span>
-						</a>
-							<ul class="dropdown-menu">
-								<!-- User image -->
-								<li class="user-header">
-								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-									<p>병원이름 넣을 곳</p></li>
-								<!-- Menu Body -->
-								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">로그아웃</a>
-									</div>
-								</li>
-							</ul></li>
-						<!-- Control Sidebar Toggle Button -->
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<!-- 여기까지가 탑 부분임 -->
-		<aside class="main-sidebar">
-			<section class="sidebar">
-				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-					</div>
-					<div class="pull-left info">
-						<p>병원이름</p>
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-					</div>
-				</div>
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header">카테고리</li>
-					<li class="active treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>예약/문의 관리</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-						<ul class="treeview-menu">
-							<li><a href="<c:url value="/partner/hospital/ReservationMove.do"/>"><i class="fa fa-circle-o"></i>예약관리</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>예약지난내역</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReceiptMove.do"/>"><i class="fa fa-circle-o"></i>접수관리</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
-						</ul>
-					</li>
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>마이페이지</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-						<ul class="treeview-menu">
-							<li>
-								<a href="<c:url value="/partner/mypage/partnerInfo.do"/>"><i class="fa fa-circle-o"></i>병원정보보기</a>
-							</li>
-						</ul>
-					</li>
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>문의</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-					<ul class="treeview-menu">
-							<li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
-
-							<li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
-							
-					</ul></li>
-					
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>제휴 탈퇴</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-					<ul class="treeview-menu">
-						<li>
-						<a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
-						</li>
-					</ul></li>
-					
-					
-				</ul>
-			</section>
-		</aside>
 		<!-- 여기까지가 탑이랑 카테고리 부분으로 추정 됨 -->
-		<!-- 여기부터가 바디로 추정됨 -->
+
+		<!-- 탑 -->
+		<jsp:include page="/WEB-INF/template/hospital/Top.jsp"/>
+		<!-- 탑-->
+		<!-- 카테고리 -->
+		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
+		<!-- 카테고리 -->
 		<div class="content-wrapper">
 	
 		
 
-<!-- body 시작 -->
-<div id="contain"class="container">
-<div class="row">
-			<div class="form-box">
-	<h2 style="text-align: center">관리자에게 한 문의 확인 하기</h2>
-	<br />
-	<p style="text-align: center;">
-		제휴회원님과 관리자만 이용 가능한 페이지 입니다.<br /> 
+		<!-- body 시작 -->
+		<div id="contain"class="container" >
+		<div class="row">
+					<div class="form-box">
+			<h2 style="text-align: center">관리자에게 한 문의 확인 하기</h2>
+			<br />
+			<p style="text-align: center;">
+				제휴회원님과 관리자만 이용 가능한 페이지 입니다.<br /> 
+				
+			</p>
+			<hr id="hr1" ><br/><br/>
+			<div class="row">
+				<!-- 테이블전체 가로폭은 테이블을 감싸는  div에 col-*-*로 조정 -->
+				<div>
+					<table class="table table-striped table-bordered">
+						<tr style="background-color: #79ABFF;">
+							<th class="col-md-2 text-center">번호</th>
+							<td>${record.no}</td>
+						</tr>
+						<tr>
+							<th class="col-md-2 text-center">제목</th>
+							<td>${record.title}</td>
+						</tr>
+						<tr style="background-color: #79ABFF;">
+							<th class="col-md-2 text-center">작성자</th> 
+							<td>${record.pid}</td>
+						</tr>
 		
-	</p><br/>
-	<hr id="hr1"><br/><br/>
-	<div class="row">
-		<!-- 테이블전체 가로폭은 테이블을 감싸는  div에 col-*-*로 조정 -->
-		<div>
-			<table class="table table-striped table-bordered">
-				<tr>
-					<th class="col-md-2 text-center">번호</th>
-					<td>1</td>
-				</tr>
-				<tr>
-					<th class="col-md-2 text-center">제목</th>
-					<td>제목</td>
-				</tr>
-				<tr>
-					<th class="col-md-2 text-center">작성자</th>
-					<td>홍길동</td>
-				</tr>
-
-				<tr>
-					<th class="col-md-2 text-center">등록일</th>
-					<td>2018-08-08</td>
-				</tr>
-				<tr>
-					<th colspan="2" class="text-center">내용</th>
-				</tr>
-				<tr>
-					<td colspan="2"  class="text-center">내용입니다</td>
-				</tr>
-
-			</table>
-		</div>
-	</div>
-	<!-- row -->
-	<div class="row">
-		<div class="text-center">
-
-		</div>
-	</div>
-	<br/>
-	<hr id="hr2">
-	<div class="row">
-		<h3 class="text-center">관리자와 소통하세요!</h3>
-		<br/>
-		<form class="form-inline" id="frm">
-			<!-- 수정 및 삭제용 파라미터 -->
-			<input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="onelinecomment" /> 
-			<input class="btn btn-success" 	id="submit" type="button" value="등록" />
-
-		</form>
-
-	</div><br><br>
-	<div class="row" id="comments">
-			<div class="table-responsive  col-sm-8 col-sm-offset-2">
-			  <table class="table table-bordered" >
-			    <tr>
-			    	 <th>
-			   		 답변
-			    	</th>
-			    	
-			    </tr>
-			   
-			    <tr>
-			    	<td>
-			    		내용
-			    		내용
-			    		내용내용
-			    		내용
-			    	
-			    	
-			    	</td>
-			    </tr>
-			  </table>
+						<tr>
+							<th class="col-md-2 text-center">등록일</th>
+							<td>${record.postadate}</td>
+						</tr>
+						<tr style="background-color: #79ABFF;">
+							<th colspan="2" class="text-center">내용</th>
+						</tr>
+						<tr>
+							<td colspan="2">${record.content}</td>
+						</tr>
+		
+					</table>
+				</div>
 			</div>
-	</div>
+			<!-- row -->
+			<div class="row">
+				<div class="text-center">
+					<a  href="<c:url value='/partner/partnerQnA/admin_QnA_Edit.do?no=${record.no}'/>" class="btn btn-success">수정</a>
+					<a id="delbtn" href="#" class="btn btn-success">삭제</a>			
+					<a href="<c:url value='/partner/partnerQnA/admin_QnA.do'/>" class="btn btn-success">목록</a>
+		
+				</div>
+			</div>
+			<br/>
+			<hr id="hr2">
+			<div class="row">
+				<h3 class="text-center">관리자와 소통하세요!</h3>
+				<br/>
+				<form class="form-inline" id="frm">
+					<!-- 수정 및 삭제용 파라미터 -->
+					<input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="rcontents" />
+					<input class="btn btn-success" 	id="submit" type="button" value="등록" />
+		
+				</form>
+		
+			</div><br><br>
+			<div class="row" id="comments">
+				
+			</div>
+			
+			<br/><br/><br/><br/>
 	
-	<br/><br/><br/><br/>
-	
-	</div>
-	</div>
+			</div>
+		</div>
 	</div>
 	
 	
 	<!-- container -->
-		
-		
-		
-		
-		
-		
-		
-		
 			
 		</div>
 		<!-- 여기까지가 바디로 추정됨 -->

@@ -29,12 +29,32 @@
 /*가운데 배치를 위핸 CSS*/
 /*테이블 센터를 위한 css 시작*/
 table{
- background-color: aqua;
+ border:1px solid black;
 }
 
 table th {
  text-align: center;
+ border:1px solid black;
 }
+table tr {
+ border:1px solid black;
+}
+table tr:nth-child(odd) {
+ background-color: #cee3f6;
+}
+table tr:nth-child(even) {
+ background-color: white;
+}
+table td{
+ border:1px solid black;
+}
+#top1{
+ border:1px solid black;
+}
+#top2{
+ border:1px solid black;
+}
+
 /*테이블 센터를 위한 css 끝*/
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
 .form-group{
@@ -44,7 +64,6 @@ table th {
  padding-top: 200px;
 }
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
-
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
@@ -69,34 +88,34 @@ table th {
 			<div class="row">
 				<div class="in">
 					<h2>상세보기페이지</h2><br/><br/><br/>
-						<table class="table table-hover table-bordered">
+						<table class="table table-hover">
 							<tr>
-								<th class="col-md-2 text-center">성함</th>
-								<td>홍길동</td>
+								<th class="col-md-2 text-center" id="top1">성함</th>
+								<td id="top2">${record.recname}${record.resname}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">연락처</th>
-								<td>010-7777-7777</td>
+								<td>${record.phone}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">이메일</th>
-								<td>abcd1234@naver.com</td>
+								<td>${record.email}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">예약시간</th>
-								<td>2018-10-15 10:54</td>
+								<td>${record.recdate}${record.resdate}</td>
 							</tr>
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>
 							</tr>
 							<tr>
-								<td colspan="2">가슴이 아프고 통증이 있어요 <br/>감기 기운도 있는 것 같아요</td>
+								<td colspan="2">${record.reccontens}${record.rescontens}</td>
 							</tr>
 						</table>
 					<!-- 버튼들 -->
-						<input type="button" class="btn btn-default" value="수락"/>
-						<input type="button" class="btn btn-default" value="거절"/>
-						<input type="button" class="btn btn-default" value="목록"/>
+						<a href="<c:url value='/partner/hospital/yes.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="수락"/></a>
+						<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
+						<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
 					<!-- 버튼들 -->
 				</div>
 			</div>

@@ -116,26 +116,13 @@ input:focus{ outline: 0; border-color: black; }
 
 }
  
-	/* 아래는 휴일 모달창 스타일  */
 
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 550px; }
-
-    #selectable li { margin: 0px 0px 0px 18px; padding: 11px; float: left; width: 50px; height: 120px; 
-    
-    font-size: 1.5em; text-align: center; border: 1px solid black; border-radius: 10px; }
-    
-    .modal-footer{margin-top: 130px; }
-    
-     #selectable li:hover {background-color: #79ABFF; color : white; }
-    
-    /* 휴일 모달창 스타일 끝  */
 
     </style>
 
-  <script>
-  
-  $(function() {
 
+
+<script>
 		/*모달용 함수 시작 */
 
 			$("#selectable").selectable();
@@ -228,6 +215,7 @@ input:focus{ outline: 0; border-color: black; }
 				
 			});///최상위
 		</script>
+
 
 </head>
 
@@ -370,44 +358,5 @@ input:focus{ outline: 0; border-color: black; }
 
 	<!--  내용 끝   -->
 
-
-
-
-
-
-  
-
-    <script >
-      var formTarget = $('.form-box').find('input, textarea');
-formTarget.on('keyup blur focus', function (e) {
-
-	var $this = $(this),
-	label = $this.prev('label');
-
-	if (e.type === 'keyup') {
-		if ($this.val() === '') {
-			label.removeClass('active highlight');
-		} else {
-			label.addClass('active highlight');
-		}
-	} else if (e.type === 'blur') {
-		if ($this.val() === '') {
-			label.removeClass('active highlight');
-		} else {
-			label.removeClass('highlight');
-		}
-	} else if (e.type === 'focus') {
-
-		if ($this.val() === '') {
-			label.removeClass('highlight');
-		} else
-		if ($this.val() !== '') {
-			label.addClass('highlight');
-		}
-	}
-
-});
-
-    </script>
 </body>
 </html>

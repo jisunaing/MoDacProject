@@ -19,7 +19,9 @@
 #hr{
 	margin-left: 40%;
 	border: solid 1px black; 
-	width: 20%
+	width: 20%;
+	margin-top: -6px;
+	
 }
 #dv{
 	padding-top: 50px
@@ -38,134 +40,32 @@
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
 	}
 </style>
-
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" >
 	<div class="wrapper">
-		<!-- 여기부터가 탑 부분임 -->
-		<header class="main-header">
-			<!-- Logo -->
-			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<!-- logo for regular state and mobile devices --> <span
-				class="logo-lg"><b>병원관리자</b>페이지</span>
-			</a>
-			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
 
-						<li class="dropdown user user-menu">
-						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
-							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-							<span class="hidden-xs">병원이름</span>
-						</a>
-							<ul class="dropdown-menu">
-								<!-- User image -->
-								<li class="user-header">
-								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-									<p>병원이름 넣을 곳</p></li>
-								<!-- Menu Body -->
-								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">로그아웃</a>
-									</div>
-								</li>
-							</ul></li>
-						<!-- Control Sidebar Toggle Button -->
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<!-- 여기까지가 탑 부분임 -->
-		<aside class="main-sidebar">
-			<section class="sidebar">
-				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-					</div>
-					<div class="pull-left info">
-						<p>병원이름</p>
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-					</div>
-				</div>
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header">카테고리</li>
-					<li class="active treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>예약/문의 관리</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-						<ul class="treeview-menu">
-							<li><a href="<c:url value="/partner/hospital/ReservationMove.do"/>"><i class="fa fa-circle-o"></i>예약관리</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>예약지난내역</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReceiptMove.do"/>"><i class="fa fa-circle-o"></i>접수관리</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
-						</ul>
-					</li>
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>마이페이지</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-						<ul class="treeview-menu">
-							<li>
-								<a href="<c:url value="/partner/mypage/partnerInfo.do"/>"><i class="fa fa-circle-o"></i>병원정보보기</a>
-							</li>
-						</ul>
-					</li>
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>문의</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-					<ul class="treeview-menu">
-							<li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
-
-							<li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
-							
-					</ul></li>
-					
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>제휴 탈퇴</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-					<ul class="treeview-menu">
-						<li>
-						<a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
-						</li>
-					</ul></li>
-					
-					
-				</ul>
-			</section>
-		</aside>
 		<!-- 여기까지가 탑이랑 카테고리 부분으로 추정 됨 -->
-		<!-- 여기부터가 바디로 추정됨 -->
-		<div class="content-wrapper">
+
+		<!-- 탑 -->
+		<jsp:include page="/WEB-INF/template/hospital/Top.jsp"/>
+		<!-- 탑-->
+		<!-- 카테고리 -->
+		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
+		<!-- 카테고리 -->
+		<div class="content-wrapper" style="background-color: white;">
 		
 		
 		
 <!-- body 시작 -->
-<div class="container" id="dv">
+<div class="container" id="dv" >
 <div class="row">
-			<div class="form-box">
+			<div>
 
 	<h2 style="text-align: center">사이트 문의하기</h2>
 	<br />
 	<p style="text-align: center;">
 		언제든지 궁금한걸 물어보세요~
 	</p>
-	<br />
 	<hr id="hr">
 	<br />
 	<br />
@@ -176,32 +76,38 @@
 			
 				<a id="qna" href="<c:url value='/partner/partnerQnA/admin_QnA_Write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;  color: black">문의하기</a>
 				
-				<table class="table">
-					<thead>
+				<table class="table table-hover table-bordered text-center">
+						<tr style="background-color: #79ABFF;">
+						<th style="text-align: center" class="col-md-1" >글번호</th>
+							<th style="text-align: center" >제목</th>
+							<th style="text-align: center" class="col-md-2">작성일</th>
+							<th style="text-align: center" class="col-md-2">답변여부</th>
+						
+						</tr>
+				<c:if test="${empty requestScope.list }" var="isEmpty">
+					<tr>
+						<td colspan="4">등록된 게시물이 없어요</td>
+					</tr>
+				</c:if>
+				<c:if test="${not isEmpty }">
+					<c:forEach var="record" items="${list}" varStatus="loop">
+					
+					
 						<tr>
-							<th style="text-align: center">작성일</th>
-							<th style="text-align: center">제목</th>
-							<th style="text-align: center">답변여부</th>
+							<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
+							<td class="text-left">
+							 <a	href="<c:url value='/partner/partnerQnA/admin_QnA_View.do?no=${record.no}'/>">${record.title}</a>
+							 <span class="badge">${record.commentCount}</span>
+							</td>							
+							<td>${record.postadate}</td>
+							<c:if test="${record.commentCount != 0}">
+							<td>답변 완료</td> <!--  답변여부 쪽 -->
+							</c:if> 
+							<td>답변 대기중</td> <!--  답변여부 쪽 -->
 						</tr>
-					</thead>
-					<tbody>
-						<tr class="success">
-							<td>2018-09-15</td>
-							<td><a style=" color: black" href="<c:url value='/partner/partnerQnA/admin_QnA_View.do'/>">제목1</a></td>
-							<td>답변완료</td>
-						</tr>
-						<tr class="danger">
-							<td>2018-09-15</td>
-							<td>제목2</td>
-							<td>답변 준비중</td>
-						</tr>
-						<tr class="success">
-							<td>2018-09-15</td>
-							<td>제목3</td>
-							<td>답변완료</td>
-						</tr>
-					</tbody>
-				</table>
+					</c:forEach>
+				</c:if>
+			</table>
 			</div>
 		</div>
 	</div>

@@ -53,15 +53,16 @@ table{
 	float: right;
 }
 #nameUrl{
-	color: blue; width: 100%;
+	width: 100%;
 }
 </style>
 <!-- 달력 라이브러리 시작-->
 	<script type="text/javascript">
     $(document).ready( function () {
-        $('#picker').dateTimePicker();
-        $('#picker-no-time').dateTimePicker({ showTime: false, dateFormat: 'DD/MM/YYYY'});
+        $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko'});
+
     })
+    
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
@@ -74,13 +75,17 @@ table{
 				var text = $('input:eq(0)').val();
 				console.log(text);
 				$('input:eq(0)').val(text=='가족 정보보기'?'가족 정보숨기기':'가족 정보보기');
-				
 			});
-
 		});
-	
 		$('label').css('minWidth', '90px');
+		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
+			$('#resname').val($('#names').html());
+			$('#phone').val($('#phones').html());
+			$('#email').val($('#emails').html());
+		});
 		
+		
+
 	});
 	</script>
 <div class="container">
@@ -102,14 +107,14 @@ table{
 						<th>이메일</th>
 						<th>생년월일</th>
 					</tr>
-					<tr>
-						<td><a href="#" id="nameUrl">홍길동</a></td>
-						<td>010-7777-7777</td>
-						<td>abcd1234@naver.com</td>
-						<td>1967-08-30</td>
+					<tr id="nameUrl">
+						<td id="names">홍길동</td>
+						<td id="phones">01077777777</td>
+						<td id="emails">abcd1234@naver.com</td>
+						<td id="birthdays">1967-08-30</td>
 					</tr>
 					<tr>
-						<td><a href="#" id="nameUrl">나길동</a></td>
+						<td>나길동</td>
 						<td>010-7777-7777</td>
 						<td>grdawf777@naver.com</td>
 						<td>1989-01-21</td>
@@ -118,13 +123,15 @@ table{
 			</div>
 		</div>
 		<br /> <br />
-		<form class="form-horizontal">
-		<input type="hidden" name="Reservation"/>
+		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do?date=${date}'/>">
+		<input type="hidden" id="genid" value="${genid}">
+		<input type="hidden" id="pid" value="${id}">
+		<input type="hidden" id="addr" value="${addr}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="resname" name="resname">
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -132,7 +139,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control size1" placeholder="연락처 입력">
+					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone">
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
@@ -141,9 +148,9 @@ table{
 				<label for="inputPassword" class="col-sm-2 control-label">예약시간</label>
 				<div class="col-sm-10">
 					<div class="size3">
-						<div id="picker">
-							<input type="hidden" id="result" value="" />
-						</div>
+						<div id="picker"></div>
+						<input type="hidden"  id="result" name="resdate"/>
+						
 					</div>
 				</div>
 			</div>
@@ -152,26 +159,24 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control size4" placeholder="이메일 입력" >
+					<input type="email" class="form-control size4" placeholder="이메일 입력"id="email" name="email">
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->
-			<!-- 달력 테스트 부분 -->
-			<!-- 달력 테스트 부분 -->
-
 			<!-- 예약자 상담내용 -->
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">상담내용</label>
 				<div class="col-sm-10">
-					<textarea class="form-control size5" rows="10" name="content"></textarea>
+					<textarea class="form-control size5" rows="10" id="rescontents" name="rescontents"></textarea>
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
+			<input type="checkbox" name="checkbox_name" />
+			<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
+			<button type="submit" class="btn btn-default" id="receipt">예약</button>
 		</form>
 
-		<input type="checkbox" name="PersonalData" />
-		<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
-		<a href="<c:url value='/general/receipt/ReceiptListResult.do'/>"><button type="button" class="btn btn-default">예약</button></a>
+
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

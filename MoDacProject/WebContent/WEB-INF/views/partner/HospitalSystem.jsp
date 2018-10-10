@@ -25,19 +25,18 @@
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
 			[ 'Task', 'Hours per Day' ],
-			[ '월요일', 11 ],
-			[ '화요일', 2 ],
-			[ '수요일', 10 ],
-			[ '목요일', 15 ],
-			[ '금요일', 7 ],
-			[ '토요일', 2 ],
-			[ '일요일', 1 ]
+			[ '월요일', ${mon} ],
+			[ '화요일', ${tue} ],
+			[ '수요일', ${wed} ],
+			[ '목요일', ${thu} ],
+			[ '금요일', ${fri} ],
+			[ '토요일', ${dat} ],
+			[ '일요일', ${sun} ]
 		]);
 		var options = {
 			title : '요일별 고객 현황',
 			is3D : true,
 		};
-
 		var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
 		chart.draw(data, options);
 	}
@@ -59,6 +58,16 @@
       <!-- 바디 -->
       <div class="content-wrapper">
          <div id="piechart_3d"></div>
+         
+                  
+         <!-- 아래부분 필요없으면 삭제해도 상관없음 그냥 세션아이디 확인용  -->
+         <c:if test="${!empty test}">
+         
+         <h2> 현재 세션 아이디 : ${sessionScope.pid} 입니다</h2>
+         </c:if>
+		<!-- 여기까지  -->
+
+         
       </div>
       <!-- 바디 -->
       <!-- 퓨터-->

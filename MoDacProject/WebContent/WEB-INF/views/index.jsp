@@ -124,13 +124,8 @@
 </head>
 
 <body>
-			
-<%--
-	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
- --%>
+
 	<!-- topMenu -->
-	<%-- 	<c:set value="sdf" var="PARTNER_ID" scope="session"/>
- --%>	<!-- topMenu -->
 	<div class="topMenu">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
 	</div><!-- topMennu -->
@@ -252,7 +247,7 @@
 				  </div>
 				  <div class="col-md-4">
 				    <div class="thumbnail">
-				      <a href="#" target="_blank">
+				      <a href="<c:url value='/Test/Test.do'/>" target="_blank">
 				        <img src="<c:url value='/Images/healthinfo6.jpg'/>" alt="Fjords" style="width:100%">
 				        <div class="caption">		        	
 				        	<span class="imgcpation">뇌졸증</span>
