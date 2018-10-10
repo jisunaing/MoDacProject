@@ -1,5 +1,7 @@
 package com.modu.modac.service.impl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,5 +21,6 @@ public class TestDao implements TestService {
 	public int testdb() {
 		return template.selectOne("dbtest");
 	}
+
 
 }
