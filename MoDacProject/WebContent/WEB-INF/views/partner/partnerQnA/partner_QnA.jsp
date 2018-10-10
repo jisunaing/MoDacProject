@@ -8,6 +8,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <style>
 /*가운데 배치를 위핸 CSS*/
+
+
 .container {
  min-height: 100%;
 }
@@ -28,6 +30,16 @@ table th {
  text-align: center;
 }
 /*테이블 센터를 위한 css 끝*/
+
+#hr1{
+	
+	border: solid 1px black; 
+	width: 25%;
+	text-align: center;
+
+}
+
+
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
@@ -52,13 +64,13 @@ table th {
 		<!-- 카테고리 -->
 
 		<!-- 여기부터가 바디로 추정됨 -->
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="background-color: white;">
 			<div class="container">
 				<div class="row">
-				<h2>병원 문의관리</h2><br/><br/><br/>
-				<div style="border: 1px solid;">
+				<h2>병원 문의관리</h2><hr id="hr1" ><br/><br/><br/>
+				<div>
 					<table class="table table-hover" style="min-width: 400px;">
-						<tr>
+						<tr style="background-color: #79ABFF;">
 							<th>글 번호</th><th>제목</th><th>아이디</th><th>등록일자</th>
 						</tr>
 						<tr>

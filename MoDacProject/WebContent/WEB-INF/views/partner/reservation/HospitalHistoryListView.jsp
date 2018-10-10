@@ -4,18 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <style>
-/*가운데 정렬을 위한 CSS*/
-.container {
- min-height: 100%;
-}
+/*가운데 배치를 위핸 CSS*/
 .row {
  margin: 0 auto;
  text-align: center;
- padding-top: 100px
+ padding-top: 100px;
+ width: 100%;
 }
 
 .row .col-md-4 {
@@ -23,48 +20,50 @@
  outline: 1px pink solid;
  height: 200px;
 }
-/*가운데 정렬을 위한 CSS*/
+.in{
+ display: inline-block;
+ width: 50%;
+ height: 100px
+ 
+ }
+/*가운데 배치를 위핸 CSS*/
 /*테이블 센터를 위한 css 시작*/
+table{
+ border:1px solid black;
+}
+
 table th {
-	 text-align: center;
+ text-align: center;
+ border:1px solid black;
+}
+table tr {
+ border:1px solid black;
+}
+table tr:nth-child(odd) {
+ background-color: #cee3f6;
+}
+table tr:nth-child(even) {
+ background-color: white;
 }
 table td{
-	text-align: center;
+ border:1px solid black;
 }
-table{
-	min-width: 400px;
+#top1{
+ border:1px solid black;
 }
+#top2{
+ border:1px solid black;
+}
+
 /*테이블 센터를 위한 css 끝*/
-/*새로운 테이블 CSS*/
-table.type10 {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    margin: 20px 10px;
+/*테이블 안의 폼들 간격을 위해 넣은 것*/
+.form-group{
+ padding-bottom: 35px;
 }
-table.type10 thead th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: #fff;
-    background: #2b68a7;
-    margin: 20px 10px;
+.lastButton{
+ padding-top: 200px;
 }
-table.type10 tbody th {
-    width: 150px;
-    padding: 10px;
-}
-table.type10 td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
-}
-tbody tr:nth-child(even) {
-    background-color: #cee3f6;
-}
+/*테이블 안의 폼들 간격을 위해 넣은 것*/
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
@@ -86,45 +85,36 @@ tbody tr:nth-child(even) {
 		<!-- 카테고리 -->
 		<!-- 여기부터가 바디로 추정됨 -->
 		<div class="content-wrapper">
-			<div class="container">
-				<div class="row">
-				<h2>병원예약했던 내역</h2><br/><br/><br/>
-					<table class="type10 table-hover">
-					    <thead>
+			<div class="row">
+				<div class="in">
+					<h2>상세보기페이지</h2><br/><br/><br/>
+					<table class="table table-hover">
 						<tr>
-							<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th><th>구분</th>
+							<th class="col-md-2 text-center" id="top1">성함</th>
+							<td id="top2">${record.resname} ${record.recname}</td>
 						</tr>
-						</thead>
-						<tbody>
-						<c:if test="${empty requestScope.list }" var="isEmpty">
 						<tr>
-						<td></td>
-						<td></td>
-						<td>등록된 게시글이 없습니다</td>
-						<td></td>
-						<td></td>
-						</tr>
-						</c:if>
-						<c:if test="${not isEmpty}">
-						<c:forEach var="record" items="${list}" varStatus="loop">
-						<tr>
-							<a href="<c:url value='/partner/hospital/ReservationHistoryViewMove.do?resnum=${resnum}&where=${moveWhere}'/>">
-							<td>${record.resname}</td>
-							<td>${record.resdate}</td>
+							<th class="col-md-2 text-center">연락처</th>
 							<td>${record.phone}</td>
-							<td>${record.email}</td>
-							<td>${record.resaccept}</td>
-							</a>
 						</tr>
-						</c:forEach>
-						</c:if>
-						
-						</tbody>																							
-					</table>	
-					<!-- 아래는 페이징 -->
-					<div class="row">
-						<div>${pagingString}</div>
-					</div>
+						<tr>
+							<th class="col-md-2 text-center">이메일</th>
+							<td>${record.email}</td>
+						</tr>
+						<tr>
+							<th class="col-md-2 text-center">예약시간</th>
+							<td>${record.resdate}${record.recdate}</td>
+						</tr>
+						<tr>
+							<th colspan="2" class="text-center">상담내용</th>
+						</tr>
+						<tr>
+							<td colspan="2">${record.rescontens}${record.reccontens}</td>
+						</tr>
+					</table>
+					<!-- 버튼들 -->
+					<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
+					<!-- 버튼들 -->
 				</div>
 			</div>
 		</div>
