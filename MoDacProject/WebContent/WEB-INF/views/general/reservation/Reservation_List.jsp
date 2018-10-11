@@ -81,20 +81,20 @@ table {
 					  <td colspan="7">
 					  	<div>
 					  		<br/><br/>
-					  		${record.contans}
+					  		${record.reccontents}
 					  		<br/><br/><br/>
 					  	</div>
 					  </td>
 					</tr>
 					</c:forEach>					
 					</c:if>
-					<c:forEach var="record" items="${receiptList}" varStatus="loop">
+					<c:forEach var="record" items="${reservationList}" varStatus="loop">
 					<tr>
 						<td>${record.resdate}</td>
 						<td>${record.hosname}</td>
 						<td>${record.subname}</td>
 						<td>${record.resname}</td>
-						<td>접수</td>
+						<td>예약</td>
 						<td>${record.resaccept}</td>
 						<td><c:if test="${record.resaccept=='예약신청'}" var="resacceptResult"><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${resnum}}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not resacceptResult}">취소불가</c:if></td>
 					</tr>
@@ -102,7 +102,7 @@ table {
 					  <td colspan="7">
 					  	<div>
 					  		<br/><br/>
-					  		${record.contans}
+					  		${record.rescontents}
 					  		<br/><br/><br/>
 					  	</div>
 					  </td>

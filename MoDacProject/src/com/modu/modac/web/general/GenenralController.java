@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReservationDto;
 import com.modu.modac.service.ReservationService;
 
 @SessionAttributes("genid")
@@ -28,9 +31,9 @@ public class GenenralController {
 	public String reservationList(@ModelAttribute("genid") String genid, Map map, Model model) throws Exception {
 		map.put("genid", genid);
 		//접수내역 얻어오기
-		List<Map> receiptList = reservationService.receiptList(map);
+		List<ReservationDto> receiptList = reservationService.receiptList(map);
 		//예약내역 얻어오기
-		List<Map> reservationList = reservationService.reservationList(map);
+		List<ReceptionDto> reservationList = reservationService.reservationList(map);
 		
 		model.addAttribute("receiptList", receiptList);
 		model.addAttribute("reservationList", reservationList);

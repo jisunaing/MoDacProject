@@ -118,7 +118,7 @@ public class PartnerController {
 		map.put("end",end);
 		//페이징을 위한 로직 끝]	
 		List<ReservationListDto> list= partnerReservationService.hospitalReservationList(map);
-		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/reservation/HospitalReservation");
+		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/hospital/ReservationMove.do?");
 		//데이타 저장]
 		model.addAttribute("list", list);
 		model.addAttribute("pagingString", pagingString);
@@ -150,7 +150,7 @@ public class PartnerController {
 		//페이징을 위한 로직 끝]	
 		List<ReservationHistoryListDto> list= partnerReservationService.hospitalreservationHistory(map);
 		list = partnerReservationService.hospitalreservationHistory(map);
-		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/reservation/HospitalReservationHistory");
+		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/hospital/ReservationListMove.do?");
 		//데이타 저장]
 		model.addAttribute("list", list);
 		model.addAttribute("pagingString", pagingString);
@@ -182,7 +182,7 @@ public class PartnerController {
 			map.put("end",end);
 			//페이징을 위한 로직 끝]	
 			List<ReceptionListDto> list= partnerReservationService.hospitalReceiptList(map);
-			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/reservation/HospitalReceipt");
+			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/hospital/ReceiptMove.do?");
 			//데이타 저장]
 			model.addAttribute("list", list);
 			model.addAttribute("pagingString", pagingString);
@@ -216,7 +216,7 @@ public class PartnerController {
 			map.put("end",end);
 			//페이징을 위한 로직 끝]	
 			List<ReceptionHistoryListDto> list= partnerReservationService.hospitalreceiptHistory(map);
-			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/reservation/HospitalReceiptHistory");
+			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/hospital/ReceiptListMove.do?");
 			//데이타 저장]
 			model.addAttribute("list", list);
 			model.addAttribute("pagingString", pagingString);
