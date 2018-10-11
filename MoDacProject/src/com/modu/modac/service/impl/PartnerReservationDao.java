@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.swing.table.TableColumnModel;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import com.modu.modac.service.AjaxReceptionDto;
 import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReceptionHistoryListDto;
@@ -101,6 +104,18 @@ public class PartnerReservationDao implements PartnerReservationService {
 	public void reservationListNo(Map map) {
 		template.update("reservationListNo", map);
 	}
+
+	@Override
+	public Map ajaxReceptionResult(Map map) {
+		return template.selectOne("ajaxReceptionResult", map);
+	}
+
+	@Override
+	public Map ajaxReservationResult(Map map) {
+		return template.selectOne("ajaxReservationResult",map);
+	}
+
+
 	
 
 }

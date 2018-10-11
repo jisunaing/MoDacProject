@@ -14,7 +14,8 @@ public interface PartnerReservationService {
 	ReservationDto hospitalReservationView(Map map);
 	ReceptionDto hospitalReceiptHistoryView(Map map);
 	ReservationDto hospitalReservationHistoryView(Map map);
-	
+	Map ajaxReceptionResult(Map map);
+	Map ajaxReservationResult(Map map);
 	
 	int getTotalReservationRecord(Map map);
 	int getTotalReservationHistoryRecord(Map map);
@@ -24,6 +25,5 @@ public interface PartnerReservationService {
 	void reservationListYes(Map map);
 	void receptListNo(Map map);
 	void reservationListNo(Map map);
-	
 	
 }

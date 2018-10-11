@@ -1,6 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script>
+	
+	//접수알림 서비스
+	function successAjax1(data,target){
+		console.log('서버로부터 받은 데이타:',data);
+		if(data.length !=0){
+			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
+			audio.play();
+			console.log(Notification.permission)
+			//웹 알림
+			if (Notification.permission == "granted") {
+				var options = {
+					body : data,
+					icon : "/Images/modac.png",
+					dir : "ltr"
+				};
+				var notification = new Notification("접수 건이 왔습니다", options);
+			}//if
+		}//if
+		else{}
+		
+	}/////////////////////////
+	//예약알림 서비스
+	function successAjax1(data,target){
+		console.log('서버로부터 받은 데이타:',data);
+		if(data.length !=0){
+			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
+			audio.play();
+			console.log(Notification.permission)
+			//웹 알림
+			if (Notification.permission == "granted") {
+				var options = {
+					body : data,
+					icon : "/Images/modac.png",
+					dir : "ltr"
+				};
+				var notification = new Notification("예약 건이 왔습니다", options);
+			}//if
+		}//if
+		else{}
+		
+	}/////////////////////////	
+		//접수 에이작스
+		window.setInterval(function(){
+			$.ajax({
+				url:'<c:url value="/Ajax/AjaxReception.do"/>',
+				type:'post',
+				dataType:'text',
+				success:function(data){
+					successAjax2(data,'#polling');
+				},
+				error:function(request,error){
+					console.log('상태코드:',request.status);
+					console.log('서버로 부터 받은 데이타:',request.responseText);
+					console.log('에러:',error);
+				}
+			});			
+		},1500);
+		//예약 에이작스
+		window.setInterval(function(){
+			console.log('1초마다 호출되는 함수');
+			$.ajax({
+				url:'<c:url value="/Ajax/AjaxReservation.do"/>',
+				type:'post',
+				dataType:'text',
+				success:function(data){
+					successAjax2(data,'#polling');
+				},
+				error:function(request,error){
+					console.log('상태코드:',request.status);
+					console.log('서버로 부터 받은 데이타:',request.responseText);
+					console.log('에러:',error);
+				}
+			});			
+		},1500);
+</script>
 		<!-- 탑부분 시작 -->
 		<header class="main-header">
 			<!-- Logo -->

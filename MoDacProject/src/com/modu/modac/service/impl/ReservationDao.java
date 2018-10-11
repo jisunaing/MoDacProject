@@ -39,12 +39,12 @@ public class ReservationDao implements ReservationService{
 	}
 
 	@Override
-	public List<ReceptionDto> reservationList(Map map) {
+	public List<ReservationDto> reservationList(Map map) {
 		return template.selectList("reservationList", map);
 	}
 
 	@Override
-	public List<ReservationDto> receiptList(Map map) {
+	public List<ReceptionDto> receiptList(Map map) {
 		return template.selectList("receiptList", map);
 	}
 

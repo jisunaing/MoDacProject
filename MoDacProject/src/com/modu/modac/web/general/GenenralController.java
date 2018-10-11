@@ -31,9 +31,11 @@ public class GenenralController {
 	public String reservationList(@ModelAttribute("genid") String genid, Map map, Model model) throws Exception {
 		map.put("genid", genid);
 		//접수내역 얻어오기
-		List<ReservationDto> receiptList = reservationService.receiptList(map);
+		List<ReceptionDto> receiptList = reservationService.receiptList(map);
+		System.out.println(receiptList);
 		//예약내역 얻어오기
-		List<ReceptionDto> reservationList = reservationService.reservationList(map);
+		List<ReservationDto> reservationList = reservationService.reservationList(map);
+		System.out.println(reservationList);
 		
 		model.addAttribute("receiptList", receiptList);
 		model.addAttribute("reservationList", reservationList);
