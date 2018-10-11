@@ -5,7 +5,6 @@
 	
 	//접수알림 서비스
 	function successAjax1(data,target){
-		console.log('서버로부터 받은 데이타:',data);
 		if(data.length !=0){
 			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
 			audio.play();
@@ -25,7 +24,6 @@
 	}/////////////////////////
 	//예약알림 서비스
 	function successAjax1(data,target){
-		console.log('서버로부터 받은 데이타:',data);
 		if(data.length !=0){
 			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
 			audio.play();
@@ -61,7 +59,6 @@
 		},1500);
 		//예약 에이작스
 		window.setInterval(function(){
-			console.log('1초마다 호출되는 함수');
 			$.ajax({
 				url:'<c:url value="/Ajax/AjaxReservation.do"/>',
 				type:'post',
