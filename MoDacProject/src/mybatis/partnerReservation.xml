@@ -13,7 +13,7 @@
 	<select id="ajaxReceptionResult" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT RECNAME,RECCONTENTS FROM RECEPTION WHERE recnum >= (SELECT MAX(recnum) FROM RECEPTION) AND pid = #{pid}
 	</select>
-	
+	<!-- Ajax 예약 부분 -->
 	<select id="ajaxReservationResult" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT RESNAME,RESCONTENTS FROM RESERVATION WHERE resnum >= (SELECT MAX(resnum) FROM RESERVATION) AND pid = #{pid}
 	</select>	

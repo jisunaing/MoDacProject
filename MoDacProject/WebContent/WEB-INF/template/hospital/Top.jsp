@@ -13,7 +13,7 @@
 			if (Notification.permission == "granted") {
 				var options = {
 					body : data,
-					icon : "/Images/modac.png",
+					icon : "modac.png",
 					dir : "ltr"
 				};
 				var notification = new Notification("접수 건이 왔습니다", options);
@@ -32,7 +32,7 @@
 			if (Notification.permission == "granted") {
 				var options = {
 					body : data,
-					icon : "/Images/modac.png",
+					icon : "modac.png",
 					dir : "ltr"
 				};
 				var notification = new Notification("예약 건이 왔습니다", options);
