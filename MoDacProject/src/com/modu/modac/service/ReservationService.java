@@ -23,8 +23,8 @@ public interface ReservationService {
 	void reservationInset(Map map);
 	int reservationCancel(Map map);
 	int receptCancel(Map map);
-	List<Map> reservationList(Map map);
-	List<Map> receiptList(Map map);
-	
+	List<ReservationDto> reservationList(Map map);
+	List<ReceptionDto> receiptList(Map map);
+
 	
 }

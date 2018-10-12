@@ -1,22 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.MoDac_myBatis.Reservation">
-	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
-	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
-	<!-- 쿼리 작성 -->
-	<select id="chartList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
+	
+<mapper namespace="mybatis.Partner">
+
+    
+    <!--  제휴가입하는 부분 -->
+	<insert id="PartnerJoin" parameterType="java.util.Map">
+
+	INSERT ALL INTO HOSPITAL(HOSNO,HOSADDR,HOSNAME,HOSPHONE)
+	VALUES(SEQ_JIHUNTEST.NEXTVAL,#{hosaddr},#{hosname},#{hosphone})	
+	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,PPHONE)
+	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{pphone})
+	SELECT * FROM DUAL
+		
+	</insert>
+	
+	
+	<!-- IsMember 부분 -->
+	<select id="PartnerIsMember" parameterType="java.util.Map" resultType="int">
+		
+		 SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd} 	
+		 	 		 		 	
+	</select> 
+
+
+	<!-- 회원 수락 여부  -->
+	<select id="IsAccept" parameterType="java.util.Map" resultType="int">						
+		SELECT COUNT(*) FROM PARTNERS WHERE pid= #{pid}  AND ACCEPT = 'Y'		  		 	
+	</select> 
+		
+	
+	<!-- 제휴회원 1명의 데이터 가져오기 -->
+	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
+	SELECT P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
 	</select>
 	
-	<!-- 병원에서 예약 신청목록 리스트 볼때 -->
-	<select id="hospitalReservationList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RESNUM, RESNAME, RESDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '예약신청' ORDER BY RESDATE DESC
+	<update id="Partnerfirst" parameterType="java.util.Map">
+	
+	UPDATE HOSPITAL SET HOSADDR=#{hosaddr},HOSNAME=#{hosname},HOSPHONE=#{hosphone},
+	MON=#{mon},TUE=#{tue},WED=#{wed},THU=#{thu},FRI=#{fri},SAT=#{sat},SUN=#{sun},HOLIDAY=#{holiday}	WHERE HOSNO=#{hosno}
+
+	</update>
+	
+	<update id="Partnersecond" parameterType="java.util.Map">
+	
+	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
+		
+	</update>
+	
+	<!-- 회원탈퇴에 따른 업데이트   -->
+	<update id="Partnerwithdrawal" parameterType="java.util.Map">
+	
+	
+	
+	<!-- 컬럼명 알아내면 그때 작업 하기 탈퇴이유 <- 이부분    -->
+	
+	UPDATE PARTNERS SET INFO=#{info} WHERE PID = #{pid}
+		
+	</update>
+	
+	
+	<!-- 해당되는 hosno에 진료과목 넣어주기 --> 
+	<insert id="PartnerSubjectList" parameterType="java.util.Map">
+	
+	INSERT INTO HOSSUBJECT VALUES(#{subjectcode},#{hosno})
+	
+	</insert>
+	
+	<!-- 특정회원에 따른 SubjectCode 가져오기 -->	
+	<select id="PartnerSubjectListAll" parameterType="java.util.Map" resultType="java.util.Map">
+	
+	SELECT h.subjectcode,h.hosno,subname FROM HOSSUBJECT H JOIN
+	SUBJECT S ON H.SUBJECTCODE = S.SUBJECTCODE  WHERE H.HOSNO = #{hosno}
+	
 	</select>
 	
-	<!-- 병원에서 접수 신청목록 리스트 볼떄 -->
-	<select id="hospitalReceiptList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT RECNUM, RECNAME, RECDATE, PHONE, EMAIL FROM RESERVATION WHERE PID = #{pid} AND RESACCEPT = '접수신청' ORDER BY RESDATE DESC
-	</select>
+	
+	
+
+
+
+    
+    
+    
+       
+    
+   
+
+
+
+
+
+
+	
 	
 </mapper>

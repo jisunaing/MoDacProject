@@ -116,6 +116,10 @@ tbody tr:nth-child(even) {
 							<c:if test="${not isEmpty}">
 							<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr>
+<<<<<<< HEAD
+=======
+								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${recnum}&?recname=${recname}&where=${moveWhere}'/>">
+>>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
 								<td>${record.recname}</td>
 								<td>${record.recdate}</td>
 								<td>${record.phone}</td>

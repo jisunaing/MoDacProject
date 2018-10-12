@@ -25,6 +25,7 @@
 		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>
+		<typeAlias type="com.modu.modac.service.AjaxReceptionDto" alias="AjaxReceptionDto"/>
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
