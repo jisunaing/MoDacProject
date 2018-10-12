@@ -139,9 +139,9 @@ public class HomeController {
 	@RequestMapping("/home/loginout.do")
 	public String logoutProcess(HttpSession session) throws Exception {
 		session.invalidate();
-		session.removeAttribute("genid");
+		//session.removeAttribute("genid");
 
-		session.removeAttribute("USER_ID");
+		//session.removeAttribute("USER_ID");
 		//session.removeAttribute("PARTNER_ID");  제휴회원 로그인 처리 끝 임시로 사용 안해도됨 추후에 이 부분 삭제할꺼임
 
 		return "/index";
