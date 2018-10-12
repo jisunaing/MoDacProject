@@ -64,7 +64,7 @@
 	<c:if test="${empty sessionScope.PARTNER_ID}" var="isGeneralUser">
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
-				<li id="navbar-page" ><a class="navmenus" href="">홈</a></li>
+				<li id="navbar-page" ><a class="navmenus" href="<c:url value='/home/index.do'/>">홈</a></li>
 				<li class="dropdown">
 					<a href="#" class="navmenus ropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
 						찾기
@@ -82,13 +82,10 @@
 						문의
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-						<li><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
-						<li class="divider"></li>
 						<li><a href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>">병원에증상문의</a></li>
 					</ul>
 				</li>
 
-				<li id="navbar-page"><a href="<c:url value='/general/diagnosis/self_diagnosis_Main.do'/>">자가진단</a></li>
 				<c:if test="${not empty genid}" var="isMember">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
