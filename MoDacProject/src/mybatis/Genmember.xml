@@ -17,14 +17,26 @@
 	</resultMap>
 	
 	<!-- 쿼리 작성 -->
-	<select id="dbtest" resultType="int">
-		SELECT COUNT(*) FROM test
-	</select>
-	<insert id="GenmemberInsert" parameterType="genmemberDto">
+	<!-- 회원가입 -->
+	<insert id="genmemberInsert" parameterType="java.util.Map">
 		INSERT INTO genmember(genid,pwd,genname,birthdate,gender,email,addr,phone) 
 		VALUES(#{genid},#{pwd},#{genname},#{birthdate},#{gender},#{email},#{addr},#{phone})
 	</insert>
+	<!-- 로그인 -->
 	<select id="genmmemberIsMember" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM genmember WHERE genid=#{genid} AND pwd=#{pwd} 
 	</select>
+	<!-- 개인정보 보기 -->
+	<select id="genmemberSelectOne" parameterType="genmemberDto" resultType="genmemberDto">
+		SELECT * FROM genmember WHERE genid=#{genid}
+	</select>
+	<!-- 개인정보 수정 -->
+	<update id="genmemberUpdate" parameterType="java.util.Map">
+		UPDATE genmember SET pwd = #{pwd},genname = #{genname},birthdate = #{birthdate}, gender = #{gender},
+		email = #{email}, addr = #{addr},phone = #{phone} WHERE genid=#{genid}
+	</update>
+	<!-- 탈퇴 -->
+	<delete id="genmemberDelete" parameterType="java.util.Map">
+		DELETE FROM genmember WHERE genid=#{genid}
+	</delete>
 </mapper>

@@ -8,24 +8,26 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.modu.modac.service.GeneralService;
 import com.modu.modac.service.GenfamilyDto;
+import com.modu.modac.service.GenfamilyService;
 import com.modu.modac.service.GenmemberDto;
+import com.modu.modac.service.TestService;
 
+/* Repository어노테이션 */
 @Repository
-public class GenmemberDao implements GeneralService{
+public class GenfamilyDao implements GenfamilyService {
+	/* SqlSessionTeplate선언 - 리소스 등록 */
 	@Resource(name="template")
 	private SqlSessionTemplate template;
 
 	@Override
-	public boolean isMember(Map map) {
-		return (Integer)template.selectOne("genmmemberIsMember",map)==1?true:false;
+	public GenfamilyDto selectOne(Map map) {
+		return template.selectOne("genfamilySelectOne", map);
 	}
 
 	@Override
-	public List<GenmemberDto> selectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<GenfamilyDto> selectList(Map map) {
+		return template.selectList("genfamilySelectList", map);
 	}
 
 	@Override
@@ -36,29 +38,22 @@ public class GenmemberDao implements GeneralService{
 
 	@Override
 	public int delete(Map map) {
-		return template.delete("genmemberDelete",map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int insert(Map map) {
-		return template.insert("genmemberInsert",map);
+		return template.insert("genfamilyInsert",map);
 	}
 
 	@Override
 	public int update(Map map) {
-		return template.update("genmemberUpdate", map);
-	}
-
-	@Override
-	public GenmemberDto selectOne(GenmemberDto dto) {
-		return template.selectOne("genmemberSelectOne", dto);
-	}
-
-	@Override
-	public GenfamilyDto selectOne(GenfamilyDto dto) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
+
 	
-	
+
+
 }

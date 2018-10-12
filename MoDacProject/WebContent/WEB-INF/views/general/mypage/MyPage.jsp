@@ -99,7 +99,7 @@ $(function(){
 							<h2>가족 정보 관리</h2>
 							가족들의 정보까지 한번에 관리하세요.
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/familyinfo.do'/>"> 
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/familyinfo.do?genid=${sessionScope.genid}'/>"> 
 							<i class="fas fa-heart"></i> 보러가기
 						</a>
 					</div>
@@ -150,7 +150,7 @@ $(function(){
 							<h2>증상문의</h2>
 							의사 선생님께 내 상태에 대해 직접 물어보세요
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnahealth/health_qna_list.do'/>"> 
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>"> 
 							<i class="fas fa-stethoscope"></i>문의하기
 						</a>
 					</div>
@@ -170,7 +170,7 @@ $(function(){
 							<h2>사이트 문의하기</h2>
 							사이트에 대해 문의하실 사항이 있으면 적어주세요. 빠른 시일 내에 답변드리겠습니다.
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qna_list.do'/>"> 
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnaList.do'/>"> 
 							<i class="far fa-comment-dots"></i> 문의하기
 						</a>
 					</div>

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
@@ -55,30 +57,20 @@ public class HomeController {
 	}
 	
 	//일반 회원가입 신청 폼으로 이동
-	@RequestMapping("/general/member/signup/gen_signup_write.do")
+	@RequestMapping("/general/member/signup/genSignupWrite.do")
 	public String genSignupWrite() throws Exception {
 		
-		return "general/member/signup/Gen_SignUp_Write.tiles";
+		return "general/member/signup/GenSignUpWrite.tiles";
 	}
 	//일반 회원가입 신청 
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
-	public String genSignupProcess(@RequestParam Map map, Model model,GenmemberDto dto) throws Exception {
-		
-		dto.setGenid(map.get("genid").toString());
-		dto.setPwd(map.get("pwd").toString());
-		dto.setAddr(map.get("addr").toString());
-		dto.setBirthdate(map.get("year")+"/"+map.get("month")+"/"+map.get("day"));
-		dto.setEmail(map.get("email").toString());
-		dto.setGender(map.get("gender").toString());
-		dto.setGenname(map.get("genname").toString());
-		dto.setPhone(map.get("phone").toString());
-		
-		model.addAttribute(dto);
-		
-		generalService.insert(dto);
-		
+	public String genSignupProcess(@RequestParam Map map, Model model) throws Exception {
+		map.put("birthdate", map.get("year")+"/"+map.get("month")+"/"+map.get("day"));  
+		model.addAllAttributes(map);
+		generalService.insert(map);
 		return "forward:/general/mypage/personalinfo.do";
 	}
+	
 	//임의로 로그인 처리함
 	@RequestMapping("/home/loginProcess.do")
 	public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
@@ -139,10 +131,10 @@ public class HomeController {
 		return null;
 		
 	}
-	//임의로 로그인 처리함
+	//로그아웃처리
 	@RequestMapping("/home/loginout.do")
 	public String logoutProcess(HttpSession session) throws Exception {
-		session.removeAttribute("genid");
+		session.invalidate();
 		return "/index";
 	}
 
