@@ -17,13 +17,17 @@
 					dir : "ltr"
 				};
 				var notification = new Notification("접수 건이 왔습니다", options);
+				notification.onclick=function(){
+					location.replace("http://www.nate.com");
+					//window.open("http://www.nate.com")
+				};
 			}//if
 		}//if
 		else{}
 		
 	}/////////////////////////
 	//예약알림 서비스
-	function successAjax1(data,target){
+	function successAjax2(data,target){
 		if(data.length !=0){
 			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
 			audio.play();
@@ -36,6 +40,10 @@
 					dir : "ltr"
 				};
 				var notification = new Notification("예약 건이 왔습니다", options);
+				notification.onclick=function(){
+					location.replace("http://www.nate.com");
+					//window.open("http://www.nate.com")
+				};
 			}//if
 		}//if
 		else{}
@@ -48,7 +56,7 @@
 				type:'post',
 				dataType:'text',
 				success:function(data){
-					successAjax2(data,'#polling');
+					successAjax1(data,'#polling');
 				},
 				error:function(request,error){
 					console.log('상태코드:',request.status);

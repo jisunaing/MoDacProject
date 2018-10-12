@@ -115,4 +115,5 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	}
 
 
+
 }

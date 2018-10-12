@@ -80,6 +80,8 @@
 	SELECT COUNT(*) FROM RECEPTION WHERE PID = #{pid} AND NOT RECACCEPT = '접수신청'
 	</select>
 	
+	
+	
 	<!-- 접수 상세내역 -->
 	<select id="hospitalReceiptView" parameterType="java.util.Map" resultType="receptionDto">
 	SELECT RECNAME, PHONE, EMAIL, RECDATE, RECCONTENTS FROM RECEPTION WHERE RECNUM=${recnum}

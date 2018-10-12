@@ -73,15 +73,18 @@ public class PartnerController {
 		Map result = partnerReservationService.ajaxReceptionResult(map);
 		if(result!=null) {//값이 있는 경우
 			if(!flagReceip) {//최초 실행인 경우
+				System.out.println("최초 실행인 경우");
 				resultConfirmReception = result.toString();
 				flagReceip=!false;
 			}
 			else {//최소실행이 아닌 경우
 				if(result.toString().equals(resultConfirmReception)) {//가장 최근 목록과 기존에 저장된 값이 같은 경우
+					System.out.println("값이 같은 경우");
 					return "";
 				}
 				else {//가장 최근 목록과 기존에 저장된 값이 다른 경우
 					if(result.toString()!=resultConfirmReception) {
+						System.out.println("값이 다른 경우");
 						resultConfirmReception = result.toString();
 						return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
 					}
@@ -90,6 +93,7 @@ public class PartnerController {
 			return "";
 		}//if
 		else {//완전 최초 접수 내역이 아에 없을 시
+			System.out.println("값이 아에 없을떄");
 			return "";
 		}//else
 	}///////////////////////
@@ -302,7 +306,7 @@ public class PartnerController {
 	   @RequestMapping("/partner/hospital/ReceiptViewMove.do")
 	   public String hospitalReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
 	      model.addAttribute("moveWhere", "receipt");
-	      ReceptionDto dto;
+	      ReceptionDto dto;	      
 	      dto = partnerReservationService.hospitalReceiptView(map);
 	      dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
 	      model.addAttribute("record", dto);

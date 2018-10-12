@@ -108,7 +108,7 @@ tbody tr:nth-child(even) {
 							<c:if test="${not isEmpty}">
 							<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr>
-								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${recnum}&where=${moveWhere}'/>">
+								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${recnum}&?recname=${recname}&where=${moveWhere}'/>">
 								<td>${record.recname}</td>
 								<td>${record.recdate}</td>
 								<td>${record.phone}</td>
