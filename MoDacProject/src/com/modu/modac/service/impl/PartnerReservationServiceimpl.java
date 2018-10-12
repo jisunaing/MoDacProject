@@ -5,8 +5,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.modu.modac.service.AjaxReceptionDto;
 import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReceptionHistoryListDto;
@@ -101,6 +103,17 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	public void reservationListNo(Map map) {
 		dao.reservationListNo(map);
 	}
+
+	@Override
+	public Map ajaxReceptionResult(Map map) {
+		return dao.ajaxReceptionResult(map);
+	}
+
+	@Override
+	public Map ajaxReservationResult(Map map) {
+		return dao.ajaxReservationResult(map);
+	}
+
 
 
 }

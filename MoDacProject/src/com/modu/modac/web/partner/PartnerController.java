@@ -3,12 +3,16 @@ package com.modu.modac.web.partner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.stereotype.Controller;
@@ -16,8 +20,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.modu.modac.service.AjaxReceptionDto;
 import com.modu.modac.service.ChartService;
 
 import com.modu.modac.service.PartnerDto;
@@ -38,6 +44,10 @@ import com.modu.modac.service.impl.PagingUtil;
 @Controller
 public class PartnerController {
 	private int mon=0,tue=0,wed=0,thu=0,fri=0,dat=0,sun=0;
+	private String resultConfirmReception="";
+	private String resultConfirmReservation="";
+	private boolean flagReceip=false;
+	private boolean flagReservation=false;
 	
 	@Value("${PAGE_SIZE}")
 	private int pageSize;
@@ -54,7 +64,72 @@ public class PartnerController {
     //진성
     @Resource(name="partnerReservationService")
     private PartnerReservationService partnerReservationService;
-   
+    	
+    //실시간 접수 알림 구현 구간
+	@ResponseBody
+	@RequestMapping(value="/Ajax/AjaxReception.do",produces="text/plain; charset=UTF-8")
+	public String ajaxReception(@ModelAttribute("pid") String pid,Map map) throws Exception{
+		map.put("pid", pid);
+		Map result = partnerReservationService.ajaxReceptionResult(map);
+		if(result!=null) {//값이 있는 경우
+			if(!flagReceip) {//최초 실행인 경우
+				System.out.println("최초 실행인 경우");
+				resultConfirmReception = result.toString();
+				flagReceip=!false;
+			}
+			else {//최소실행이 아닌 경우
+				if(result.toString().equals(resultConfirmReception)) {//가장 최근 목록과 기존에 저장된 값이 같은 경우
+					System.out.println("값이 같은 경우");
+					return "";
+				}
+				else {//가장 최근 목록과 기존에 저장된 값이 다른 경우
+					if(result.toString()!=resultConfirmReception) {
+						System.out.println("값이 다른 경우");
+						resultConfirmReception = result.toString();
+						return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
+					}
+				}
+			}
+			return "";
+		}//if
+		else {//완전 최초 접수 내역이 아에 없을 시
+			System.out.println("값이 아에 없을떄");
+			return "";
+		}//else
+	}///////////////////////
+	
+	//실시간 예약 알림 구현 구간
+	@ResponseBody
+	@RequestMapping(value="/Ajax/AjaxReservation.do",produces="text/plain; charset=UTF-8")
+	public String ajaxReservation(@ModelAttribute("pid") String pid,Map map) throws Exception{
+		map.put("pid", pid);
+		Map result = partnerReservationService.ajaxReservationResult(map);
+		if(result!=null) {//값이 있는 경우
+			if(!flagReservation) {//최초 실행인 경우
+				resultConfirmReservation = result.toString();
+				flagReservation=!false;
+			}
+			else {//최소실행이 아닌 경우
+				if(result.toString().equals(resultConfirmReservation)) {//가장 최근 목록과 기존에 저장된 값이 같은 경우
+					return "";
+				}
+				else {//가장 최근 목록과 기존에 저장된 값이 다른 경우
+					if(result.toString()!=resultConfirmReservation) {
+						resultConfirmReservation = result.toString();
+						return result.get("RESNAME").toString()+"\r\n"+result.get("RESCONTENTS").toString();
+					}
+				}
+			}
+			return "";
+		}//if
+		else {//완전 최초 접수 내역이 아에 없을 시
+			return "";
+		}//else
+	}///////////////////////	
+	
+	
+    
+    
 	   //병원 메인 페이지로 이동
 	   @RequestMapping("/partner/hospital/MainMove.do")
 	   public String hospitalMainPage(@ModelAttribute("pid") String pid, Model model) throws Exception {
@@ -182,6 +257,7 @@ public class PartnerController {
 			map.put("end",end);
 			//페이징을 위한 로직 끝]	
 			List<ReceptionListDto> list= partnerReservationService.hospitalReceiptList(map);
+			System.out.println(list);
 			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, start, end, nowPage, req.getContextPath()+"/partner/hospital/ReceiptMove.do?");
 			//데이타 저장]
 			model.addAttribute("list", list);
@@ -230,7 +306,7 @@ public class PartnerController {
 	   @RequestMapping("/partner/hospital/ReceiptViewMove.do")
 	   public String hospitalReceiptViewPage(@RequestParam Map map, Model model) throws Exception {
 	      model.addAttribute("moveWhere", "receipt");
-	      ReceptionDto dto;
+	      ReceptionDto dto;	      
 	      dto = partnerReservationService.hospitalReceiptView(map);
 	      dto.setReccontens(dto.getReccontens().replace("\r\n","<br/>"));
 	      model.addAttribute("record", dto);

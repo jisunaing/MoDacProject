@@ -40,12 +40,12 @@ public class ReservationServiceimpl implements ReservationService {
 	}
 
 	@Override
-	public List<ReceptionDto> reservationList(Map map) {
+	public List<ReservationDto> reservationList(Map map) {
 		return dao.reservationList(map);
 	}
 
 	@Override
-	public List<ReservationDto> receiptList(Map map) {
+	public List<ReceptionDto> receiptList(Map map) {
 		return dao.receiptList(map);
 	}
 

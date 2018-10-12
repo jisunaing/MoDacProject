@@ -5,7 +5,18 @@
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
 	<!-- 쿼리 작성 -->
-
+	<resultMap id="AjaxReceptionDtoResult" type="AjaxReceptionDto">
+		<result property="recname" column="recname"/>
+		<result property="reccontents" column="reccontents"/>
+	</resultMap>
+	<!-- Ajax 접수 부분 -->
+	<select id="ajaxReceptionResult" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RECNAME,RECCONTENTS FROM RECEPTION WHERE recnum >= (SELECT MAX(recnum) FROM RECEPTION) AND pid = #{pid}
+	</select>
+	<!-- Ajax 예약 부분 -->
+	<select id="ajaxReservationResult" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT RESNAME,RESCONTENTS FROM RESERVATION WHERE resnum >= (SELECT MAX(resnum) FROM RESERVATION) AND pid = #{pid}
+	</select>	
 	
 	<!-- 차트 가져오기 -->
 	<select id="chartList" parameterType="java.util.Map" resultType="java.lang.String">
@@ -68,6 +79,8 @@
 	<select id="getTotalReceptionHistoryRecord" parameterType="java.util.Map" resultType="int">
 	SELECT COUNT(*) FROM RECEPTION WHERE PID = #{pid} AND NOT RECACCEPT = '접수신청'
 	</select>
+	
+	
 	
 	<!-- 접수 상세내역 -->
 	<select id="hospitalReceiptView" parameterType="java.util.Map" resultType="receptionDto">
