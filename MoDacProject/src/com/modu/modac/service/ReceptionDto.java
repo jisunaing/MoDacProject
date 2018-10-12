@@ -26,6 +26,7 @@ public class ReceptionDto {
 		this.email = email;
 	}
 	public String getRecdate() {
+		
 		return recdate;
 	}
 	public void setRecdate(String recdate) {
