@@ -5,6 +5,10 @@
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
 	<!-- 쿼리 작성 -->
+	
+	
+	
+	
 	<!-- 접수 데이터에 넣기 -->
 	<insert id="receiptInsert" parameterType="java.util.Map">
 	INSERT INTO RECEPTION VALUES(#{genid},#{pid},seq_reception.nextval ,#{recname},#{email},#{phone},#{reccontens},#{addr},SYSDATE, '접수신청')
@@ -25,20 +29,20 @@
 	</update>
 	
 	<!-- 접수내역 얻어오기 -->
-	<select id="reservationList" parameterType="java.util.Map" resultType="java.util.Map">
+	<select id="reservationList" parameterType="java.util.Map" resultType="ReceptionDto">
 	SELECT
 	RECNUM ,RECDATE, HOSPITAL.HOSNAME, SUBJECT.SUBNAME, RECNAME, RECACCEPT, RECCONTENTS
 	FROM
 	RECEPTION JOIN HOSPITAL ON RECEPTION.RECNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RECEPTION.RECNUM = SUBJECT.SUBJECTCODE
-	WHERE GENID = ${genid} ORDER BY RECDATE DESC
+	WHERE GENID = #{genid} ORDER BY RECDATE DESC
 	</select>
 	<!-- 예약 내역 얻어오기 -->
-	<select id="receiptList" parameterType="java.util.Map" resultType="java.util.Map">
+	<select id="receiptList" parameterType="java.util.Map" resultType="ReservationDto">
 	SELECT 
 	RESNUM ,RESDATE, HOSPITAL.HOSNAME,SUBJECT.SUBNAME, RESNAME, RESACCEPT 
 	FROM 
 	RESERVATION JOIN HOSPITAL ON RESERVATION.RESNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RESERVATION.RESNUM = SUBJECT.SUBJECTCODE 
-	WHERE GENID = ${genid} ORDER BY RESDATE DESC
+	WHERE GENID = #{genid} ORDER BY RESDATE DESC
 	</select>
 	
 </mapper>
