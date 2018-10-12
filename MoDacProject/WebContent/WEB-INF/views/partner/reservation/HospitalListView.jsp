@@ -91,31 +91,31 @@ table td{
 						<table class="table table-hover">
 							<tr>
 								<th class="col-md-2 text-center" id="top1">성함</th>
-								<td id="top2">${record.recname}${record.resname}</td>
+								<td id="top2">홍길동</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">연락처</th>
-								<td>${record.phone}</td>
+								<td>010-7777-7777</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">이메일</th>
-								<td>${record.email}</td>
+								<td>abcd1234@naver.com</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">예약시간</th>
-								<td>${record.recdate}${record.resdate}</td>
+								<td>2018-10-15 10:54</td>
 							</tr>
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>
 							</tr>
 							<tr>
-								<td colspan="2">${record.reccontens}${record.rescontens}</td>
+								<td colspan="2">가슴이 아프고 통증이 있어요 <br/>감기 기운도 있는 것 같아요</td>
 							</tr>
 						</table>
 					<!-- 버튼들 -->
-						<a href="<c:url value='/partner/hospital/yes.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="수락"/></a>
-						<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
-						<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
+						<input type="button" class="btn btn-default" value="수락"/>
+						<input type="button" class="btn btn-default" value="거절"/>
+						<input type="button" class="btn btn-default" value="목록"/>
 					<!-- 버튼들 -->
 				</div>
 			</div>

@@ -18,37 +18,38 @@ public class MapHospitalServiceImpl implements MapHospitalService {
 	
 	@Override
 	public List<MapHospitalDto> selectList(Map map) {
-		return dao.selectList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		return dao.getTotalRecord(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public MapHospitalDto selectOne(Map map) {
-		return dao.selectOne(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int delete(Map map) {
-		return dao.delete(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int insert(Map map) {
-		return dao.insert(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int update(Map map) {
-	
-		return dao.update(map);
-	}
-
-	@Override
-	public void close() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

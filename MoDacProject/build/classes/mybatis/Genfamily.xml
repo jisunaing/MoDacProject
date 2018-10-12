@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.Genfamily">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="GenfamilyDtoResult" type="genfamilyDto">
+		<result property="fno" column="fno"/>
+		<result property="genid" column="genid"/>
+		<result property="fname" column="fname"/>
+		<result property="fbirthdate" column="fbirthdate"/>
+		<result property="fgender" column="fgender"/>
+		<result property="fphone" column="fphone"/>
+	</resultMap>
+	
+	<!-- 쿼리 작성 -->
+	<insert id="genfamilyInsert" parameterType="java.util.Map">
+		INSERT INTO genfamily VALUES(seq_genfamily.nextval,#{genid},#{fname},#{fbirthdate},#{fgender},#{fphone})
+	</insert>
+	<select id="genfamilySelectOne" parameterType="java.util.Map" resultType="genfamilyDto" >
+		SELECT * FROM genfamily WHERE fno=#{fno}
+	</select>
+	<select id="genfamilySelectList" parameterType="java.util.Map" resultType="genfamilyDto" >
+		SELECT * FROM genfamily WHERE genid=#{genid}
+	</select>
+</mapper>

@@ -69,6 +69,7 @@ table{
 	<script>
 	$(function(){
 		$( "#tabletoggles" ).hide();
+		
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
 				var text = $('input:eq(0)').val();
@@ -80,7 +81,10 @@ table{
 		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
 			$('#recname').val($('#names').html());
 			$('#phone').val($('#phones').html());
+			$('#email').val($('#emails').html());
 		});
+		
+		
 	});
 	</script>
 <div class="container">
@@ -99,24 +103,21 @@ table{
 					<tr>
 						<th>이름</th>
 						<th>전화번호</th>
+						<th>이메일</th>
 						<th>생년월일</th>
 					</tr>
-					<c:if test="${empty list}" var="isMember">
 					<tr id="nameUrl">
-						<td></td>
-						<td>등록된 가족 정보가 없습니다</td>
-						<td></td>
+						<td id="names">홍길동</td>
+						<td id="phones">01077777777</td>
+						<td id="emails">abcd1234@naver.com</td>
+						<td id="birthdays">1967-08-30</td>
 					</tr>
-					</c:if>
-					<c:if test="${not isMember}">
-					<c:forEach items="${list}" var="list">
-					<tr id="nameUrl">
-						<td id="names">${list.fname}</td>
-						<td id="phones">${list.fphone}</td>
-						<td id="birthdays">${fbirthdate}</td>
+					<tr>
+						<td>나길동</td>
+						<td>010-7777-7777</td>
+						<td>grdawf777@naver.com</td>
+						<td>1989-01-21</td>
 					</tr>
-					</c:forEach>
-					</c:if>
 				</table>
 			</div>
 		</div>
@@ -137,7 +138,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone" ${phone}/>
+					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone"/>
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
@@ -146,7 +147,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control size4" placeholder="이메일 입력" id="email" name="email" ${email}/>
+					<input type="email" class="form-control size4" placeholder="이메일 입력" id="email" name="email"/>
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->
@@ -165,6 +166,8 @@ table{
 			<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
 			<button type="submit" class="btn btn-default" id="receipt">접수</button>
 		</form>
+
+
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

@@ -45,7 +45,7 @@
 
 <!-- BODY 영역 -->
 <div class="row1">
-	<form class="form-inline" action="<c:url value='/general/pharm/AllPharm.do'/>">
+	<form class="form-inline" action="<c:url value='/general/pharm/SearchPharm.do'/>">
 		<div class="btn-group">
 		  <a class="btn btn-primary" href="<c:url value='/general/pharm/NightPharm.do?pharmacy=심야약국'/>" role="button"> 심야약국 </a>
 		</div>
@@ -87,20 +87,22 @@
 		</div>
 	    <div class="input-group">
 	      <input type="text" class="form-control" name="phname" placeholder="약국 이름으로 검색"/>
+	      <input type="hidden" name="pharmacy" value="${requestScope.pharmacy}"/>
 	      <span class="input-group-btn">
 	        <button class="btn btn-primary" type="submit"> 검색 </button>
 	      </span>
 	    </div>
 	    <div class="btn-group" id="searchtoggle">
 		  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
+		  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 약국검색 </a>
 		</div>
 	</form>
 </div>
 
 <div class="row1">
-	<h4># 검색 키워드 : ${requestScope.paramValue}</h4>
+	<h4># 검색 키워드 : ${requestScope.pharmacy} ${requestScope.phname}, 총 ${requestScope.size}개의 약국이 검색되었습니다.</h4>
 </div>
+
 <div class="row2">
 	<div id="map"></div>
 </div>	
@@ -134,52 +136,46 @@
 	var clusterer = new daum.maps.MarkerClusterer({
 		map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
 		averageCenter : true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-		minLevel : 5, // 클러스터 할 최소 지도 레벨
+		minLevel : 4, // 클러스터 할 최소 지도 레벨
 		disableClickZoom : true	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	});
 	
 	var dataIndex = 0;
+	var count = 0;
 	var posArray = [];
 	var geocoder = new daum.maps.services.Geocoder();
-	/*
-	var count = 0;
+	
 	for(var i = 0; i < addrs.length; i++) {
 		
-	    geocoder.addressSearch(addrs[i], function(result, status) {
+	    geocoder.addressSearch(addrs[count], function(result, status) {
 	    	
 	        if(status === daum.maps.services.Status.OK) {
+	        	
+			    console.log("%s // %s",addrs[count],result);    	
+			    
 	            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	            posArray.push(coords);
+	            
+	            console.log(posArray[count]);
+	            
 	            editDatas[dataIndex] = datas[count];
-	            posArray[dataIndex] = coords;
+	            
 	            dataIndex++;
 	        }
-	        count++;
-		    if(count == addrs.length) {
-				doNext(posArray);            	
-	        }
+	        
+		    count++;
 		    
+	        if(count == addrs.length) {
+	        	console.log(posArray.length);
+				doNext(posArray);            	
+            }
+	        
 	    });
 	    
-	}*/
-	
-	$.each(addrs,function(index,value){
-		geocoder.addressSearch(value, function(result, status) {
-	    	
-	        if(status === daum.maps.services.Status.OK) {
-	            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-	            editDatas[dataIndex] = datas[index];
-	            posArray[dataIndex] = coords;
-	            dataIndex++;
-	        }  
-	        
-	        if(index == addrs.length-1){
-	        	doNext(posArray);
-	        }
-	    });
-	})
+	}
 	
 	var imageSrc = '<c:url value="/Images/MarkerPharmacy.png"/>', // 마커이미지의 주소입니다    
-   		imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
+   	imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
      
 	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
@@ -187,7 +183,6 @@
 	function doNext(posArray) {
 		
 		var markers = [];
-		
 		for(var i = 0; i < posArray.length; i++) {
 		   markers[i] = new daum.maps.Marker({
                 map: map,
@@ -238,10 +233,8 @@
 			return function() {
 				
 				for (var i = 0; i < markers.length; i++) {
-					
-					if (marker.getZIndex() === markers[i].getZIndex()) {
-						
-						
+
+					if (marker.getZIndex() == markers[i].getZIndex()) {
 						
 						// 마커를 화면의 중심으로 설정
 						map.setCenter(marker.getPosition());
@@ -301,7 +294,7 @@
 			            
 			            if(customOverlay[i].getMap() == null) {
 			            	customOverlay[i].setContent(content);
-			            	customOverlay[i].setZIndex(999999);
+			            	customOverlay[i].setZIndex(datas.length);
 							customOverlay[i].setMap(map);
 			            } else {
 			            	customOverlay[i].setMap(null);
@@ -314,8 +307,5 @@
 			}
 		};
 	};
-	
-	
-	
-	
+		
 </script>

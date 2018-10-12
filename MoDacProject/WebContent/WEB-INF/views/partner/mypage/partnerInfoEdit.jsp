@@ -208,7 +208,7 @@ input:focus{ outline: 0; border-color: black; }
 				
 				$('#okbutton').click(function() {
 					
-					$('#personalday').val(ghd);
+					$('#humoo').val(ghd);
 				
 				});
 				
@@ -256,8 +256,7 @@ input:focus{ outline: 0; border-color: black; }
 					<hr style="border: 1px dashed; margin-left: -16px;"	class="col-sm-12" />
 				</div>
 
-				<form action="<c:url value='/partner/mypage/partnerInfoEditOK.do' />" method="post">
-				
+				<form action="#" method="post">
 			 
 
 				
@@ -265,8 +264,8 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="col-sm-6">
 					<div class="col-sm-8">
 						<span class="sp">병원 명</span> 
-						
-						<input type="text" class="form-control" name="hosname" id="hosname" value="${partner.hosname}">
+						<label for="email2"> 병원 명 <span class="req">*</span> </label>
+						<input type="text" class="form-control" name="id" id="id" value="" >
 						</div>
 					</div>
 				</div>
@@ -275,8 +274,8 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="col-sm-4 col-sm-pull-1">			
 					<div class="col-sm-12">
 						<span class="sp">병원 연락처</span> 
-						
-						<input type="text" class="form-control" name="hosphone" id="hosphone" value="${partner.hosphone}">
+						<label for="email2"> 병원 연락처 <span class="req">*</span> </label>
+						<input type="text" class="form-control" name="id" id="id" value="" >
 						</div>
 					</div>
 				</div>
@@ -285,8 +284,9 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-10">
-								<span class="sp">진료 과목</span> 								
-								<input type="text" class="form-control" name="subjectlist" id="subjectlist" value="${partner.subjectlist}">
+								<span class="sp">진료 과목</span> <label for="email2"> 진료 과목
+									<span class="req">*</span>
+								</label> <input type="text" class="form-control" name="id" id="id" value="">
 							</div>
 						</div>
 					</div>
@@ -294,8 +294,9 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-8">
-								<span class="sp">병원 주소</span>								 						
-								 <input type="text" class="form-control" name="hosaddr" id="hosaddr" value="${partner.hosaddr}">																	
+								<span class="sp">병원 주소</span> 
+								<label for="email2"> 병원 주소 <span class="req">*</span> </label>
+								 <input type="text" class="form-control" name="id" id="id" value="">																	
 							</div>
 						</div>
 					</div>
@@ -304,48 +305,53 @@ input:focus{ outline: 0; border-color: black; }
 					
 					
 					
-					<div class="form-group"> 					
+				<div class="form-group"> 
+					
 						<div class="col-sm-12">  
 						
 						<div class="col-sm-12">
-							<span class="sp" style="text-align: center;">진료 시간 </span> <span> ex) 09:30 ~ 20:30 or 휴무</span> 
+							<span class="sp" style="text-align: center;">진료 시간</span>  
 							</div> 
 								 
+								 <div id="jin">
 							<div style="margin-left: 30px;" class="col-sm-5">
-								월요일	<input type="text" class="form-control" name="mon" value="${partner.mon}">
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								화요일	<input type="text" class="form-control" name="tue"  value="${partner.tue}">
-							</div>
-							
-							<div style="margin-left: 30px;" class="col-sm-5">
-								수요일	<input type="text" class="form-control" name="wed"  value="${partner.wed}">
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								목요일	<input type="text" class="form-control" name="thu"  value="${partner.thu}">
-							</div>
-							<div style="margin-left: 30px;" class="col-sm-5">
-								금요일	<input type="text" class="form-control" name="fri" value="${partner.fri}">
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								토요일	<input type="text" class="form-control" name="sat"  value="${partner.sat}">
-							</div>
-							<div style="margin-left: 30px;" class="col-sm-5">
-								일요일	<input type="text" class="form-control" name="sun"  value="${partner.sun}">
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
-								공휴일	<input type="text" class="form-control" name="holiday"  value="${partner.holiday}"> 
-							</div>
-							
-							<div style="margin-left: 30px;" class="col-sm-5">
-								임시휴무	<input type="text" class="form-control"  name="personalday" id="personalday" value="${partner.personalday}">
-				<button style="margin-top: -20px; margin-bottom: 10px;"	type="button" class="btn btn-primary testbtn" data-toggle="modal" data-target="#basicModal" > 휴무일 선택 </button>
+								<span>월요일</span> 
+								<label for="email2"> ex)오전 9시 ~ 오후 6시 30분<span class="req">*</span> </label>
+								 <input type="text" class="form-control" name="id" id="id" value="">					
 								
 							</div> 
 							<div class="col-sm-offset-1 col-sm-5">
-								점심시간	<input type="text" class="form-control" name="lunch" value="${partner.lunch}"> 
+								화요일	<input type="text" class="form-control" name="id" id="id" value="" >
 							</div>
-						</div>			
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								수요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								목요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								금요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								토요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div>
+							<div style="margin-left: 30px;" class="col-sm-5">
+								일요일	<input type="text" class="form-control" name="id" id="id" value="" >
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								공휴일	<input type="text" class="form-control" name="id" id="id" value="" > 
+							</div>
+							
+							<div style="margin-left: 30px;" class="col-sm-5">
+								휴무일	<input type="text" class="form-control" name="humoo" id="humoo" value="" >
+								<button style="margin-top: -20px; margin-bottom: 10px;"	type="button" class="btn btn-primary testbtn" data-toggle="modal" data-target="#basicModal" > 휴무일 선택 </button>
+							</div> 
+							<div class="col-sm-offset-1 col-sm-5">
+								점심시간	<input type="text" class="form-control" name="id" id="id" value="" > 
+							</div>
+							</div>
+						</div> 
 					</div>
 			
 					
@@ -404,7 +410,7 @@ input:focus{ outline: 0; border-color: black; }
 						<div class="col-sm-12">
 							<div class="col-sm-12">
 								<span class="sp">병원 안내글</span>
-								<textarea rows="10" class="form-control" name="info">${partner.info}</textarea>
+								<textarea rows="10" class="form-control" id="greeting" name="greeting"></textarea>
 							</div>
 						</div>
 					</div>
@@ -415,7 +421,7 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-5 col-sm-offset-5">
-								<button style="margin-top: 20px; margin-left: -14px;" type="submit" class="btn btn-danger">정보 수정</button>
+								<button style="margin-top: 20px; margin-left: -14px;" type="submit" class="btn btn-danger">병원정보 수정</button>
 							</div>
 						</div>
 					</div>

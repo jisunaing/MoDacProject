@@ -9,7 +9,7 @@ public class PartnerDto {
 	private String hosname;
 	private String subjectlist;
 	private String hosmanager;
-	private String hosphone;
+	private String pphone;
 	private String pemail;
 	private String hosaddr;
 	private String businessnum;
@@ -29,6 +29,7 @@ public class PartnerDto {
 	private String lunch;
 	private String info;
 	private String personalday;
+	private String hosphone;
 	
 	
 	
@@ -89,6 +90,13 @@ public class PartnerDto {
 	}
 	public void setHosphone(String hosphone) {
 		this.hosphone = hosphone;
+	}
+	
+	public String getPphone() {
+		return pphone;
+	}
+	public void setPphone(String pphone) {
+		this.pphone = pphone;
 	}
 	public String getPemail() {
 		return pemail;

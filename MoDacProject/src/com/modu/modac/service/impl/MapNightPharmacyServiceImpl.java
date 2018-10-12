@@ -52,13 +52,5 @@ public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 		return 0;
 	}
 
-<<<<<<< HEAD
-=======
-	@Override
-	public void close() {
-		// TODO Auto-generated method stub
-		
-	}
->>>>>>> branch 'develope' of https://github.com/jisunaing/MoDacProject.git
 
 }

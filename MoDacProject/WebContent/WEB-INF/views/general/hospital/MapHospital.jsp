@@ -10,35 +10,21 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 <script>
-var receipt = function(hosno, pid){
-	if(pid == null){
-		alert('제휴병원만 접수가 가능합니다.');
-	} else if('${sessionScope.genid}' == '') {
+var receipt = function(){
+	if('${sessionScope.USER_ID}' == '') {
 		alert('병원 접수를 하기 위해서는 반드시 로그인이 필요합니다.');	
 	} else {
-		location.href='<c:url value="/general/reservation/reception.do?hosno='+hosno+'"/>';
+		location.href='<c:url value="/general/reservation/reception.do?subname=${requestScope.subname}"/>';
 	}
 	
 };
-var reserve = function(hosno, pid){
-	if(pid == null) {
-		alert('제휴병원만 예약이 가능합니다.');	
-	} else if('${sessionScope.genid}' == '') {
+var reserve = function(){
+	if('${sessionScope.USER_ID}' == '') {
 		alert('병원 예약을 하기 위해서는 반드시 로그인이 필요합니다.');	
-	}	else {
-		location.href='<c:url value="/general/reservation/reservation.do?hosno='+hosno+'"/>';
+	} else {
+		location.href='<c:url value="/general/reservation/reservation.do?subname=${requestScope.subname}"/>';
 	}
 };
-var website = function(website) {
-	if(website == null) {
-		alert('홈페이지가 등록되어 있지 않습니다.');
-	} else {
-		location.href = website;
-	}
-	
-}
-
-
 </script>
 
 <style>
@@ -88,7 +74,7 @@ var website = function(website) {
 
 <!-- BODY 영역 -->
 	<div class="row">
-		<form class="form-inline" action="<c:url value='/general/hospital/SearchSubject.do'/>">
+		<form class="form-inline" action="<c:url value='/general/pharm/SearchHospital.do'/>">
 		  <div class="btn-group">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			    	진료과목으로 검색 &nbsp;&nbsp; <span class="caret"></span>
@@ -124,46 +110,47 @@ var website = function(website) {
 			     	지역으로 검색 &nbsp;&nbsp; <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dLabel">
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강남구&subname=${requestScope.subname}'/>">강남구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강동구&subname=${requestScope.subname}'/>">강동구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강북구&subname=${requestScope.subname}'/>">강북구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=강서구&subname=${requestScope.subname}'/>">강서구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=관악구&subname=${requestScope.subname}'/>">관악구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강남구&subname=${requestScope.subname}'/>">강남구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강동구&subname=${requestScope.subname}'/>">강동구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강북구&subname=${requestScope.subname}'/>">강북구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=강서구&subname=${requestScope.subname}'/>">강서구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=관악구&subname=${requestScope.subname}'/>">관악구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=광진구&subname=${requestScope.subname}'/>">광진구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=구로구&subname=${requestScope.subname}'/>">구로구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=금천구&subname=${requestScope.subname}'/>">금천구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=노원구&subname=${requestScope.subname}'/>">노원구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=도봉구&subname=${requestScope.subname}'/>">도봉구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=광진구&subname=${requestScope.subname}'/>">광진구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=구로구&subname=${requestScope.subname}'/>">구로구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=금천구&subname=${requestScope.subname}'/>">금천구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=노원구&subname=${requestScope.subname}'/>">노원구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=도봉구&subname=${requestScope.subname}'/>">도봉구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=동대문구&subname=${requestScope.subname}'/>">동대문구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=동작구&subname=${requestScope.subname}'/>">동작구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=마포구&subname=${requestScope.subname}'/>">마포구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=서대문구&subname=${requestScope.subname}'/>">서대문구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=서초구&subname=${requestScope.subname}'/>">서초구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=동대문구&subname=${requestScope.subname}'/>">동대문구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=동작구&subname=${requestScope.subname}'/>">동작구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=마포구&subname=${requestScope.subname}'/>">마포구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=서대문구&subname=${requestScope.subname}'/>">서대문구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=서초구&subname=${requestScope.subname}'/>">서초구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=성동구&subname=${requestScope.subname}'/>">성동구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=성북구&subname=${requestScope.subname}'/>">성북구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=송파구&subname=${requestScope.subname}'/>">송파구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=양천구&subname=${requestScope.subname}'/>">양천구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=영등포구&subname=${requestScope.subname}'/>">영등포구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=성동구&subname=${requestScope.subname}'/>">성동구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=성북구&subname=${requestScope.subname}'/>">성북구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=송파구&subname=${requestScope.subname}'/>">송파구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=양천구&subname=${requestScope.subname}'/>">양천구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=영등포구&subname=${requestScope.subname}'/>">영등포구</a></li>
 			    <li class="divider"></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=용산구&subname=${requestScope.subname}'/>">용산구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=은평구&subname=${requestScope.subname}'/>">은평구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=종로구&subname=${requestScope.subname}'/>">종로구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=중구&subname=${requestScope.subname}'/>">중구</a></li>
-			    <li><a href="<c:url value='/general/hospital/SearchSubject.do?address=중랑구&subname=${requestScope.subname}'/>">중랑구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=용산구&subname=${requestScope.subname}'/>">용산구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=은평구&subname=${requestScope.subname}'/>">은평구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=종로구&subname=${requestScope.subname}'/>">종로구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=중구&subname=${requestScope.subname}'/>">중구</a></li>
+			    <li><a href="<c:url value='/general/hospital/SearchAddress.do?address=중랑구&subname=${requestScope.subname}'/>">중랑구</a></li>
 			  </ul>
 		</div>
 	    <div class="input-group">
 		      <input type="text" class="form-control" name="hosname" placeholder="병원 이름으로 검색"/>
+		      <input type="hidden" name="subname" value="${requestScope.subname}"/>
 		      <span class="input-group-btn">
 		        <button class="btn btn-primary" type="submit"> 검색 </button>
 		      </span>
 	    </div>
 	    <div class="btn-group btngroup" id="searchtoggle">
 			  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
+		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?pharmacy=모든약국'/>" role="button"> 약국검색 </a>
 		</div>
 	</form>
 </div>
@@ -178,14 +165,35 @@ var website = function(website) {
 
 <!-- KAKAO MAP API -->
 <script>
-//[컨트롤러로 부터 데이터 받아 세팅]
-var datas = JSON.parse('${records}');
-var editDatas = [];
-
-var addrs = [];
-for(var i = 0; i < datas.length; i++) {
-	addrs[i] = datas[i]['addr'];
-}
+// 병원 데이터 예
+var datas = [
+	"서울특별시 광진구 능동로 415, 참존빌딩 3층 (중곡동)",
+	"서울특별시 광진구 동일로 74 (자양동)",
+	"서울특별시 강동구 상암로11길 5, 2층 (암사동)",
+	"서울특별시 동작구 상도로 146 (상도동)",
+	"서울특별시 강동구 천호대로 1087, 2층 201호 (천호동, 진넥스빌Ⅲ)",
+	"서울특별시 동대문구 서울시립대로 42, (전농동)",
+	"서울특별시 동대문구 무학로26길 5, 1층 (용두동)",
+	"서울특별시 동대문구 망우로 78 (휘경동) 1층",
+	"서울특별시 동대문구 망우로 77, 1층 (휘경동)",
+	"서울특별시 동대문구 답십리로 252 (장안동) 1층",
+	"서울특별시 동작구 동작대로25길 39, (사당동)",
+	"서울특별시 강서구 등촌로13길 31, (화곡동)",
+	"서울특별시 영등포구 디지털로37길 20 (대림동)",
+	"서울특별시 영등포구 도림로41길 20",
+	"서울특별시 영등포구 도림로38길 4, (대림동)",
+	"서울특별시 성북구 보문로34길 59, 1층(동선동1가)",
+	"서울특별시 성북구 동소문로20길 43 (동선동1가)",
+	"서울특별시 성북구 동소문로20가길 51 (동선동1가)",
+	"서울특별시 성북구 동소문로 321 (길음동)",
+	"서울특별시 중구 동호로11길 43",
+	"서울특별시 중구 동호로 171, (신당동)",
+	"서울특별시 성북구 돌곶이로22길 49, (석관동)",
+	"서울특별시 중구 다산로 215, 경북여인숙 1층 (신당동)",
+	"서울특별시 도봉구 우이천로4길 32, 1층 (창동)",
+	"서울특별시 동대문구 고산자로 410, 1층 (용두동)",
+	"서울특별시 송파구 거마로 60, 1층(마천동)"
+];
 
 
 // [지도 생성]
@@ -206,26 +214,30 @@ var clusterer = new daum.maps.MarkerClusterer({
 // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 });
 
-var dataIndex = 0;
+var count = 0; // 콜백함수 관련 변수
 var posArray = []; // 좌표객체 저장할 배열 선언
+
 var geocoder = new daum.maps.services.Geocoder(); // 주소 => 좌표 변환 변수 선언
 
-$.each(addrs,function(index,value){
-	geocoder.addressSearch(value, function(result, status) {
+datas.forEach(function(addr, index) {
+	
+    geocoder.addressSearch(addr, function(result, status) {
     	
-        if(status === daum.maps.services.Status.OK) {
+        if (status === daum.maps.services.Status.OK) {
+        	
             var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-            editDatas[dataIndex] = datas[index];
-            posArray[dataIndex] = coords;
-            console.log(editDatas[dataIndex]['name']+result[0].y+result[0].x);
-            dataIndex++;
-        }  
-        
-        if(index == addrs.length-1){
-        	doNext(posArray);
-        }
+            posArray.push(coords);
+            console.log("posArray[count]",posArray[count])
+            count++;
+			
+            // 콜벡함수 (geocoder.addressSearch()) 호출 횟수와 병원 수가 일치되었을 때 다음 코드로 진행되게끔 처리
+            // 그렇지 않을 경우 아래쪽 코드(doNext() 이후)가 먼저 실행되어 오류 발생
+            if(count === datas.length) {
+				doNext(posArray);            	
+            }
+        } 
     });
-})
+});
 
 function doNext(posArray) {
 	
@@ -234,7 +246,7 @@ function doNext(posArray) {
 	for(var i = 0; i < posArray.length; i++) {
 		
 		var imageSrc;
-		if(editDatas[i]['pid'] == null) {
+		if(false) {
 			imageSrc = '<c:url value="/Images/MarkerHospital.png"/>'; // 마커이미지의 주소입니다    
 		} else {
 			imageSrc = '<c:url value="/Images/MarkerPartner.png"/>';
@@ -248,12 +260,16 @@ function doNext(posArray) {
 		  markers[i] = new daum.maps.Marker({
                 map: map,
                 image: markerImage,
-                position: posArray[i],
-                zIndex: editDatas[i]['no']
+                position: posArray[i]
            });
+		 
+		  console.log("markers[i]", markers[i]);
 		 
 	}
 	clusterer.addMarkers(markers); // 클러스터러에 마커들을 추가
+	
+	console.log("clusterer")
+	console.log("markers", markers);
 	
 	// 마커 클러스터러에 클릭이벤트를 등록
 	// 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
@@ -296,9 +312,9 @@ function doNext(posArray) {
 			for (var i = 0; i < posArray.length; i++) {
 				
 				// 클릭한 마커의 위치정보와 저장된 마커의 위치정보를 비교하여 클릭한 마커에 해당하는 정보를 가져온다.
-				if (marker.getZIndex() === markers[i].getZIndex()) {
+				if (marker.getPosition().getLat() == markers[i].getPosition().getLat()) {
 						
-						// 마커를 클릭했을 때 마커가 지도 중심부로 향하도록 설정
+						// 마커를 클릭했을 때 마커가 지도 중심부로 향하도록 셋팅
 						map.setCenter(marker.getPosition());
 						var xPos = marker.getPosition().getLat();
 						var yPos = marker.getPosition().getLng();
@@ -306,59 +322,46 @@ function doNext(posArray) {
 						var editxPos = xPos + (northXpos-xPos)/2;
 						map.setCenter(new daum.maps.LatLng(editxPos, yPos));
 						
-						var name = editDatas[i]['name'];
-						var addr = editDatas[i]['addr'];
-						var phone = editDatas[i]['phone'];
-						var mon = editDatas[i]['mon'];
-						var tue = editDatas[i]['tue'];
-						var wed = editDatas[i]['wed'];
-						var thu = editDatas[i]['thu'];
-						var fri = editDatas[i]['fri'];
-						var sat = editDatas[i]['sat'];
-						var sun = editDatas[i]['sun'];
-						var holiday = editDatas[i]['holiday'];
-						var pid = editDatas[i]['pid'];
-						var hosno = editDatas[i]['hosno'];
-						var pwebsite = editDatas[i]['pwebsite'];
 						
 						var content =
 							'<div class="wrap">' + 
 				            '    <div class="info">' + 
-				            '        <div class="title"> '+name+' </div>' + 
+				            '        <div class="title"> 병원 이름이 들어갑니다 </div>' + 
 				            '        <div class="body">' + 
 				            '            <div class="img">' +
 				            '                <img src="'+'<c:url value="/Images/BasicHospital.png"/>'+'" width="70" height="70">' +
 				            '            </div>' + 
 				            '            <div class="desc">' + 
 				            '                <div class="smalltitle"> [주소] </div>' + 
-				            '                <div class="ellipsis"> '+addr+' </div>' +
+				            '                <div class="ellipsis"> 서울특별시 광진구 능동로 415 </div>' +
+				            '                <div class="ellipsis"> 참존빌딩 3층 (중곡동) </div>' + 
 				            '                <div class="smalltitle"> [전화번호] </div>' + 
-				            '                <div class="ellipsis"> '+phone+' </div>' + 
+				            '                <div class="ellipsis"> 02-1234-5678 </div>' + 
 				            '                <div class="smalltitle"> [홈페이지] </div>' + 
-				            '                <div class="ellipsis"> <a href="javascript:website('+pwebsite+')">홈페이지</a> </div>' + 
+				            '                <div class="ellipsis"> <a href="http://www.daum.net">www.daum.net</a> </div>' + 
 				            '                <div class="smalltitle"> [진료시간] </div>' + 
 				            '                <table class="schedule">' + 
 				            '                	<tr>' + 
-				            '                		<td> 월요일: '+mon+' </td> <td> 화요일: '+tue+' </td>' + 
+				            '                		<td> 월요일: 9:00 ~ 18:00 </td> <td> 화요일: 9:00 ~ 18:00</td>' + 
 				            '              	    </tr>' + 
 				            '                   <tr>' + 
-				            '                		<td> 수요일: '+wed+' </td> <td> 목요일: '+thu+' </td>' + 
+				            '                		<td> 수요일: 9:00 ~ 18:00 </td> <td> 목요일: 9:00 ~ 18:00</td>' + 
 				            '                	</tr>' + 
 				            '                   <tr>' + 
-				            '                		<td> 금요일: '+fri+' </td> <td> 토요일: '+sat+'</td>' + 
+				            '                		<td> 금요일: 9:00 ~ 18:00 </td> <td> 토요일: 10:00 ~ 14:00</td>' + 
 				            '                	</tr>' + 
 				            '                   <tr>' + 
-				            '                		<td> 일요일: '+sun+' </td> <td> 공휴일: '+holiday+' </td>' + 
+				            '                		<td> 일요일: 휴무 </td> <td> 공휴일: 휴무 </td>' + 
 				            '                	</tr>' + 
 				            '                </table><br/><hr/><br/>' + 
 				            '                <div class="btn-group">' + 
-				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:reserve('+hosno+','+pid+')"> 예약하기 </a>' +
+				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:reserve()"> 예약하기 </a>' +
 				            '            	 </div>' + 
 				            '                <div class="btn-group">' + 
-				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:receipt('+hosno+','+pid+')"> 접수하기 </a>' +
+				            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:receipt()"> 접수하기 </a>' +
 				            '            	 </div>' +
 				            '                <div class="btn-group">' + 
-					        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>' + 
+					        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/병원이름,'+xPos+','+yPos+'"> 길찾기 </a>' + 
 				            '            	 </div>' + 
 				            '            </div>' + 
 				            '        </div>' + 
@@ -367,7 +370,6 @@ function doNext(posArray) {
 			           
 			            if(customOverlay[i].getMap() == null) {
 			            	customOverlay[i].setContent(content);
-			            	customOverlay[i].setZIndex(999999);
 							customOverlay[i].setMap(map);
 			            } else {
 			            	customOverlay[i].setMap(null);

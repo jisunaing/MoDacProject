@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="mybatis.PartnerNGeneralQnA">
+
+    
+    <!-- 전체 리스트 불러오는 부분 -->
+    <select id="PartnerNGeneralQnAList" parameterType="java.util.Map" resultType="PartnerNGeneralQNADto">	
+    
+<!--     SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHQUESTION WHERE NO = O.QNO) commentCount 
+    FROM PQNA O JOIN PARTNERS M ON O.PID = M.PID WHERE M.PID= #{pid}  -->
+
+<!-- 
+
+SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHQUESTION WHERE QNO = O.QNO),
+
+M.SUBNAME FROM HEALTHQUESTION O JOIN SUBJECT M ON O.SUBJECTCODE = M.SUBJECTCODE WHERE M.SUBNAME = '모름'
+OR M.SUBNAME = '내과' OR M.SUBNAME = '비뇨의학과' OR M.SUBNAME = '결핵과' OR M.SUBNAME = '한방과'
+ORDER BY QNO DESC)T) WHERE R BETWEEN 1 AND 5
+
+
+
+ -->
+  
+    SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHQUESTION WHERE QNO = O.QNO) commentCount  
+    
+ 	FROM HEALTHQUESTION O JOIN SUBJECT M ON O.SUBJECTCODE = M.SUBJECTCODE  	 	
+
+ 	WHERE 
+ 	
+ 	
+ 	<foreach collection="subjectcode" item="item" separator="or" open="(" close=")">
+ 	
+ 	 O.SUBJECTCODE = #{item.SUBJECTCODE}
+ 	
+ 	
+ 	</foreach>
+ 	
+ 	OR O.SUBJECTCODE = 0 
+ 	
+   
+    <if test="searchColumn !=null">
+    
+    	AND ${searchColumn} LIKE '%' || #{searchWord} || '%'
+    		
+    </if>
+   
+    ORDER BY QNO DESC)T) WHERE R BETWEEN #{start} AND #{end}
+   
+	</select>
+    
+  
+    <!--  레코드 수 가져오는 부분 -->
+   	<select id="PartnerNGeneralQnATotalRecord"  parameterType="java.util.Map" resultType="int">
+   	
+	SELECT COUNT(*) FROM HEALTHQUESTION 
+	
+	WHERE 
+	
+	<foreach collection="subjectcode" item="item" separator="or" open="(" close=")">
+ 	
+ 	 SUBJECTCODE = #{item.SUBJECTCODE}
+ 	
+ 	
+ 	</foreach>
+ 	
+ 	OR SUBJECTCODE = 0
+	
+	<if test="searchColumn !=null">
+   		AND ${searchColumn} LIKE '%' || #{searchWord} || '%'
+   	</if>
+	</select>
+
+   
+    <!-- SelectOne -->
+
+	<select id="PartnerNGeneralQnAOne" parameterType="java.util.Map" resultType="PartnerNGeneralQNADto">
+
+	SELECT * FROM HEALTHQUESTION WHERE QNO = #{qno}
+  
+	</select>
+	
+	
+	
+    
+  
+
+
+
+
+
+
+	
+	
+</mapper>

@@ -156,10 +156,8 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-6">
 							<div class="col-sm-8">
-								<span class="sp">병원 명</span>
-								 <input type="text"	class="form-control"  value="${partner.hosname}" disabled>
-								 <input type="hidden" name="hosname" id="hosname" value="${partner.hosname}">
-								 
+								<span class="sp">병원 명</span> <input type="text"
+									class="form-control" name="id" id="id" value="" disabled>
 							</div>
 						</div>
 					</div>
@@ -167,10 +165,8 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-4 col-sm-pull-1">
 							<div class="col-sm-12">
-								<span class="sp">병원 연락처</span> 
-								<input type="text" class="form-control" value="${partner.hosphone}" disabled>
-								<input type="hidden" name="hosphone" id="hosphone" value="${partner.hosphone}" >
-									
+								<span class="sp">병원 연락처</span> <input type="text"
+									class="form-control" name="id" id="id" value="" disabled>
 							</div>
 						</div>
 					</div>
@@ -179,9 +175,9 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-10">
-								<span class="sp">진료 과목</span> <label for="email2"> </label>
-								 <input	type="text" class="form-control" value="${partner.subjectlist}" disabled>
-								 <input type="hidden" name="subjectlist" id="subjectlist" value="${partner.subjectlist}" >
+								<span class="sp">진료 과목</span> <label for="email2"> </label> <input
+									type="text" class="form-control" name="id" id="id" value=""
+									disabled>
 							</div>
 						</div>
 					</div>
@@ -189,9 +185,8 @@ input:focus{ outline: 0; border-color: black; }
 					<div class="form-group">
 						<div class="col-sm-12">
 							<div class="col-sm-8">
-								<span class="sp">병원 주소</span>
-								 <input type="text"	class="form-control" value="${partner.hosaddr}" disabled>
-								  <input type="hidden" name="hosaddr" id="hosaddr" value="${partner.hosaddr}" >
+								<span class="sp">병원 주소</span> <input type="text"
+									class="form-control" name="id" id="id" value="" disabled>
 							</div>
 						</div>
 					</div>
@@ -207,51 +202,39 @@ input:focus{ outline: 0; border-color: black; }
 							</div> 
 								 
 							<div style="margin-left: 30px;" class="col-sm-5">
-								월요일	<input type="text" class="form-control" value="${partner.mon}" disabled>
+								월요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div> 
 							<div class="col-sm-offset-1 col-sm-5">
-								화요일	<input type="text" class="form-control"  value="${partner.tue}" disabled>
+								화요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div>
 							
 							<div style="margin-left: 30px;" class="col-sm-5">
-								수요일	<input type="text" class="form-control"  value="${partner.wed}" disabled>
+								수요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div> 
 							<div class="col-sm-offset-1 col-sm-5">
-								목요일	<input type="text" class="form-control" value="${partner.thu}" disabled>
+								목요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div>
 							<div style="margin-left: 30px;" class="col-sm-5">
-								금요일	<input type="text" class="form-control" value="${partner.fri}" disabled>
+								금요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div> 
 							<div class="col-sm-offset-1 col-sm-5">
-								토요일	<input type="text" class="form-control"  value="${partner.sat}" disabled>
+								토요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div>
 							<div style="margin-left: 30px;" class="col-sm-5">
-								일요일	<input type="text" class="form-control"  value="${partner.sun}" disabled>
+								일요일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div> 
 							<div class="col-sm-offset-1 col-sm-5">
-								공휴일	<input type="text" class="form-control"  value="${partner.holiday}" disabled> 
+								공휴일	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
 							</div>
 							
 							<div style="margin-left: 30px;" class="col-sm-5">
-								임시휴무	<input type="text" class="form-control"   value="${partner.personalday}" disabled>
+								휴무일	<input type="text" class="form-control" name="id" id="id" value="" disabled>
 							</div> 
 							<div class="col-sm-offset-1 col-sm-5">
-								점심시간	<input type="text" class="form-control"  value="${partner.lunch}" disabled> 
+								점심시간	<input type="text" class="form-control" name="id" id="id" value="" disabled> 
 							</div>
-						</div>
-					 <input type="hidden" name="mon" id="mon" value="${partner.mon}" >
-					 <input type="hidden" name="tue" id="tue" value="${partner.tue}" >
-				     <input type="hidden" name="wed" id="wed" value="${partner.wed}" >
-				     <input type="hidden" name="thu" id="thu" value="${partner.thu}" >
-			 	     <input type="hidden" name="fri" id="fri" value="${partner.fri}" >
-	   		         <input type="hidden" name="sat" id="sat" value="${partner.sat}" >
-	   		         <input type="hidden" name="sun" id="sun" value="${partner.sun}" >
-	   		         <input type="hidden" name="holiday" id="holiday" value="${partner.holiday}" >
-	   		         <input type="hidden" name="personalday" id="personalday" value="${partner.personalday}" >
-	   		         <input type="hidden" name="lunch" id="lunch" value="${partner.lunch}" > 
-	   		        
+						</div> 
 					</div>
-
 
 
 
@@ -259,8 +242,7 @@ input:focus{ outline: 0; border-color: black; }
 						<div class="col-sm-12">
 							<div class="col-sm-12">
 								<span class="sp">병원 안내글</span>
-								<textarea rows="10" class="form-control"   disabled>${partner.info}</textarea>
-								 <input type="hidden" name="info" id="info" value="${partner.info}" >
+								<textarea rows="10" class="form-control" id="greeting" name="greeting" disabled></textarea>
 							</div>
 						</div>
 					</div>

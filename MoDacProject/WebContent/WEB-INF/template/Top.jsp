@@ -93,9 +93,9 @@
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
 				</c:if>	
-				<c:if test="${not isMember }">			
+				<c:if test="${not isMember}">			
 					<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>
-					<li id="navbar-guestbook"><a href="<c:url value='/general/member/signup/gen_signup_write.do'/>" class="navmenus">회원가입</a></li>
+					<li id="navbar-guestbook"><a href="<c:url value='/general/member/signup/genSignupWrite.do'/>" class="navmenus">회원가입</a></li>
 				</c:if>
 	    	</ul>
 	    </div>

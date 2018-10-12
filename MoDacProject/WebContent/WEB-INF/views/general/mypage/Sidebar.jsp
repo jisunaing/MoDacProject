@@ -88,10 +88,10 @@ $(function(){
 					<li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/reservation/reservationlist.do'/>">진료내역</a></li>
 				</ul>
 			</div>
-			<!-- 건강문의 -->
-			<a href="<c:url value='/general/qna/qnahealth/health_qna_list.do'/>"><button class="btn btnsidebar" style="background-color: #CFCFCF">건강문의</button></a>
+			<!-- 증상문의 -->
+			<a href="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>"><button class="btn btnsidebar" style="background-color: #CFCFCF">증상문의</button></a>
 			<!-- 사이트문의 -->
-			<a href="<c:url value='/general/qna/qna_list.do'/>"><button class="btn btnsidebar" style="background-color: #CFCFCF">사이트문의</button></a>
+			<a href="<c:url value='/general/qna/qnaList.do'/>"><button class="btn btnsidebar" style="background-color: #CFCFCF">사이트문의</button></a>
 			
 			</p>
 

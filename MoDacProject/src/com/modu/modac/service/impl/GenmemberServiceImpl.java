@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.GeneralService;
+import com.modu.modac.service.GenfamilyDto;
 import com.modu.modac.service.GenmemberDto;
 
 @Service("generalService")
@@ -22,11 +23,6 @@ public class GenmemberServiceImpl implements GeneralService{
 	}
 
 	@Override
-	public GenmemberDto selectOne(Map map) {
-		return null;
-	}
-
-	@Override
 	public List<GenmemberDto> selectList(Map map) {
 		return null;
 	}
@@ -38,37 +34,28 @@ public class GenmemberServiceImpl implements GeneralService{
 
 	@Override
 	public int delete(Map map) {
-		return 0;
+		return dao.delete(map);
 	}
 
 	@Override
 	public int insert(Map map) {
-		return 0;
+		return dao.insert(map);
 	}
 
 	@Override
 	public int update(Map map) {
-		return 0;
+		return dao.update(map);
 	}
-	public void update1() {
-		
+	
+	@Override
+	public GenmemberDto selectOne(GenmemberDto dto) {
+		return dao.selectOne(dto);
 	}
 
 	@Override
-	public int insert(GenmemberDto dto) {
-		return dao.insert(dto);
-	}
-
-	@Override
-	public int delete(GenmemberDto dto) {
+	public GenfamilyDto selectOne(GenfamilyDto dto) {
 		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(GenmemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 }

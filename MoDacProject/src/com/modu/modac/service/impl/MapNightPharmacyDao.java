@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapNightPharmacyDto;
 import com.modu.modac.service.MapNightPharmacyService;
 
@@ -20,36 +21,38 @@ public class MapNightPharmacyDao implements MapNightPharmacyService{
 	
 	@Override
 	public List<MapNightPharmacyDto> selectList(Map map) {
-		return template.selectList("NightPharmacyList",map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		return template.selectOne("NightPharmacyCount", map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public MapNightPharmacyDto selectOne(Map map) {
-		return template.selectOne("NightPharmacyOne", map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int delete(Map map) {
-		return template.delete("NightPharmacyDelete", map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int insert(Map map) {
-		return template.insert("NightPharmacyInsert", map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int update(Map map) {
-		return template.update("NightPharmacyUpdate", map);
-	}
-
-	@Override
-	public void close() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

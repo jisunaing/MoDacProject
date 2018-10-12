@@ -20,36 +20,38 @@ public class MapHospitalDao implements MapHospitalService {
 	
 	@Override
 	public List<MapHospitalDto> selectList(Map map) {
-		return template.selectList("HospitalList",map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		return template.selectOne("HospitalTotalCount",map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public MapHospitalDto selectOne(Map map) {
-		return template.selectOne("HospitalOne",map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int delete(Map map) {
-		return template.delete("HospitalDelete", map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int insert(Map map) {
-		return template.insert("HospitalInsert", map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int update(Map map) {
-		return template.update("HospitalUpdate", map);
-	}
-
-	@Override
-	public void close() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

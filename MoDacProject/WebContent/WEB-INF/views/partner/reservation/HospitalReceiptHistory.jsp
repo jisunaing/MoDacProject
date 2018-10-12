@@ -7,6 +7,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript">
+$(function(){
+	$('td').click(function(){
+		console.log('테이블이 클릭됨');
+		location.replace("<c:url value='/partner/hospital/ReceiptHistoryViewMove.do'/>");
+	});
+});
+</script>
 <style>
 /*가운데 배치를 위핸 CSS*/
 .container {
@@ -91,40 +99,44 @@ tbody tr:nth-child(even) {
 				<h2>병원접수했던 내역</h2><br/><br/><br/>
 					<table class="type10 table-hover">
 					    <thead>
-						<tr>
-							<th>성명</th><th>접수시간</th><th>연락처</th><th>이메일</th><th>구분</th>
-						</tr>
+							<tr>
+								<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th>
+							</tr>
 						</thead>
 						<tbody>
-						<c:if test="${empty requestScope.list }" var="isEmpty">
-						<tr>
-						<td></td>
-						<td></td>
-						<td>등록된 게시글이 없습니다</td>
-						<td></td>
-						<td></td>
-						</tr>
-						</c:if>
-						<c:if test="${not isEmpty}">
-						<c:forEach var="record" items="${list}" varStatus="loop">
-						<tr>
-							<a href="<c:url value='/partner/hospital/ReceiptHistoryViewMove.do?recnum=${recnum}&where=${moveWhere}'/>">
-							<td>${record.recname}</td>
-							<td>${record.recdate}</td>
-							<td>${record.phone}</td>
-							<td>${record.email}</td>
-							<td>${record.recaccept}</td>
-							</a>
-						</tr>
-						</c:forEach>
-						</c:if>
-						
-						</tbody>																							
-					</table>																									
-					<!-- 아래는 페이징 -->
-					<div class="row">
-						<div>${pagingString}</div>
-					</div>
+							<tr>
+								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
+							</tr>
+							<tr>
+								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
+							</tr>
+							<tr>
+								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
+							</tr>
+							<tr>
+								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
+							</tr>
+							<tr>
+								<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
+							</tr>
+						</tbody>																								
+					</table>	
+					<!-- 임시 페이징 시작 -->
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#"	aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</nav>
+					<!-- 임시 페이징 끝 -->
 				</div>
 			</div>
 		</div>

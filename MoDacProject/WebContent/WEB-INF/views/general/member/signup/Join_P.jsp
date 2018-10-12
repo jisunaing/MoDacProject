@@ -22,7 +22,7 @@ function goPopup(){
 
 function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form.hosaddr.value = roadAddrPart1;		
+		document.form.roadAddrPart1.value = roadAddrPart1;		
 		document.form.addrDetail.value = addrDetail;		
 		document.form.zipNo.value = zipNo;
 		
@@ -50,9 +50,13 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
 		$(this).hide(1000);
 		
+		$(this).show(1000);
+		
+
+		$(this).hide(1000);		
 			 
 
-	 $('#subjectlist').attr('value',change);
+	 $('#jin').attr('value',change);
 	 
 	 
 	});	
@@ -102,40 +106,38 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 				<div class="col-md-12">
 				 <h1>제휴 문의<small> 병원 제휴</small></h1>
 					
-					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='/partner/member/singup/joinrequest.do'/>" >
-					
-					
+					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='#'/>" >
 					
 					
 						  <div class="form-group">
 						  
-						   <label for="pid" class="col-sm-2  control-label">아이디</label>
+						   <label for="id" class="col-sm-2  control-label">아이디</label>
 						   	<div class="col-sm-3">
-						      <input type="text" class="form-control" name="pid" id="pid" placeholder="아이디를 입력하세요" >
+						      <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" >
 						    </div>
 						  </div>
 						 
 						 
 						  <div class="form-group">
-						    <label for="hpwd" class="col-sm-2  control-label">비밀번호</label>
+						    <label for="pwd" class="col-sm-2  control-label">비밀번호</label>
 						    <div class="col-sm-3">
-						    	<input type="password" placeholder="비밀번호를 입력하세요" class="form-control"  id="hpwd" name="hpwd">						    	
+						    	<input type="password" placeholder="비밀번호를 입력하세요" class="form-control"  id="pwd" name="pwd">						    	
 						    </div>
 						  </div>
 						  
 						  <div class="form-group">
-						    <label for="hpwd2" class="col-sm-2  control-label">비밀번호 확인</label>
+						    <label for="pwd" class="col-sm-2  control-label">비밀번호 확인</label>
 						    <div class="col-sm-3">
-						    	<input type="password" placeholder="비밀번호를 입력하세요" class="form-control"  id="hpwd2" name="hpwd2">						    	
+						    	<input type="password" placeholder="비밀번호를 입력하세요" class="form-control"  id="pwd2" name="pwd2">						    	
 						    </div>
 						  </div>
 						   
 						  <hr/>	
 						  
 						  <div class="form-group">
-						    <label for="hosname" class="col-sm-2  control-label">병원 명</label>
+						    <label for="pid" class="col-sm-2  control-label">병원 명</label>
 						   	<div class="col-sm-3">
-						      <input type="text" class="form-control" name="hosname" id="hosname" placeholder="병원 명을 입력하세요" required>
+						      <input type="text" class="form-control" name="pid" id="pid" placeholder="병원 명을 입력하세요">
 						    </div>
 						  </div>
 						  
@@ -146,8 +148,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 							</div>
 							
 							<div class="col-sm-offset-2 col-sm-7">							
-							<label for="subjectlist" class="control-label">선택한 진료 과목</label>																				 							 
-							 <input style="margin-top: 1px;" type="text" class="form-control" name="subjectlist" id="subjectlist"  >							 
+							<label class="control-label">선택한 진료 과목</label>
+								
+												 							 
+							 <input value="" style="margin-top: 1px;" type="text" class="form-control" name="jin" id="jin" disabled >
+							 
 							</div>
 							
 							<!-- 모달 창 -->
@@ -204,7 +209,9 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 												  
 												  <li class="ui-state-default" value="19">한방과</li>
 												  
-												  <li class="ui-state-default" value="20">흉부외과</li>																								
+												  <li class="ui-state-default" value="20">흉부외과</li>
+													
+											
 											</ul>
 										</div>
 										<div class="modal-footer">
@@ -218,22 +225,22 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 							
 						  	<hr/>			  
 						  <div class="form-group">
-						    <label for="hosmanager" class="col-sm-2  control-label">담당자 이름</label>
+						    <label for="pname" class="col-sm-2  control-label">담당자 이름</label>
 						   	<div class="col-sm-2">
-						      <input type="text" class="form-control " name="hosmanager" id="hosmanager" placeholder="이름을 입력하세요">
+						      <input type="text" class="form-control " name="pname" id="pname" placeholder="이름을 입력하세요">
 						    </div>
 						    
-						    <label for="hosphone" class="col-sm-pull-1 col-sm-2  control-label">연락처</label>
+						    <label for="ptel" class="col-sm-pull-1 col-sm-2  control-label">연락처</label>
 							<div class="col-sm-2 col-sm-pull-1">
-								<input type="text" class=" form-control" name="hosphone" id="hosphone" placeholder="연락처를 입력하세요">
+								<input type="text" class=" form-control" name="ptel" id="ptel" placeholder="연락처를 입력하세요">
 							</div>
 						  </div>
 						  
 						  
 						<div class="form-group">
-							<label for="pemail" class="col-sm-2  control-label">담당자 이메일 </label>
+							<label for="id" class="col-sm-2  control-label">담당자 이메일 </label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name="pemail" id="pemail" placeholder="이메일을 입력해주세요">
+								<input type="text" class="form-control" name="name" id="id" placeholder="이메일을 입력해주세요">
 							</div>
 						</div>
 
@@ -248,30 +255,30 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						</div>
 
 						<div class="form-group">
-							<label for="hosaddr" class="col-sm-2 control-label">주 소</label>
+							<label for="roadFullAddr" class="col-sm-2 control-label">주 소</label>
 							<div class="col-sm-6">
 					
-								<input type="text" class="form-control" name="hosaddr" id="hosaddr" placeholder="주소를 검색해주세요" >
+								<input type="text" class="form-control" name="roadAddrPart1" id="roadAddrPart1" placeholder="주소를 검색해주세요" disabled >
 								
 							</div>
 							<button class="btn btn-outline-info float-right btn btn-primary" type="button"	onclick="goPopup()">주소 검색</button>
 							<div class="col-sm-offset-2 col-sm-6">
-							<label for="addrDetail" class="control-label">상세 주소</label>
+							<label class="control-label">상세 주소</label>
 							 <input style="margin-top: 3px;" type="text" class="form-control" name="addrDetail"	id="addrDetail" placeholder="상세주소를 입력해주세요" >
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label for="businessnum" class="col-sm-2  control-label">사업자 번호 </label>
+							<label for="zipNo" class="col-sm-2  control-label">사업자 번호 </label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name=businessnum id="businessnum" placeholder="사업자 번호를 입력해주세요">
+								<input type="text" class="form-control" name=businessNB id="businessNB" placeholder="사업자 번호를 입력해주세요">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="request" class="col-sm-2  control-label">요 청 사 항</label>
+							<label for="greeting" class="col-sm-2  control-label">요 청 사 항</label>
 							<div class="col-sm-5">
-								<textarea rows="5" class="form-control" id="request" name="request"></textarea>
+								<textarea rows="5" class="form-control" id="greeting" name="greeting"></textarea>
 							</div>
 						</div>
 

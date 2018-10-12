@@ -19,36 +19,42 @@ public class MapPharmacyServiceImpl implements MapPharmacyService {
 	
 	@Override
 	public List<MapPharmacyDto> selectList(Map map) {
+		System.out.println("서비스 임플 : List");
 		return dao.selectList(map);
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		return dao.getTotalRecord(map);
+		return 0;
 	}
 
 	@Override
 	public MapPharmacyDto selectOne(Map map) {
-		return dao.selectOne(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int delete(Map map) {
-		return dao.delete(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int insert(Map map) {
-		return dao.insert(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int update(Map map) {
-		return dao.update(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void close() {
+		
 	}
 
 }

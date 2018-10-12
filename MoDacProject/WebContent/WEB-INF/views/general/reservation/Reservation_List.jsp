@@ -70,8 +70,8 @@ table {
 					<c:forEach var="record" items="${receiptList}" varStatus="loop">
 					<tr>
 						<td>${record.recdate}</td>
-						<td>${record.hosname}</td>
-						<td>${record.subname}</td>
+						<td>${record.hospital.hosname}</td>
+						<td>${record.subject.subname}</td>
 						<td>${record.recname}</td>
 						<td>접수</td>
 						<td>${record.recaccept}</td>
@@ -81,20 +81,20 @@ table {
 					  <td colspan="7">
 					  	<div>
 					  		<br/><br/>
-					  		${record.reccontents}
+					  		${record.contans}
 					  		<br/><br/><br/>
 					  	</div>
 					  </td>
 					</tr>
 					</c:forEach>					
 					</c:if>
-					<c:forEach var="record" items="${reservationList}" varStatus="loop">
+					<c:forEach var="record" items="${receiptList}" varStatus="loop">
 					<tr>
 						<td>${record.resdate}</td>
-						<td>${record.hosname}</td>
-						<td>${record.subname}</td>
+						<td>${record.hospital.hosname}</td>
+						<td>${record.subject.subname}</td>
 						<td>${record.resname}</td>
-						<td>예약</td>
+						<td>접수</td>
 						<td>${record.resaccept}</td>
 						<td><c:if test="${record.resaccept=='예약신청'}" var="resacceptResult"><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${resnum}}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not resacceptResult}">취소불가</c:if></td>
 					</tr>
@@ -102,7 +102,7 @@ table {
 					  <td colspan="7">
 					  	<div>
 					  		<br/><br/>
-					  		${record.rescontents}
+					  		${record.contans}
 					  		<br/><br/><br/>
 					  	</div>
 					  </td>
@@ -111,6 +111,25 @@ table {
 				</tbody>
 			</table>
 			<!-- 테이블 끝 -->
+			<!-- 임시 페이징 시작 -->
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+					</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					<span class="sr-only">Next</span>
+					</a></li>
+				</ul>
+			</nav>
+			<!-- 임시 페이징 끝 -->
+
+
 			<!-- 가운데 정렬 끝 -->
 			<!-- 가운데 정렬을 위한 DIV -->
 		</div>

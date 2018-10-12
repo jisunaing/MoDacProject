@@ -19,9 +19,7 @@
 #hr{
 	margin-left: 40%;
 	border: solid 1px black; 
-	width: 20%;
-	margin-top: -6px;
-	
+	width: 20%
 }
 #dv{
 	padding-top: 50px
@@ -40,8 +38,9 @@
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
 	}
 </style>
+
 </head>
-<body class="hold-transition skin-blue sidebar-mini" >
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 
 		<!-- 여기까지가 탑이랑 카테고리 부분으로 추정 됨 -->
@@ -52,20 +51,21 @@
 		<!-- 카테고리 -->
 		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
 		<!-- 카테고리 -->
-		<div class="content-wrapper" style="background-color: white;">
+		<div class="content-wrapper">
 		
 		
 		
 <!-- body 시작 -->
-<div class="container" id="dv" >
+<div class="container" id="dv">
 <div class="row">
-			<div>
+			<div class="form-box">
 
 	<h2 style="text-align: center">사이트 문의하기</h2>
 	<br />
 	<p style="text-align: center;">
 		언제든지 궁금한걸 물어보세요~
 	</p>
+	<br />
 	<hr id="hr">
 	<br />
 	<br />
@@ -76,38 +76,32 @@
 			
 				<a id="qna" href="<c:url value='/partner/partnerQnA/admin_QnA_Write.do'/>" class="col-md-offset-10  btn btn-success" style="width: 120px;  color: black">문의하기</a>
 				
-				<table class="table table-hover table-bordered text-center">
-						<tr style="background-color: #79ABFF;">
-						<th style="text-align: center" class="col-md-1" >글번호</th>
-							<th style="text-align: center" >제목</th>
-							<th style="text-align: center" class="col-md-2">작성일</th>
-							<th style="text-align: center" class="col-md-2">답변여부</th>
-						
-						</tr>
-				<c:if test="${empty requestScope.list }" var="isEmpty">
-					<tr>
-						<td colspan="4">등록된 게시물이 없어요</td>
-					</tr>
-				</c:if>
-				<c:if test="${not isEmpty }">
-					<c:forEach var="record" items="${list}" varStatus="loop">
-					
-					
+				<table class="table">
+					<thead>
 						<tr>
-							<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
-							<td class="text-left">
-							 <a	href="<c:url value='/partner/partnerQnA/admin_QnA_View.do?no=${record.no}'/>">${record.title}</a>
-							 <span class="badge">${record.commentCount}</span>
-							</td>							
-							<td>${record.postadate}</td>
-							<c:if test="${record.commentCount != 0}">
-							<td>답변 완료</td> <!--  답변여부 쪽 -->
-							</c:if> 
-							<td>답변 대기중</td> <!--  답변여부 쪽 -->
+							<th style="text-align: center">작성일</th>
+							<th style="text-align: center">제목</th>
+							<th style="text-align: center">답변여부</th>
 						</tr>
-					</c:forEach>
-				</c:if>
-			</table>
+					</thead>
+					<tbody>
+						<tr class="success">
+							<td>2018-09-15</td>
+							<td><a style=" color: black" href="<c:url value='/partner/partnerQnA/admin_QnA_View.do'/>">제목1</a></td>
+							<td>답변완료</td>
+						</tr>
+						<tr class="danger">
+							<td>2018-09-15</td>
+							<td>제목2</td>
+							<td>답변 준비중</td>
+						</tr>
+						<tr class="success">
+							<td>2018-09-15</td>
+							<td>제목3</td>
+							<td>답변완료</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
