@@ -7,7 +7,7 @@ public interface MapNightPharmacyService {
 /* dao와 impl에서 오버라이딩 할 추상메소드 */
 	
 	// 목록용]
-	List<MapHospitalDto> selectList(Map map);
+	List<MapNightPharmacyDto> selectList(Map map);
 	
 	// 전체 레코드 수]
 	int getTotalRecord(Map map);

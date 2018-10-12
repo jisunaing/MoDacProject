@@ -20,7 +20,12 @@
 	</resultMap>
 	
 	<!-- 쿼리 작성 -->
-	<select id="MapPharmacyList" parameterType="java.util.Map" resultType="MapPharmacyDto">
-		SELECT * FROM phramacyc WHERE phaddr LIKE '%' || #{address} || '%' 
+	<select id="PharmacyList" parameterType="java.util.Map" resultType="MapPharmacyDto">
+		<if test="address != null">
+		SELECT * FROM pharmacy WHERE phaddr LIKE '%' || #{address} || '%' 
+		</if>
+		<if test="phname != null">
+		SELECT * FROM pharmacy WHERE phname LIKE '%' || #{phname} || '%'
+		</if>
 	</select>
 </mapper>

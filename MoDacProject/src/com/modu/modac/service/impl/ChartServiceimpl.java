@@ -16,7 +16,7 @@ public class ChartServiceimpl implements ChartService{
 	private ChartDao dao;
 
 	@Override
-	public List<Map> dayList(Map map) {
+	public List<String> dayList(Map map) {
 		System.out.println("서비스로 들어옴");
 		System.out.println(map.get("pid"));
 		return dao.dayList(map);

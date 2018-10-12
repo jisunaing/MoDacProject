@@ -11,16 +11,15 @@ import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapNightPharmacyDto;
 import com.modu.modac.service.MapNightPharmacyService;
 
-@Service("mapNightPharmacyService")
+@Service("nightPharmacyService")
 public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 
 	@Resource(name="mapNightPharmacyDao")
 	private MapNightPharmacyDao dao;
 	
 	@Override
-	public List<MapHospitalDto> selectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MapNightPharmacyDto> selectList(Map map) {
+		return dao.selectList(map);
 	}
 
 	@Override
@@ -52,5 +51,6 @@ public class MapNightPharmacyServiceImpl implements MapNightPharmacyService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }

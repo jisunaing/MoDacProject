@@ -20,7 +20,7 @@ public class MapNightPharmacyDao implements MapNightPharmacyService{
 	
 	
 	@Override
-	public List<MapHospitalDto> selectList(Map map) {
+	public List<MapNightPharmacyDto> selectList(Map map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
