@@ -5,4 +5,5 @@ import java.util.Map;
 
 public interface ChartService {
 	List<String> dayList(Map map);
+	
 }
