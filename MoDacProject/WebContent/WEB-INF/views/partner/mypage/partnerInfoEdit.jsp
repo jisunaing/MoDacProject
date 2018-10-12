@@ -44,7 +44,7 @@ li {list-style:none;}
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 1150px;	
+	height: 1180px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -286,7 +286,7 @@ input:focus{ outline: 0; border-color: black; }
 						<div class="col-sm-12">
 							<div class="col-sm-10">
 								<span class="sp">진료 과목</span> 								
-								<input type="text" class="form-control" name="subjectlist" id="subjectlist" value="${partner.subjectlist}">
+								<input type="text" class="form-control" name="subjectlist" id="subjectlist" value="${subjectlist}">
 							</div>
 						</div>
 					</div>

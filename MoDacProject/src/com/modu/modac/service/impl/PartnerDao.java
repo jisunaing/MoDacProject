@@ -84,6 +84,12 @@ public class PartnerDao implements PartnerService {
 		return template.update("PartnerSubjectList",map);
 	}
 
+	@Override
+	public List<Map> subjectListAll(Map map) {
+		
+		return template.selectList("PartnerSubjectListAll",map);
+	}
+
 
 
 	

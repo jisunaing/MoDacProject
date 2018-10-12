@@ -84,6 +84,13 @@ public class PartnerServiceimpl implements PartnerService {
 		return partnerdao.subjectList(map);
 	}
 
+
+	@Override
+	public List<Map> subjectListAll(Map map) {
+		
+		return partnerdao.subjectListAll(map);
+	}
+
 	
 	
 	

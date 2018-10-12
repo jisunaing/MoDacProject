@@ -60,71 +60,7 @@ public class PartnerController {
 	public String hospitalHistoryViewPage() throws Exception {
 		return "/partner/reservation/HospitalView";
 	}	
-	
-	//병원 정보 페이지
-	@RequestMapping("/partner/mypage/partnerInfo.do")
-	public String partnerInfo(@ModelAttribute("pid")String pid,Map map) throws Exception {
 		
-		PartnerDto dto;
-		
-		map.put("pid",pid);
-	
-		dto = service.selectOne(map);
-		
-		map.put("partner", dto);
-				
-		
-		return "/partner/mypage/partnerInfo";
-	}
-
-	
-
-	//병원 회원탈퇴 신청 페이지
-	@RequestMapping("/partner/withdrawal/partner_withdrawal.do")
-	public String withdrawal(@RequestParam Map map,SessionStatus status,@ModelAttribute("pid")String pid,Model model) throws Exception {
-		
-		map.put("pid",pid);
-		PartnerDto partner = service.selectOne(map);
-						
-		partner.setPid(pid);
-				
-		model.addAttribute("partner",partner);
-		
-		
-		
-		
-		return "/partner/withdrawal/partner_withdrawal";
-	}
-	
-	
-	//병원 회원탈퇴 버튼 눌렀을때 오는 맵핑
-	@RequestMapping("/partner/withdrawal/partner_withdrawalREQ.do")
-	public String withdrawalREQ(@RequestParam Map map,SessionStatus status,@ModelAttribute("pid")String pid) throws Exception {
-		
-		
-		service.withdrawal(map);
-		
-		
-		//회원탈퇴 눌러서 왔으니 Accept를 D로 바꿔주자  D로 확인이 되는 회원은 로그인에서도 탈퇴 대기중이라고 변경해줘야함		
-		status.setComplete();
-		
-			
-		
-		
-		//현재 메인페이지로 보내야 하는 부분이 임시적이기 때문에 여기 또한 임시로 메인으로 보냄
-		return "/index";
-	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

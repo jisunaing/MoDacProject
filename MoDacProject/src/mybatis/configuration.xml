@@ -11,7 +11,11 @@
 		<typeAlias type="com.modu.modac.service.TestDto" alias="testDto"/>
 		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
-		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>      
+		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>   
+		<typeAlias type="com.modu.modac.service.PartnerNGeneralQNADto" alias="PartnerNGeneralQNADto"/>  
+		
+		
+		
 		
 		
 	</typeAliases>
@@ -29,6 +33,7 @@
 		<mapper resource="mybatis/Partner.xml"/>
 		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
 		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
+		<mapper resource="mybatis/PartnerNGeneralQnA.xml" />
 		<mapper resource="mybatis/Reservation.xml" />
 		<mapper resource="mybatis/partnerReservation.xml" />
 		

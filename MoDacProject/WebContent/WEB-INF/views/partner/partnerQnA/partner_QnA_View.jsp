@@ -82,8 +82,8 @@ tr th{
 			commentString+="<tr><td colspan='4'>등록된 댓글이 없어요</td></tr>";
 		}
 		$.each(data,function(index,comment){			
-			commentString+='<tr><td>'+comment['PID']+'</td>';
-			if('${sessionScope.pid}' != comment["PID"])
+			commentString+='<tr><td>'+comment['GENID']+'</td>';
+			if('${sessionScope.pid}' != comment["GENID"])
 				commentString+='<td align="left">'+comment['RCONTENTS']+'</td>'; 
 			else
 				commentString+='<td align="center;"><span style="cursor:pointer" class="commentEdit" title="'+comment["RNO"]+'">'+comment['RCONTENTS']+'</span></td>'; 		
@@ -119,7 +119,7 @@ tr th{
 			
 			$.ajax({
 				url:"<c:url value='/partner/partnerQnA/CommentDelete.do'/>",
-				data:{rno:rno_value,no:${record.no}},
+				data:{rno:rno_value,no:${record.qno}},
 				dataType:'text',
 				type:'post',
 				success:function(key){					
@@ -137,7 +137,7 @@ tr th{
 
 	$(function(){
 		//페이지 로드시 코멘트 목록 뿌려주기
-		showComments(${record.no});
+		showComments(${record.qno});
 	
 		var incre = 930;
 		
@@ -150,12 +150,12 @@ tr th{
 					
 					$(".form-box").css("height",incre);
 					
-					var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.no}'/>";	
+					var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.qno}'/>";	
 					
 				}
 				
 				
-				var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.no}'/>";								
+				var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.qno}'/>";								
 			}						
 			else{
 				var action="<c:url value='/partner/partnerQnA/CommentEdit.do'/>";	
@@ -185,7 +185,7 @@ tr th{
 		//메모글 삭제처리]
 		$('#delbtn').on('click',function(){
 			if(confirm('정말로 삭제할래?')){
-				location.replace("<c:url value='/partner/partnerQnA/admin_QnA_Delete.do?no=${record.no}'/>");				
+				location.replace("<c:url value='/partner/partnerQnA/admin_QnA_Delete.do?no=${record.qno}'/>");				
 			}
 		});
 		
@@ -224,7 +224,7 @@ tr th{
 					<table class="table table-striped table-bordered">
 						<tr style="background-color: #79ABFF;">
 							<th class="col-md-2 text-center">번호</th>
-							<td>${record.no}</td>
+							<td>${record.qno}</td>
 						</tr>
 						<tr>
 							<th class="col-md-2 text-center">제목</th>
@@ -232,18 +232,18 @@ tr th{
 						</tr>
 						<tr style="background-color: #79ABFF;">
 							<th class="col-md-2 text-center">작성자</th> 
-							<td>${record.pid}</td>
+							<td>${record.genid}</td>
 						</tr>
 		
 						<tr>
 							<th class="col-md-2 text-center">등록일</th>
-							<td>${record.postadate}</td>
+							<td>${record.postdate}</td>
 						</tr>
 						<tr style="background-color: #79ABFF;">
 							<th colspan="2" class="text-center">내용</th>
 						</tr>
 						<tr>
-							<td colspan="2">${record.content}</td>
+							<td colspan="2">${record.qcontent}</td>
 						</tr>
 		
 					</table>
@@ -252,7 +252,7 @@ tr th{
 			<!-- row -->
 			<div class="row">
 				<div class="text-center">	
-					<a href="<c:url value='/partner/partnerQnA/admin_QnA.do'/>" class="btn btn-success">목록</a>		
+					<a href="<c:url value='/partner/partnerQnA/partner_QnAList.do'/>" class="btn btn-success">목록</a>		
 				</div>
 			</div>
 			<br/>
@@ -262,7 +262,7 @@ tr th{
 				<br/>
 				<form class="form-inline" id="frm" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="hidden" name="no" value="${record.no}" />
+				<input type="hidden" name="no" value="${record.qno}" />
 				
 					<!-- 수정 및 삭제용 파라미터 -->
 					<input type="hidden" name="rno" />

@@ -20,8 +20,14 @@ public interface PartnerService {
 	// Subject Insert용
 	int subjectList(Map map);
 	
+	//특정 hosno에 대한 subject 코드 가져오기	
+	List<Map> subjectListAll(Map map);
+	
+	
+	
 	//상세보기용]
 	PartnerDto selectOne(Map map);
+		
 	//입력/수정/삭제용]
 	int delete(Map map);
 	int insert(Map map);

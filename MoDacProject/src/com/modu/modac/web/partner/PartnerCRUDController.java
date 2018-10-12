@@ -26,6 +26,11 @@ import com.modu.modac.service.PartnerService;
 @Controller
 public class PartnerCRUDController {
 	
+	private PartnerDto dto;
+	String subject; //가입할때 필요한거
+	String pid; // 세션아이디 저장용
+	String subs; // 가입 외에 뿌려줘야할 subject
+	
 	//진성 데이터 베이스를 위한 설정
 	//진성 영역 
 	
@@ -44,8 +49,9 @@ public class PartnerCRUDController {
 	//병원 임시 제휴가입
 	@RequestMapping("/partner/member/singup/joinrequest.do")
 	public String joinrequest(@RequestParam Map map) throws Exception {
-		
-		
+		//진료과목 파라미터 값
+		subject = map.get("subjectlist").toString();	
+	
 		
 		//백앤드에서 처리해야하지만 현재는 제휴신청 누르면 회원가입으로 처리하겠음
 		String fulladdr;
@@ -60,13 +66,13 @@ public class PartnerCRUDController {
 		
 		System.out.println("가입 완료");
 		
-		
-		PartnerDto dto = service.selectOne(map);
+				
+		 dto = service.selectOne(map);
 		
 		//subject에 따른 추가 insert
 		
 		String hosno = dto.getHosno();
-		String subject = map.get("subjectlist").toString();	
+		
 		
 		map.put("pid",dto.getPid());
 		map.put("hosno",hosno);
@@ -83,7 +89,7 @@ public class PartnerCRUDController {
 										
 			switch (subjectArray[i]) {
 		
-			case "가정의학과":  map.put("subjectcode",10); service.subjectList(map);  break; // service.subjectList(map);
+			case "가정의학과":  map.put("subjectcode",10); service.subjectList(map);  break;
 			
 			case "결핵과":  map.put("subjectcode",20); service.subjectList(map);  break;
 			
@@ -129,13 +135,6 @@ public class PartnerCRUDController {
 															
 		}///for문
 		
-		
-		
-		
-		
-		
-		
-		
 
 		return "/index";
 	}
@@ -148,6 +147,10 @@ public class PartnerCRUDController {
 
 		
 			boolean isLogin = service.isMember(map);
+			
+			pid = map.get("pid").toString();
+			
+			System.out.println("로그인 아이디 :"+pid);
 
 			
 			if(isLogin) { //회원은 맞지만 수락 여부 확인은 X
@@ -159,49 +162,48 @@ public class PartnerCRUDController {
 					HttpSession session = req.getSession();
 					
 					session.setAttribute("pid",map.get("pid"));
-					
-					model.addAttribute("test","test");
-					
-					// ↑ 세션 확인용 추후에 test부분 삭제할꺼임
+
 					
 					
 					
+				/*
+					//병원 차트를 가져오기 위한 부분 					 
+				
+		            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		            Calendar cal = Calendar.getInstance();
+		            List<String> list;
+		               list = chartService.dayList(map);
+		               if(list!=null) {
+		                  for(int i=0;i<list.size();i++) {
+		                     cal.setTime(dateFormat.parse(list.get(i).toString()));
+		                     switch (cal.get(Calendar.DAY_OF_WEEK)) {
+		                     case 1:   sun++;   break;
+		                     case 2:   mon++;   break;
+		                     case 3:   tue++;   break;
+		                     case 4:   wed++;   break;
+		                     case 5:   thu++;   break;
+		                     case 6:   fri++;   break;
+		                     case 7:   dat++;   break;
+		                     }//switch
+		                  }//for
+		               }//if
+		               else {
+		                  model.addAttribute("chartError", "불러올 차트가 없어요");
+		               }
+		               //병원 차트를 가져오기 위한 부분
+		               //병원 차트 요일별 저장하기
+		               model.addAttribute("mon", mon);
+		               model.addAttribute("tue", tue);
+		               model.addAttribute("wed", wed);
+		               model.addAttribute("thu", thu);
+		               model.addAttribute("fri", fri);
+		               model.addAttribute("dat", dat);
+		               model.addAttribute("sun", sun);
+		               
+		               */
 					
-					/* HomeController 부분에 병원쪽 부분이 있길래 가져옴
-					  내가 작업한 부분이 아니라 오류 떠서 주석처리 했음*/
-					  
-					//병원 차트를 가져오기 위한 부분 
-					 
-					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-					Calendar cal = Calendar.getInstance();
-					List<String> list;
+					}//회원도 맞고 제휴 수락도 Y인 경우
 					
-					
-								
-					list = chartService.dayList(map);
-					for(int i=0;i<list.size();i++) {
-						cal.setTime(dateFormat.parse(list.get(i).toString()));
-						switch (cal.get(Calendar.DAY_OF_WEEK)) {
-						case 1:	sun++;	break;
-						case 2:	mon++;	break;
-						case 3:	tue++;	break;
-						case 4:	wed++;	break;
-						case 5:	thu++;	break;
-						case 6:	fri++;	break;
-						case 7:	dat++;	break;
-	
-						}//switch
-					}//for
-					//병원 차트를 가져오기 위한 부분
-					//병원 차트 요일별 저장하기
-					model.addAttribute("mon", mon);
-					model.addAttribute("tue", tue);
-					model.addAttribute("wed", wed);
-					model.addAttribute("thu", thu);
-					model.addAttribute("fri", fri);
-					model.addAttribute("dat", dat);
-					model.addAttribute("sun", sun);
-				}// 회원도 맞고 제휴 수락도 Y인 경우
 					else {
 						
 						model.addAttribute("loginError", "현재 제휴승인 대기중입니다.. 조금만 더 기달려주세요.");
@@ -237,10 +239,51 @@ public class PartnerCRUDController {
 	
 	
 	
+	//병원 정보 페이지
+	@RequestMapping("/partner/mypage/partnerInfo.do")
+	public String partnerInfo(@ModelAttribute("pid")String pid,Map map) throws Exception {
+		
+		PartnerDto dto = service.selectOne(map);
+		
+		map.put("hosno",dto.getHosno());	
+		
+		System.out.println("HOSNO = "+dto.getHosno());
+		
+		List<Map> subjectlist = service.subjectListAll(map);
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		for(int i=0; i < subjectlist.size(); i++) {
+			
+			buffer.append(subjectlist.get(i).get("SUBNAME")+",");
+					
+		}
+		
+		subs = buffer.toString();
+		
+		subs = buffer.substring(0,subs.lastIndexOf(','));
+	
+		System.out.println("마지막 결과물 :"+subs);
+		
+		
+		
+		map.put("subjectlist",subs);
+						
+		map.put("pid",pid);
+		
+		map.put("partner", dto);
+				
+		
+		return "/partner/mypage/partnerInfo";
+	}
+	
 	// 병원 정보 수정페이지
 	@RequestMapping("/partner/mypage/partnerInfoEdit.do")
-	public String partnerInfoEdit(@RequestParam Map map,Map maps,Model model) throws Exception {
-			
+	public String partnerInfoEdit(@RequestParam Map map,Map maps,Model model,@ModelAttribute("pid")String pid) throws Exception {
+		
+		
+			maps.put("subjectlist",subs);
+					
 			maps.put("partner",map);
 			
 			model.addAllAttributes(maps);				
@@ -265,13 +308,42 @@ public class PartnerCRUDController {
 		
 					
 		int updateone = service.updateone(map);
-		
-
-		
+				
 		int updatetwo = service.updatetwo(map);
 				
 		
 		return "forward:/partner/mypage/partnerInfo.do";
+	}
+	
+	
+
+	//병원 회원탈퇴 신청 페이지
+	@RequestMapping("/partner/withdrawal/partner_withdrawal.do")
+	public String withdrawal(@RequestParam Map map,SessionStatus status,@ModelAttribute("pid")String pid,Model model) throws Exception {
+		
+		map.put("pid",pid);
+		PartnerDto partner = service.selectOne(map);
+						
+		partner.setPid(pid);
+				
+		model.addAttribute("partner",partner);
+		
+		return "/partner/withdrawal/partner_withdrawal";
+	}
+	
+	
+	//병원 회원탈퇴 버튼 눌렀을때 오는 맵핑
+	@RequestMapping("/partner/withdrawal/partner_withdrawalREQ.do")
+	public String withdrawalREQ(@RequestParam Map map,SessionStatus status,@ModelAttribute("pid")String pid) throws Exception {
+		
+		
+		service.withdrawal(map);
+	
+		//회원탈퇴 눌러서 왔으니 Accept를 D로 바꿔주자  D로 확인이 되는 회원은 로그인에서도 탈퇴 대기중이라고 변경해줘야함		
+		status.setComplete();
+		
+		//현재 메인페이지로 보내야 하는 부분이 임시적이기 때문에 여기 또한 임시로 메인으로 보냄
+		return "/index";
 	}
 	
 	

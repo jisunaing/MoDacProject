@@ -10,8 +10,8 @@
 
 	INSERT ALL INTO HOSPITAL(HOSNO,HOSADDR,HOSNAME,HOSPHONE)
 	VALUES(SEQ_JIHUNTEST.NEXTVAL,#{hosaddr},#{hosname},#{hosphone})	
-	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,PPHONE,SUBJECTLIST)
-	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{pphone},#{subjectlist})
+	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,PPHONE)
+	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{pphone})
 	SELECT * FROM DUAL
 		
 	</insert>
@@ -29,13 +29,11 @@
 	<select id="IsAccept" parameterType="java.util.Map" resultType="int">						
 		SELECT COUNT(*) FROM PARTNERS WHERE pid= #{pid}  AND ACCEPT = 'Y'		  		 	
 	</select> 
-	
-	
-	
+		
 	
 	<!-- 제휴회원 1명의 데이터 가져오기 -->
 	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
-	SELECT P.INFO,P.SUBJECTLIST,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
+	SELECT P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
 	</select>
 	
 	<update id="Partnerfirst" parameterType="java.util.Map">
@@ -47,12 +45,14 @@
 	
 	<update id="Partnersecond" parameterType="java.util.Map">
 	
-	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},SUBJECTLIST=#{subjectlist},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
+	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
 		
 	</update>
 	
 	<!-- 회원탈퇴에 따른 업데이트   -->
 	<update id="Partnerwithdrawal" parameterType="java.util.Map">
+	
+	
 	
 	<!-- 컬럼명 알아내면 그때 작업 하기 탈퇴이유 <- 이부분    -->
 	
@@ -60,13 +60,21 @@
 		
 	</update>
 	
+	
+	<!-- 해당되는 hosno에 진료과목 넣어주기 --> 
 	<insert id="PartnerSubjectList" parameterType="java.util.Map">
 	
 	INSERT INTO HOSSUBJECT VALUES(#{subjectcode},#{hosno})
 	
 	</insert>
 	
+	<!-- 특정회원에 따른 SubjectCode 가져오기 -->	
+	<select id="PartnerSubjectListAll" parameterType="java.util.Map" resultType="java.util.Map">
 	
+	SELECT h.subjectcode,h.hosno,subname FROM HOSSUBJECT H JOIN
+	SUBJECT S ON H.SUBJECTCODE = S.SUBJECTCODE  WHERE H.HOSNO = #{hosno}
+	
+	</select>
 	
 	
 	

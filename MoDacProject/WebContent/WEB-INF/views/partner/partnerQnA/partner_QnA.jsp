@@ -77,7 +77,7 @@
 						<tr style="background-color: #79ABFF;">
 						<th style="text-align: center" class="col-md-1" >글번호</th>
 							<th style="text-align: center" >제목</th>
-							<th style="text-align: center" class="col-md-2">아이디</th>
+							<th style="text-align: center" class="col-md-2">회원 아이디</th>
 							<th style="text-align: center" class="col-md-2">작성일</th>
 							<th style="text-align: center" class="col-md-1">답변 여부</th>						
 						</tr>
@@ -93,11 +93,11 @@
 						<tr>
 							<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
 							<td class="text-left">
-								 <a	href="<c:url value='/partner/partnerQnA/partner_QnA_View.do?no=${record.no}'/>">${record.title}</a>
+								 <a	href="<c:url value='/partner/partnerQnA/partner_QnA_View.do?qno=${record.qno}'/>">${record.title}</a>
 								 <span class="badge">${record.commentCount}</span>
 							</td>							
-							<td>아이디</td>
-							<td>${record.postadate}</td>
+							<td>${record.genid}</td>
+							<td>${record.postdate}</td>
 							<c:if test="${record.commentCount != 0}" var="commentCounts">
 							<td>답변 완료</td> <!--  답변여부 쪽 -->
 							</c:if>
@@ -119,7 +119,7 @@
 <!-- 검색용 UI -->
 <div class="row">
 	<div class="text-center">
-		<form class="form-inline" method="post"	action="<c:url value='/partner/partnerQnA/admin_QnA.do'/>">
+		<form class="form-inline" method="post"	action="<c:url value='/partner/partnerQnA/partner_QnAList.do'/>">
 			<div class="form-group">
 				<select name="searchColumn" class="form-control">
 					<option value="title">제목</option>
