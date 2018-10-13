@@ -61,15 +61,4 @@
 	<delete id="PartnerNAdminQnADelete" parameterType="java.util.Map">	
 	DELETE PQNA WHERE no = #{no}
 	</delete>
-	
-    
-  
-
-
-
-
-
-
-	
-	
 </mapper>

@@ -1,6 +1,6 @@
 package com.modu.modac.service;
 
-public class ReservationHistoryListDto {
+public class ReservationHistoryListDto {          
 	
 	private String resname;
 	private String resdate;

@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
  <script src="<c:url value='/js/jquery.fixedcontent.min.js'/>"></script>
-    
-
 <style>
 @media screen and (min-width: 767px) {
 	.container {

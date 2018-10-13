@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+             
 public class ReservationDto {
 	private String resname;
 	private String phone;
@@ -43,8 +43,5 @@ public class ReservationDto {
 	public void setRescontens(String rescontens) {
 		this.rescontens = rescontens;
 	}
-	
-	
-	
 	
 }

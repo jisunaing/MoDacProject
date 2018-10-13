@@ -16,7 +16,6 @@
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 <style>
-
 tr th{
 	text-align: center
 }

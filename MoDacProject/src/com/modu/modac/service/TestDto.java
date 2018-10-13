@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+                
 public class TestDto {
 	private String acol;
 	private String bcol;

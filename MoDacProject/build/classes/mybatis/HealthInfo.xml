@@ -24,8 +24,4 @@
 	<select id="HealthInfoOne" parameterType="java.util.Map" resultType="HealthInfoDto">
 		SELECT title, content, image FROM healthinfo WHERE healthinfono = #{healthinfono}
 	</select>
-	
-	
-	
-	
 </mapper>

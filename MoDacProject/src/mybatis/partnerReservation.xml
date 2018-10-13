@@ -106,5 +106,4 @@
 	<update id="reservationListNo" parameterType="java.util.Map">
 	UPDATE RESERVATION SET RECACCEPT = '예약거절' WHERE RECNUM= ${resnum}
 	</update>	
-	
 </mapper>

@@ -14,27 +14,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- font적용)https://fonts.google.com/?subset=korean -->
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
-<!-- 이페이지안에서만 쓰는 파일들 -->
-<!-- SLIDE~ -->
-<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet">
-<link href="dist/camroll_slider.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
-<script src="dist/camroll_slider.js"></script>
-<!-- ~SLIDE -->
 
-<!-- scrolle effect~ -->
-<link href="css/parallax.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
-<!-- ~scroll effect -->
-<!-- ~이페이지안에서만 쓰는 파일들 -->
 
 <title>모두의닥터</title>	
 <!--[if lt IE 9]>
@@ -62,22 +47,6 @@
 		height:200px;
 	}
     </style>
-    <script>
-	$(function(){
-		$("#my-slider").camRollSlider();
-		// 슬라이더
-		var _gaq = _gaq || []; 
-		_gaq.push(['_setAccount', 'UA-36251023-1']);
-		_gaq.push(['_setDomainName', 'jqueryscript.net']);
-		_gaq.push(['_trackPageview']);
-		
-		(function() {
-		  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	});	 		
-</script>
   </head>
   <body>
 	    <!-- 네비게이션바 시작 -->

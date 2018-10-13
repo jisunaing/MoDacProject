@@ -13,13 +13,10 @@ tr th{
 	margin-left: 8%;
 	padding-top:20px;
 }
-
 #edit{
 	align-self: center
 }
 </style>
-
-
 <!-- body 시작 -->
 <div class="container">
 	<div class="main_column">

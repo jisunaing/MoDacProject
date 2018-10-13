@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+                 
 import java.util.List;
 import java.util.Map;
 
@@ -39,5 +39,9 @@ public interface PartnerService {
 	
 	//탈퇴 신청용
 	int withdrawal(Map map);
+
+	List<Map> hospitalReservationList(Map map);
+	List<Map> hospitalReceiptList(Map map);
+	
 	
 }

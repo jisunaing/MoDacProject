@@ -66,8 +66,6 @@
                   <a href="<c:url value="/partner/withdrawal/partner_withdrawal.do"/>"><i class="fa fa-circle-o"></i>제휴 탈퇴 신청</a>
                   </li>
                </ul></li>
-               
-               
             </ul>
          </section>
       </aside>

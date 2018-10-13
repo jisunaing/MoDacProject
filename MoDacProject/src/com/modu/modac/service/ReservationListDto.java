@@ -1,4 +1,4 @@
-package com.modu.modac.service;
+package com.modu.modac.service;            
 
 public class ReservationListDto {
 	
@@ -30,8 +30,4 @@ public class ReservationListDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
 }

@@ -19,7 +19,6 @@ form{
 #hr{
 	margin-left: 40%
 }
-
 </style>
 <script>
 //생일 가져와서 년,월,일로 select에 넣어주기 위한 제이쿼리

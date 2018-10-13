@@ -1,6 +1,6 @@
 package com.modu.modac.service;
 
-public class ReceptionHistoryListDto {
+public class ReceptionHistoryListDto {              
 	
 	private String recname;
 	private String recdate;

@@ -7,7 +7,6 @@
   <meta charset="UTF-8">
 
   <title> 병원 정보_상세보기 </title>
-  	
     <!-- 부트스트랩 -->
     <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 

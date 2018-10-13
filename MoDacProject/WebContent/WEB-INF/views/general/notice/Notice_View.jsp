@@ -4,7 +4,6 @@
 
 <title>사이트 문의하기</title>
 <style>
-
 tr th{
 	text-align: center;
 }

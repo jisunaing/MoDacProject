@@ -1,5 +1,5 @@
 package com.modu.modac.service.impl;
-
+               
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
@@ -15,8 +15,18 @@ public class PartnerDao implements PartnerService {
 	private SqlSessionTemplate template;
 
 	@Override
-	public boolean isMember(Map map) {
+	public List<Map> hospitalReservationList(Map map) {
+		return template.selectList("hospitalReservationList", map);
+	}
+
+	@Override
+	public List<Map> hospitalReceiptList(Map map) {
 		
+		return template.selectList("hospitalReceiptList", map);
+	}
+
+	@Override
+	public boolean isMember(Map map) {
 		
 		int count =template.selectOne("PartnerIsMember",map);
 		return count==1 ? true : false ;
@@ -89,12 +99,4 @@ public class PartnerDao implements PartnerService {
 		
 		return template.selectList("PartnerSubjectListAll",map);
 	}
-
-
-
-	
-
-	
-	
-	
 }

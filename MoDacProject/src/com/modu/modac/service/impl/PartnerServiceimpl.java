@@ -1,5 +1,5 @@
 package com.modu.modac.service.impl;
-
+              
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +14,16 @@ public class PartnerServiceimpl implements PartnerService {
 	@Resource(name="partnerDao")
 	private PartnerDao partnerdao;
 
+
+	@Override
+	public List<Map> hospitalReservationList(Map map) {
+		return partnerdao.hospitalReservationList(map);
+	}
+
+	@Override
+	public List<Map> hospitalReceiptList(Map map) {
+		return partnerdao.hospitalReceiptList(map);
+	}
 	
 	@Override
 	public boolean isMember(Map map) {
@@ -90,14 +100,5 @@ public class PartnerServiceimpl implements PartnerService {
 		
 		return partnerdao.subjectListAll(map);
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 
 }//PartnerServiceimpl

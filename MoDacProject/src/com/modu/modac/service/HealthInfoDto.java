@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+            
 public class HealthInfoDto {
 	
 	private String healthinfono;
@@ -53,9 +53,4 @@ public class HealthInfoDto {
 		this.image = image;
 	}
 
-	
-	
-	
-	
-	
 }

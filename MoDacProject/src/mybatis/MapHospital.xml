@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.MapHospital">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="MapHospitalDtoResult" type="MapHospitalDto">
+		<result property="hosno" column="hosno"/>
+		<result property="hosaddr" column="hosaddr"/>
+		<result property="hosname" column="hosname"/>
+		<result property="hosphone" column="hosphone"/>
+		<result property="mon" column="mon"/>
+		<result property="tue" column="tue"/>
+		<result property="wed" column="wed"/>
+		<result property="thu" column="thu"/>
+		<result property="fri" column="fri"/>
+		<result property="sat" column="sat"/>
+		<result property="sun" column="sun"/>
+		<result property="holiday" column="holiday"/>
+		<result property="subjectcode" column="subjectcode"/>
+		<result property="subname" column="subname"/>
+		<result property="pid" column="pid"/>
+		<result property="lunch" column="lunch"/>
+		<result property="pwebsite" column="pwebsite"/>
+	</resultMap>
+	<!-- 쿼리 작성 -->
+	<select id="HospitalList" parameterType="java.util.Map" resultType="MapHospitalDto">
+		<if test="subname != null">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE SB.SUBNAME = #{subname}
+			<if test="partner != null">
+				AND PT.pid IS NOT NULL
+			</if>
+			<if test="address != null">
+				AND HP.hosaddr LIKE '%' || #{address} || '%'
+			</if>
+		</if>
+		<if test="hosname != null">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE HP.hosname LIKE '%' || #{hosname} || '%' 
+			AND SB.SUBNAME = #{subjectname}
+		</if>
+	</select>
+	
+	<select id="HospitalOne" parameterType="java.util.Map" resultType="MapHospitalDto">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE SB.SUBNAME = #{subname}
+	</select>
+	
+	
+	
+	
+</mapper>

@@ -7,7 +7,6 @@
 	border: solid 1px black;
 	width: 20%
 }
-
 form {
 	padding-left: 12%
 }

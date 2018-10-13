@@ -1,5 +1,5 @@
 package com.modu.modac.service.impl;
-
+                
 import java.util.List;
 import java.util.Map;
 
@@ -48,4 +48,7 @@ public class ReservationDao implements ReservationService{
 		return template.selectList("receiptList", map);
 	}
 
+	@Override
+	public void reservationDelete(Map map) {
+	}
 }
