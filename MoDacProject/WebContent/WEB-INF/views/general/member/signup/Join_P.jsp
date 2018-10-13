@@ -172,15 +172,15 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 												
 												  <li class="ui-state-default" value="3">내과</li>
 												
-												  <li class="ui-state-default" value="4" >마취통증과</li> 
+												  <li class="ui-state-default" value="4" >마취통증의학과</li> 
 												
-												  <li class="ui-state-default" value="5">비뇨기과</li>
+												  <li class="ui-state-default" value="5">비뇨의학과</li>
 												
 												  <li class="ui-state-default" value="6">산부인과</li>
 												
 												  <li class="ui-state-default" value="7">성형외과</li>
 												
-												  <li class="ui-state-default" value="8">소아과</li>
+												  <li class="ui-state-default" value="8">소아청소년과</li>
 												  
 												  <li class="ui-state-default" value="9">신경외과</li>
 												  
@@ -194,7 +194,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 												
 												  <li class="ui-state-default" value="14">재활의학과</li>
 												
-												  <li class="ui-state-default" value="15">정신건강과</li>
+												  <li class="ui-state-default" value="15">정신건강의학과</li>
 												  
 												  <li class="ui-state-default" value="16">정형외과</li>
 												  
@@ -225,7 +225,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						    
 						    <label for="hosphone" class="col-sm-pull-1 col-sm-2  control-label">연락처</label>
 							<div class="col-sm-2 col-sm-pull-1">
-								<input type="text" class=" form-control" name="hosphone" id="hosphone" placeholder="연락처를 입력하세요">
+								<input type="text" class=" form-control" name="pphone" id="pphone" placeholder="연락처를 입력하세요">
+								<input type="hidden" class=" form-control" name="hosphone" id="hosphone" value="02-123-4567">
 							</div>
 						  </div>
 						  

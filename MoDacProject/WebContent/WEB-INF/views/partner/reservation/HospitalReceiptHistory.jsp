@@ -106,15 +106,16 @@ tbody tr:nth-child(even) {
 						</tr>
 						</c:if>
 						<c:if test="${not isEmpty}">
-						<c:forEach var="record" items="${list}" varStatus="loop">
+						<c:forEach var="list" items="${list}" varStatus="loop">
 						<tr>
-							<a href="<c:url value='/partner/hospital/ReceiptHistoryViewMove.do?recnum=${recnum}&where=${moveWhere}'/>">
-							<td>${record.recname}</td>
-							<td>${record.recdate}</td>
-							<td>${record.phone}</td>
-							<td>${record.email}</td>
-							<td>${record.recaccept}</td>
+							<a href="<c:url value='/partner/hospital/ReceiptHistoryViewMove.do?fno=${fno}&recnum=${recnum}&where=${moveWhere}'/>">
+							<td>${list.recname}</td>
 							</a>
+							<td>${list.recdate}</td>
+							<td>${list.phone}</td>
+							<td>${list.email}</td>
+							<td>${list.recaccept}</td>
+							
 						</tr>
 						</c:forEach>
 						</c:if>

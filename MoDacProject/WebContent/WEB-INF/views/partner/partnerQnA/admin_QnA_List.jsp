@@ -100,10 +100,12 @@
 							 <span class="badge">${record.commentCount}</span>
 							</td>							
 							<td>${record.postadate}</td>
-							<c:if test="${record.commentCount != 0}">
+							<c:if test="${record.commentCount != 0}" var="commentCounts">
 							<td>답변 완료</td> <!--  답변여부 쪽 -->
-							</c:if> 
+							</c:if>
+							<c:if test="${!commentCounts}">
 							<td>답변 대기중</td> <!--  답변여부 쪽 -->
+							</c:if> 
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -111,6 +113,34 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 아래는 페이징 -->
+<div class="row">
+	<div>${pagingString}</div>
+</div>
+<!-- 검색용 UI -->
+<div class="row">
+	<div class="text-center">
+		<form class="form-inline" method="post"
+			action="<c:url value='/partner/partnerQnA/admin_QnA.do'/>">
+			<div class="form-group">
+				<select name="searchColumn" class="form-control">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input type="text" name="searchWord" class="form-control" />
+			</div>
+			<button type="submit" class="btn btn-primary">검색</button>
+
+		</form>
+	</div>
+</div>
+	
+	
+	
+	
 	
 </div>
 <!-- container -->

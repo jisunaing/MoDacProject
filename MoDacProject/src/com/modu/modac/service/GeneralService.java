@@ -9,7 +9,8 @@ public interface GeneralService {
 	//로그인 용]
 	boolean isMember(Map map);
 	//회원 상세보기용]
-	GenmemberDto selectOne(Map map);		
+	GenmemberDto selectOne(GenmemberDto dto);	
+	GenfamilyDto selectOne(GenfamilyDto dto);	
 	//목록용]
 	List<GenmemberDto> selectList(Map map);
 	//전체 레코드 수]
@@ -19,8 +20,5 @@ public interface GeneralService {
 	int delete(Map map);
 	int insert(Map map);
 	int update(Map map);
-	
-	int insert(GenmemberDto dto);
-	int delete(GenmemberDto dto);
-	int update(GenmemberDto dto);
+
 }

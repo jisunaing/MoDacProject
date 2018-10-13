@@ -29,7 +29,7 @@ tr th{
 	  <div class="panel-body">
 	  	<div class="page-header text-center">
 			<h2>
-				${USER_ID}님의 회원정보 <small> 개인정보</small>
+				${personalinfo.genname}님의 회원정보 <small> 개인정보</small>
 			</h2>
 			<br/>
 		</div>
@@ -38,10 +38,10 @@ tr th{
 		  <table class="table table-bordered ">
 		  	<tr >
 		  		<th class="col-sm-2" style="text-align: center">
-		  			이름
+		  			아이디
 		  		</th>
 		  		<td class="col-sm-5">
-		  			홍길동
+		  			${personalinfo.genid}
 		  		</td>
 		  	</tr>
 		  	<tr>
@@ -49,7 +49,7 @@ tr th{
 		  			비밀번호
 		  		</th>
 		  		<td>
-		  			****   
+		  			${personalinfo.pwd}   
 		  		</td>
 		  	</tr>
 		  	<tr>
@@ -57,15 +57,15 @@ tr th{
 		  			생년월일
 		  		</th>
 		  		<td>
-		  			1998-08-19
+		  			${personalinfo.birthdate}
 		  		</td>
 		  	</tr>
 		  	<tr>
 		  		<th>
-		  			생별
+		  			성별
 		  		</th>
 		  		<td>
-		  			여자
+		  			${personalinfo.gender}
 		  		</td>
 		  	</tr>
 		  	<tr>
@@ -73,7 +73,7 @@ tr th{
 		  			이메일
 		  		</th>
 		  		<td>
-		  			email@gmail.com
+		  			${personalinfo.email}
 		  		</td>
 		  	</tr>
 		  	<tr>
@@ -81,14 +81,14 @@ tr th{
 		  			주소
 		  		</th>
 		  		<td>
-		  			가산동
+		  			${personalinfo.addr}
 		  		</td>
 		  	</tr>
 		  </table>
 		  <br/><br/>
 		  <div class="row">
-		  	<a class="btn btn-warning col-sm-offset-4" href="<c:url value='/general/mypage/personalinfo_edit.do'/>" >수정하기</a>
-		  	<a class="btn btn-warning" href="#" >탈퇴하기</a>
+		  	<a class="btn btn-warning col-sm-offset-4" href="<c:url value='/general/mypage/personalinfoEdit.do'/>" >수정하기</a>
+		  	<a class="btn btn-warning" href="<c:url value='/general/mypage/personalinfoWithdraw.do'/>" >탈퇴하기</a>
 		  </div>
 		  <br/><br/><br/>
 		</div>

@@ -54,7 +54,6 @@ table td{
 #top2{
  border:1px solid black;
 }
-   
 
 /*테이블 센터를 위한 css 끝*/
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
@@ -106,6 +105,26 @@ table td{
 								<th class="col-md-2 text-center">예약시간</th>
 								<td>${record.recdate}${record.resdate}</td>
 							</tr>
+							<tr>
+								<th class="col-md-2 text-center">신장</th>
+								<td>${Healthstate.height}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">몸무게</th>
+								<td>${Healthstate.weight}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">현재 복용 중인 약</th>
+								<td>${Healthstate.medicine}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">혈액형</th>
+								<td>${Healthstate.bloodtype}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">기타</th>
+								<td>${Healthstate.ect}</td>
+							</tr>	
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>
 							</tr>

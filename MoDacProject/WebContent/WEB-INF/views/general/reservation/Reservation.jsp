@@ -60,16 +60,13 @@ table{
 	<script type="text/javascript">
     $(document).ready( function () {
         $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko'});
-
     })
-    
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
 	<script>
 	$(function(){
 		$( "#tabletoggles" ).hide();
-		
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
 				var text = $('input:eq(0)').val();
@@ -79,13 +76,10 @@ table{
 		});
 		$('label').css('minWidth', '90px');
 		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#recname').val($('#names').html());
+			$('#resname').val($('#names').html());
 			$('#phone').val($('#phones').html());
-			$('#email').val($('#emails').html());
+			$('#fno').val($('#fnos').html());
 		});
-		
-		
-
 	});
 	</script>
 <div class="container">
@@ -104,21 +98,25 @@ table{
 					<tr>
 						<th>이름</th>
 						<th>전화번호</th>
-						<th>이메일</th>
 						<th>생년월일</th>
 					</tr>
+					<c:if test="${empty list}" var="isMember">
 					<tr id="nameUrl">
-						<td id="names">홍길동</td>
-						<td id="phones">01077777777</td>
-						<td id="emails">abcd1234@naver.com</td>
-						<td id="birthdays">1967-08-30</td>
+						<td></td>
+						<td>등록된 가족 정보가 없습니다</td>
+						<td></td>
 					</tr>
-					<tr>
-						<td>나길동</td>
-						<td>010-7777-7777</td>
-						<td>grdawf777@naver.com</td>
-						<td>1989-01-21</td>
+					</c:if>
+					<c:if test="${not isMember}">
+					<c:forEach items="${list}" var="list">
+					<tr id="nameUrl">
+						<input type="hidden" value="${list.fno}" id="fnos">
+						<td id="names">${list.fname}</td>
+						<td id="phones">${list.fphone}</td>
+						<td id="birthdays">${fbirthdate}</td>
 					</tr>
+					</c:forEach>
+					</c:if>
 				</table>
 			</div>
 		</div>
@@ -126,11 +124,13 @@ table{
 		<form class="form-horizontal" action="<c:url value='/general/receipt/ReservationListResult.do?date=${date}'/>">
 		<input type="hidden" id="genid" value="${genid}">
 		<input type="hidden" id="pid" value="${id}">
+		<input type="hidden" id="addr" value="${addr}">
+		<input type="hidden" id="fno" value="${fno}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="recname" name="recname">
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력"id="resname" name="resname"value="${genname}">
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -138,7 +138,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone">
+					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone" value="${phone}">
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
@@ -149,7 +149,6 @@ table{
 					<div class="size3">
 						<div id="picker"></div>
 						<input type="hidden"  id="result" name="resdate"/>
-						
 					</div>
 				</div>
 			</div>
@@ -158,7 +157,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control size4" placeholder="이메일 입력"id="email" name="email">
+					<input type="email" class="form-control size4" placeholder="이메일 입력"id="email" name="email" value="${email}">
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->
@@ -166,7 +165,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">상담내용</label>
 				<div class="col-sm-10">
-					<textarea class="form-control size5" rows="10" id="contens" name="contens"></textarea>
+					<textarea class="form-control size5" rows="10" id="rescontents" name="rescontents"></textarea>
 				</div>
 			</div>
 			<!-- 예약자 상담내용 -->
@@ -174,8 +173,6 @@ table{
 			<span>개인정보 수집 및 사용에 동의합니다</span><br /><br />
 			<button type="submit" class="btn btn-default" id="receipt">예약</button>
 		</form>
-
-
 		<!-- 가운데 정렬 끝 -->
 		</div>
 	</div>

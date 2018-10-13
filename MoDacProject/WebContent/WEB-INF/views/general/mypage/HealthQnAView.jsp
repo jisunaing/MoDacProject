@@ -53,26 +53,30 @@ tr th {
 					<table class="table table-striped table-bordered" style="width: 80%; margin-left:10%">
 						<tr>
 							<th class="col-md-2 text-center">번호</th>
-							<td>1</td>
+							<td>${healthquestion.qno}</td>
 						</tr>
 						<tr>
 							<th class="col-md-2 text-center">제목</th>
-							<td>제목</td>
+							<td>${healthquestion.title}</td>
+						</tr>
+						<tr>
+							<th class="col-md-2 text-center">증상 관련 진료 과목</th>
+							<td>${healthquestion.subname}</td>
 						</tr>
 						<tr>
 							<th class="col-md-2 text-center">작성자</th>
-							<td>홍길동</td>
+							<td>${healthquestion.genname}</td>
 						</tr>
 
 						<tr>
 							<th class="col-md-2 text-center">등록일</th>
-							<td>2018-08-08</td>
+							<td>${healthquestion.postdate}</td>
 						</tr>
 						<tr>
 							<th colspan="2" class="text-center">내용</th>
 						</tr>
 						<tr>
-							<td colspan="2" class="text-center">내용입니다</td>
+							<td colspan="2" class="text-center">${healthquestion.qcontent}</td>
 						</tr>
 
 					</table>
@@ -211,10 +215,10 @@ tr th {
 			</div>
 			<!-- 테이블 끝 -->
 
-			<br />
-			<br />
-			<br />
-			<br />
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		</div>
 	</div>
 	<!-- 사이드 바 -->

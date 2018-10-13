@@ -51,19 +51,38 @@ form {
 				<br />
 				<br />
 				<div class="row">
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post"action="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>">
 
 						<div class="form-group">
-							<label for="title" class="col-sm-2  control-label">제목</label>
+							<label class="col-sm-2  control-label">제목</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+								<input type="text" class="form-control" name="title" placeholder="제목을 입력하세요">
 							</div>
 						</div>
-
+						<div class="form-group">
+					<label for="subjectcode" class="col-sm-3 control-label">관련 진료 과목</label>
+					<div class="col-sm-6">
+					    <select class="form-control" name="subjectcode">
+						  <option>증상과 관련된 진료과목을 선택하세요</option>
+						  <option value="0">모름</option>
+						  <option value="10">가정의학과</option>
+						  <option value="20">결핵과</option>
+						  <option>치과</option>
+						  <option>05</option>
+						  <option>06</option>
+						  <option>07</option>
+						  <option>08</option>
+						  <option>09</option>
+						  <option>10</option>
+						  <option>11</option>
+						  <option>12</option>
+						</select>
+					</div>
+				</div>
 						<div class="form-group">
 							<label for="content" class="col-sm-2  control-label">내용</label>
 							<div class="col-sm-7">
-								<textarea id="summernote" name="editordata"></textarea>
+								<textarea class="form-control" cols="30" rows="10" name="qcontent"></textarea>
 							</div>
 						</div>
 						<div class="form-group">

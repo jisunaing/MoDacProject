@@ -37,35 +37,35 @@
 			<div class="row">
 				<div class="text-center">
 					<div class="container">
-						<a id="qna"
-							href="<c:url value='/general/qna/qnahealth/health_qna_write.do'/>"
+						<a id="qna" href="<c:url value='/general/qna/qnahealth/healthQnaWrite.do'/>"
 							class="col-md-offset-10  btn btn-success"
 							style="width: 120px; color: black">문의하기</a>
 						<table class="table">
 							<thead>
 								<tr>
-									<th style="text-align: center">작성일</th>
+									<th class="col-md-2" style="text-align: center">번호</th>
+									<th class="col-md-2" style="text-align: center">작성일</th>
 									<th style="text-align: center">제목</th>
-									<th style="text-align: center">답변여부</th>
+									<th class="col-md-2" style="text-align: center">답변여부</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="success">
-									<td>2018-09-15</td>
-									<td><a style="color: black"
-										href="<c:url value='/general/qna/qnahealth/health_qna_view.do'/>">제목1</a></td>
-									<td>답변완료</td>
+							<c:if test="${empty requestScope.list }" var="isEmpty">
+								<tr>
+									<td colspan="4">등록된 게시물이 없어요</td>
 								</tr>
-								<tr class="danger">
-									<td>2018-09-15</td>
-									<td>제목2</td>
-									<td>답변 준비중</td>
-								</tr>
-								<tr class="success">
-									<td>2018-09-15</td>
-									<td>제목3</td>
-									<td>답변완료</td>
-								</tr>
+							</c:if>
+							<c:if test="${not isEmpty }">
+								<c:forEach var="record" items="${list}" varStatus="loop">
+									<tr class="success">
+										<td>${record.qno}</td>
+										<td>${record.postdate}</td>
+										<td><a style="color: black" href="<c:url value='/general/qna/qnahealth/healthQnaView.do?qno=${record.qno}'/>">${record.title}</a></td>
+										<td>답변완료</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+								
 							</tbody>
 						</table>
 					</div>

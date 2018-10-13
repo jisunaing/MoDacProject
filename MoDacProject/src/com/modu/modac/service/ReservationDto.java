@@ -5,8 +5,8 @@ public class ReservationDto {
 	private String phone;
 	private String email;
 	private String resdate;
+	private String recaccept;
 	private String rescontens;
-	
 	public String getResname() {
 		return resname;
 	}
@@ -31,14 +31,17 @@ public class ReservationDto {
 	public void setResdate(String resdate) {
 		this.resdate = resdate;
 	}
+	public String getRecaccept() {
+		return recaccept;
+	}
+	public void setRecaccept(String recaccept) {
+		this.recaccept = recaccept;
+	}
 	public String getRescontens() {
 		return rescontens;
 	}
 	public void setRescontens(String rescontens) {
 		this.rescontens = rescontens;
 	}
-	
-	
-	
 	
 }

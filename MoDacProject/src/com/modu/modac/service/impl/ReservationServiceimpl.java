@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.modu.modac.service.ReceptionDto;
+import com.modu.modac.service.ReservationDto;
 import com.modu.modac.service.ReservationService;
 
 @Service("reservationService")
@@ -38,15 +40,17 @@ public class ReservationServiceimpl implements ReservationService {
 	}
 
 	@Override
-	public List<Map> reservationList(Map map) {
+	public List<ReservationDto> reservationList(Map map) {
 		return dao.reservationList(map);
 	}
 
 	@Override
-	public List<Map> receiptList(Map map) {
+	public List<ReceptionDto> receiptList(Map map) {
 		return dao.receiptList(map);
 	}
 
-
+	@Override
+	public void reservationDelete(Map map) {
+	}
 
 }

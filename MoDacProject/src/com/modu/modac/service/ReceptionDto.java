@@ -5,9 +5,8 @@ public class ReceptionDto {
 	private String phone;
 	private String email;
 	private String recdate;
+	private String resaccept;
 	private String reccontens;
-	
-	
 	public String getRecname() {
 		return recname;
 	}
@@ -32,12 +31,16 @@ public class ReceptionDto {
 	public void setRecdate(String recdate) {
 		this.recdate = recdate;
 	}
+	public String getResaccept() {
+		return resaccept;
+	}
+	public void setResaccept(String resaccept) {
+		this.resaccept = resaccept;
+	}
 	public String getReccontens() {
 		return reccontens;
 	}
 	public void setReccontens(String reccontens) {
 		this.reccontens = reccontens;
 	}
-	
-	
 }

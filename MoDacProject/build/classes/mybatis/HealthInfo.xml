@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.HealthInfo">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="HealthInfoDtoResult" type="HealthInfoDto">
+		<result property="healthinfono" column="healthinfono"/>
+		<result property="categno" column="categno"/>
+		<result property="categname" column="categname"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="postdate" column="postdate"/>
+		<result property="image" column="image"/>
+	</resultMap>
+	
+	<!-- 쿼리 작성 -->
+	<select id="HealthInfoList" parameterType="java.util.Map" resultType="HealthInfoDto">
+		SELECT HI.*, HC.CATEGNAME FROM HEALTHINFO HI 
+		JOIN HEALTHINFOCATEGORY HC ON HI.CATEGNO = HC.CATEGNO 
+		WHERE HI.CATEGNO = #{categno}
+	</select>
+	
+	<select id="HealthInfoOne" parameterType="java.util.Map" resultType="HealthInfoDto">
+		SELECT title, content, image FROM healthinfo WHERE healthinfono = #{healthinfono}
+	</select>
+	
+	
+	
+	
+</mapper>

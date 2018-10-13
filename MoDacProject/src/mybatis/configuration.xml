@@ -8,6 +8,10 @@
 <configuration>
 	<!-- 자바빈별칭: 매퍼파일에서 환결설정 파일로 위치됨 -->
 	<typeAliases>
+		<typeAlias type="com.modu.modac.service.PartnerNGeneralQNADto"  alias="PartnerNGeneralQNADto"/>
+		<typeAlias type="com.modu.modac.service.GenfamilyDto" alias="genfamilyDto"/>
+		<typeAlias type="com.modu.modac.service.HealthstateDto" alias="healthstateDto"/>
+		<typeAlias type="com.modu.modac.service.HealthquestionDto" alias="healthquestionDto"/>
 		<typeAlias type="com.modu.modac.service.TestDto" alias="testDto"/> 
 		<typeAlias type="com.modu.modac.service.GenmemberDto" alias="genmemberDto"/> 
 		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
@@ -22,6 +26,7 @@
 		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>
+		<typeAlias type="com.modu.modac.service.HealthInfoDto" alias="HealthInfoDto"/>
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
@@ -33,16 +38,20 @@
 		매퍼파일(sql쿼리와 자바빈 매핑) 정보 설정
 	-->
 	<mappers>
-
-		<mapper resource="mybatis/Test.xml" />
+		<mapper resource="mybatis/Genfamily.xml"/>
+		<mapper resource="mybatis/Healthstate.xml"/>
+		<mapper resource="mybatis/Healthquestion.xml"/>
+		<mapper resource="mybatis/partnerReservation.xml"/>
+		<mapper resource="mybatis/Test.xml"/>
+		<mapper resource="mybatis/PartnerNGeneralQnA.xml"/>
 		<mapper resource="mybatis/Genmember.xml" />
 		<mapper resource="mybatis/MapHospital.xml" />
 		<mapper resource="mybatis/MapPharmacy.xml" />
 		<mapper resource="mybatis/MapNightPharmacy.xml" />
 		<mapper resource="mybatis/Reservation.xml" />
-		<mapper resource="mybatis/partnerReservation.xml" />		
 		<mapper resource="mybatis/Partner.xml"/>
 		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
 		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
+		<mapper resource="mybatis/HealthInfo.xml"/>
 	</mappers>
 </configuration>

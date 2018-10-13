@@ -20,7 +20,7 @@ public class ChartDao implements ChartService {
 	
 	public List<String> dayList(Map map) {
 
-		return template.selectOne("chartList",map);
+		return template.selectList("chartList",map);
 
 	}
 

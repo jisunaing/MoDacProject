@@ -20,13 +20,11 @@
 
 <style>
 
-
-
 .form-box {
 	background-color:white;
 	padding: 20px;
-	width: 900px;
-	height: 930px;	
+	width: 1000px;
+	height: auto;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -60,11 +58,11 @@ tr th{
 </style>
 </head>
 <script>
-	
+	var datalenths;
 	//해당 글번호에 대한 코멘트 목록을 가져오는 함수 
 	var showComments = function(key){		
 		$.ajax({
-			url:"<c:url value='/Comment/List.bbs'/>",
+			url:"<c:url value='/partner/partnerQnA/CommentList.do'/>",
 			data:{no:key},
 			dataType:'json',
 			type:'post',
@@ -75,23 +73,24 @@ tr th{
 	//data는 아래 형태로 
 	//[{"NO":2,"ONELINECOMMENT":"댓글2","CPOSTDATE":"2018-09-12","CNO":3,"ID":"LEE","NAME":"이길동"},{"NO":2,"ONELINECOMMENT":"댓글1","CPOSTDATE":"2018-09-12","CNO":2,"ID":"PARK","NAME":"박길동"}]
 	var displayComments	 = function(data){
+		datalenths = data.length;
 		console.log(JSON.stringify(data));
-		var commentString="<h2>한줄 댓글 목록</h2>";
-		commentString+='<table class="table table-bordered">';
-		commentString+='<tr><th width="15%">작성자</th><th width="50%">코멘트</th><th width="20%">작성일</th><th>삭제</th></tr>';
+		var commentString='<h2 style="text-align: center;">댓글 목록</h2>';
+		commentString+='<table class="table table-bordered" style="text-align: center;">';
+		commentString+='<tr><th width="15%">작성자</th><th width="50%">댓글 내용</th><th width="20%">등록일</th><th>삭제 여부</th></tr>';
 		if(data.length==0){
 			commentString+="<tr><td colspan='4'>등록된 댓글이 없어요</td></tr>";
 		}
 		$.each(data,function(index,comment){			
-			commentString+='<tr><td>'+comment['pid']+'</td>';
-			if('${sessionScope.id}' != comment["pid"])
-				commentString+='<td align="left">'+comment['rcontents']+'</td>'; 
+			commentString+='<tr><td>'+comment['PID']+'</td>';
+			if('${sessionScope.pid}' != comment["PID"])
+				commentString+='<td align="left">'+comment['RCONTENTS']+'</td>'; 
 			else
-				commentString+='<td align="left"><span style="cursor:pointer" class="commentEdit" title="'+comment["CNO"]+'">'+comment['rcontents']+'</span></td>'; 		
+				commentString+='<td align="center;"><span style="cursor:pointer" class="commentEdit" title="'+comment["RNO"]+'">'+comment['RCONTENTS']+'</span></td>'; 		
 			commentString+='<td>'+comment['REPLYDATE']+'</td>';
 			commentString+='<td>';
-			if('${sessionScope.id}' == comment["pid"])
-				commentString+='<span  class="commentDelete" title="'+comment["CNO"]+'" style="cursor: pointer; color: green; font-size: 1.4em; font-weight: bold">삭제</span>';
+			if('${sessionScope.pid}' == comment["PID"])
+				commentString+='<span  class="commentDelete" title="'+comment["RNO"]+'" style="cursor: pointer; color: green; font-size: 1.4em; font-weight: bold">삭제</span>';
 			else
 				commentString+='<span style="color: gray; font-size: 0.7em; font-weight: bold">삭제불가</span>';
 			commentString+='</td></tr>';
@@ -111,16 +110,16 @@ tr th{
 			$('#submit').val('수정');
 			
 			//form의 hidden속성중 name="cno"값 설정
-			$('input[name=cno]').val($(this).attr("title"));
+			$('input[name=rno]').val($(this).attr("title"));
 			
 		});
 		
 		$('.commentDelete').click(function(){			
-			var cno_value = $(this).attr("title");
+			var rno_value = $(this).attr("title");
 			
 			$.ajax({
-				url:"<c:url value='/Comment/Delete.bbs'/>",
-				data:{cno:cno_value,no:${record.no} },
+				url:"<c:url value='/partner/partnerQnA/CommentDelete.do'/>",
+				data:{rno:rno_value,no:${record.no}},
 				dataType:'text',
 				type:'post',
 				success:function(key){					
@@ -140,16 +139,27 @@ tr th{
 		//페이지 로드시 코멘트 목록 뿌려주기
 		showComments(${record.no});
 	
-		
+		var incre = 930;
 		
 		//코멘트 입력처리]
 		$('#submit').click(function(){	
 			
-			if($(this).val()=='등록')
-				var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.no}'/>";
-			else
-				var action="<c:url value='/Comment/Edit.bbs'/>";	
-			
+			if($(this).val()=='등록'){
+				
+				if(datalenths > 2){
+					
+					$(".form-box").css("height",incre);
+					
+					var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.no}'/>";	
+					
+				}
+				
+				
+				var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.no}'/>";								
+			}						
+			else{
+				var action="<c:url value='/partner/partnerQnA/CommentEdit.do'/>";	
+			}
 			$.ajax({
 				url:action,
 				data:$('#frm').serialize(),
@@ -159,12 +169,17 @@ tr th{
 					showComments(key);
 					if($('#submit').val()=='수정'){						
 						$('#submit').val('등록');
+						$('#title').val('');						
+					}
+					else{
 						$('#title').val('');
+						
+						
 					}
 					
 				}		
 			});		
-			
+			incre+=32;
 		});
 		
 		//메모글 삭제처리]
@@ -248,8 +263,12 @@ tr th{
 			<div class="row">
 				<h3 class="text-center">관리자와 소통하세요!</h3>
 				<br/>
-				<form class="form-inline" id="frm">
+				<form class="form-inline" id="frm" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<input type="hidden" name="no" value="${record.no}" />
+				
 					<!-- 수정 및 삭제용 파라미터 -->
+					<input type="hidden" name="rno" />
 					<input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="rcontents" />
 					<input class="btn btn-success" 	id="submit" type="button" value="등록" />
 		

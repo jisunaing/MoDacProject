@@ -42,15 +42,14 @@ form {
 					<p class="secondary-heading">접수를 더욱 편리하게 하기 위하여 회원님의 건강관련 정보를
 						등록하세요</p>
 					<br />
-					<hr align="center" style="border: 1px solid lightgray" width="20%"
-						id="hr">
+					<hr align="center" style="border: 1px solid lightgray" width="20%" id="hr">
 					<br />
 					<br />
 				</div>
 				<form class="form-horizontal">
 					<label for="id" class="col-sm-3 control-label">혈액형</label>
 					<div class="col-sm-4">
-						<select class=" form-control" id="select">
+						<select class=" form-control" id="select" >
 							<option>혈액형을 입력하세요</option>
 							<option>A</option>
 							<option>B</option>

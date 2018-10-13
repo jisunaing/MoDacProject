@@ -6,41 +6,6 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<style>
-/*가운데 배치를 위핸 CSS*/
-
-
-.container {
- min-height: 100%;
-}
-.row {
- margin: 0 auto;
- text-align: center;
- padding-top: 100px
-}
-
-.row .col-md-4 {
- margin-top: 10px;
- outline: 1px pink solid;
- height: 200px;
-}
-/*가운데 배치를 위핸 CSS*/
-/*테이블  th태그 센터를 위한 css 시작*/
-table th {
- text-align: center;
-}
-/*테이블 센터를 위한 css 끝*/
-
-#hr1{
-	
-	border: solid 1px black; 
-	width: 25%;
-	text-align: center;
-
-}
-
-
-</style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
 <!-- 부트스트랩으로 삭제 x-->
@@ -50,8 +15,33 @@ table th {
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+<style>
+#hr{
+	margin-left: 37%;
+	border: solid 1px black; 
+	width: 25%;
+	margin-top: -6px;
+	
+}
+#dv{
+	padding-top: 50px
+}
+#qna{
+	margin-bottom: 20px
+}
+
+.form-box {
+	background: #F6F6F6; 
+	padding: 20px;
+	width: 1300px;
+	height: 1030px;	
+	margin: 50px auto; 
+	border-radius: 20px; 
+	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
+	}
+</style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" >
 	<div class="wrapper">
 
 		<!-- 여기까지가 탑이랑 카테고리 부분으로 추정 됨 -->
@@ -62,73 +52,111 @@ table th {
 		<!-- 카테고리 -->
 		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
 		<!-- 카테고리 -->
-
-		<!-- 여기부터가 바디로 추정됨 -->
 		<div class="content-wrapper" style="background-color: white;">
-			<div class="container">
-				<div class="row">
-				<h2>병원 문의관리</h2><hr id="hr1" ><br/><br/><br/>
-				<div>
-					<table class="table table-hover" style="min-width: 400px;">
+		
+		
+		
+<!-- body 시작 -->
+<div class="container" id="dv" >
+<div class="row">
+			<div>
+
+	<h2 style="text-align: center">병원문의 관리</h2>
+	<br />
+	<p style="text-align: center;">
+		일반회원님들의 문의를 답변해주세요~!
+	</p>
+	<hr id="hr">
+	<br />
+	<br />
+	<!-- row -->
+	<div class="row" >
+		<div class="text-center">
+			<div class="container" >										
+				<table class="table table-hover table-bordered text-center">
 						<tr style="background-color: #79ABFF;">
-							<th>글 번호</th><th>제목</th><th>아이디</th><th>등록일자</th>
+						<th style="text-align: center" class="col-md-1" >글번호</th>
+							<th style="text-align: center" >제목</th>
+							<th style="text-align: center" class="col-md-2">회원 아이디</th>
+							<th style="text-align: center" class="col-md-2">작성일</th>
+							<th style="text-align: center" class="col-md-1">답변 여부</th>						
 						</tr>
+				<c:if test="${empty requestScope.list }" var="isEmpty">
+					<tr>
+						<td colspan="5">등록된 게시물이 없어요</td>
+					</tr>
+				</c:if>
+				<c:if test="${not isEmpty }">
+					<c:forEach var="record" items="${list}" varStatus="loop">
+					
+					
 						<tr>
-							<td>1</td>
-							
-							<td><a href="<c:url value='/partner/partnerQnA/partner_QnA_View.do'/>">환 자 들 의 질 문 _ 제 목 1</a></td>
-							<td>회원 1</td>
-							<td>2018-10-17 15:30</td>
+							<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
+							<td class="text-left">
+								 <a	href="<c:url value='/partner/partnerQnA/partner_QnA_View.do?qno=${record.qno}'/>">${record.title}</a>
+								 <span class="badge">${record.commentCount}</span>
+							</td>							
+							<td>${record.genid}</td>
+							<td>${record.postdate}</td>
+							<c:if test="${record.commentCount != 0}" var="commentCounts">
+							<td>답변 완료</td> <!--  답변여부 쪽 -->
+							</c:if>
+							<c:if test="${!commentCounts}">
+							<td>답변 대기중</td> <!--  답변여부 쪽 -->
+							</c:if> 
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>환 자 들 의 질 문 _ 제 목 2</td>
-							<td>회원 2</td>
-							<td>2018-10-17 15:30</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>환 자 들 의 질 문 _ 제 목 3</td>
-							<td>회원 1</td>
-							<td>2018-10-17 15:30</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>환 자 들 의 질 문 _ 제 목 4</td>
-							<td>회원 3</td>
-							<td>2018-10-17 15:30</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>환 자 들 의 질 문 _ 제 목 5</td>
-							<td>회원 4</td>
-							<td>2018-10-17 15:30</td>
-						</tr>																								
-					</table>
-					</div>	
-					<!-- 임시 페이징 시작 -->
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#"	aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							<span class="sr-only">Next</span>
-							</a></li>
-						</ul>
-					</nav>
-					<!-- 임시 페이징 끝 -->
-				</div>
+					</c:forEach>
+				</c:if>
+			</table>
 			</div>
 		</div>
+	</div>
+	
+	<!-- 아래는 페이징 -->
+<div class="row">
+	<div>${pagingString}</div>
+</div>
+<!-- 검색용 UI -->
+<div class="row">
+	<div class="text-center">
+		<form class="form-inline" method="post"	action="<c:url value='/partner/partnerQnA/partner_QnAList.do'/>">
+			<div class="form-group">
+				<select name="searchColumn" class="form-control">
+					<option value="title">제목</option>
+					<option value="title">아이디</option>
+					<option value="content">내용</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input type="text" name="searchWord" class="form-control" />
+			</div>
+			<button type="submit" class="btn btn-primary">검색</button>
+
+		</form>
+	</div>
+</div>
+	
+	
+	
+	
+	
+</div>
+<!-- container -->
+		
+</div>
+</div>		
+		</div>
 		<!-- 여기까지가 바디로 추정됨 -->
-		<!-- 퓨터-->
-		<jsp:include page="/WEB-INF/template/hospital/Footer.jsp"/>
-		<!-- 퓨터 -->
+		<!-- 여기부터 퓨터로 추정됨 -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> 2.4.0
+			</div>
+			<strong>Copyright &copy; 2014-2016 <a
+				href="https://adminlte.io">Almsaeed Studio</a>.
+			</strong> All rights reserved.
+		</footer>
+		<!-- 여기까지가 퓨터로 추정됨 -->
 	</div>
 	<!-- ./wrapper -->
 	<!--아래부분 삭제하면 안됨 -->

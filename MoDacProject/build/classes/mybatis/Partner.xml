@@ -4,56 +4,36 @@
 	
 <mapper namespace="mybatis.Partner">
 
-	<resultMap type="PartnerDto" id="PartnerResult">
-		<!--제휴 가입 신청에 필요한 데이터들  -->
-    	<result property="pid" column="pid"/>
-    	<result property="hpwd" column="hpwd"/>
-    	<result property="hosname" column="hosname"/>
-    	<result property="subjectlist" column="subjectlist"/>
-    	<result property="hosmanager" column="hosmanager"/>
-    	<result property="hosphone" column="hosphone"/>
-    	<result property="pemail" column="pemail"/>
-    	<result property="hosaddr" column="hosaddr"/>
-    	<result property="businessnum" column="businessnum"/>
-    	<result property="request" column="request"/>
-    	<result property="accept" column="accept"/>
-    	<result property="hosno" column="hosno"/>
-    	
-    	
-    	<!-- 제휴 가입 성공 후 수정하는 부분 -->
-    	<result property="mon" column="mon"/>
-    	<result property="tue" column="tue"/>
-    	<result property="wed" column="wed"/>
-    	<result property="thu" column="thu"/>
-    	<result property="fri" column="fri"/>
-    	<result property="sat" column="sat"/>
-    	<result property="sun" column="sun"/>
-    	<result property="holiday" column="holiday"/>
-    	<result property="lunch" column="lunch"/>
-    	<result property="info" column="info"/>
-    	<result property="personalday" column="personalday"/>
-    	
-    </resultMap>
     
     <!--  제휴가입하는 부분 -->
 	<insert id="PartnerJoin" parameterType="java.util.Map">
 
 	INSERT ALL INTO HOSPITAL(HOSNO,HOSADDR,HOSNAME,HOSPHONE)
 	VALUES(SEQ_JIHUNTEST.NEXTVAL,#{hosaddr},#{hosname},#{hosphone})	
-	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,HOSPHONE,SUBJECTLIST)
-	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{hosphone},#{subjectlist})
+	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,PPHONE)
+	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{pphone})
 	SELECT * FROM DUAL
 		
 	</insert>
 	
+	
 	<!-- IsMember 부분 -->
 	<select id="PartnerIsMember" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd}
-	</select>  
+		
+		 SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd} 	
+		 	 		 		 	
+	</select> 
+
+
+	<!-- 회원 수락 여부  -->
+	<select id="IsAccept" parameterType="java.util.Map" resultType="int">						
+		SELECT COUNT(*) FROM PARTNERS WHERE pid= #{pid}  AND ACCEPT = 'Y'		  		 	
+	</select> 
+		
 	
 	<!-- 제휴회원 1명의 데이터 가져오기 -->
 	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
-	SELECT P.INFO,P.SUBJECTLIST,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
+	SELECT P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
 	</select>
 	
 	<update id="Partnerfirst" parameterType="java.util.Map">
@@ -63,12 +43,38 @@
 
 	</update>
 	
-	
 	<update id="Partnersecond" parameterType="java.util.Map">
 	
-	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},SUBJECTLIST=#{subjectlist},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
+	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
 		
 	</update>
+	
+	<!-- 회원탈퇴에 따른 업데이트   -->
+	<update id="Partnerwithdrawal" parameterType="java.util.Map">
+	
+	
+	
+	<!-- 컬럼명 알아내면 그때 작업 하기 탈퇴이유 <- 이부분    -->
+	
+	UPDATE PARTNERS SET INFO=#{info} WHERE PID = #{pid}
+		
+	</update>
+	
+	
+	<!-- 해당되는 hosno에 진료과목 넣어주기 --> 
+	<insert id="PartnerSubjectList" parameterType="java.util.Map">
+	
+	INSERT INTO HOSSUBJECT VALUES(#{subjectcode},#{hosno})
+	
+	</insert>
+	
+	<!-- 특정회원에 따른 SubjectCode 가져오기 -->	
+	<select id="PartnerSubjectListAll" parameterType="java.util.Map" resultType="java.util.Map">
+	
+	SELECT h.subjectcode,h.hosno,subname FROM HOSSUBJECT H JOIN
+	SUBJECT S ON H.SUBJECTCODE = S.SUBJECTCODE  WHERE H.HOSNO = #{hosno}
+	
+	</select>
 	
 	
 	

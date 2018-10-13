@@ -20,4 +20,5 @@ public interface MapHospitalService {
 	int insert(Map map);
 	int update(Map map);
 	
+	void close();
 }

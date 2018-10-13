@@ -25,7 +25,39 @@
 	</resultMap>
 	
 	<!-- 쿼리 작성 -->
-	<select id="dbtest" resultType="int">
-		SELECT COUNT(*) FROM test
+	<select id="HospitalList" parameterType="java.util.Map" resultType="MapHospitalDto">
+		<if test="subname != null">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE SB.SUBNAME = #{subname}
+			<if test="partner != null">
+				AND PT.pid IS NOT NULL
+			</if>
+			<if test="address != null">
+				AND HP.hosaddr LIKE '%' || #{address} || '%'
+			</if>
+		</if>
+		<if test="hosname != null">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE HP.hosname LIKE '%' || #{hosname} || '%' 
+			AND SB.SUBNAME = #{subjectname}
+		</if>
 	</select>
+	
+	<select id="HospitalOne" parameterType="java.util.Map" resultType="MapHospitalDto">
+			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+			JOIN hossubject HS ON HP.hosno = HS.hosno
+			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+			WHERE SB.SUBNAME = #{subname}
+	</select>
+	
+	
+	
+	
 </mapper>

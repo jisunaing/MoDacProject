@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,7 +55,7 @@ public class PartnerNAdminQnAController {
 		map.put("start",start);
 		map.put("end",end);
 		//페이징을 위한 로직 끝]	
-		List<PartnerNAdminQnADto> list= service.selectList(map);
+		List<PartnerNAdminQnADto> list = service.selectList(map);
 		//페이징 문자열을 위한 로직 호출]
 		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+ "/partner/partnerQnA/admin_QnA.do?");
 		//데이타 저장]
@@ -65,6 +66,7 @@ public class PartnerNAdminQnAController {
 		model.addAttribute("pageSize", pageSize);
 
 		return "/partner/partnerQnA/admin_QnA_List";
+		
 		
 		
 	}///adminQnAList
@@ -79,7 +81,7 @@ public class PartnerNAdminQnAController {
 		model.addAttribute("record", record);	
 
 		return "/partner/partnerQnA/admin_QnA_View";
-	}
+	}//////partnerNadminQnAView
 
 	// 관리자에게 문의작성 페이지
 	@RequestMapping("/partner/partnerQnA/admin_QnA_Write.do")
@@ -120,6 +122,7 @@ public class PartnerNAdminQnAController {
 		return "forward:/partner/partnerQnA/admin_QnA_View.do";
 	}//////////////////
 	
+	///글 삭제
 	@RequestMapping("/partner/partnerQnA/admin_QnA_Delete.do")
 	public String delete(@RequestParam Map map,Model model) throws Exception{
 		
@@ -147,6 +150,52 @@ public class PartnerNAdminQnAController {
 			System.out.println("코멘트 입력2:"+map.get("no").toString());
 			return map.get("no").toString();
 		}///////////////////
+		
+		
+	//특정 글번호에 대한 코멘트 전체 목록 가져오기
+	@ResponseBody
+	@RequestMapping(value="/partner/partnerQnA/CommentList.do",produces="text/html; charset=UTF-8")
+	public String list(@RequestParam Map map,@ModelAttribute("pid")String pid) throws Exception{
+		
+		map.put("pid",pid);
+		
+		//서비스 호출]
+		List<Map> comments=comentServiece.selectList(map);
+		//JSONArray.toJSONString(comments) 시
+		//[{"NO":2,"ONELINECOMMENT":"댓글2","CPOSTDATE":2018-09-12 10:15:38.0,"CNO":3,"ID":"LEE","NAME":"이길동"},{"NO":2,"ONELINECOMMENT":"댓글1","CPOSTDATE":2018-09-12 10:14:44.0,"CNO":2,"ID":"PARK","NAME":"박길동"}]
+		//날짜를 2018-09-12 10:15:38.0에서 " 2018-09-12"형태로 변경		
+		for(Map comment:comments) {
+			comment.put("REPLYDATE",comment.get("REPLYDATE").toString().substring(0,10));
+		}
+		System.out.println(JSONArray.toJSONString(comments));
+		return JSONArray.toJSONString(comments);
+	}/////////////////////
+	
+	
+		
+	//코멘트 수정 처리
+	@ResponseBody
+	@RequestMapping(value="/partner/partnerQnA/CommentEdit.do",produces="text/html; charset=UTF-8")
+	public String update(@RequestParam Map map) throws Exception{
+		
+		System.out.println("no : "+map.get("no"));
+		System.out.println("rno : "+map.get("rno"));
+		System.out.println("크기 : "+map.size());
+		
+		
+		//서비스 호출]
+		comentServiece.update(map);
+		return map.get("no").toString();
+	}/////////////////////////
+	
+	//코멘트 삭제처리]
+	@ResponseBody
+	@RequestMapping(value="/partner/partnerQnA/CommentDelete.do",produces="text/html; charset=UTF-8")
+	public String delete(@RequestParam Map map) throws Exception{
+		//서비스 호출]
+		comentServiece.delete(map);
+		return map.get("no").toString();
+	}/////////////////////////
 	
 	
 	

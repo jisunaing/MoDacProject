@@ -20,41 +20,36 @@ public class MapPharmacyDao implements MapPharmacyService {
 	
 	@Override
 	public List<MapPharmacyDto> selectList(Map map) {
-		return template.selectList("MapPharmacyList",map);
+		return template.selectList("PharmacyList",map);
 	}
 
 	@Override
 	public int getTotalRecord(Map map) {
-		return 0;
+		return template.selectOne("PharmacyTotalCount",map);
 	}
 
 	@Override
 	public MapPharmacyDto selectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("PharmacyOne",map);
 	}
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.delete("PharmacyDelete", map);
 	}
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.insert("PharmacyInsert", map);
 	}
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("PharmacyUpdate", map);
 	}
 
 	@Override
 	public void close() {
-		
 	}
 
 }

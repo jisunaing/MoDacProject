@@ -140,6 +140,13 @@ form{
 						  <option>03</option>
 						  <option>04</option>
 						  <option>05</option>
+						  <option>06</option>
+						  <option>07</option>
+						  <option>08</option>
+						  <option>09</option>
+						  <option>10</option>
+						  <option>11</option>
+						  <option>12</option>
 						</select>
 					</div>
 					<div class="col-sm-2">
@@ -150,6 +157,13 @@ form{
 						  <option>03</option>
 						  <option>04</option>
 						  <option>05</option>
+						  <option>06</option>
+						  <option>07</option>
+						  <option>08</option>
+						  <option>09</option>
+						  <c:forEach begin="10" end="31" var="item" >
+						  	<option>${item}</option>
+						  </c:forEach>
 						</select>
 					</div>
 					
