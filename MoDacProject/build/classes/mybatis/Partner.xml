@@ -19,9 +19,7 @@
 	
 	<!-- IsMember 부분 -->
 	<select id="PartnerIsMember" parameterType="java.util.Map" resultType="int">
-		
 		 SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd} 	
-		 	 		 		 	
 	</select> 
 
 
@@ -30,7 +28,6 @@
 		SELECT COUNT(*) FROM PARTNERS WHERE pid= #{pid}  AND ACCEPT = 'Y'		  		 	
 	</select> 
 		
-	
 	<!-- 제휴회원 1명의 데이터 가져오기 -->
 	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
 	SELECT P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
@@ -53,9 +50,7 @@
 	<update id="Partnerwithdrawal" parameterType="java.util.Map">
 	
 	
-	
 	<!-- 컬럼명 알아내면 그때 작업 하기 탈퇴이유 <- 이부분    -->
-	
 	UPDATE PARTNERS SET INFO=#{info} WHERE PID = #{pid}
 		
 	</update>
@@ -75,24 +70,5 @@
 	SUBJECT S ON H.SUBJECTCODE = S.SUBJECTCODE  WHERE H.HOSNO = #{hosno}
 	
 	</select>
-	
-	
-	
-
-
-
-    
-    
-    
-       
-    
-   
-
-
-
-
-
-
-	
 	
 </mapper>

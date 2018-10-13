@@ -53,5 +53,5 @@
 		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
 		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
 		<mapper resource="mybatis/HealthInfo.xml"/>
-	</mappers>
+	</mappers>            
 </configuration>

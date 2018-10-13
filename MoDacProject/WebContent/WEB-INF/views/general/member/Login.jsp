@@ -8,8 +8,6 @@
 <head>
 <meta charset="UTF-8">
 
-
-  
   <link rel="mask-icon" type="" 
   href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
   

@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+           
 public class PartnerNAdminQnADto {
 
 	private String no;

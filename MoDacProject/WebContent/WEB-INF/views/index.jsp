@@ -14,7 +14,6 @@
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
-
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value='/vendor/jquery/jquery.min.js'/>"></script>
 <script src="<c:url value='/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>

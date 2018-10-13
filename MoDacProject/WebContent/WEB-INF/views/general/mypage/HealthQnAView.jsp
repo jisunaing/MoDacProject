@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="<c:url value='/css/bootstrap-table-expandable.css'/>">
 <script src="<c:url value='/js/bootstrap-table-expandable.js'/>"></script>
-
 <style>
 tr th {
 	text-align: center

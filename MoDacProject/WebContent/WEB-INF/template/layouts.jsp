@@ -47,7 +47,6 @@
 		height:200px;
 	}
     </style>
-    
   </head>
   <body>
 	    <!-- 네비게이션바 시작 -->

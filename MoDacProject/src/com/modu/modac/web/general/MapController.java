@@ -1,6 +1,5 @@
 package com.modu.modac.web.general;
 
-
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;

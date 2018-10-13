@@ -15,7 +15,6 @@
 		<result property="addr" column="addr"/>
 		<result property="phone" column="phone"/>
 	</resultMap>
-	
 	<!-- 쿼리 작성 -->
 	<!-- 회원가입 -->
 	<insert id="genmemberInsert" parameterType="java.util.Map">

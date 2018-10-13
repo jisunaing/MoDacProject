@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-
 <style>
 
 .form-box {

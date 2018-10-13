@@ -1,4 +1,4 @@
-package com.modu.modac.service;
+package com.modu.modac.service;                   
 
 public class MapPharmacyDto {
 	private String phno;

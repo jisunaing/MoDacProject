@@ -41,11 +41,7 @@ tr th{
 
 margin: 150px auto;
 
-
-
 }
-
-
 
 </style>
 

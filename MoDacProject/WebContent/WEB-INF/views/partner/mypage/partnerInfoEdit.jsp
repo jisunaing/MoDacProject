@@ -19,8 +19,6 @@
 <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
-
-
 <style>
    
 html { overflow-y: scroll; }

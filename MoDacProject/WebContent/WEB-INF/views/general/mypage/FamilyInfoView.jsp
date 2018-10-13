@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/main.css'/>" />
 
-
 <style>
 h3 {
 	text-align: center

@@ -1,4 +1,4 @@
-package com.modu.modac.web.partner;
+package com.modu.modac.web.partner;         
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -17,7 +17,6 @@
  text-align: center;
  padding-top: 100px
 }
-
 .row .col-md-4 {
  margin-top: 10px;
  outline: 1px pink solid;

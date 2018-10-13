@@ -17,7 +17,6 @@
 			//반드시 submit()함수 호출
 			form.submit();
 		}});
-		
 		/*
 		※$(폼 선택자).validate({rules:{},messages:{}});
 		rules규칙:

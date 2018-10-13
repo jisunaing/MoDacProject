@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+             
 public class ReservationDto {
 	private String resname;
 	private String phone;

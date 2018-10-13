@@ -26,7 +26,6 @@ body {
 	*/	
 	background-repeat: no-repeat;
 	background-size: 90%	
-		
 }
 
 .form-box{

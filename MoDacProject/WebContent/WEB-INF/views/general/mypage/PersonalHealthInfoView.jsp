@@ -7,7 +7,6 @@
 tr th {
 	text-align: center;
 }
-
 .panel {
 	margin-top: 50px;
 	margin-left: 8%;

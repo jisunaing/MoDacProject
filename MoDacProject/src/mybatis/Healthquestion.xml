@@ -14,7 +14,6 @@
 		<result property="genname" column="genname"/>
 		<result property="subname" column="subname"/>
 	</resultMap>
-	
 	<!-- 쿼리 작성 -->
 	<insert id="healthquestionInsert" parameterType="java.util.Map" >
 		INSERT INTO healthquestion VALUES(seq_healthquestion.nextval, default,#{title},(select genid from genmember where genid=#{genid}),#{subjectcode},#{qcontent})

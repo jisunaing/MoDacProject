@@ -1,6 +1,6 @@
 package com.modu.modac.service;
 
-import java.sql.Date;
+import java.sql.Date;                 
 
 public class HealthquestionDto {
 	private String qno;

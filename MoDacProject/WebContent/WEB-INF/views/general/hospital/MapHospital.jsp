@@ -27,7 +27,6 @@
 	width:600px;
 }
 
-
 #searchtoggle {
 	float: right;
 }

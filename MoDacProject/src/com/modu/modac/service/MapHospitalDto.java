@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-
+                 
 public class MapHospitalDto {
 	
 	// 일반병원 및 제휴병원 공통 멤버 변수

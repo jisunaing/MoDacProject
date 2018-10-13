@@ -17,7 +17,6 @@
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 
-
 <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <style>

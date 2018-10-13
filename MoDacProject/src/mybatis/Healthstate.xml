@@ -13,7 +13,6 @@
 		<result property="pregnant" column="pregnant"/>
 		<result property="etc" column="etc"/>
 	</resultMap>
-	
 	<!-- 쿼리 작성 -->
 	<insert id="healthstateInsert" parameterType="java.util.Map">
 	<!-- (SELECT fno FROM genfamily WHERE fno=#{fno}) -->

@@ -24,7 +24,6 @@
 		<property name="dataSource" ref="datasource"/>
 		<!-- 환경설정파일위치 -->
 		<property name="configLocation" value="classpath:mybatis/configuration.xml"/>
-		
 	</bean>
 	
 	<!-- 2.SqlSessionTemplate -->

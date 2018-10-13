@@ -16,9 +16,6 @@
 }
 </style>
 
-
-	
-  
 <!-- body 시작 -->  
 <div class="container" id="dv">
 	<br /><br /><br />

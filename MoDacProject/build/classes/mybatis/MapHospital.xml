@@ -23,7 +23,6 @@
 		<result property="lunch" column="lunch"/>
 		<result property="pwebsite" column="pwebsite"/>
 	</resultMap>
-	
 	<!-- 쿼리 작성 -->
 	<select id="HospitalList" parameterType="java.util.Map" resultType="MapHospitalDto">
 		<if test="subname != null">

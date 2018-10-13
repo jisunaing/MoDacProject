@@ -12,7 +12,6 @@
 		<result property="fgender" column="fgender"/>
 		<result property="fphone" column="fphone"/>
 	</resultMap>
-	
 	<!-- 쿼리 작성 -->
 	<insert id="genfamilyInsert" parameterType="java.util.Map">
 		INSERT INTO genfamily VALUES(seq_genfamily.nextval,#{genid},#{fname},#{fbirthdate},#{fgender},#{fphone})

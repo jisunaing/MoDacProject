@@ -27,7 +27,6 @@
 .lead {
 	color: #DDCCEE;
 }
-
 /* Custom container */
 .container-full {
 	margin: 0 auto;
