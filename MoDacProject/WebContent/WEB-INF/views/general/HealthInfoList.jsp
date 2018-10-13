@@ -6,36 +6,43 @@
 	.table{
 		color:black;
 	}
+	.title {
+		color:black;
+	}
 </style>
 <!-- body 시작 -->
 <div class="container">
 	<br/>
-	<h2>소아시력 카테고리 관련 글</h2>
+	<h2>${requestScope.categname}</h2>
 	<br/>
 	<table class="table table-hover">
 		<thead>
 		  <tr>
-		    <th>#</th>
+		    <th>번 호</th>
 		    <th>제 목</th>
 		    <th>등록일</th>
 		  </tr>
 		</thead>
 		<tbody>
-		  <tr>
-		    <td>3</td>
-		    <td><a style="color:black;" href="<c:url value='/general/HealthInfoView.do'/>"> 어린이 시력, 왜 약해 지나 </a></td>
-		    <td>2018-09-18</td>
-		  </tr>
-		  <tr>
-		    <td>2</td>
-		    <td>글 제목이 들어갑니다</td>
-		    <td>2018-07-15</td>
-		  </tr>
-		  <tr>
-		    <td>1</td>
-		    <td>글 제목이 들어갑니다</td>
-		    <td>2018-06-18</td>
-		  </tr>
-		 </tbody>
+		<c:if test="${empty requestScope.records}" var="isEmpty">
+			<tr>
+				<td>등록된 게시물이 없습니다.</td>
+			</tr>
+		</c:if>
+		<c:if test="${not isEmpty}">
+			<c:forEach var="records" items="${requestScope.records}">
+			  <tr>
+			    <td>${records.healthinfono}</td>
+			    <td><a class="title" href="<c:url value='/general/HealthInfoView.do?healthinfono=${records.healthinfono}'/>">${records.title}</a></td>
+			    <td>${records.postdate}</td>
+			  </tr>
+		  </c:forEach>
+		</c:if>
+		</tbody>
 	</table>
 </div><!-- container -->
+
+<!-- 페이징 -->
+<div class="row">
+	<div>${pagingString}</div>
+</div>

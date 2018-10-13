@@ -13,7 +13,7 @@ form{
 }
 .panel{
 	margin-top:50px;
-	margin-left: 15%;
+	margin-left: 8%;
 	padding-top:20px;
 	padding-bottom:20px
 }
@@ -22,9 +22,9 @@ form{
 </style>
 <script>
 
-/* 	$(document).ready(function() {
+ 	$(document).ready(function() {
 		  $('#summernote').summernote();
-		}); */
+		}); 
 </script>
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -32,6 +32,9 @@ form{
 
 <!-- body 시작 -->
 <div id="contain"class="container">
+<div class="main_column">
+        
+<div class="text_light">
 <div class="panel panel-default" style="width: 70%;">
 	<br/><br/>
 	<h2 style="text-align: center">사이트 문의</h2><br/>
@@ -39,6 +42,8 @@ form{
 	회원님의 의견을 적극 수렴하겠습니다!
 	</p><br/>
 	<hr id="hr"><br/><br/>
+	
+	
 	<div class="row">
 		<form class="form-horizontal" method="post" action="#">
 
@@ -65,7 +70,15 @@ form{
 
 	</div>
 </div>	
+</div>
+
+</div>
 	
+<!-- 사이드 바 -->
+<div style="padding-top:15%">
+	<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
+</div>
+<!-- 사이드바 끝 -->
 </div>
 	<!-- container -->
 

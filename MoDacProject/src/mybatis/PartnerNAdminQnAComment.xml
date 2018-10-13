@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mybatis.partnerReservation">
+
+
+
+	<select id="ReCommentList" parameterType="java.util.Map" resultType="java.util.Map">
+	
+	SELECT T.NO,RNO,T.PID,R.RCONTENTS,R.REPLYDATE FROM(SELECT NO,P.PID FROM PQNA Q JOIN PARTNERS P ON Q.PID = P.PID)
+	T JOIN PREPLYQNA R ON T.NO=R.NO WHERE R.NO = #{no} ORDER BY r.rno DESC
+		
+		<!-- 
+		
+	SELECT T.NO,RNO,T.PID,R.RCONTENTS,R.REPLYDATE FROM(SELECT NO,P.PID FROM PQNA Q JOIN PARTNERS P ON Q.PID = P.PID)
+	T JOIN PREPLYQNA R ON T.NO=R.NO WHERE R.NO = 4 ORDER BY r.rno DESC;
+				
+		 -->
+
+	</select>
+	
+	
+   	<insert id="ReCommentInsert" parameterType="java.util.Map">
+   	
+	 INSERT INTO PREPLYQNA VALUES(SEQ_PREPLYQNA.NEXTVAL,#{no},#{rcontents},SYSDATE)
+	 
+	</insert>
+
+
+	
+	<update id="ReCommentUpdate" parameterType="java.util.Map">
+	
+		UPDATE PREPLYQNA SET RCONTENTS =#{rcontents} WHERE rno=#{rno}
+		
+	</update>
+	
+	
+	
+	
+	<delete id="ReCommentDelete" parameterType="java.util.Map">
+		DELETE PREPLYQNA WHERE rno=#{rno}
+	</delete>
+	
+	
+	
+	<delete id="ReCommentDeleteByNo" parameterType="java.util.Map">
+	
+		DELETE PREPLYQNA WHERE no= #{no}
+	</delete>
+    
+  
+
+
+
+
+
+
+	
+	
+</mapper>

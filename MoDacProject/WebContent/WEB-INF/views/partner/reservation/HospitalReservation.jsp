@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <style>
@@ -27,10 +28,43 @@
 table th {
  text-align: center;
 }
+table td{
+	text-align: center;
+}
 table{
 	min-width: 400px;
 }
 /*테이블 센터를 위한 css 끝*/
+/*새로운 테이블 CSS*/
+table.type10 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
+}
+table.type10 thead th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #2b68a7;
+    margin: 20px 10px;
+}
+table.type10 tbody th {
+    width: 150px;
+    padding: 10px;
+}
+table.type10 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+tbody tr:nth-child(even) {
+    background-color: #cee3f6;
+}
 </style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
@@ -44,153 +78,58 @@ table{
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
-		<!-- 여기부터가 탑 부분임 -->
-		<header class="main-header">
-			<!-- Logo -->
-			<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<!-- logo for regular state and mobile devices --> <span
-				class="logo-lg"><b>병원관리자</b>페이지</span>
-			</a>
-			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-
-						<li class="dropdown user user-menu">
-						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
-							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-							<span class="hidden-xs">병원이름</span>
-						</a>
-							<ul class="dropdown-menu">
-								<!-- User image -->
-								<li class="user-header">
-								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-									<p>병원이름 넣을 곳</p></li>
-								<!-- Menu Body -->
-								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">로그아웃</a>
-									</div>
-								</li>
-							</ul></li>
-						<!-- Control Sidebar Toggle Button -->
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<!-- 여기까지가 탑 부분임 -->
-		<aside class="main-sidebar">
-			<section class="sidebar">
-				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-					</div>
-					<div class="pull-left info">
-						<p>병원이름</p>
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-					</div>
-				</div>
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header">카테고리</li>
-					<li class="active treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>예약/문의 관리</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-						<ul class="treeview-menu">
-							<li><a href="<c:url value="/partner/hospital/ReservationMove.do"/>"><i class="fa fa-circle-o"></i>예약관리</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>예약지난내역</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReceiptMove.do"/>"><i class="fa fa-circle-o"></i>접수관리</a></li>
-							<li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
-						</ul>
-					</li>
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>마이페이지</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-						<ul class="treeview-menu">
-							<li>
-								<a href="<c:url value="/partner/mypage/partnerInfo.do"/>"><i class="fa fa-circle-o"></i>병원정보보기</a>
-							</li>
-						</ul>
-					</li>
-					<li class="treeview"><a href="#">
-					<i class="fa fa-pie-chart"></i>
-					<span>문의</span>
-					<span class="pull-right-container">
-					<i class="fa fa-angle-left pull-right"></i>
-					</span>
-					</a>
-					<ul class="treeview-menu">
-						<li>
-						<a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>문의확인하기</a>
-						</li>
-					</ul></li>
-				</ul>
-			</section>
-		</aside>
-		<!-- 여기까지가 탑이랑 카테고리 부분으로 추정 됨 -->
+		<!-- 탑 -->
+		<jsp:include page="/WEB-INF/template/hospital/Top.jsp"/>
+		<!-- 탑-->
+		<!-- 카테고리 -->
+		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
+		<!-- 카테고리 -->
 		<!-- 여기부터가 바디로 추정됨 -->
 		<div class="content-wrapper">
 			<div class="container">
 				<div class="row">
 				<h2>병원예약관리</h2><br/><br/><br/>
-					<table class="table table-hover">
-						<tr>
-							<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-						</tr>
-						<tr>
-							<td>홍길동</td><td>2018-10-17 15:30</td><td>010-7777-7777</td><td>abcd12@naver.com</td>
-						</tr>																								
+					<table class="type10 table-hover">
+					    <thead>
+							<tr>
+								<th>성명</th><th>예약시간</th><th>연락처</th><th>이메일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${empty requestScope.list }" var="isEmpty">
+								<tr>
+									<td></td>
+									<td>등록된 게시물이 없어요</td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:if>
+							<c:if test="${not isEmpty}">
+							<c:forEach var="list" items="${list}" varStatus="loop">
+							<tr>
+								<a href="<c:url value='/partner/hospital/ReservationViewMove.do?fno=${fno}&resnum=${resnum}&where=${moveWhere}'/>">
+								<td>${list.RESNAME}</td>
+								</a>
+								<td>${list.RESDATE}</td>
+								<td>${list.PHONE}</td>
+								<td>${list.EMAIL}</td>
+								
+							</tr>
+							</c:forEach>
+							</c:if>
+						</tbody>																								
 					</table>	
-					<!-- 임시 페이징 시작 -->
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-							</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#"	aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							<span class="sr-only">Next</span>
-							</a></li>
-						</ul>
-					</nav>
-					<!-- 임시 페이징 끝 -->
+					<!-- 아래는 페이징 -->
+					<div class="row">
+						<div>${pagingString}</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 여기까지가 바디로 추정됨 -->
-		<!-- 여기부터 퓨터로 추정됨 -->
-		<footer class="main-footer">
-			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.4.0
-			</div>
-			<strong>Copyright &copy; 2014-2016 <a
-				href="https://adminlte.io">Almsaeed Studio</a>.
-			</strong> All rights reserved.
-		</footer>
-		<!-- 여기까지가 퓨터로 추정됨 -->
+		<!-- 퓨터-->
+		<jsp:include page="/WEB-INF/template/hospital/Footer.jsp"/>
+		<!-- 퓨터 -->
 	</div>
 	<!-- ./wrapper -->
 
