@@ -46,7 +46,7 @@ table.type10 {
 table.type10 thead th {
     width: 150px;
     padding: 10px;
-    font-weight: bold;
+    font-weight: bold;          
     vertical-align: top;
     color: #fff;
     background: #2b68a7;
@@ -107,9 +107,11 @@ tbody tr:nth-child(even) {
 						<c:if test="${not isEmpty}">
 						<c:forEach var="list" items="${list}" varStatus="loop">
 						<tr>
-							<a href="<c:url value='/partner/hospital/ReceiptHistoryViewMove.do?fno=${fno}&recnum=${recnum}&where=${moveWhere}'/>">
-							<td>${list.recname}</td>
+							<td>
+							<a href="<c:url value='/partner/hospital/ReceiptHistoryViewMove.do?recnum=${list.recnum}&genid=${list.genid}&name=${list.recname}'/>">
+							${list.recname}
 							</a>
+							</td>
 							<td>${list.recdate}</td>
 							<td>${list.phone}</td>
 							<td>${list.email}</td>

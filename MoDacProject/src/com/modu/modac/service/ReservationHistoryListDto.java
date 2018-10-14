@@ -1,12 +1,25 @@
 package com.modu.modac.service;
 
 public class ReservationHistoryListDto {          
-	
+	private String genid;
+	private String resnum;
 	private String resname;
 	private String resdate;
 	private String phone;
 	private String email;
 	private String resaccept;
+	public String getGenid() {
+		return genid;
+	}
+	public void setGenid(String genid) {
+		this.genid = genid;
+	}
+	public String getResnum() {
+		return resnum;
+	}
+	public void setResnum(String resnum) {
+		this.resnum = resnum;
+	}
 	public String getResname() {
 		return resname;
 	}
@@ -37,7 +50,4 @@ public class ReservationHistoryListDto {
 	public void setResaccept(String resaccept) {
 		this.resaccept = resaccept;
 	}
-	
-	
-	
 }

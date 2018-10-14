@@ -32,7 +32,6 @@ tr th{
 	margin-top: 30px;
 	margin-bottom:30px
 }
-
 #frm{
 	margin-left: 25%
 }
@@ -42,6 +41,8 @@ tr th{
 margin: 150px auto;
 
 }
+
+
 
 </style>
 

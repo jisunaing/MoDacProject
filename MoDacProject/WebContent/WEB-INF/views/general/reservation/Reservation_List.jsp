@@ -48,34 +48,33 @@ table {
 				<!-- 가운데 정렬 시작 -->
 				
 			<!-- 테이블 시작 -->
+			<h2>접수내역</h2>
 			<table class="table table-hover table-expandable">
 				<thead>
 					<tr>
-						<th>예약신청일</th>
+						<th>접수신청일</th>
 						<th>병원명</th>
-						<th>진료과</th>
-						<th>예약자</th>
-						<th>예약구분</th>
+						<th>접수자</th>
+						<th>접수구분</th>
 						<th>상태</th>
 						<th>취소</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:if test="${empty requestScope.receiptList }" var="isEmpty">
+					<c:if test="${empty receiptList}" var="isEmpty">
 					<tr>
-						<td colspan="4">등록된 게시물이 없어요</td>
+						<td colspan="4">등록된 접수 내역이 없어요</td>
 					</tr>
 					</c:if>
-					<c:if test="not isEmpty">
+					<c:if test="${not isEmpty}">
 					<c:forEach var="record" items="${receiptList}" varStatus="loop">
 					<tr>
 						<td>${record.recdate}</td>
 						<td>${record.hosname}</td>
-						<td>${record.subname}</td>
 						<td>${record.recname}</td>
 						<td>접수</td>
 						<td>${record.recaccept}</td>
-						<td><c:if test="${record.recaccept=='접수신청'}" var="recacceptResult"><a href="<c:url value='/general/receipt/ReceiptCancel.do?resnum=${recnum}}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not recacceptResult}">취소불가</c:if></td>
+						<td><c:if test="${record.recaccept=='접수신청'}" var="recacceptResult"><a href="<c:url value='/general/receipt/ReceiptCancel.do?recnum=${record.recnum}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not recacceptResult}">취소불가</c:if></td>
 					</tr>
 					<tr>
 					  <td colspan="7">
@@ -86,17 +85,40 @@ table {
 					  	</div>
 					  </td>
 					</tr>
-					</c:forEach>					
+					</c:forEach>		
 					</c:if>
+					</tbody>
+					</table>
+					<div class="row">
+						<div>${receptionPagingString}</div>
+					</div>	
+					<h2>예약내역</h2>
+					<table class="table table-hover table-expandable">
+					<thead>
+						<tr>
+							<th>예약신청일</th>
+							<th>병원명</th>
+							<th>예약자</th>
+							<th>예약구분</th>
+							<th>상태</th>
+							<th>취소</th>
+						</tr>
+					</thead>
+					<tbody>					
+					<c:if test="${empty reservationList}" var="res">
+					<tr>
+						<td colspan="4">등록된 예약 내역이 없어요</td>
+					</tr>					
+					</c:if>
+					<c:if test="${not res}">
 					<c:forEach var="record" items="${reservationList}" varStatus="loop">
 					<tr>
 						<td>${record.resdate}</td>
 						<td>${record.hosname}</td>
-						<td>${record.subname}</td>
 						<td>${record.resname}</td>
 						<td>예약</td>
 						<td>${record.resaccept}</td>
-						<td><c:if test="${record.resaccept=='예약신청'}" var="resacceptResult"><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${resnum}}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not resacceptResult}">취소불가</c:if></td>
+						<td><c:if test="${record.resaccept=='예약신청'}" var="resacceptResult"><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${record.resnum}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not resacceptResult}">취소불가</c:if></td>
 					</tr>
 					<tr>
 					  <td colspan="7">
@@ -108,8 +130,12 @@ table {
 					  </td>
 					</tr>					
 					</c:forEach>
-				</tbody>
-			</table>
+					</c:if>
+					</tbody>
+					</table>
+					<div class="row">
+						<div>${reservationPagingString}</div>
+					</div>
 			<!-- 테이블 끝 -->
 			<!-- 가운데 정렬 끝 -->
 			<!-- 가운데 정렬을 위한 DIV -->

@@ -11,7 +11,6 @@
 #dv {
 	padding-top: 50px
 }
-
 #qna {
 	margin-bottom: 20px
 }

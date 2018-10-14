@@ -19,15 +19,14 @@
 <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
+
+
 <style>
    
 html { overflow-y: scroll; }
 
 body {	
 	font-family:sans-serif;
-	/*
-	background-image: url("<c:url value='/Images/1.jpg'/>");
-	*/	
 	background-repeat: no-repeat;
 	background-size: 90%	
 		
@@ -35,14 +34,11 @@ body {
 
 
 li {list-style:none;} 
-
-
-
 .form-box {
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 1180px;	
+	height: 1030px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -108,118 +104,17 @@ input:focus{ outline: 0; border-color: black; }
 	color: black;
 
 }
- 
-	/* 아래는 휴일 모달창 스타일  */
-
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 550px; }
-
-    #selectable li { margin: 0px 0px 0px 18px; padding: 11px; float: left; width: 50px; height: 120px; 
-    
-    font-size: 1.5em; text-align: center; border: 1px solid black; border-radius: 10px; }
-    
-    .modal-footer{margin-top: 130px; }
-    
-     #selectable li:hover {background-color: #79ABFF; color : white; }
-    
-    /* 휴일 모달창 스타일 끝  */
-    
-    #jin label{
-    
-    margin-top: 20px;
-    }
-    
- 
 
     </style>
 
-  <script>
+	<script>
   
   $(function() {
-
-		/*모달용 함수 시작 */
-
-			$("#selectable").selectable();
-		
-			var nujeok= new Array();
-							
-			var dydlf = new Array();
 			
-			var cut = new Array();
+	  $('input[type="text"]').css('margin-bottom','13px');		
 			
-			var dkd = "";
-			
-			var ghd = "";
-			
-			
-			
-		
-				$('li').click(function() {
-					cut = $(this).html();
-
-					if ($(this).val() == 0) {
-
-						$(this).css({
-							'background-color' : '#79ABFF',
-							'color' : 'white'
-						});
-						
-						$(this).attr('value', 1);
-						
-											
-						
-						
-						nujeok += cut+",";	
-						
-						dkd = nujeok.substring(0,nujeok.lastIndexOf(','));
-						
-						ghd = dkd.split(','); //배열로 만듬
-				
-			
-					} 
-					else {
-
-						$(this).css({
-							'background-color' : 'white',
-							'color' : 'black'
-						});
-
-						$(this).attr('value', 0);
-						
-
-						ghd.forEach(function(value,index) {
-							
-						if(value == cut){
-
-							ghd.splice(index);
-					
-						}
-
-						});
-
-						
-					}
-
-
-				});
-				
-				
-				
-				$('#okbutton').click(function() {
-					
-					$('#personalday').val(ghd);
-				
-				});
-				
-				/*모달용 함수 끝 */
-
-				
-	  $('input[type="text"]').css('margin-bottom','23px');		
-		
-				
-				
-				
 			});///최상위
-		</script>
+	</script>
 
 
 
@@ -255,7 +150,7 @@ input:focus{ outline: 0; border-color: black; }
 				</div>
 
 				<form action="<c:url value='/partner/mypage/partnerInfoEditOK.do' />" method="post">
-				
+				<input type="hidden" name="pid" id="pid" value="${pid}">		
 			 
 
 				
@@ -334,69 +229,13 @@ input:focus{ outline: 0; border-color: black; }
 							<div class="col-sm-offset-1 col-sm-5">
 								공휴일	<input type="text" class="form-control" name="holiday"  value="${partner.holiday}"> 
 							</div>
-							
+
 							<div style="margin-left: 30px;" class="col-sm-5">
-								임시휴무	<input type="text" class="form-control"  name="personalday" id="personalday" value="${partner.personalday}">
-				<button style="margin-top: -20px; margin-bottom: 10px;"	type="button" class="btn btn-primary testbtn" data-toggle="modal" data-target="#basicModal" > 휴무일 선택 </button>
-								
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
 								점심시간	<input type="text" class="form-control" name="lunch" value="${partner.lunch}"> 
 							</div>
+							
 						</div>			
 					</div>
-			
-					
-		
-				
-			
-					
-												<!-- 모달 창 -->
-							<div class="modal fade" id="basicModal">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<!-- 모달닫기:data-dismiss="modal" -->
-											<button class="close" data-dismiss="modal">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title">휴무일을 선택해주세요 </h4>
-										</div>
-										<div class="modal-body" >
-										
-										<ol id="selectable">	
-										
-										  <li class="ui-state-default" >일요일</li>
-										
-										  <li class="ui-state-default" >월요일</li>
-										  
-										  <li class="ui-state-default">화요일</li>
-										  
-										  <li class="ui-state-default" >수요일</li>
-										  
-										  <li class="ui-state-default">목요일</li>
-										  
-										  <li class="ui-state-default" >금요일</li>
-										  
-										  <li class="ui-state-default" >토요일</li>
-										  
-										  <li class="ui-state-default" >공휴일</li>
-											
-										</ol>
-
-										</div>
-										<div class="modal-footer">
-											<button id="okbutton" class="btn btn-primary" data-dismiss="modal">확 인</button>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-
-
-
 
 					<div class="form-group">
 						<div class="col-sm-12">

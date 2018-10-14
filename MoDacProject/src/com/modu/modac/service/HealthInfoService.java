@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface HealthInfoService {
-	
 	// 목록용]
 	List<HealthInfoDto> selectList(Map map);
 	

@@ -14,7 +14,6 @@ import com.modu.modac.service.ReservationService;
 
 @Repository
 public class ReservationDao implements ReservationService{
-	
 	@Resource(name="template")
 	private SqlSessionTemplate template;
 	
@@ -29,13 +28,13 @@ public class ReservationDao implements ReservationService{
 	}
 
 	@Override
-	public int reservationCancel(Map map) {
-		return template.update("reservationCancel",map);		
+	public void reservationCancel(Map map) {
+		template.update("reservationCancel",map);		
 	}
 	
 	@Override
-	public int receptCancel(Map map) {
-		return template.update("receptCancel",map);
+	public void receptCancel(Map map) {
+		template.update("receptCancel",map);
 	}
 
 	@Override
@@ -50,5 +49,15 @@ public class ReservationDao implements ReservationService{
 
 	@Override
 	public void reservationDelete(Map map) {
+	}
+
+	@Override
+	public int getTotalReservationRecord(Map map) {
+		return template.selectOne("getTotalReservation", map);
+	}
+
+	@Override
+	public int getTotalReservationRecordrec(Map map) {
+		return template.selectOne("getTotalReception", map);
 	}
 }

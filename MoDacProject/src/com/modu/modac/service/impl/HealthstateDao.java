@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
-import com.modu.modac.service.TestService;
 
 /* Repository어노테이션 */
 @Repository
@@ -21,8 +20,7 @@ public class HealthstateDao implements HealthstateService {
 
 	@Override
 	public HealthstateDto selectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("healthstateSelectOne", map);
 	}
 
 	@Override
@@ -43,11 +41,7 @@ public class HealthstateDao implements HealthstateService {
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("healthstateUpdate", map);
 	}
-
-	
-
 
 }

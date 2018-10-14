@@ -6,7 +6,6 @@
 form {
 	margin-left: 21%;
 }
-
 .panel {
 	margin-top: 50px;
 	margin-left: 8%;
@@ -49,7 +48,7 @@ form {
 				<form class="form-horizontal">
 					<label for="id" class="col-sm-3 control-label">혈액형</label>
 					<div class="col-sm-4">
-						<select class=" form-control" id="select" >
+						<select class=" form-control" id="bloodtype" name="bloodtype">
 							<option>혈액형을 입력하세요</option>
 							<option>A</option>
 							<option>B</option>
@@ -63,8 +62,7 @@ form {
 					<div class="form-group">
 						<label for="pwd" class="col-sm-3 control-label" id="height">키</label>
 						<div class="input-group col-sm-3">
-							<input type="text" class="form-control" id="heightinput"
-								placeholder="키 입력">
+							<input type="text" class="form-control" id="height" name="height" placeholder="키 입력">
 							<div class="input-group-addon">cm</div>
 						</div>
 					</div>
@@ -73,17 +71,14 @@ form {
 						<label for="name" class="col-sm-3 control-label" id="weight">몸무게</label>
 
 						<div class="input-group col-sm-3">
-							<input type="text" class="form-control" id="weightinput"
-								placeholder="몸무게 입력">
+							<input type="text" class="form-control" id="weight" name="weight" placeholder="몸무게 입력">
 							<div class="input-group-addon">kg</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="birthdate" class="col-sm-3 control-label">현재
-							복용중인 약</label>
+						<label for="birthdate" class="col-sm-3 control-label">현재 복용중인 약</label>
 						<div class="col-sm-4">
-							<textarea class="form-control" rows="3"
-								placeholder="현재 복용중인 약을 작성하세요"></textarea>
+							<textarea class="form-control" rows="3" name="medicine" placeholder="현재 복용중인 약을 작성하세요"></textarea>
 						</div>
 					</div>
 					<div class="form-group">

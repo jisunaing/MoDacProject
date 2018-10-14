@@ -13,7 +13,6 @@ form {
 	padding-top: 20px;
 	padding-bottom: 20px
 }
-
 #hr {
 	margin-left: 40%
 }

@@ -23,6 +23,14 @@ public interface PartnerReservationService {
 	void reservationListYes(Map map);
 	void receptListNo(Map map);
 	void reservationListNo(Map map);
+	Map ajaxReceptionResult(Map map);
+	Map ajaxReservationResult(Map map);
+	String nameConfirming(Map map);
+	HealthInfoDto helthinfo(Map map);
+	String qualshelthinfo(Map map);
+	ReceptViewDto receptionView(Map map);
+	Map reservationViewinfo(Map map);
+	String famliyinfno(Map map);
 	
 	
 }

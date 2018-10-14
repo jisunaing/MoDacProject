@@ -30,7 +30,6 @@ table th {
 table td{
 	text-align: center;
 }
-
 /*테이블 센터를 위한 css 끝*/
 table{
 	min-width: 400px;
@@ -107,9 +106,13 @@ tbody tr:nth-child(even) {
 							<c:if test="${not isEmpty}">
 							<c:forEach var="list" items="${list}" varStatus="loop">
 							<tr>
-								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?fno=${fno}&recnum=${recnum}&?recname=${recname}&where=${moveWhere}'/>">
-								<td>${list.recname}</td>
+								
+								<td>
+								<a href="<c:url value='/partner/hospital/ReceiptViewMove.do?recnum=${list.recnum}&genid=${list.genid}&name=${list.recname}'/>">
+								${list.recname}
 								</a>
+								</td>
+								
 								<td>${list.recdate}</td>
 								<td>${list.phone}</td>
 								<td>${list.email}</td>

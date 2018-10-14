@@ -107,6 +107,43 @@
 <!-- KAKAO MAP API -->
 <script>
 	
+	function wrapWindowByMask() {
+		
+	    var maskHeight = $(document).height(); 
+	    var maskWidth = window.document.body.clientWidth;
+	     
+	    var mask = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+	    var loadingImg = '';
+	     
+	    loadingImg += "<div id='loadingImg' style='position:absolute; left:45%; top:60%; display:none; z-index:10000;'>";
+	    loadingImg += "<img src='/MoDacProject/Images/loading.gif'/>";
+	    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중입니다.</h4>";
+	    loadingImg += "</div>";  
+	 
+	    //화면에 레이어 추가
+	    $('body').append(mask).append(loadingImg)
+	       
+	    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+	    $('#mask').css({
+	            'width' : maskWidth,
+	            'height': maskHeight,
+	            'opacity' : '0.3'	
+	    }); 
+	 
+	    //마스크 표시
+	    $('#mask').show();   
+	 
+	    //로딩중 이미지 표시
+	    $('#loadingImg').show();
+	}
+	
+	wrapWindowByMask();
+	
+	function closeWindowByMask() {
+	    $('#mask, #loadingImg').hide();
+	    $('#mask, #loadingImg').remove();  
+	}
+
 	// [컨트롤러로 부터 데이터 받아 세팅]
 	var datas = JSON.parse('${records}');
 	var editDatas = [];
@@ -156,6 +193,10 @@
 	        }
 	    });
 	})
+	
+	if(datas.length == 0) {
+		closeWindowByMask();
+	}
 	
 	var imageSrc = '<c:url value="/Images/MarkerPharmacy.png"/>', // 마커이미지의 주소입니다    
    		imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
@@ -290,9 +331,9 @@
 				}
 			}
 		};
+		
+		closeWindowByMask();
+		
 	};
-	
-	
-	
 	
 </script>

@@ -52,5 +52,4 @@ public class HealthInfoDto {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 }

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.HealthInfoDto;
 import com.modu.modac.service.HealthInfoService;
-import com.modu.modac.service.MapHospitalDto;
 
 @Repository
 public class HealthInfoDao implements HealthInfoService {
@@ -36,9 +35,4 @@ public class HealthInfoDao implements HealthInfoService {
 	@Override
 	public void close() {
 	}
-
-
-	
-	
-	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 접수하는 페이지입니다.-->
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
 
@@ -77,17 +78,51 @@ table{
 			});
 		});
 		$('label').css('minWidth', '90px');
-		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#recname').val($('#names').html());
-			$('#phone').val($('#phones').html());
-			$('#fno').val($('#fnos').html());
+		console.log(${fn:length(record.familyList)});
+		
+/*
+		$('tr').click(function(){
+			console.log('tr이 클릭됨');
+			for(var i=1;i<${fn:length(record.familyList)}+1;i++){
+				$('#nameUrl'+i).click(function(){
+					var index = i;
+					console.log(index);
+					console.log($('#names'+index).html());
+					console.log($('#phones'+index).html());
+					
+					$('#recname').val($('#names'+i).html());
+					$('#phone').val($('#phones'+i).html());
+					
+					console.log("for문");
+				});
+			}
 		});
+*/			
+
+		$('#nameUrl1').click(function(){
+			$('#recname').val($('#names1').html());
+			$('#phone').val($('#phones1').html());
+		});
+		$('#nameUrl2').click(function(){
+			$('#recname').val($('#names2').html());
+			$('#phone').val($('#phones2').html());
+		});		
+		$('#nameUrl3').click(function(){
+			$('#recname').val($('#names3').html());
+			$('#phone').val($('#phones3').html());
+		});		
+		$('#nameUrl4').click(function(){
+			$('#recname').val($('#names4').html());
+			$('#phone').val($('#phones4').html());
+		});		
+		
+		
 	});
 	</script>
 <div class="container">
 	<div class="row">
 		<div class="page-header">
-		  <h1>접수 병원 이름 <small>성형외과</small></h1>
+		  <h1>${record.hosname} <small>${record.subname}</small></h1>
 		</div>
 	</div>
 	<div class="row">
@@ -102,7 +137,7 @@ table{
 						<th>전화번호</th>
 						<th>생년월일</th>
 					</tr>
-					<c:if test="${empty list}" var="isMember">
+					<c:if test="${empty record.familyList}" var="isMember">
 					<tr id="nameUrl">
 						<td></td>
 						<td>등록된 가족 정보가 없습니다</td>
@@ -110,12 +145,11 @@ table{
 					</tr>
 					</c:if>
 					<c:if test="${not isMember}">
-					<c:forEach items="${list}" var="list">
-					<tr id="nameUrl">
-						<input type="text" value="${list.fno}" id="fnos"/>
-						<td id="names">${list.fname}</td>
-						<td id="phones">${list.fphone}</td>
-						<td id="birthdays">${list.fbirthdate}</td>
+					<c:forEach items="${record.familyList}" var="list" varStatus="loop">
+					<tr id="nameUrl${loop.index+1}">
+						<td id="names${loop.index+1}">${list.fname}</td>
+						<td id="phones${loop.index+1}">${list.fphone}</td>
+						<td id="birthdays${loop.index+1}">${list.fbirthdate}</td>
 					</tr>
 					</c:forEach>
 					</c:if>
@@ -125,14 +159,13 @@ table{
 		<br /> <br />
 		<form class="form-horizontal" action="<c:url value='/general/receipt/ReceiptListResult.do'/>">
 			<input type="hidden" id="genid" name="genid" value="${genid}">
-			<input type="hidden" id="pid" name="pid" value="${id}">
-			<input type="hidden" id="addr" name="addr" value="${addr}">
-			<input type="hidden" id="fno" name="fno" value="${fno}">
+			<input type="hidden" id="pid" name="pid" value="${record.pid}">
+			<input type="hidden" id="addr" name="addr" value="${record.addr}">
 			<!-- 예약자 성함 -->
 			<div class="form-group">
 				<label class="col-sm-2 control-label">성함</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control size1" placeholder="예약자 성함 입력" id="recname" name="recname" value="${genname}"/>
+					<input type="text" class="form-control size1" placeholder="예약자 성함 입력" id="recname" name="recname" value="${record.genname}"/>
 				</div>
 			</div>
 			<!-- 예약자 성함 -->
@@ -140,7 +173,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">연락처</label>
 				<div class="col-sm-10">
-					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone" ${phone}/>
+					<input type="tel" class="form-control size1" placeholder="연락처 입력" id="phone" name="phone" value="${record.phone}"/>
 				</div>
 			</div>
 			<!-- 예약자 연락처 -->
@@ -149,7 +182,7 @@ table{
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control size4" placeholder="이메일 입력" id="email" name="email" ${email}/>
+					<input type="email" class="form-control size4" placeholder="이메일 입력" id="email" name="email" value="${record.email}"/>
 				</div>
 			</div>
 			<!-- 예약자 이메일 -->

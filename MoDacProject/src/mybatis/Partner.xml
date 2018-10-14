@@ -19,18 +19,31 @@
 	
 	<!-- IsMember 부분 -->
 	<select id="PartnerIsMember" parameterType="java.util.Map" resultType="int">
+		
 		 SELECT COUNT(*) FROM PARTNERS WHERE pid=#{pid} AND hpwd = #{hpwd} 	
+		 	 		 		 	
 	</select> 
 
 
 	<!-- 회원 수락 여부  -->
 	<select id="IsAccept" parameterType="java.util.Map" resultType="int">						
 		SELECT COUNT(*) FROM PARTNERS WHERE pid= #{pid}  AND ACCEPT = 'Y'		  		 	
-	</select> 
+	</select>
+	
+	<!-- 회원탈퇴 여부  -->
+	<select id="IsWithdrawal" parameterType="java.util.Map" resultType="int">	
+						
+		SELECT COUNT(*) FROM PARTNERS WHERE pid= #{pid} AND ACCEPT = 'D'	  		 	
+	</select>  
+	
+	
+	
+	
 		
+	
 	<!-- 제휴회원 1명의 데이터 가져오기 -->
 	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
-	SELECT P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
+	SELECT P.PEMAIL,P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
 	</select>
 	
 	<update id="Partnerfirst" parameterType="java.util.Map">
@@ -46,14 +59,22 @@
 		
 	</update>
 	
+	
 	<!-- 회원탈퇴에 따른 업데이트   -->
-	<update id="Partnerwithdrawal" parameterType="java.util.Map">
-	
-	
-	<!-- 컬럼명 알아내면 그때 작업 하기 탈퇴이유 <- 이부분    -->
-	UPDATE PARTNERS SET INFO=#{info} WHERE PID = #{pid}
+	<update id="PartnerwithdrawalUpdate" parameterType="java.util.Map">
+				
+	UPDATE PARTNERS SET ACCEPT = 'D' WHERE PID = #{pid}
 		
 	</update>
+	
+	<!-- 회원탈외 하는 아이디를  PARTNEROUT 테이블에 넣어주기 --> 
+	<insert id="PartnerwithdrawalInsert" parameterType="java.util.Map">
+	
+	INSERT INTO PARTNEROUT VALUES(#{pid},#{reqdetail},SYSDATE)
+	
+	</insert>
+	
+	
 	
 	
 	<!-- 해당되는 hosno에 진료과목 넣어주기 --> 
@@ -70,5 +91,11 @@
 	SUBJECT S ON H.SUBJECTCODE = S.SUBJECTCODE  WHERE H.HOSNO = #{hosno}
 	
 	</select>
+	
+	
+
+
+
+	
 	
 </mapper>

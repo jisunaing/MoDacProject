@@ -16,6 +16,4 @@ public class AjaxReceptionDto {
 	public void setReccontents(String reccontents) {
 		this.reccontents = reccontents;
 	}
-	
-	
 }

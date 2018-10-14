@@ -4,6 +4,26 @@
 <mapper namespace="mybatis.MoDac_myBatis.Reservation">
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->	
+	<resultMap id="ReceptionDtoResult" type="ReceptionDto">
+		<result property="recname" column="recname"/>
+		<result property="recdate" column="recdate"/>
+		<result property="hosname" column="hosname"/>
+		<result property="subname" column="subname"/>
+		<result property="recname" column="recname"/>
+		<result property="recaccept" column="recaccept"/>
+		<result property="reccontents" column="reccontents"/>
+	</resultMap>
+	
+	<resultMap id="ReservationDtoResult" type="ReservationDto">
+		<result property="resnum" column="resnum"/>
+		<result property="resdate" column="resdate"/>
+		<result property="hosname" column="hosname"/>
+		<result property="subname" column="subname"/>
+		<result property="resname" column="resname"/>
+		<result property="resaccept" column="resaccept"/>
+		<result property="rescontents" column="rescontents"/>
+	</resultMap>
+	
 	<!-- 쿼리 작성 -->
 	<!-- 접수 데이터에 넣기 -->
 	<insert id="receiptInsert" parameterType="java.util.Map">
@@ -16,28 +36,40 @@
 	
 	<!-- 예약취소 취소버튼 클릭 시 -->
 	<update id="reservationCancel" parameterType="java.util.Map">
-	UPDATE FROM RESERVATION SET RECACCEPT = '예약취소' WHERE RECNUM = #{recnum}
+	UPDATE RESERVATION SET RESACCEPT = '예약취소' WHERE RESNUM = #{resnum}
 	</update>
 	
 	<!-- 접수취소 취소버튼 클릭 시 -->
 	<update id="receptCancel" parameterType="java.util.Map">
-	UPDATE FROM RECEPTION SET RECACCEPT = '접수취소' WHERE RECNUM = #{resnum}
+	UPDATE RECEPTION SET RECACCEPT = '접수취소' WHERE RECNUM = #{recnum}
 	</update>
 	
+	<!-- 예약 총 레코드 수 얻어오기 -->
+	<select id="getTotalReservation" parameterType="java.util.Map" resultType="int">
+	SELECT COUNT(*) FROM  RESERVATION WHERE GENID=#{genid}
+	</select>
+	
+	<!-- 접수 총 레코드 수 얻아오기 -->
+	<select id="getTotalReception" parameterType="java.util.Map" resultType="int">
+	SELECT COUNT(*) FROM  RECEPTION WHERE GENID=#{genid}
+	</select>
+	
 	<!-- 접수내역 얻어오기 -->
-	<select id="reservationList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT
-	RECNUM ,RECDATE, HOSPITAL.HOSNAME, SUBJECT.SUBNAME, RECNAME, RECACCEPT, RECCONTENTS
-	FROM
-	RECEPTION JOIN HOSPITAL ON RECEPTION.RECNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RECEPTION.RECNUM = SUBJECT.SUBJECTCODE
-	WHERE GENID = #{genid} ORDER BY RECDATE DESC
+	<select id="receiptList" parameterType="java.util.Map" resultType="ReceptionDto">
+   SELECT * FROM(SELECT T.*,ROWNUM R FROM(SELECT
+   RECNUM ,RECDATE, HOSPITAL.HOSNAME,RECNAME, RECACCEPT, RECCONTENTS
+   FROM
+   RECEPTION JOIN PARTNERS ON RECEPTION.PID = PARTNERS.PID JOIN HOSPITAL ON PARTNERS.HOSNO = HOSPITAL.HOSNO 
+   WHERE GENID = #{genid} ORDER BY RECDATE DESC)T)
+   WHERE R BETWEEN ${start} AND ${end}
 	</select>
 	<!-- 예약 내역 얻어오기 -->
-	<select id="receiptList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT 
-	RESNUM ,RESDATE, HOSPITAL.HOSNAME,SUBJECT.SUBNAME, RESNAME, RESACCEPT 
-	FROM 
-	RESERVATION JOIN HOSPITAL ON RESERVATION.RESNUM = HOSPITAL.HOSNO JOIN SUBJECT ON RESERVATION.RESNUM = SUBJECT.SUBJECTCODE 
-	WHERE GENID = #{genid} ORDER BY RESDATE DESC
+	<select id="reservationList" parameterType="java.util.Map" resultType="ReservationDto">
+   SELECT * FROM(SELECT T.*,ROWNUM R FROM(SELECT
+   RESNUM ,RESDATE, HOSPITAL.HOSNAME, RESNAME, RESACCEPT, RESCONTENTS
+   FROM
+   RESERVATION JOIN PARTNERS ON RESERVATION .PID = PARTNERS.PID JOIN HOSPITAL ON PARTNERS.HOSNO = HOSPITAL.HOSNO
+   WHERE GENID = #{genid} ORDER BY RESDATE DESC)T)
+   WHERE R BETWEEN ${start} AND ${end}
 	</select>
 </mapper>

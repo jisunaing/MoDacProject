@@ -6,6 +6,7 @@ public class ReservationListDto {
 	private String resdate;
 	private String phone;
 	private String email;
+	private String rescontents;
 	public String getResname() {
 		return resname;
 	}
@@ -30,4 +31,11 @@ public class ReservationListDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getRescontents() {
+		return rescontents;
+	}
+	public void setRescontents(String rescontents) {
+		this.rescontents = rescontents;
+	}
+	
 }

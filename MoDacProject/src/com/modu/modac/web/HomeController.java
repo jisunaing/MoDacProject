@@ -1,8 +1,5 @@
 package com.modu.modac.web;
                
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
-import com.modu.modac.service.GenmemberDto;
 
 @Controller
 public class HomeController {
@@ -56,8 +52,9 @@ public class HomeController {
 	}
 	//일반 회원가입 신청 
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
-	public String genSignupProcess(@RequestParam Map map, Model model) throws Exception {
+	public String genSignupProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
 		map.put("birthdate", map.get("year")+"/"+map.get("month")+"/"+map.get("day"));  
+		session.setAttribute("genid", map.get("genid"));
 		model.addAllAttributes(map);
 		generalService.insert(map);
 		return "forward:/general/mypage/personalinfo.do";

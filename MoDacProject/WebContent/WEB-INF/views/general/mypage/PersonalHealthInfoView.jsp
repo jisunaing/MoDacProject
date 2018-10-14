@@ -20,7 +20,7 @@ tr th {
 			<div class="panel panel-default" style="width: 70%">
 				<div class="panel-body">
 					<div class="page-header text-center">
-						<h2>${USER_ID}님의 건강정보</h2>
+						<h2>${genid}님의 건강정보</h2>
 						<br />
 					</div>
 					<br />

@@ -23,7 +23,6 @@
  display: inline-block;
  width: 50%;
  height: 100px
- 
  }
 /*가운데 배치를 위핸 CSS*/
 /*테이블 센터를 위한 css 시작*/
@@ -90,50 +89,53 @@ table td{
 						<table class="table table-hover">
 							<tr>
 								<th class="col-md-2 text-center" id="top1">성함</th>
-								<td id="top2">${record.recname}${record.resname}</td>
+								<td id="top2">${reservationDto.resname}${receptViewDto.recname}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">연락처</th>
-								<td>${record.phone}</td>
+								<td>${reservationDto.phone}${receptViewDto.phone}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">이메일</th>
-								<td>${record.email}</td>
+								<td>${reservationDto.email}${receptViewDto.email}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">예약시간</th>
-								<td>${record.recdate}${record.resdate}</td>
+								<td>${reservationDto.resdate}${receptViewDto.recdate}</td>
 							</tr>
+							<c:if test="${empty helthinfo}" var="helthinfoOk"></c:if>
+							<c:if test="${not helthinfoOk}">
 							<tr>
 								<th class="col-md-2 text-center">신장</th>
-								<td>${Healthstate.height}</td>
+								<td>${helthinfo.height}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">몸무게</th>
-								<td>${Healthstate.weight}</td>
+								<td>${helthinfo.weight}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">현재 복용 중인 약</th>
-								<td>${Healthstate.medicine}</td>
+								<td>${helthinfo.medicine}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">혈액형</th>
-								<td>${Healthstate.bloodtype}</td>
+								<td>${helthinfo.booldtype}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">기타</th>
-								<td>${Healthstate.ect}</td>
-							</tr>	
+								<td>${helthinfo.ect}</td>
+							</tr>
+							</c:if>
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>
 							</tr>
 							<tr>
-								<td colspan="2">${record.reccontens}${record.rescontens}</td>
+								<td colspan="2">${reservationDto.rescontents}${receptViewDto.reccontents}</td>
 							</tr>
 						</table>
 					<!-- 버튼들 -->
-						<a href="<c:url value='/partner/hospital/yes.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="수락"/></a>
-						<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${recnum}&resnum=${resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
+						<a href="<c:url value='/partner/hospital/yes.do?recnum=${param.recnum}&resnum=${param.resnum}'/>"><input type="button" class="btn btn-default" value="수락"/></a>
+						<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${param.recnum}&resnum=${param.resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
 						<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
 					<!-- 버튼들 -->
 				</div>

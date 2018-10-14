@@ -29,7 +29,6 @@
 #qna{
 	margin-bottom: 20px
 }
-
 .form-box {
 	background: #F6F6F6; 
 	padding: 20px;
@@ -53,6 +52,8 @@
 		<jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
 		<!-- 카테고리 -->
 		<div class="content-wrapper" style="background-color: white;">
+		
+		
 		
 <!-- body 시작 -->
 <div class="container" id="dv" >
@@ -117,12 +118,13 @@
 <!-- 검색용 UI -->
 <div class="row">
 	<div class="text-center">
+
 		<form class="form-inline" method="post"	action="<c:url value='/partner/partnerQnA/partner_QnAList.do'/>">
 			<div class="form-group">
 				<select name="searchColumn" class="form-control">
 					<option value="title">제목</option>
-					<option value="title">아이디</option>
-					<option value="content">내용</option>
+					<option value="genid">아이디</option>
+					<option value="qcontent">내용</option>
 				</select>
 			</div>
 			<div class="form-group">

@@ -20,5 +20,11 @@
 	</insert>
 	<select id="healthstateSelectList" parameterType="java.util.Map" resultType="healthstateDto">
 		SELECT * FROM healthstate WHERE hsid IN (SELECT fno FROM genfamily WHERE genid=#{genid})
+	</select >
+	<select id="healthstateSelectOne" parameterType="java.util.Map" resultType="healthstateDto">
+		SELECT * FROM healthstate WHERE hsid=#{hsid}
 	</select>
+	<update id="healthstateUpdate" parameterType="java.util.Map" >
+		UPDATE healthstate SET bloodtype=#{bloodtype},height=#{height},weight=#{weight},pregnant=#{pregnant},medicine=#{medicine},etc=#{etc} WHERE hsid=#{fno}
+	</update>
 </mapper>

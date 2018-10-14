@@ -29,7 +29,6 @@
 		<br/>
 		<br/>
 
-
       <div class="main_column">
         
         <div class="text_light">

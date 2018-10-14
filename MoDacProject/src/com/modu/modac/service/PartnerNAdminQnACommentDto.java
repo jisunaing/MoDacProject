@@ -1,4 +1,4 @@
-package com.modu.modac.service;           
+package com.modu.modac.service;
 
 public class PartnerNAdminQnACommentDto {
 
@@ -37,6 +37,4 @@ public class PartnerNAdminQnACommentDto {
 	public void setPid(String pid) {
 		this.pid = pid;
 	}
-
-	
 }//PartnerNAdminQnADto

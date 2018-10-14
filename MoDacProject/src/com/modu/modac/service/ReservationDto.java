@@ -1,17 +1,23 @@
 package com.modu.modac.service;
              
 public class ReservationDto {
+	private String resnum;
+	private String resdate;
+	private String hosname;
+	private String subname;
 	private String resname;
 	private String phone;
+	private String resaccept;
+	private String rescontents;
 	private String email;
-	private String resdate;
-	private String recaccept;
-	private String rescontens;
-	public String getResname() {
-		return resname;
+	public String getEmail() {
+		return email;
 	}
-	public void setResname(String resname) {
-		this.resname = resname;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getResnum() {
+		return resnum;
 	}
 	public String getPhone() {
 		return phone;
@@ -19,11 +25,8 @@ public class ReservationDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setResnum(String resnum) {
+		this.resnum = resnum;
 	}
 	public String getResdate() {
 		return resdate;
@@ -31,17 +34,37 @@ public class ReservationDto {
 	public void setResdate(String resdate) {
 		this.resdate = resdate;
 	}
-	public String getRecaccept() {
-		return recaccept;
+	public String getHosname() {
+		return hosname;
 	}
-	public void setRecaccept(String recaccept) {
-		this.recaccept = recaccept;
+	public void setHosname(String hosname) {
+		this.hosname = hosname;
 	}
-	public String getRescontens() {
-		return rescontens;
+	public String getSubname() {
+		return subname;
 	}
-	public void setRescontens(String rescontens) {
-		this.rescontens = rescontens;
+	public void setSubname(String subname) {
+		this.subname = subname;
 	}
+	public String getResname() {
+		return resname;
+	}
+	public void setResname(String resname) {
+		this.resname = resname;
+	}
+	public String getResaccept() {
+		return resaccept;
+	}
+	public void setResaccept(String resaccept) {
+		this.resaccept = resaccept;
+	}
+	public String getRescontents() {
+		return rescontents;
+	}
+	public void setRescontents(String rescontents) {
+		this.rescontents = rescontents;
+	}
+
+	
 	
 }

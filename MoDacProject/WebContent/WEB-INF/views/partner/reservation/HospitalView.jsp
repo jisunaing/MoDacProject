@@ -22,8 +22,7 @@
 .in{
  display: inline-block;
  width: 50%;
- height: 100px
- 
+ height: 100px           
  }
 /*가운데 배치를 위핸 CSS*/
 /*테이블 센터를 위한 css 시작*/
@@ -88,31 +87,54 @@ table td{
 				<div class="in">
 					<h2>상세보기페이지</h2><br/><br/><br/>
 						<table class="table table-hover">
-							<tr>
+								<tr>
 								<th class="col-md-2 text-center" id="top1">성함</th>
-								<td id="top2">홍길동</td>
+								<td id="top2">${reservationDto.resname}${receptViewDto.recname}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">연락처</th>
-								<td>010-7777-7777</td>
+								<td>${reservationDto.phone}${receptViewDto.phone}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">이메일</th>
-								<td>abcd1234@naver.com</td>
+								<td>${reservationDto.email}${receptViewDto.email}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">예약시간</th>
-								<td>2018-10-15 10:54</td>
+								<td>${reservationDto.resdate}${receptViewDto.recdate}</td>
 							</tr>
+							<c:if test="${empty helthinfo}" var="helthinfoOk"></c:if>
+							<c:if test="${not helthinfoOk}">
+							<tr>
+								<th class="col-md-2 text-center">신장</th>
+								<td>${helthinfo.height}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">몸무게</th>
+								<td>${helthinfo.weight}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">현재 복용 중인 약</th>
+								<td>${helthinfo.medicine}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">혈액형</th>
+								<td>${helthinfo.booldtype}</td>
+							</tr>
+							<tr>
+								<th class="col-md-2 text-center">기타</th>
+								<td>${helthinfo.ect}</td>
+							</tr>
+							</c:if>
 							<tr>
 								<th colspan="2" class="text-center">상담내용</th>
 							</tr>
 							<tr>
-								<td colspan="2">가슴이 아프고 통증이 있어요 <br/>감기 기운도 있는 것 같아요</td>
+								<td colspan="2">${reservationDto.rescontents}${receptViewDto.reccontents}</td>
 							</tr>
 						</table>
 					<!-- 버튼들 -->
-						<input type="button" class="btn btn-default" value="목록"/>
+					<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
 					<!-- 버튼들 -->
 				</div>
 			</div>

@@ -24,7 +24,7 @@
                      <li><a href="<c:url value="/partner/hospital/ReservationMove.do"/>"><i class="fa fa-circle-o"></i>예약관리</a></li>
                      <li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>예약지난내역</a></li>
                      <li><a href="<c:url value="/partner/hospital/ReceiptMove.do"/>"><i class="fa fa-circle-o"></i>접수관리</a></li>
-                     <li><a href="<c:url value="/partner/hospital/ReservationListMove.do"/>"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
+                     <li><a href="<c:url value="/partner/hospital/ReceiptListMove.do"/>"><i class="fa fa-circle-o"></i>접수지난내역</a></li>
                   </ul>
                </li>
                <li class="treeview"><a href="#">

@@ -13,7 +13,6 @@ tr th {
 	border: solid 1px black;
 	width: 20%
 }
-
 #hr2 {
 	margin-left: 10%;
 	border: solid 1px black;
@@ -123,7 +122,7 @@ tr th {
 			<br>
 			<br>
 			<!-- 테이블 시작 -->
-			<div class="col-sm-7">
+			<!-- <div class="col-sm-7">
 				<table class="table table-hover table-expandable">
 					<thead>
 						<tr>
@@ -211,7 +210,7 @@ tr th {
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</div> -->
 			<!-- 테이블 끝 -->
 
 			<br/>

@@ -10,15 +10,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 <style>
-/* 버튼과 폼 관련 */
-/* footer{ */
-/* 	margin-top: 10px;  */
-/* 	min-width: 100%; */
-/* /* 	position: absolute; */
-/* 	bottom: 0; */
-/* 	left: 0; */
-/* 	right: 0; */
-/* } */
 .row {
 	margin-top:10px;
 }
@@ -26,6 +17,7 @@
 .input-group {
 	width:600px;
 }
+
 
 #searchtoggle {
 	float: right;
@@ -145,20 +137,107 @@
 	
 <div class="row">
 	<div id="map"></div>
-</div>	
+</div>
+
+<!-- 모달 창 -->
+<div class="modal fade" id="reservation">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<!-- 모달닫기:data-dismiss="modal" -->
+				<button class="close" data-dismiss="modal" >
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3>병원 예약하기</h3>
+			</div>
+			<div class="modal-body">
+				<h4>병원 예약을 하기 위해선 반드시 "로그인"이 필요합니다.</h4>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal"> 닫기 </button>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- 모달 창 -->
+<div class="modal fade" id="reception">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<!-- 모달닫기:data-dismiss="modal" -->
+				<button class="close" data-dismiss="modal" >
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3>병원 접수하기</h3>
+			</div>
+			<div class="modal-body">
+				<h4>병원 접수를 하기 위해선 반드시 "로그인"이 필요합니다.</h4>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal"> 닫기 </button>
+			</div>
+		</div>
+	</div>	
+</div>
+
 
 <!-- KAKAO MAP API -->
 <script>
 
-
-var website = function(website) {
-	if(website == null) {
-		alert('홈페이지가 등록되어 있지 않습니다.');
-	} else {
-		location.href = website;
-	}
+function wrapWindowByMask() {
 	
-};    
+    var maskHeight = $(document).height(); 
+    var maskWidth = window.document.body.clientWidth;
+     
+    var mask = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
+    var loadingImg = '';
+     
+    loadingImg += "<div id='loadingImg' style='position:absolute; left:45%; top:60%; display:none; z-index:10000;'>";
+    loadingImg += "<img src='/MoDacProject/Images/loading.gif'/>";
+    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중입니다.</h4>";
+    loadingImg += "</div>";  
+ 
+    //화면에 레이어 추가
+    $('body').append(mask).append(loadingImg)
+       
+    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+    $('#mask').css({
+            'width' : maskWidth,
+            'height': maskHeight,
+            'opacity' : '0.3'	
+    }); 
+ 
+    //마스크 표시
+    $('#mask').show();   
+ 
+    //로딩중 이미지 표시
+    $('#loadingImg').show();
+}
+
+wrapWindowByMask();
+
+function closeWindowByMask() {
+    $('#mask, #loadingImg').hide();
+    $('#mask, #loadingImg').remove();  
+}
+
+
+
+var reserve = function(no, pid) {
+	if('${sessionScope.genid}' == '') {
+		$('#reservation').modal('show');
+	} else {
+		location.href="<c:url value='/general/reservation/reservation.do?hosno="+no+"&pid="+pid+"&subname=${requestScope.subname}'/>";
+	}
+};
+var reception = function(no, pid) {
+	if('${sessionScope.genid}' == '') {
+		$('#reception').modal('show');
+	} else {
+		location.href="<c:url value='/general/reservation/reception.do?hosno="+no+"&pid="+pid+"&subname=${requestScope.subname}'/>";
+	}
+};
+
 
 //[컨트롤러로 부터 데이터 받아 세팅]
 var datas = JSON.parse('${records}');
@@ -206,6 +285,10 @@ $.each(addrs,function(index,value){
         }
     });
 })
+
+if(datas.length == 0) {
+	closeWindowByMask();
+}
 
 function doNext(posArray) {
 	
@@ -300,52 +383,95 @@ function doNext(posArray) {
 						var holiday = editDatas[i]['holiday'];
 						var pid = editDatas[i]['pid'];
 						var no = editDatas[i]['no'];
-						var pwebsite = editDatas[i]['pwebsite'];
+						var website = editDatas[i]['website'];
 						
-						var content =
-							'<div class="wrap">' + 
-				            '    <div class="info">' + 
-				            '        <div class="title"> '+name+' </div>' + 
-				            '        <div class="body">' + 
-				            '            <div class="img">' +
-				            '                <img src="'+'<c:url value="/Images/BasicHospital.png"/>'+'" width="70" height="70">' +
-				            '            </div>' + 
-				            '            <div class="desc">' + 
-				            '                <div class="smalltitle"> [주소] </div>' + 
-				            '                <div class="ellipsis"> '+addr+' </div>' +
-				            '                <div class="smalltitle"> [전화번호] </div>' + 
-				            '                <div class="ellipsis"> '+phone+' </div>' + 
-				            '                <div class="smalltitle"> [홈페이지] </div>' + 
-				            '                <div class="ellipsis"> <a href="javascript:website('+pwebsite+')">홈페이지</a> </div>' + 
-				            '                <div class="smalltitle"> [진료시간] </div>' + 
-				            '                <table class="schedule">' + 
-				            '                	<tr>' + 
-				            '                		<td> 월요일: '+mon+' </td> <td> 화요일: '+tue+' </td>' + 
-				            '              	    </tr>' + 
-				            '                   <tr>' + 
-				            '                		<td> 수요일: '+wed+' </td> <td> 목요일: '+thu+' </td>' + 
-				            '                	</tr>' + 
-				            '                   <tr>' + 
-				            '                		<td> 금요일: '+fri+' </td> <td> 토요일: '+sat+'</td>' + 
-				            '                	</tr>' + 
-				            '                   <tr>' + 
-				            '                		<td> 일요일: '+sun+' </td> <td> 공휴일: '+holiday+' </td>' + 
-				            '                	</tr>' + 
-				            '                </table><br/><hr/><br/>' + 
-				            '                <div class="btn-group">' + 
-				            ' 				 	<a class="btn btn-primary btn-sm" href="<c:url value="/general/reservation/reservation.do?hosno='+no+'&pid='+pid+'"/>"> 예약하기 </a>' +
-				            '            	 </div>' + 
-				            '                <div class="btn-group">' + 
-				            ' 				 	<a class="btn btn-primary btn-sm" href="<c:url value="/general/reservation/reception.do?hosno='+no+'&pid='+pid+'"/>"> 접수하기 </a>' +
-				            '            	 </div>' +
-				            '                <div class="btn-group">' + 
-					        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>' + 
-				            '            	 </div>' + 
-				            '            </div>' + 
-				            '        </div>' + 
-				            '    </div>' +    
-				            '</div>';
-				            
+						console.log(pid);
+						console.log(website);
+						
+						var content = '';
+						
+						if(pid == null) { // 일반 병원인 경우
+							content =
+								'<div class="wrap">' + 
+					            '    <div class="info">' + 
+					            '        <div class="title"> '+name+' </div>' + 
+					            '        <div class="body">' + 
+					            '            <div class="img">' +
+					            '                <img src="'+'<c:url value="/Images/BasicHospital.png"/>'+'" width="70" height="70">' +
+					            '            </div>' + 
+					            '            <div class="desc">' + 
+					            '                <div class="smalltitle"> [주소] </div>' + 
+					            '                <div class="ellipsis"> '+addr+' </div><br/>' +
+					            '                <div class="smalltitle"> [전화번호] </div>' + 
+					            '                <div class="ellipsis"> '+phone+' </div><br/>' + 
+					            '                <div class="smalltitle"> [진료시간] </div>' + 
+					            '                <table class="schedule">' + 
+					            '                	<tr>' + 
+					            '                		<td> 월요일: '+mon+' </td> <td> 화요일: '+tue+' </td>' + 
+					            '              	    </tr>' + 
+					            '                   <tr>' + 
+					            '                		<td> 수요일: '+wed+' </td> <td> 목요일: '+thu+' </td>' + 
+					            '                	</tr>' + 
+					            '                   <tr>' + 
+					            '                		<td> 금요일: '+fri+' </td> <td> 토요일: '+sat+'</td>' + 
+					            '                	</tr>' + 
+					            '                   <tr>' + 
+					            '                		<td> 일요일: '+sun+' </td> <td> 공휴일: '+holiday+' </td>' + 
+					            '                	</tr>' + 
+					            '                </table><br/><hr/><br/>' + 
+					            '                <div class="btn-group">' + 
+						        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>' + 
+					            '            	 </div>' + 
+					            '            </div>' + 
+					            '        </div>' + 
+					            '    </div>' +    
+					            '</div>';
+						} else { // 제휴 병원인 경우
+							content =
+								'<div class="wrap">' + 
+					            '    <div class="info">' + 
+					            '        <div class="title"> '+name+' </div>' + 
+					            '        <div class="body">' + 
+					            '            <div class="img">' +
+					            '                <img src="'+'<c:url value="/Images/BasicHospital.png"/>'+'" width="70" height="70">' +
+					            '            </div>' + 
+					            '            <div class="desc">' + 
+					            '                <div class="smalltitle"> [주소] </div>' + 
+					            '                <div class="ellipsis"> '+addr+' </div>' +
+					            '                <div class="smalltitle"> [전화번호] </div>' + 
+					            '                <div class="ellipsis"> '+phone+' </div>' + 
+					            '                <div class="smalltitle"> [홈페이지] </div>' + 
+					            '                <div class="ellipsis"> <a href="'+website+'"/>'+website+'</a> </div>' + 
+					            '                <div class="smalltitle"> [진료시간] </div>' + 
+					            '                <table class="schedule">' + 
+					            '                	<tr>' + 
+					            '                		<td> 월요일: '+mon+' </td> <td> 화요일: '+tue+' </td>' + 
+					            '              	    </tr>' + 
+					            '                   <tr>' + 
+					            '                		<td> 수요일: '+wed+' </td> <td> 목요일: '+thu+' </td>' + 
+					            '                	</tr>' + 
+					            '                   <tr>' + 
+					            '                		<td> 금요일: '+fri+' </td> <td> 토요일: '+sat+'</td>' + 
+					            '                	</tr>' + 
+					            '                   <tr>' + 
+					            '                		<td> 일요일: '+sun+' </td> <td> 공휴일: '+holiday+' </td>' + 
+					            '                	</tr>' + 
+					            '                </table><br/><hr/><br/>' + 
+					            '                <div class="btn-group">' + 
+					            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:reserve('+no+',\''+pid+'\')"> 예약하기 </a>' +
+					            '            	 </div>' + 
+					            '                <div class="btn-group">' + 
+					            ' 				 	<a class="btn btn-primary btn-sm" href="javascript:reception('+no+',\''+pid+'\')"> 접수하기 </a>' +
+					            '            	 </div>' +
+					            '                <div class="btn-group">' + 
+						        '	                 <a class="btn btn-primary btn-sm" href="http://map.daum.net/link/to/'+name+','+xPos+','+yPos+'"> 길찾기 </a>' + 
+					            '            	 </div>' + 
+					            '            </div>' + 
+					            '        </div>' + 
+					            '    </div>' +    
+					            '</div>';
+						}
+							 
 			            if(customOverlay[i].getMap() == null) {
 			            	customOverlay[i].setContent(content);
 			            	customOverlay[i].setZIndex(999999);
@@ -360,7 +486,8 @@ function doNext(posArray) {
 			}
 		}
 	};
-	
+	closeWindowByMask();
 }
+
 </script>
 

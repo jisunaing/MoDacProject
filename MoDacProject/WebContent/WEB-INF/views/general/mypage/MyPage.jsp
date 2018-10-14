@@ -29,7 +29,6 @@
 	line-height: 15px;
 	box-sizing: border-box;
 }
-
 hr{
 	border: solid 1px black;
 	width: 30%; 
@@ -97,7 +96,7 @@ $(function(){
 							<h2>가족 정보 관리</h2>
 							가족들의 정보까지 한번에 관리하세요.
 						</p>
-						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/familyinfo.do?genid=${sessionScope.genid}'/>"> 
+						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/familyinfoview.do?genid=${sessionScope.genid}'/>"> 
 							<i class="fas fa-heart"></i> 보러가기
 						</a>
 					</div>

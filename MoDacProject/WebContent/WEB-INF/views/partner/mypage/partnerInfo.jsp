@@ -17,6 +17,7 @@
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 
+
 <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 <style>
@@ -36,13 +37,11 @@ body {
 
 li {list-style:none;} 
 
-
-
 .form-box {
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 900px;
-	height: 930px;	
+	height: 1030px;	
 	margin: 50px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -109,21 +108,16 @@ input:focus{ outline: 0; border-color: black; }
 
 }
  
-	/* 아래는 휴일 모달창 스타일  */
-
-    #selectable { list-style-type: none; margin: 0; padding: 0; width: 550px; }
-
-    #selectable li { margin: 0px 0px 0px 18px; padding: 11px; float: left; width: 50px; height: 120px; 
-    
-    font-size: 1.5em; text-align: center; border: 1px solid black; border-radius: 10px; }
-    
-    .modal-footer{margin-top: 130px; }
-    
-     #selectable li:hover {background-color: #79ABFF; color : white; }
-    
-    /* 휴일 모달창 스타일 끝  */
 
     </style>
+   	<script>
+		 
+		 $(function() {
+				
+		  $('input[type="text"]').css('margin-bottom','13px');		
+				
+				});///최상위
+</script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -158,7 +152,7 @@ input:focus{ outline: 0; border-color: black; }
 								<span class="sp">병원 명</span>
 								 <input type="text"	class="form-control"  value="${partner.hosname}" disabled>
 								 <input type="hidden" name="hosname" id="hosname" value="${partner.hosname}">
-								 
+								 <input type="hidden" name="pid" id="pid" value="${pid}">							 
 							</div>
 						</div>
 					</div>
@@ -232,12 +226,11 @@ input:focus{ outline: 0; border-color: black; }
 							</div>
 							
 							<div style="margin-left: 30px;" class="col-sm-5">
-								임시휴무	<input type="text" class="form-control"   value="${partner.personalday}" disabled>
-							</div> 
-							<div class="col-sm-offset-1 col-sm-5">
 								점심시간	<input type="text" class="form-control"  value="${partner.lunch}" disabled> 
-							</div>
+							</div> 
+							
 						</div>
+						
 					 <input type="hidden" name="mon" id="mon" value="${partner.mon}" >
 					 <input type="hidden" name="tue" id="tue" value="${partner.tue}" >
 				     <input type="hidden" name="wed" id="wed" value="${partner.wed}" >

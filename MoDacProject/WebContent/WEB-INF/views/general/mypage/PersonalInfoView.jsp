@@ -4,7 +4,6 @@
 
 <title>개인정보 보기</title>
 <style>
-
 tr th{
 	text-align: center;
 }

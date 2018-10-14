@@ -21,7 +21,6 @@ form {
 #height {
 	margin-right: 20px
 }
-
 #weight {
 	margin-right: 20px
 }

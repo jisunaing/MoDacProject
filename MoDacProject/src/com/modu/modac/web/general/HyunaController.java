@@ -1,8 +1,5 @@
 package com.modu.modac.web.general;
 
-import java.text.SimpleDateFormat;             
-
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,22 +8,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.modu.modac.service.GeneralService;
-import com.modu.modac.service.GenfamilyDto;
 import com.modu.modac.service.GenfamilyService;
 import com.modu.modac.service.GenmemberDto;
 import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
-import com.modu.modac.service.ReservationService;
 
 @Controller
 public class HyunaController {	
@@ -86,6 +78,7 @@ public class HyunaController {
 		//정말로 탈퇴하시겠습니까?
 		map.put("genid",session.getAttribute("genid"));
 		generalService.delete(map);
+		session.invalidate();
 		//정상적으로 탈퇴처리 되었습니다. 
 		return "/index";
 	}
@@ -99,30 +92,27 @@ public class HyunaController {
 	}
 	//개인 건강 정보 수정
 	@RequestMapping("/general/mypage/healthinfo_edit.do")
-	public String personalHealthInfo_Edit() throws Exception {
+	public String personalHealthInfo_Edit(@RequestParam Map map, Model model,HttpSession session) throws Exception {
+		map.put("hsid",session.getAttribute("genid"));
+		//메소드 호출
+		HealthstateDto dto = healthstateService.selectOne(map);
+		//값 저장
+		model.addAttribute("healthstate", dto);
 		
-		
-		return "general/mypage/Personal_Health_Info_Edit.tiles";
+		return "general/mypage/HealthstateEdit.tiles";
 	}
-	@RequestMapping(value="/general/mypage/familyinfo.do", method=RequestMethod.GET)
-	public String familyInfoG(@RequestParam Map map, Model model) throws Exception {
-		
+	//가족정보 들어가면 뿌려주는 부분
+	@RequestMapping("/general/mypage/familyinfoview.do")
+	public String familyInfoG(@RequestParam Map map, Model model,HttpSession session) throws Exception {
+		map.put("genid", session.getAttribute("genid"));
 		List list = genfamilyService.selectList(map);
 		List<HealthstateDto> statelist = healthstateService.selectList(map);
 		model.addAttribute("list", list);
 		model.addAttribute("statelist", statelist);
 		return "general/mypage/FamilyInfoView.tiles";
 	}
-	@RequestMapping("/general/mypage/familyinfolist.do")
-	public String familyInfoList(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-		map.put("genid", session.getAttribute("genid"));
-		List list = genfamilyService.selectList(map);
-		model.addAttribute("list", list);
-		
-		return "general/mypage/FamilyInfoView.tiles";
-	}
-	//가족정보
-	@RequestMapping(value="/general/mypage/familyinfo.do", method=RequestMethod.POST)
+	//가족정보 추가하는 부분
+	@RequestMapping("/general/mypage/familyinfowrite.do")
 	public String familyInfo(@RequestParam Map map,HttpSession session) throws Exception {
 		
 		map.put("genid", session.getAttribute("genid"));
@@ -130,23 +120,39 @@ public class HyunaController {
 		genfamilyService.insert(map);
 		
 		
-		return "general/mypage/FamilyInfoView.tiles";
+		return "forward:/general/mypage/familyinfoview.do";
 	}
 	//건강 정보
 	@RequestMapping(value="/general/mypage/healthinfoWrite.do",method=RequestMethod.GET)
 	public String healthinfoWriteG(@RequestParam Map map,Model model) throws Exception {
-		model.addAttribute("fno", map.get("fno"));	
-		
-		return "general/mypage/HealthInfoWrite.tiles";
+		model.addAttribute("fno", map.get("fno"));
+		return "general/mypage/HealthstateWrite.tiles";
 	}
 	//건강 정보
 	@RequestMapping(value="/general/mypage/healthinfoWrite.do",method=RequestMethod.POST)
 	public String healthinfoWrite(@RequestParam Map map, Model model,HttpSession session) throws Exception {
+		
 		map.put("hsid",map.get("fno"));
-		//System.out.println(map.get("fno"));
 		healthstateService.insert(map);
 		
-		return "forward:/general/mypage/familyinfolist.do";
+		return "forward:/general/mypage/familyinfoview.do";
+	}
+	//가족 건강 정보 수정 폼 가져오기
+	@RequestMapping(value="/general/mypage/healthstateEdit.do", method=RequestMethod.GET)
+	public String healthinfoEdit(@RequestParam Map map,Model model) throws Exception {
+		map.put("hsid",map.get("fno"));
+		//메소드 호출
+		HealthstateDto dto = healthstateService.selectOne(map);
+		//값 저장
+		model.addAttribute("healthstate", dto);
+		return "general/mypage/HealthstateEdit.tiles";
+	}
+	//가족 건강 정보 수정 폼 서브밋
+	@RequestMapping(value="/general/mypage/healthstateEdit.do" , method=RequestMethod.POST)
+	public String healthinfoEditProcess(@RequestParam Map map,Model model) throws Exception {
+		healthstateService.update(map);
+		
+		return "forward:/general/mypage/familyinfoview.do";
 	}
 	//가족정보 수정
 	@RequestMapping("/general/mypage/familyinfo_edit.do")

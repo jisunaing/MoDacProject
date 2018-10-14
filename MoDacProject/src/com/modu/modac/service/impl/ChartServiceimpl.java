@@ -18,5 +18,4 @@ public class ChartServiceimpl implements ChartService {
 	public List<String> dayList(Map map) {
 		return (List<String>) dao.dayList(map);
 	}// dayList
-
 }

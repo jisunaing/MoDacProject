@@ -15,24 +15,22 @@
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+
 <style>
 html { overflow-y: scroll; }
 
 body {	
 	font-family:sans-serif;
-	/*
-	background-image: url("<c:url value='/Images/1.jpg'/>");
-	
-	*/	
 	background-repeat: no-repeat;
 	background-size: 90%	
+		
 }
 
 .form-box{
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 600px;
-	height: 530px;	 
+	height: 580px;	 
 	margin: 180px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -45,6 +43,7 @@ body {
 </style>
  
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 
@@ -74,16 +73,26 @@ body {
 							<div class="form-group">
 								<div class="col-sm-12">
 									<div class="col-sm-6">
-										<span class="margins">병원 명</span> <input type="text"
-											class="form-control" name="id" id="id" disabled>
+										<span class="margins">병원 명</span>
+										 <input type="text" class="form-control" value="${partner.hosname}"  disabled>
+										 <input type="hidden" name="hosname" id="hosname">
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
 									<div class="col-sm-6" style="margin-top: 10px;">
-										<span class="margins">아이디</span> <input type="text"
-											class="form-control" name="id" id="id" disabled>
+										<span class="margins">아이디</span>
+										 <input type="text" class="form-control" value="${partner.pid}" disabled>
+										 <input type="hidden" name="pid" id="pid" value="${partner.pid}">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<div class="col-sm-6" style="margin-top: 10px;">
+										<span class="margins">이메일</span>										
+										 <input type="text" class="form-control" name="pemail" id="pemail" value="${partner.pemail}">
 									</div>
 								</div>
 							</div>
@@ -92,8 +101,7 @@ body {
 								<div class="col-sm-12">
 									<div class="col-sm-12" style="margin-top: 10px;">
 										<span class="sp">탈퇴 이유</span>
-										<textarea style="margin-top: 5px;" rows="10"
-											class="form-control" id="greeting" name="greeting"></textarea>
+										<textarea style="margin-top: 5px;" rows="10" class="form-control" id="reqdetail" name="reqdetail"></textarea>
 									</div>
 								</div>
 							</div>
@@ -156,24 +164,31 @@ body {
 	<script src="<c:url value="/Jquery/jquery-ui.js"/>"></script>
 	<script src="<c:url value="/Bootstrap/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/Jquery/adminlte.js"/>"></script>
+	<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+
 	<script>
 	
 	$(function() {
-		
+			
 		$('#okbutton').click(function() {
+			
+			  
+			  var template_params = {
+					   "send_email": $('#pemail').val(),
+					   "pid": "${partner.pid}"
+					}
+
+					var service_id = "default_service";
+					var template_id = "out";
+					emailjs.init("user_3wBofPIGcH4YvLkUkGRgV");
+					emailjs.send(service_id,template_id,template_params);
+		
 			
 			$('#submits').submit();
 			
 		})
 	
-		
 	});
-	
-	
-	
-	
 	</script>
-	
-
 </body>
 </html>

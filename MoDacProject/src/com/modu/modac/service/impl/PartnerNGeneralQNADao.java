@@ -25,18 +25,18 @@ public class PartnerNGeneralQNADao implements PartnerNGeneralQNAService{
 	@Override
 	public int commentDelete(Map map) {
 		
-		return template.insert("PartnerNGeneralQnADelete",map);
+		return template.insert("PartnerNGeneralQnACommentDelete",map);
 	}
 
 	@Override
 	public int commentInsert(Map map) {
 		
-		return template.insert("PartnerNGeneralQnAInsert",map);
+		return template.insert("PartnerNGeneralQnACommentInsert",map);
 	}
 
 	@Override
 	public int commentUpdate(Map map) {
-		return template.insert("PartnerNGeneralQnAUpdate",map);
+		return template.insert("PartnerNGeneralQnACommentUpdate",map);
 	}
 
 	@Override
