@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.HealthInfoDto;
+import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.PartnerService;
 import com.modu.modac.service.ReceptViewDto;
@@ -38,6 +40,7 @@ public class PartnerController {
 	private String resultConfirmReservation="";
 	private boolean flagReceip=false;
 	private boolean flagReservation=false;
+	private String pid1="",pid2="";
 	
 	@Value("${PAGE_SIZE}")
 	private int pageSize;
@@ -58,65 +61,92 @@ public class PartnerController {
 	@ResponseBody
 	@RequestMapping(value = "/Ajax/AjaxReception.do", produces = "text/plain; charset=UTF-8")
 	public String ajaxReception(@ModelAttribute("pid") String pid, Map map) throws Exception {
-		
+		if(pid1!=pid){
+			System.out.println("저장된 아이디와 불러온 아이디가 같지 않을 경우");
+			resultConfirmReception="";
+			flagReceip=false;
+			pid1=pid;
+		}
 		map.put("pid", pid);
 		Map result = partnerReservationService.ajaxReceptionResult(map);
-		System.out.println(String.format("0번째 방 %s 1번째 방 %s 2번째 방 %s", result.get("RECNUM").toString(),result.get("RECNAME").toString(),result.get("RECCONTENTS").toString()));
-		if(result!=null) {//값이 있는 경우
-			if(!flagReceip) {//최초 실행인 경우
-				System.out.println("최초 실행인 경우");
-				resultConfirmReception = result.toString();
-				flagReceip=!false;
-				return "";
+		if(!flagReceip){
+			//안의 값이 null일시
+			if(result==null){
+				resultConfirmReception = "0";
+				flagReceip=true;
 			}
-			else {//최소실행이 아닌 경우
-				if(result.toString().equals(resultConfirmReception)) {//가장 최근 목록과 기존에 저장된 값이 같은 경우
-					System.out.println("값이 같은 경우");
-					return "";
+			//안의 값이 있을시
+			else{
+				resultConfirmReception = result.toString();
+				flagReceip=true;
+			}
+		}
+		//최초실행이 아닐시
+		else{
+			if(result!=null){
+				if(resultConfirmReception=="0"){
+					resultConfirmReception = result.toString();
+					return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
 				}
-				else {//가장 최근 목록과 기존에 저장된 값이 다른 경우
-					if(result.toString()!=resultConfirmReception) {
-						System.out.println("값이 다른 경우");
+				else{
+					if(result.toString().equals(resultConfirmReception)){
+						return "";
+					}
+					else{
 						resultConfirmReception = result.toString();
 						return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
 					}
 				}
 			}
 			return "";
-		}//if
-		else {//완전 최초 접수 내역이 아에 없을 시
-			System.out.println("값이 아에 없을떄");
-			return "";
-		}//else
-	}///////////////////////
-	
+		}
+		return "";
+	}
 	//실시간 예약 알림 구현 구간
 	@ResponseBody
 	@RequestMapping(value = "/Ajax/AjaxReservation.do", produces = "text/plain; charset=UTF-8")
 	public String ajaxReservation(@ModelAttribute("pid") String pid, Map map) throws Exception {
+
+		if(pid2!=pid){
+			resultConfirmReservation="";
+			flagReceip=false;
+			pid2=pid;
+		}
 		map.put("pid", pid);
 		Map result = partnerReservationService.ajaxReservationResult(map);
-		if(result!=null) {//값이 있는 경우
-			if(!flagReservation) {//최초 실행인 경우
-				resultConfirmReservation = result.toString();
-				flagReservation=!false;
+		if(!flagReservation){
+			//안의 값이 null일시
+			if(result==null){
+				resultConfirmReservation = "0";
+				flagReservation=true;
 			}
-			else {//최소실행이 아닌 경우
-				if(result.toString().equals(resultConfirmReservation)) {//가장 최근 목록과 기존에 저장된 값이 같은 경우
-					return "";
+			//안의 값이 있을시
+			else{
+				resultConfirmReservation = result.toString();
+				flagReservation=true;
+			}
+		}
+		//최초실행이 아닐시
+		else{
+			if(result!=null){
+				if(resultConfirmReservation=="0"){
+					resultConfirmReservation = result.toString();
+					return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
 				}
-				else {//가장 최근 목록과 기존에 저장된 값이 다른 경우
-					if(result.toString()!=resultConfirmReservation) {
+				else{
+					if(result.toString().equals(resultConfirmReservation)){
+						return "";
+					}
+					else{
 						resultConfirmReservation = result.toString();
-						return result.get("RESNAME").toString()+"\r\n"+result.get("RESCONTENTS").toString();
+						return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
 					}
 				}
 			}
 			return "";
-		}//if
-		else {//완전 최초 접수 내역이 아에 없을 시
-			return "";
-		}//else
+		}
+
+		return "";
 	}///////////////////////
 	
 	   //병원 메인 페이지로 이동
@@ -299,9 +329,10 @@ public class PartnerController {
 
 	//병원 접수 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptViewMove.do")
-	public String hospitalViewPage(@RequestParam Map map,Model model) throws Exception {
+	public String hospitalViewPage(@ModelAttribute("pid") String pid,@RequestParam Map map,Model model) throws Exception {
+		map.put("pid", pid);
 		model.addAttribute("where", "reception");
-		HealthInfoDto helthinfo;
+		HealthstateDto helthinfo;
 		ReceptViewDto receptViewDto;
 		String name = partnerReservationService.nameConfirming(map);
 		receptViewDto = partnerReservationService.receptionView(map);
@@ -312,9 +343,15 @@ public class PartnerController {
 			model.addAttribute("helthinfo", helthinfo);
 		}
 		else {//가입자가 가족으로 대신 접수한 경우
+			System.out.println("name : "+map.get("name"));
+			System.out.println("genid : "+map.get("genid"));
+			map.put("name", map.get("name"));
+			map.put("genid", map.get("genid"));
 			String fno = partnerReservationService.famliyinfno(map);
+			System.out.println("============="+fno);
 			map.put("genid", fno);
 			helthinfo = partnerReservationService.helthinfo(map);
+			System.out.println("helthinfo : "+helthinfo);
 			model.addAttribute("helthinfo", helthinfo);
 		}
 		return "/partner/reservation/HospitalListView";
@@ -323,9 +360,10 @@ public class PartnerController {
 
 	//병원 접수 지낸내역 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
-	public String hospitalHistoryViewPage(@RequestParam Map map,Model model) throws Exception {
+	public String hospitalHistoryViewPage(@ModelAttribute("pid") String pid,@RequestParam Map map,Model model) throws Exception {
+		map.put("pid", pid);
 		model.addAttribute("where", "receptionHistory");
-		HealthInfoDto helthinfo;
+		HealthstateDto helthinfo;
 		ReceptViewDto receptViewDto;
 		String name = partnerReservationService.nameConfirming(map);
 		receptViewDto = partnerReservationService.receptionView(map);
@@ -349,7 +387,7 @@ public class PartnerController {
 	@RequestMapping("/partner/hospital/ReservationViewMove.do")
 	public String hospitalReservationView(@RequestParam Map map,Model model)throws Exception{
 		model.addAttribute("where", "reservation");
-		HealthInfoDto helthinfo;
+		HealthstateDto helthinfo;
 		ReservationDto reservationDto = partnerReservationService.hospitalReservationView(map);
 		//genid의 가입자 이름 가져오기
 		model.addAttribute("reservationDto", reservationDto);
@@ -375,7 +413,7 @@ public class PartnerController {
 	@RequestMapping("/partner/hospital/ReservationHistoryViewMove.do")
 	public String hospitalReservationHistoryView(@RequestParam Map map,Model model)throws Exception{
 		model.addAttribute("where", "reservationHistory");
-		HealthInfoDto helthinfo;
+		HealthstateDto helthinfo;
 		ReservationDto reservationDto = partnerReservationService.hospitalReservationView(map);
 		//genid의 가입자 이름 가져오기
 		String name = partnerReservationService.nameConfirming(map);
@@ -403,7 +441,8 @@ public class PartnerController {
 	//병원 상세보기에서 목록으로 이동
 	@RequestMapping("/partner/hospital/ListMove.do")
 	public String hospitalListMove(
-			@RequestParam Map map
+			@RequestParam Map map,
+			Model model
 			)throws Exception{
 		System.out.println("컨트롤러에 들어옴");
 		if(map.get("moveWhere").toString().equals("reservation")) {
@@ -416,7 +455,8 @@ public class PartnerController {
 		}
 		if(map.get("moveWhere").toString().equals("reception")) {
 			System.out.println("접수 내역으로 들어옴");
-			return "forward:/partner/hospital/ReceiptViewMove.do";
+			model.addAttribute("name", map.get("name"));
+			return "forward:/partner/hospital/ReceiptMove.do";
 		}
 		if(map.get("moveWhere").toString().equals("receptionHistory")) {
 			System.out.println("접수 지난 내역으로 들어옴");
@@ -447,12 +487,14 @@ public class PartnerController {
 	@RequestMapping("/partner/hospital/no.do")
 	public String hospitalNo(@RequestParam Map map)throws Exception{
 		if(!map.get("recnum").toString().equals("")) {//접수를 수락눌렀을 경우
-			System.out.println("접수 수락을 눌렀을 시");
+			System.out.println("접수 거절을 눌렀을 시");
 			partnerReservationService.receptListNo(map);
+			return "forward:/partner/hospital/MainMove.do";
 		}
 		else if(!map.get("resnum").toString().equals("")) {//예약을 수락 눌렀을 경우
-			System.out.println("예약 수락을 눌렀을 시");
+			System.out.println("예약 거절을 눌렀을 시");
 			partnerReservationService.reservationListNo(map);
+			return "forward:/partner/hospital/MainMove.do";
 		}
 		return "forward:/partner/hospital/MainMove.do";
 	}

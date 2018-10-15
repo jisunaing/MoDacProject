@@ -63,7 +63,7 @@
 					console.log('에러:',error);
 				}
 			});			
-		},1500);
+		},3000);
 		//예약 에이작스
 		window.setInterval(function(){
 			$.ajax({

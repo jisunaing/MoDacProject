@@ -26,7 +26,7 @@ public interface PartnerReservationService {
 	Map ajaxReceptionResult(Map map);
 	Map ajaxReservationResult(Map map);
 	String nameConfirming(Map map);
-	HealthInfoDto helthinfo(Map map);
+	HealthstateDto helthinfo(Map map);
 	String qualshelthinfo(Map map);
 	ReceptViewDto receptionView(Map map);
 	Map reservationViewinfo(Map map);
