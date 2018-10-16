@@ -47,16 +47,17 @@ public class PartnerController {
 	@Value("${BLOCK_SIZE}")
 	private int blockPage;
 
+
     @Resource(name="chartService")
     private ChartService chartService;
 
-	@Resource(name="partnerService")
-	private PartnerService service;
+   @Resource(name="partnerService")
+   private PartnerService service;
     //진성
     @Resource(name="partnerReservationService")
     private PartnerReservationService partnerReservationService;
-	
-	
+   
+   
     //실시간 접수 알림 구현 구간
 	@ResponseBody
 	@RequestMapping(value = "/Ajax/AjaxReception.do", produces = "text/plain; charset=UTF-8")
@@ -187,146 +188,144 @@ public class PartnerController {
 	      model.addAttribute("dat", dat);
 	      model.addAttribute("sun", sun);
 
-		return "/partner/HospitalSystem";
-	}
-	
-	
-	//병원 예약 관리 페이지
-	@RequestMapping("/partner/hospital/ReservationMove.do")
-	public String hospitalReservationPage(
-			@ModelAttribute("pid") String pid,
-			Model model,
-			@RequestParam Map map,
-			HttpServletRequest req,
-			@RequestParam(required=false,defaultValue="1") int nowPage
-			) throws Exception {
-		System.out.println("nowPage : "+nowPage);
-		//병원 아이디 맵에 저장
-		map.put("pid", pid);
-		//페이징을 위한 로직 시작]
-		//전체 레코드 수
-		int totalRecordCount= partnerReservationService.getTotalReservationRecord(map);			
-		//시작 및 끝 ROWNUM구하기]
-		int start = (nowPage-1)*pageSize+1;
-		int end   = nowPage*pageSize;
-		map.put("start",start);
-		map.put("end",end);
-		//페이징을 위한 로직 끝]	
-		List<ReservationListDto> list= partnerReservationService.hospitalReservationList(map);
-		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReservationMove.do?");
-		//데이타 저장]
-		model.addAttribute("list", list);
-		model.addAttribute("pagingString", pagingString);
-		model.addAttribute("totalRecordCount", totalRecordCount);
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("pageSize", pageSize);		
-		//뷰 정보반환
-		return "/partner/reservation/HospitalReservation";
-	}
-	
-	//병원 예약 지낸 내역 페이지
-	@RequestMapping("/partner/hospital/ReservationListMove.do")
-	public String hospitalReservationHistoryPage(
-			@ModelAttribute("pid") String pid, 
-			@RequestParam Map map, 
-			Model model,
-			HttpServletRequest req,
-			@RequestParam(required=false,defaultValue="1") int nowPage
-			) throws Exception {
-		map.put("pid", pid);
-		//페이징을 위한 로직 시작]
-		//전체 레코드 수
-		int totalRecordCount= partnerReservationService.getTotalReservationHistoryRecord(map);			
-		//시작 및 끝 ROWNUM구하기]
-		int start = (nowPage-1)*pageSize+1;
-		int end   = nowPage*pageSize;
-		map.put("start",start);
-		map.put("end",end);
-		//페이징을 위한 로직 끝]	
-		System.out.println("검색하기 전");
-		List<ReservationHistoryListDto> list= partnerReservationService.hospitalreservationHistory(map);
-		String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReservationListMove.do?");
-		//데이타 저장]
-		model.addAttribute("list", list);
-		model.addAttribute("pagingString", pagingString);
-		model.addAttribute("totalRecordCount", totalRecordCount);
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("pageSize", pageSize);	
-		//뷰 정보 반환
-		return "/partner/reservation/HospitalReservationHistory";
-	}
+      return "/partner/HospitalSystem";
+   }
+   
+   
+   //병원 예약 관리 페이지
+   @RequestMapping("/partner/hospital/ReservationMove.do")
+   public String hospitalReservationPage(
+         @ModelAttribute("pid") String pid,
+         Model model,
+         @RequestParam Map map,
+         HttpServletRequest req,
+         @RequestParam(required=false,defaultValue="1") int nowPage
+         ) throws Exception {
+      System.out.println("nowPage : "+nowPage);
+      //병원 아이디 맵에 저장
+      map.put("pid", pid);
+      //페이징을 위한 로직 시작]
+      //전체 레코드 수
+      int totalRecordCount= partnerReservationService.getTotalReservationRecord(map);         
+      //시작 및 끝 ROWNUM구하기]
+      int start = (nowPage-1)*pageSize+1;
+      int end   = nowPage*pageSize;
+      map.put("start",start);
+      map.put("end",end);
+      //페이징을 위한 로직 끝]   
+      List<ReservationListDto> list= partnerReservationService.hospitalReservationList(map);
+      String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReservationMove.do?");
+      //데이타 저장]
+      model.addAttribute("list", list);
+      model.addAttribute("pagingString", pagingString);
+      model.addAttribute("totalRecordCount", totalRecordCount);
+      model.addAttribute("nowPage", nowPage);
+      model.addAttribute("pageSize", pageSize);      
+      //뷰 정보반환
+      return "/partner/reservation/HospitalReservation";
+   }
+   
+   //병원 예약 지낸 내역 페이지
+   @RequestMapping("/partner/hospital/ReservationListMove.do")
+   public String hospitalReservationHistoryPage(
+         @ModelAttribute("pid") String pid, 
+         @RequestParam Map map, 
+         Model model,
+         HttpServletRequest req,
+         @RequestParam(required=false,defaultValue="1") int nowPage
+         ) throws Exception {
+      map.put("pid", pid);
+      //페이징을 위한 로직 시작]
+      //전체 레코드 수
+      int totalRecordCount= partnerReservationService.getTotalReservationHistoryRecord(map);         
+      //시작 및 끝 ROWNUM구하기]
+      int start = (nowPage-1)*pageSize+1;
+      int end   = nowPage*pageSize;
+      map.put("start",start);
+      map.put("end",end);
+      //페이징을 위한 로직 끝]   
+      System.out.println("검색하기 전");
+      List<ReservationHistoryListDto> list= partnerReservationService.hospitalreservationHistory(map);
+      String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReservationListMove.do?");
+      //데이타 저장]
+      model.addAttribute("list", list);
+      model.addAttribute("pagingString", pagingString);
+      model.addAttribute("totalRecordCount", totalRecordCount);
+      model.addAttribute("nowPage", nowPage);
+      model.addAttribute("pageSize", pageSize);   
+      //뷰 정보 반환
+      return "/partner/reservation/HospitalReservationHistory";
+   }
 
-	   //병원 접수 관리 페이지
-	   @RequestMapping("/partner/hospital/ReceiptMove.do")
-	   public String hospitalReceiptPage(			
-			    @ModelAttribute("pid") String pid, 
-				@RequestParam Map map, 
-				Model model,
-				HttpServletRequest req,
-				@RequestParam(required=false,defaultValue="1") int nowPage
-				) throws Exception {
-			System.out.println("nowPage : "+nowPage);
-			map.put("pid", pid);
-			//페이징을 위한 로직 시작]
-			//전체 레코드 수
-			int totalRecordCount= partnerReservationService.getTotalReceptionRecord(map);			
-			//시작 및 끝 ROWNUM구하기]
-			int start = (nowPage-1)*pageSize+1;
-			int end   = nowPage*pageSize;
-			System.out.println(start);
-			System.out.println(end);
-			map.put("start",start);
-			map.put("end",end);
-			//페이징을 위한 로직 끝]	
-			List<ReceptionListDto> list= partnerReservationService.hospitalReceiptList(map);
-			System.out.println(list);
-			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReceiptMove.do?");
-			//데이타 저장]
-			model.addAttribute("list", list);
-			model.addAttribute("pagingString", pagingString);
-			model.addAttribute("totalRecordCount", totalRecordCount);
-			model.addAttribute("nowPage", nowPage);
-			model.addAttribute("pageSize", pageSize);	
-			
-	      return "/partner/reservation/HospitalReceipt";
-	   }
-	   
-	   
-	   
-	   
-	   //병원 접수 지난내역 페이지
-	   @RequestMapping("/partner/hospital/ReceiptListMove.do")
-	   public String hospitalReceiptHistoryPage(
-			    @ModelAttribute("pid") String pid, 
-				@RequestParam Map map, 
-				Model model,
-				HttpServletRequest req,
-				@RequestParam(required=false,defaultValue="1") int nowPage
-			   ) throws Exception {
-			System.out.println("nowPage : "+nowPage);
-		   	map.put("pid", pid);
-			//페이징을 위한 로직 시작]
-			//전체 레코드 수
-			int totalRecordCount= partnerReservationService.getTotalReceptionHistoryRecord(map);			
-			//시작 및 끝 ROWNUM구하기]
-			int start = (nowPage-1)*pageSize+1;
-			int end   = nowPage*pageSize;
-			map.put("start",start);
-			map.put("end",end);
-			//페이징을 위한 로직 끝]	
-			List<ReceptionHistoryListDto> list= partnerReservationService.hospitalreceiptHistory(map);
-			String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReceiptListMove.do?");
-			//데이타 저장]
-			model.addAttribute("list", list);
-			model.addAttribute("pagingString", pagingString);
-			model.addAttribute("totalRecordCount", totalRecordCount);
-			model.addAttribute("nowPage", nowPage);
-			model.addAttribute("pageSize", pageSize);	
-	      return "/partner/reservation/HospitalReceiptHistory";
-	   }
-	   
-	   
-
+      //병원 접수 관리 페이지
+      @RequestMapping("/partner/hospital/ReceiptMove.do")
+      public String hospitalReceiptPage(         
+             @ModelAttribute("pid") String pid, 
+            @RequestParam Map map, 
+            Model model,
+            HttpServletRequest req,
+            @RequestParam(required=false,defaultValue="1") int nowPage
+            ) throws Exception {
+         System.out.println("nowPage : "+nowPage);
+         map.put("pid", pid);
+         //페이징을 위한 로직 시작]
+         //전체 레코드 수
+         int totalRecordCount= partnerReservationService.getTotalReceptionRecord(map);         
+         //시작 및 끝 ROWNUM구하기]
+         int start = (nowPage-1)*pageSize+1;
+         int end   = nowPage*pageSize;
+         System.out.println(start);
+         System.out.println(end);
+         map.put("start",start);
+         map.put("end",end);
+         //페이징을 위한 로직 끝]   
+         List<ReceptionListDto> list= partnerReservationService.hospitalReceiptList(map);
+         System.out.println(list);
+         String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReceiptMove.do?");
+         //데이타 저장]
+         model.addAttribute("list", list);
+         model.addAttribute("pagingString", pagingString);
+         model.addAttribute("totalRecordCount", totalRecordCount);
+         model.addAttribute("nowPage", nowPage);
+         model.addAttribute("pageSize", pageSize);   
+         
+         return "/partner/reservation/HospitalReceipt";
+      }
+      
+      
+      
+      
+      //병원 접수 지난내역 페이지
+      @RequestMapping("/partner/hospital/ReceiptListMove.do")
+      public String hospitalReceiptHistoryPage(
+             @ModelAttribute("pid") String pid, 
+            @RequestParam Map map, 
+            Model model,
+            HttpServletRequest req,
+            @RequestParam(required=false,defaultValue="1") int nowPage
+            ) throws Exception {
+         System.out.println("nowPage : "+nowPage);
+            map.put("pid", pid);
+         //페이징을 위한 로직 시작]
+         //전체 레코드 수
+         int totalRecordCount= partnerReservationService.getTotalReceptionHistoryRecord(map);         
+         //시작 및 끝 ROWNUM구하기]
+         int start = (nowPage-1)*pageSize+1;
+         int end   = nowPage*pageSize;
+         map.put("start",start);
+         map.put("end",end);
+         //페이징을 위한 로직 끝]   
+         List<ReceptionHistoryListDto> list= partnerReservationService.hospitalreceiptHistory(map);
+         String pagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/partner/hospital/ReceiptListMove.do?");
+         //데이타 저장]
+         model.addAttribute("list", list);
+         model.addAttribute("pagingString", pagingString);
+         model.addAttribute("totalRecordCount", totalRecordCount);
+         model.addAttribute("nowPage", nowPage);
+         model.addAttribute("pageSize", pageSize);   
+         return "/partner/reservation/HospitalReceiptHistory";
+      }
+      
 	//병원 접수 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptViewMove.do")
 	public String hospitalViewPage(@ModelAttribute("pid") String pid,@RequestParam Map map,Model model) throws Exception {
@@ -352,7 +351,6 @@ public class PartnerController {
 		}
 		return "/partner/reservation/HospitalListView";
 	}	
-	
 
 	//병원 접수 지낸내역 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReceiptHistoryViewMove.do")
@@ -377,8 +375,6 @@ public class PartnerController {
 		}
 		return "/partner/reservation/HospitalView";
 	}	
-
-	
 	
 	//병원 예약 내역 상세보기 페이지
 	@RequestMapping("/partner/hospital/ReservationViewMove.do")
@@ -494,7 +490,4 @@ public class PartnerController {
 		}
 		return "forward:/partner/hospital/MainMove.do";
 	}
-	
-	
-	
 }

@@ -67,7 +67,7 @@ table{
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
-	<script>
+<script>
 	$(function(){
 
 		$( "#tabletoggles" ).hide();
@@ -88,24 +88,6 @@ table{
 		$('.move').css('position','absolute').css('z-index','2').css('display', 'none');
 		$('.container').css('position','relative').css('z-index','1');
 		
-/*
-		$('tr').click(function(){
-			console.log('tr이 클릭됨');
-			for(var i=1;i<${fn:length(record.familyList)}+1;i++){
-				$('#nameUrl'+i).click(function(){
-					var index = i;
-					console.log(index);
-					console.log($('#names'+index).html());
-					console.log($('#phones'+index).html());
-					
-					$('#recname').val($('#names'+i).html());
-					$('#phone').val($('#phones'+i).html());
-					
-					console.log("for문");
-				});
-			}
-		});
-*/			
 
 	      $('#nameUrl1').click(function(){
 	          $('#recname').val($('#names1').html());

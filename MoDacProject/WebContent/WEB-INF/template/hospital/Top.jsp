@@ -2,52 +2,52 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
-	//접수알림 서비스
-	function successAjax1(data,target){
-		if(data.length !=0){
-			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
-			audio.play();
-			console.log(Notification.permission)
-			//웹 알림
-			if (Notification.permission == "granted") {
-				var options = {
-					body : data,
-					icon : "modac.png",
-					dir : "ltr"
-				};
-				var notification = new Notification("접수 건이 왔습니다", options);
-				notification.onclick=function(){
-					location.replace("<c:url value='/partner/hospital/ReceiptMove.do'/>");
-					//window.open("http://www.nate.com")
-				};
-			}//if
-		}//if
-		else{}
-		
-	}/////////////////////////
-	//예약알림 서비스
-	function successAjax2(data,target){
-		if(data.length !=0){
-			var audio = new Audio('/MoDacProject/WebContent/Audio/notice.mp3');
-			audio.play();
-			console.log(Notification.permission)
-			//웹 알림
-			if (Notification.permission == "granted") {
-				var options = {
-					body : data,
-					icon : "modac.png",
-					dir : "ltr"
-				};
-				var notification = new Notification("예약 건이 왔습니다", options);
-				notification.onclick=function(){
-					location.replace("<c:url value='/partner/hospital/ReservationMove.do'/>");
-					//window.open("http://www.nate.com")
-				};
-			}//if
-		}//if
-		else{}
-		
-	}/////////////////////////	
+//접수알림 서비스
+function successAjax1(data,target){
+   if(data.length !=0){
+      var audio = new Audio('../../Audio/notice.mp3');
+      audio.play();
+      console.log(Notification.permission)
+      //웹 알림
+      if (Notification.permission == "granted") {
+         var options = {
+            body : data,
+            icon : "../../Images/Modac.png",
+            dir : "ltr"
+         };
+         var notification = new Notification("접수 건이 왔습니다", options);
+         notification.onclick=function(){
+            location.replace("<c:url value='/partner/hospital/ReceiptMove.do'/>");
+            //window.open("http://www.nate.com")
+         };
+      }//if
+   }//if
+   else{}
+   
+}/////////////////////////
+//예약알림 서비스
+function successAjax2(data,target){
+   if(data.length !=0){
+      var audio = new Audio('../../Audio/notice.mp3');
+      audio.play();
+      console.log(Notification.permission)
+      //웹 알림
+      if (Notification.permission == "granted") {
+         var options = {
+            body : data,
+            icon : "../../Images/Modac.png",
+            dir : "ltr"
+         };
+         var notification = new Notification("예약 건이 왔습니다", options);
+         notification.onclick=function(){
+            location.replace("<c:url value='/partner/hospital/ReservationMove.do'/>");
+            //window.open("http://www.nate.com")
+         };
+      }//if
+   }//if
+   else{}
+   
+}/////////////////////////   
 		//접수 에이작스
 		window.setInterval(function(){
 			$.ajax({

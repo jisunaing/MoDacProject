@@ -48,8 +48,7 @@
                </span>
                </a>
                <ul class="treeview-menu">
-                     <li><a href="<c:url value="/partner/partnerQnA/partner_QnA.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
-
+                     <li><a href="<c:url value="/partner/partnerQnA/partner_QnAList.do"/>"><i class="fa fa-circle-o"></i>일반회원 문의 확인하기</a></li>
                      <li><a href="<c:url value="/partner/partnerQnA/admin_QnA.do"/>"><i class="fa fa-circle-o"></i>관리자와 문의하기</a></li>
                      
                </ul></li>
