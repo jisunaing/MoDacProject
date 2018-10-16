@@ -23,7 +23,6 @@
 		font-size: 0.889em;
 	}
 }
-
 .box {
 	margin-bottom: 2em;
 	padding: 1.5em;

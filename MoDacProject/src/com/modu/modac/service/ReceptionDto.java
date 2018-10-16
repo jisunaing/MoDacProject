@@ -1,29 +1,18 @@
 package com.modu.modac.service;
            
 public class ReceptionDto {
-	private String recname;
-	private String phone;
-	private String email;
+	private String recnum;
 	private String recdate;
-	private String resaccept;
-	private String reccontens;
-	public String getRecname() {
-		return recname;
+	private String hosname;
+	private String subname;
+	private String recname;
+	private String recaccept;
+	private String reccontents;
+	public String getRecnum() {
+		return recnum;
 	}
-	public void setRecname(String recname) {
-		this.recname = recname;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setRecnum(String recnum) {
+		this.recnum = recnum;
 	}
 	public String getRecdate() {
 		return recdate;
@@ -31,16 +20,36 @@ public class ReceptionDto {
 	public void setRecdate(String recdate) {
 		this.recdate = recdate;
 	}
-	public String getResaccept() {
-		return resaccept;
+	public String getHosname() {
+		return hosname;
 	}
-	public void setResaccept(String resaccept) {
-		this.resaccept = resaccept;
+	public void setHosname(String hosname) {
+		this.hosname = hosname;
 	}
-	public String getReccontens() {
-		return reccontens;
+	public String getSubname() {
+		return subname;
 	}
-	public void setReccontens(String reccontens) {
-		this.reccontens = reccontens;
+	public void setSubname(String subname) {
+		this.subname = subname;
 	}
+	public String getRecname() {
+		return recname;
+	}
+	public void setRecname(String recname) {
+		this.recname = recname;
+	}
+	public String getRecaccept() {
+		return recaccept;
+	}
+	public void setRecaccept(String recaccept) {
+		this.recaccept = recaccept;
+	}
+	public String getReccontents() {
+		return reccontents;
+	}
+	public void setReccontents(String reccontents) {
+		this.reccontents = reccontents;
+	}
+
+	
 }

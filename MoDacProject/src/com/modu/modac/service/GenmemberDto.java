@@ -12,6 +12,7 @@ public class GenmemberDto {
 	private Date joindate;
 	private String addr;
 	private String phone;
+	
 	//게터/세터
 	public String getGenid() {
 		return genid;

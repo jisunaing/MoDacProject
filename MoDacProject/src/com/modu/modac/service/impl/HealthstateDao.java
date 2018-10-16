@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
-import com.modu.modac.service.TestService;
 
 /* Repository어노테이션 */
 @Repository
@@ -44,8 +43,5 @@ public class HealthstateDao implements HealthstateService {
 	public int update(Map map) {
 		return template.update("healthstateUpdate", map);
 	}
-
-	
-
 
 }

@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.swing.table.TableColumnModel;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.modu.modac.service.HealthInfoDto;
 import com.modu.modac.service.PartnerReservationService;
+import com.modu.modac.service.ReceptViewDto;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReceptionHistoryListDto;
 import com.modu.modac.service.ReceptionListDto;
@@ -101,6 +104,47 @@ public class PartnerReservationDao implements PartnerReservationService {
 	public void reservationListNo(Map map) {
 		template.update("reservationListNo", map);
 	}
-	
+
+	@Override
+	public Map ajaxReceptionResult(Map map) {
+		return template.selectOne("ajaxReceptionResult", map);
+	}
+
+	@Override
+	public Map ajaxReservationResult(Map map) {
+		return template.selectOne("ajaxReservationResult", map);
+	}
+
+	@Override
+	public String nameConfirming(Map map) {
+		return template.selectOne("nameConfirming", map);
+	}
+
+	@Override
+	public HealthInfoDto helthinfo(Map map) {
+		return template.selectOne("helthinfo", map);
+	}
+
+	@Override
+	public String qualshelthinfo(Map map) {
+		return template.selectOne("qualshelthinfo", map);
+	}
+
+	@Override
+	public ReceptViewDto receptionView(Map map) {
+		return template.selectOne("receptionView", map);
+	}
+
+	@Override
+	public Map reservationViewinfo(Map map) {
+		return template.selectOne("reservationViewinfo", map);
+	}
+
+	@Override
+	public String famliyinfno(Map map) {
+		return template.selectOne("famliyinfno", map);
+	}
+
+
 
 }

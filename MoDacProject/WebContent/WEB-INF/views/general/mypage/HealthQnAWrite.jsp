@@ -10,7 +10,6 @@
 form {
 	padding-left: 12%
 }
-
 .panel {
 	margin-top: 50px;
 	margin-left: 8%;

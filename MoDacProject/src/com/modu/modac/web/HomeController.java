@@ -1,8 +1,5 @@
 package com.modu.modac.web;
                
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
-import com.modu.modac.service.GenmemberDto;
 
 @Controller
 public class HomeController {

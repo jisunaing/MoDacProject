@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.modu.modac.service.GeneralService;
+import com.modu.modac.service.GenfamilyDto;
+import com.modu.modac.service.GenfamilyService;
 import com.modu.modac.service.GenmemberDto;
 import com.modu.modac.service.MapHospitalDto;
 import com.modu.modac.service.MapHospitalService;
@@ -38,7 +40,8 @@ public class MapController {
 	private MapHospitalService serviceHOS;
 	@Resource(name="generalService")
 	private GeneralService serviceGS;
-	
+	@Resource(name="genfamilyService")
+	private GenfamilyService serviceGFS;
 
 	// [과목 선택 페이지로 이동 ]
 	@RequestMapping("/general/hospital/SelectSubject.do")
@@ -183,38 +186,19 @@ public class MapController {
 	
 	// [예약페이지로 이동]
 	@RequestMapping("/general/reservation/reservation.do")
-	public String reservation(HttpSession session, Model model, @RequestParam Map map, HttpServletResponse resp) throws Exception {
+	public String reservation(HttpSession session, Model model, @RequestParam Map map, GenmemberDto dto) throws Exception {
 		
-		System.out.println(map.get("hosno"));
-		System.out.println(map.get("pid"));
+		map.put("genid", session.getAttribute("genid"));
+		dto.setGenid(session.getAttribute("genid").toString());
 		
-		resp.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = resp.getWriter();
-		
-		if(map.get("pid").equals("null")) {
-			System.out.println("들어옴1");
-			out.print("<script>");
-			out.print("alert('제휴 병원만 예약할 수 있습니다.');");
-			out.print("history.back();");
-			out.print("</script>");
-			out.close();
-		} else if(session.getAttribute("genid") == null) {
-			System.out.println("들어옴2");
-			out.print("<script>");
-			out.print("alert('병원 예약을 하기 위해서 반드시 로그인이 필요합니다.');");
-			out.print("history.back();");
-			out.print("</script>");
-			out.close();
-		}
-		
-		/*
 		MapHospitalDto hosRecord = serviceHOS.selectOne(map);
-		GenmemberDto genRecord = serviceGS.selectOne(map);
+		GenmemberDto genRecord = serviceGS.selectOne(dto);
+		List<GenfamilyDto> famRecord = serviceGFS.selectList(map);
 		
 		Map record = new HashMap();
 		record.put("pid", hosRecord.getPid());
 		record.put("hosname", hosRecord.getHosname());
-		record.put("subname", hosRecord.getSubname());
+		record.put("subname", map.get("subname").toString());
 		record.put("mon", hosRecord.getMon());
 		record.put("tue", hosRecord.getTue());
 		record.put("wed", hosRecord.getWed());
@@ -224,54 +208,33 @@ public class MapController {
 		record.put("sun", hosRecord.getSun());
 		record.put("holiday", hosRecord.getHoliday());
 		
-		record.put("genname", value)
-		record.put("email", value)
-		record.put("phone", value)
-		record.put("addr", value)
+		record.put("genname", genRecord.getGenname());
+		record.put("email", genRecord.getEmail());
+		record.put("phone", genRecord.getPhone());
+		record.put("addr", genRecord.getAddr());
 		
-		record.put("fname", value)
-		record.put("fphone", value)
-		record.put("fbirthdate", value)
-		*/
+		record.put("familyList", famRecord);
 		
+		model.addAttribute("record", record);
 		
 		return "general/reservation/Reservation.tiles";
 	}
 	
-	
-	
 	// [접수페이지로 이동]
 	@RequestMapping("/general/reservation/reception.do")
-	public String reception(HttpSession session, Model model, @RequestParam Map map, HttpServletResponse resp) throws Exception {
+	public String reception(HttpSession session, Model model, @RequestParam Map map, GenmemberDto dto) throws Exception {
 		
-		resp.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = resp.getWriter();
+		map.put("genid", session.getAttribute("genid"));
+		dto.setGenid(session.getAttribute("genid").toString());
 		
-		System.out.println(map.get("hosno"));
-		System.out.println(map.get("pid"));
-		
-		if(map.get("pid").equals("null")) {
-			out.print("<script>");
-			out.print("alert('제휴 병원만 접수할 수 있습니다.');");
-			out.print("history.back();");
-			out.print("</script>");
-			out.close();
-		} else if(session.getAttribute("genid") == null) {
-			out.print("<script>");
-			out.print("alert('접수를 하기 위해서 반드시 로그인이 필요합니다.');");
-			out.print("history.back();");
-			out.print("</script>");
-			out.close();
-		}
-		
-		/*
 		MapHospitalDto hosRecord = serviceHOS.selectOne(map);
-		GenmemberDto genRecord = serviceGS.selectOne(map);
+		GenmemberDto genRecord = serviceGS.selectOne(dto);
+		List<GenfamilyDto> famRecord = serviceGFS.selectList(map);
 		
 		Map record = new HashMap();
 		record.put("pid", hosRecord.getPid());
 		record.put("hosname", hosRecord.getHosname());
-		record.put("subname", hosRecord.getSubname());
+		record.put("subname", map.get("subname").toString());
 		record.put("mon", hosRecord.getMon());
 		record.put("tue", hosRecord.getTue());
 		record.put("wed", hosRecord.getWed());
@@ -281,24 +244,17 @@ public class MapController {
 		record.put("sun", hosRecord.getSun());
 		record.put("holiday", hosRecord.getHoliday());
 		
-		record.put("genname", value)
-		record.put("email", value)
-		record.put("phone", value)
-		record.put("addr", value)
+		record.put("genname", genRecord.getGenname());
+		record.put("email", genRecord.getEmail());
+		record.put("phone", genRecord.getPhone());
+		record.put("addr", genRecord.getAddr());
 		
-		record.put("fname", value)
-		record.put("fphone", value)
-		record.put("fbirthdate", value)
-		*/
+		record.put("familyList", famRecord);
+		
+		model.addAttribute("record", record);
 		
 		return "general/reservation/Receipt.tiles";
 		
 	}
-	
-	
-
-	
-	
-	
 	
 }

@@ -29,7 +29,6 @@
 	line-height: 15px;
 	box-sizing: border-box;
 }
-
 hr{
 	border: solid 1px black;
 	width: 30%; 

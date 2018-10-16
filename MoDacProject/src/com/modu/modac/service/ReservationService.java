@@ -10,6 +10,8 @@ public interface ReservationService {
 	void reservationDelete(Map map);
 	List<ReservationDto> reservationList(Map map);
 	List<ReceptionDto> receiptList(Map map);
-	int reservationCancel(Map map);
-	int receptCancel(Map map);
+	void reservationCancel(Map map);
+	void receptCancel(Map map);
+	int getTotalReservationRecord(Map map);
+	int getTotalReservationRecordrec(Map map);
 }

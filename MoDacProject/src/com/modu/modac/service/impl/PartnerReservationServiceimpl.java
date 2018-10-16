@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.modu.modac.service.HealthInfoDto;
 import com.modu.modac.service.PartnerReservationService;
+import com.modu.modac.service.ReceptViewDto;
 import com.modu.modac.service.ReceptionDto;
 import com.modu.modac.service.ReceptionHistoryListDto;
 import com.modu.modac.service.ReceptionListDto;
@@ -101,6 +103,49 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	public void reservationListNo(Map map) {
 		dao.reservationListNo(map);
 	}
+
+	@Override
+	public Map ajaxReceptionResult(Map map) {
+		return dao.ajaxReceptionResult(map);
+	}
+
+	@Override
+	public Map ajaxReservationResult(Map map) {
+		return dao.ajaxReservationResult(map);
+	}
+
+	@Override
+	public String nameConfirming(Map map) {
+		return dao.nameConfirming(map);
+	}
+
+	@Override
+	public HealthInfoDto helthinfo(Map map) {
+		return dao.helthinfo(map);
+	}
+
+	@Override
+	public String qualshelthinfo(Map map) {
+		return dao.qualshelthinfo(map);
+	}
+
+	@Override
+	public ReceptViewDto receptionView(Map map) {
+		return dao.receptionView(map);
+	}
+
+	@Override
+	public Map reservationViewinfo(Map map) {
+		return dao.reservationViewinfo(map);
+	}
+
+	@Override
+	public String famliyinfno(Map map) {
+		return dao.famliyinfno(map);
+	}
+
+
+
 
 
 }

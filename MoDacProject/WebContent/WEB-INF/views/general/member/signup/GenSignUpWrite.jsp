@@ -51,7 +51,7 @@
 		    month:{required:'태어난 월을 입력하세요'},
 		    day:{required:'태어난 일을 입력하세요'},
 		   	gen:{required:'성별을 선택하세요'},
-		    email:{required:'이메일을 입력하세요',contains('@'):'올바른 이메일 주소를 입력하세요'},
+		    email:{required:'이메일을 입력하세요', contains('@'):'올바른 이메일 주소를 입력하세요'},
 		    phone:'전화번호를 입력하세요',
 		    addr:'주소를 입력하세요'
 		    

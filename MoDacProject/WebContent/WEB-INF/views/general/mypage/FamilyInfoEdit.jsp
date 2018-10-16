@@ -6,7 +6,6 @@
 form {
 	margin-left: 21%;
 }
-
 .panel {
 	margin-top: 50px;
 	margin-left: 15%;

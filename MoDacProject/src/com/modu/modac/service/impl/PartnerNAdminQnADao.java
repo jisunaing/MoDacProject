@@ -54,9 +54,5 @@ public class PartnerNAdminQnADao implements PartnerNAdminQnAService{
 		
 		return template.update("PartnerNAdminQnAUpdate",map);
 	}
-
-	
-	
-	
 	
 }

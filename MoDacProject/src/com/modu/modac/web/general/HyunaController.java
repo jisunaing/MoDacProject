@@ -1,8 +1,5 @@
 package com.modu.modac.web.general;
 
-import java.text.SimpleDateFormat;             
-
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,22 +8,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.modu.modac.service.GeneralService;
-import com.modu.modac.service.GenfamilyDto;
 import com.modu.modac.service.GenfamilyService;
 import com.modu.modac.service.GenmemberDto;
 import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
-import com.modu.modac.service.ReservationService;
 
 @Controller
 public class HyunaController {	
@@ -86,8 +78,7 @@ public class HyunaController {
 		//정말로 탈퇴하시겠습니까?
 		map.put("genid",session.getAttribute("genid"));
 		generalService.delete(map);
-		//session.invalidate();
-		session.removeAttribute("genid");
+		session.invalidate();
 		//정상적으로 탈퇴처리 되었습니다. 
 		return "forward:/home/index.do";
 	}

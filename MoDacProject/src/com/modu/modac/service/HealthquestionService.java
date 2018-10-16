@@ -17,5 +17,4 @@ public interface HealthquestionService {
 	int getTotalRecord(Map map);
 	//답변]
 	int reply(Map map);
-	
 }

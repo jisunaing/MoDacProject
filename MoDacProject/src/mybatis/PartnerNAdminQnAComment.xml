@@ -49,4 +49,8 @@
 		DELETE PREPLYQNA WHERE no= #{no}
 	</delete>
     
+  
+
+	
+	
 </mapper>

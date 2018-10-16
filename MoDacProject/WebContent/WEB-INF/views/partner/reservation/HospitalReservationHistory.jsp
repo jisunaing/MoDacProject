@@ -19,7 +19,7 @@
 }
 .row .col-md-4 {
  margin-top: 10px;
- outline: 1px pink solid;
+ outline: 1px pink solid;        
  height: 200px;
 }
 /*가운데 정렬을 위한 CSS*/
@@ -105,16 +105,17 @@ tbody tr:nth-child(even) {
 						</tr>
 						</c:if>
 						<c:if test="${not isEmpty}">
-						<c:forEach var="list" items="${list}" varStatus="loop">
+						<c:forEach items="${list}" var="list">
 						<tr>
-							<a href="<c:url value='/partner/hospital/ReservationHistoryViewMove.do?fno=${fno}&resnum=${resnum}&where=${moveWhere}'/>">
-							<td>${list.resname}</td>
+							<td>
+							<a href="<c:url value='/partner/hospital/ReservationHistoryViewMove.do?resnum=${list.resnum}&genid=${list.genid}&name=${list.resname}'/>">
+							${list.resname}
 							</a>
+							</td>
 							<td>${list.resdate}</td>
 							<td>${list.phone}</td>
 							<td>${list.email}</td>
 							<td>${list.resaccept}</td>
-							
 						</tr>
 						</c:forEach>
 						</c:if>

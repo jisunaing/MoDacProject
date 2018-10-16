@@ -6,14 +6,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Repository;
-
-import com.modu.modac.service.GeneralService;
 import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
-import com.modu.modac.service.TestService;
-
 
 @Repository
 public class HealthquestionDao implements HealthquestionService{

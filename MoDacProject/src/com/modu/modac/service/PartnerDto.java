@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-         
+
 public class PartnerDto {
 
 	
@@ -182,13 +182,6 @@ public class PartnerDto {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }//PartnersDto

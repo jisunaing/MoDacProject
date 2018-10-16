@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
+
 <style>
 
 .form-box {
@@ -28,8 +29,6 @@
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
 	}
-
-
 tr th{
 	text-align: center
 }
@@ -61,8 +60,8 @@ tr th{
 	//해당 글번호에 대한 코멘트 목록을 가져오는 함수 
 	var showComments = function(key){		
 		$.ajax({
-			url:"<c:url value='/partner/partnerQnA/CommentList.do'/>",
-			data:{no:key},
+			url:"<c:url value='/partner/partnerQnA/pNgCommentList.do'/>",
+			data:{qno:key},
 			dataType:'json',
 			type:'post',
 			success:displayComments			
@@ -81,17 +80,17 @@ tr th{
 			commentString+="<tr><td colspan='4'>등록된 댓글이 없어요</td></tr>";
 		}
 		$.each(data,function(index,comment){			
-			commentString+='<tr><td>'+comment['GENID']+'</td>';
-			if('${sessionScope.pid}' != comment["GENID"])
-				commentString+='<td align="left">'+comment['RCONTENTS']+'</td>'; 
+			commentString+='<tr><td style="font-size: 1.2em; font-weight: bold">'+comment['HOSNAME']+'</td>';
+			if('${sessionScope.pid}' != comment["PID"])
+				commentString+='<td align="center;">'+comment['ATITLE']+'</td>'; 
 			else
-				commentString+='<td align="center;"><span style="cursor:pointer" class="commentEdit" title="'+comment["RNO"]+'">'+comment['RCONTENTS']+'</span></td>'; 		
-			commentString+='<td>'+comment['REPLYDATE']+'</td>';
+				commentString+='<td align="center;"><span style="cursor:pointer" class="commentEdit" title="'+comment["ANO"]+'">'+comment['ATITLE']+'</span></td>'; 		
+			commentString+='<td>'+comment['APOSTDSATE']+'</td>';
 			commentString+='<td>';
 			if('${sessionScope.pid}' == comment["PID"])
-				commentString+='<span  class="commentDelete" title="'+comment["RNO"]+'" style="cursor: pointer; color: green; font-size: 1.4em; font-weight: bold">삭제</span>';
+				commentString+='<span  class="commentDelete" title="'+comment["ANO"]+'" style="cursor: pointer; color: red; font-size: 1.4em; font-weight: bold">삭제</span>';
 			else
-				commentString+='<span style="color: gray; font-size: 0.7em; font-weight: bold">삭제불가</span>';
+				commentString+='<span style="color: gray; font-size: 0.9em; font-weight: bold">삭제불가</span>';
 			commentString+='</td></tr>';
 		});		
 		commentString+='</table>';
@@ -108,17 +107,17 @@ tr th{
 			$('#title').val($(this).html());
 			$('#submit').val('수정');
 			
-			//form의 hidden속성중 name="cno"값 설정
-			$('input[name=rno]').val($(this).attr("title"));
+		
+			$('input[name=ano]').val($(this).attr("title"));
 			
 		});
 		
 		$('.commentDelete').click(function(){			
-			var rno_value = $(this).attr("title");
+			var ano_value = $(this).attr("title");
 			
 			$.ajax({
-				url:"<c:url value='/partner/partnerQnA/CommentDelete.do'/>",
-				data:{rno:rno_value,no:${record.qno}},
+				url:"<c:url value='/partner/partnerQnA/pNgCommentDelete.do'/>",
+				data:{ano:ano_value,qno:${record.qno}},
 				dataType:'text',
 				type:'post',
 				success:function(key){					
@@ -149,15 +148,15 @@ tr th{
 					
 					$(".form-box").css("height",incre);
 					
-					var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.qno}'/>";	
+					var action="<c:url value='/partner/partnerQnA/pNgCommentWrite.do?qno=${record.qno}'/>";	
 					
 				}
 				
 				
-				var action="<c:url value='/partner/partnerQnA/CommentWrite.do?no=${record.qno}'/>";								
+				var action="<c:url value='/partner/partnerQnA/pNgCommentWrite.do?no=${record.qno}'/>";								
 			}						
 			else{
-				var action="<c:url value='/partner/partnerQnA/CommentEdit.do'/>";	
+				var action="<c:url value='/partner/partnerQnA/pNgCommentEdit.do'/>";	
 			}
 			$.ajax({
 				url:action,
@@ -181,12 +180,7 @@ tr th{
 			incre+=32;
 		});
 		
-		//메모글 삭제처리]
-		$('#delbtn').on('click',function(){
-			if(confirm('정말로 삭제할래?')){
-				location.replace("<c:url value='/partner/partnerQnA/admin_QnA_Delete.do?no=${record.qno}'/>");				
-			}
-		});
+	
 		
 		
 });
@@ -213,7 +207,7 @@ tr th{
 			<h2 style="text-align: center">일반회원님들의 문의 확인하기 </h2>
 			<br />
 			<p style="text-align: center;">
-				일반회원님과 병원관리자분들만의 1:1 문의 서비스입니다.<br /> 
+				일반회원님과 병원관리자분들만의 문의 서비스입니다.<br /> 
 				
 			</p>
 			<hr id="hr1" ><br/><br/>
@@ -257,15 +251,15 @@ tr th{
 			<br/>
 			<hr id="hr2">
 			<div class="row">
-				<h3 class="text-center">회원분들의 문의를 확인해주세요!</h3>
+				<h3 class="text-center">회원분들에게 답변 해주세요!</h3>
 				<br/>
 				<form class="form-inline" id="frm" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="hidden" name="no" value="${record.qno}" />
+				<input type="hidden" name="qno" value="${record.qno}" />
 				
 					<!-- 수정 및 삭제용 파라미터 -->
-					<input type="hidden" name="rno" />
-					<input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="rcontents" />
+					<input type="hidden" name="ano" />
+					<input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="acontents" />
 					<input class="btn btn-success" 	id="submit" type="button" value="등록" />
 		
 				</form>

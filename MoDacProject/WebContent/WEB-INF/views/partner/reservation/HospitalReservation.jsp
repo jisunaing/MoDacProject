@@ -20,7 +20,7 @@
 .row .col-md-4 {
  margin-top: 10px;
  outline: 1px pink solid;
- height: 200px;
+ height: 200px;          
 }
 /*가운데 정렬을 위한 CSS*/
 /*테이블 센터를 위한 css 시작*/
@@ -106,9 +106,11 @@ tbody tr:nth-child(even) {
 							<c:if test="${not isEmpty}">
 							<c:forEach var="list" items="${list}" varStatus="loop">
 							<tr>
-								<a href="<c:url value='/partner/hospital/ReservationViewMove.do?fno=${fno}&resnum=${resnum}&where=${moveWhere}'/>">
-								<td>${list.RESNAME}</td>
+								<td>
+								<a href="<c:url value='/partner/hospital/ReservationViewMove.do?resnum=${list.RESNUM}&genid=${list.GENID}&name=${list.RESNAME}'/>">
+								${list.RESNAME}
 								</a>
+								</td>
 								<td>${list.RESDATE}</td>
 								<td>${list.PHONE}</td>
 								<td>${list.EMAIL}</td>

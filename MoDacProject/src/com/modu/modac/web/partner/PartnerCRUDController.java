@@ -1,4 +1,4 @@
-package com.modu.modac.web.partner;         
+package com.modu.modac.web.partner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,8 +28,6 @@ public class PartnerCRUDController {
 	
 	private PartnerDto dto;
 	String subject; //가입할때 필요한거
-	String pid; // 세션아이디 저장용
-	String subs; // 가입 외에 뿌려줘야할 subject
 	
 	//진성 데이터 베이스를 위한 설정
 	//진성 영역 
@@ -81,7 +79,7 @@ public class PartnerCRUDController {
 		int count = subjectToken.countTokens();
 		String subjectArray[] = new String[count];
 		
-		
+		 
 		
 		for(int i = 0; i < count; i++) {
 			
@@ -144,16 +142,22 @@ public class PartnerCRUDController {
 	@RequestMapping("/partner/member/loginProcess.do")
 		public String process(@RequestParam Map map,Model model,HttpServletRequest req) throws Exception{
 			
-
-		
-			boolean isLogin = service.isMember(map);
 			
-			pid = map.get("pid").toString();
+		
+			boolean isLogin = service.isMember(map); //회원 여부 판단
+			
+			boolean isWithdrawal = service.isWithdrawal(map);
+			
+			
+			
+			String pid = map.get("pid").toString();
 			
 			System.out.println("로그인 아이디 :"+pid);
 
 			
-			if(isLogin) { //회원은 맞지만 수락 여부 확인은 X
+			if(isLogin) { //회원은 맞지만 수락 여부 X
+				
+				
 				
 					boolean isAccept = service.isAccept(map);
 					
@@ -162,12 +166,10 @@ public class PartnerCRUDController {
 					HttpSession session = req.getSession();
 					
 					session.setAttribute("pid",map.get("pid"));
-
+		
+					//병원 차트를 가져오기 위한 부분 	
 					
 					
-					
-				/*
-					//병원 차트를 가져오기 위한 부분 					 
 				
 		            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		            Calendar cal = Calendar.getInstance();
@@ -189,7 +191,8 @@ public class PartnerCRUDController {
 		               }//if
 		               else {
 		                  model.addAttribute("chartError", "불러올 차트가 없어요");
-		               }
+		               }//else if
+		               
 		               //병원 차트를 가져오기 위한 부분
 		               //병원 차트 요일별 저장하기
 		               model.addAttribute("mon", mon);
@@ -199,10 +202,18 @@ public class PartnerCRUDController {
 		               model.addAttribute("fri", fri);
 		               model.addAttribute("dat", dat);
 		               model.addAttribute("sun", sun);
-		               
-		               */
-					
+		              
+		             					
 					}//회원도 맞고 제휴 수락도 Y인 경우
+					
+					else if(isWithdrawal) {
+						
+						
+						model.addAttribute("loginError", "현재 회원탈퇴 신청된 아이디 입니다.");
+						return "/general/member/Login.tiles";
+						
+						
+					}
 					
 					else {
 						
@@ -213,9 +224,9 @@ public class PartnerCRUDController {
 						
 					}
 										
-			}/////회원은 맞지만 수락 여부 확인은 X
+			}/////회원은 맞지만 수락 여부  X
 		
-			else {//비회원
+			else {//비회원 혹은  아이디 or 비밀번호 틀림
 				model.addAttribute("loginError", "아이디 혹은 비밀번호가 일치하지 않습니다.");
 
 				return "/general/member/Login.tiles";
@@ -241,14 +252,13 @@ public class PartnerCRUDController {
 	
 	//병원 정보 페이지
 	@RequestMapping("/partner/mypage/partnerInfo.do")
-	public String partnerInfo(@ModelAttribute("pid")String pid,Map map) throws Exception {
+	public String partnerInfo(Map map) throws Exception {
+		
 		
 		PartnerDto dto = service.selectOne(map);
-		
+	
 		map.put("hosno",dto.getHosno());	
-		
-		System.out.println("HOSNO = "+dto.getHosno());
-		
+						
 		List<Map> subjectlist = service.subjectListAll(map);
 		
 		StringBuffer buffer = new StringBuffer();
@@ -259,17 +269,13 @@ public class PartnerCRUDController {
 					
 		}
 		
-		subs = buffer.toString();
+		String subs = buffer.toString();
 		
 		subs = buffer.substring(0,subs.lastIndexOf(','));
-	
-		System.out.println("마지막 결과물 :"+subs);
-		
-		
-		
+			
 		map.put("subjectlist",subs);
 						
-		map.put("pid",pid);
+		map.put("pid",map.get("pid"));
 		
 		map.put("partner", dto);
 				
@@ -277,35 +283,51 @@ public class PartnerCRUDController {
 		return "/partner/mypage/partnerInfo";
 	}
 	
+	
 	// 병원 정보 수정페이지
 	@RequestMapping("/partner/mypage/partnerInfoEdit.do")
-	public String partnerInfoEdit(@RequestParam Map map,Map maps,Model model,@ModelAttribute("pid")String pid) throws Exception {
+	public String partnerInfoEdit(@RequestParam Map map,Map maps,Model model) throws Exception {
 		
+		PartnerDto dto = service.selectOne(map);
 		
-			maps.put("subjectlist",subs);
-					
-			maps.put("partner",map);
+		map.put("hosno",dto.getHosno());	
+				
+		List<Map> subjectlist = service.subjectListAll(map);
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		for(int i=0; i < subjectlist.size(); i++) {
 			
-			model.addAllAttributes(maps);				
+			buffer.append(subjectlist.get(i).get("SUBNAME")+",");
+					
+		}
+		
+		String subs = buffer.toString();
+		
+		subs = buffer.substring(0,subs.lastIndexOf(','));
+			
+		maps.put("subjectlist",subs);
+		
+		maps.put("pid",map.get("pid"));
+					
+		maps.put("partner",map);
+		
+		model.addAllAttributes(maps);				
 
 		return "/partner/mypage/partnerInfoEdit";
 	}
 	
-	@RequestMapping("/partner/mypage/partnerInfoEditOK.do")
-	public String partnerInfoEditOK(@RequestParam Map map,Map maps,Model model,@ModelAttribute("pid")String pid) throws Exception {
-		
-		
-		maps.put("pid",pid);
-		
-		System.out.println("pid : "+pid);
 	
+	//병원정보 수정완료
+	@RequestMapping("/partner/mypage/partnerInfoEditOK.do")
+	public String partnerInfoEditOK(@RequestParam Map map,Map maps,Model model) throws Exception {
+		
+	
+		maps.put("pid",map.get("pid"));
+			
 		PartnerDto dto = service.selectOne(maps);
 		
-		
 		map.put("hosno",dto.getHosno());	
-		
-		System.out.println("HOSNO = "+dto.getHosno());
-		
 					
 		int updateone = service.updateone(map);
 				
@@ -323,7 +345,7 @@ public class PartnerCRUDController {
 		
 		map.put("pid",pid);
 		PartnerDto partner = service.selectOne(map);
-						
+										
 		partner.setPid(pid);
 				
 		model.addAttribute("partner",partner);
@@ -332,14 +354,18 @@ public class PartnerCRUDController {
 	}
 	
 	
+	
 	//병원 회원탈퇴 버튼 눌렀을때 오는 맵핑
 	@RequestMapping("/partner/withdrawal/partner_withdrawalREQ.do")
-	public String withdrawalREQ(@RequestParam Map map,SessionStatus status,@ModelAttribute("pid")String pid) throws Exception {
+	public String withdrawalREQ(@RequestParam Map map,SessionStatus status) throws Exception {
 		
-		
+		//회원탈퇴 눌러서 왔으니 Accept를 D로 바꿔주자  D로 확인이 되는 회원은 로그인에서도 탈퇴 대기중이라고 변경해줘야함
 		service.withdrawal(map);
-	
-		//회원탈퇴 눌러서 왔으니 Accept를 D로 바꿔주자  D로 확인이 되는 회원은 로그인에서도 탈퇴 대기중이라고 변경해줘야함		
+		
+		//회원아웃 테이블에 해당 회원을 추가
+		service.withdrawalInsert(map);
+				
+		//세션에서 분리시켜준다
 		status.setComplete();
 		
 		//현재 메인페이지로 보내야 하는 부분이 임시적이기 때문에 여기 또한 임시로 메인으로 보냄

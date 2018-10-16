@@ -326,33 +326,33 @@ textarea {
 		<div id="login">
 			<h1>환영 합니다!!</h1>
 			
-			<small>이곳은 <span id="sp2" >제휴회원</span> 전용 로그인 입니다</small>			
-			<form action="<c:url value='/home/loginProcess.do'/>" method="post">
-			<input type="hidden" name="PARTNER" value="YES"/>
-				<div class="field-wrap">
-					<label for="email2"> 아이디 <span class="req">*</span>
-					</label>
-					<input name="id" type="text" id="email2" required autocomplete="off">
-				</div>
-				
-				<div class="field-wrap">
-					<label for="pwd2"> 비밀번호 <span class="req">*</span>
-					</label>
-					<input name="pwd"type="password" id="pwd2" required autocomplete="off">
-				</div>
-				 
-				 <div class="col-sm-offset-3">
-					<button type="submit" class="button button-block">로 그 인</button>
-				</div>
-				
-			</form>
-				<div class="col-sm-offset-3">
-					<a href='<c:url value='general/member/join_P.do'/>'>
-						<button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button>
-					</a>
-				</div>
-
-			</div>
+			<small>이곳은 <span id="sp2" >제휴회원</span> 전용 로그인 입니다</small>         
+	         	<form action="<c:url value='/partner/member/loginProcess.do'/>" method="post">
+	            
+		            <div class="field-wrap">
+		               <label for="pid"> 아이디 <span class="req">*</span>
+		               </label>
+		               <input name="pid" type="text" id="pid" required autocomplete="off">
+		            </div>
+		            
+		            <div class="field-wrap">
+		               <label for="hpwd"> 비밀번호 <span class="req">*</span>
+		               </label>
+		               <input name="hpwd" type="password" id="hpwd" required autocomplete="off">
+		            </div>
+		             
+		             <div class="col-sm-offset-3">
+		               <button type="submit" class="button button-block">로 그 인</button>
+		            </div>
+	            
+	         	</form>
+	            <div class="col-sm-offset-3">
+	               <a href='<c:url value='/general/member/signup/partnerJoin.do'/>'>
+	                  <button type="submit" class="button button-block" style="margin-top: 13px;">제휴 신청</button>
+	               </a>
+	            </div>
+	
+	         </div>
 		<!-- Welcome Back! -->
 		
 	</div>
@@ -410,11 +410,6 @@ tab.on('click', function (e) {
 });
       //# sourceURL=pen.js
     </script>
-
-
-
-  
-  
 
 </body>
 </html>

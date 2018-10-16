@@ -11,19 +11,8 @@
 <!--     SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHQUESTION WHERE NO = O.QNO) commentCount 
     FROM PQNA O JOIN PARTNERS M ON O.PID = M.PID WHERE M.PID= #{pid}  -->
 
-<!-- 
-
-SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHQUESTION WHERE QNO = O.QNO),
-
-M.SUBNAME FROM HEALTHQUESTION O JOIN SUBJECT M ON O.SUBJECTCODE = M.SUBJECTCODE WHERE M.SUBNAME = '모름'
-OR M.SUBNAME = '내과' OR M.SUBNAME = '비뇨의학과' OR M.SUBNAME = '결핵과' OR M.SUBNAME = '한방과'
-ORDER BY QNO DESC)T) WHERE R BETWEEN 1 AND 5
-
-
-
- -->
   
-    SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHQUESTION WHERE QNO = O.QNO) commentCount  
+    SELECT * FROM (SELECT T.*,ROWNUM R FROM (SELECT O.*,(SELECT COUNT(*) FROM HEALTHANSWER WHERE QNO = O.QNO)commentCount  
     
  	FROM HEALTHQUESTION O JOIN SUBJECT M ON O.SUBJECTCODE = M.SUBJECTCODE  	 	
 
@@ -51,6 +40,8 @@ ORDER BY QNO DESC)T) WHERE R BETWEEN 1 AND 5
 	</select>
     
   
+  
+  
     <!--  레코드 수 가져오는 부분 -->
    	<select id="PartnerNGeneralQnATotalRecord"  parameterType="java.util.Map" resultType="int">
    	
@@ -71,6 +62,10 @@ ORDER BY QNO DESC)T) WHERE R BETWEEN 1 AND 5
    		AND ${searchColumn} LIKE '%' || #{searchWord} || '%'
    	</if>
 	</select>
+	
+	
+	
+	
 
    
     <!-- SelectOne -->
@@ -80,5 +75,42 @@ ORDER BY QNO DESC)T) WHERE R BETWEEN 1 AND 5
 	SELECT * FROM HEALTHQUESTION WHERE QNO = #{qno}
   
 	</select>
+	
+	
+	<!-- 특정 글에서  전체 코멘트 가져오는 부분  -->	
+	<select id="PartnerNGeneralQnACommentList" parameterType="java.util.Map" resultType="java.util.Map">
+<!--  
+	SELECT * FROM HEALTHANSWER WHERE QNO = #{qno} ORDER BY ANO DESC   이 쿼리문은  병원이 제휴회원 아이디로 나옴
+-->
+	<!-- 제휴회원 아이디를 병원이름으로 가져와서 뿌려주자  -->
+	select * FROM(select hos.hosname,p.pid from hospital hos join partners p on hos.hosno = p.hosno)T
+	JOIN HEALTHANSWER A ON T.PID = A.PID WHERE QNO = #{qno} ORDER BY ANO DESC
+ 
+	</select>
+	
+	
+	<!-- 코멘트 입력  -->	
+	<insert id="PartnerNGeneralQnACommentInsert" parameterType="java.util.Map">   	
+	 
+	 INSERT INTO HEALTHANSWER(ANO,ATITLE,APOSTDSATE,QNO,PID) VALUES(SEQ_HEALTHANSWER.NEXTVAL,#{atitle},SYSDATE,#{qno},#{pid})
+	 
+	</insert>
+
+
+	<!-- 코멘트 수정  -->	
+	<update id="PartnerNGeneralQnACommentUpdate" parameterType="java.util.Map">
+	
+		UPDATE HEALTHANSWER SET ATITLE =#{atitle} WHERE ano=#{ano}
+		
+	</update>
+	
+	
+	
+	<!-- 코멘트 삭제  -->	
+	<delete id="PartnerNGeneralQnACommentDelete" parameterType="java.util.Map">
+		DELETE HEALTHANSWER WHERE ano=#{ano}
+	</delete>
+	
+	
 	
 </mapper>

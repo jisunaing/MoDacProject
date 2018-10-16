@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
    
 <script>
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
@@ -21,9 +22,9 @@ function goPopup(){
 
 function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form.hosaddr.value = roadAddrPart1;		
-		document.form.addrDetail.value = addrDetail;		
-		document.form.zipNo.value = zipNo;
+		document.partnerjoin.hosaddr.value = roadAddrPart1;		
+		document.partnerjoin.addrDetail.value = addrDetail;		
+		document.partnerjoin.zipNo.value = zipNo;
 		
 		
 }
@@ -54,7 +55,66 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	 $('#subjectlist').attr('value',change);
 	 
 	 
-	});	
+	});
+	 
+	 
+	 
+	
+	 
+		$('#partnerjoin').validate({
+			
+			rules:{
+				pid : "required",
+				
+				hpwd : {required : true, minlength : 5 },
+				
+				hpwd2 : {required : true, minlength : 5, equalTo : '#hpwd'},
+				
+				hosname : {required : true},
+				
+				subjectlist : 'required',
+				
+				hosmanager : 'required',
+				
+				pphone : {required : true, maxlength : 11 },
+				
+				pemail : 'required',
+				
+				hosaddr : 'required',
+				
+				businessnum : {required : true, maxlength : 10 }
+				
+				
+			},
+			
+			messages:{
+				
+				pid : {required : '* 아이디를 입력 해주세요'},
+				
+				hpwd : {required : '* 비밀번호를  입력 해주세요', minlength : '비밀번호는 최소 5자 이상 입력'},
+				
+				hpwd2 : {required : '* 비밀번호를  입력 해주세요', minlength : '비밀번호는 최소 5자 이상 입력', equalTo : '비밀번호는 일치해야 합니다'},
+				
+				hosname : {required : '* 병원 주소를 입력 해주세요'},
+				
+				subjectlist : {required : '* 진료과목 선택하기를 클릭 해주세요'},
+				
+				hosmanager : {required : '* 담당자 이름을 입력 해주세요'},
+				
+				pphone : {required : ' * - 를 빼고 입력해주세요', maxlength : "핸드폰 번혼느 최대 11자 입니다"},
+				
+				pemail : {required : ' *이메일을 입력 해주세요'},
+				
+				hosaddr : {required : ' *주소를 입력 해주세요'},
+				
+				businessnum : {required : ' * 사업자번호를 입력해주세요', maxlength : "사업자번호는 10자리 입니다" }
+
+				
+			},
+			
+			
+			
+		});
 	 
 	
 	
@@ -78,7 +138,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
     #selectable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
 
-    #selectable li { margin: 3px; padding: 13px; float: left; width: 100px; height: 50px; 
+    #selectable li { margin: 5px 5px 5px 5px; padding: 13px; float: left; width: 100px; height: 50px; 
     
     font-size: 1em; text-align: center; border: 1px solid black; border-radius: 10px; }
     
@@ -101,11 +161,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 				<div class="col-md-12">
 				 <h1>제휴 문의<small> 병원 제휴</small></h1>
 					
-					<form  id="form" name="form" class="form-horizontal" method="post" action="<c:url value='/partner/member/singup/joinrequest.do'/>" >
-					
-					
-					
-					
+					<form  id="partnerjoin" name="partnerjoin" class="form-horizontal" method="post" action="<c:url value='/partner/member/singup/joinrequest.do'/>" >
+				
 						  <div class="form-group">
 						  
 						   <label for="pid" class="col-sm-2  control-label">아이디</label>
@@ -134,7 +191,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						  <div class="form-group">
 						    <label for="hosname" class="col-sm-2  control-label">병원 명</label>
 						   	<div class="col-sm-3">
-						      <input type="text" class="form-control" name="hosname" id="hosname" placeholder="병원 명을 입력하세요" required>
+						      <input type="text" class="form-control" name="hosname" id="hosname" placeholder="병원 명을 입력하세요">
 						    </div>
 						  </div>
 						  
@@ -160,7 +217,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 											</button>
 											<h4 class="modal-title">진료하시는 과목을 선택해 주세요 </h4>
 										</div>
-										<div class="modal-body" >
+										<div class="modal-body" style="padding-left: 77px;">
 											
 												
 											<ul id="selectable">
@@ -264,7 +321,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						<div class="form-group">
 							<label for="businessnum" class="col-sm-2  control-label">사업자 번호 </label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" name=businessnum id="businessnum" placeholder="사업자 번호를 입력해주세요">
+								<input type="text" class="form-control" name= "businessnum" id="businessnum" placeholder="사업자 번호를 입력해주세요">
 							</div>
 						</div>
 
@@ -289,5 +346,3 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
   </body>
 </html>
-
-

@@ -1,7 +1,6 @@
 package com.modu.modac.service;  
 
 public class GenfamilyDto {
-	
 	private String fno;
 	private String genid;
 	private String fname;

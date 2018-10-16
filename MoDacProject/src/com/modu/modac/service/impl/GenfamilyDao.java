@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.modu.modac.service.GenfamilyDto;
 import com.modu.modac.service.GenfamilyService;
-import com.modu.modac.service.GenmemberDto;
-import com.modu.modac.service.TestService;
 
 /* Repository어노테이션 */
 @Repository

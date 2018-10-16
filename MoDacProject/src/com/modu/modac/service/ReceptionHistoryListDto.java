@@ -2,12 +2,25 @@ package com.modu.modac.service;
 
 public class ReceptionHistoryListDto {              
 	
+	private String genid;
+	private String recnum;
 	private String recname;
 	private String recdate;
 	private String phone;
 	private String email;
 	private String recaccept;
-	
+	public String getGenid() {
+		return genid;
+	}
+	public String getRecnum() {
+		return recnum;
+	}
+	public void setRecnum(String recnum) {
+		this.recnum = recnum;
+	}
+	public void setGenid(String genid) {
+		this.genid = genid;
+	}
 	public String getRecname() {
 		return recname;
 	}

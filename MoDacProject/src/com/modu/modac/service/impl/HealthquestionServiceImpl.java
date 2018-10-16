@@ -5,15 +5,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 
-import com.modu.modac.service.GeneralService;
-import com.modu.modac.service.GenfamilyDto;
-import com.modu.modac.service.GenmemberDto;
 import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
-
 
 @Service("healthquestionService")
 public class HealthquestionServiceImpl implements HealthquestionService{

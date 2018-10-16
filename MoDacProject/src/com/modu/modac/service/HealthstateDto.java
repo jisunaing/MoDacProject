@@ -52,5 +52,4 @@ public class HealthstateDto {
 	public void setEtc(String etc) {
 		this.etc = etc;
 	}
-	
 }

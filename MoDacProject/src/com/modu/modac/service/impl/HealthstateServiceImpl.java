@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
-import com.modu.modac.service.TestService;
 
 /* service어노테이션 */
 @Service("healthstateService")

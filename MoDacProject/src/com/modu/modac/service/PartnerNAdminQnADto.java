@@ -1,5 +1,5 @@
 package com.modu.modac.service;
-           
+
 public class PartnerNAdminQnADto {
 
 	private String no;
@@ -52,12 +52,6 @@ public class PartnerNAdminQnADto {
 		this.content = content;
 	}
 
-	
-	
-	
-	
-	
-	
 	
 	
 }//PartnerNAdminQnADto

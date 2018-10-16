@@ -65,5 +65,4 @@ public class HealthquestionDto {
 	public void setSubname(String subname) {
 		this.subname = subname;
 	}
-	
 }

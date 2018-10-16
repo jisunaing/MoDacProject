@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.HealthInfoDto;
 import com.modu.modac.service.HealthInfoService;
-import com.modu.modac.service.MapHospitalDto;
-import com.modu.modac.service.MapHospitalService;
 
 @Service("healthInfoService")
 public class HealthInfoServiceImpl implements HealthInfoService {
@@ -36,6 +34,5 @@ public class HealthInfoServiceImpl implements HealthInfoService {
 	@Override
 	public void close() {
 	}
-	
 
 }

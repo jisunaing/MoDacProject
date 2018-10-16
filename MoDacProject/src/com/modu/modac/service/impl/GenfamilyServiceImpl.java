@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.GenfamilyDto;
 import com.modu.modac.service.GenfamilyService;
-import com.modu.modac.service.GenmemberDto;
-import com.modu.modac.service.TestService;
 
 /* service어노테이션 */
 @Service("genfamilyService")
