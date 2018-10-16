@@ -333,18 +333,14 @@ public class PartnerController {
 		map.put("pid", pid);
 		model.addAttribute("where", "reception");
 		HealthstateDto helthinfo;
-		ReceptViewDto receptViewDto;
+		ReceptViewDto receptViewDto = partnerReservationService.receptionView(map);
 		String name = partnerReservationService.nameConfirming(map);
-		receptViewDto = partnerReservationService.receptionView(map);
 		model.addAttribute("receptViewDto", receptViewDto);
 		if(map.get("name").equals(name)) {//가입자 본인이 접수한 경우
-			System.out.println("같은경우");
 			helthinfo = partnerReservationService.helthinfo(map);
 			model.addAttribute("helthinfo", helthinfo);
 		}
 		else {//가입자가 가족으로 대신 접수한 경우
-			System.out.println("name : "+map.get("name"));
-			System.out.println("genid : "+map.get("genid"));
 			map.put("name", map.get("name"));
 			map.put("genid", map.get("genid"));
 			String fno = partnerReservationService.famliyinfno(map);
@@ -364,15 +360,16 @@ public class PartnerController {
 		map.put("pid", pid);
 		model.addAttribute("where", "receptionHistory");
 		HealthstateDto helthinfo;
-		ReceptViewDto receptViewDto;
+		ReceptViewDto receptViewDto = partnerReservationService.receptionView(map);
 		String name = partnerReservationService.nameConfirming(map);
-		receptViewDto = partnerReservationService.receptionView(map);
 		model.addAttribute("receptViewDto", receptViewDto);
 		if(map.get("name").equals(name)) {//가입자 본인이 접수한 경우
 			helthinfo = partnerReservationService.helthinfo(map);
 			model.addAttribute("helthinfo", helthinfo);
 		}
 		else {//가입자가 가족으로 대신 접수한 경우
+			map.put("name", map.get("name"));
+			map.put("genid", map.get("genid"));
 			String fno = partnerReservationService.famliyinfno(map);
 			map.put("genid", fno);
 			helthinfo = partnerReservationService.helthinfo(map);
@@ -389,16 +386,16 @@ public class PartnerController {
 		model.addAttribute("where", "reservation");
 		HealthstateDto helthinfo;
 		ReservationDto reservationDto = partnerReservationService.hospitalReservationView(map);
-		//genid의 가입자 이름 가져오기
 		model.addAttribute("reservationDto", reservationDto);
 		String name = partnerReservationService.nameConfirming(map);
-		if(map.get("name").equals(name)) {//본인이 예약한 경우
-			//본인 건강정보 들고오기
+		model.addAttribute("receptViewDto", reservationDto);
+		if(map.get("name").equals(name)) {//가입자 본인이 접수한 경우
 			helthinfo = partnerReservationService.helthinfo(map);
-			//예약내역 들고오기
 			model.addAttribute("helthinfo", helthinfo);
 		}
-		else {//가족정보로 예약한 경우
+		else {//가입자가 가족으로 대신 접수한 경우
+			map.put("name", map.get("name"));
+			map.put("genid", map.get("genid"));
 			String fno = partnerReservationService.famliyinfno(map);
 			map.put("genid", fno);
 			helthinfo = partnerReservationService.helthinfo(map);
@@ -417,15 +414,14 @@ public class PartnerController {
 		ReservationDto reservationDto = partnerReservationService.hospitalReservationView(map);
 		//genid의 가입자 이름 가져오기
 		String name = partnerReservationService.nameConfirming(map);
-		model.addAttribute("reservationDto", reservationDto);
-		if(map.get("name").equals(name)) {//본인이 예약한 경우
-			//본인 건강정보 들고오기
+		model.addAttribute("receptViewDto", reservationDto);
+		if(map.get("name").equals(name)) {//가입자 본인이 접수한 경우
 			helthinfo = partnerReservationService.helthinfo(map);
-			//예약내역 들고오기
-			reservationDto = partnerReservationService.hospitalReservationView(map);
 			model.addAttribute("helthinfo", helthinfo);
 		}
-		else {//가족정보로 예약한 경우
+		else {//가입자가 가족으로 대신 접수한 경우
+			map.put("name", map.get("name"));
+			map.put("genid", map.get("genid"));
 			String fno = partnerReservationService.famliyinfno(map);
 			map.put("genid", fno);
 			helthinfo = partnerReservationService.helthinfo(map);

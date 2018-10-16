@@ -69,6 +69,7 @@ table{
 	<!-- body 시작 -->
 	<script>
 	$(function(){
+
 		$( "#tabletoggles" ).hide();
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
@@ -78,6 +79,14 @@ table{
 			});
 		});
 		$('label').css('minWidth', '90px');
+		
+		
+		
+		$('#receipt').click(function(){
+			$('.move').css('display','inline');
+		});
+		$('.move').css('position','absolute').css('z-index','2').css('display', 'none');
+		$('.container').css('position','relative').css('z-index','1');
 		
 /*
 		$('tr').click(function(){
@@ -153,12 +162,15 @@ table{
 	});
 	</script>
 <div class="container">
-	<div class="row">
+	<div class="row" >
 		<div class="page-header">
 		  <h1>${record.hosname} <small>${record.subname}</small></h1>
 		</div>
 	</div>
 	<div class="row">
+		<div class="move">
+			<img src="<c:url value='/Images/move.gif'/>"/>
+		</div>
 		<div class="in">
 		<!-- 가운데 정렬 시작 -->
 		<div id="float-right">

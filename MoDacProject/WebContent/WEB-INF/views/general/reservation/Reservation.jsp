@@ -82,6 +82,24 @@ table{
 			$('#fno').val($('#fnos').html());
 		});
 		*/
+		$('.container').click(function(){
+			$('.move').css('display','inline');
+
+		});
+		$('.move')
+		.css('position','absolute').css('z-index','2').css('display', 'none');
+		$('.container').css('position','relative').css('z-index','1');		
+
+		
+		/*
+  display: none;
+  z-index: 1000;
+  position: fixed;
+  width: 100%; height: 100%;
+  left: 0; top: 0;
+  background-color: rgba(0,0,0, 0.4);
+  overflow-x: hidden;
+		*/
 		
 	      $('#nameUrl1').click(function(){
 	          $('#recname').val($('#names1').html());
@@ -137,6 +155,9 @@ table{
 		</div>
 	</div>
 	<div class="row">
+	<div class="move">
+		<img src="<c:url value='/Images/move.gif'/>"/>
+	</div>
 		<div class="in">
 		<!-- 가운데 정렬 시작 -->
 		<div id="float-right">
