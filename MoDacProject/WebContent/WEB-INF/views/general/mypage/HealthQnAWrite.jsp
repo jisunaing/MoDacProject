@@ -33,9 +33,7 @@ form {
 </script>
 <div id="contain" class="container">
 
-	<div class="main_column">
-
-		<div class="text_light">
+	
 			<div class="panel panel-default" style="width: 70%;">
 				<br />
 				<br />
@@ -93,12 +91,6 @@ form {
 
 				</div>
 			</div>
-		</div>
-	</div>
-	<!-- 사이드 바 -->
-	<div style="padding-top:15%">
-		<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
-	</div>
-	<!-- 사이드바 끝 -->
+		
 </div>
 <!-- container -->

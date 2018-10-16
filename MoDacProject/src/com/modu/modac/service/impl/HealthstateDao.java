@@ -21,8 +21,7 @@ public class HealthstateDao implements HealthstateService {
 
 	@Override
 	public HealthstateDto selectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("healthstateSelectOne", map);
 	}
 
 	@Override
@@ -43,8 +42,7 @@ public class HealthstateDao implements HealthstateService {
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("healthstateUpdate", map);
 	}
 
 	

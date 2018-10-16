@@ -16,7 +16,7 @@
 	</resultMap>
 	<!-- 쿼리 작성 -->
 	<insert id="healthquestionInsert" parameterType="java.util.Map" >
-		INSERT INTO healthquestion VALUES(seq_healthquestion.nextval, default,#{title},(select genid from genmember where genid=#{genid}),#{subjectcode},#{qcontent})
+		INSERT INTO healthquestion VALUES(seq_healthquestion.nextval, default,#{title},#{genid},#{subjectcode},#{qcontent})
 	</insert>
 	<select id="healthquestionSelectOne" parameterType="java.util.Map" resultType="healthquestionDto">
 		SELECT qno, title, s.subname, g.genname, postdate, qcontent 

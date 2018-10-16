@@ -9,7 +9,7 @@ form {
 
 .panel {
 	margin-top: 50px;
-	margin-left: 8%;
+	margin-left: 15%;
 	padding-top: 20px;
 	padding-bottom: 20px
 }
@@ -26,13 +26,18 @@ form {
 	margin-right: 20px
 }
 </style>
-
+<script>
+	$(function(){
+		var bloodtype = $("#bloodtype").children();
+		for(var i=0; i<bloodtype.length;i++){
+			if($(bloodtype[i]).val()==${healthstate.bloodtype})
+				$(bloodtype[i]).attr("selected","selected");
+		}
+	});
+</script>
 <!-- body 시작 -->
 <div class="container">
-	<div class="main_column">
-
-		<div class="text_light">
-
+	
 			<div class="panel panel-default" style="width: 70%">
 				<div style="text-align: center">
 					<br />
@@ -46,11 +51,11 @@ form {
 					<br />
 					<br />
 				</div>
-				<form class="form-horizontal" method="post" action="<c:url value='/general/mypage/healthinfoWrite.do?fno=${fno}'/>">
+				<form class="form-horizontal" method="post" action="<c:url value='/general/mypage/healthstateEdit.do?fno=${healthstate.hsid}'/>">
 					<div class="form-group ">
 							<label for="id" class=" col-sm-2 control-label">혈액형</label>
 							<div class="col-sm-4">
-								<select class=" form-control" name="bloodtype">
+								<select class=" form-control" name="bloodtype" id="bloodtype">
 									<option>혈액형을 입력하세요</option>
 									<option>A</option>
 									<option>B</option>
@@ -63,7 +68,7 @@ form {
 						<div class="form-group">
 							<label for="pwd" class="col-sm-2 control-label">키</label>
 							<div class="input-group col-sm-3">
-								<input type="text" class="form-control" name="height" placeholder="몸무게 입력">
+								<input type="text" class="form-control" name="height" value="${healthstate.height}" placeholder="키 입력">
 								<div class="input-group-addon">cm</div>
 							</div>
 						</div>
@@ -71,29 +76,29 @@ form {
 						<div class="form-group">
 							<label for="name" class="col-sm-2 control-label">몸무게</label>
 							<div class="input-group col-sm-3">
-								<input type="text" class="form-control" name="weight" placeholder="몸무게 입력">
+								<input type="text" class="form-control" name="weight" value="${healthstate.weight}" placeholder="몸무게 입력">
 								<div class="input-group-addon">kg</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="use" class="col-sm-2 control-label">임신 여부 및 가능성</label> &nbsp;&nbsp;&nbsp; 
 							<label class="radio-inline"> 
-								<input type="radio" name="pregnant" value="Y">있다
+								<input type="radio" name="pregnant" value="Y" <c:if test="${healthstate.pregnant eq 'Y'}" var="ispregnant">checked</c:if>>있다
 							</label> 
 							<label class="radio-inline"> 
-								<input type="radio" name="pregnant" value="N">없다
+								<input type="radio" name="pregnant" value="N" <c:if test="${not ispregnant}"> checked</c:if>>없다
 							</label>
 						</div>
 						<div class="form-group">
 							<label for="birthdate" class="col-sm-2 control-label">현재 복용중인 약</label>
 							<div class="col-sm-4">
-								<textarea class="form-control" rows="3" name="medicine"placeholder="현재 복용중인 약을 작성하세요"></textarea>
+								<textarea class="form-control" rows="3" name="medicine" placeholder="현재 복용중인 약을 작성하세요">${healthstate.medicine}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="birthdate" class="col-sm-2 control-label">기타</label>
 							<div class="col-sm-4">
-								<textarea class="form-control" rows="3" name="etc" placeholder="기타 사항을 입력해주세요"></textarea>
+								<textarea class="form-control" rows="3" name="etc" placeholder="기타 사항을 입력해주세요">${healthstate.etc}</textarea>
 							</div>
 						</div>
 					<div class="form-group">
@@ -105,12 +110,6 @@ form {
 				</form>
 
 			</div>
-		</div>
-	</div>
-	<!-- 사이드 바 -->
-	<div style="padding-top:15%">
-		<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
-	</div>
-	<!-- 사이드바 끝 -->
+	
 </div>
 <!-- container -->

@@ -74,7 +74,7 @@ $(function(){
 				</ul>
 			</div>
 			<!--가족정보  -->
-			<a href="<c:url value='/general/mypage/familyinfo.do'/>"><button  class="btn btnsidebar" style="background-color: #CFCFCF">가족정보 관리</button></a>
+			<a href="<c:url value='/general/mypage/familyinfoview.do'/>"><button  class="btn btnsidebar" style="background-color: #CFCFCF">가족정보 관리</button></a>
 
 			<!-- 예약/접수 -->
 			<div class="dropdown">

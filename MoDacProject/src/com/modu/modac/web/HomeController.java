@@ -56,8 +56,9 @@ public class HomeController {
 	}
 	//일반 회원가입 신청 
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
-	public String genSignupProcess(@RequestParam Map map, Model model) throws Exception {
+	public String genSignupProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
 		map.put("birthdate", map.get("year")+"/"+map.get("month")+"/"+map.get("day"));  
+		session.setAttribute("genid", map.get("genid"));
 		model.addAllAttributes(map);
 		generalService.insert(map);
 		return "forward:/general/mypage/personalinfo.do";
