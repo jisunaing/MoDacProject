@@ -17,7 +17,7 @@
 	<resultMap id="HealthstateDtoResult" type="healthstateDto">
 		<result property="hsid" column="hsid"/>
 		<result property="height" column="height"/>
-		<result property="weigtt" column="weigtt"/>
+		<result property="weigt" column="weigt"/>
 		<result property="medicine" column="medicine"/>
 		<result property="booldtype" column="booldtype"/>
 		<result property="pregnant" column="pregnant"/>

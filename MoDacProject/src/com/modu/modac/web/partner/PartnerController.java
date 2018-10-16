@@ -393,9 +393,9 @@ public class PartnerController {
 		ReservationDto reservationDto = partnerReservationService.hospitalReservationView(map);
 		model.addAttribute("reservationDto", reservationDto);
 		String name = partnerReservationService.nameConfirming(map);
-		model.addAttribute("receptViewDto", reservationDto);
 		if(map.get("name").equals(name)) {//가입자 본인이 접수한 경우
 			helthinfo = partnerReservationService.helthinfo(map);
+			System.out.println(helthinfo);
 			model.addAttribute("helthinfo", helthinfo);
 		}
 		else {//가입자가 가족으로 대신 접수한 경우
