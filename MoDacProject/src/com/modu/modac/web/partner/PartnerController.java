@@ -63,7 +63,6 @@ public class PartnerController {
 	@RequestMapping(value = "/Ajax/AjaxReception.do", produces = "text/plain; charset=UTF-8")
 	public String ajaxReception(@ModelAttribute("pid") String pid, Map map) throws Exception {
 		if(pid1!=pid){
-			System.out.println("저장된 아이디와 불러온 아이디가 같지 않을 경우");
 			resultConfirmReception="";
 			flagReceip=false;
 			pid1=pid;
@@ -109,38 +108,48 @@ public class PartnerController {
 	public String ajaxReservation(@ModelAttribute("pid") String pid, Map map) throws Exception {
 
 		if(pid2!=pid){
+			System.out.println("저장된 아이디 값이 다를 경우");
 			resultConfirmReservation="";
-			flagReceip=false;
+			flagReservation=false;
 			pid2=pid;
 		}
 		map.put("pid", pid);
 		Map result = partnerReservationService.ajaxReservationResult(map);
 		if(!flagReservation){
+			System.out.println("최초 실행시");
 			//안의 값이 null일시
 			if(result==null){
+				System.out.println("최초 실행시 값을 0으로 넣어줌");
 				resultConfirmReservation = "0";
 				flagReservation=true;
 			}
 			//안의 값이 있을시
 			else{
+				System.out.println("최초 실행이 아닐시 result값을 넣어줌");
 				resultConfirmReservation = result.toString();
 				flagReservation=true;
 			}
 		}
 		//최초실행이 아닐시
 		else{
+			System.out.println("최초 실행이 아닐시");
 			if(result!=null){
+				System.out.println("값이 넣이 아닐시");
 				if(resultConfirmReservation=="0"){
+					System.out.println("최초실행인데 안에 값이 있을시");
 					resultConfirmReservation = result.toString();
-					return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
+					return result.get("RESNAME").toString()+"\r\n"+result.get("RESCONTENTS").toString();
 				}
 				else{
+					System.out.println("기존데이터가 있을시1");
 					if(result.toString().equals(resultConfirmReservation)){
+						System.out.println("기존데이터가 있을시2");
 						return "";
 					}
 					else{
 						resultConfirmReservation = result.toString();
-						return result.get("RECNAME").toString()+"\r\n"+result.get("RECCONTENTS").toString();
+						System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+						return result.get("RESNAME").toString()+"\r\n"+result.get("RESCONTENTS").toString();
 					}
 				}
 			}

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
+//첫 시작시 알림 허용창 띄우기
+ 	Notification.requestPermission();
 //접수알림 서비스
 function successAjax1(data,target){
    if(data.length !=0){

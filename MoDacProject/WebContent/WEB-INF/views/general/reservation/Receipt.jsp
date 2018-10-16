@@ -69,6 +69,8 @@ table{
 	<!-- body 시작 -->
 <script>
 	$(function(){
+		$('.move').css('position','absolute').css('z-index','2').css('display', 'none');
+		$('.container').css('position','relative').css('z-index','1');
 
 		$( "#tabletoggles" ).hide();
 		$('#toggles').click(function(){		
@@ -85,8 +87,6 @@ table{
 		$('#receipt').click(function(){
 			$('.move').css('display','inline');
 		});
-		$('.move').css('position','absolute').css('z-index','2').css('display', 'none');
-		$('.container').css('position','relative').css('z-index','1');
 		
 
 	      $('#nameUrl1').click(function(){
