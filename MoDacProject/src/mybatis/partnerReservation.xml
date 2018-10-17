@@ -66,7 +66,6 @@
 	SELECT FNO FROM GENFAMILY WHERE GENID=#{genid} AND FNAME=#{name}
 	</select>
 	
-	
 	<!-- 접수자 본인이 예약한 경우 본인 정보 들고오기 -->
 	<select id="helthinfo" parameterType="java.util.Map" resultType="HealthstateDto">
 	select * from healthstate where hsid = #{genid}
@@ -99,6 +98,25 @@
 	<select id="chartList" parameterType="java.util.Map" resultType="java.lang.String">
 	SELECT RESDATE FROM RESERVATION WHERE PID = #{pid}
 	</select>
+	
+	<!-- 차트 예약 접수 가져오기 -->
+	<select id="reservationReception" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT 
+	(SELECT COUNT(*) FROM RESERVATION WHERE PID=#{pid})RESERVATION,
+	(SELECT COUNT(*) FROM RECEPTION WHERE PID=#{pid})RECEPTION
+	FROM DUAL
+	</select>
+	
+	<!-- 차트 일반 병원 수 약국 등 갯수 가져오기 -->
+	<select id="mainChartTableRecord" resultType="java.util.Map">
+	SELECT 
+	(SELECT COUNT(*) FROM hospital)A,
+	(SELECT COUNT(*) FROM PARTNERS)B,
+	(SELECT COUNT(*) FROM pharmacy)C, 
+	(SELECT COUNT(*) FROM NIGHTPHARMACY)D
+	FROM DUAL
+	</select>
+	
 	
 	<!-- 병원에서 예약 신청목록 리스트 볼때 -->
 	<select id="hospitalReservationList" parameterType="java.util.Map" resultType="java.util.Map">

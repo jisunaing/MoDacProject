@@ -16,6 +16,16 @@ public class ChartServiceimpl implements ChartService {
 
 	@Override
 	public List<String> dayList(Map map) {
-		return (List<String>) dao.dayList(map);
+		return dao.dayList(map);
 	}// dayList
+
+	@Override
+	public List<Map> reservationReception(Map map) {
+		return dao.reservationReception(map);
+	}
+
+	@Override
+	public List<Map> mainChartTableRecord() {
+		return dao.mainChartTableRecord();
+	}
 }

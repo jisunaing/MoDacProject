@@ -145,7 +145,7 @@ public class GenenralController {
 		
 		
 		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
-			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()));
+			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
 		}//if
 		else if(map.get("resname").toString().trim().length()==0) {//이름을 입력을 하지 않았을떄
 			PrintWriter out =resp.getWriter();
