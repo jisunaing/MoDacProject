@@ -101,6 +101,7 @@ public class GenenralController {
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
+			out.close();			
 		}
 		else if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
@@ -163,6 +164,7 @@ public class GenenralController {
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
+			out.close();			
 		}
 		else if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
