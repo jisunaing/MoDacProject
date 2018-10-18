@@ -30,6 +30,7 @@ import com.modu.modac.service.impl.PagingUtil2;
 @SessionAttributes("genid")
 @Controller
 public class GenenralController {
+	
 	//진성 영역 시작
 	@Resource(name="reservationService")
 	private ReservationService reservationService;
