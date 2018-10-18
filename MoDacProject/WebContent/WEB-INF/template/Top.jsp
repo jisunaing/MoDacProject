@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <style>
 	body{      
-		padding-top:100px;
+/*
+// body안에 있는 이미지 top이랑 붙임 		
+		padding-top:100px; 
+*/
 	}
 	.active{
 		font-weight: bolder;
@@ -20,9 +23,6 @@
 	}
 	#navbar-page a{
 		color:white;
-	}
-		.navbar {
-		font-size:1.2em;
 	}
 </style>
 <script>  	
@@ -50,7 +50,7 @@
 	<!-- 로고자리 -->
    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
     <!-- 로고이미지 들어갈자리 -->
-	<%--     	 
+	<%--     	
 		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
 	--%>
 		모닥
