@@ -19,9 +19,9 @@
 		<result property="height" column="height"/>
 		<result property="weigt" column="weigt"/>
 		<result property="medicine" column="medicine"/>
-		<result property="booldtype" column="booldtype"/>
+		<result property="bloodtype" column="bloodtype"/>
 		<result property="pregnant" column="pregnant"/>
-		<result property="ect" column="ect"/>
+		<result property="etc" column="etc"/>
 	</resultMap>
 		
 	<resultMap id="ReceptViewDtoResult" type="ReceptViewDto">
@@ -48,7 +48,7 @@
 		<result property="email" column="email"/>
 		<result property="phone" column="phone"/>
 		<result property="email" column="email"/>
-		<result property="recaccept" column="recaccept"/>
+		<result property="resaccept" column="resaccept"/>
 		<result property="rescontents" column="rescontents"/>
 	</resultMap>			
 	<resultMap id="ReceptionHistoryListDtoResult" type="ReceptionHistoryListDto">

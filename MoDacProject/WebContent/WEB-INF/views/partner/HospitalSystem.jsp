@@ -22,8 +22,6 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
    $(function() {
-	   console.log(${d23});
-	   console.log(${mon});
 	   /* ChartJS
 	    * -------
 	    * Data and config for chartjs
@@ -371,7 +369,7 @@
       <jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
       <!-- 카테고리 -->
       <!-- 바디 -->
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="background-color: white;">
 			<div class="container">
 				<div class="row">
 					<!-- 동그라미 차트 -->
@@ -379,7 +377,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">서울시 병원 약국 현황</h4>
-								<canvas id="pieChart" style="height: 250px"></canvas>
+								<canvas id="pieChart" style="height: 195px;width:50%"></canvas>
 							</div>
 						</div>
 					</div>
@@ -388,7 +386,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">요일별</h4>
-								<canvas id="barChart" style="height: 230px"></canvas>
+								<canvas id="barChart" style="height: 195px;width:50%"></canvas>
 							</div>
 						</div>
 					</div>
@@ -398,7 +396,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">시간대별</h4>
-								<canvas id="lineChart" style="height: 250px"></canvas>
+								<canvas id="lineChart" style="height: 195px;width:50%"></canvas>
 							</div>
 						</div>
 					</div>
@@ -406,7 +404,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">예약 접수 비율</h4>
-								<canvas id="doughnutChart" style="height: 250px"></canvas>
+								<canvas id="doughnutChart" style="height: 195px;width:50%"></canvas>
 							</div>
 						</div>
 					</div>

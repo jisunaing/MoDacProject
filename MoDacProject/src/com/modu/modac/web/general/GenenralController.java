@@ -84,7 +84,7 @@ public class GenenralController {
 	@RequestMapping("/general/receipt/ReceiptListResult.do")
 	public String ReceiptListResult(@RequestParam Map map,@ModelAttribute("genid") String genid,HttpServletResponse resp)throws Exception{
 		resp.setContentType("text/html; charset=UTF-8");
-		
+		map.put("recdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
 		if(map.get("recname").toString().trim().length()==0) {//이름을 입력을 하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");

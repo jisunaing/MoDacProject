@@ -43,7 +43,6 @@ public class PartnerController {
 	private boolean flagReservation=false;
 	private String pid1="",pid2="";
 	private int d00=0,d01=0,d02=0,d03=0,d04=0,d05=0,d06=0,d07=0,d08=0,d09=0,d10=0,d11=0,d12=0,d13=0,d14=0,d15=0,d16=0,d17=0,d18=0,d19=0,d20=0,d21=0,d22=0,d23=0;
-	private int ten=0,two=0,three=0,fors=0,five=0;
 	@Value("${PAGE_SIZE}")
 	private int pageSize;
 	@Value("${BLOCK_SIZE}")
@@ -497,7 +496,7 @@ public class PartnerController {
 		ReservationDto reservationDto = partnerReservationService.hospitalReservationView(map);
 		//genid의 가입자 이름 가져오기
 		String name = partnerReservationService.nameConfirming(map);
-		model.addAttribute("receptViewDto", reservationDto);
+		model.addAttribute("reservationDto", reservationDto);
 		if(map.get("name").equals(name)) {//가입자 본인이 접수한 경우
 			helthinfo = partnerReservationService.helthinfo(map);
 			model.addAttribute("helthinfo", helthinfo);
@@ -530,7 +529,7 @@ public class PartnerController {
 		}
 		if(map.get("moveWhere").toString().equals("reservationHistory")) {
 			System.out.println("예약 지난 내역으로 들어옴");
-			return "forward:/partner/hospital/ReceiptListMove.do";
+			return "forward:/partner/hospital/ReservationListMove.do";
 		}
 		if(map.get("moveWhere").toString().equals("reception")) {
 			System.out.println("접수 내역으로 들어옴");

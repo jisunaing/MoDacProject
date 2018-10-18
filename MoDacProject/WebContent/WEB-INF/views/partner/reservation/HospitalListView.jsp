@@ -119,11 +119,11 @@ table td{
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">혈액형</th>
-								<td>${helthinfo.booldtype}</td>
+								<td>${helthinfo.bloodtype}</td>
 							</tr>
 							<tr>
 								<th class="col-md-2 text-center">기타</th>
-								<td>${helthinfo.ect}</td>
+								<td>${helthinfo.etc}</td>
 							</tr>
 							</c:if>
 							<tr>

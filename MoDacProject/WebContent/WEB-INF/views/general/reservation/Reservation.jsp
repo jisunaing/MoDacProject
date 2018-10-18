@@ -78,70 +78,54 @@ table{
 			});
 		});
 		$('label').css('minWidth', '90px');
-		/*
-		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#resname').val($('#names').html());
-			$('#phone').val($('#phones').html());
-			$('#fno').val($('#fnos').html());
-		});
-		*/
+
 		$('#receipt').click(function(){
 			$('.move').css('display','inline');
 		});	
-
-		
-		/*
-  display: none;
-  z-index: 1000;
-  position: fixed;
-  width: 100%; height: 100%;
-  left: 0; top: 0;
-  background-color: rgba(0,0,0, 0.4);
-  overflow-x: hidden;
-		*/
 		
 	      $('#nameUrl1').click(function(){
-	          $('#recname').val($('#names1').html());
+	    	  console.log('버튼이 클릭됨');
+	          $('#resname').val($('#names1').html());
 	          $('#phone').val($('#phones1').html());
 	       });
 	       $('#nameUrl2').click(function(){
-	          $('#recname').val($('#names2').html());
+	          $('#resname').val($('#names2').html());
 	          $('#phone').val($('#phones2').html());
 	       });      
 	       $('#nameUrl3').click(function(){
-	          $('#recname').val($('#names3').html());
+	          $('#resname').val($('#names3').html());
 	          $('#phone').val($('#phones3').html());
 	       });      
 	       $('#nameUrl4').click(function(){
-	          $('#recname').val($('#names4').html());
+	          $('#resname').val($('#names4').html());
 	          $('#phone').val($('#phones4').html());
 	       });      
 	       $('#nameUrl5').click(function(){
-	          $('#recname').val($('#names5').html());
+	          $('#resname').val($('#names5').html());
 	          $('#phone').val($('#phones5').html());
 	       });            
 	       $('#nameUrl6').click(function(){
-	          $('#recname').val($('#names6').html());
+	          $('#resname').val($('#names6').html());
 	          $('#phone').val($('#phones6').html());
 	       });      
 	       $('#nameUrl7').click(function(){
-	          $('#recname').val($('#names7').html());
+	          $('#resname').val($('#names7').html());
 	          $('#phone').val($('#phones7').html());
 	       });            
 	       $('#nameUrl8').click(function(){
-	          $('#recname').val($('#names8').html());
+	          $('#resname').val($('#names8').html());
 	          $('#phone').val($('#phones8').html());
 	       });            
 	       $('#nameUrl9').click(function(){
-	          $('#recname').val($('#names9').html());
+	          $('#resname').val($('#names9').html());
 	          $('#phone').val($('#phones9').html());
 	       });            
 	       $('#nameUrl10').click(function(){
-	          $('#recname').val($('#names10').html());
+	          $('#resname').val($('#names10').html());
 	          $('#phone').val($('#phones10').html());
 	       });            
 	       $('#nameUrl11').click(function(){
-	          $('#recname').val($('#names11').html());
+	          $('#resname').val($('#names11').html());
 	          $('#phone').val($('#phones11').html());
 	       });         
 		
