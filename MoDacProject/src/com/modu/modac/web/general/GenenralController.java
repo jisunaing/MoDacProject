@@ -27,6 +27,7 @@ import com.modu.modac.service.ReservationDto;
 import com.modu.modac.service.ReservationListDto;
 import com.modu.modac.service.ReservationService;
 import com.modu.modac.service.impl.PagingUtil;
+import com.modu.modac.service.impl.PagingUtil2;
 @SessionAttributes("genid")
 @Controller
 public class GenenralController {
@@ -44,6 +45,7 @@ public class GenenralController {
 			@ModelAttribute("genid") String genid, 
 			Map map, 
 			Model model,@RequestParam(required=false,defaultValue="1") int nowPage,
+			Model model1,@RequestParam(required=false,defaultValue="1") int nowPage2,
 			HttpServletRequest req
 			) throws Exception {
 		System.out.println("이동하는 컨트롤러로 들어옴");
@@ -54,22 +56,26 @@ public class GenenralController {
 		int totalRecordCount= reservationService.getTotalReservationRecord(map);
 		int totalRecordCountrec = reservationService.getTotalReservationRecordrec(map);
 		//시작 및 끝 ROWNUM구하기]
-		int start = (nowPage-1)*pageSize+1;
-		int end   = nowPage*pageSize;
+		int start = (nowPage2-1)*pageSize+1;
+		int end   = nowPage2*pageSize;
 		map.put("start",start);
 		map.put("end",end);
 		//페이징을 위한 로직 끝]	
 		String reservationPagingString = PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage, req.getContextPath()+"/general/reservation/reservationlist.do?");
-		String receptionPagingString = PagingUtil.pagingBootStrapStyle(totalRecordCountrec, pageSize, blockPage, nowPage, req.getContextPath()+"/general/reservation/reservationlist.do?");
-		model.addAttribute("reservationPagingString", reservationPagingString);
-		model.addAttribute("receptionPagingString", receptionPagingString);
+		String receptionPagingString = PagingUtil2.pagingBootStrapStyle(totalRecordCountrec, pageSize, blockPage, nowPage2, req.getContextPath()+"/general/reservation/reservationlist.do?");
+		model1.addAttribute("reservationPagingString", reservationPagingString);
+		model1.addAttribute("receptionPagingString", receptionPagingString);
 		//접수내역 얻어오기
 		List<ReceptionDto> receiptList = reservationService.receiptList(map);
+		start = (nowPage-1)*pageSize+1;
+		end   = nowPage*pageSize;
+		map.put("start",start);
+		map.put("end",end);
 		//예약내역 얻어오기
 		List<ReservationDto> reservationList = reservationService.reservationList(map);
 		
-		model.addAttribute("receiptList", receiptList);
-		model.addAttribute("reservationList", reservationList);
+		model1.addAttribute("receiptList", receiptList);
+		model1.addAttribute("reservationList", reservationList);
 		System.out.println("이동하기 전 마지막");
 		return "general/reservation/Reservation_List.tiles";
 	}
@@ -78,7 +84,7 @@ public class GenenralController {
 	@RequestMapping("/general/receipt/ReceiptListResult.do")
 	public String ReceiptListResult(@RequestParam Map map,@ModelAttribute("genid") String genid,HttpServletResponse resp)throws Exception{
 		resp.setContentType("text/html; charset=UTF-8");
-		
+		map.put("recdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
 		if(map.get("recname").toString().trim().length()==0) {//이름을 입력을 하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
@@ -139,7 +145,7 @@ public class GenenralController {
 		
 		
 		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
-			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date()));
+			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
 		}//if
 		else if(map.get("resname").toString().trim().length()==0) {//이름을 입력을 하지 않았을떄
 			PrintWriter out =resp.getWriter();

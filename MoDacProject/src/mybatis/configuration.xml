@@ -17,12 +17,12 @@
 		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
 		<typeAlias type="com.modu.modac.service.MapPharmacyDto" alias="MapPharmacyDto"/> 
 		<typeAlias type="com.modu.modac.service.MapNightPharmacyDto" alias="MapNightPharmacyDto"/>  
-		<typeAlias type="com.modu.modac.service.ReceptionDto" alias="receptionDto"/>
-		<typeAlias type="com.modu.modac.service.ReservationDto" alias="reservationDto"/>
-		<typeAlias type="com.modu.modac.service.ReservationListDto" alias="reservationListDto"/>
-		<typeAlias type="com.modu.modac.service.ReceptionHistoryListDto" alias="receptionHistoryListDto"/>
-		<typeAlias type="com.modu.modac.service.ReservationHistoryListDto" alias="reservationHistoryListDto"/>
-		<typeAlias type="com.modu.modac.service.ReceptionListDto" alias="receptionListDto"/>
+		<typeAlias type="com.modu.modac.service.ReceptionDto" alias="ReceptionDto"/>
+		<typeAlias type="com.modu.modac.service.ReservationDto" alias="ReservationDto"/>
+		<typeAlias type="com.modu.modac.service.ReservationListDto" alias="ReservationListDto"/>
+		<typeAlias type="com.modu.modac.service.ReceptionHistoryListDto" alias="ReceptionHistoryListDto"/>
+		<typeAlias type="com.modu.modac.service.ReservationHistoryListDto" alias="ReservationHistoryListDto"/>
+		<typeAlias type="com.modu.modac.service.ReceptionListDto" alias="ReceptionListDto"/>
 		<typeAlias type="com.modu.modac.service.PartnerDto" alias="PartnerDto"/> 
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnADto" alias="PartnerNAdminQnA"/>
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>

@@ -6,7 +6,22 @@
 <link rel="stylesheet"
 	href="<c:url value='/css/bootstrap-table-expandable.css'/>">
 <script src="<c:url value='/js/bootstrap-table-expandable.js'/>"></script>
+<script>
+$(function(){
+	$('.move')
+	.css('position','absolute')
+	.css('z-index','2')
+	.css('width','80%')
+	.css('display','none')
+	;
+	$('.container').css('position','relative').css('z-index','1');
+	
+	$('.change').click(function(){
+		$('.move').css('display','block');
+	});
 
+});
+</script>
 <style>
 .row {
 	margin: 0 auto;
@@ -46,7 +61,9 @@ table {
 			<div class="row">
 				<!-- 가운데 정렬을 위한 DIV -->
 				<!-- 가운데 정렬 시작 -->
-				
+			<div class="move">
+				<img src="<c:url value='/Images/move.gif'/>"/>
+			</div>
 			<!-- 테이블 시작 -->
 			<h2>접수내역</h2>
 			<table class="table table-hover table-expandable">
@@ -74,7 +91,7 @@ table {
 						<td>${record.recname}</td>
 						<td>접수</td>
 						<td>${record.recaccept}</td>
-						<td><c:if test="${record.recaccept=='접수신청'}" var="recacceptResult"><a href="<c:url value='/general/receipt/ReceiptCancel.do?recnum=${record.recnum}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not recacceptResult}">취소불가</c:if></td>
+						<td><c:if test="${record.recaccept=='접수신청'}" var="recacceptResult"><a href="<c:url value='/general/receipt/ReceiptCancel.do?recnum=${record.recnum}'/>"><input type="button" value="취소" class="change" /></a></c:if><c:if test="${not recacceptResult}">취소불가</c:if></td>
 					</tr>
 					<tr>
 					  <td colspan="7">
@@ -118,7 +135,7 @@ table {
 						<td>${record.resname}</td>
 						<td>예약</td>
 						<td>${record.resaccept}</td>
-						<td><c:if test="${record.resaccept=='예약신청'}" var="resacceptResult"><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${record.resnum}'/>"><input type="button" value="취소" /></a></c:if><c:if test="${not resacceptResult}">취소불가</c:if></td>
+						<td><c:if test="${record.resaccept=='예약신청'}" var="resacceptResult"><a href="<c:url value='/general/receipt/ReservationCancel.do?resnum=${record.resnum}'/>"><input type="button" value="취소" class="change"  /></a></c:if><c:if test="${not resacceptResult}">취소불가</c:if></td>
 					</tr>
 					<tr>
 					  <td colspan="7">
@@ -144,7 +161,7 @@ table {
 	<!-- 사이드 바 -->
 	
 	<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp"%>
-	
+	</div>
 	<!-- 사이드바 끝 -->
 </div>
 <!-- 가운데 정렬을 위한 DIV -->

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
+//첫 시작시 알림 허용창 띄우기
+Notification.requestPermission();
 //접수알림 서비스
 function successAjax1(data,target){
    if(data.length !=0){
@@ -63,7 +65,7 @@ function successAjax2(data,target){
 					console.log('에러:',error);
 				}
 			});			
-		},1500);
+		},3000);
 		//예약 에이작스
 		window.setInterval(function(){
 			$.ajax({
@@ -85,8 +87,8 @@ function successAjax2(data,target){
 		<header class="main-header">
 			<!-- Logo -->
 			<a href="<c:url value='/partner/hospital/MainMove.do'/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<!-- logo for regular state and mobile devices --> <span
-				class="logo-lg"><b>병원관리자</b>페이지</span>
+				<!-- logo for regular state and mobile devices -->
+				<span class="logo-lg"><b>병원관리자</b>페이지</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
