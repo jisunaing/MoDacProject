@@ -21,6 +21,9 @@
 	#navbar-page a{
 		color:white;
 	}
+		.navbar {
+		font-size:1.2em;
+	}
 </style>
 <script>  	
 	$(function(){	 		
@@ -47,7 +50,7 @@
 	<!-- 로고자리 -->
    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
     <!-- 로고이미지 들어갈자리 -->
-	<%--     	
+	<%--     	 
 		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
 	--%>
 		모닥
