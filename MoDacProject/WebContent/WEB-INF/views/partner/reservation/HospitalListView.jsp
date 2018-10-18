@@ -191,7 +191,6 @@ a input{
 		<!-- 퓨터 -->
 	</div>
 	<!-- ./wrapper -->
-
 	<!--아래부분 삭제하면 안됨 -->
 	<script src="<c:url value="/Jquery/jquery.js"/>"></script>
 	<script src="<c:url value="/Jquery/jquery-ui.js"/>"></script>
