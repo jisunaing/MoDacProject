@@ -66,6 +66,9 @@ table{
 	<!-- body 시작 -->
 	<script>
 	$(function(){
+		$('.move').css('position','absolute').css('z-index','2').css('display', 'none');
+		$('.container').css('position','relative').css('z-index','1');	
+		
 		$( "#tabletoggles" ).hide();
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
@@ -75,30 +78,56 @@ table{
 			});
 		});
 		$('label').css('minWidth', '90px');
-		/*
-		$('#nameUrl').click(function(){//가족정보를 클릭하였을때
-			$('#resname').val($('#names').html());
-			$('#phone').val($('#phones').html());
-			$('#fno').val($('#fnos').html());
-		});
-		*/
-		
-		$('#nameUrl1').click(function(){
-			$('#recname').val($('#names1').html());
-			$('#phone').val($('#phones1').html());
-		});
-		$('#nameUrl2').click(function(){
-			$('#recname').val($('#names2').html());
-			$('#phone').val($('#phones2').html());
-		});		
-		$('#nameUrl3').click(function(){
-			$('#recname').val($('#names3').html());
-			$('#phone').val($('#phones3').html());
-		});		
-		$('#nameUrl4').click(function(){
-			$('#recname').val($('#names4').html());
-			$('#phone').val($('#phones4').html());
+
+		$('#receipt').click(function(){
+			$('.move').css('display','inline');
 		});	
+		
+	      $('#nameUrl1').click(function(){
+	    	  console.log('버튼이 클릭됨');
+	          $('#resname').val($('#names1').html());
+	          $('#phone').val($('#phones1').html());
+	       });
+	       $('#nameUrl2').click(function(){
+	          $('#resname').val($('#names2').html());
+	          $('#phone').val($('#phones2').html());
+	       });      
+	       $('#nameUrl3').click(function(){
+	          $('#resname').val($('#names3').html());
+	          $('#phone').val($('#phones3').html());
+	       });      
+	       $('#nameUrl4').click(function(){
+	          $('#resname').val($('#names4').html());
+	          $('#phone').val($('#phones4').html());
+	       });      
+	       $('#nameUrl5').click(function(){
+	          $('#resname').val($('#names5').html());
+	          $('#phone').val($('#phones5').html());
+	       });            
+	       $('#nameUrl6').click(function(){
+	          $('#resname').val($('#names6').html());
+	          $('#phone').val($('#phones6').html());
+	       });      
+	       $('#nameUrl7').click(function(){
+	          $('#resname').val($('#names7').html());
+	          $('#phone').val($('#phones7').html());
+	       });            
+	       $('#nameUrl8').click(function(){
+	          $('#resname').val($('#names8').html());
+	          $('#phone').val($('#phones8').html());
+	       });            
+	       $('#nameUrl9').click(function(){
+	          $('#resname').val($('#names9').html());
+	          $('#phone').val($('#phones9').html());
+	       });            
+	       $('#nameUrl10').click(function(){
+	          $('#resname').val($('#names10').html());
+	          $('#phone').val($('#phones10').html());
+	       });            
+	       $('#nameUrl11').click(function(){
+	          $('#resname').val($('#names11').html());
+	          $('#phone').val($('#phones11').html());
+	       });         
 		
 	});
 	</script>
@@ -109,6 +138,9 @@ table{
 		</div>
 	</div>
 	<div class="row">
+	<div class="move">
+		<img src="<c:url value='/Images/move.gif'/>"/>
+	</div>
 		<div class="in">
 		<!-- 가운데 정렬 시작 -->
 		<div id="float-right">

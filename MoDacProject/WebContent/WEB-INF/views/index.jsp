@@ -36,7 +36,7 @@
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
   <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-  
+
 <title>모두의닥터</title>
 <script>
 	$(function(){
@@ -55,6 +55,49 @@
 		})();
 	});	 		
 </script>
+<!-- (1) LoginWithNaverId Javscript SDK -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+<script>
+	/* var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "kZTeZSK7xvqzpnXZcuau",
+			callbackUrl: "http://localhost:8080/MoDacProject/home/index.do",
+			isPopup: false,
+			callbackHandle: true
+			/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
+		}
+	); */
+
+	/* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+	/* naverLogin.init(); */
+
+	/* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
+	window.addEventListener('load', function () {
+		naverLogin.getLoginStatus(function (status) {
+			if (status) {
+				/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+				var email = naverLogin.user.getEmail();
+				var name = naverLogin.user.getNickName();
+				var birthday = naverLogin.user.getBirthday();			
+				var uniqId = naverLogin.user.getId();
+				var age = naverLogin.user.getAge();
+				if( email == undefined || email == null) {
+					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+					/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+					naverLogin.reprompt();
+					return;
+				}
+
+				window.location.replace("http://" + window.location.hostname + 
+                           ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/MoDacProject/home/index.do");
+
+			} else {
+				console.log("callback 처리에 실패하였습니다.");
+			}
+		});
+	});
+</script> 
 <style>
 	/* 	
 	.container { 
@@ -66,7 +109,7 @@
 	} */
 	#my-slider {
       width: 100%;
-      height: 600px;
+      height: 580px;
       color: white;
     }
 
@@ -87,7 +130,7 @@
 	body{
 		margin:0
 	}
-	html, * { margin: 0; padding: 0; font-family: 'Jua'/* 'Black Han Sans' */, sans-serif; }
+	html, * { margin: 0; padding: 0;font-family: monospace;/* 'Jua', sans-serif; */ }
 	h1 { margin: 50px auto; text-align: center; }
 	h2 { padding: 0; margin: 0;  font-size: 36px; }
 	
@@ -123,29 +166,31 @@
 </head>
 
 <body>
+	
+</script>
 
+	
 	<!-- topMenu -->
-	<div class="topMenu">
+	<div class="topMenu" style="margin-bottom: 0px;padding-bottom: 0px;">
 		<jsp:include page="/WEB-INF/template/Top.jsp"/>
 	</div><!-- topMennu -->
 	<!-- 일반페이지 body 시작 -->
-	<div class="container">
 		<!-- 테스트컨트롤러_테스트용스팬 -->
-		<span style="color:pink;font-size:3em;">${testvar }</span>
-		<div class="row">
+<%-- 		<span style="color:pink;font-size:3em;">${testvar }</span> --%>
+		<div class="row" style="padding-top: 0px;margin-top: 0px;">
 			<!-- slider -->
 			<div id="my-slider" class="crs-wrap">
 			 <div class="crs-screen"><!-- 슬라이드 -->
 			   <div class="crs-screen-roll">
 				 <!-- .parallax: scroll effect적용 -->
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
-			       <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
+				 <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
+<!-- 			       <div class="crs-screen-item-content"><h1 style="font-family:Black Han Sans;">MoDacProject&<span style="color:red">♥</span></h1></div> -->
 			     </div>
 			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
 			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
 			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
+			       <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
 			     </div>
 			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')">
 			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
@@ -156,9 +201,9 @@
 			   <div class="crs-bar-roll-current"></div>
 			   <div class="crs-bar-roll-wrap">
 			     <div class="crs-bar-roll">
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div> 	
 			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
+			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div> 	
+			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
 			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')"></div>
 			     </div><!-- ROLL -->
 			   </div><!-- ROLL-WRAP -->
@@ -166,6 +211,7 @@
 			</div><!--crs-wrap-->
 			<!-- slider -->
 		</div><!-- row -->
+			<div class="container">
 		
   		<!-- themeSearch -->
   		<div class="row themeSearch-header">
@@ -251,13 +297,14 @@
 			</div>
 			<!--div_row:반응형이미지_두번째row끝-->
   		<!-- themeSearch -->
-  	</div><!-- container -->
+   	</div><!--container -->
   	<!-- 일반페이지 body 끝 -->
 	<!--footer를 감싸는 div 시작--> 
     <div class="footer" >
    	 	<jsp:include page="/WEB-INF/template/Footer.jsp"/>
     </div>
     <!--footer를 감싸는 div 끝-->
-
+	
+	
 </body>
 </html>

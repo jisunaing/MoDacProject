@@ -12,7 +12,7 @@ form{
 }
 .panel{
 	margin-top:50px;
-	margin-left: 8%;
+	margin-left: 15%;
 	padding-top:20px;
 	padding-bottom:20px
 }
@@ -38,9 +38,7 @@ form{
 
 <!-- body 시작 -->
 <div class="container">
-<div class="main_column">
-        
-<div class="text_light">
+
 <div class="panel panel-default" style="width: 70%;">
 	<div class="text-center">
 		<h2>
@@ -157,15 +155,7 @@ form{
 	</form>
 
 </div>
-</div>
-</div>
-<!-- 사이드 바 -->
-<div style="padding-top:15%">
 
-<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
-</div>
-
-<!-- 사이드바 끝 -->
 
 </div>
 <!-- container -->

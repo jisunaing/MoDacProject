@@ -43,7 +43,8 @@
 </style>
 
 <!-- BODY 영역 -->
-<div class="row1">
+<div id="dv" style="padding-top:10px">
+<div class="row1 " >
 	<form class="form-inline" action="<c:url value='/general/pharm/AllPharm.do'/>">
 		<div class="btn-group">
 		  <a class="btn btn-primary" href="<c:url value='/general/pharm/NightPharm.do?pharmacy=심야약국'/>" role="button"> 심야약국 </a>
@@ -103,7 +104,7 @@
 <div class="row2">
 	<div id="map"></div>
 </div>	
-	
+</div>	
 <!-- KAKAO MAP API -->
 <script>
 	
@@ -148,6 +149,10 @@
 	var datas = JSON.parse('${records}');
 	var editDatas = [];
 	
+	if(datas.length == 0) {
+		closeWindowByMask();
+	}
+	
 	var addrs = [];
 	for(var i = 0; i < datas.length; i++) {
 		addrs[i] = datas[i]['addr'];
@@ -174,6 +179,7 @@
 		disableClickZoom : true	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	});
 	
+	var count = 0;
 	var dataIndex = 0;
 	var posArray = [];
 	var geocoder = new daum.maps.services.Geocoder();
@@ -188,15 +194,13 @@
 	            dataIndex++;
 	        }  
 	        
-	        if(index == addrs.length-1){
+	        count++;
+	        
+	        if(count == addrs.length){
 	        	doNext(posArray);
 	        }
 	    });
 	})
-	
-	if(datas.length == 0) {
-		closeWindowByMask();
-	}
 	
 	var imageSrc = '<c:url value="/Images/MarkerPharmacy.png"/>', // 마커이미지의 주소입니다    
    		imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다

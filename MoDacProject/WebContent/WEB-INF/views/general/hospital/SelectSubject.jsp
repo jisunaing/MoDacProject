@@ -40,7 +40,7 @@
 	line-height: 15px;
 }
 .h1 {
-	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 /* 버튼  */
@@ -86,13 +86,7 @@
 }
 
 </style>
-
-
-	<!-- TOP 영역 -->
-	<div class="topMenu">
-		<jsp:include page="/WEB-INF/template/Top.jsp" />
-	</div>
-<!--  -->
+<div id="dv">
 	<!-- BODY 영역 -->
 	<!-- container-full -->
 	<div class="container-full">
@@ -113,7 +107,7 @@
 	<!--  -->
 		<!-- container -->
 		
-	<div class="container">
+	<div class="container" id="dv">
 		<div class="row">
 			<div class="btngroup">
 				<div class="button">
@@ -200,5 +194,6 @@
 		</div>
 
 	</div>
+</div>
 	<!-- container -->
 
