@@ -10,7 +10,7 @@ tr th{
 }
 .panel{
 	margin-top:50px;
-	margin-left: 15%; 
+	margin-left: 5%; 
 	padding-top:20px;
 }
 #edit{
@@ -80,10 +80,11 @@ tr th{
 }
 </style>
 <!-- body 시작 -->
-
-<div class="container">
-	 <div class="panel panel-default" style="width: 70%">
-	  <div class="panel-body"> 
+<img src="<c:url value='/Images/plasticheart.jpg'/>" id="toppic"/>
+<div class="container" id="dv">
+	 <div class="panel panel-default" style="width: 90%">
+	  <div class="panel-body">  
+		 
 	  	<div class="page-header text-center">
 			<h2>
 				${personalinfo.genname}님의 회원정보 <small> 개인정보</small>
@@ -150,7 +151,7 @@ tr th{
 		  <br/><br/><br/>
 		</div>
 	   	</div>
-	</div>
+	</div> 
 </div>
 <!-- container -->
 

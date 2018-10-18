@@ -12,6 +12,7 @@
 		<typeAlias type="com.modu.modac.service.GenfamilyDto" alias="genfamilyDto"/>
 		<typeAlias type="com.modu.modac.service.HealthstateDto" alias="healthstateDto"/>
 		<typeAlias type="com.modu.modac.service.HealthquestionDto" alias="healthquestionDto"/>
+		<typeAlias type="com.modu.modac.service.QnaDto" alias="qnaDto"/>
 		<typeAlias type="com.modu.modac.service.TestDto" alias="testDto"/> 
 		<typeAlias type="com.modu.modac.service.GenmemberDto" alias="genmemberDto"/> 
 		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
@@ -45,7 +46,8 @@
 		<mapper resource="mybatis/partnerReservation.xml"/>
 		<mapper resource="mybatis/Test.xml"/>
 		<mapper resource="mybatis/PartnerNGeneralQnA.xml"/>
-		<mapper resource="mybatis/Genmember.xml" />
+		<mapper resource="mybatis/Genmember.xml" />		
+		<mapper resource="mybatis/Qna.xml" />		
 		<mapper resource="mybatis/MapHospital.xml" />
 		<mapper resource="mybatis/MapPharmacy.xml" />
 		<mapper resource="mybatis/MapNightPharmacy.xml" />

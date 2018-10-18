@@ -36,6 +36,6 @@
 	</update>
 	<!-- 탈퇴 -->
 	<delete id="genmemberDelete" parameterType="java.util.Map">
-		DELETE FROM genmember WHERE genid=#{genid}
+		DELETE FROM genmember WHERE genid=#{genid} on delete cascade
 	</delete>
 </mapper>

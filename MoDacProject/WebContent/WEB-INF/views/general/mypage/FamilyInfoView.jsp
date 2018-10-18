@@ -53,12 +53,13 @@ form {
 
 </script>
 <!-- body 시작 -->
-<div class="container">
-	<div class="panel panel-default" style="width: 70%">
+<img src="<c:url value='/Images/feet.jpg'/>" id="toppic"/>
+<div class="container" id="dv">
+<!-- 	<div class="panel panel-default" style="width: 70%"> -->
 		<h2 style="text-align: center">가족 정보</h2>
 		<br />
 		<p class="secondary-heading" style="text-align: center">
-			가족정보를 등록할 시 대리 예약/접수가 편리해집니다!<br /> 매번 정보를 입력할 필요없이 간편하게 관리하세요.
+			가족정보를 등록할 시 대리 예약/접수가 편리해집니다!<br /> 한번의 등록으로 간편하게 관리하세요.
 		</p>
 		<br />
 		<hr style="border: solid 1px black; width: 30%;" id="hr">
@@ -98,6 +99,10 @@ form {
 									<c:forEach var="staterecord" items="${statelist}" varStatus="loop">
 										<c:if test="${staterecord.hsid eq record.fno}" var="state">
 											<tr>
+												<th>혈액형</th>
+												<td>${staterecord.bloodtype}</td>
+											</tr>
+											<tr>
 												<th>키</th>
 												<td>${staterecord.height}</td>
 											</tr>
@@ -106,16 +111,12 @@ form {
 												<td>${staterecord.weight}</td>
 											</tr>
 											<tr>
-												<th>복용중인 약</th>
-												<td>${staterecord.medicine}</td>
-											</tr>
-											<tr>
-												<th>혈액형</th>
-												<td>${staterecord.bloodtype}</td>
-											</tr>
-											<tr>
 												<th>임신여부</th>
 												<td>${staterecord.pregnant}</td>
+											</tr>
+											<tr>
+												<th>복용중인 약</th>
+												<td>${staterecord.medicine}</td>
 											</tr>
 											<tr>
 												<th>기타</th>
@@ -234,12 +235,18 @@ form {
 			</form>
 		</fieldset>
 	</div>
-		
-</div>
+<!-- 		
+</div> -->
 <!-- container -->
-
 <script>
-$('#fieldset0').coolfieldset({
+
+	/* $("fieldset").each(function(index, item){
+		$(item).attr('id').coolfieldset({
+			collapsed : true
+		});
+	}); */
+
+ $('#fieldset0').coolfieldset({
 	collapsed : true
 });
 	$('#fieldset1').coolfieldset({
@@ -277,5 +284,5 @@ $('#fieldset0').coolfieldset({
 	});
 	$('#fieldset20').coolfieldset({
 		collapsed : true
-	});
+	}); 
 </script>

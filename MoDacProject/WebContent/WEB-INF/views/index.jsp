@@ -56,10 +56,10 @@
 	});	 		
 </script>
 <!-- (1) LoginWithNaverId Javscript SDK -->
-<!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-(2) LoginWithNaverId Javscript 설정 정보 및 초기화
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
 <script>
-	var naverLogin = new naver.LoginWithNaverId(
+	/* var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "kZTeZSK7xvqzpnXZcuau",
 			callbackUrl: "http://localhost:8080/MoDacProject/home/index.do",
@@ -67,10 +67,10 @@
 			callbackHandle: true
 			/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
 		}
-	);
+	); */
 
 	/* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-	naverLogin.init();
+	/* naverLogin.init(); */
 
 	/* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
 	window.addEventListener('load', function () {
@@ -97,7 +97,7 @@
 			}
 		});
 	});
-</script> -->
+</script> 
 <style>
 	/* 	
 	.container { 

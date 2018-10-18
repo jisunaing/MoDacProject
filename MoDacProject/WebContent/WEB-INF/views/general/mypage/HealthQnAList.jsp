@@ -18,6 +18,7 @@
 <title>건강문의</title>
 
 <!-- body 시작 -->
+<img src="<c:url value='/Images/healthquestion.jpg'/>" id="toppic"/>
 <div class="container" id="dv">
 	<h2 style="text-align: center">증상문의하기</h2>
 	<br />

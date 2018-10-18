@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 일반사용자 예약 목록 페이지입니다.-->
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
-<link rel="stylesheet"
-	href="<c:url value='/css/bootstrap-table-expandable.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/bootstrap-table-expandable.css'/>">
 <script src="<c:url value='/js/bootstrap-table-expandable.js'/>"></script>
 
 <style>
@@ -30,25 +29,33 @@ table th {
 table {
 	min-width: 500px;
 }
-
+#hr{
+	margin-left: 40%;
+	border: solid 1px black; 
+	width: 20%
+}
 /*테이블 센터를 위한 css 끝*/
 </style>
 <!-- body 시작 -->
 <!-- 가운데 정렬을 위한 DIV -->
+<img src="<c:url value='/Images/reservation.jpg'/>" id="toppic"/>
 <div class="container" id="dv">
 <!-- 부트스트랩 점보트론 시작 -->
-	<div class="jumbotron" style="width: 100%;text-align: center">
-		<h2 class="display-3">예약 및 접수 목록 페이지</h2>
+	<div  style="width: 100%;text-align: center">
+		<h1 class="display-3" style="padding-top:5px">예약 및 접수 목록</h1>
+		<br>
+		<hr id="hr">
+		<br>
+		<br><br>
 	</div>
 	<!-- 부트스트랩 점보트론 끝-->
-	<div class="main_column">
-		<div class="text_light">
-			<div class="row">
+	<div class="row" >
 				<!-- 가운데 정렬을 위한 DIV -->
 				<!-- 가운데 정렬 시작 -->
 				
 			<!-- 테이블 시작 -->
-			<h2>접수내역</h2>
+			<h2 style="text-align: left; padding-left: 100px; color: #2b68a7">접수내역</h2>
+			<br><br><br>
 			<table class="table table-hover table-expandable">
 				<thead>
 					<tr>
@@ -92,7 +99,10 @@ table {
 					<div class="row">
 						<div>${receptionPagingString}</div>
 					</div>	
-					<h2>예약내역</h2>
+					
+					<br><br><br><br><br>
+					<h2 style="text-align: left; padding-left: 100px; color: #2b68a7">예약내역</h2>
+					<br><br>
 					<table class="table table-hover table-expandable">
 					<thead>
 						<tr>
@@ -139,13 +149,8 @@ table {
 			<!-- 테이블 끝 -->
 			<!-- 가운데 정렬 끝 -->
 			<!-- 가운데 정렬을 위한 DIV -->
-		</div>
+		
 	</div>
-	<!-- 사이드 바 -->
-	
-	<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp"%>
-	
-	<!-- 사이드바 끝 -->
 </div>
 <!-- 가운데 정렬을 위한 DIV -->
 

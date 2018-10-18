@@ -43,7 +43,8 @@
 </style>
 
 <!-- BODY 영역 -->
-<div class="row1">
+<div id="dv" style="padding-top:10px">
+<div class="row1 " >
 	<form class="form-inline" action="<c:url value='/general/pharm/AllPharm.do'/>">
 		<div class="btn-group">
 		  <a class="btn btn-primary" href="<c:url value='/general/pharm/NightPharm.do?pharmacy=심야약국'/>" role="button"> 심야약국 </a>
@@ -103,7 +104,7 @@
 <div class="row2">
 	<div id="map"></div>
 </div>	
-	
+</div>	
 <!-- KAKAO MAP API -->
 <script>
 	

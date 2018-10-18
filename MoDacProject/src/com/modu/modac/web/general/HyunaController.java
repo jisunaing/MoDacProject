@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,7 @@ import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
+import com.modu.modac.service.QnaService;
 
 @Controller
 public class HyunaController {	
@@ -34,6 +37,9 @@ public class HyunaController {
 	
 	@Resource(name="healthstateService")
 	private HealthstateService healthstateService;
+	
+	@Resource(name="qnaService")
+	private QnaService qnaService;
 	
 	//마이페이지로 이동
 	@RequestMapping("/general/mypage/mypage.do")
@@ -82,16 +88,24 @@ public class HyunaController {
 		//정상적으로 탈퇴처리 되었습니다. 
 		return "forward:/home/index.do";
 	}
-	//개인 건강 정보/general/mypage/healthinfoWrite
+	
+	
+	//개인 건강 정보
 	@RequestMapping("/general/mypage/healthinfo.do")
-	public String personalHealthInfo() throws Exception {
-		//if(service.selectOne()==null){return healthinfowrite.tiles}
-			
-		
+	public String personalHealthInfo(HttpSession session,Map map,Model model) throws Exception {
+		map.put("hsid",session.getAttribute("genid"));
+		if(healthstateService.selectOne(map)==null) {
+			return "general/mypage/HealthstateWrite.tiles";
+		}
+		else {
+			HealthstateDto dto = healthstateService.selectOne(map);
+			//값 저장
+			model.addAttribute("healthstate", dto);
+		}
 		return "general/mypage/PersonalHealthInfoView.tiles";
 	}
 	//개인 건강 정보 수정
-	@RequestMapping("/general/mypage/healthinfo_edit.do")
+	/*@RequestMapping("/general/mypage/healthinfo_edit.do")
 	public String personalHealthInfo_Edit(@RequestParam Map map, Model model,HttpSession session) throws Exception {
 		map.put("hsid",session.getAttribute("genid"));
 		//메소드 호출
@@ -100,7 +114,10 @@ public class HyunaController {
 		model.addAttribute("healthstate", dto);
 		
 		return "general/mypage/HealthstateEdit.tiles";
-	}
+	}*/
+	
+	
+	
 	//가족정보 들어가면 뿌려주는 부분
 	@RequestMapping("/general/mypage/familyinfoview.do")
 	public String familyInfoG(@RequestParam Map map, Model model,HttpSession session) throws Exception {
@@ -130,28 +147,43 @@ public class HyunaController {
 	}
 	//건강 정보
 	@RequestMapping(value="/general/mypage/healthinfoWrite.do",method=RequestMethod.POST)
-	public String healthinfoWrite(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-		
-		map.put("hsid",map.get("fno"));
-		healthstateService.insert(map);
-		
-		return "forward:/general/mypage/familyinfoview.do";
+	public String healthinfoWrite(@RequestParam Map map, Model model,HttpSession session) throws Exception { 
+		if(map.get("fno").equals("")) {//아이디 본인일 경우
+			map.put("hsid", session.getAttribute("genid"));
+			healthstateService.insert(map);
+			return "forward:/general/mypage/healthinfo.do";
+		}
+		else {//가족일 경우
+			map.put("hsid",map.get("fno"));
+			healthstateService.insert(map);
+			return "forward:/general/mypage/familyinfoview.do";
+		}		
 	}
 	//가족 건강 정보 수정 폼 가져오기
 	@RequestMapping(value="/general/mypage/healthstateEdit.do", method=RequestMethod.GET)
-	public String healthinfoEdit(@RequestParam Map map,Model model) throws Exception {
-		map.put("hsid",map.get("fno"));
+	public String healthinfoEdit(@RequestParam Map map,Model model,HttpSession session) throws Exception {
+		if(map.get("fno")!=null) {
+			map.put("hsid",map.get("fno"));
+			model.addAttribute("genidself","N");
+		}
+		else {
+			map.put("hsid",session.getAttribute("genid"));
+			model.addAttribute("genidself","Y");
+		}
 		//메소드 호출
 		HealthstateDto dto = healthstateService.selectOne(map);
 		//값 저장
 		model.addAttribute("healthstate", dto);
 		return "general/mypage/HealthstateEdit.tiles";
+		
 	}
 	//가족 건강 정보 수정 폼 서브밋
 	@RequestMapping(value="/general/mypage/healthstateEdit.do" , method=RequestMethod.POST)
 	public String healthinfoEditProcess(@RequestParam Map map,Model model) throws Exception {
 		healthstateService.update(map);
-		
+		if(map.get("genidself").equals("Y")){
+			return "forward:/general/mypage/healthinfo.do";
+		}
 		return "forward:/general/mypage/familyinfoview.do";
 	}
 	//가족정보 수정
@@ -192,13 +224,22 @@ public class HyunaController {
 	}
 	//사이트문의목록
 	@RequestMapping("/general/qna/qnaList.do")
-	public String qna_List() throws Exception {
-		return "general/mypage/QnA_List.tiles";
+	public String qnaList() throws Exception {
+		
+		
+		return "general/mypage/QnAList.tiles";
 	}
-	//사이트문의 폼(글쓰기)
-	@RequestMapping("/general/qna/qna_write.do")
-	public String qna_Write() throws Exception {
-		return "general/mypage/QnA_Write.tiles";
+	//사이트문의 폼 으로 이동
+	@RequestMapping(value="/general/qna/qnaWrite.do",method=RequestMethod.GET)
+	public String qnaWriteG() throws Exception {
+		return "general/mypage/QnAWrite.tiles";
+	}
+	//사이트문의 (글쓰기)
+	@RequestMapping(value="/general/qna/qnaWrite.do",method=RequestMethod.POST)
+	public String qnaWrite(@RequestParam Map map,HttpSession session) throws Exception {
+		map.put("genid", session.getAttribute("genid"));
+		qnaService.insert(map);
+		return "forward:/general/qna/qnaList.do";
 	}
 	//사이트문의 상세보기
 	@RequestMapping("/general/qna/qna_view.do")

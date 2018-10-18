@@ -46,7 +46,8 @@
 </style>
 
 <!-- BODY 영역 -->
-	<div class="row">
+<div id="dv" style="padding-top:10px">
+	<div class="row" >
 		<form class="form-inline" action="<c:url value='/general/hospital/SearchSubject.do'/>">
 		  <div class="btn-group">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -179,7 +180,7 @@
 		</div>
 	</div>	
 </div>
-
+</div>
 
 <!-- KAKAO MAP API -->
 <script>

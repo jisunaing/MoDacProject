@@ -27,35 +27,35 @@ tr th {
 				<table class="table table-bordered ">
 					<tr>
 						<th class="col-sm-2" style="text-align: center">혈액형</th>
-						<td class="col-sm-3">O</td>
+						<td class="col-sm-3">${healthstate.bloodtype}</td>
 					</tr>
 					<tr>
 						<th>키</th>
-						<td>180cm</td>
+						<td>${healthstate.height}</td>
 					</tr>
 					<tr>
 						<th>몸무게</th>
-						<td>70kg</td>
+						<td>${healthstate.weight}</td>
 					</tr>
 					<tr>
-						<th>임신여부 및 가능성</th>
-						<td>없음</td>
+						<th>임신여부</th>
+						<td>${healthstate.pregnant}</td>
 					</tr>
 					<tr>
-						<th>현재 복용중인 약</th>
-						<td>없음</td>
+						<th>복용중인 약</th>
+						<td>${healthstate.medicine}</td>
 					</tr>
 					<tr>
 						<th>기타</th>
-						<td>없음</td>
+						<td>${healthstate.etc}</td>
 					</tr>
 
 				</table>
 				<br />
 				<br />
 				<div class="row">
-					<a class=" col-sm-offset-5 btn btn-warning"
-						href="<c:url value='/general/mypage/healthinfo_edit.do'/>">수정하기</a>
+					<%-- <a class=" col-sm-offset-5 btn btn-warning" href="<c:url value='/general/mypage/healthinfo_edit.do'/>">수정하기</a> --%>
+					<a class=" col-sm-offset-5 btn btn-warning" href="<c:url value='/general/mypage/healthstateEdit.do?hsid=${genid}'/>">수정하기</a>
 				</div>
 				<br />
 				<br />

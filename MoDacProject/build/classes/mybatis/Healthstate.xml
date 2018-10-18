@@ -19,12 +19,12 @@
 		INSERT INTO healthstate VALUES(#{hsid},#{height},#{weight},#{medicine},#{bloodtype},#{pregnant},#{etc})
 	</insert>
 	<select id="healthstateSelectList" parameterType="java.util.Map" resultType="healthstateDto">
-		SELECT * FROM healthstate WHERE hsid IN (SELECT fno FROM genfamily WHERE genid=#{genid})
+		SELECT * FROM healthstate WHERE hsid IN (SELECT TO_CHAR(fno) FROM genfamily WHERE genid=#{genid})
 	</select >
 	<select id="healthstateSelectOne" parameterType="java.util.Map" resultType="healthstateDto">
 		SELECT * FROM healthstate WHERE hsid=#{hsid}
 	</select>
 	<update id="healthstateUpdate" parameterType="java.util.Map" >
-		UPDATE healthstate SET bloodtype=#{bloodtype},height=#{height},weight=#{weight},pregnant=#{pregnant},medicine=#{medicine},etc=#{etc} WHERE hsid=#{fno}
+		UPDATE healthstate SET bloodtype=#{bloodtype},height=#{height},weight=#{weight},pregnant=#{pregnant},medicine=#{medicine},etc=#{etc} WHERE hsid=#{hsid}
 	</update>
 </mapper>
