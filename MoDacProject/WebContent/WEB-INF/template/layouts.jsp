@@ -47,7 +47,21 @@
 		outline:1px pink solid;
 		height:200px;
 	}
+	#toppic{
+	width:100%;
+	height:510px;
+	overflow: hidden;
+	}
     </style> 	
+
+<script>
+$(function(){
+	$("div").removeClass("container");
+	$("#picture").addClass("container");
+	$("#dv").addClass("container");
+});
+</script>
+
   </head>
   <body>
 	    <!-- 네비게이션바 시작 -->

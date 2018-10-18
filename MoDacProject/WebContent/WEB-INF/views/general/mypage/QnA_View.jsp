@@ -43,9 +43,6 @@ tr th{
 	</p><br/>
 	
 	<hr id="hr1"><br/><br/>
- <div class="main_column">
-       
-       <div class="text_light">
 	<div class="row">
 		
 		<div>
@@ -124,10 +121,5 @@ tr th{
 	</div>
 	<br/><br/><br/><br/>
 	
-	</div>
-	</div>
-	<!-- 사이드 바 -->
-<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp" %>
-<!-- 사이드바 끝 -->
 	</div>
 	<!-- container -->
