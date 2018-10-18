@@ -40,7 +40,7 @@
 	line-height: 15px;
 }
 .h1 {
-	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 /* 버튼  */

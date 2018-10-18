@@ -25,7 +25,7 @@
 		<tbody>
 		<c:if test="${empty requestScope.records}" var="isEmpty">
 			<tr>
-				<td>등록된 게시물이 없습니다.</td>
+				<td colspan="3">등록된 게시물이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:if test="${not isEmpty}">
