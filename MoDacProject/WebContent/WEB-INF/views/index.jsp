@@ -87,7 +87,7 @@
 	body{
 		margin:0
 	}
-	html, * { margin: 0; padding: 0; font-family: 'Jua'/* 'Black Han Sans' */, sans-serif; }
+	html, * { margin: 0; padding: 0;font-family: monospace;/* 'Jua', sans-serif; */ }
 	h1 { margin: 50px auto; text-align: center; }
 	h2 { padding: 0; margin: 0;  font-size: 36px; }
 	

@@ -21,6 +21,9 @@
 	#navbar-page a{
 		color:white;
 	}
+		.navbar {
+		font-size:1.2em;
+	}
 </style>
 <script>  	
 	$(function(){	 		

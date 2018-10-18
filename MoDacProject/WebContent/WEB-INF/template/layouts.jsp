@@ -28,7 +28,9 @@
 <![endif]-->
 <style>
 	html, * {
-		margin: 0; padding: 0; font-family: 'Jua', sans-serif;
+		margin: 0; padding: 0; 
+/* 		font-family: 'Jua', sans-serif; */
+		font-family: monospace;
 	}
 	h1 { margin: 50px auto; text-align: center; }
 	h2 { padding: 0; margin: 0;  font-size: 36px; }
@@ -46,6 +48,7 @@
 		outline:1px pink solid;
 		height:200px;
 	}
+	
     </style>
   </head>
   <body>
