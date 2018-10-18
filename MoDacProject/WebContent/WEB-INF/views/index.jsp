@@ -66,7 +66,7 @@
 	} */
 	#my-slider {
       width: 100%;
-      height: 600px;
+      height: 580px;
       color: white;
     }
 
@@ -137,14 +137,14 @@
 			 <div class="crs-screen"><!-- 슬라이드 -->
 			   <div class="crs-screen-roll">
 				 <!-- .parallax: scroll effect적용 -->
-				 <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
+				 <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
+<!-- 			       <div class="crs-screen-item-content"><h1 style="font-family:Black Han Sans;">MoDacProject&<span style="color:red">♥</span></h1></div> -->
+			     </div>
+			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
 			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
 			     </div>
 				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
 			       <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
-			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
 			     </div>
 			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')">
 			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
@@ -155,9 +155,9 @@
 			   <div class="crs-bar-roll-current"></div>
 			   <div class="crs-bar-roll-wrap">
 			     <div class="crs-bar-roll">
+			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
 			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div> 	
 			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
 			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')"></div>
 			     </div><!-- ROLL -->
 			   </div><!-- ROLL-WRAP -->

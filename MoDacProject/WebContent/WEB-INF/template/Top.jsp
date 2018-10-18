@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <style>
+<style>
 	body{      
-/*
-// body안에 있는 이미지 top이랑 붙임 		
-		padding-top:100px; 
-*/
+		padding-top:90px; 
 	}
 	.active{
 		font-weight: bolder;
@@ -50,10 +47,8 @@
 	<!-- 로고자리 -->
    	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
     <!-- 로고이미지 들어갈자리 -->
-	<%--     	
-		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
-	--%>
-		모닥
+<%-- 		<img style="width:50%;"  src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />   --%>
+	모닥
     </a> 
 	<!-- 로고자리끝남 -->    
   </div><!-- navbar-header -->
@@ -85,6 +80,12 @@
 			<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>
 			<li id="navbar-guestbook"><a href="<c:url value='/general/member/signup/genSignupWrite.do'/>" class="navmenus">회원가입</a></li>
 		</c:if>
+		<%-- 
+		<c:url value='/general/member/signup/partnerJoin.do'/>
+		--%>
+		<li style="margin-top: 8px" id="navbar-page" >
+			<button onclick="location.href='<c:url value='/general/member/signup/partnerJoin.do'/>'" style="background-color: transparent; border:1px white solid" type="button" class="btn btn-inverse-primary" ><span style="font-size: 10px">제휴신청</span></button>
+		</li>
 	</ul>
 </div>
 <!-- 일반사용자용 top -->
