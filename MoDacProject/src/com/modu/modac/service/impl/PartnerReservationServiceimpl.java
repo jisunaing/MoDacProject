@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.modu.modac.service.HealthInfoDto;
+import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.PartnerReservationService;
 import com.modu.modac.service.ReceptViewDto;
 import com.modu.modac.service.ReceptionDto;
@@ -120,7 +121,7 @@ public class PartnerReservationServiceimpl implements PartnerReservationService 
 	}
 
 	@Override
-	public HealthInfoDto helthinfo(Map map) {
+	public HealthstateDto helthinfo(Map map) {
 		return dao.helthinfo(map);
 	}
 

@@ -16,11 +16,18 @@ public class ChartDao implements ChartService {
 	private SqlSessionTemplate template;
 
 	@Override
-	
 	public List<String> dayList(Map map) {
-
 		return template.selectList("chartList",map);
+	}
 
+	@Override
+	public List<Map> reservationReception(Map map) {
+		return template.selectList("reservationReception", map);
+	}
+
+	@Override
+	public List<Map> mainChartTableRecord() {
+		return template.selectList("mainChartTableRecord");
 	}
 
 }
