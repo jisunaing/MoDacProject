@@ -160,8 +160,8 @@ table {
 	</div>
 	<!-- 사이드 바 -->
 	
-	<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp"%>
-	</div>
+<%-- 	<%@ include file="/WEB-INF/views/general/mypage/Sidebar.jsp"%> --%>
+		</div>
 	<!-- 사이드바 끝 -->
 </div>
 <!-- 가운데 정렬을 위한 DIV -->
