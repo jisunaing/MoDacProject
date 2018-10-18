@@ -174,7 +174,7 @@
 				<h4>병원 접수를 하기 위해선 반드시 "로그인"이 필요합니다.</h4>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-primary" data-dismiss="modal"> 닫기 </button>
+				<button class="btn btn-danger" data-dismiss="modal"> 닫기 </button>
 			</div>
 		</div>
 	</div>	
@@ -243,11 +243,14 @@ var reception = function(no, pid) {
 var datas = JSON.parse('${records}');
 var editDatas = [];
 
+if(datas.length == 0) {
+	closeWindowByMask();
+}
+
 var addrs = [];
 for(var i = 0; i < datas.length; i++) {
 	addrs[i] = datas[i]['addr'];
 }
-
 
 // [지도 생성]
 var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
@@ -266,6 +269,7 @@ var clusterer = new daum.maps.MarkerClusterer({
 	disableClickZoom : true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 });
 
+var count = 0;
 var dataIndex = 0;
 var posArray = []; // 좌표객체 저장할 배열 선언
 var geocoder = new daum.maps.services.Geocoder(); // 주소 => 좌표 변환 변수 선언
@@ -280,15 +284,13 @@ $.each(addrs,function(index,value){
             dataIndex++;
         }  
         
-        if(index == addrs.length-1){
+        count++;
+        
+        if(count == addrs.length){
         	doNext(posArray);
         }
     });
 })
-
-if(datas.length == 0) {
-	closeWindowByMask();
-}
 
 function doNext(posArray) {
 	
@@ -350,8 +352,6 @@ function doNext(posArray) {
 			}
 		}
 	});
-	
-
 	
 	function openOverlayListener(map, marker) {
 
