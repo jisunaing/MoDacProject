@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <style>
 /*가운데 배치를 위핸 CSS*/
+
 .row {
  margin: 0 auto;
  text-align: center;
