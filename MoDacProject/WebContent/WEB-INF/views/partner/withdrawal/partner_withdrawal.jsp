@@ -25,12 +25,11 @@ body {
 	background-size: 90%	
 		
 }
-
 .form-box{
 	background: #F6F6F6; 
 	padding: 20px;
 	width: 600px;
-	height: 580px;	 
+	height: 660px;	 
 	margin: 180px auto; 
 	border-radius: 20px; 
 	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
@@ -111,7 +110,7 @@ body {
 									<div class="col-sm-5 col-sm-offset-5">
 										
 						<button style="margin-top: 20px; margin-left: -14px;" type="button" class="btn btn-primary" 
-						data-toggle="modal" data-target="#basicModal" > 탈퇴 신청 </button>					
+						data-toggle="modal" data-target="#basicModal" id="outbtn" > 탈퇴 신청 </button>					
 									</div>
 								</div>
 							</div>
@@ -165,6 +164,7 @@ body {
 	<script src="<c:url value="/Bootstrap/js/bootstrap.js"/>"></script>
 	<script src="<c:url value="/Jquery/adminlte.js"/>"></script>
 	<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 
 	<script>
 	
@@ -186,9 +186,36 @@ body {
 			
 			$('#submits').submit();
 			
-		})
+		});
+		
+		
+		$('#submits').validate({
+			
+			rules:{
+				pemail : {required : true },
+				reqdetail : {required : true }
+				
+			},
+			
+			messages:{
+				pemail: {required : ' * 이메일은 꼭 적어주세요!'},
+				
+				reqdetail: {required : ' * 탈퇴이유를 꼭 적어주세요!'}
+			
+				
+			},
+			
+			
+			
+		});
+		
+		
 	
-	});
+		
+	});/// 최상위
+	
 	</script>
+	
+
 </body>
 </html>
