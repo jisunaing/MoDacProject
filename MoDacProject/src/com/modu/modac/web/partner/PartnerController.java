@@ -48,7 +48,6 @@ public class PartnerController {
 	@Value("${BLOCK_SIZE}")
 	private int blockPage;
 
-
     @Resource(name="chartService")
     private ChartService chartService;
 
