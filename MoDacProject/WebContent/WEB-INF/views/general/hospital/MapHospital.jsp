@@ -29,7 +29,6 @@
 	height:680px;
 }
 
-
 /* 커스텀 오버레이 */
 .wrap {position: absolute;left: 0;bottom: 57px;width: 388px;height: 347px;margin-left: -194px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 .wrap * {padding: 0;margin: 0;}
