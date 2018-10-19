@@ -196,6 +196,7 @@ public class GenenralController {
 		reservationService.reservationInset(map);
 		return "forward:/general/reservation/reservationlist.do";
 		}
+		reservationService.reservationInset(map);
 		return "forward:/general/reservation/reservationlist.do";
 	}
 	

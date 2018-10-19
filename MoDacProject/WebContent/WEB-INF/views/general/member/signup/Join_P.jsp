@@ -160,8 +160,9 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
   	
   </head>
   <body>
+<img src="<c:url value='/Images/plasticheart.jpg'/>" id="toppic"/>
 
-  	<div class="container">
+  	<div class="container" id="dv">
 			<div class="row">
 				<div class="col-md-12">
 				 <h1>제휴 문의<small> 병원 제휴</small></h1>

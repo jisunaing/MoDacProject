@@ -250,7 +250,14 @@ textarea {
 </head>
 
 <body translate="no" >
-
+	<!-- 로그인 에러 메시지 부분 -->
+	<c:if test="${!empty loginError}">
+	<script type="text/javascript">
+	
+	alert('${loginError}');
+	
+	</script>
+	</c:if>
   <!-- form -->
 <div class="form-box">
 	

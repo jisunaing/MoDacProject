@@ -10,17 +10,19 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 <style>
+.row1 {
+	margin-top:10px;
+}
 .row {
 	margin-top:10px;
 }
 /* 병원이름 form 넓이 */
 .input-group {
-	width:600px;
+	width:700px;
 }
-
-
 #searchtoggle {
 	float: right;
+	margin-right: -50px;
 }
 
 /* 지도 */
@@ -123,11 +125,12 @@
 		      <span class="input-group-btn">
 		        <button class="btn btn-primary" type="submit">검색 </button>
 		      </span>
+		      <div class="btn-group btngroup" id="searchtoggle">
+				  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+			  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
+			  </div>
 	    </div>
-	    <div class="btn-group btngroup" id="searchtoggle">
-			  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
-		</div>
+	    
 	</form>
 </div>
 
