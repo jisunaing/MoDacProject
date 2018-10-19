@@ -30,7 +30,7 @@ form {
 	  $('#summernote').summernote();
 	});
 </script>
-<div id="contain" class="container">
+<div id="contain dv" class="container ">
 
 	
 			<div class="panel panel-default" style="width: 70%;">

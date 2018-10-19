@@ -55,11 +55,11 @@
     </style> 	
 
 <script>
-// $(function(){
-// 	$("div").removeClass("container");
-// 	$("#picture").addClass("container");
-// 	$("#dv").addClass("container");
-// });
+$(function(){
+	$("div").removeClass("container");
+	$("#picture").addClass("container");
+	$("#dv").addClass("container");
+});
 </script>
 
   </head>
