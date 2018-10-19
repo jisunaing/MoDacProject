@@ -198,7 +198,7 @@ public class GenenralController {
 		}
 		reservationService.reservationInset(map);
 		return "forward:/general/reservation/reservationlist.do";
-	}
+	}                   
 	
 	//예약 취소 클릭시
 	@RequestMapping("/general/receipt/ReservationCancel.do")
