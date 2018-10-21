@@ -81,7 +81,6 @@ public class MapController {
 			collections.add(record);
 		}
 		
-		
 		model.addAttribute("records", JSONArray.toJSONString(collections));
 		model.addAttribute("paramValue",paramValue);
 		
@@ -148,7 +147,6 @@ public class MapController {
 		if(map.get("partner") != null) {
 			partner = "제휴병원";
 		}
-		
 		
 		List<MapHospitalDto> records = serviceHOS.selectList(map);
 		
