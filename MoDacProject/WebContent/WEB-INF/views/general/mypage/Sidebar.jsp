@@ -52,7 +52,7 @@ $(function(){
 });
 
 </script>
-<!-- body 시작 -->
+<!-- body 시작 --->
 <div class="sidebar">
 	<div class="js_fixedcontent"
 		style="top: 24px; z-index: 500; width: 184px; position: static;">

@@ -10,17 +10,19 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 <style>
+.row1 {
+	margin-top:10px;
+}
 .row {
 	margin-top:10px;
 }
 /* 병원이름 form 넓이 */
 .input-group {
-	width:600px;
+	width:700px;
 }
-
-
 #searchtoggle {
 	float: right;
+	margin-right: -50px;
 }
 
 /* 지도 */
@@ -28,7 +30,6 @@
 	width:auto;
 	height:680px;
 }
-
 
 /* 커스텀 오버레이 */
 .wrap {position: absolute;left: 0;bottom: 57px;width: 388px;height: 347px;margin-left: -194px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -46,7 +47,8 @@
 </style>
 
 <!-- BODY 영역 -->
-	<div class="row">
+<div id="dv" style="padding-top:10px">
+	<div class="row" >
 		<form class="form-inline" action="<c:url value='/general/hospital/SearchSubject.do'/>">
 		  <div class="btn-group">
 			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -123,11 +125,12 @@
 		      <span class="input-group-btn">
 		        <button class="btn btn-primary" type="submit">검색 </button>
 		      </span>
+		      <div class="btn-group btngroup" id="searchtoggle">
+				  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+			  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
+			  </div>
 	    </div>
-	    <div class="btn-group btngroup" id="searchtoggle">
-			  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
-		</div>
+	    
 	</form>
 </div>
 
@@ -179,7 +182,7 @@
 		</div>
 	</div>	
 </div>
-
+</div>
 
 <!-- KAKAO MAP API -->
 <script>

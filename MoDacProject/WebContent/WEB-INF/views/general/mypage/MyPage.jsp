@@ -3,36 +3,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link rel="stylesheet" href="<c:url value='/css/masongram.min.css'/>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <!--아이콘때문에 필요 -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 	crossorigin="anonymous">
-<title>Insert title here</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-<script src="<c:url value='/js/masongram.min.js'/>"></script>
 <style>
 .top {
 	margin: 0 auto;
-	margin-top:50px;
+	margin-top:20px;
 	width: 60%;
-	border: solid 3px #2b68a7;
+	/* border: solid 3px #2b68a7; */
 	overflow: hidden;
 	margin-bottom: 30px;
 	border-radius: 15px;
 	line-height: 15px;
 	box-sizing: border-box;
 }
-hr{
-	border: solid 1px black;
-	width: 30%; 
-	align-content: center 
+#hr{
+	margin-left: 40%;
+	border: solid 1px black; 
+	width: 20%
+}
+body{
+	padding-top:0px
 }
 </style>
 <script>
@@ -46,21 +42,20 @@ $(function(){
 
 </script>
 <!-- body 시작 -->
-<div class="container-fluid" style="background-image: url('Images/greenapple.jpg')">
 <br/>
 <br/>
-	
-		
-		
-		<div class="top" style="text-align: center">
-			<h1>
-				${genid}님의 <small>MyPage</small>
-			</h1>
-			<br/>
-			<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>
-			<br/>
+<img src="<c:url value='/Images/plasticheart.jpg'/>" id="toppic"/>
+<div id="dv">
+	<div class="top" style="text-align: center">
+		<div style="font-size: 50px; height: 100px;padding-top:45px" class="row">
+			${genid}님의<span style="color:gray;font-size: 40px"> MyPage</span> 
 		</div>
-	<div class="masongram-container" style="position: relative; height: 2360px;">
+		<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>
+		<br/>
+		<hr id="hr">
+		<br/>
+	</div>
+	<div class="masongram-container" style="position: relative; height: 600px;">
 		<!-- 개인정보 -->
 		<div tabindex="0" class="masongram-image-container masongram-image-size-standard_resolution"
 			style="position: absolute; left: 5%; top: 30px;">
@@ -138,7 +133,7 @@ $(function(){
 		<!-- 건강 문의 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution"
-			style="position: absolute; left: 20%; top: 10.7%;">
+			style="position: absolute; left: 20%; top: 259px">
 			<img src="<c:url value='/Images/stet.jpg'/>" class="masongram-image">
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
@@ -158,7 +153,7 @@ $(function(){
 		<!-- 사이트 문의 -->
 		<div tabindex="0"
 			class="masongram-image-container masongram-image-size-standard_resolution" 
-			style="position: absolute; left: 50%; top: 10.7%;">
+			style="position: absolute; left: 50%; top: 259px;">
 			<img src="<c:url value='/Images/sayingbubble.jpg'/>" class="masongram-image">
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
@@ -180,8 +175,6 @@ $(function(){
 	</div>
 
 </div>
-
-
 	<!-- container -->
 
 	

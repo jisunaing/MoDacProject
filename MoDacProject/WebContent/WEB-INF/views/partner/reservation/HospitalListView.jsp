@@ -26,41 +26,40 @@
  }
 /*가운데 배치를 위핸 CSS*/
 /*테이블 센터를 위한 css 시작*/
-table{
- border:1px solid black;
-}
-
-table th {
- text-align: center;
- border:1px solid black;
-}
-table tr {
- border:1px solid black;
-}
-table tr:nth-child(odd) {
- background-color: #cee3f6;
-}
-table tr:nth-child(even) {
- background-color: white;
-}
-table td{
- border:1px solid black;
-}
-#top1{
- border:1px solid black;
-}
-#top2{
- border:1px solid black;
-}
-
 /*테이블 센터를 위한 css 끝*/
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
-.form-group{
- padding-bottom: 35px;
+
+.form-box {
+	background: #F6F6F6; 
+	padding: 20px;
+	width: 900px;
+	height: 650px;	
+	margin: 50px auto; 
+	border-radius: 20px; 
+	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
+	}
+.content-wrapper{
+ padding-bottom: 100px;
 }
-.lastButton{
- padding-top: 200px;
+.sp{
+
+	font-size: 1.3em;
+	font-weight:bold;
+	color: black;
+
 }
+a input{
+ margin-left: 10px;
+ margin-top: 15px;
+}
+.cen{
+ text-align: center;
+}
+/*
+.colorss{
+ background-color: #2b68a7;
+}
+*/
 /*테이블 안의 폼들 간격을 위해 넣은 것*/
 </style>
 <title>병원 관리자 페이지</title>
@@ -84,61 +83,106 @@ table td{
 		<!-- 여기부터가 바디로 추정됨 -->
 		<div class="content-wrapper">
 			<div class="row">
-				<div class="in">
-					<h2>상세보기페이지</h2><br/><br/><br/>
-						<table class="table table-hover">
-							<tr>
-								<th class="col-md-2 text-center" id="top1">성함</th>
-								<td id="top2">${reservationDto.resname}${receptViewDto.recname}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">연락처</th>
-								<td>${reservationDto.phone}${receptViewDto.phone}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">이메일</th>
-								<td>${reservationDto.email}${receptViewDto.email}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">예약시간</th>
-								<td>${reservationDto.resdate}${receptViewDto.recdate}</td>
-							</tr>
-							<c:if test="${empty helthinfo}" var="helthinfoOk"></c:if>
-							<c:if test="${not helthinfoOk}">
-							<tr>
-								<th class="col-md-2 text-center">신장</th>
-								<td>${helthinfo.height}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">몸무게</th>
-								<td>${helthinfo.weight}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">현재 복용 중인 약</th>
-								<td>${helthinfo.medicine}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">혈액형</th>
-								<td>${helthinfo.bloodtype}</td>
-							</tr>
-							<tr>
-								<th class="col-md-2 text-center">기타</th>
-								<td>${helthinfo.etc}</td>
-							</tr>
-							</c:if>
-							<tr>
-								<th colspan="2" class="text-center">상담내용</th>
-							</tr>
-							<tr>
-								<td colspan="2">${reservationDto.rescontents}${receptViewDto.reccontents}</td>
-							</tr>
-						</table>
-					<!-- 버튼들 -->
-						<a href="<c:url value='/partner/hospital/yes.do?recnum=${param.recnum}&resnum=${param.resnum}'/>"><input type="button" class="btn btn-default" value="수락"/></a>
-						<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${param.recnum}&resnum=${param.resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
-						<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
-					<!-- 버튼들 -->
-				</div>
+				<div class="form-box">
+						<div class="form-group">
+							<div class="col-sm-6">
+								<div class="col-sm-8">
+									<span class="sp">성함</span>
+									 <input type="text"	class="form-control cen"  value="${reservationDto.resname}${receptViewDto.recname}" disabled>
+								</div>
+							</div>
+						</div>
+	
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-pull-1">
+								<div class="col-sm-12">
+									<span class="sp">연락처</span> 
+									<input type="text" class="form-control cen" value="${reservationDto.phone}${receptViewDto.phone}" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6">
+								<div class="col-sm-8">
+									<span class="sp">이메일</span>
+									 <input type="text"	class="form-control cen" value="${reservationDto.email}${receptViewDto.email}" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-pull-1">
+								<div class="col-sm-12">
+									<span class="sp">날짜</span>
+									 <input type="text"	class="form-control cen" value="${reservationDto.resdate}${receptViewDto.recdate}" disabled>
+								</div>
+							</div>
+						</div>
+	
+						<c:if test="${empty helthinfo}" var="helthinfoOk"></c:if>
+						<c:if test="${not helthinfoOk}">
+						<div class="form-group">
+							<div class="col-sm-6">
+								<div class="col-sm-8">
+									<span class="sp">신장</span>
+									 <input type="text"	class="form-control cen" value="${helthinfo.height}" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-pull-1">
+								<div class="col-sm-12">
+									<span class="sp">몸무게</span>
+									 <input type="text"	class="form-control cen" value="${helthinfo.weight}" disabled>
+								</div>
+							</div>
+						</div>					
+						<div class="form-group">
+							<div class="col-sm-6">
+								<div class="col-sm-8">
+									<span class="sp">현재 복용 중인 약</span>
+									 <input type="text"	class="form-control cen" value="${helthinfo.bloodtype}" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-pull-1">
+								<div class="col-sm-12">
+									<span class="sp">혈액형</span>
+									 <input type="text"	class="form-control cen" value="${helthinfo.bloodtype}" disabled>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-6">
+								<div class="col-sm-8">
+									<span class="sp">기타</span>
+									 <input type="text"	class="form-control cen" value="${helthinfo.etc}" disabled>
+								</div>
+							</div>
+						</div>
+						</c:if>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<div class="col-sm-12">
+									<span class="sp">상담내용</span>
+									<textarea rows="10" class="form-control" disabled>${reservationDto.rescontents}${receptViewDto.reccontents}</textarea>
+								</div>
+							</div>
+						</div>
+	
+	
+	
+	
+						<div class="form-group">
+							<div class="col-sm-12">
+								<div class="col-sm-5 col-sm-offset-3">
+									<a href="<c:url value='/partner/hospital/yes.do?recnum=${param.recnum}&resnum=${param.resnum}'/>"><input type="button" class="btn btn-default" value="수락" style="margin-left: 100px;"/></a>
+									<a href="<c:url value='/partner/hospital/no.do?moveWhere=${where}&recnum=${param.recnum}&resnum=${param.resnum}'/>"><input type="button" class="btn btn-default" value="거절"/></a>
+									<a href="<c:url value='/partner/hospital/ListMove.do?moveWhere=${where}'/>"><input type="button" class="btn btn-default" value="목록"/></a>
+								</div>
+							</div>
+						</div>
+				</div>				
 			</div>
 		</div>
 		<!-- 여기까지가 바디로 추정됨 -->
@@ -147,7 +191,6 @@ table td{
 		<!-- 퓨터 -->
 	</div>
 	<!-- ./wrapper -->
-
 	<!--아래부분 삭제하면 안됨 -->
 	<script src="<c:url value="/Jquery/jquery.js"/>"></script>
 	<script src="<c:url value="/Jquery/jquery-ui.js"/>"></script>

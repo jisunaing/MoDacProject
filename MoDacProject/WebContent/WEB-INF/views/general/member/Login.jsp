@@ -250,7 +250,14 @@ textarea {
 </head>
 
 <body translate="no" >
-
+	<!-- 로그인 에러 메시지 부분 -->
+	<c:if test="${!empty loginError}">
+	<script type="text/javascript">
+	
+	alert('${loginError}');
+	
+	</script>
+	</c:if>
   <!-- form -->
 <div class="form-box">
 	
@@ -299,11 +306,11 @@ textarea {
 				</div>
 				<div >
 				<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-				<div id="naverIdLogin" class="col-sm-offset-2" style="margin-top:10px"></div>
+				<div id="naverIdLogin" class="col-sm-offset-2" style="margin-top:10px"><a href="<c:url value='#'/>"></a></div>
 				<!-- (2) LoginWithNaverId Javscript SDK -->
-				<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+ 				<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 				  <!-- (3) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
-				 <script>
+				 <!-- <script>
 					 var naverLogin = new naver.LoginWithNaverId(
 							{
 								clientId: "kZTeZSK7xvqzpnXZcuau",
@@ -317,7 +324,7 @@ textarea {
 						naverLogin.init();
 						
 					
-					</script> 
+					</script>  -->
 				</div>
 		</div>
 		<!-- // Sign Up for Free -->

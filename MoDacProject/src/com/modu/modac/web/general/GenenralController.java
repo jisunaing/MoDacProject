@@ -1,8 +1,7 @@
 package com.modu.modac.web.general;
 
-import java.io.PrintWriter;         
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +30,6 @@ import com.modu.modac.service.impl.PagingUtil2;
 @SessionAttributes("genid")
 @Controller
 public class GenenralController {
-	
 	//진성 영역 시작
 	@Resource(name="reservationService")
 	private ReservationService reservationService;
@@ -101,6 +99,7 @@ public class GenenralController {
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
+			out.close();			
 		}
 		else if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
@@ -129,11 +128,12 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-
-
+		else {
 		//데이터베이스에 집어 넣기
+		System.out.println("else로 들어옴");
 		reservationService.receiptInsert(map);
-
+		return "forward:/general/reservation/reservationlist.do";
+		}
 		return "forward:/general/reservation/reservationlist.do";
 	}
 	
@@ -142,8 +142,6 @@ public class GenenralController {
 	@RequestMapping("/general/receipt/ReservationListResult.do")
 	public String ReservationListResult(@RequestParam Map map,@ModelAttribute("genid") String genid,HttpServletResponse resp)throws Exception{
 		resp.setContentType("text/html; charset=UTF-8");
-		
-		
 		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
 			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
 		}//if
@@ -163,6 +161,7 @@ public class GenenralController {
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
+			out.close();			
 		}
 		else if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
@@ -191,11 +190,15 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
+		else {
 		//데이터베이스에 집어 넣기
+		System.out.println("else로 들어옴");
 		reservationService.reservationInset(map);
-		
 		return "forward:/general/reservation/reservationlist.do";
-	}
+		}
+		reservationService.reservationInset(map);
+		return "forward:/general/reservation/reservationlist.do";
+	}                   
 	
 	//예약 취소 클릭시
 	@RequestMapping("/general/receipt/ReservationCancel.do")
