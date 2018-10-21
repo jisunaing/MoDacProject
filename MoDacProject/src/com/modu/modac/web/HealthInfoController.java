@@ -17,7 +17,7 @@ import com.modu.modac.service.HealthInfoService;
 // [ 건강정보 관련 ]
 @Controller
 public class HealthInfoController {
-	
+	                        
 	@Resource(name="healthInfoService")
 	private HealthInfoService service;
 	
