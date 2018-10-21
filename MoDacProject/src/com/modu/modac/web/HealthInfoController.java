@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.modu.modac.service.HealthInfoDto;
 import com.modu.modac.service.HealthInfoService;
 
-// [ 건강정보 관련 ]
+// [건강정보 관련]
 @Controller
 public class HealthInfoController {
 	                        

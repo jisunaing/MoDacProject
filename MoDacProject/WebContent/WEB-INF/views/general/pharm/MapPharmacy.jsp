@@ -118,7 +118,7 @@
 	     
 	    loadingImg += "<div id='loadingImg' style='position:absolute; left:45%; top:60%; display:none; z-index:10000;'>";
 	    loadingImg += "<img src='/MoDacProject/Images/loading.gif'/>";
-	    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중입니다.</h4>";
+	    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중...</h4>";
 	    loadingImg += "</div>";  
 	 
 	    //화면에 레이어 추가
