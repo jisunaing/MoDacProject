@@ -118,7 +118,7 @@
 	     
 	    loadingImg += "<div id='loadingImg' style='position:absolute; left:45%; top:60%; display:none; z-index:10000;'>";
 	    loadingImg += "<img src='/MoDacProject/Images/loading.gif'/>";
-	    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중입니다.</h4>";
+	    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중...</h4>";
 	    loadingImg += "</div>";  
 	 
 	    //화면에 레이어 추가
@@ -149,6 +149,10 @@
 	var datas = JSON.parse('${records}');
 	var editDatas = [];
 	
+	if(datas.length == 0) {
+		closeWindowByMask();
+	}
+	
 	var addrs = [];
 	for(var i = 0; i < datas.length; i++) {
 		addrs[i] = datas[i]['addr'];
@@ -175,6 +179,7 @@
 		disableClickZoom : true	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	});
 	
+	var count = 0;
 	var dataIndex = 0;
 	var posArray = [];
 	var geocoder = new daum.maps.services.Geocoder();
@@ -189,15 +194,13 @@
 	            dataIndex++;
 	        }  
 	        
-	        if(index == addrs.length-1){
+	        count++;
+	        
+	        if(count == addrs.length){
 	        	doNext(posArray);
 	        }
 	    });
 	})
-	
-	if(datas.length == 0) {
-		closeWindowByMask();
-	}
 	
 	var imageSrc = '<c:url value="/Images/MarkerPharmacy.png"/>', // 마커이미지의 주소입니다    
    		imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다

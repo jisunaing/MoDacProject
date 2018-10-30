@@ -40,7 +40,7 @@
 	line-height: 15px;
 }
 .h1 {
-	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 /* 버튼  */
@@ -95,9 +95,9 @@
 				<br/>
 				<br/>
 				<br/>
-				<h1 class="h1"> 진료과목을 선택하세요 </h1>
+				<h1 class="h1"> <strong>진료과목을 선택하세요</strong> </h1>
 				<br/>
-				<p class="lead"> 해당 진료과목을 다룰 수 있는 병원들을 지도 상에 보여드립니다 </p>
+				<p class="lead"> 해당 진료과목을 다룰 수 있는 병원들을 <br/>지도 상에 보여드립니다 </p>
 				<br>
 			</div>
 		</div>

@@ -1,86 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- 드롭다운 2 -->
-<link rel="stylesheet" href="<c:url value='/css/animate.min.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/bootstrap-dropdownhover.css'/>">
-<script src="<c:url value='/js/bootstrap-dropdownhover.js'/>"></script>
-<style>
-body{
-	padding-top:90px
-}
-.active{
-	font-weight: bolder;
-	font-size:1.3m;
-}	
-.navbar-brand{
-	padding-top: 0px;
-}
-.navbar-toggle{ 
-	border:none;
-}
-.navbar-right li{
-	color: white;
-}
-#navbar-page a{
-	color:white;
-}
-	
-/*네브바*/
-/* Dropdown Button */
- .dropbtn {
-    background-color: #2b68a7;
-    color: white;
-    padding: 14px;
-    font-size: 14px;
-    border: none;
-} 
-
-/* The container <div> - needed to position the dropdown content */
- .dropdown {
-    position: relative;
-    display: inline-block;
-}
- 
-/* Dropdown Content (Hidden by Default) */
- .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-   	color:#000000;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-} 
-
-/* Links inside the dropdown */
-.dropdown-content .dropdown-menu1 {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    
-}
-.dropcolor{
-	color:black
-}
-
-.dropcolor:hover {
-	color:black;
-	background-color:white;
-	font-style: none;
-	text-decoration:none
-}
- */
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd; font-style: none; }
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover a {font-color: #000000;}
-
+ <style>
+	body{      
+		padding-top:90px;
+	}
+	.active{
+		font-weight: bolder;
+		font-size:1.3m;
+	}	
+	.navbar-brand{
+		padding-top: 0px;
+	}
+	.navbar-toggle{ 
+		border:none;
+	}
+	.navbar-right li{
+		color: white;
+	}
+	#navbar-page a{
+		color:white;
+	}
 </style>
 <script>  	
 	$(function(){	 		
@@ -92,9 +32,8 @@ body{
 		});
 		$('.nav').css('padding', '20px');
 		$('.navmenus').css('color', 'white');
-	
-		
 	});	
+
 	//드롭다운 1
 	$(document).ready(function(){
 		  $('.dropdown-submenu a.test').on("click", function(e){
@@ -119,9 +58,10 @@ body{
 
 
 </script>
+
 <!-- 네비게이션바 시작 -->
 <nav class="navbar navbar-default navbar-fixed-top navbar-fixed-width  navbar-inverse" style="background-color: #2b68a7; border:none">
-<div class="container" id="picture">
+<div class="container" >
   <div class="navbar-header">
   <!-- 화면크기가 작을때 보여지는 메뉴버튼 -->
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseMenu">
@@ -129,17 +69,13 @@ body{
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>		        
     </button>	
-	<!-- 로고자리 -->
-   	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">		      		
+   	<a class="navbar-brand" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
     <!-- 로고이미지 들어갈자리 -->
-	<%--     	
-		<img src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
-	--%>
-		모닥
+		<img style="padding-top:15px;width:40%" src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
+<!-- 		모닥 -->
     </a> 
 	<!-- 로고자리끝남 -->    
   </div><!-- navbar-header -->
-
 <!-- 일반사용자용 top -->
 <div class="collapse navbar-collapse" id="collapseMenu">
 	<ul class="nav navbar-nav navbar-right">
@@ -268,6 +204,7 @@ body{
 	</ul>
 </div>
 <!-- 일반사용자용 top -->
+
 </div><!-- div:container-fluid -->
 </nav>
 <!-- 네비게이션바 끝 -->  

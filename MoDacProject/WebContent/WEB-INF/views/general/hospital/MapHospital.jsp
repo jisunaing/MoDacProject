@@ -10,17 +10,19 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 <style>
+.row1 {
+	margin-top:10px;
+}
 .row {
 	margin-top:10px;
 }
 /* 병원이름 form 넓이 */
 .input-group {
-	width:600px;
+	width:635px;
 }
-
-
 #searchtoggle {
 	float: right;
+	margin-right: -50px;
 }
 
 /* 지도 */
@@ -28,7 +30,6 @@
 	width:auto;
 	height:680px;
 }
-
 
 /* 커스텀 오버레이 */
 .wrap {position: absolute;left: 0;bottom: 57px;width: 388px;height: 347px;margin-left: -194px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -124,11 +125,12 @@
 		      <span class="input-group-btn">
 		        <button class="btn btn-primary" type="submit">검색 </button>
 		      </span>
+		      <div class="btn-group btngroup" id="searchtoggle">
+				  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
+			  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
+			  </div>
 	    </div>
-	    <div class="btn-group btngroup" id="searchtoggle">
-			  <a class="btn btn-default" href="<c:url value='/general/hospital/SelectSubject.do'/>" role="button"> 병원검색 </a>
-		  	  <a class="btn btn-default" href="<c:url value='/general/pharm/AllPharm.do?address=강남구'/>" role="button"> 약국검색 </a>
-		</div>
+	    
 	</form>
 </div>
 
@@ -175,7 +177,7 @@
 				<h4>병원 접수를 하기 위해선 반드시 "로그인"이 필요합니다.</h4>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-primary" data-dismiss="modal"> 닫기 </button>
+				<button class="btn btn-danger" data-dismiss="modal"> 닫기 </button>
 			</div>
 		</div>
 	</div>	
@@ -195,7 +197,7 @@ function wrapWindowByMask() {
      
     loadingImg += "<div id='loadingImg' style='position:absolute; left:45%; top:60%; display:none; z-index:10000;'>";
     loadingImg += "<img src='/MoDacProject/Images/loading.gif'/>";
-    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중입니다.</h4>";
+    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중...</h4>";
     loadingImg += "</div>";  
  
     //화면에 레이어 추가
@@ -244,11 +246,14 @@ var reception = function(no, pid) {
 var datas = JSON.parse('${records}');
 var editDatas = [];
 
+if(datas.length == 0) {
+	closeWindowByMask();
+}
+
 var addrs = [];
 for(var i = 0; i < datas.length; i++) {
 	addrs[i] = datas[i]['addr'];
 }
-
 
 // [지도 생성]
 var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
@@ -267,6 +272,7 @@ var clusterer = new daum.maps.MarkerClusterer({
 	disableClickZoom : true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 });
 
+var count = 0;
 var dataIndex = 0;
 var posArray = []; // 좌표객체 저장할 배열 선언
 var geocoder = new daum.maps.services.Geocoder(); // 주소 => 좌표 변환 변수 선언
@@ -281,15 +287,13 @@ $.each(addrs,function(index,value){
             dataIndex++;
         }  
         
-        if(index == addrs.length-1){
+        count++;
+        
+        if(count == addrs.length){
         	doNext(posArray);
         }
     });
 })
-
-if(datas.length == 0) {
-	closeWindowByMask();
-}
 
 function doNext(posArray) {
 	
@@ -351,8 +355,6 @@ function doNext(posArray) {
 			}
 		}
 	});
-	
-
 	
 	function openOverlayListener(map, marker) {
 
@@ -428,6 +430,10 @@ function doNext(posArray) {
 					            '    </div>' +    
 					            '</div>';
 						} else { // 제휴 병원인 경우
+							if(website == null) {
+								website = '';
+							}
+						
 							content =
 								'<div class="wrap">' + 
 					            '    <div class="info">' + 

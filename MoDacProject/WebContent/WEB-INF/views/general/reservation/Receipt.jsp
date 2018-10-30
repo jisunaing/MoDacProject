@@ -67,8 +67,11 @@ table{
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
-	<script>
+<script>
 	$(function(){
+		$('.move').css('position','absolute').css('z-index','2').css('display', 'none');
+		$('.container').css('position','relative').css('z-index','1');
+
 		$( "#tabletoggles" ).hide();
 		$('#toggles').click(function(){		
 			$('#tabletoggles').toggle(500,function(){
@@ -78,54 +81,78 @@ table{
 			});
 		});
 		$('label').css('minWidth', '90px');
-		console.log(${fn:length(record.familyList)});
 		
-/*
-		$('tr').click(function(){
-			console.log('tr이 클릭됨');
-			for(var i=1;i<${fn:length(record.familyList)}+1;i++){
-				$('#nameUrl'+i).click(function(){
-					var index = i;
-					console.log(index);
-					console.log($('#names'+index).html());
-					console.log($('#phones'+index).html());
-					
-					$('#recname').val($('#names'+i).html());
-					$('#phone').val($('#phones'+i).html());
-					
-					console.log("for문");
-				});
-			}
+		
+		
+		$('#receipt').click(function(){
+			$('.move').css('display','inline');
 		});
-*/			
+		
 
-		$('#nameUrl1').click(function(){
-			$('#recname').val($('#names1').html());
-			$('#phone').val($('#phones1').html());
-		});
-		$('#nameUrl2').click(function(){
-			$('#recname').val($('#names2').html());
-			$('#phone').val($('#phones2').html());
-		});		
-		$('#nameUrl3').click(function(){
-			$('#recname').val($('#names3').html());
-			$('#phone').val($('#phones3').html());
-		});		
-		$('#nameUrl4').click(function(){
-			$('#recname').val($('#names4').html());
-			$('#phone').val($('#phones4').html());
-		});		
-		
-		
+	      $('#nameUrl1').click(function(){
+	          $('#recname').val($('#names1').html());
+	          $('#phone').val($('#phones1').html());
+	       });
+	       $('#nameUrl2').click(function(){
+	          $('#recname').val($('#names2').html());
+	          $('#phone').val($('#phones2').html());
+	       });      
+	       $('#nameUrl3').click(function(){
+	          $('#recname').val($('#names3').html());
+	          $('#phone').val($('#phones3').html());
+	       });      
+	       $('#nameUrl4').click(function(){
+	          $('#recname').val($('#names4').html());
+	          $('#phone').val($('#phones4').html());
+	       });      
+	       $('#nameUrl5').click(function(){
+	          $('#recname').val($('#names5').html());
+	          $('#phone').val($('#phones5').html());
+	       });            
+	       $('#nameUrl6').click(function(){
+	          $('#recname').val($('#names6').html());
+	          $('#phone').val($('#phones6').html());
+	       });      
+	       $('#nameUrl7').click(function(){
+	          $('#recname').val($('#names7').html());
+	          $('#phone').val($('#phones7').html());
+	       });            
+	       $('#nameUrl8').click(function(){
+	          $('#recname').val($('#names8').html());
+	          $('#phone').val($('#phones8').html());
+	       });            
+	       $('#nameUrl9').click(function(){
+	          $('#recname').val($('#names9').html());
+	          $('#phone').val($('#phones9').html());
+	       });            
+	       $('#nameUrl10').click(function(){
+	          $('#recname').val($('#names10').html());
+	          $('#phone').val($('#phones10').html());
+	       });            
+	       $('#nameUrl11').click(function(){
+	          $('#recname').val($('#names11').html());
+	          $('#phone').val($('#phones11').html());
+	       });         
+	       $('#nameUrl12').click(function(){
+		          $('#recname').val($('#names12').html());
+		          $('#phone').val($('#phones12').html());
+		   });         
+	       $('#nameUrl13').click(function(){
+		          $('#recname').val($('#names13').html());
+		          $('#phone').val($('#phones13').html());
+		   });  		
 	});
 	</script>
 <div class="container">
-	<div class="row">
+	<div class="row" >
 		<div class="page-header">
 		  <h1>${record.hosname} <small>${record.subname}</small></h1>
 		</div>
 	</div>
 	<div class="row">
+		<div class="move">
+			<img src="<c:url value='/Images/move.gif'/>"/>
+		</div>
 		<div class="in">
 		<!-- 가운데 정렬 시작 -->
 		<div id="float-right">

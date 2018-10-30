@@ -31,7 +31,7 @@ import com.modu.modac.service.MapPharmacyService;
 @Controller
 public class MapController {
 	
-	// 서비스 주입
+	//  서비스 주입
 	@Resource(name="pharmacyService")
 	private MapPharmacyService servicePH;
 	@Resource(name="nightPharmacyService")
@@ -80,7 +80,6 @@ public class MapController {
 			record.put("holiday", dto.getPholiday());
 			collections.add(record);
 		}
-		
 		
 		model.addAttribute("records", JSONArray.toJSONString(collections));
 		model.addAttribute("paramValue",paramValue);
@@ -148,7 +147,6 @@ public class MapController {
 		if(map.get("partner") != null) {
 			partner = "제휴병원";
 		}
-		
 		
 		List<MapHospitalDto> records = serviceHOS.selectList(map);
 		

@@ -20,7 +20,6 @@
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
 
-
 <title>모두의닥터</title>	
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -28,7 +27,9 @@
 <![endif]-->
 <style>
 	html, * {
-		margin: 0; padding: 0; font-family: 'Jua', sans-serif;
+		margin: 0; padding: 0; 
+/* 		font-family: 'Jua', sans-serif; */
+		font-family: monospace;
 	}
 	h1 { margin: 50px auto; text-align: center; }
 	h2 { padding: 0; margin: 0;  font-size: 36px; }
@@ -41,7 +42,7 @@
 		margin:0 auto;
 		text-align:center;
 	}
-		.row .col-md-4{
+	.row .col-md-4{
 		margin-top:10px;
 		outline:1px pink solid;
 		height:200px;
@@ -51,25 +52,27 @@
 	height:510px;
 	overflow: hidden;
 	}
- </style>
+    </style> 	
+
 <script>
-$(function(){
-	$("div").removeClass("container");
-	$("#picture").addClass("container");
-	$("#dv").addClass("container");
-});
+// $(function(){
+// 	$("div").removeClass("container");
+// 	$("#picture").addClass("container");
+// 	$("#dv").addClass("container");
+// });
 </script>
+
   </head>
   <body>
 	    <!-- 네비게이션바 시작 -->
 	    <tiles:insertAttribute name="Top"/>
-	    <!-- 네비게이션바 끝-->	    
+	    <!-- 네비게이션바 끝-->
 	    <div class="container" style="margin-bottom: 10px;">
 		    <!-- 내용 시작 -->
 		    <tiles:insertAttribute name="Body"/>
 		    <!-- 내용 끝 -->
 	    </div>
-	    <div class="footer">
+	    <div class="footer" style="margin-top:10px;">
 			<!-- 푸터 시작 -->
 	    	<tiles:insertAttribute name="Footer"/>
 			<!-- 푸터 끝 -->
