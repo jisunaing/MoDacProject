@@ -55,6 +55,11 @@ public class HealthquestionDao implements HealthquestionService{
 		return template.selectList("healthquestionSelectList", map);
 	}
 
+	@Override
+	public List<Map> selectListHos(Map map) {
+		return template.selectList("healthquestionSelectListHos",map);
+	}
+
 	
 
 	

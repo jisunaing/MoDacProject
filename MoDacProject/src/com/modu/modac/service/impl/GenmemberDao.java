@@ -58,6 +58,11 @@ public class GenmemberDao implements GeneralService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public GenmemberDto selectOne(Map map) {
+		return template.selectOne("genmemberSelectOneMap", map);
+	}
 	
 	
 }

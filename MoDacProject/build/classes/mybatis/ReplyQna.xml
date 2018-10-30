@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.replyqna">
+	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
+	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
+	<resultMap id="ReplyqnaDtoResult" type="replyqnaDto">
+		
+	</resultMap>
+	
+	<!-- 쿼리 작성 -->
+	<insert id="replyqnaInsert" parameterType="java.util.Map">
+		INSERT INTO replyqna values(seq_replyqna.nextval, #{rcontents}, sysdate, #{no})
+	</insert>
+	<select id="replyqnaSelectList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM replyqna WHERE no=#{no} ORDER BY rno DESC
+	</select>
+	<delete id="replyqnaDelete" parameterType="java.util.Map">
+		DELETE FROM replyqna WHERE rno=#{rno}
+	</delete>
+	<delete id="replyqnaDeleteByNo" parameterType="java.util.Map">
+		DELETE FROM replyqna WHERE no=#{no}
+	</delete>
+	<update id="replyqnaUpdate" parameterType="java.util.Map">
+		UPDATE replyqna SET rcontents=#{rcontents}	WHERE rno=#{rno}
+	</update>
+</mapper>

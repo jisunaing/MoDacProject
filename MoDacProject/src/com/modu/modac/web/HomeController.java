@@ -1,14 +1,20 @@
 package com.modu.modac.web;
                
+import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.security.SecureRandom;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
+import com.modu.modac.service.impl.NaverLoginBO;
 
 @Controller
 public class HomeController {
@@ -29,12 +35,28 @@ public class HomeController {
 	public String home() throws Exception {
 		return "/index";
 	}
-	
+	/* NaverLoginBO */
+	@Resource(name="naverLoginBO")
+    private NaverLoginBO naverLoginBO;
+    private String apiResult = null;
+    
+   
+
 	
 	//로그인 버튼 눌럿을때 오는 부분
 	@RequestMapping("/home/loginmain.do")
-	public String loginMain() throws Exception {
-		
+	public String loginMain(HttpSession session, Model model) throws Exception {
+		 /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+        String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+        
+        //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
+        //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+        System.out.println("네이버:" + naverAuthUrl);
+        
+        //네이버 
+        model.addAttribute("url", naverAuthUrl);
+
+        /* 생성한 인증 URL을 View로 전달 */ 
 		return "general/member/Login.tiles";
 	}
 	
@@ -54,6 +76,7 @@ public class HomeController {
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
 	public String genSignupProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
 		map.put("birthdate", map.get("year")+"/"+map.get("month")+"/"+map.get("day"));  
+		map.put("addr", map.get("addr").toString().concat("&"+map.get("addrDetail").toString()));
 		session.setAttribute("genid", map.get("genid"));
 		model.addAllAttributes(map);
 		generalService.insert(map);
@@ -70,7 +93,12 @@ public class HomeController {
 	  //임의로 로그인 처리함
 	   @RequestMapping("/home/loginProcess.do")
 	   public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-	      //일반사용자 로그인 처리 부분 시작
+	      /*//네이버 로그인 
+		   if(map.get("type").equals("naverlogin")) {
+			   
+		   }*/
+		   
+		   //일반사용자 로그인 처리 부분 시작
 	      boolean ismember = generalService.isMember(map);
 	      if(ismember) {
 	         model.addAllAttributes(map);

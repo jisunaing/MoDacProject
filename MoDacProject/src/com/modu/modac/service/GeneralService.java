@@ -10,6 +10,7 @@ public interface GeneralService {
 	boolean isMember(Map map);
 	//회원 상세보기용]
 	GenmemberDto selectOne(GenmemberDto dto);	
+	GenmemberDto selectOne(Map map);
 	GenfamilyDto selectOne(GenfamilyDto dto);	
 	//목록용]
 	List<GenmemberDto> selectList(Map map);
