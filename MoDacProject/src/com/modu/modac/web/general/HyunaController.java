@@ -32,6 +32,7 @@ import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
+import com.modu.modac.service.NoticeDto;
 import com.modu.modac.service.NoticeService;
 import com.modu.modac.service.QnaDto;
 import com.modu.modac.service.QnaService;
@@ -447,7 +448,11 @@ public class HyunaController {
 	}
 	//공지사항 상세보기
 	@RequestMapping("/general/notice/noticeView.do")
-	public String noticeView() throws Exception {
+	public String noticeView(@RequestParam Map map,Model model) throws Exception {
+		NoticeDto dto = noticeService.selectOne(map);
+		dto.setContent(dto.getContent().toString().replaceAll("Upload", "http://localhost:8080/modacadmin/Upload"));
+		model.addAttribute("record", dto);
+		
 		return "general/notice/NoticeView.tiles";
 	}
 }

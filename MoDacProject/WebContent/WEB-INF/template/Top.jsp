@@ -190,7 +190,6 @@
 	              <li class="divider"></li>
 	              <li><a href="<c:url value='/general/qna/qnaList.do'/>">사이트문의</a></li>
 	            </ul> --%>
-					
 				
 			</c:if>	
 			<c:if test="${not isMember }">			
@@ -200,7 +199,6 @@
                 	<button onclick="location.href='<c:url value='/general/member/signup/partnerJoin.do'/>'" class="btn button-inverse-primary btn-sm" style="background:transparent;border:1px solid white; margin-top: 9px">제휴신청</button>
            		</li> 
 			</c:if>
-			
 	</ul>
 </div>
 <!-- 일반사용자용 top -->

@@ -102,7 +102,7 @@
 								<td>${record.qno}</td>
 								<td>${record.postdate}</td>
 								<td>
-									<a href="#" onclick="window.open('http://localhost:8080/MoDacProject/general/qna/qnahealth/healthQnaChat.do?qno=${record.qno}', '모닥 채팅', 'width=400, height=600,toolbar=no,menubar=no')">${record.title}</a>
+									<a href="#" onclick="window.open('http://localhost:8080/MoDacProject/general/qna/qnahealth/healthQnaChat.do?qno=${record.qno}', '모닥 채팅', 'width=400, height=600,toolbar=no,menubar=no,scrollbars=no,resizable=no')">${record.title}</a>
 								</td>
 								<td>답변완료</td>
 							</tr>
