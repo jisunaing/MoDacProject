@@ -168,8 +168,13 @@ public class PartnerCRUDController {
 					
 					session.setAttribute("pid",map.get("pid"));
 					
-					service.selectOne(map);
+					dto = service.selectOne(map);
 
+					// 병원이름 불러오기
+					String hosname = dto.getHosname();
+					
+					session.setAttribute("hosname", hosname);
+					
 		
 					//병원 차트를 가져오기 위한 부분 	
 				

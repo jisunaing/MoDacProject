@@ -32,8 +32,6 @@ public class PartnerDto {
 	private String hosphone;
 	
 	
-	
-	
 	///게터셋터
 	
 	
