@@ -61,5 +61,5 @@ public class GenmemberServiceImpl implements GeneralService{
 		return null;
 	}
 
-	
+
 }

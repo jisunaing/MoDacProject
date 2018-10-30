@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
+
 <style>
 	.table{
 		color:black;
@@ -8,37 +10,66 @@
 	.title {
 		color:black;
 	}
+	#img_resize{
+		height: auto;
+		width: 100%;
+	}
 </style>
 <!-- body 시작 -->
-<div class="container">
+<div class="container" style="margin-top: -40px;">
 	<br/>
-	<h2>${requestScope.categname}</h2>
 	<br/>
-	<table class="table table-hover">
-		<thead>
-		  <tr>
-		    <th>번 호</th>
-		    <th>제 목</th>
-		    <th>등록일</th>
-		  </tr>
-		</thead>
-		<tbody>
-		<c:if test="${empty requestScope.records}" var="isEmpty">
-			<tr>
-				<td colspan="3">등록된 게시물이 없습니다.</td>
-			</tr>
-		</c:if>
-		<c:if test="${not isEmpty}">
-			<c:forEach var="records" items="${requestScope.records}">
-			  <tr>
-			    <td>${records.healthinfono}</td>
-			    <td><a class="title" href="<c:url value='/general/HealthInfoView.do?healthinfono=${records.healthinfono}'/>">${records.title}</a></td>
-			    <td>${records.postdate}</td>
-			  </tr>
-		  </c:forEach>
-		</c:if>
-		</tbody>
-	</table>
+	<!-- 카테고리상세 -->
+	<div class="jumbotron jumbotron-billboard" style="height: 500px;">
+	  <div class="img">
+	  	${record.categimage }
+	  </div>
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-12">
+	              <h2 style="padding-left:20%">${requestScope.categname}</h2>
+    	          <br/>
+					<p style="padding-left:20%">
+						${record.explanation }	                
+					</p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- ~카테고리상세 -->
+	
+	<!-- 카테고리 하위 리스트 -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+					  <tr>
+					    <th>번 호</th>
+					    <th>제 목</th>
+					    <th>등록일</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<c:if test="${empty requestScope.records}" var="isEmpty">
+						<tr>
+							<td colspan="3">등록된 게시물이 없습니다.</td>
+						</tr>
+					</c:if>
+					<c:if test="${not isEmpty}">
+						<c:forEach var="records" items="${requestScope.records}">
+						  <tr>
+						    <td>${records.healthinfono}</td>
+						    <td><a class="title" href="<c:url value='/general/HealthInfoView.do?categno=${record.categno }&healthinfono=${records.healthinfono}'/>">${records.title}</a></td>
+						    <td>${records.postdate}</td>
+						  </tr>
+					  </c:forEach>
+					</c:if>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div><!-- container -->
 
 <!-- 페이징 -->

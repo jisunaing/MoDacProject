@@ -167,10 +167,16 @@ public class PartnerCRUDController {
 					HttpSession session = req.getSession();
 					
 					session.setAttribute("pid",map.get("pid"));
+					
+					dto = service.selectOne(map);
+
+					// 병원이름 불러오기
+					String hosname = dto.getHosname();
+					
+					session.setAttribute("hosname", hosname);
+					
 		
 					//병원 차트를 가져오기 위한 부분 	
-					
-					
 				
 				      //병원수, 약국수, 일반사용자 수,제휴병원 수 얻어오기
 				      List<Map> totals = chartService.mainChartTableRecord();

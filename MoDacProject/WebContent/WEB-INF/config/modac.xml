@@ -17,7 +17,6 @@
 	<!-- DI적용 -->
 	<context:annotation-config/>
 	
-	<mvc:resources location="/WEB-INF/config/" mapping="/config/**"></mvc:resources>
 	
 	<!-- @ResponseBody한글처리 -->
 	<mvc:annotation-driven/>

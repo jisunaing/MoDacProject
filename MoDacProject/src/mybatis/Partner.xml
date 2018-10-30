@@ -43,7 +43,7 @@
 	
 	<!-- 제휴회원 1명의 데이터 가져오기 -->
 	<select id="PartnerSelectOne" parameterType="java.util.Map"	resultType="PartnerDto">
-	SELECT P.PEMAIL,P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
+	SELECT H.HOSNAME,P.PEMAIL,P.INFO,P.LUNCH,P.PERSONALDAY,H.* FROM PARTNERS P JOIN HOSPITAL H ON P.hosno = H.hosno WHERE P.pid = #{pid}
 	</select>
 	
 	<update id="Partnerfirst" parameterType="java.util.Map">

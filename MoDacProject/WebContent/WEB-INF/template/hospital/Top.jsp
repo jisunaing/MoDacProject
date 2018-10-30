@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet"><style>
+	html *{
+		font-family: 'Nanum Myeongjo', serif;
+	}
+</style>
+
 <script>
 //첫 시작시 알림 허용창 띄우기
 Notification.requestPermission();
@@ -88,7 +94,7 @@ function successAjax2(data,target){
 			<!-- Logo -->
 			<a href="<c:url value='/partner/hospital/MainMove.do'/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>병원관리자</b>페이지</span>
+				<span style="font-size: 1.3em" class="logo-lg"><b>병원전용</b>페이지</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
@@ -98,13 +104,13 @@ function successAjax2(data,target){
 						<li class="dropdown user user-menu">
 						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
 							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-							<span class="hidden-xs">병원이름</span>
+							<span class="hidden-sm" style="font-weight: bolder;font-size: 2em">${pid } </span>님 환영합니다
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
 								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-									<p>병원이름 넣을 곳</p></li>
+									<p>${pid } 님의 병원</p></li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
 								<li class="user-footer">

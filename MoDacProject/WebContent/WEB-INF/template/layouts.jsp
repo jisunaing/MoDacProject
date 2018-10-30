@@ -15,7 +15,7 @@
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- font적용)https://fonts.google.com/?subset=korean -->
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
@@ -52,14 +52,18 @@
 	height:510px;
 	overflow: hidden;
 	}
-    </style> 	
-
+	
+	.table-responsive {
+		padding-left: 15%;
+		padding-right: 15%
+	}	
+</style> 	
 <script>
-// $(function(){
-// 	$("div").removeClass("container");
-// 	$("#picture").addClass("container");
-// 	$("#dv").addClass("container");
-// });
+$(function(){
+	$("div").removeClass("container");
+	$("#picture").addClass("container");
+	$("#dv").addClass("container");
+});
 </script>
 
   </head>

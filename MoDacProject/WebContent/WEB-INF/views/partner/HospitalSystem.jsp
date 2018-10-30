@@ -20,6 +20,28 @@
 <script src="<c:url value='/js/vendor.bundle.addons.js'/>"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<style>
+	.card{
+		background-color: white;
+	}
+	.card-right{
+		margin-right:30px;
+	}
+	.card-left{
+		margin-left:30px;
+	}
+	.card-title{
+		padding: 35px 0 15px 0;
+	}
+	.card-body{
+		padding:0 50px 50px 50px;		
+	}
+	.row{
+		border: solid thin #EAEAEA;
+		padding:30px 0 30px 0	;
+/* 		padding-bottom: 70px; */
+	}
+</style>
 <script type="text/javascript">
    $(function() {
 	   /* ChartJS
@@ -369,43 +391,41 @@
       <jsp:include page="/WEB-INF/template/hospital/Left.jsp"/>
       <!-- 카테고리 -->
       <!-- 바디 -->
-		<div class="content-wrapper" style="background-color: white;">
-			<div class="container">
-				<div class="row">
-					<!-- 동그라미 차트 -->
-					<div class="col-lg-6 grid-margin stretch-card">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">서울시 병원 약국 현황</h4>
-								<canvas id="pieChart" style="height: 195px;width:50%"></canvas>
-							</div>
-						</div>
-					</div>
-					<!-- 동그라미 차트 -->
-					<div class="col-lg-6 grid-margin stretch-card">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">요일별</h4>
-								<canvas id="barChart" style="height: 195px;width:50%"></canvas>
-							</div>
+		<div class="content-wrapper">
+			<div class="row">
+				<!-- 동그라미 차트 -->
+				<div class="col-lg-6 grid-margin stretch-card">
+					<div class="card card-left">
+						<div class="card-body">
+							<h2 class="card-title">서울시 병원 약국 현황</h2>
+							<canvas id="pieChart" style="height: 195px;width:50%"></canvas>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-6 grid-margin stretch-card">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">시간대별</h4>
-								<canvas id="lineChart" style="height: 195px;width:50%"></canvas>
-							</div>
+				<!-- 동그라미 차트 -->
+				<div class="col-lg-6 grid-margin stretch-card">
+					<div class="card card-right">
+						<div class="card-body">
+							<h2 class="card-title">요일별</h2>
+							<canvas id="barChart" style="height: 195px;width:50%"></canvas>
 						</div>
 					</div>
-					<div class="col-lg-6 grid-margin stretch-card">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">예약 접수 비율</h4>
-								<canvas id="doughnutChart" style="height: 195px;width:50%"></canvas>
-							</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 grid-margin stretch-card">
+					<div class="card card-left">
+						<div class="card-body">
+							<h2 class="card-title">시간대별</h2>
+							<canvas id="lineChart" style="height: 195px;width:50%"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 grid-margin stretch-card">
+					<div class="card card-right">
+						<div class="card-body">
+							<h2 class="card-title">예약 접수 비율</h2>
+							<canvas id="doughnutChart" style="height: 195px;width:50%"></canvas>
 						</div>
 					</div>
 				</div>
