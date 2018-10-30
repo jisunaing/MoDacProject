@@ -30,9 +30,6 @@
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>
 		<typeAlias type="com.modu.modac.service.HealthInfoDto" alias="HealthInfoDto"/>
 		<typeAlias type="com.modu.modac.service.ReceptViewDto" alias="ReceptViewDto"/>
-		<typeAlias type="com.modu.modac.service.ChatRoomVO" alias="ChatRoomVO"/>
-		<typeAlias type="com.modu.modac.service.MessageVO" alias="MessageVO"/>
-		<typeAlias type="com.modu.modac.service.UserVO" alias="UserVO"/>
 		<typeAlias type="com.modu.modac.service.NoticeDto" alias="NoticeDto"/> 
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
@@ -62,7 +59,6 @@
 		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
 		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
 		<mapper resource="mybatis/HealthInfo.xml"/>
-		<mapper resource="mybatis/ChatMapper.xml"/>
 		<mapper resource="mybatis/Notice.xml"/>
 	</mappers>            
 </configuration>

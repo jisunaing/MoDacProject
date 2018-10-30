@@ -85,8 +85,8 @@
 					<thead>
 						<tr>
 							<th class="col-md-2" style="text-align: center">번호</th>
-							<th class="col-md-2" style="text-align: center">작성일</th>
 							<th style="text-align: center">제목</th>
+							<th class="col-md-2" style="text-align: center">작성일</th>
 							<th class="col-md-2" style="text-align: center">답변여부</th>
 						</tr>
 					</thead>
@@ -100,10 +100,10 @@
 						<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr class="success">
 								<td>${record.qno}</td>
-								<td>${record.postdate}</td>
 								<td>
 									<a href="#" onclick="window.open('http://localhost:8080/MoDacProject/general/qna/qnahealth/healthQnaChat.do?qno=${record.qno}', '모닥 채팅', 'width=400, height=600,toolbar=no,menubar=no,scrollbars=no,resizable=no')">${record.title}</a>
 								</td>
+								<td>${record.postdate}</td>
 								<td>답변완료</td>
 							</tr>
 						</c:forEach>

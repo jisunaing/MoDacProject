@@ -19,7 +19,7 @@
 		INSERT INTO healthquestion VALUES(seq_healthquestion.nextval, default,#{title},#{genid},#{subjectcode},#{qcontent})
 	</insert>
 	<select id="healthquestionSelectOne" parameterType="java.util.Map" resultType="healthquestionDto">
-		SELECT qno, title, s.subname, g.genname, postdate, qcontent 
+		SELECT qno, title, s.subname, h.genid, g.genname, postdate, qcontent 
 		FROM healthquestion h, genmember g, subject s 
 		WHERE h.genid=g.genid AND h.subjectcode = s.subjectcode AND qno=#{qno}
 	</select>

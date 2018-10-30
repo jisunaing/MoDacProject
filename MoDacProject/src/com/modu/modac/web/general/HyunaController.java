@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
@@ -69,23 +70,6 @@ public class HyunaController {
     private NoticeService noticeService;
 	
 	
-	//네이버 로그인
-	/*@RequestMapping("/naverlogin.do")
-	public String naverlogin(HttpSession session,Model model) throws Exception{
-		 String clientId = "kZTeZSK7xvqzpnXZcuau";//애플리케이션 클라이언트 아이디값";
-		    String redirectURI = URLEncoder.encode("http://localhost:8080/MoDacProject/naverlogincallback.do", "UTF-8");
-		    SecureRandom random = new SecureRandom();
-		    String state = new BigInteger(130, random).toString();
-		    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		    apiURL += "&client_id=" + clientId;
-		    apiURL += "&redirect_uri=" + redirectURI;
-		    apiURL += "&state=" + state;
-		    session.setAttribute("state", state);
-		    model.addAttribute("apiURL",apiURL);
-		    System.out.println("1111111111111111111");
-		    System.out.println(apiURL);
-		    return "general/member/Login.tiles";
-	}*/
 	
 	@RequestMapping("/naverlogincallback.do")
 	public String naverlogincallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, Map map) throws Exception{
@@ -341,10 +325,11 @@ public class HyunaController {
 	}
 	//건강문의 채팅 페이지로
 	@RequestMapping("/general/qna/qnahealth/healthQnaChat.do")
-	public String healthQnAChat(@RequestParam Map map,Model model) throws Exception{
+	public String healthQnAChat(@RequestParam Map map,Model model,HttpSession session) throws Exception{
 		model.addAttribute("param", map);
 		HealthquestionDto dto = healthquestionService.selectOne(map);
 		model.addAttribute("record", dto);
+		model.addAttribute("responsetype",session.getAttribute("genid"));
 		return "/general/mypage/HealthQnAChat";
 	}
 	//사이트문의목록

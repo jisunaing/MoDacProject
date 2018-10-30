@@ -100,7 +100,7 @@
 			<c:if test="${not empty genid}" var="isMember"> 
 				<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
 				
-				<div class="dropdown" style="margin-top:8px">
+				<li class="dropdown" style="margin-top:8px">
 				  <button style="background:transparent;border:none" class="btn btn-default dropdown-toggle navmenus" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 				    마이페이지 
 				    <span class="caret"></span>
@@ -124,7 +124,7 @@
 				  	 <li role="presentation" class="divider"></li>
 				  	<li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/qna/qnaList.do'/>">사이트문의</a></li>
 				  </ul>
-				</div>
+				</li>
 				
 				<%-- <li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li> --%>
 				<!-- 드롭다운 1  -->

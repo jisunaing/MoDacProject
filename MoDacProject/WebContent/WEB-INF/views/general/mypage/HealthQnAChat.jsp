@@ -76,14 +76,13 @@ padding:0
 	var appendMessage= function(msg){
 		var t = getTimeStamp();
 		/* $('#chatMessage').append(msg+"<br/>").css(name).addClass('arrow_box'); */
-		$('#chatMessage').append("<div class='row' style = 'height : auto; margin-top : 5px;'><div class='col-2' style = 'float:left; padding-left : 20px;'>"
-									+"<img id='profileImg' class='img-fluid' src='<c:url value='/Images/Modac.png'/>' style = 'width:50px; height:50px; '>"
-									+"<div style='font-size:9px; clear:both;'>${genname}</div>"
+		$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;'><div class='col-2' style = 'float:left;'>"
+									+"<img id='profileImg' class='img-fluid' src='<c:url value='/Images/chatdoctor1.png'/>' style = 'width:60px; height:60px;padding-right:5px'>"
 									+"</div>"
-									+"<div class = 'col-10' style = 'overflow : y ; margin-top : 7px; float:right;'>"
-									+"<div class = 'col-12' style = ' background-color:#ACF3FF; padding : 10px 5px; float:left; border-radius:10px;'>"
+									+"<div class = '' style = ' margin-top : 20px;'>"
+									+"<div class = '' style = ' background-color:#ACF3FF; padding : 5px; float:left; border-radius:10px'>"
 									+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
-									+"<div style = 'font-size:9px; text-align:right; float:right;padding-top:45px;'> <span>"+t+"</span>"
+									+"<div style = 'font-size:9px; text-align:right; float:left;padding-top:20px;padding-left:5px'> <span>"+t+"</span>"
 									+"</div></div></div>");
 		$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
 
@@ -92,7 +91,7 @@ padding:0
 	
 	//서버로 메시지 전송하는 메소드
 	var sendMessage = function(){
-		wsocket.send("msg:"+nickname+":"+$('#message').val()+"&qno^*="+${param.qno});
+		wsocket.send("msg:"+$('#message').val()+"&qno^*="+${param.qno});
 		$('#message').val('');
 	}/////////////////////////
 	
@@ -160,31 +159,27 @@ padding:0
 <body>
 	<div class="container">
 		<div style="background-color: #2b68a7; height:90px;margin-left:-15px;width:400px" id="topbackground">
-			<div class="col-2" style="float: left;padding-top:50px; padding-left:15px" >
-				<span style="color:white;font-size:12px" id="exitBtn">문의 종료 </span>
+			<div style="padding-top:20px;padding-left:20px;float:left">
+				<img src="<c:url value='/Images/logoonly.png'/>" alt="Logo" width="50px" class="img-fluid" />
 			</div>
-			<div style="padding-top:20px;padding-left:140px">
-				<img src="<c:url value='/Images/stet.png'/>" alt="Logo" width="100px" class="img-fluid" />
-			</div>
-			<div>
-				<span style="color:white;font-size:15px" >${record.title}</span>
+			<div style="float:left; margin-top:15px;padding-left:20px">
+				<span style="color:white;font-size:15px;" >&lt${record.title}&gt</span><br/>
+				<span style="color:white;font-size:10px;" >질문자: ${record.genid}</span> <br/>
+				<span style="color:white;font-size:10px;" >병원: 병원명</span>
+				<span style="color:white;font-size:10px;padding-left:180px" id="exitBtn">문의 종료 </span>
+				
 			</div>
 		</div>
 	
 	
 	        
-        <div id="chatArea" class="row" style="border:2px solid #2b68a7;overflow-y:scroll;overflow-x:hidden">
+        <div id="chatArea" class="row" style="border:2px solid #2b68a7; overflow:auto;resize: none;width:400px;height: 470px" >
             <div id="chatMessage"  class="col-md-8" style="height:460px"></div>
-            <div class="arrow_box">내용입니다</div>
-            <div></div>
         </div>
         <div class="row">
 	        <input class="form-control" type="text" id="message" style="float:left;height: 40px;width: 329px;">
-	        <input class="btn btn-primary" type="button" id="sendBtn" value="전송"  style="height: 40px;width:52px">
-        </div>
-	    
-	    <!-- test용 -->
-	    <img id="profileImg" class="img-fluid" src="<c:url value='/Images/logo.png'/>" style = "display:none">    
+	        <input class="btn btn-primary" type="button" id="sendBtn" value="전송"  style="height: 40px;width:71px">
+        </div>   
 		
 	   
 	</div>
