@@ -105,7 +105,7 @@
          <!-- slider -->
       </div><!-- row -->
       
-      <div id=""></div>
+      <div id="healthinfodiv"></div>
       <div class="container">
         <!-- themeSearch -->
         <div class="row themeSearch-header">
