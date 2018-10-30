@@ -123,7 +123,7 @@ $(function(){
 					</script>  -->
 				</div>
 		</div>
-		<!-- // Sign Up for Free -->
+		<!-- Sign Up for Free -->
 		
 		<!-- Welcome Back! -->
 		<div id="login">
