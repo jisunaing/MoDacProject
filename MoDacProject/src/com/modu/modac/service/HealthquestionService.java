@@ -7,6 +7,8 @@ public interface HealthquestionService {
 	
 	//목록
 	List<HealthquestionDto> selectList(Map map);
+	//진료 과목 불러오기
+	List<Map> selectListHos(Map map);
 	//상세보기
 	HealthquestionDto selectOne(Map map);
 	//입력/수정/삭제]

@@ -26,10 +26,10 @@ form{
 		var month= $("#month").children();
 		var day = $("#day").children();
 		for(var i=0; i<day.length;i++){
-			if($(month[i]).val()==${birthdate.month}){
+			if($(month[i]).val()==${extrainfo.month}){
 				$(month[i]).attr("selected","selected");
 			}
-			if($(day[i]).val()==${birthdate.day}){
+			if($(day[i]).val()==${extrainfo.day}){
 				$(day[i]).attr("selected","selected");
 			}
 		}
@@ -80,7 +80,7 @@ form{
 		<div class="form-group">
 				<label for="birthdate" class="col-sm-3 control-label">생년월일</label>
 				<div class="col-sm-2">
-					<input type="text" class="form-control" id="year" name="year" value="${birthdate.year}" placeholder="년(4자)">
+					<input type="text" class="form-control" id="year" name="year" value="${extrainfo.year}" placeholder="년(4자)">
 				</div>
 				<div class="col-sm-2">
 				    <select class="form-control" id="month" name="month">
@@ -140,12 +140,26 @@ form{
 				<input type="text" class="form-control" name="phone" value="${personalinfo.phone}" placeholder="01012345678">
 			</div>
 		</div>
+		
+		
 		<div class="form-group">
+			<label for="addr" class="col-sm-3 control-label">주소</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" id="addr" name="addr" value="${extrainfo.addr}" placeholder="주소를 입력하세요">
+			</div>
+			<button class="btn btn-primary" type="button" onclick="goPopup()">주소 검색</button>
+			<div class="col-sm-offset-3 col-sm-6" style="padding-top:8px">
+				<input type="text" class="form-control" id="addrDetail" name="addrDetail" value="${extrainfo.addrDetail}" placeholder="상세주소를 입력하세요">
+			</div>
+		</div>
+		
+		
+		<%-- <div class="form-group">
 			<label for="addr" class="col-sm-3 control-label">주소</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="addr" value="${personalinfo.addr}" placeholder="주소를 입력하세요">
 			</div>
-		</div>
+		</div> --%>
 		<br/>
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-10">

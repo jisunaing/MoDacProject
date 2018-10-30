@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>WebContent/WEB-INF/config/modac.xml</config>
+		<config>WebContent/WEB-INF/config/ws-config.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/config/root-context.xml</config>

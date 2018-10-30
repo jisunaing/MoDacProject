@@ -6,7 +6,7 @@ public class QnaDto {
 	private String no;
 	private String title;
 	private String content;
-	private Date postdate;
+	private Date postadate;
 	private String genid;
 	
 	//getter/setter
@@ -28,11 +28,12 @@ public class QnaDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getPostdate() {
-		return postdate;
+	
+	public Date getPostadate() {
+		return postadate;
 	}
-	public void setPostdate(Date postdate) {
-		this.postdate = postdate;
+	public void setPostadate(Date postadate) {
+		this.postadate = postadate;
 	}
 	public String getGenid() {
 		return genid;
