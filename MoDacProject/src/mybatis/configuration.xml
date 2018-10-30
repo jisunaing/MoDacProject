@@ -34,6 +34,7 @@
 		<typeAlias type="com.modu.modac.service.MessageVO" alias="MessageVO"/>
 		<typeAlias type="com.modu.modac.service.UserVO" alias="UserVO"/>
 		<typeAlias type="com.modu.modac.service.NoticeDto" alias="NoticeDto"/> 
+		<typeAlias type="com.modu.modac.service.HInfoCategDto" alias="hinfocategDto"/> 
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
@@ -64,5 +65,6 @@
 		<mapper resource="mybatis/HealthInfo.xml"/>
 		<mapper resource="mybatis/ChatMapper.xml"/>
 		<mapper resource="mybatis/Notice.xml"/>
+		<mapper resource="mybatis/HInfoCateg.xml"/>
 	</mappers>            
 </configuration>

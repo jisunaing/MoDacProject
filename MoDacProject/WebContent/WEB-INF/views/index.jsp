@@ -63,7 +63,6 @@
 </head>
 
 <body>
-   
    <!-- topMenu -->
    <div class="topMenu" style="margin-bottom: 0px;padding-bottom: 0px;">
       <jsp:include page="/WEB-INF/template/Top.jsp"/>
@@ -106,6 +105,7 @@
          <!-- slider -->
       </div><!-- row -->
       
+      <div id="healthinfodiv"></div>
       <div class="container">
         <!-- themeSearch -->
         <div class="row themeSearch-header">
