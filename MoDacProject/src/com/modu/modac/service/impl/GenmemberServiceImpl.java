@@ -50,11 +50,16 @@ public class GenmemberServiceImpl implements GeneralService{
 	public GenmemberDto selectOne(GenmemberDto dto) {
 		return dao.selectOne(dto);
 	}
+	@Override
+	public GenmemberDto selectOne(Map map) {
+		return dao.selectOne(map);
+	}
 
 	@Override
 	public GenfamilyDto selectOne(GenfamilyDto dto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
