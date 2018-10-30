@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 제이쿼리 유효성검증용 플러그인 -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
 
 <script language="javascript">
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
@@ -25,8 +26,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 	document.frm.addr.value = roadAddrPart1;		
 	document.frm.addrDetail.value = addrDetail;		
-		
-		
 }
 
 </script>
@@ -115,7 +114,13 @@ form{
 </style>
 
 <!-- body 시작 -->
-<img src="<c:url value='/Images/patient1.jpg'/>" id="toppic"/>
+<div class="jumbotron jumbotron-billboard" style="height: 500px;">
+  <div class="img">
+	<img style="opacity: 100;width: auto;height: 100%" src="<c:url value='/Images/register.png'/>" />
+  </div>
+</div>
+ 	
+
 <div class="container" id="dv">
 	
 	<div class="panel panel-default" style="width: 70%;">

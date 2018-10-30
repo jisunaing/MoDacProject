@@ -18,10 +18,6 @@
 	.navbar-right li{
 		color: white;
 	}
-	#brandspace{
-		padding-top:0px;
-		margin-top:0px;
-	}
 	#navbar-page a{
 		color:white;
 	}
@@ -37,10 +33,14 @@
 		$('.nav').css('padding', '20px');
 		$('.navmenus').css('color', 'white');
 	});	
- </script>
+</script>
 <!-- 네비게이션바 시작 -->
 <nav class="navbar navbar-default navbar-fixed-top navbar-fixed-width  navbar-inverse" style="background-color: #2b68a7; border:none">
 <div class="container" id="picture" >
+	<a class="navbar-brand brand-logo" id="brandspace" href="<c:url value='/main.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
+   		<!-- 로고이미지 들어갈자리 -->
+		<img style="padding:20px 0 30px 0;width:auto;height: 300%;" src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
+   	</a> 
   <div class="navbar-header">
   <!-- 화면크기가 작을때 보여지는 메뉴버튼 -->
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseMenu">
@@ -48,17 +48,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>		        
     </button>	
-   	<a class="navbar-brand" id="brandspace" href="<c:url value='/home/index.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
-    <!-- 로고이미지 들어갈자리 -->
-		<img style="padding-top:15px;width:40%" src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
-<!-- 		모닥 -->
-    </a> 
+
 	<!-- 로고자리끝남 -->    
   </div><!-- navbar-header -->
 <!-- 일반사용자용 top -->
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
-				<li id="navbar-page" ><a class="navmenus" href="<c:url value='/home/index.do'/>">홈</a></li>
+				<li id="navbar-page" ><a class="navmenus" href="<c:url value='/main.do'/>">홈</a></li>
 				<li id="navbar-page" ><a class="navmenus" href="<c:url value='/healthinfoList.do#healthinfodiv'/>">건강정보</a></li>
 				<li class="dropdown">
 					<a href="#" class="navmenus ropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
@@ -86,7 +82,8 @@
 				<c:if test="${not isMember}">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>
 					<li id="navbar-guestbook"><a href="<c:url value='/general/member/signup/genSignupWrite.do'/>" class="navmenus">회원가입</a></li>
-					<li>
+					<li>	
+						&nbsp;
 						<button onclick="location.href='<c:url value='/general/member/signup/partnerJoin.do'/>'" class="btn button-inverse-primary btn-sm" style="background:transparent;border:1px solid white; margin-top: 9px">제휴신청</button>
 					</li>
 				</c:if>
