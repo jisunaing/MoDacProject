@@ -16,4 +16,16 @@
 	<insert id="qnaInsert" parameterType="java.util.Map">
 		INSERT INTO qna VALUES(seq_qna.nextval, #{title}, #{content}, default,#{genid})
 	</insert>
+	<select id="qnaSelectList" parameterType="java.util.Map" resultType="qnaDto">
+		select * from qna where genid=#{genid}
+	</select>
+	<select id="qnaSelectOne" parameterType="java.util.Map" resultType="qnaDto">
+		select * from qna where no=#{no}
+	</select>
+	<update id="qnaUpdate" parameterType="java.util.Map">
+		UPDATE qna SET title=#{title}, content=#{content} WHERE no=#{no}
+	</update>
+	<delete id="qnaDelete" parameterType="java.util.Map">
+		DELETE FROM qna WHERE no=#{no}
+	</delete>
 </mapper>

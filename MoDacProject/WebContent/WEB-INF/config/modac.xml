@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
@@ -15,6 +16,9 @@
 	<context:component-scan base-package="com.modu.modac"/>
 	<!-- DI적용 -->
 	<context:annotation-config/>
+	
+	<mvc:resources location="/WEB-INF/config/" mapping="/config/**"></mvc:resources>
+	
 	<!-- @ResponseBody한글처리 -->
 	<mvc:annotation-driven/>
 
@@ -48,4 +52,8 @@
 	<!-- 
 	<bean class="com.modu.modac.HomeController"/> 
 	-->
+	<!-- 네이버 로그인 -->
+	<context:component-scan base-package="com.test.sts"/>
+	<bean id="naverLoginBO" class="com.modu.modac.service.impl.NaverLoginBO"/>
+	
 </beans>

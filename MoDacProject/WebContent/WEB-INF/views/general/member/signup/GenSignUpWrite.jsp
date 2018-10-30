@@ -3,7 +3,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 제이쿼리 유효성검증용 플러그인 -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+
+<script language="javascript">
+// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+//document.domain = "abc.go.kr";  /popup/jusoPopup.jsp
+
+function goPopup(){
+	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+	
+	
+	var pop = window.open("<c:url value='/jusoPopup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	
+	//var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+}
+
+
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo){
+	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+	document.frm.addr.value = roadAddrPart1;		
+	document.frm.addrDetail.value = addrDetail;		
+		
+		
+}
+
+</script>
 <script>
+
+
 	$(function(){
 		
 		//3]validator 디폴트 설정
@@ -51,7 +80,7 @@
 		    month:{required:'태어난 월을 입력하세요'},
 		    day:{required:'태어난 일을 입력하세요'},
 		   	gen:{required:'성별을 선택하세요'},
-		    email:{required:'이메일을 입력하세요', contains('@'):'올바른 이메일 주소를 입력하세요'},
+		    email:{required:'이메일을 입력하세요',contains('@'):'올바른 이메일 주소를 입력하세요'},
 		    phone:'전화번호를 입력하세요',
 		    addr:'주소를 입력하세요'
 		    
@@ -86,7 +115,8 @@ form{
 </style>
 
 <!-- body 시작 -->
-<div class="container">
+<img src="<c:url value='/Images/patient1.jpg'/>" id="toppic"/>
+<div class="container" id="dv">
 	
 	<div class="panel panel-default" style="width: 70%;">
 	  <div class="panel-body">
@@ -97,7 +127,7 @@ form{
 			<hr>
 		</div>
 		<br/>
-	   		<form class="form-horizontal" id="frm" action="<c:url value='/general/member/signup/genSignupProcess.do'/>" method="post">
+	   		<form class="form-horizontal" id="frm" name="frm" action="<c:url value='/general/member/signup/genSignupProcess.do'/>" method="post">
 				<div class="form-group center-block">
 					<label class="col-sm-3 control-label">아이디</label>
 					<div class="col-sm-4">
@@ -191,8 +221,12 @@ form{
 				</div>
 				<div class="form-group">
 					<label for="addr" class="col-sm-3 control-label">주소</label>
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<input type="text" class="form-control" id="addr" name="addr" placeholder="주소를 입력하세요">
+					</div>
+					<button class="btn btn-primary" type="button" onclick="goPopup()">주소 검색</button>
+					<div class="col-sm-offset-3 col-sm-6" style="padding-top:8px">
+						<input type="text" class="form-control" id="addrDetail" name="addrDetail" placeholder="상세주소를 입력하세요">
 					</div>
 				</div>
 				<div class="form-group">

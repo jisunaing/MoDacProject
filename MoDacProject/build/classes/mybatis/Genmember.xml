@@ -29,6 +29,9 @@
 	<select id="genmemberSelectOne" parameterType="genmemberDto" resultType="genmemberDto">
 		SELECT * FROM genmember WHERE genid=#{genid}
 	</select>
+	<select id="genmemberSelectOneMap" parameterType="java.util.Map" resultType="genmemberDto">
+		SELECT * FROM genmember WHERE genid=#{genid}
+	</select>
 	<!-- 개인정보 수정 -->
 	<update id="genmemberUpdate" parameterType="java.util.Map">
 		UPDATE genmember SET pwd = #{pwd},genname = #{genname},birthdate = #{birthdate}, gender = #{gender},

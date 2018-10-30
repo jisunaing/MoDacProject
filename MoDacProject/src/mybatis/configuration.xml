@@ -13,6 +13,7 @@
 		<typeAlias type="com.modu.modac.service.HealthstateDto" alias="healthstateDto"/>
 		<typeAlias type="com.modu.modac.service.HealthquestionDto" alias="healthquestionDto"/>
 		<typeAlias type="com.modu.modac.service.QnaDto" alias="qnaDto"/>
+		<typeAlias type="com.modu.modac.service.ReplyQnaDto" alias="replyqnaDto"/>
 		<typeAlias type="com.modu.modac.service.TestDto" alias="testDto"/> 
 		<typeAlias type="com.modu.modac.service.GenmemberDto" alias="genmemberDto"/> 
 		<typeAlias type="com.modu.modac.service.MapHospitalDto" alias="MapHospitalDto"/> 
@@ -29,6 +30,10 @@
 		<typeAlias type="com.modu.modac.service.PartnerNAdminQnACommentDto" alias="PartnerNAdminQnAComment"/>
 		<typeAlias type="com.modu.modac.service.HealthInfoDto" alias="HealthInfoDto"/>
 		<typeAlias type="com.modu.modac.service.ReceptViewDto" alias="ReceptViewDto"/>
+		<typeAlias type="com.modu.modac.service.ChatRoomVO" alias="ChatRoomVO"/>
+		<typeAlias type="com.modu.modac.service.MessageVO" alias="MessageVO"/>
+		<typeAlias type="com.modu.modac.service.UserVO" alias="UserVO"/>
+		<typeAlias type="com.modu.modac.service.NoticeDto" alias="NoticeDto"/> 
 	</typeAliases>
 	<!-- DTO등록 할 때 복사해서 쓰면 됨 별칭은 xxDto로 함 -->
 	<!--  
@@ -47,7 +52,8 @@
 		<mapper resource="mybatis/Test.xml"/>
 		<mapper resource="mybatis/PartnerNGeneralQnA.xml"/>
 		<mapper resource="mybatis/Genmember.xml" />		
-		<mapper resource="mybatis/Qna.xml" />		
+		<mapper resource="mybatis/Qna.xml" />
+		<mapper resource="mybatis/ReplyQna.xml"/>		
 		<mapper resource="mybatis/MapHospital.xml" />
 		<mapper resource="mybatis/MapPharmacy.xml" />
 		<mapper resource="mybatis/MapNightPharmacy.xml" />
@@ -56,5 +62,7 @@
 		<mapper resource="mybatis/PartnerNAdminQnA.xml" />
 		<mapper resource="mybatis/PartnerNAdminQnAComment.xml" />
 		<mapper resource="mybatis/HealthInfo.xml"/>
+		<mapper resource="mybatis/ChatMapper.xml"/>
+		<mapper resource="mybatis/Notice.xml"/>
 	</mappers>            
 </configuration>

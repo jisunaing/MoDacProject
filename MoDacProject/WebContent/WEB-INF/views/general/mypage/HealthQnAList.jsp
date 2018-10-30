@@ -36,6 +36,51 @@
 				<a id="qna" href="<c:url value='/general/qna/qnahealth/healthQnaWrite.do'/>"
 					class="col-md-offset-10  btn btn-success"
 					style="width: 120px; color: black">문의하기</a>
+				
+				
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">문의하기</button>
+				<!-- 모달창 시작 -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" >
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="exampleModalLabel">문의하기</h4>
+				      </div>
+				      <form action="<c:url value='/general/qna/qnahealth/healthQnaWrite.do'/>" method="post">
+				      <div class="modal-body">
+				        
+				          <div class="form-group" style="padding-left:17px;text-align: left" >
+				            <label class="control-label" >제목:</label>
+				            <input type="text" class="form-control" id="title" name="title" style="width:500px;">
+				            <input type="hidden" name="qcontent" value="chat">
+				          </div>
+				          <div class="form-group" style="text-align: left;padding-left:17px;">
+				            <label for="message-text" class="control-label">관련 진료과목:</label>
+				            <div style="width:500px;">
+							    <select class="form-control" name="subjectcode">
+							    	<option>증상과 관련된 진료과목을 선택하세요</option>
+								   	<c:forEach items="${sublist}" var="subject" varStatus="loop">
+								  		<option value="${subject['SUBJECTCODE']}">${subject['SUBNAME']}</option>
+								  	</c:forEach>
+								</select>
+							</div>
+						</div>
+				      
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+				        <button type="submit" class="btn btn-primary">문의하기</button>
+				      </div>
+				       </form>
+				      </div>
+				    </div>
+				  </div>
+				  <!-- 모달창 끝-->
+				</div>
+				
+				
+				
 				<table class="table">
 					<thead>
 						<tr>
@@ -56,7 +101,9 @@
 							<tr class="success">
 								<td>${record.qno}</td>
 								<td>${record.postdate}</td>
-								<td><a style="color: black" href="<c:url value='/general/qna/qnahealth/healthQnaView.do?qno=${record.qno}'/>">${record.title}</a></td>
+								<td>
+									<a href="#" onclick="window.open('http://localhost:8080/MoDacProject/general/qna/qnahealth/healthQnaChat.do?qno=${record.qno}', '모닥 채팅', 'width=400, height=600,toolbar=no,menubar=no')">${record.title}</a>
+								</td>
 								<td>답변완료</td>
 							</tr>
 						</c:forEach>
@@ -67,5 +114,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 <!-- container -->

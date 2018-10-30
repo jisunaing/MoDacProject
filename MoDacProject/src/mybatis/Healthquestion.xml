@@ -26,4 +26,7 @@
 	<select id="healthquestionSelectList" parameterType="java.util.Map" resultType="healthquestionDto">
 		SELECT qno,title,postdate FROM healthquestion
 	</select>
+	<select id="healthquestionSelectListHos" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM subject
+	</select>
 </mapper>

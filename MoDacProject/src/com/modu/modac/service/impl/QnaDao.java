@@ -22,14 +22,12 @@ public class QnaDao implements QnaService {
 	/* 메소드 오버라이딩 */
 	@Override
 	public List<QnaDto> selectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectList("qnaSelectList", map);
 	}
 
 	@Override
 	public QnaDto selectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("qnaSelectOne",map);
 	}
 
 	@Override
@@ -39,14 +37,12 @@ public class QnaDao implements QnaService {
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.delete("qnaDelete",map);
 	}
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("qnaUpdate", map);
 	}
 
 	@Override

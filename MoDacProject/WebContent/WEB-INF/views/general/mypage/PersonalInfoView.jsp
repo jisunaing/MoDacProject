@@ -139,7 +139,7 @@ tr th{
 		  			주소
 		  		</th>
 		  		<td>
-		  			${personalinfo.addr}
+		  			${extrainfo.addr} ${extrainfo.addrDetail}
 		  		</td>
 		  	</tr>
 		  </table>

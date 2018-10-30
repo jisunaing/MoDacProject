@@ -57,4 +57,9 @@ public class GenmemberServiceImpl implements GeneralService{
 		return null;
 	}
 
+	@Override
+	public GenmemberDto selectOne(Map map) {
+		return dao.selectOne(map);
+	}
+
 }
