@@ -27,9 +27,8 @@ public class HomeController {
 
 	@RequestMapping("/home/index.do")
 	public String home() throws Exception {
-		return "/index";
+		return "forward:/healthinfoList.do";
 	}
-	
 	
 	//로그인 버튼 눌럿을때 오는 부분
 	@RequestMapping("/home/loginmain.do")

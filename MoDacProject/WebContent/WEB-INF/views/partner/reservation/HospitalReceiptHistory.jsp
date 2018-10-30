@@ -46,7 +46,6 @@ table.type10 {
 table.type10 thead th {
     width: 150px;
     padding: 10px;
-    font-weight: bold;          
     vertical-align: top;
     color: #fff;
     background: #2b68a7;

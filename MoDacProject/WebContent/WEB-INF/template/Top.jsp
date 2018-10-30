@@ -59,6 +59,7 @@
 	    <div class="collapse navbar-collapse" id="collapseMenu">
 	    	<ul class="nav navbar-nav navbar-right">
 				<li id="navbar-page" ><a class="navmenus" href="<c:url value='/home/index.do'/>">홈</a></li>
+				<li id="navbar-page" ><a class="navmenus" href="<c:url value='/healthinfoList.do#healthinfodiv'/>">건강정보</a></li>
 				<li class="dropdown">
 					<a href="#" class="navmenus ropdown-category" id="dropdownCategoryMenu" data-toggle="dropdown">
 						찾기

@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+<style>
+	html *{
+		font-family: 'Nanum Gothic', sans-serif;
+		font-weight: lighter;
+	}
+</style>
+
 <script>
 //첫 시작시 알림 허용창 띄우기
 Notification.requestPermission();
@@ -98,13 +106,13 @@ function successAjax2(data,target){
 						<li class="dropdown user user-menu">
 						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
 							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-							<span class="hidden-xs">병원이름</span>
+							<span class="hidden-xs" style="bolder">${pid } </span>님 환영합니다
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
 								<li class="user-header">
 								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-									<p>병원이름 넣을 곳</p></li>
+									<p>${pid } 님의 병원</p></li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
 								<li class="user-footer">

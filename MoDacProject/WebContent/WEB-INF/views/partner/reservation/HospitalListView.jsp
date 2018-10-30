@@ -42,9 +42,7 @@
  padding-bottom: 100px;
 }
 .sp{
-
 	font-size: 1.3em;
-	font-weight:bold;
 	color: black;
 
 }
