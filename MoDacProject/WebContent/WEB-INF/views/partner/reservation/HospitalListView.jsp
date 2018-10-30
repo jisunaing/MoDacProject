@@ -6,60 +6,6 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<style>
-/*가운데 배치를 위핸 CSS*/
-.row {
- margin: 0 auto;
- text-align: center;
- padding-top: 100px;
- width: 100%;
-}
-.row .col-md-4 {
- margin-top: 10px;
- outline: 1px pink solid;
- height: 200px;
-}
-.in{
- display: inline-block;
- width: 50%;
- height: 100px
- }
-/*가운데 배치를 위핸 CSS*/
-/*테이블 센터를 위한 css 시작*/
-/*테이블 센터를 위한 css 끝*/
-/*테이블 안의 폼들 간격을 위해 넣은 것*/
-
-.form-box {
-	background: #F6F6F6; 
-	padding: 20px;
-	width: 900px;
-	height: 650px;	
-	margin: 50px auto; 
-	border-radius: 20px; 
-	box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);		
-	}
-.content-wrapper{
- padding-bottom: 100px;
-}
-.sp{
-	font-size: 1.3em;
-	color: black;
-
-}
-a input{
- margin-left: 10px;
- margin-top: 15px;
-}
-.cen{
- text-align: center;
-}
-/*
-.colorss{
- background-color: #2b68a7;
-}
-*/
-/*테이블 안의 폼들 간격을 위해 넣은 것*/
-</style>
 <title>병원 관리자 페이지</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
 <!-- 부트스트랩으로 삭제 x-->
@@ -69,6 +15,9 @@ a input{
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+
+<link rel="stylesheet" href="<c:url value="/css/partnerTable.css"/>">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
