@@ -54,5 +54,10 @@ public class HealthquestionServiceImpl implements HealthquestionService{
 	public HealthquestionDto selectOne(Map map) {
 		return dao.selectOne(map);
 	}
+
+	@Override
+	public List<Map> selectListHos(Map map) {
+		return dao.selectListHos(map);
+	}
 	
 }
