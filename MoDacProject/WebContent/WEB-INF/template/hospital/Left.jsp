@@ -3,13 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <aside class="main-sidebar">
          <section class="sidebar">
-            <div class="user-panel">
+            <div class="user-panel" style="height:75px">
                <div class="pull-left image">
                   <img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
                </div>
-               <div class="pull-left info">
-                  <p>병원이름</p>
-                  <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+               <div class="pull-left info" >
+                  <p><span style="font-size: 1.7em">${sessionScope.hosname }</span></p>
+                  <a style="padding-bottom: 3px" href="#"><i class="fa fa-circle text-success"></i> Online</a>
                </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
