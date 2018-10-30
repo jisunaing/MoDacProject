@@ -32,123 +32,117 @@
 
 <!-- scrolle effect~ -->
 <link href="<c:url value='/css/parallax.min.css'/>" rel="stylesheet" type="text/css">
-<link href="<c:url value='/css/indexpage.css'/>" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
 <!-- ~scroll effect -->
 <!-- ~이페이지안에서만 쓰는 파일들 -->
 <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+<link href="<c:url value='/css/indexpage.css'/>" rel="stylesheet">
+
 
 <title>모두의닥터</title>
-<style>
-	.crop img{
-      width:400px;
-      height:300px;
-      position: absolute;
-      clip: rect(0px, 360px, 270px, 0px);
-      }
-</style>
 <script>
-	$(function(){
-		
-		$("#my-slider").camRollSlider();
-		// 슬라이더 & 블러 이펙트
-		var _gaq = _gaq || []; 
-		_gaq.push(['_setAccount', 'UA-36251023-1']);
-		_gaq.push(['_setDomainName', 'jqueryscript.net']);
-		_gaq.push(['_trackPageview']);
-		
-		(function() {
-		  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	});	 		
+
+   $(function(){
+      $("#my-slider").camRollSlider();
+      // 슬라이더 & 블러 이펙트
+      var _gaq = _gaq || []; 
+      _gaq.push(['_setAccount', 'UA-36251023-1']);
+      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+   });          
 </script>
+<style>
+	
+</style>
 </head>
 
 <body>
-
-	<!-- topMenu -->
-	<div class="topMenu" style="margin-bottom: 0px;padding-bottom: 0px;">
-		<jsp:include page="/WEB-INF/template/Top.jsp"/>
-	</div><!-- topMennu -->
-	
-	<!-- 일반페이지 body 시작 -->
-		<!-- 테스트컨트롤러_테스트용스팬 -->
-<%-- 		<span style="color:pink;font-size:3em;">${testvar }</span> --%>
-		<div class="row" style="padding-top: 0px;margin-top: 0px;">
-			<!-- slider -->
-			<div id="my-slider" class="crs-wrap">
-			 <div class="crs-screen"><!-- 슬라이드 -->
-			   <div class="crs-screen-roll">
-				 <!-- .parallax: scroll effect적용 -->
-				 <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
-<!-- 			       <div class="crs-screen-item-content"><h1 style="font-family:Black Han Sans;">MoDacProject&<span style="color:red">♥</span></h1></div> -->
-			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
-			     </div>
-				     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
-			       <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
-			     </div>
-			     <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')">
-			       <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
-			     </div>
-			   </div><!--crs-screen-rol-->
-			 </div><!--crs-screen-->
-			 <div class="crs-bar"> <!-- 슬라이드선택버튼 -->
-			   <div class="crs-bar-roll-current"></div>
-			   <div class="crs-bar-roll-wrap">
-			     <div class="crs-bar-roll">
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div> 	
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
-			       <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')"></div>
-			     </div><!-- ROLL -->
-			   </div><!-- ROLL-WRAP -->
-			 </div><!--BAR-->
-			</div><!--crs-wrap-->
-			<!-- slider -->
-		</div><!-- row -->
-		<div id="healthinfodiv"></div>
-		<div class="container">
-  		<!-- themeSearch -->
-  		<div class="row themeSearch-header">
-  			<h2 style="color:balck; font-weight: bolder;"><br/>건강정보</h2>
-  		</div><!-- second_row -->
-  		<br/>
-		<!--div_row:반응형이미지_첫번째row-->
-			<div class="row">
-				<div class="row">
-					<!-- temp -->
-					<!-- for -->				
-					<c:forEach var="record" items="${list }" varStatus="loop">
-						<div class="col-md-4 cardone">
-						    <div class="thumbnail imgcontainer" style="height: 340px;">
-						      <a href="<c:url value='/general/HealthInfoList.do?categno=${record.categno }'/>" target="_blank">
-						      	<div class="crop" style="min-height: 270px;">
-								${record.categimage}  <%-- <img src="<c:url value='http://localhost:8080/modacadmin/Upload/healthimg2.jpg'/>" alt="Lights" style="width:100%"> --%>								      
-								</div>
-						       	<div class="caption">
-						        	<span class="imgcpation">${record.categname }</span>
-						        	<p>${record.explanation }</p>
-						        </div>
-						      </a>
-							</div><!-- thumbnail -->
-						</div><!-- col-md-4 cardone -->
-					</c:forEach>
-					<!-- ~for -->
-				</div><!-- row -->
-			</div><!-- row -->
-			<!--div_row:반응형이미지_첫번째row끝-->
-  		<!-- themeSearch -->
-   	</div><!--container -->
-  	<!-- 일반페이지 body 끝 -->
-	<!--footer를 감싸는 div 시작--> 
-	
+   
+   <!-- topMenu -->
+   <div class="topMenu" style="margin-bottom: 0px;padding-bottom: 0px;">
+      <jsp:include page="/WEB-INF/template/Top.jsp"/>
+   </div><!-- topMennu -->
+   <!-- 일반페이지 body 시작 -->
+      <!-- 테스트컨트롤러_테스트용스팬 -->
+<%--       <span style="color:pink;font-size:3em;">${testvar }</span> --%>
+      <div class="row" style="padding-top: 0px;margin-top: 0px;">
+         <!-- slider -->
+         <div id="my-slider" class="crs-wrap">
+          <div class="crs-screen"><!-- 슬라이드 -->
+            <div class="crs-screen-roll">
+             <!-- .parallax: scroll effect적용 -->
+             <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')">
+<!--                 <div class="crs-screen-item-content"><h1 style="font-family:Black Han Sans;">MoDacProject&<span style="color:red">♥</span></h1></div> -->
+              </div>
+              <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
+                <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+              </div>
+                 <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
+                <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
+              </div>
+              <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')">
+                <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+              </div>
+            </div><!--crs-screen-rol-->
+          </div><!--crs-screen-->
+          <div class="crs-bar"> <!-- 슬라이드선택버튼 -->
+            <div class="crs-bar-roll-current"></div>
+            <div class="crs-bar-roll-wrap">
+              <div class="crs-bar-roll">
+                <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg3.jpg'/>')"></div>
+                <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')"></div>    
+                <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')"></div>
+                <div class="crs-bar-roll-item" style="background-image: url('<c:url value='/Images/healthimg4.jpg'/>')"></div>
+              </div><!-- ROLL -->
+            </div><!-- ROLL-WRAP -->
+          </div><!--BAR-->
+         </div><!--crs-wrap-->
+         <!-- slider -->
+      </div><!-- row -->
+      
+      <div class="container">
+        <!-- themeSearch -->
+        <div class="row themeSearch-header">
+           <h2 style="color:balck; font-weight: bolder;"><br/>건강정보</h2>
+        </div><!-- second_row -->
+        <br/>
+            <c:forEach var="record" varStatus="status" items="${list}" step="1" begin="0">
+              <c:if test="${status.index % 3 eq 0}">
+		         <div class="row">
+		            <div class="row">
+		      </c:if>
+		              <div class="col-md-4">
+		                <div class="thumbnail">
+		                  <a href="<c:url value='/general/HealthInfoList.do?categno=${record.categno }'/>" target="_blank">
+							${record.categimage }
+		                    <div class="caption">                 
+		                       <span class="imgcpation">${record.categname }</span>
+		                         <p>${record.explanation }</p>
+		                    </div>
+		                  </a>   
+		                </div>
+		              </div>
+              <c:if test="${status.index % 3 eq 2}">
+              	    </div>
+              	</div>
+		      </c:if>
+		    </c:forEach>
+      		</div>
+      	</div>
+      </div>
+     <!-- 일반페이지 body 끝 -->
+   <!--footer를 감싸는 div 시작--> 
     <div class="footer" >
-   	 	<jsp:include page="/WEB-INF/template/Footer.jsp"/>
+          <jsp:include page="/WEB-INF/template/Footer.jsp"/>
     </div>
     <!--footer를 감싸는 div 끝-->
+   
+   
 </body>
 </html>
