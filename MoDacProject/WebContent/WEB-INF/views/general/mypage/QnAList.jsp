@@ -102,8 +102,8 @@
 					<c:if test="${not isEmpty }">
 						<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr class="danger">
-								<td>${record.postdate }</td>
-								<td><a style=" color: black" href="<c:url value='/general/qna/qna_view.do'/>">${record.title}</a></td>
+								<td>${record.postadate}</td>
+								<td><a style=" color: black" href="<c:url value='/general/qna/qnaView.do?no=${record.no}'/>">${record.title}</a></td>
 								<td>답변대기중</td>
 							</tr>
 						</c:forEach>

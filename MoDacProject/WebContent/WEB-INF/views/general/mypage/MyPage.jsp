@@ -64,8 +64,8 @@ $(function(){
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
+						<h2>내 정보</h2>
 						<p>
-							<h2>내 정보</h2>
 							회원님의 개인 정보와 건강상태를 확인하세요
 						</p>
 						<a tabindex="-1" class="btn btn-primary " href="<c:url value='/general/mypage/personalinfo.do'/>"> 
@@ -87,8 +87,8 @@ $(function(){
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
+						<h2>가족 정보 관리</h2>
 						<p>
-							<h2>가족 정보 관리</h2>
 							가족들의 정보까지 한번에 관리하세요.
 						</p>
 						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/mypage/familyinfoview.do?genid=${sessionScope.genid}'/>"> 
@@ -109,8 +109,8 @@ $(function(){
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
+						<h2>접수/예약 내역</h2>
 						<p>
-							<h2>접수/예약 내역</h2>
 							그동안의 진료내역과 예약을 한번에 확인하세요
 						</p>
 						<form  method="get" action="<c:url value='/general/hospital/SelectSubject.do'/>" >
@@ -138,8 +138,8 @@ $(function(){
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
+						<h2>증상문의</h2>
 						<p>
-							<h2>증상문의</h2>
 							의사 선생님께 내 상태에 대해 직접 물어보세요
 						</p>
 						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>"> 
@@ -158,8 +158,8 @@ $(function(){
 			<div class="masongram-image-caption-container">
 				<div class="masongram-image-caption">
 					<div class="text-center">
+						<h2>사이트 문의하기</h2>
 						<p>
-							<h2>사이트 문의하기</h2>
 							사이트에 대해 문의하실 사항이 있으면 적어주세요. 빠른 시일 내에 답변드리겠습니다.
 						</p>
 						<a tabindex="-1" class="btn btn-primary" href="<c:url value='/general/qna/qnaList.do'/>"> 
