@@ -31,7 +31,7 @@ body {
    padding: 20px;
    width: 600px;
    height: 660px;    
-   margin: 180px auto; 
+   margin: 50px auto; 
    border-radius: 20px; 
    box-shadow: 0 4px 10px 4px rgba(9,35,47, .50);      
    }
