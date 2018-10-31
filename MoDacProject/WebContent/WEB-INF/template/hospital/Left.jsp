@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
       <aside class="main-sidebar">
          <section class="sidebar">
             <div class="user-panel" style="height:75px">
@@ -15,10 +16,10 @@
             <ul class="sidebar-menu" data-widget="tree">
                <li class="header">카테고리</li>
                <li class="active treeview"><a href="#">
-               <i  class="fa fa-dashboard"></i> <span>예약/문의 관리</span>
-               <span  class="pull-right-container"> <i
-                        class="fa fa-angle-left pull-right"></i>
-                  </span>
+               <i class="fa fa-dashboard"></i> <span>예약/문의 관리</span>
+               <span class="pull-right-container"> 
+               	<i class="fa fa-angle-left pull-right"></i>
+               </span>
                </a>
                   <ul class="treeview-menu">
                      <li><a href="<c:url value="/partner/hospital/ReservationMove.do"/>"><i class="fa fa-circle-o"></i>예약관리</a></li>
