@@ -36,7 +36,7 @@ import com.modu.modac.service.ReservationService;
 @Controller
 public class MapController {
    
-   // 서비스 주입
+   //  서비스 주입
    @Resource(name="pharmacyService")
    private MapPharmacyService servicePH;
    @Resource(name="nightPharmacyService")
