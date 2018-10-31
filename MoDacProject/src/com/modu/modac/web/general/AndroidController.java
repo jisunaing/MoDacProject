@@ -18,7 +18,7 @@ import com.modu.modac.service.GeneralService;
 @Controller
 public class AndroidController {
 	
-	//  서비스 주입
+	// 서비스 주입
 	@Resource(name="androidService")
 	private AndroidService service;
 
