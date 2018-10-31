@@ -26,25 +26,35 @@
 	<!-- 쿼리 작성 -->
 	<select id="HospitalList" parameterType="java.util.Map" resultType="MapHospitalDto">
 		<if test="subname != null">
-			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
-			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
-			JOIN hossubject HS ON HP.hosno = HS.hosno
-			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
-			WHERE SB.SUBNAME = #{subname}
-			<if test="partner != null">
-				AND PT.pid IS NOT NULL
-			</if>
-			<if test="address != null">
-				AND HP.hosaddr LIKE '%' || #{address} || '%'
-			</if>
+			SELECT * FROM 
+				(
+				SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+				LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+				JOIN hossubject HS ON HP.hosno = HS.hosno
+				JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+				WHERE SB.SUBNAME = #{subname}
+				<if test="partner != null">
+					AND PT.pid IS NOT NULL
+				</if>
+				<if test="address != null">
+					AND HP.hosaddr LIKE '%' || #{address} || '%'
+				</if>
+				ORDER BY HP.hosno DESC 
+				)
+			WHERE ROWNUM &lt; 31
 		</if>
 		<if test="hosname != null">
-			SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
-			LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
-			JOIN hossubject HS ON HP.hosno = HS.hosno
-			JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
-			WHERE HP.hosname LIKE '%' || #{hosname} || '%' 
-			AND SB.SUBNAME = #{subjectname}
+			SELECT * FROM 
+				(
+				SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+				LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+				JOIN hossubject HS ON HP.hosno = HS.hosno
+				JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+				WHERE HP.hosname LIKE '%' || #{hosname} || '%' 
+				AND SB.SUBNAME = #{subjectname}
+				ORDER BY HP.hosno DESC
+				)
+			WHERE ROWNUM &lt; 31
 		</if>
 	</select>
 	
