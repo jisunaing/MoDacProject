@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.Android">
+	
+	
+	<!-- 접수내역 얻어오기 -->
+	
+	<select id="AndroidreceiptList" parameterType="java.util.Map" resultType="java.util.Map">
+	   SELECT * FROM(SELECT T.*,ROWNUM R FROM(SELECT
+	   RECNUM ,RECDATE, HOSPITAL.HOSNAME,RECNAME, RECACCEPT, RECCONTENTS
+	   FROM
+	   RECEPTION JOIN PARTNERS ON RECEPTION.PID = PARTNERS.PID JOIN HOSPITAL ON PARTNERS.HOSNO = HOSPITAL.HOSNO 
+	   WHERE GENID = #{genid} ORDER BY RECDATE DESC)T)
+	</select>
+	
+	<!-- 상세 접수내역 얻어오기 -->
+	
+	<select id="AndroidreceiptView" parameterType="java.util.Map" resultType="java.util.Map">
+	   SELECT * FROM(SELECT T.*,ROWNUM R FROM(SELECT
+	   RECNUM ,RECDATE, HOSPITAL.HOSNAME,RECNAME, RECACCEPT, RECCONTENTS
+	   FROM
+	   RECEPTION JOIN PARTNERS ON RECEPTION.PID = PARTNERS.PID JOIN HOSPITAL ON PARTNERS.HOSNO = HOSPITAL.HOSNO 
+	   WHERE GENID = #{genid} AND RECNUM = #{recnum} ORDER BY RECDATE DESC)T)
+	</select>
+	
+	
+	
+	<!-- 예약 내역 얻어오기 -->
+	<select id="AndroidreservationList" parameterType="java.util.Map" resultType="java.util.Map">
+	
+	   SELECT * FROM(SELECT T.*,ROWNUM R FROM(SELECT RESNUM ,RESDATE, HOSPITAL.HOSNAME, RESNAME, RESACCEPT, RESCONTENTS
+	   FROM RESERVATION JOIN PARTNERS ON RESERVATION .PID = PARTNERS.PID JOIN HOSPITAL ON PARTNERS.HOSNO = HOSPITAL.HOSNO
+	   WHERE GENID = #{genid} ORDER BY RESDATE DESC)T)
+  
+	</select>
+	
+	<!-- 상세예약 내역  -->
+	<select id="AndroidreservationView" parameterType="java.util.Map" resultType="java.util.Map">
+	
+	   SELECT * FROM(SELECT T.*,ROWNUM R FROM(SELECT RESNUM ,RESDATE, HOSPITAL.HOSNAME, RESNAME, RESACCEPT, RESCONTENTS
+	   FROM RESERVATION JOIN PARTNERS ON RESERVATION .PID = PARTNERS.PID JOIN HOSPITAL ON PARTNERS.HOSNO = HOSPITAL.HOSNO
+	   WHERE GENID = #{genid} AND RESNUM = #{resnum} ORDER BY RESDATE DESC)T)
+  
+	</select>
+	
+	<!--  메뉴5 -->
+	
+	<!-- 개인정보 보기 -->
+	<select id="AndroidSelectOne" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT genid,genname,birthdate,gender,email,addr,phone,pwd FROM genmember WHERE genid=#{genid}
+	</select>
+	
+	 	<!-- 개인정보 수정 -->
+	<update id="AndroidInfoUpdate" parameterType="java.util.Map">
+		UPDATE genmember SET pwd = #{pwd},genname = #{genname},birthdate = #{birthdate}, gender = #{gender},
+		email = #{email}, addr = #{addr},phone = #{phone} WHERE genid=#{genid}
+	</update>
+	
+	
+	
+	<!-- 건강정보 보기 -->
+	<select id="AndroidHealthSelectOne" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT * FROM healthstate WHERE hsid = #{hsid}
+	</select>
+	
+	<!-- 건강정보 수정 -->
+	<update id="AndroidHealthUpdate" parameterType="java.util.Map" >
+		UPDATE healthstate SET bloodtype=#{bloodtype},height=#{height},
+		weight=#{weight},pregnant=#{pregnant},medicine=#{medicine},etc=#{etc} WHERE hsid=#{hsid}
+	</update> 
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
