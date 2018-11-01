@@ -18,7 +18,6 @@
 <!-- Bootstrap core CSS -->
 <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- font적용)https://fonts.google.com/?subset=korean -->
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua&amp;subset=korean" rel="stylesheet"> 
 
 <title>모두의닥터</title>	
@@ -27,10 +26,17 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <style>
+	@font-face {
+		font-family: 'GoodFont';
+		src: url('font/cc1-돋움(TTF)-Medium.ttf');
+	}
+	html *{
+		font-family: 'GootFont' , monospace !important;
+}
 	html, * {
 		margin: 0; padding: 0; 
 /* 		font-family: 'Jua', sans-serif; */
-		font-family: monospace;
+		font-family: GootFont !important, monospace;
 	}
 	h1 { margin: 50px auto; text-align: center; }
 	h2 { padding: 0; margin: 0;  font-size: 36px; }

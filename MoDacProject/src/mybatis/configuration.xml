@@ -62,5 +62,6 @@
 		<mapper resource="mybatis/HealthInfo.xml"/>
 		<mapper resource="mybatis/Notice.xml"/>
 		<mapper resource="mybatis/HInfoCateg.xml"/>
+		<mapper resource="mybatis/Android.xml"/>   
 	</mappers>            
 </configuration>

@@ -108,9 +108,11 @@ function successAjax2(data,target){
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
-								<li class="user-header">
-								<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-									<p>${pid } 님의 병원</p></li>
+								<li class="user-header" style="height: 110px;">
+									<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
+									<p>${pid } 님의 병원</p>
+									<span style="font-weight: bolder;font-size:2em;color:white">${sessionScope.hosname }</span>
+								</li>
 								<!-- Menu Body -->
 								<!-- Menu Footer-->
 								<li class="user-footer">

@@ -1,98 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="<c:url value='/css/subject.css'/>" rel="stylesheet">
+
 <title>SelectSubject.jsp</title>
-<style>
-/* body { */
-/* 	height: 70%; */
-/* } */
-/* html { */
-/* 	height: 100%; */
-/* } */
-.btngroup {
-	margin-left: 42px;
-	background-color: gray;
-}
-.container {
-	min-height: 88%;
-}
-.footer {
-	background-color: #00498c;
-	min-height: 10%;
-}
-.row {
-	margin: 0 auto;
-	text-align: center;
-}
-.lead {
-	color: #DDCCEE;
-}
-/* Custom container */
-.container-full {
-	margin: 0 auto;
-	margin-top:50px;
-	width: 50%;
-	background-color: #00498c;
-	color: #eee;
-	overflow: hidden;
-	margin-bottom: 50px;
-	border-radius: 20px;
-	line-height: 15px;
-}
-.h1 {
-	letter-spacing: 3px;
-}
-
-/* 버튼  */
-.button {
-	width: 140px;
-	height: 50px;
-	border: 2px solid #00498c;
-	float: left;
-	text-align: center;
-	cursor: pointer;
-	position: relative;
-	box-sizing: border-box;
-	overflow: hidden;
-	margin: 0 0 40px 60px;
-}
-.button a {
-/* 	font-family: arial; */
-	font-size: 16px;
-	color: #00498c;
-	text-decoration: none;
-	line-height: 50px;
-	transition: all .5s ease;
-	z-index: 2;
-	position: relative;
-}
-.eff {
-	width: 140px;
-	height: 50px;
-	top: -50px;
-	background: #00498c;
-	position: absolute;
-	transition: all .5s ease;
-	z-index: 1;
-}
-.button:hover .eff {
-	top: 0;
-}
-.button:hover a {
-	color: #fff;
-}
-.lead {
-	text-align: center;
-}
-
-</style>
 <div id="dv">
 	<!-- BODY 영역 -->
 	<!-- container-full -->
 	<div class="container-full">
 		<div class="row">
 			<div class="content">
-				<br/>
 				<br/>
 				<br/>
 				<h1 class="h1"> <strong>진료과목을 선택하세요</strong> </h1>
