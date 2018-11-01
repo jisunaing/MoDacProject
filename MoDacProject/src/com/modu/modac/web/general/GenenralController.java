@@ -92,7 +92,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("phone").toString().trim().length()==0) {//번호를 입력하지 않았을떄
+		if(map.get("phone").toString().trim().length()==0) {//번호를 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('번호를 입력하지 않았습니다 :(');");
@@ -101,7 +101,7 @@ public class GenenralController {
 			out.flush();
 			out.close();			
 		}
-		else if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
+		if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('이메일을 입력하지 않았습니다 :(');");
@@ -110,7 +110,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("reccontens").toString().trim().length()==0) {//내용을 입력하지 않았을떄
+		if(map.get("reccontens").toString().trim().length()==0) {//내용을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('내용을 입력하지 않았습니다 :(');");
@@ -119,7 +119,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("checkbox_name")==null) {
+		if(map.get("checkbox_name")==null) {
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('개인정보 동의를 선택하지 않았습니다:(');");
@@ -128,12 +128,8 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else {
-		//데이터베이스에 집어 넣기
-		System.out.println("else로 들어옴");
+		
 		reservationService.receiptInsert(map);
-		return "forward:/general/reservation/reservationlist.do";
-		}
 		return "forward:/general/reservation/reservationlist.do";
 	}
 	
@@ -145,7 +141,7 @@ public class GenenralController {
 		if(map.get("resdate").toString().trim().length()==0) {//시간이 선택되지 않았을시 현재 시간 반영
 			map.put("resdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
 		}//if
-		else if(map.get("resname").toString().trim().length()==0) {//이름을 입력을 하지 않았을떄
+		if(map.get("resname").toString().trim().length()==0) {//이름을 입력을 하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('이름을 입력하지 않았습니다 :(');");
@@ -154,7 +150,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("phone").toString().trim().length()==0) {//번호를 입력하지 않았을떄
+		if(map.get("phone").toString().trim().length()==0) {//번호를 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('번호를 입력하지 않았습니다 :(');");
@@ -163,7 +159,7 @@ public class GenenralController {
 			out.flush();
 			out.close();			
 		}
-		else if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
+		if(map.get("email").toString().trim().length()==0) {//에메일을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('이메일을 입력하지 않았습니다 :(');");
@@ -172,7 +168,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("rescontents").toString().trim().length()==0) {//내용을 입력하지 않았을떄
+		if(map.get("rescontents").toString().trim().length()==0) {//내용을 입력하지 않았을떄
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('내용을 입력하지 않았습니다 :(');");
@@ -181,7 +177,7 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else if(map.get("checkbox_name")==null) {
+		if(map.get("checkbox_name")==null) {
 			PrintWriter out =resp.getWriter();
 			out.println("<script>");
 			out.println("alert('개인정보 동의를 선택하지 않았습니다:(');");
@@ -190,14 +186,9 @@ public class GenenralController {
 			out.flush();
 			out.close();
 		}
-		else {
-		//데이터베이스에 집어 넣기
-		System.out.println("else로 들어옴");
 		reservationService.reservationInset(map);
 		return "forward:/general/reservation/reservationlist.do";
-		}
-		reservationService.reservationInset(map);
-		return "forward:/general/reservation/reservationlist.do";
+
 	}                   
 	
 	//예약 취소 클릭시

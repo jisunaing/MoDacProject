@@ -11,6 +11,8 @@ public interface PartnerNGeneralQNAService {
 	//코멘트 전체 목록용]
 	List<Map> selectCommentList(Map map); 
 	
+	//병원명 가져오기용]
+	PartnerNGeneralQNADto selectHosName(Map map);
 	//전체 레코드 수]
 	int getTotalRecord(Map map);
 	

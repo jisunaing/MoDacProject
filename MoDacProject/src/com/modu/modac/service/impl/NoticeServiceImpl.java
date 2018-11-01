@@ -24,8 +24,7 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public NoticeDto selectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOne(map);
 	}
 
 	@Override

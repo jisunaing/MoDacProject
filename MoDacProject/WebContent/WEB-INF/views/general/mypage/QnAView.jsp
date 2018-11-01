@@ -49,24 +49,24 @@ var showComments = function(key){
 //[{"NO":2,"ONELINECOMMENT":"댓글2","CPOSTDATE":"2018-09-12","CNO":3,"ID":"LEE","NAME":"이길동"},{"NO":2,"ONELINECOMMENT":"댓글1","CPOSTDATE":"2018-09-12","CNO":2,"ID":"PARK","NAME":"박길동"}]
 var displayComments	 = function(data){
 	console.log(JSON.stringify(data));
-	var commentString="<h2 style=\"width:80%; margin-left:200px\">답변 목록</h2>";
-	commentString+='<table class="table table-bordered" style="width:80%; margin-left:200px">';
+	var commentString="<h2 style=\"width:80%; margin-left:150px\">답변 목록</h2>";
+	commentString+='<table class="table table-bordered" style="width:75%; margin-left:150px">';
 	commentString+='<tr><th width="50%">코멘트</th><th width="20%">작성일</th><th>삭제</th></tr>';
 	if(data.length==0){
 		commentString+="<tr><td colspan='4'>등록된 댓글이 없어요</td></tr>";
 	}
 	$.each(data,function(index,comment){			
 		commentString+='<tr>';
-		/* if('${sessionScope.genid}' != comment["GENID"])
+		if('${sessionScope.genid}' != comment["GENID"])
 			commentString+='<td align="left">'+comment['RCONTENTS']+'</td>'; 
 		else
-			 */commentString+='<td align="left"><span style="cursor:pointer" class="commentEdit" title="'+comment["RNO"]+'">'+comment['RCONTENTS']+'</span></td>'; 		
-		commentString+='<td>'+comment['REPLYDATE']+'</td>';
-		commentString+='<td>';
-		/* if('${sessionScope.genid}' == comment["GENID"]) */
-			commentString+='<span  class="commentDelete" title="'+comment["RNO"]+'" style="cursor: pointer; color: green; font-size: 1.4em; font-weight: bold">삭제</span>';
-		/* else
-			commentString+='<span style="color: gray; font-size: 0.7em; font-weight: bold">삭제불가</span>';*/
+			commentString+='<td align="left"><span style="cursor:pointer" class="commentEdit" title="'+comment["RNO"]+'">'+comment['RCONTENTS']+'</span></td>'; 		
+			commentString+='<td>'+comment['REPLYDATE']+'</td>';
+			commentString+='<td>';
+		if('${sessionScope.genid}' == comment["GENID"])
+			commentString+='<span  class="commentDelete" title="'+comment["RNO"]+'" style="cursor: pointer; color: green; font-weight: bold">삭제</span>';
+		else
+			commentString+='<span style="color: gray; font-size: 0.7em; font-weight: bold">삭제불가</span>';
 		commentString+='</td></tr>'; 
 	});		
 	commentString+='</table>';

@@ -7,14 +7,6 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd">
 	<!-- 증상문의 채팅 -->
-	<bean id="chatHandler" class="com.modu.modac.web.general.ChatWebSocketHandler"/>
-	<websocket:handlers>
-		<websocket:mapping handler="chatHandler" path="/chat"/>
-		<!-- <websocket:handshake-interceptors>
-			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-		</websocket:handshake-interceptors> -->
-		<websocket:sockjs/>
-	</websocket:handlers>
 	<!-- 웹소켓 서버용 빈 만들기 -->	
 	<bean id="chatServer" class="com.modu.modac.web.general.WebSocketServer"></bean>
 	<!-- 웹소켓 서버와 클라이언트에서 접속하는 path와 매핑 -->

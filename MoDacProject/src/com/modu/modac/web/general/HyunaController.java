@@ -14,8 +14,10 @@ import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,7 +34,10 @@ import com.modu.modac.service.HealthquestionDto;
 import com.modu.modac.service.HealthquestionService;
 import com.modu.modac.service.HealthstateDto;
 import com.modu.modac.service.HealthstateService;
+import com.modu.modac.service.NoticeDto;
 import com.modu.modac.service.NoticeService;
+import com.modu.modac.service.PartnerNGeneralQNADto;
+import com.modu.modac.service.PartnerNGeneralQNAService;
 import com.modu.modac.service.QnaDto;
 import com.modu.modac.service.QnaService;
 import com.modu.modac.service.ReplyQnaService;
@@ -67,24 +72,8 @@ public class HyunaController {
     @Resource(name="noticeService")
     private NoticeService noticeService;
 	
-	
-	//네이버 로그인
-	/*@RequestMapping("/naverlogin.do")
-	public String naverlogin(HttpSession session,Model model) throws Exception{
-		 String clientId = "kZTeZSK7xvqzpnXZcuau";//애플리케이션 클라이언트 아이디값";
-		    String redirectURI = URLEncoder.encode("http://localhost:8080/MoDacProject/naverlogincallback.do", "UTF-8");
-		    SecureRandom random = new SecureRandom();
-		    String state = new BigInteger(130, random).toString();
-		    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		    apiURL += "&client_id=" + clientId;
-		    apiURL += "&redirect_uri=" + redirectURI;
-		    apiURL += "&state=" + state;
-		    session.setAttribute("state", state);
-		    model.addAttribute("apiURL",apiURL);
-		    System.out.println("1111111111111111111");
-		    System.out.println(apiURL);
-		    return "general/member/Login.tiles";
-	}*/
+	@Resource(name="partnerNGeneralQNAService")
+	private PartnerNGeneralQNAService pngqnaService;
 	
 	@RequestMapping("/naverlogincallback.do")
 	public String naverlogincallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, Map map) throws Exception{
@@ -339,17 +328,41 @@ public class HyunaController {
 		return "general/mypage/HealthQnAView.tiles";
 	}
 	//건강문의 채팅 페이지로
-	@RequestMapping("/general/qna/qnahealth/healthQnaChat.do")
-	public String healthQnAChat(@RequestParam Map map,Model model) throws Exception{
-		model.addAttribute("param", map);
+	@ResponseBody
+	@RequestMapping(value="/general/qna/qnahealth/healthQnaChat.do",produces="text/html; charset=UTF-8")
+	public String healthQnAChat(@RequestParam Map map,Model model,HttpSession session) throws Exception{
+		System.out.println("controller");
+		
+		if(session.getAttribute("genid")!=null) {//일반 사용자 일때
+			map.put("sender", session.getAttribute("genid"));
+			System.out.println("sender:"+session.getAttribute("genid"));
+		}
+		//병원 사용자라면 병원명 불러오기
+		else/*(session.getAttribute("pid")!=null)*/ {
+			map.put("pid", session.getAttribute("pid"));
+			PartnerNGeneralQNADto hosdto = pngqnaService.selectHosName(map);
+			model.addAttribute("hosdto", hosdto);
+			map.put("hosname", hosdto.getHosname());
+			map.put("sender", hosdto.getHosname());
+			System.out.println("sender:"+hosdto.getHosname());
+		}
+		//질문에 대한 정보 가져오기
 		HealthquestionDto dto = healthquestionService.selectOne(map);
-		model.addAttribute("record", dto);
-		return "/general/mypage/HealthQnAChat";
+		
+		map.put("title", dto.getTitle());
+		map.put("genid", dto.getGenid());
+		System.out.println("dto:"+dto.getTitle());
+		
+		
+		System.out.println(JSONObject.toJSONString(map));
+		return JSONObject.toJSONString(map);
+		//return "forward:/general/qna/qnahealth/healthQnaList.do";
 	}
 	//사이트문의목록
 	@RequestMapping("/general/qna/qnaList.do")
 	public String qnaList(HttpSession session,Map map, Model model) throws Exception {
 		map.put("genid", session.getAttribute("genid"));
+		
 		List<QnaDto> list =qnaService.selectList(map);
 		model.addAttribute("list", list);
 		return "general/mypage/QnAList.tiles";
@@ -447,7 +460,11 @@ public class HyunaController {
 	}
 	//공지사항 상세보기
 	@RequestMapping("/general/notice/noticeView.do")
-	public String noticeView() throws Exception {
+	public String noticeView(@RequestParam Map map,Model model) throws Exception {
+		NoticeDto dto = noticeService.selectOne(map);
+		dto.setContent(dto.getContent().toString().replaceAll("Upload", "http://localhost:8080/modacadmin/Upload"));
+		model.addAttribute("record", dto);
+		
 		return "general/notice/NoticeView.tiles";
 	}
 }

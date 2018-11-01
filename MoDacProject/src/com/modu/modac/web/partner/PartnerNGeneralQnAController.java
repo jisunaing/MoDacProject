@@ -53,14 +53,14 @@ public class PartnerNGeneralQnAController {
 		map.put("pid",pid);
 		
 		//특정 병원에 대한 정보를 가져온다		
-		PartnerDto dto =partnerService.selectOne(map);
+		//PartnerDto dto =partnerService.selectOne(map);
 		//나의 병원이 진료하는 진료목록을 다 가져온다		
-		map.put("hosno", dto.getHosno());
+		//map.put("hosno", dto.getHosno());
 		
-		List<Map> subjectlist = partnerService.subjectListAll(map); // subjectListAll에는 hosno가 필요하다
-		map.put("subjectcode",subjectlist);
+		//List<Map> subjectlist = partnerService.subjectListAll(map); // subjectListAll에는 hosno가 필요하다
+		//map.put("subjectcode",subjectlist);
 		
-		
+		/*
 		int totalRecordCount= pNgService.getTotalRecord(map);
 		
 		
@@ -72,14 +72,14 @@ public class PartnerNGeneralQnAController {
 		
 		System.out.println("searchWord : "+map.get("searchWord"));
 		System.out.println("searchColumn : "+map.get("searchColumn"));
-		
+		*/
 		
 
 		
 			
 		List<PartnerNGeneralQNADto> list  = pNgService.selectList(map);
-		
-		if(map.get("searchWord") !=null) {
+		model.addAttribute("list", list);
+		/*if(map.get("searchWord") !=null) {
 			
 			String searchWord = map.get("searchWord").toString();
 			String searchColumn = map.get("searchColumn").toString();
@@ -103,7 +103,7 @@ public class PartnerNGeneralQnAController {
 		model.addAttribute("list", list);
 		model.addAttribute("totalRecordCount", totalRecordCount);
 		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("pageSize", pageSize);*/
 			
 		
 		return "/partner/partnerQnA/partner_QnA";

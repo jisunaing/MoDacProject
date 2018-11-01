@@ -11,4 +11,7 @@
 	<select id="noticeSelectList" resultType="noticeDto">
 		SELECT * FROM notice ORDER BY postdate DESC
 	</select>
+	<select id="noticeSelectOne" resultType="noticeDto" parameterType="java.util.Map">
+		SELECT * FROM notice WHERE no=#{no}
+	</select>
 </mapper>

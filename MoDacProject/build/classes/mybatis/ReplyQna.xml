@@ -13,7 +13,7 @@
 		INSERT INTO replyqna values(seq_replyqna.nextval, #{rcontents}, sysdate, #{no})
 	</insert>
 	<select id="replyqnaSelectList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM replyqna WHERE no=#{no} ORDER BY rno DESC
+		SELECT r.*,genid FROM replyqna r, qna q WHERE r.no=q.no and r.no=#{no} ORDER BY rno DESC
 	</select>
 	<delete id="replyqnaDelete" parameterType="java.util.Map">
 		DELETE FROM replyqna WHERE rno=#{rno}
