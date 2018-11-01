@@ -12,8 +12,14 @@ public class PartnerNGeneralQNADto {
 	private String subjectcode;
 	private String qcontent;
 	
+	private String hosname;
+	private String subname;
+	
+	
 	//댓글 수 저장용	
 	private String commentCount;
+	
+	
 //////////////////////////////////////////////	
 	
 	////// 특정 글에 대한 코멘트
@@ -98,6 +104,18 @@ public class PartnerNGeneralQNADto {
 	}
 	public void setQcontent(String qcontent) {
 		this.qcontent = qcontent;
+	}
+	public String getSubname() {
+		return subname;
+	}
+	public void setSubname(String subname) {
+		this.subname = subname;
+	}
+	public String getHosname() {
+		return hosname;
+	}
+	public void setHosname(String hosname) {
+		this.hosname = hosname;
 	}
 	
 	

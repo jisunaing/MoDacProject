@@ -117,7 +117,6 @@ public class PartnerController {
 		map.put("pid", pid);
 		Map result = partnerReservationService.ajaxReservationResult(map);
 		if(!flagReservation){
-			System.out.println("최초 실행시");
 			//안의 값이 null일시
 			if(result==null){
 				System.out.println("최초 실행시 값을 0으로 넣어줌");
@@ -133,7 +132,6 @@ public class PartnerController {
 		}
 		//최초실행이 아닐시
 		else{
-			System.out.println("최초 실행이 아닐시");
 			if(result!=null){
 				System.out.println("값이 넣이 아닐시");
 				if(resultConfirmReservation=="0"){

@@ -55,7 +55,7 @@
 	
 	<update id="Partnersecond" parameterType="java.util.Map">
 	
-	UPDATE PARTNERS SET INFO=#{info},PERSONALDAY=#{personalday},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
+	UPDATE PARTNERS SET INFO=#{info},LUNCH=#{lunch} WHERE HOSNO=#{hosno}
 		
 	</update>
 	

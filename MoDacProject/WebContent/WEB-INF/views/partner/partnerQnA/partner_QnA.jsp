@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="<c:url value="/css/AdminLTE.css"/>">
 <!-- 아래꺼 삭제하면 디자인이 흰색으로 변경됨 -->
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
+<!-- 채팅위해 필요 -->
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style>
 #hr{
 	margin-left: 37%;
@@ -58,13 +61,13 @@
 <!-- body 시작 -->
 <div class="container" id="dv" >
 <div class="row">
-			<div>
+<div>
 
-	<h2 style="text-align: center">병원문의 관리</h2>
+	<h2 style="text-align: center">증상문의 관리</h2>
 	<br />
 	<p style="text-align: center;">
-		일반회원님들의 문의를 답변해주세요~!
-	</p>
+		일반회원님들의 증상문의를 답변해주세요~!
+	</p><br>
 	<hr id="hr">
 	<br />
 	<br />
@@ -74,15 +77,17 @@
 			<div class="container" >										
 				<table class="table table-hover table-bordered text-center">
 						<tr style="background-color: #79ABFF;">
-						<th style="text-align: center" class="col-md-1" >글번호</th>
+							<th style="text-align: center" class="col-md-1" >글번호</th>
 							<th style="text-align: center" >제목</th>
+							<th style="text-align: center"  class="col-md-2">관련 진료 과목</th>
 							<th style="text-align: center" class="col-md-2">회원 아이디</th>
 							<th style="text-align: center" class="col-md-2">작성일</th>
 							<th style="text-align: center" class="col-md-1">답변 여부</th>						
 						</tr>
-				<c:if test="${empty requestScope.list }" var="isEmpty">
+						
+				<c:if test="${empty list}" var="isEmpty">
 					<tr>
-						<td colspan="5">등록된 게시물이 없어요</td>
+						<td colspan="6">등록된 게시물이 없어요</td>
 					</tr>
 				</c:if>
 				<c:if test="${not isEmpty }">
@@ -92,9 +97,12 @@
 						<tr>
 							<td>${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
 							<td class="text-left">
-								 <a	href="<c:url value='/partner/partnerQnA/partner_QnA_View.do?qno=${record.qno}'/>">${record.title}</a>
+								<a href="<c:url value='/general/qna/qnahealth/healthQnaChat.do?qno=${record.qno}&sender=${pid}'/>"
+									id="opener${loop.index}" class="opener${loop.index}" data-target="#dialog" onclick="return false">${record.title}
+								</a>
 								 <span class="badge">${record.commentCount}</span>
-							</td>							
+							</td>				
+							<td>${record.subname}</td>			
 							<td>${record.genid}</td>
 							<td>${record.postdate}</td>
 							<c:if test="${record.commentCount != 0}" var="commentCounts">
@@ -107,10 +115,285 @@
 					</c:forEach>
 				</c:if>
 			</table>
+			
 			</div>
+			
 		</div>
+		<!-- 모달 시작 -->
+			<div id="dialog" title="Basic dialog">
+				<div style="background-color: rgba(43,104,167,0.85); height: 90px; margin-left: -15px; margin-top:-5px;  width: 400px" id="topbackground">
+					<div style="padding-top: 20px; padding-left: 20px; float: left;">
+						<img src="<c:url value='/Images/logoonly.png'/>" alt="Logo"
+							width="50px" class="img-fluid" />
+					</div>
+					<div id="chattop" style="float:left; margin-top: 15px; padding-left: 20px;">
+						<!-- ajax로 들어감 -->
+					</div>
+				</div>
+
+
+
+				<div id="chatArea" class="row"
+					style="border: 2px solid rgba(43,104,167,0.85); overflow: auto; resize: none; width: 400px; height: 470px">
+					<div id="chatMessage" class="col-md-8" style="width: 379px; height: 450px"></div>
+				</div>
+				<div class="row" style="margin-top:8px;padding-left:5px">
+				<form class="form-inline">
+					<input class="form-control" type="text" id="message" style="height: 40px; width: 320px;"> 
+					<input class="btn btn-primary" type="button" id="sendBtn" value="전송" style="height: 40px; width:65px">
+				</form>
+				</div>
+			</div>
+			<!-- 모달 끝 -->
 	</div>
+		
+			
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 채팅  -->
+<script>
+var clients;
+var hosname;
+var qno;
+//웹소켓 객체 저장용
+var wsocket;
+//닉네임 저장용
+var nickname;
+//보내는 사람 구분용
+var me;
+//프로파일 이미지 저장용 
+var imgself;
+var imgnotself;
+var doctor="<c:url value='/Images/chatdoctor.png'/>";
+var patient="<c:url value='/Images/chatbubble.png'/>";
+
+var socketClose = function(){
 	
+	appendMessage('연결을 끊었어요');
+}///////////////////////socketClose
+var socketOpen  = function(data){
+	console.log("2222");
+	console.log(data);
+	console.log("33333333");
+	$( "#dialog" ).dialog( "open");
+	$('#dialog').css('overflow', 'hidden');
+	displayChattop(data);
+	console.log(data['sender']);
+	//서버로 연결한 사람의 정보 전송
+	//wsocket.send("msg:"+data['sender']+"가(이) 입장했어요");
+	
+	
+	me=data['sender'];
+	qno=data['qno'];
+	hosname=data['hosname'];
+	console.log("me:"+me);
+	appendMessage("연결 되었습니다");
+}///////////////////
+var socketMessage = function(e){
+	//서버로부터 받은 데이타 저장
+	console.log(e.data);
+	var rawdata= e.data;//서버로 부터 받은 데이터가 들어가 있다
+	var data=rawdata.split("&split^*=");
+	from =data[2];
+	console.log('from:'+from+'me: '+me);
+	console.log("qno:"+qno);
+	
+	if(qno==data[1]){
+		if(me!=from){
+			if(hosname==me){
+				imgself=doctor;
+				imgnotself=patient;
+			}
+			else{
+				imgself=patient;
+				imgnotself=doctor;
+			}
+				
+				
+			if(data[0].substring(0, 4)=='msg:'){
+				appendMessageNotSelf(data[0].substr(4));
+			}
+		}
+		else if (me==from){
+			if(hosname==me){
+				imgself=doctor;
+				imgnotself=patient;
+			}
+			else{
+				imgself=patient;
+				imgnotself=doctor;
+			}	
+			if(data[0].substring(0, 4)=='msg:'){
+				appendMessageSelf(data[0].substr(4));
+			}
+		}
+	}
+	
+}
+var url;
+//서버에서 받은 메시지 출력용 메소드.혹은 이벤트 확인을 출력용 메소드
+var appendMessageNotSelf= function(msg){
+	var t = getTimeStamp();
+		$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;'><div class='col-2' style = 'float:left;'>"
+				+"<img id='profileImg' class='img-fluid' src='"+imgnotself+"' style = 'width:60px; height:60px;padding-right:5px'>"
+				+"</div>"
+				+"<div class = '' style = ' margin-top : 20px;'>"
+				+"<div class = '' style = ' background-color:#ACF3FF; padding : 5px; float:left; border-radius:10px'>"
+				+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
+				+"<div style = 'font-size:9px; text-align:right; float:left;padding-top:20px;padding-left:5px;color:lightgray'> <span>"+t+"</span>"
+				+"</div></div></div>");
+	
+	
+	$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
+
+	
+}
+var appendMessageSelf= function(msg){
+	var t = getTimeStamp();
+	
+	$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px'><div class='col-2' style = 'float:right;'>"
+			+"<img id='profileImg' class='img-fluid' src='"+imgself+"' style = 'width:60px; height:60px;padding-right:5px'>"
+			+"</div>"
+			+"<div class = '' style = ' margin-top : 20px;'>"
+			+"<div class = '' style = ' background-color:#FFFC80; padding : 5px; float:right; border-radius:10px'>"
+			+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
+			+"<div style = 'font-size:9px; text-align:right; float:right;padding-top:20px;padding-right:5px;color:lightgray'> <span>"+t+"</span>"
+			+"</div></div></div>");
+
+
+	$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
+
+	
+}
+var appendMessage= function(msg){
+	var t = getTimeStamp();
+	
+	$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;padding-left:100px;'>"
+			+"<div style = ' background-color:#D5D5D5; padding : 3px; width:200px; float:left; border-radius:10px;text-align:center'>"
+			+"<span style = 'font-size : 12px;'>"+msg+"</span><br><span style = 'font-size : 8px;'>"+t+"</span> </div>"
+			+"</div>");
+
+
+	$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
+
+	
+}
+//서버로 메시지 전송하는 메소드
+var sendMessage = function(data){
+	var message ="msg:"+$('#message').val()+"&split^*="+data['qno']+"&split^*="+data['sender'];
+	console.log(message);
+	wsocket.send(message);
+	$('#message').val('');
+}/////////////////////////
+
+//채팅 탑 정보 뿌려주는 메소드
+var displayChattop = function(data){
+	var chattopString='<span style=\"color: white; font-size: 15px;\">'+data['title']+'</span><br />';
+		chattopString+='<span style="color: white; font-size: 10px;" id="patient">질문자: '+data['genid']+'</span> <br />'; 
+		chattopString+='<span style="color: white; font-size: 10px;" id="hosname">병원: '+data['hosname']+'</span>'; 
+		chattopString+='<span style="color: white; font-size: 10px; padding-left: 120px" id="exitBtn">문의 종료 </span>';
+	$('#chattop').html(chattopString);
+}
+
+  <!--기본-->
+ $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      width:407,
+      height:660,
+      resizable:false,
+      title:"모닥 증상문의",
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+    $(".ui-dialog").find(".ui-widget-header").css("background", "#2b68a7").css("color","white");
+
+  } ); 
+ for(var i=0; i<10;i++){
+ $( "#opener"+i).on( "click", function() {
+	 url=$(this).attr('href');
+	 console.log(url);
+	 console.log('clicked');
+	 $.ajax({
+			url:url,
+			dataType:'json',
+			type:'post',
+			success: function(data){
+				console.log(JSON.stringify(data));
+				// 웹 소켓 객체로 서버에 연결하기
+				wsocket = new WebSocket("ws://localhost:8080${pageContext.request.contextPath}/chat-ws.do?qno=${data.qno}&sender=${data.sender}"); 
+				wsocket.onclose=socketClose;
+				wsocket.onopen =socketOpen(data);
+				wsocket.addEventListener("message",socketMessage);
+				
+				//사용자가 입력한 닉네임 저장
+				nickname = $('${sessionScope.genid}');
+					
+				//퇴장버튼 클릭시]
+				$('#exitBtn').click(function(){
+					wsocket.send('msg:'+nickname+'퇴장했어요');
+					wsocket.close();			
+				});
+				//전송버튼 클릭시]
+				$('#sendBtn').click(function(){
+					sendMessage(data);
+				});
+				
+				//메시지 입력창에 메시지 입력시 ]
+				$('#message').on('keypress',function(e){
+					var keyCode = e.keyCode ? e.keyCode : e.which;
+					if(keyCode=='13'){
+						//메시지를 서버로 전송하는 메소드
+						sendMessage(data);
+					}
+					e.stopPropagation();
+				});	
+			}
+		});
+	 console.log('11111');
+   });
+ }/////////for
+<!-- ajax -->
+
+<!-- 채팅  -->
+
+
+
+
+
+//시간 표시]
+function getTimeStamp() {
+   var d = new Date();
+   var s =
+     leadingZeros(d.getFullYear(), 4) + '/' +
+     leadingZeros(d.getMonth() + 1, 2) + '/' +
+     leadingZeros(d.getDate(), 2) + ' ' +
+
+     leadingZeros(d.getHours(), 2) + ':' +
+     leadingZeros(d.getMinutes(), 2);
+
+   return s;
+ }
+
+ function leadingZeros(n, digits) {
+   var zero = '';
+   n = n.toString();
+
+   if (n.length < digits) {
+     for (i = 0; i < digits - n.length; i++)
+       zero += '0';
+   }
+   return zero + n;
+ }
+</script>
 	<!-- 아래는 페이징 -->
 <div class="row">
 	<div>${pagingString}</div>

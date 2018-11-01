@@ -58,6 +58,11 @@ public class PartnerNGeneralQNAServiceimpl implements PartnerNGeneralQNAService{
 		return dao.selectOne(map);
 	}
 
+	@Override
+	public PartnerNGeneralQNADto selectHosName(Map map) {
+		return dao.selectHosName(map);
+	}
+
 	
 	
 

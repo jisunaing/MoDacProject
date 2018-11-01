@@ -13,6 +13,8 @@ public class WebSocketServer extends TextWebSocketHandler {
 	//접속한 클라이언트를 저장하기 위한 속성(멤버)
 	private Map<String, WebSocketSession> clients = 
 			new HashMap<String, WebSocketSession>();
+	
+	
 	//클라이언트와 연결이 끊어졌을때 호출되는 콜백 메소드]
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {

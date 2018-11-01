@@ -51,6 +51,11 @@ padding:0
 	var wsocket;
 	//닉네임 저장용
 	var nickname;
+	//보내는 사람 구분용
+	var me;
+	//프로파일 이미지 저장용 
+	var proimgSelf;
+	var proimgOther;
 	
 	var socketClose = function(){
 		appendMessage('연결을 끊었어요');
@@ -58,47 +63,88 @@ padding:0
 	var socketOpen  = function(){
 		//서버로 연결한 사람의 정보 전송
 		wsocket.send("msg:"+nickname+"가(이) 입장했어요");
+		me='${data.sender}';
 		appendMessage("연결 되었습니다");
 	}///////////////////
 	var socketMessage = function(e){
 		//서버로부터 받은 데이타 저장
 		var dataa= e.data;//서버로 부터 받은 데이터가 들어가 있다
-		var data=dataa.split("&qno^*=");
+		var data=dataa.split("&split^*=");
+		from =data[2];
+		console.log('from:'+from+'me: '+me);
 		if(${param.qno}==data[1]){
-			if(data[0].substring(0, 4)=='msg:'){
-				appendMessage(data[0].substr(4));
+			if(me!=from){
+				if(data[0].substring(0, 4)=='msg:'){
+					appendMessageNotSelf(data[0].substr(4));
+				}
+			}
+			else if (me==from){
+				if(data[0].substring(0, 4)=='msg:'){
+					appendMessageSelf(data[0].substr(4));
+				}
 			}
 		}
 		
 	}
 	
 	//서버에서 받은 메시지 출력용 메소드.혹은 이벤트 확인을 출력용 메소드
-	var appendMessage= function(msg){
+	var appendMessageNotSelf= function(msg){
 		var t = getTimeStamp();
-		/* $('#chatMessage').append(msg+"<br/>").css(name).addClass('arrow_box'); */
-		$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;'><div class='col-2' style = 'float:left;'>"
-									+"<img id='profileImg' class='img-fluid' src='<c:url value='/Images/chatdoctor1.png'/>' style = 'width:60px; height:60px;padding-right:5px'>"
-									+"</div>"
-									+"<div class = '' style = ' margin-top : 20px;'>"
-									+"<div class = '' style = ' background-color:#ACF3FF; padding : 5px; float:left; border-radius:10px'>"
-									+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
-									+"<div style = 'font-size:9px; text-align:right; float:left;padding-top:20px;padding-left:5px'> <span>"+t+"</span>"
-									+"</div></div></div>");
+			$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;'><div class='col-2' style = 'float:left;'>"
+					+"<img id='profileImg' class='img-fluid' src='<c:url value='/Images/chatdoctor.png'/>' style = 'width:60px; height:60px;padding-right:5px'>"
+					+"</div>"
+					+"<div class = '' style = ' margin-top : 20px;'>"
+					+"<div class = '' style = ' background-color:#ACF3FF; padding : 5px; float:left; border-radius:10px'>"
+					+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
+					+"<div style = 'font-size:9px; text-align:right; float:left;padding-top:20px;padding-left:5px;color:lightgray'> <span>"+t+"</span>"
+					+"</div></div></div>");
+		
+		
 		$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
 
 		
 	}
+	var appendMessageSelf= function(msg){
+		var t = getTimeStamp();
+		
+		$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;'><div class='col-2' style = 'float:right;'>"
+				+"<img id='profileImg' class='img-fluid' src='<c:url value='/Images/chatbubble.png'/>' style = 'width:60px; height:60px;padding-right:5px'>"
+				+"</div>"
+				+"<div class = '' style = ' margin-top : 20px;'>"
+				+"<div class = '' style = ' background-color:#FFFC80; padding : 5px; float:right; border-radius:10px'>"
+				+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
+				+"<div style = 'font-size:9px; text-align:right; float:right;padding-top:20px;padding-right:5px;color:lightgray'> <span>"+t+"</span>"
+				+"</div></div></div>");
 	
+	
+		$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
+
+		
+	}
+	var appendMessage= function(msg){
+		var t = getTimeStamp();
+		
+		$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px;background-color:red;resize: none;'>"
+				+"<div class = '' style = ' background-color:#D5D5D5; padding : 5px; float:left; border-radius:10px;text-align:center'>"
+				+"<span style = 'font-size : 12px;'>"+msg+"</span><br><span style = 'font-size : 8px;'>"+t+"</span> </div>"
+				+"</div>");
+	
+	
+		$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
+
+		
+	}
 	//서버로 메시지 전송하는 메소드
 	var sendMessage = function(){
-		wsocket.send("msg:"+$('#message').val()+"&qno^*="+${param.qno});
+		var message ="msg:"+$('#message').val()+"&split^*=${data.qno}&split^*=${data.sender}";
+		wsocket.send(message);
 		$('#message').val('');
 	}/////////////////////////
 	
 	$(function(){
 		
 		// 웹 소켓 객체로 서버에 연결하기
-		wsocket = new WebSocket("ws://localhost:8080${pageContext.request.contextPath}/chat-ws.do?qno=\"${param.qno}\""); 
+		wsocket = new WebSocket("ws://localhost:8080${pageContext.request.contextPath}/chat-ws.do?qno=${data.qno}&sender=${data.sender}"); 
 		wsocket.onclose=socketClose;
 		wsocket.onopen =socketOpen;
 		wsocket.addEventListener("message",socketMessage);
@@ -159,13 +205,13 @@ padding:0
 <body>
 	<div class="container">
 		<div style="background-color: #2b68a7; height:90px;margin-left:-15px;width:400px" id="topbackground">
-			<div style="padding-top:20px;padding-left:20px;float:left">
+			<div style="padding-top:20px;padding-left:20px;float:left;">
 				<img src="<c:url value='/Images/logoonly.png'/>" alt="Logo" width="50px" class="img-fluid" />
 			</div>
 			<div style="float:left; margin-top:15px;padding-left:20px">
 				<span style="color:white;font-size:15px;" >&lt${record.title}&gt</span><br/>
 				<span style="color:white;font-size:10px;" >질문자: ${record.genid}</span> <br/>
-				<span style="color:white;font-size:10px;" >병원: 병원명</span>
+				<span style="color:white;font-size:10px;" >병원: ${hosdto.hosname}</span>
 				<span style="color:white;font-size:10px;padding-left:180px" id="exitBtn">문의 종료 </span>
 				
 			</div>
