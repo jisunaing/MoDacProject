@@ -49,7 +49,7 @@
       <span class="icon-bar"></span>              
     </button>   
    <!-- 로고자리끝남 -->    
-  </div><!-- navbar-header -->
+  </div><!-- navbar-header --->
 <!-- 일반사용자용 top -->
        <div class="collapse navbar-collapse" id="collapseMenu">
           <ul class="nav navbar-nav navbar-right">
