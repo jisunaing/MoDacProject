@@ -35,7 +35,7 @@
 	});	
 </script>
 <!-- 네비게이션바 시작 -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-fixed-width  navbar-inverse" style="background-color: #2b68a7; border:none">
+<nav class="navbar navbar-default navbar-fixed-top navbar-fixed-width  navbar-inverse" style="background-color: #2b68a7 !important; border:none">
 <div class="container" id="picture" >
 	<a class="navbar-brand brand-logo" id="brandspace" href="<c:url value='/main.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">	
    		<!-- 로고이미지 들어갈자리 -->
@@ -48,7 +48,6 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>		        
     </button>	
-
 	<!-- 로고자리끝남 -->    
   </div><!-- navbar-header -->
 <!-- 일반사용자용 top -->
@@ -77,7 +76,31 @@
 
 				<c:if test="${not empty genid}" var="isMember">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginout.do'/>" class="navmenus">로그아웃</a></li>
-					<li id="navbar-guestbook"><a href="<c:url value='/general/mypage/mypage.do'/>" class="navmenus">마이페이지</a></li>
+					<li class="dropdown" style="margin-top:8px">
+		              <button style="background:transparent;border:none" class="btn btn-default dropdown-toggle navmenus" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+		                마이페이지 
+		                <span class="caret"></span>
+		              </button>
+		              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" >
+		                <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/mypage/mypage.do'/>" style="width:150px;" >마이페이지</a></li>
+		                <li role="presentation" class="divider"></li>
+		                <li role="presentation" class="dropdown-header" style="color:gray">내정보 관리</li>
+		                <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/mypage/personalinfo.do'/>">개인정보</a></li>
+		                <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/mypage/healthinfo.do'/>">건강상태</a></li>
+		                 <li role="presentation" class="divider"></li>
+		               <li role="presentation" class="dropdown-header" style="color:gray">예약/접수 관리</li>
+		                <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/hospital/SelectSubject.do'/>">예약/접수하기</a></li>
+		                <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/reservation/reservationlist.do'/>">진료내역</a></li>
+		                 <li role="presentation" class="divider"></li>
+		                  
+		                <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/mypage/familyinfoview.do'/>">가족정보 관리</a></li>
+		                 <li role="presentation" class="divider"></li>
+		                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>">증상문의</a></li>
+		                  <li role="presentation" class="divider"></li>
+		                 <li role="presentation"><a role="menuitem" tabindex="-1" href="<c:url value='/general/qna/qnaList.do'/>">사이트문의</a></li>
+		              </ul>
+		            </li>
+
 				</c:if>	
 				<c:if test="${not isMember}">
 					<li id="navbar-tag"><a href="<c:url value='/home/loginmain.do'/>" class="navmenus">로그인</a></li>

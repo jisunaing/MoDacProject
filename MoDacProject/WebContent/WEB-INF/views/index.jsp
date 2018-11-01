@@ -58,7 +58,9 @@
    });          
 </script>
 <style>
-	
+	#img_resize{
+	padding-top: 15px;
+	}
 </style>
 </head>
 
@@ -119,7 +121,7 @@
 		      </c:if>
 		              <div class="col-md-4">
 		                <div class="thumbnail">
-		                  <a href="<c:url value='/general/HealthInfoList.do?categno=${record.categno }'/>" target="_blank">
+		                  <a style="padding-top: 20px"href="<c:url value='/general/HealthInfoList.do?categno=${record.categno }'/>" target="_blank">
 							${record.categimage }
 		                    <div class="caption">                 
 		                       <span class="imgcpation">${record.categname }</span>
