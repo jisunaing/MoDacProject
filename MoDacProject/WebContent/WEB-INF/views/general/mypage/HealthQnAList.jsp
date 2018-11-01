@@ -153,10 +153,10 @@
 					</div>
 				</div>
 				<div class="row" style="margin-top:8px;padding-left:5px">
-				<form class="form-inline">
-					<input class="form-control" type="text" id="message" style="height: 40px; width: 320px;"> 
-					<input class="btn btn-primary" type="button" id="sendBtn" value="전송" style="height: 40px; width:65px">
-				</form>
+					<form class="form-inline">
+						<input class="form-control" type="text" id="message" style="height: 40px; width: 320px;"> 
+						<input class="btn btn-primary" type="button" id="sendBtn" value="전송" style="float:left;height: 40px; width:65px">
+					</form>
 				</div>
 			</div>
 			<!-- 모달 끝 -->
