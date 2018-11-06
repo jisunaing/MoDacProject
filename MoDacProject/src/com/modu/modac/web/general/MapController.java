@@ -72,7 +72,7 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapPharmacyDto dto : records) {
-    	 if(dto.getPhlat() != null) {
+    	 if(!dto.getPhlat().equals("nopos")) {
 	         Map record = new HashMap();
 	         record.put("no", dto.getPhno());
 	         record.put("name", dto.getPhname());
@@ -113,7 +113,7 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapNightPharmacyDto dto : records) {
-    	  if(dto.getNphlat() != null) {
+    	  if(!dto.getNphlat().equals("nopos")) {
 	         Map record = new HashMap();
 	         record.put("no", dto.getNphno());
 	         record.put("name", dto.getNphname());
@@ -169,7 +169,7 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapHospitalDto dto : records) {
-    	 if(dto.getHoslat() != null) {
+    	 if(!dto.getHoslat().equals("nopos")) {
 		     Map record = new HashMap();
 		     record.put("no", dto.getHosno());
 		     record.put("name", dto.getHosname());
@@ -312,7 +312,7 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapHospitalDto dto : records) {
-    	  if(dto.getHoslat() != null) {
+    	  if(!dto.getHoslat().equals("nopos")) {
 	         Map record = new HashMap();
 	         record.put("no", dto.getHosno());
 	         record.put("name", dto.getHosname());

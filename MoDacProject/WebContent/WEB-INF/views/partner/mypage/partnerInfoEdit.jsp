@@ -126,6 +126,8 @@ input:focus{ outline: 0; border-color: black; }
 		               $('#lng').val(coords.getLng());
 	             } else {
 	            	   $('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+	            	   $('#lat').val('nopos');
+		               $('#lng').val('nopos');
 	             }
 	              
 	         });
