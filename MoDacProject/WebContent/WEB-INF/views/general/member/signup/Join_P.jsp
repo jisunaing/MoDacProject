@@ -6,76 +6,123 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 <script>
-// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
-// document.domain = "abc.go.kr";  /popup/jusoPopup.jsp
 
-function goPopup(){
-	// 주소검색을 수행할 팝업 페이지를 호출합니다.
-	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+	//document.domain = "abc.go.kr";  /popup/jusoPopup.jsp
 	
-	var pop = window.open("<c:url value='/jusoPopup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-	
-	//var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-}
-
-
-function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo){
-	
-		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.partnerjoin.hosaddr.value = roadAddrPart1;		
-		document.partnerjoin.addrDetail.value = addrDetail;		
-		document.partnerjoin.zipNo.value = zipNo;
+	function goPopup(){
+		// 주소검색을 수행할 팝업 페이지를 호출합니다.
+		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 		
-		var geocoder = new daum.maps.services.Geocoder();
-        
-        geocoder.addressSearch(roadAddrPart1+" "+addrDetail, function(result, status) {
-           
-            if (status === daum.maps.services.Status.OK) {
-                var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-                $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
-                $('#lat').val(coords.getLat());
-                $('#lng').val(coords.getLng());
-            } else {
-           		$('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
-           		$('#lat').val('nopos');
-	            $('#lng').val('nopos');
-            } 
-            
-        });
+		var pop = window.open("<c:url value='/jusoPopup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 		
-}
+		//var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+	    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+	}
 
+	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo){
+		
+			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			document.partnerjoin.hosaddr.value = roadAddrPart1;		
+			document.partnerjoin.addrDetail.value = addrDetail;		
+			document.partnerjoin.zipNo.value = zipNo;
+			
+			var geocoder = new daum.maps.services.Geocoder();
+	        
+	        geocoder.addressSearch(roadAddrPart1+" "+addrDetail, function(result, status) {
+	           
+	            if (status === daum.maps.services.Status.OK) {
+	                var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	                $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
+	                $('#lat').val(coords.getLat());
+	                $('#lng').val(coords.getLng());
+	            } else {
+	           		$('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+	           		$('#lat').val('nopos');
+		            $('#lng').val('nopos');
+	            } 
+	            
+	        });
+			
+	}
+	
+	
 
 	$(function() {	
-	 $( "#selectable" ).selectable();
-	
-	
-	 var nujeok= "";
-	
 		
-	 $('#selectable li').click(function(){
-		 
-		 var change = "";
-
-		 
-		console.log($(this).html()); //선택한 진료과목의 값을 가져옴
+		 $('#hosaddr').keyup(function(){
+				
+	        var geocoder = new daum.maps.services.Geocoder();
+	        var hosaddr = document.getElementById('hosaddr').value;
+	        var addrDetail = document.getElementById('addrDetail').value;
+	        var address = hosaddr+' '+addrDetail;
+	        
+	        console.log(address);
+	        geocoder.addressSearch(address, function(result, status) {
+	           
+	             if (status === daum.maps.services.Status.OK) {
+	               var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	               $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
+	               $('#lat').val(coords.getLat());
+	               $('#lng').val(coords.getLng());
+	            } else {
+	           	   $('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+	           	   $('#lat').val('nopos');
+		           $('#lng').val('nopos');
+	            } 
+	        });
+	    });
+		 $('#addrDetail').keyup(function(){
+				
+	        var geocoder = new daum.maps.services.Geocoder();
+	        var hosaddr = document.getElementById('hosaddr').value;
+	        var addrDetail = document.getElementById('addrDetail').value;
+	        var address = hosaddr+' '+addrDetail;
+	        
+	        console.log(address);
+	        geocoder.addressSearch(address, function(result, status) {
+	           
+	             if (status === daum.maps.services.Status.OK) {
+	               var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	               $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
+	               $('#lat').val(coords.getLat());
+	               $('#lng').val(coords.getLng());
+	            } else {
+	           	   $('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+	           	   $('#lat').val('nopos');
+		           $('#lng').val('nopos');
+	            } 
+	        });
+	    });
 		
-		nujeok += $(this).html()+",";
 		
-		change = nujeok.substring(0,nujeok.lastIndexOf(','));
-
-		$(this).hide(1000);
+		 $( "#selectable" ).selectable();
 		
+		 var nujeok= "";
+		
+			
+		 $('#selectable li').click(function(){
 			 
-
-	 $('#subjectlist').attr('value',change);
-	 
-	 
-	});
-	 
-	 
+			 var change = "";
+	
+			 
+			console.log($(this).html()); //선택한 진료과목의 값을 가져옴
+			
+			nujeok += $(this).html()+",";
+			
+			change = nujeok.substring(0,nujeok.lastIndexOf(','));
+	
+			$(this).hide(1000);
+			
+				 
+	
+		 $('#subjectlist').attr('value',change);
+		 
+		 
+		});
+		 
+	
 	 
 	
 	 
