@@ -4,7 +4,7 @@
 
 <title>약국</title>
 
-<!-- services와 clusterer,  drawing 라이브러리 불러오기 -->
+<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
