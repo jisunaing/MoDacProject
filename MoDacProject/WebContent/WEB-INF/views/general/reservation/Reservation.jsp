@@ -29,31 +29,37 @@
  }
 /*가운데 배치를 위해[더 이쁘게 만들기 위해 넣은 것]*/
 table{
-	width: 600px;
+   width: 600px;
 }
 .form-horizontal{
-	clear: right;
+   clear: right;
 }
 .size1{
-	min-width: 200px;width: 200px;
+   min-width: 200px;width: 200px;
 }
 .size2{
-	min-width: 200px;width: 200px;
+   min-width: 200px;width: 200px;
 }
 .size3{
-	width: 200px;
+   width: 200px;
 }
 .size4{
-	min-width: 200px;width: 300px;
+   min-width: 200px;width: 300px;
 }
 .size5{
-	min-width: 200px;
+   min-width: 200px;
+}
+th{
+ text-align: center;
+}
+td{
+ cursor:pointer;
 }
 #float-right{
-	float: right;
+   float: right;
 }
-#nameUrl{
-	width: 100%;
+#tabletoggles{
+   width: 400px;
 }
 </style>
 <!-- 달력 라이브러리 시작-->
