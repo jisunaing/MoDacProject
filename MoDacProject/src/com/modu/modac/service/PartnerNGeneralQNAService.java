@@ -7,7 +7,9 @@ public interface PartnerNGeneralQNAService {
 	
 	//게시글 전체 목록용]
 	List<PartnerNGeneralQNADto> selectList(Map map); 
-	
+
+	//목록에서 마지막 가져오기
+	Map selectLast(Map map);
 	//코멘트 전체 목록용]
 	List<Map> selectCommentList(Map map); 
 	

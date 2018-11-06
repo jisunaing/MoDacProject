@@ -56,6 +56,29 @@ function successAjax2(data,target){
    else{}
    
 }/////////////////////////   
+//채팅알림 서비스
+function successAjaxChatting(data,target){
+   if(data.length !=0){
+      var audio = new Audio("<c:url value='/Audio/to-the-point.mp3'/>");
+      audio.play();
+      console.log(Notification.permission)
+      //웹 알림
+      if (Notification.permission == "granted") {
+         var options = {
+            body : data,
+            icon : "<c:url value='/Images/Modac.png'/>",
+            dir : "ltr"
+         };
+         var notification = new Notification("증상문의가 도착했어요!", options);
+         notification.onclick=function(){//클릭하면 이동 
+            location.replace("<c:url value='/partner/partnerQnA/partner_QnAList.do'/>");
+         };
+      }//if
+   }//if
+   else{}
+   
+}/////////////////////////
+
 		//접수 에이작스
 		window.setInterval(function(){
 			$.ajax({
@@ -88,6 +111,22 @@ function successAjax2(data,target){
 				}
 			});			
 		},1500);
+		//채팅 에이작스
+		window.setInterval(function(){
+			$.ajax({
+				url:'<c:url value="/general/qna/qnahealth/healthQnaAlarm.do"/>',
+				type:'post',
+				dataType:'text',
+				success:function(data){
+					successAjaxChatting(data,'#polling');
+				},
+				error:function(request,error){
+					console.log('상태코드:',request.status);
+					console.log('서버로 부터 받은 데이타:',request.responseText);
+					console.log('에러:',error);
+				}
+			});			
+		},5000);
 </script>
 		<!-- 탑부분 시작 -->
 		<header class="main-header">

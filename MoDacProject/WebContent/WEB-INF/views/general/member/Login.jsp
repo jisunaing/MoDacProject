@@ -293,9 +293,9 @@ textarea {
 				</div>
 				
 			</form>
-				<div class="col-sm-offset-4" style="margin-top: 13px;">
+				<div class="col-sm-offset-3" style="margin-top: 13px;">
 				
-					<a href="<c:url value='/general/member/signup/gen_signup_write.do'/>" style="color: black">
+					<a href="<c:url value='/general/member/signup/genSignupWrite.do'/>" style="color: black">
 						회원가입
 					</a>	
 					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -305,31 +305,7 @@ textarea {
 					</a>				
 				</div>
 				<div >
-				
-				<a href="${url}"><img style="padding-left: 70px; padding-top:10px" height="60" width="350px" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-				
-				
-							<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-
-<%-- 				<div id="naverIdLogin" class="col-sm-offset-2" style="margin-top:10px"><a href="<c:url value='#'/>"></a></div>
- --%>				<!-- (2) LoginWithNaverId Javscript SDK -->
-<!--  				<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
- -->				  <!-- (3) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
-				 <!-- <script>
-					 var naverLogin = new naver.LoginWithNaverId(
-							{
-								clientId: "kZTeZSK7xvqzpnXZcuau",
-								callbackUrl: "http://localhost:8080/MoDacProject/home/index.do",
-								isPopup: false, /* 팝업을 통한 연동처리 여부 */
-								loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
-							}
-						);
-						
-					   /* 설정정보를 초기화하고 연동을 준비 */
-						naverLogin.init();
-						
-					
-					</script>  -->
+					<a href="${url}"><img style="padding-left: 70px; padding-top:10px;"height="70" width="350px"src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a>		
 				</div>
 		</div>
 		<!-- // Sign Up for Free -->

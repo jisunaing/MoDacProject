@@ -138,7 +138,7 @@
 					<div id="chatMessage" class="col-md-8" style="width: 379px; height: 450px"></div>
 				</div>
 				<div class="row" style="margin-top:8px;padding-left:5px">
-				<form class="form-inline">
+				<form class="form-inline" onsubmit="return false">
 					<input class="form-control" type="text" id="message" style="height: 40px; width: 320px;"> 
 					<input class="btn btn-primary" type="button" id="sendBtn" value="전송" style="height: 40px; width:65px">
 				</form>
@@ -190,47 +190,71 @@ var socketOpen  = function(data){
 	hosname=data['hosname'];
 	console.log("me:"+me);
 	appendMessage("연결 되었습니다");
+	if(data['qcontent'] !="chat"){
+		pastChat();
+		console.log('pastchat다음호출');
+	}
 }///////////////////
 var socketMessage = function(e){
 	//서버로부터 받은 데이타 저장
 	console.log(e.data);
 	var rawdata= e.data;//서버로 부터 받은 데이터가 들어가 있다
-	var data=rawdata.split("&split^*=");
-	from =data[2];
-	console.log('from:'+from+'me: '+me);
-	console.log("qno:"+qno);
 	
-	if(qno==data[1]){
-		if(me!=from){
-			if(hosname==me){
-				imgself=doctor;
-				imgnotself=patient;
+	if(rawdata.includes("&split^*=")){
+		var data=rawdata.split("&split^*=");
+		from =data[2];
+		console.log('from:'+from+'me: '+me);
+		console.log("qno:"+qno);
+		
+		if(qno==data[1]){
+			if(me!=from){
+				if(hosname==me){
+					imgself=doctor;
+					imgnotself=patient;
+				}
+				else{
+					imgself=patient;
+					imgnotself=doctor;
+				}
+					
+					
+				if(data[0].substring(0, 4)=='msg:'){
+					appendMessageNotSelf(data[0].substr(4));
+				}
 			}
-			else{
-				imgself=patient;
-				imgnotself=doctor;
-			}
-				
-				
-			if(data[0].substring(0, 4)=='msg:'){
-				appendMessageNotSelf(data[0].substr(4));
+			else if (me==from){
+				if(hosname==me){
+					imgself=doctor;
+					imgnotself=patient;
+				}
+				else{
+					imgself=patient;
+					imgnotself=doctor;
+				}	
+				if(data[0].substring(0, 4)=='msg:'){
+					appendMessageSelf(data[0].substr(4));
+				}
 			}
 		}
-		else if (me==from){
-			if(hosname==me){
-				imgself=doctor;
-				imgnotself=patient;
+	}////////////if includes
+	else{
+		console.log("appendSavedMessage");
+		console.log(rawdata);
+		if(rawdata!="null"){
+			var rp1 = rawdata.replace("float:right","temp");			
+			var rp2 = rp1.replace("float:left","float:right");
+			var rp3 = rp2.replace("temp","float:left");
+			var replaced = rp3.replace("#FFFC80","#ACF3FF");
+			if(replaced.includes("연결되었습니다")){
+				appendSavedMessage(replaced.replace(replaced.substr(0,305),""));
 			}
-			else{
-				imgself=patient;
-				imgnotself=doctor;
-			}	
-			if(data[0].substring(0, 4)=='msg:'){
-				appendMessageSelf(data[0].substr(4));
+			if(replaced.includes("연결을 끊었습니다")){
+				appendSavedMessage(replaced.replace(replaced.substr(replaced.lastIndesOf("<div class='row' style = 'height : 75x; margin-top : 5px;padding-left:100px;'>"),replaced.length()),""));
 			}
+			
 		}
+		
 	}
-	
 }
 var url;
 //서버에서 받은 메시지 출력용 메소드.혹은 이벤트 확인을 출력용 메소드
@@ -256,8 +280,8 @@ var appendMessageSelf= function(msg){
 	$('#chatMessage').append("<div class='row' style = 'height : 75x; margin-top : 5px'><div class='col-2' style = 'float:right;'>"
 			+"<img id='profileImg' class='img-fluid' src='"+imgself+"' style = 'width:60px; height:60px;padding-right:5px'>"
 			+"</div>"
-			+"<div class = '' style = ' margin-top : 20px;'>"
-			+"<div class = '' style = ' background-color:#FFFC80; padding : 5px; float:right; border-radius:10px'>"
+			+"<div style = ' margin-top : 20px;'>"
+			+"<div style = ' background-color:#FFFC80; padding : 5px; float:right; border-radius:10px'>"
 			+"<span style = 'font-size : 12px;'>"+msg+"</span> </div>"
 			+"<div style = 'font-size:9px; text-align:right; float:right;padding-top:20px;padding-right:5px;color:lightgray'> <span>"+t+"</span>"
 			+"</div></div></div>");
@@ -280,6 +304,14 @@ var appendMessage= function(msg){
 
 	
 }
+var appendSavedMessage= function(msg){
+	
+	$('#chatMessage').append(msg);
+
+
+	$('#chatArea').get(0).scrollTop=$('#chatArea').get(0).scrollHeight;
+
+}
 //서버로 메시지 전송하는 메소드
 var sendMessage = function(data){
 	var message ="msg:"+$('#message').val()+"&split^*="+data['qno']+"&split^*="+data['sender'];
@@ -297,6 +329,26 @@ var displayChattop = function(data){
 	$('#chattop').html(chattopString);
 }
 
+//이전 채팅내용 불러오기
+var pastChat = function(){
+	console.log("pastchat");
+	var saveurl = url.replace("Chat", "PastChat");
+	$.ajax({
+		url:saveurl,
+		dataType:'json',
+		type:'post',
+		success:displayPastChat
+	});	
+} 
+//채팅창에 채팅내용 보이기
+var displayPastChat = function(data){
+	console.log("displaypastchat");
+	console.log(data['qcontent']);
+	console.log("전전전전전: "+$('#chatMessage').html());
+	wsocket.send(data['qcontent']);
+	console.log("후후후후후: "+$('#chatMessage').html());
+} 
+
   <!--기본-->
  $( function() {
     $( "#dialog" ).dialog({
@@ -312,6 +364,11 @@ var displayChattop = function(data){
       hide: {
         effect: "explode",
         duration: 1000
+      },
+      beforeClose: function( event, ui ) {
+   			//대화 저장되어있는 상태로 놔두기
+      		location.replace(url.replace("Chat", "List"));
+
       }
     });
     $(".ui-dialog").find(".ui-widget-header").css("background", "#2b68a7").css("color","white");

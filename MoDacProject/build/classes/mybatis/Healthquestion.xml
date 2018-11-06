@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.Healthquestion">
 	<!-- 마이바티스는 resultMap사용 시 column속성 필수 -->
 	<!-- type속성은 configuration.xml에 등록한 자바빈의 별칭임 -->
@@ -24,9 +23,15 @@
 		WHERE h.genid=g.genid AND h.subjectcode = s.subjectcode AND qno=#{qno}
 	</select>
 	<select id="healthquestionSelectList" parameterType="java.util.Map" resultType="healthquestionDto">
-		SELECT qno,title,postdate FROM healthquestion
+		SELECT qno,title,postdate FROM healthquestion WHERE genid=#{genid} 	ORDER BY postdate DESC
 	</select>
 	<select id="healthquestionSelectListHos" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT * FROM subject
 	</select>
+	<delete id="healthquestionDelete" parameterType="java.util.Map" >
+		DELETE FROM healthquestion WHERE qno=#{qno}
+	</delete>
+	<update id="healthquestionUpdate" parameterType="java.util.Map">
+		UPDATE healthquestion SET qcontent=#{qcontent} WHERE qno=#{qno}
+	</update>
 </mapper>
