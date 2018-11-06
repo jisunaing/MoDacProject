@@ -23,7 +23,7 @@
 }
 #searchtoggle {
 	float: right;
-	margin-right: -50px;
+	margin-right: -100px;
 }
 
 /* 지도 */
@@ -215,7 +215,7 @@ var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표�
 	level : 9 // 지도의 확대 레벨
 });
 
-//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 var mapTypeControl = new daum.maps.MapTypeControl();
 
 // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
@@ -237,7 +237,6 @@ var clusterer = new daum.maps.MarkerClusterer({
 	disableClickZoom : true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 });
 
-	
 var markers = [];
 
 for(var i = 0; i < datas.length; i++) {

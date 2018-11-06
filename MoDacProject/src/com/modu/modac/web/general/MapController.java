@@ -169,7 +169,7 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapHospitalDto dto : records) {
-    	 if(!dto.getHoslat().equals("nopos")) {
+    	 if(!dto.getHoslat().equals("nopos")) {// 좌표 값이 있는 병원만 반환받기
 		     Map record = new HashMap();
 		     record.put("no", dto.getHosno());
 		     record.put("name", dto.getHosname());
@@ -192,7 +192,6 @@ public class MapController {
 		     collections.add(record);
     	 }
       }
-      
      
       model.addAttribute("size", collections.size());
       model.addAttribute("records", JSONArray.toJSONString(collections));
