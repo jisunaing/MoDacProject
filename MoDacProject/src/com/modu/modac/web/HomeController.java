@@ -8,9 +8,17 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.modu.modac.service.ChartService;
 import com.modu.modac.service.GeneralService;
@@ -18,7 +26,6 @@ import com.modu.modac.service.impl.NaverLoginBO;
 
 @Controller
 public class HomeController {
-	
 	//서비스 주입]
 	@Resource(name="generalService")
 	private GeneralService generalService;
@@ -39,23 +46,22 @@ public class HomeController {
 	@Resource(name="naverLoginBO")
     private NaverLoginBO naverLoginBO;
     private String apiResult = null;
-    
-   
-
 	
 	//로그인 버튼 눌럿을때 오는 부분
 	@RequestMapping("/home/loginmain.do")
 	public String loginMain(HttpSession session, Model model) throws Exception {
+
 		 /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
         
         //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
         //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("네이버:" + naverAuthUrl);
+//        System.out.println("네이버:" + naverAuthUrl);
         
         //네이버 
         model.addAttribute("url", naverAuthUrl);
 
+        System.out.println(naverAuthUrl);
         /* 생성한 인증 URL을 View로 전달 */ 
 		return "general/member/Login.tiles";
 	}
@@ -83,6 +89,10 @@ public class HomeController {
 		return "forward:/general/mypage/personalinfo.do";
 	}
 	
+	@RequestMapping("/main.do")
+	public String healthCateg() throws Exception {
+		return "forward:/healthinfoList.do";
+	}
 	
 	//제휴 회원가입 신청 폼
 	@RequestMapping("/general/member/signup/partnerJoin.do")
@@ -90,26 +100,51 @@ public class HomeController {
 		return "general/member/signup/Join_P.tiles";
 	}
 
-	  //임의로 로그인 처리함
-	   @RequestMapping("/home/loginProcess.do")
-	   public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-	      /*//네이버 로그인 
-		   if(map.get("type").equals("naverlogin")) {
-			   
-		   }*/
-		   
-		   //일반사용자 로그인 처리 부분 시작
-	      boolean ismember = generalService.isMember(map);
-	      if(ismember) {
-	         model.addAllAttributes(map);
-	         session.setAttribute("genid", map.get("genid"));
-	         return "/index";
-	      }
-	      else {
-	         model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
-	         return "forward:/home/loginmain.do";
-	      }
-	   }
+	//로그아웃처리
+	@RequestMapping("/home/loginout.do")
+	public String logoutProcess(HttpSession session) throws Exception {
+		System.out.println("invalidate");
+		session.invalidate();
+//		SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false); 
+		return "/main.do";
+	}
+  //임의로 로그인 처리함
+   @RequestMapping("/home/loginProcess.do")
+   public String loginProcess(@RequestParam Map map, Model model,HttpSession session, Authentication auth) throws Exception {
+	   System.out.println("로그인프로세스");
+
+  /*
+		// spring security 적용 전
+		//일반사용자 로그인 처리 부분 시작
+		boolean ismember = generalService.isMember(map);
+		if(ismember) {
+ 			model.addAllAttributes(map);
+			session.setAttribute("genid", map.get("genid"));
+			return "/main.do";
+		} else { 
+			model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
+			return "forward:/home/loginmain.do";
+		}
+   */
+		System.out.println("인증된 사용자 :"+auth.getPrincipal());
+		UserDetails authenticated=(UserDetails)auth.getPrincipal();
+	   
+		System.out.println("아이디: "+authenticated.getUsername());
+		System.out.println("비밀번호: "+authenticated.getPassword()); //null
+		System.out.println("권한:"+authenticated.getAuthorities().toString());
+		if(authenticated.getUsername() != null) {
+			//스프링 씨큐리티 적용 후
+			map.put("genid",authenticated.getUsername());
+			session.setAttribute("genid", map.get("genid"));
+			session.getAttribute("genid");
+			model.addAllAttributes(map);
+			return "/index";
+		} else {
+			model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
+			return "forward:/home/loginmain.do";
+		}
+		
+   }
 	
 /*		
   		//임의로 로그인 처리함
@@ -173,12 +208,4 @@ public class HomeController {
 		}
 */
 	
-		//로그아웃처리
-		@RequestMapping("/home/loginout.do")
-		public String logoutProcess(HttpSession session) throws Exception {
-			session.invalidate();
-			//session.removeAttribute("PARTNER_ID");  제휴회원 로그인 처리 끝 임시로 사용 안해도됨 추후에 이 부분 삭제할꺼임
-			return "/index";
-		}
-
 }/////HomeController

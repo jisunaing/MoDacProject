@@ -30,9 +30,9 @@
 		font-family: 'GoodFont';
 		src: url('font/cc1-돋움(TTF)-Medium.ttf');
 	}
-	html *{
+    html:not(#tests){
 		font-family: 'GootFont' , monospace !important;
-}
+    }
 	html, * {
 		margin: 0; padding: 0; 
 /* 		font-family: 'Jua', sans-serif; */

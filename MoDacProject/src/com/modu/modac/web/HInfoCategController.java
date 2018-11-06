@@ -26,9 +26,9 @@ import com.modu.modac.service.impl.PagingUtil;
 @Controller
 public class HInfoCategController {
 //	@Value("${PAGE_SIZE}")
-	private int pageSize = 4;
+	private int pageSize = 6;
 //	@Value("${BLOCK_PAGE")
-	private int blockPage = 4;
+	private int blockPage = 6;
 	
 	@Resource(name="hInfoCategService")
 	private HInfoCategService service;

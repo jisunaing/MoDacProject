@@ -9,8 +9,7 @@
 		color:white;
 	}
 	footer{
-	background-color: #2b68a7;
-	min-height:10%;
+		min-height:10%;
 	} /////////////////////
 </style>
 
@@ -22,8 +21,8 @@
 	});
 </script>
 
-<footer class="page-footer" style="margin-top: 50px;">
-	<div class="footer-list text-center py-1" >
+<footer class="page-footer" style="margin-top: 50px;background-color: #2b68a7 !important">
+	<div class="footer-list text-center py-1">
 		<a id="footera" href="<c:url value='/general/qna/qnaWrite.do'/>">사이트문의</a>
 		<a id="footera" href="<c:url value='/general/notice/noticeList.do'/>">공지사항</a>
 		<a id="footera" href="<c:url value='http://localhost:8080/modacadmin/AdminLogin.do'/>">admin접속</a>

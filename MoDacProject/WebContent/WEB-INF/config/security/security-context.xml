@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+	<!-- 보안과 관련된 설정파일 -->
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/**" access="permitAll" />		
+		<security:intercept-url pattern="/general/mypage/**" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/Modac/**" access="hasRole('ROLE_USER')" />
+		<security:logout
+						logout-url="/home/loginout.do"
+						invalidate-session="true"
+						logout-success-url="/home/loginmain.do"
+						/>
+		<security:form-login 		    		   
+		    		    login-page="/home/loginmain.do"
+		                default-target-url="/home/loginProcess.do"
+		                always-use-default-target="true" 
+		                authentication-failure-url="/home/loginmain.do?error=error"
+		                login-processing-url="/home/loginProcess.do"
+		                username-parameter="genid"
+		                password-parameter="pwd"
+		                />
+		<security:csrf disabled="true"/>
+		<security:session-management invalid-session-url="/home/loginmain.do">
+          	<security:concurrency-control max-sessions="1" expired-url="/home/loginmain.do"/>
+																			<!-- error-if-maximum-exceeded="true" -->
+   		</security:session-management>
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+	 			<security:jdbc-user-service 
+			        data-source-ref="datasource"
+			        role-prefix=""
+			        users-by-username-query="select genid as username, pwd as password, enabled from genmember where genid = ?"
+			        authorities-by-username-query="select genid as username, authority AS authority from authorities where genid = ?"
+			    />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

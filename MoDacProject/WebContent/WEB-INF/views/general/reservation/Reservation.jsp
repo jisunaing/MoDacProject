@@ -29,38 +29,44 @@
  }
 /*가운데 배치를 위해[더 이쁘게 만들기 위해 넣은 것]*/
 table{
-	width: 600px;
+   width: 600px;
 }
 .form-horizontal{
-	clear: right;
+   clear: right;
 }
 .size1{
-	min-width: 200px;width: 200px;
+   min-width: 200px;width: 200px;
 }
 .size2{
-	min-width: 200px;width: 200px;
+   min-width: 200px;width: 200px;
 }
 .size3{
-	width: 200px;
+   width: 200px;
 }
 .size4{
-	min-width: 200px;width: 300px;
+   min-width: 200px;width: 300px;
 }
 .size5{
-	min-width: 200px;
+   min-width: 200px;
+}
+th{
+ text-align: center;
+}
+td{
+ cursor:pointer;
 }
 #float-right{
-	float: right;
+   float: right;
 }
-#nameUrl{
-	width: 100%;
+#tabletoggles{
+   width: 400px;
 }
 </style>
 <!-- 달력 라이브러리 시작-->
 	<script type="text/javascript">
-    $(document).ready( function () {
-        $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko'});
-    })
+    $(document).ready(function () {
+        $('#picker').dateTimePicker({dateFormat: "YYYY-MM-DD HH:mm", locale: 'ko',title: "예약 시간을 선택하여주세요",buttonTitle: "시간 선택"});
+    });
     </script>
 	<!-- 달력 라이브러리 끝-->
 	<!-- body 시작 -->
@@ -83,52 +89,52 @@ table{
 			$('.move').css('display','inline');
 		});	
 		
-	      $('#nameUrl1').click(function(){
-	    	  console.log('버튼이 클릭됨');
-	          $('#resname').val($('#names1').html());
-	          $('#phone').val($('#phones1').html());
-	       });
-	       $('#nameUrl2').click(function(){
-	          $('#resname').val($('#names2').html());
-	          $('#phone').val($('#phones2').html());
-	       });      
-	       $('#nameUrl3').click(function(){
-	          $('#resname').val($('#names3').html());
-	          $('#phone').val($('#phones3').html());
-	       });      
-	       $('#nameUrl4').click(function(){
-	          $('#resname').val($('#names4').html());
-	          $('#phone').val($('#phones4').html());
-	       });      
-	       $('#nameUrl5').click(function(){
-	          $('#resname').val($('#names5').html());
-	          $('#phone').val($('#phones5').html());
-	       });            
-	       $('#nameUrl6').click(function(){
-	          $('#resname').val($('#names6').html());
-	          $('#phone').val($('#phones6').html());
-	       });      
-	       $('#nameUrl7').click(function(){
-	          $('#resname').val($('#names7').html());
-	          $('#phone').val($('#phones7').html());
-	       });            
-	       $('#nameUrl8').click(function(){
-	          $('#resname').val($('#names8').html());
-	          $('#phone').val($('#phones8').html());
-	       });            
-	       $('#nameUrl9').click(function(){
-	          $('#resname').val($('#names9').html());
-	          $('#phone').val($('#phones9').html());
-	       });            
-	       $('#nameUrl10').click(function(){
-	          $('#resname').val($('#names10').html());
-	          $('#phone').val($('#phones10').html());
-	       });            
-	       $('#nameUrl11').click(function(){
-	          $('#resname').val($('#names11').html());
-	          $('#phone').val($('#phones11').html());
-	       });         
-		
+      $('#nameUrl1').click(function(){
+    	  console.log('버튼이 클릭됨');
+          $('#resname').val($('#names1').html());
+          $('#phone').val($('#phones1').html());
+       });
+       $('#nameUrl2').click(function(){
+          $('#resname').val($('#names2').html());
+          $('#phone').val($('#phones2').html());
+       });      
+       $('#nameUrl3').click(function(){
+          $('#resname').val($('#names3').html());
+          $('#phone').val($('#phones3').html());
+       });      
+       $('#nameUrl4').click(function(){
+          $('#resname').val($('#names4').html());
+          $('#phone').val($('#phones4').html());
+       });      
+       $('#nameUrl5').click(function(){
+          $('#resname').val($('#names5').html());
+          $('#phone').val($('#phones5').html());
+       });            
+       $('#nameUrl6').click(function(){
+          $('#resname').val($('#names6').html());
+          $('#phone').val($('#phones6').html());
+       });      
+       $('#nameUrl7').click(function(){
+          $('#resname').val($('#names7').html());
+          $('#phone').val($('#phones7').html());
+       });            
+       $('#nameUrl8').click(function(){
+          $('#resname').val($('#names8').html());
+          $('#phone').val($('#phones8').html());
+       });            
+       $('#nameUrl9').click(function(){
+          $('#resname').val($('#names9').html());
+          $('#phone').val($('#phones9').html());
+       });            
+       $('#nameUrl10').click(function(){
+          $('#resname').val($('#names10').html());
+          $('#phone').val($('#phones10').html());
+       });            
+       $('#nameUrl11').click(function(){
+          $('#resname').val($('#names11').html());
+          $('#phone').val($('#phones11').html());
+       });         
+      
 	});
 	</script>
 <div class="container">
@@ -195,7 +201,7 @@ table{
 			<!-- 달력 테스트 부분 -->
 			<div class="form-group">
 				<label for="inputPassword" class="col-sm-2 control-label">예약시간</label>
-				<div class="col-sm-10">
+				<div class="col-sm-10" id="tests">
 					<div class="size3">
 						<div id="picker"></div>
 						<input type="hidden"  id="result" name="resdate"/>

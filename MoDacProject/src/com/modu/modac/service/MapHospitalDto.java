@@ -17,12 +17,27 @@ public class MapHospitalDto {
 	private String holiday;
 	private String subjectcode;
 	private String subname;
+	private String hoslat;
+	private String hoslng;
+	
 	
 	// 제휴병원에만 해당하는 멤버 변수
 	private String pid;
 	private String lunch;
 	private String pwebsite;
 	
+	public String getHoslat() {
+		return hoslat;
+	}
+	public void setHoslat(String hoslat) {
+		this.hoslat = hoslat;
+	}
+	public String getHoslng() {
+		return hoslng;
+	}
+	public void setHoslng(String hoslng) {
+		this.hoslng = hoslng;
+	}
 	public String getPid() {
 		return pid;
 	}

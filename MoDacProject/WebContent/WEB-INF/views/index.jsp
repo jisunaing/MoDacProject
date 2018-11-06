@@ -80,7 +80,7 @@
 <!--                 <div class="crs-screen-item-content"><h1 style="font-family:Black Han Sans;">MoDacProject&<span style="color:red">♥</span></h1></div> -->
               </div>
               <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
-                <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+                <div class="crs-screen-item-content"><h1>${sessionScope.genid }</h1></div>
               </div>
                  <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
                 <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>

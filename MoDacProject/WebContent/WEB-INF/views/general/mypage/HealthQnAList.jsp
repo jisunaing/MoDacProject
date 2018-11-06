@@ -39,7 +39,7 @@
 				<div style="padding-bottom:50px">
 					<button type="button" class=" btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="width:150px">문의하기</button>					
 				</div>
-				
+
 				<!-- 모달창 시작 -->
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					role="dialog">

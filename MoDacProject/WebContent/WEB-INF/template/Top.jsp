@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <style>
    body{      
@@ -49,7 +49,7 @@
       <span class="icon-bar"></span>              
     </button>   
    <!-- 로고자리끝남 -->    
-  </div><!-- navbar-header -->
+  </div><!-- navbar-header --->
 <!-- 일반사용자용 top -->
        <div class="collapse navbar-collapse" id="collapseMenu">
           <ul class="nav navbar-nav navbar-right">
@@ -70,7 +70,7 @@
                   문의
                </a>
                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-                  <li><a href="<c:url value='/general/qna/qnahealth/healthQnaWrite.do'/>">병원에증상문의</a></li>
+                  <li><a href="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>">병원에증상문의</a></li>
                </ul>
             </li>
 

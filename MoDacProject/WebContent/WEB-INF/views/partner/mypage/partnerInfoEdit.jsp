@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="<c:url value="/css/_all-skins.css"/>">
 <script src="<c:url value='/Jquery/jquery.min.js'/>"></script>
 <script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 
 
 <style>
@@ -113,7 +113,44 @@ input:focus{ outline: 0; border-color: black; }
 			
 	  $('input[type="text"]').css('margin-bottom','13px');		
 			
-			});///최상위
+	  $('#hosaddr').keyup(function(){
+	         var geocoder = new daum.maps.services.Geocoder();
+	         var address = document.getElementById('hosaddr').value;
+	         
+	         geocoder.addressSearch(address, function(result, status) {
+	            
+	              if (status === daum.maps.services.Status.OK) {
+		               var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+		               $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
+		               $('#lat').val(coords.getLat());
+		               $('#lng').val(coords.getLng());
+	             } else {
+	            	   $('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+	            	   $('#lat').val('nopos');
+		               $('#lng').val('nopos');
+	             }
+	              
+	         });
+	    });
+	  
+	  var geocoder = new daum.maps.services.Geocoder();
+      var address = document.getElementById('hosaddr').value;
+      
+      geocoder.addressSearch(address, function(result, status) {
+         
+           if (status === daum.maps.services.Status.OK) {
+	           var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	           $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
+	           $('#lat').val(coords.getLat());
+	           $('#lng').val(coords.getLng());
+          } else {
+       	  	   $('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+          }
+      });
+	  
+	});///최상위
+			
+			
 	</script>
 
 
@@ -188,7 +225,10 @@ input:focus{ outline: 0; border-color: black; }
 						<div class="col-sm-12">
 							<div class="col-sm-8">
 								<span class="sp">병원 주소</span>								 						
-								 <input type="text" class="form-control" name="hosaddr" id="hosaddr" value="${partner.hosaddr}">																	
+								 <input type="text" class="form-control" name="hosaddr" id="hosaddr" value="${partner.hosaddr}">
+								 <span id="message"></span>																	
+								 <input type="hidden" id="lat" name="lat"/>
+            					 <input type="hidden" id="lng" name="lng"/>
 							</div>
 						</div>
 					</div>
