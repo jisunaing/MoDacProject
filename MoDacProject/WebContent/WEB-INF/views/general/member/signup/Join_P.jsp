@@ -13,7 +13,6 @@ function goPopup(){
 	// 주소검색을 수행할 팝업 페이지를 호출합니다.
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 	
-	
 	var pop = window.open("<c:url value='/jusoPopup/jusoPopup.jsp'/>","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	
 	//var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
@@ -40,7 +39,10 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
                 $('#lng').val(coords.getLng());
             } else {
            		$('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+           		$('#lat').val('nopos');
+	            $('#lng').val('nopos');
             } 
+            
         });
 		
 }

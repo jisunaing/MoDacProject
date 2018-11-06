@@ -22,6 +22,6 @@
 	</resultMap>
 	<!-- 쿼리 작성 -->
 	<select id="NightPharmacyList" parameterType="java.util.Map" resultType="MapNightPharmacyDto">
-		SELECT * FROM nightpharmacy  
+		SELECT * FROM nightpharmacy where nphno &lt; 100
 	</select>
 </mapper>
