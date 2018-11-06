@@ -14,7 +14,21 @@ public class MapNightPharmacyDto {
 	private String nphfri;
 	private String nphsat;
 	private String nphsun;
+	private String nphlat;
+	private String nphlng;
 	
+	public String getNphlat() {
+		return nphlat;
+	}
+	public void setNphlat(String nphlat) {
+		this.nphlat = nphlat;
+	}
+	public String getNphlng() {
+		return nphlng;
+	}
+	public void setNphlng(String npglng) {
+		this.nphlng = npglng;
+	}
 	public String getNphno() {
 		return nphno;
 	}

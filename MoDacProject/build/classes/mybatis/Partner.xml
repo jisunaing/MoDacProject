@@ -8,8 +8,8 @@
     <!--  제휴가입하는 부분 -->
 	<insert id="PartnerJoin" parameterType="java.util.Map">
 
-	INSERT ALL INTO HOSPITAL(HOSNO,HOSADDR,HOSNAME,HOSPHONE)
-	VALUES(SEQ_JIHUNTEST.NEXTVAL,#{hosaddr},#{hosname},#{hosphone})	
+	INSERT ALL INTO HOSPITAL(HOSNO,HOSADDR,HOSNAME,HOSPHONE, HOSLAT, HOSLNG)
+	VALUES(SEQ_JIHUNTEST.NEXTVAL,#{hosaddr},#{hosname},#{hosphone},#{lat},#{lng})	
 	INTO PARTNERS(PID,HOSNO,PEMAIL,HPWD,BUSINESSNUM,REQUEST,ACCEPT,HOSMANAGER,PPHONE)
 	VALUES(#{pid},SEQ_JIHUNTEST.CURRVAL,#{pemail},#{hpwd},#{businessnum},#{request},default,#{hosmanager},#{pphone})
 	SELECT * FROM DUAL
@@ -49,7 +49,7 @@
 	<update id="Partnerfirst" parameterType="java.util.Map">
 	
 	UPDATE HOSPITAL SET HOSADDR=#{hosaddr},HOSNAME=#{hosname},HOSPHONE=#{hosphone},
-	MON=#{mon},TUE=#{tue},WED=#{wed},THU=#{thu},FRI=#{fri},SAT=#{sat},SUN=#{sun},HOLIDAY=#{holiday}	WHERE HOSNO=#{hosno}
+	MON=#{mon},TUE=#{tue},WED=#{wed},THU=#{thu},FRI=#{fri},SAT=#{sat},SUN=#{sun},HOLIDAY=#{holiday},HOSLAT=#{lat},HOSLNG=#{lng}	WHERE HOSNO=#{hosno}
 
 	</update>
 	

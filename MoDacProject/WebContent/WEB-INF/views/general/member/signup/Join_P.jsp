@@ -3,7 +3,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 <link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
-
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=86b3c01c90f39e52ac7267db068b72c3&libraries=services,clusterer,drawing"></script>
 <script>
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
 //document.domain = "abc.go.kr";  /popup/jusoPopup.jsp
@@ -22,11 +23,25 @@ function goPopup(){
 
 
 function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo){
+	
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.partnerjoin.hosaddr.value = roadAddrPart1;		
 		document.partnerjoin.addrDetail.value = addrDetail;		
 		document.partnerjoin.zipNo.value = zipNo;
 		
+		var geocoder = new daum.maps.services.Geocoder();
+        
+        geocoder.addressSearch(roadAddrPart1+" "+addrDetail, function(result, status) {
+           
+            if (status === daum.maps.services.Status.OK) {
+                var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+                $('#message').css('color','green').html('해당 주소는 지도상에 표시할 수 있습니다.');    
+                $('#lat').val(coords.getLat());
+                $('#lng').val(coords.getLng());
+            } else {
+           		$('#message').css('color','red').html('해당 주소는 지도상에 표시할 수 없습니다.');
+            } 
+        });
 		
 }
 
@@ -145,26 +160,24 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     
     .modal-footer{margin-top: 290px; }
 
-    h2{
+    h1{
     margin: 5px 0px 45px 0px;
     }
+ 
 </style>
 
+  	
   </head>
   <body>
-  	<div class="jumbotron jumbotron-billboard" style="height: 300px;">
+  	<div class="jumbotron jumbotron-billboard" style="height: 500px;">
 	  <div class="img">
-	  	<img style="width:100%;height:auto;opacity: 100" src="<c:url value='/Images/plasticheart.jpg'/>" />
-	  </div>
-	  <div class="container">
-	  	<div class="row">
-	  		<h2 style="text-align: center;">제휴 신청<small> 병원 제휴</small></h2>
-	  	</div>
+	  	<img style="opacity: 100" src="<c:url value='/Images/plasticheart.jpg'/>" />
 	  </div>
 	</div>
   	<div class="container" id="dv">
 			<div class="row">
 				<div class="col-md-12">
+				 <h1>제휴 문의<small> 병원 제휴</small></h1>
 					
 					<form  id="partnerjoin" name="partnerjoin" class="form-horizontal" method="post" action="<c:url value='/partner/member/singup/joinrequest.do'/>" >
 				
@@ -312,14 +325,15 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 						<div class="form-group">
 							<label for="hosaddr" class="col-sm-2 control-label">주 소</label>
 							<div class="col-sm-6">
-					
 								<input type="text" class="form-control" name="hosaddr" id="hosaddr" placeholder="주소를 검색해주세요" >
-								
+								<input type="hidden" name="lat" id="lat"/>
+            					<input type="hidden" name="lng" id="lng"/>
 							</div>
 							<button class="btn btn-outline-info float-right btn btn-primary" type="button"	onclick="goPopup()">주소 검색</button>
 							<div class="col-sm-offset-2 col-sm-6">
 							<label for="addrDetail" class="control-label">상세 주소</label>
 							 <input style="margin-top: 3px;" type="text" class="form-control" name="addrDetail"	id="addrDetail" placeholder="상세주소를 입력해주세요" >
+							 <span id="message"></span>
 							</div>
 						</div>
 						

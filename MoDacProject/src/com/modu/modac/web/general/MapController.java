@@ -36,7 +36,7 @@ import com.modu.modac.service.ReservationService;
 @Controller
 public class MapController {
    
-   //  서비스 주입
+   // 서비스 주입
    @Resource(name="pharmacyService")
    private MapPharmacyService servicePH;
    @Resource(name="nightPharmacyService")
@@ -50,7 +50,7 @@ public class MapController {
    @Resource(name="reservationService")
    private ReservationService serviceRES;
 
-   //  [과목 선택 페이지로 이동 ]
+   // [과목 선택 페이지로 이동 ]
    @RequestMapping("/general/hospital/SelectSubject.do")
    public String selectSubjectPage(@RequestParam Map map,Model model) throws Exception {
       return "general/hospital/SelectSubject.tiles";
@@ -72,23 +72,27 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapPharmacyDto dto : records) {
-         Map record = new HashMap();
-         record.put("no", dto.getPhno());
-         record.put("name", dto.getPhname());
-         record.put("addr", dto.getPhaddr());
-         record.put("phone", dto.getPhphone());
-         record.put("mon", dto.getPhmon());
-         record.put("tue", dto.getPhtue());
-         record.put("wed", dto.getPhwed());
-         record.put("thu", dto.getPhthu());
-         record.put("fri", dto.getPhfri());
-         record.put("sat", dto.getPhsat());
-         record.put("sun", dto.getPhsun());
-         record.put("holiday", dto.getPholiday());
-         collections.add(record);
+    	 if(dto.getPhlat() != null) {
+	         Map record = new HashMap();
+	         record.put("no", dto.getPhno());
+	         record.put("name", dto.getPhname());
+	         record.put("addr", dto.getPhaddr());
+	         record.put("phone", dto.getPhphone());
+	         record.put("mon", dto.getPhmon());
+	         record.put("tue", dto.getPhtue());
+	         record.put("wed", dto.getPhwed());
+	         record.put("thu", dto.getPhthu());
+	         record.put("fri", dto.getPhfri());
+	         record.put("sat", dto.getPhsat());
+	         record.put("sun", dto.getPhsun());
+	         record.put("holiday", dto.getPholiday());
+	         record.put("lat", dto.getPhlat());
+	         record.put("lng", dto.getPhlng());
+	         collections.add(record);
+    	 }
       }
       
-      
+      model.addAttribute("size", collections.size());
       model.addAttribute("records", JSONArray.toJSONString(collections));
       model.addAttribute("paramValue",paramValue);
       
@@ -109,22 +113,27 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapNightPharmacyDto dto : records) {
-         Map record = new HashMap();
-         record.put("no", dto.getNphno());
-         record.put("name", dto.getNphname());
-         record.put("addr", dto.getNphaddr());
-         record.put("phone", dto.getNphphone());
-         record.put("mon", dto.getNphmon());
-         record.put("tue", dto.getNphtue());
-         record.put("wed", dto.getNphwed());
-         record.put("thu", dto.getNphthu());
-         record.put("fri", dto.getNphfri());
-         record.put("sat", dto.getNphsat());
-         record.put("sun", dto.getNphsun());
-         record.put("holiday", dto.getNpholiday());
-         collections.add(record);
+    	  if(dto.getNphlat() != null) {
+	         Map record = new HashMap();
+	         record.put("no", dto.getNphno());
+	         record.put("name", dto.getNphname());
+	         record.put("addr", dto.getNphaddr());
+	         record.put("phone", dto.getNphphone());
+	         record.put("mon", dto.getNphmon());
+	         record.put("tue", dto.getNphtue());
+	         record.put("wed", dto.getNphwed());
+	         record.put("thu", dto.getNphthu());
+	         record.put("fri", dto.getNphfri());
+	         record.put("sat", dto.getNphsat());
+	         record.put("sun", dto.getNphsun());
+	         record.put("holiday", dto.getNpholiday());
+	         record.put("lat", dto.getNphlat());
+	         record.put("lng", dto.getNphlng());
+	         collections.add(record);
+    	  }
       }
       
+      model.addAttribute("size", collections.size());
       model.addAttribute("records", JSONArray.toJSONString(collections));
       model.addAttribute("paramValue",paramValue);
       
@@ -160,28 +169,32 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapHospitalDto dto : records) {
-         Map record = new HashMap();
-         record.put("no", dto.getHosno());
-         record.put("name", dto.getHosname());
-         record.put("addr", dto.getHosaddr());
-         record.put("phone", dto.getHosphone());
-         record.put("mon", dto.getMon());
-         record.put("tue", dto.getTue());
-         record.put("wed", dto.getWed());
-         record.put("thu", dto.getThu());
-         record.put("fri", dto.getFri());
-         record.put("sat", dto.getSat());
-         record.put("sun", dto.getSun());
-         record.put("holiday", dto.getHoliday());
-         record.put("subname", dto.getSubname());
-         record.put("pid", dto.getPid());
-         record.put("lunch", dto.getLunch());
-         record.put("website", dto.getPwebsite());
-         
-         collections.add(record);
+    	 if(dto.getHoslat() != null) {
+		     Map record = new HashMap();
+		     record.put("no", dto.getHosno());
+		     record.put("name", dto.getHosname());
+		     record.put("addr", dto.getHosaddr());
+		     record.put("phone", dto.getHosphone());
+		     record.put("mon", dto.getMon());
+		     record.put("tue", dto.getTue());
+		     record.put("wed", dto.getWed());
+		     record.put("thu", dto.getThu());
+		     record.put("fri", dto.getFri());
+		     record.put("sat", dto.getSat());
+		     record.put("sun", dto.getSun());
+		     record.put("holiday", dto.getHoliday());
+		     record.put("subname", dto.getSubname());
+		     record.put("pid", dto.getPid());
+		     record.put("lunch", dto.getLunch());
+		     record.put("website", dto.getPwebsite());
+		     record.put("lat", dto.getHoslat());
+		     record.put("lng", dto.getHoslng());
+		     collections.add(record);
+    	 }
       }
       
-      
+     
+      model.addAttribute("size", collections.size());
       model.addAttribute("records", JSONArray.toJSONString(collections));
       model.addAttribute("subname", subname);
       model.addAttribute("hosname", hosname);
@@ -299,28 +312,29 @@ public class MapController {
       
       List<Map> collections = new Vector<Map>();
       for(MapHospitalDto dto : records) {
-         Map record = new HashMap();
-         record.put("no", dto.getHosno());
-         record.put("name", dto.getHosname());
-         record.put("addr", dto.getHosaddr());
-         record.put("phone", dto.getHosphone());
-         record.put("mon", dto.getMon());
-         record.put("tue", dto.getTue());
-         record.put("wed", dto.getWed());
-         record.put("thu", dto.getThu());
-         record.put("fri", dto.getFri());
-         record.put("sat", dto.getSat());
-         record.put("sun", dto.getSun());
-         record.put("holiday", dto.getHoliday());
-         record.put("subname", subname);
-         record.put("pid", dto.getPid());
-         record.put("lunch", dto.getLunch());
-         record.put("website", dto.getPwebsite());
-         
-         collections.add(record);
+    	  if(dto.getHoslat() != null) {
+	         Map record = new HashMap();
+	         record.put("no", dto.getHosno());
+	         record.put("name", dto.getHosname());
+	         record.put("addr", dto.getHosaddr());
+	         record.put("phone", dto.getHosphone());
+	         record.put("mon", dto.getMon());
+	         record.put("tue", dto.getTue());
+	         record.put("wed", dto.getWed());
+	         record.put("thu", dto.getThu());
+	         record.put("fri", dto.getFri());
+	         record.put("sat", dto.getSat());
+	         record.put("sun", dto.getSun());
+	         record.put("holiday", dto.getHoliday());
+	         record.put("subname", subname);
+	         record.put("pid", dto.getPid());
+	         record.put("lunch", dto.getLunch());
+	         record.put("website", dto.getPwebsite());
+	         record.put("lat", dto.getHoslat());
+	         record.put("lng", dto.getHoslng());
+	         collections.add(record);
+    	  }
       }
-      
-      System.out.println(records.size());
       
       return JSONArray.toJSONString(collections);
    }
@@ -330,10 +344,6 @@ public class MapController {
    @RequestMapping(value="/general/reservation/reservationAndroid.do", produces="text/plain; charset=UTF-8")
    public String reservationAndroid(@RequestParam Map map, GenmemberDto dto) throws Exception {
       
-      System.out.println(map.get("genid"));
-      System.out.println(map.get("hosno"));
-      System.out.println(map.get("pid"));
-      
       dto.setGenid(map.get("genid").toString());
       
       MapHospitalDto hosRecord = serviceHOS.selectOne(map);
@@ -350,8 +360,6 @@ public class MapController {
       
       List<Map> list = new Vector<Map>();
       list.add(record);
-      
-      System.out.println("리턴:"+JSONArray.toJSONString(list));
       
       return JSONArray.toJSONString(list);
    }
@@ -361,10 +369,6 @@ public class MapController {
    @RequestMapping(value="/general/reservation/receptionAndroid.do", produces="text/plain; charset=UTF-8")
    public String receptionAndroid(HttpSession session, Model model, @RequestParam Map map, GenmemberDto dto) throws Exception {
       
-      System.out.println(map.get("genid"));
-      System.out.println(map.get("hosno"));
-      System.out.println(map.get("pid"));
-      
       dto.setGenid(map.get("genid").toString());
       
       MapHospitalDto hosRecord = serviceHOS.selectOne(map);
@@ -382,27 +386,25 @@ public class MapController {
       List<Map> list = new Vector<Map>();
       list.add(record);
       
-      System.out.println("리턴:"+JSONArray.toJSONString(list));
-      
       return JSONArray.toJSONString(list);
    }
    
-   //예약 처리
+   // [예약 처리]
    @ResponseBody
    @RequestMapping(value="/general/receipt/ReservationAndroid.do", produces="text/plain; charset=UTF-8")
    public void reservation(@RequestParam Map map)throws Exception{
       
-      map.put("genid", "test");
+      map.put("genid", map.get("genid").toString());
       serviceRES.reservationInset(map);
       
    }       
    
-   //접수 처리
+   // [접수 처리]
    @ResponseBody
    @RequestMapping(value="/general/receipt/ReceptionAndroid.do", produces="text/plain; charset=UTF-8")
    public void receiption(@RequestParam Map map)throws Exception{
       
-      map.put("genid", "test");
+      map.put("genid", map.get("genid").toString());
       map.put("recdate", new SimpleDateFormat("yyyy-MM-dd kk:mm").format(new Date()));
       
       serviceRES.receiptInsert(map);

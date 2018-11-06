@@ -17,11 +17,13 @@
 		<result property="phfri" column="phfri"/>
 		<result property="phsat" column="phsat"/>
 		<result property="phsun" column="phsun"/>
+		<result property="phlat" column="phlat"/>
+		<result property="phlng" column="phlng"/>
 	</resultMap>
 	<!-- 쿼리 작성 -->
 	<select id="PharmacyList" parameterType="java.util.Map" resultType="MapPharmacyDto">
 		<if test="address != null">
-		SELECT * FROM pharmacy WHERE phaddr LIKE '%' || #{address} || '%' 
+		SELECT * FROM pharmacy WHERE phaddr LIKE '%' || #{address} || '%'
 		</if>
 		<if test="phname != null">
 		SELECT * FROM pharmacy WHERE phname LIKE '%' || #{phname} || '%'
