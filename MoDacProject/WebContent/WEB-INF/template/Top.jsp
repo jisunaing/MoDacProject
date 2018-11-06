@@ -70,7 +70,7 @@
                   문의
                </a>
                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownCategoryMenu">
-                  <li><a href="<c:url value='/general/qna/qnahealth/healthQnaWrite.do'/>">병원에증상문의</a></li>
+                  <li><a href="<c:url value='/general/qna/qnahealth/healthQnaList.do'/>">병원에증상문의</a></li>
                </ul>
             </li>
 

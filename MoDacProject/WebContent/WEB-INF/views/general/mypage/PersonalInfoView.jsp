@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
 
 <title>개인정보 보기</title>
 <style>
@@ -80,7 +81,11 @@ tr th{
 }
 </style>
 <!-- body 시작 -->
-<img src="<c:url value='/Images/plasticheart.jpg'/>" id="toppic"/>
+<div class="jumbotron jumbotron-billboard" style="height: 300px">
+  <div class="img">
+	  <img src="<c:url value='/Images/plasticheart.jpg'/>" style="min-height:700px; height: auto;width:100%;margin-top:-200px" id="toppic"/>
+  </div>
+</div>
 <div class="container" id="dv">
 	 <div class="panel panel-default" style="width: 90%">
 	  <div class="panel-body">  
@@ -107,7 +112,7 @@ tr th{
 		  			비밀번호
 		  		</th>
 		  		<td>
-		  			${personalinfo.pwd}   
+		  			<button class="btn btn-primary" type="submit">비밀번호 변경하기</button>
 		  		</td>
 		  	</tr>
 		  	<tr>

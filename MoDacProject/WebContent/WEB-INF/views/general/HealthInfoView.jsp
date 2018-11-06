@@ -51,7 +51,7 @@
 <div class="container">
 	<!-- 카테고리상세 -->
 	<div class="jumbotron jumbotron-billboard" style="height: 300px;">
-	  <div class="img">
+	  <div class="img" >
   	  		${record.image }
 	  </div>
 	    <div class="container">

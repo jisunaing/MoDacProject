@@ -58,9 +58,7 @@
    });          
 </script>
 <style>
-	#img_resize{
-	padding-top: 15px;
-	}
+	
 </style>
 </head>
 
@@ -82,7 +80,7 @@
 <!--                 <div class="crs-screen-item-content"><h1 style="font-family:Black Han Sans;">MoDacProject&<span style="color:red">♥</span></h1></div> -->
               </div>
               <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg2.jpg'/>')">
-                <div class="crs-screen-item-content"><h1>Lorem...</h1></div>
+                <div class="crs-screen-item-content"><h1>${sessionScope.genid }</h1></div>
               </div>
                  <div class="parallax crs-screen-item" style="background-image: url('<c:url value='/Images/healthimg1.jpg'/>')">
                 <div class="crs-screen-item-content "><h1 style="font-family: ''">Lorem...</h1></div>
@@ -121,7 +119,7 @@
 		      </c:if>
 		              <div class="col-md-4">
 		                <div class="thumbnail">
-		                  <a style="padding-top: 20px"href="<c:url value='/general/HealthInfoList.do?categno=${record.categno }'/>" target="_blank">
+		                  <a href="<c:url value='/general/HealthInfoList.do?categno=${record.categno }'/>" target="_blank">
 							${record.categimage }
 		                    <div class="caption">                 
 		                       <span class="imgcpation">${record.categname }</span>

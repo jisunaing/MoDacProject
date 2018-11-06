@@ -145,24 +145,26 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     
     .modal-footer{margin-top: 290px; }
 
-    h1{
+    h2{
     margin: 5px 0px 45px 0px;
     }
- 
 </style>
 
-  	
   </head>
   <body>
-  	<div class="jumbotron jumbotron-billboard" style="height: 500px;">
+  	<div class="jumbotron jumbotron-billboard" style="height: 300px;">
 	  <div class="img">
-	  	<img style="opacity: 100" src="<c:url value='/Images/plasticheart.jpg'/>" />
+	  	<img style="width:100%;height:auto;opacity: 100" src="<c:url value='/Images/plasticheart.jpg'/>" />
+	  </div>
+	  <div class="container">
+	  	<div class="row">
+	  		<h2 style="text-align: center;">제휴 신청<small> 병원 제휴</small></h2>
+	  	</div>
 	  </div>
 	</div>
   	<div class="container" id="dv">
 			<div class="row">
 				<div class="col-md-12">
-				 <h1>제휴 문의<small> 병원 제휴</small></h1>
 					
 					<form  id="partnerjoin" name="partnerjoin" class="form-horizontal" method="post" action="<c:url value='/partner/member/singup/joinrequest.do'/>" >
 				

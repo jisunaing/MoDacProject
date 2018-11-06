@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -53,18 +54,25 @@ form {
 
 </script>
 <!-- body 시작 -->
-<img src="<c:url value='/Images/feet.jpg'/>" id="toppic"/>
+<div class="jumbotron jumbotron-billboard" style="height: 500px">
+  <div class="img">
+	  <img src="<c:url value='/Images/family.jpg'/>" style="min-height:700px; height: auto;width:100%;margin-top:-200px" id="toppic"/>
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<h2 style="text-align: center">가족 정보</h2>
+   	          <br/>
+				<p style="text-align:center">
+					가족정보를 등록할 시 대리 예약/접수가 편리해집니다!<br /> 한번의 등록으로 간편하게 관리하세요.
+				</p>
+				<hr style="border: solid 1px black; width: 30%;" id="hr">
+            </div>
+        </div>
+    </div>
+</div>
+	
 <div class="container" id="dv">
-<!-- 	<div class="panel panel-default" style="width: 70%"> -->
-		<h2 style="text-align: center">가족 정보</h2>
-		<br />
-		<p class="secondary-heading" style="text-align: center">
-			가족정보를 등록할 시 대리 예약/접수가 편리해집니다!<br /> 한번의 등록으로 간편하게 관리하세요.
-		</p>
-		<br />
-		<hr style="border: solid 1px black; width: 30%;" id="hr">
-		<br /> <br />
-
 		<c:if test="${empty list}" var="isEmpty">
 			<tr>
 				<td colspan="4">등록된 가족이 없어요</td>
@@ -133,7 +141,6 @@ form {
 									<a class="btn btn-warning">삭제</a>
 									<a class="btn btn-warning" id="statebtn" href="<c:url value='/general/mypage/healthinfoWrite.do?fno=${record.fno}'/>">건강정보 등록</a>
 									<a class="btn btn-warning" id="statebtn" href="<c:url value='/general/mypage/healthstateEdit.do?fno=${record.fno}'/>">건강정보 수정</a>
-									
 								</div>
 								<br /> <br /> <br />
 								

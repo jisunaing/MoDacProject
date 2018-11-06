@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 일반사용자 예약 목록 페이지입니다.-->
 <!-- 병원: PARTNER_ID / 일반: USER_ID 로 아이디 저장 -->
+<link rel="stylesheet" href="<c:url value='/css/jumbo.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/bootstrap-table-expandable.css'/>">
 <script src="<c:url value='/js/bootstrap-table-expandable.js'/>"></script>
 <script>
@@ -53,17 +54,21 @@ table {
 </style>
 <!-- body 시작 -->
 <!-- 가운데 정렬을 위한 DIV -->
-<img src="<c:url value='/Images/reservation.jpg'/>" id="toppic"/>
+<div class="jumbotron jumbotron-billboard" style="height: 400px">
+  <div class="img">
+	  <img src="<c:url value='/Images/reservation.jpg'/>" style="min-height:700px; height: auto;width:100%;margin-top:-200px" id="toppic"/>
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<h2 style="text-align: center">예약 및 접수 목록</h2>
+   	          <br/>
+				<hr style="border: solid 1px black; width: 20%;" id="hr">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container" id="dv">
-<!-- 부트스트랩 점보트론 시작 -->
-	<div  style="width: 100%;text-align: center">
-		<h1 class="display-3" style="padding-top:5px">예약 및 접수 목록</h1>
-		<br>
-		<hr id="hr">
-		<br>
-		<br><br>
-	</div>
-	<!-- 부트스트랩 점보트론 끝-->
 	<div class="row" >
 				<!-- 가운데 정렬을 위한 DIV -->
 				<!-- 가운데 정렬 시작 -->
