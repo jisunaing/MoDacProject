@@ -87,8 +87,6 @@ tr th{
   </div>
 </div>
 <div class="container" id="dv">
-	 <div class="panel panel-default" style="width: 90%">
-	  <div class="panel-body">  
 		 
 	  	<div class="page-header text-center">
 			<h2>
@@ -128,7 +126,12 @@ tr th{
 		  			성별
 		  		</th>
 		  		<td>
-		  			${personalinfo.gender}
+		  			<c:if test="${personalinfo.gender eq 'F'}" var="isFemale">
+		  				여자
+		  			</c:if>
+		  			<c:if test="${!isFemale}">
+		  				남자
+		  			</c:if>
 		  		</td>
 		  	</tr>
 		  	<tr>
@@ -151,13 +154,38 @@ tr th{
 		  <br/><br/>
 		  <div class="row">
 		  	<a class="btn btn-warning col-sm-offset-4" href="<c:url value='/general/mypage/personalinfoEdit.do'/>" >수정하기</a>
-		  	<a class="btn btn-warning" href="<c:url value='/general/mypage/personalinfoWithdraw.do'/>" >탈퇴하기</a>
+		  	<a class="btn btn-warning" data-toggle="modal" data-target="#basicModal" href="<c:url value='/general/mypage/personalinfoWithdraw.do'/>" >탈퇴하기</a>
 		  </div>
+		  
+		  <!-- 모달 창 -->
+          <div class="modal fade" id="basicModal">
+             <div class="modal-dialog">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <!-- 모달닫기:data-dismiss="modal" -->
+                      <button class="close" data-dismiss="modal">
+                         <span aria-hidden="true">&times;</span>
+                      </button>
+                   
+                   </div>
+                   <div class="modal-body" style="text-align: center;" >
+
+			                      탈퇴하시면 그동안 작성하신 모든 내역들이 삭제됩니다.<br/>
+			          	정말로 탈퇴하시겠습니까?
+
+                   </div>
+                   <div class="modal-footer">
+                      <button type="button" id="okbutton" class="btn btn-primary" >확 인</button>
+                      <button type="button" id="cancelbutton" class="btn btn-primary" data-dismiss="modal">취 소</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- 모달 창 끝 -->
 		  <br/><br/><br/>
 		</div>
 	   	</div>
-	</div> 
-</div>
+	
 <!-- container -->
 
 <!-- body 끝 -->

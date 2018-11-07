@@ -119,13 +119,13 @@ public class PartnerController {
 		if(!flagReservation){
 			//안의 값이 null일시
 			if(result==null){
-				System.out.println("최초 실행시 값을 0으로 넣어줌");
+				//System.out.println("최초 실행시 값을 0으로 넣어줌");
 				resultConfirmReservation = "0";
 				flagReservation=true;
 			}
 			//안의 값이 있을시
 			else{
-				System.out.println("최초 실행이 아닐시 result값을 넣어줌");
+				//System.out.println("최초 실행이 아닐시 result값을 넣어줌");
 				resultConfirmReservation = result.toString();
 				flagReservation=true;
 			}

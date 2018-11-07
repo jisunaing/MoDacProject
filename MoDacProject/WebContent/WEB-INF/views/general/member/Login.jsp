@@ -106,7 +106,7 @@ href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e7632526
 			</form>
 				<div class="col-sm-offset-3" style="margin-top: 13px;">
 				
-					<a href="<c:url value='/general/member/signup/gen_signup_write.do'/>" style="color: black">
+					<a href="<c:url value='/general/member/signup/genSignupWrite.do'/>" style="color: black">
 						회원가입
 					</a>	
 					&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -116,9 +116,9 @@ href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e7632526
 					</a>				
 				</div>
 				<div >
-				
-				<a href="${url}"><img style="padding-left: 70px; padding-top:10px;"height="70" width="350px"src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a>
-			</div>
+					<a href="${url}"><img style="padding-left: 70px; padding-top:10px;"height="70" width="350px"src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" height="60"></a>		
+				</div>
+
 		</div>
 		<!-- // Sign Up for Free -->
 		</sec:authorize>

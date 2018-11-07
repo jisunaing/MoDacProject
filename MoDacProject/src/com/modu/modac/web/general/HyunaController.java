@@ -21,6 +21,7 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +46,10 @@ import com.modu.modac.service.impl.NaverLoginBO;
 
 @Controller
 public class HyunaController {	
+	//알람용- 리스트에서 마지막 값 저장용
+	private String comparepid="";
+	String resultConfirm="";
+	boolean flag=false;
 	
 	@Resource(name="generalService")
 	private GeneralService generalService;
@@ -242,6 +247,17 @@ public class HyunaController {
 		
 		return "forward:/general/mypage/familyinfoview.do";
 	}
+	//가족 개인 정보 수정
+	@RequestMapping("/general/mypage/familyinfoEdit.do")
+	public String familyInfoEdit(@RequestParam Map map,HttpSession session) throws Exception {
+		
+		map.put("genid", session.getAttribute("genid"));
+		map.put("fbirthdate", map.get("year")+"/"+map.get("month")+"/"+map.get("day"));
+		genfamilyService.insert(map);
+		
+		
+		return "/general/mypage/familyinfoEdit.tiles";
+	}
 	//건강 정보
 	@RequestMapping(value="/general/mypage/healthinfoWrite.do",method=RequestMethod.GET)
 	public String healthinfoWriteG(@RequestParam Map map,Model model) throws Exception {
@@ -296,13 +312,65 @@ public class HyunaController {
 		
 		return "general/mypage/FamilyInfoEdit.tiles";
 	}
+	//건강문의 알람!!!
+	@ResponseBody
+	@RequestMapping(value="/general/qna/qnahealth/healthQnaAlarm.do",produces="text/html; charset=UTF-8")
+	public String healthQnAAlarm(Map map,HttpSession session) throws Exception {
+		String pid = session.getAttribute("pid").toString();
+		if(comparepid!=pid){
+			resultConfirm="";
+			flag=false;
+			comparepid=pid;
+		}
+		//}
+		Map result = pngqnaService.selectLast(map);
+		System.out.println(result);
+		System.out.println(result.get("QNO"));
+		System.out.println(pid);
+		if(!flag) {
+			if(result==null) {
+				resultConfirm ="0";
+				flag=true;
+			}
+			else {
+				resultConfirm = result.get("QNO").toString();
+				flag=true;
+			}
+		}
+		else {
+			if(result!=null) {
+				if(resultConfirm.equals("0")) {
+					resultConfirm = result.get("QNO").toString();
+					return result.get("TITLE").toString()+"\r\n"+result.get("SUBNAME").toString();
+				}
+				else {
+					if(result.get("QNO").toString().equals(resultConfirm)) {
+						return "";
+					}
+					else {
+						resultConfirm = result.get("QNO").toString();
+						return result.get("TITLE").toString()+"\r\n"+result.get("SUBNAME").toString();
+					}
+				}
+			}
+			return "";
+		}
+		return "";
+	
+	}
 	//건강문의목록
 	@RequestMapping("/general/qna/qnahealth/healthQnaList.do")
-	public String healthQnAList(Map map,Model model) throws Exception {
+	public String healthQnAList(Map map,Model model,HttpSession session) throws Exception {
+		if(session.getAttribute("pid")!=null) {
+			return "forward:/partner/partnerQnA/partner_QnAList.do";
+		}
+		
+		map.put("genid", session.getAttribute("genid"));
 		List list = healthquestionService.selectList(map);
 		model.addAttribute("list", list);
 		List sublist= healthquestionService.selectListHos(map);
 		model.addAttribute("sublist", sublist);
+		
 		return "general/mypage/HealthQnAList.tiles";
 	}
 	//건강문의 폼 이동 
@@ -315,18 +383,46 @@ public class HyunaController {
 	public String healthQnAWrite(@RequestParam Map map,Model model,HttpSession session) throws Exception {
 		map.put("genid",session.getAttribute("genid"));
 		healthquestionService.insert(map);
+		return "forward:/general/qna/qnahealth/healthQnaList.do";
+	}
+	//건강문의 방 삭제하기
+	@RequestMapping("/general/qna/qnahealth/healthQnaDelete.do")
+	public String healthQnADelete(@RequestParam Map map,Model model,HttpSession session) throws Exception {
+		
+		int successFail = healthquestionService.delete(map);
+		model.addAttribute("successFail", successFail);
 		
 		return "forward:/general/qna/qnahealth/healthQnaList.do";
 	}
-	//건강문의 상세보기
-	@RequestMapping("/general/qna/qnahealth/healthQnaView.do")
-	public String health_QnA_View(@RequestParam Map map,Model model) throws Exception {
+	
+	//건강문의 방 저장하기
+	@ResponseBody
+	@RequestMapping(value="/general/qna/qnahealth/healthQnaSave.do",produces="text/html; charset=UTF-8")
+	public void healthQnASave(@RequestParam Map map,HttpSession session) throws Exception {
+		map.put("genid",session.getAttribute("genid"));
+		healthquestionService.update(map);
 		
-		HealthquestionDto dto = healthquestionService.selectOne(map);
-		model.addAttribute("healthquestion",dto);
-		
-		return "general/mypage/HealthQnAView.tiles";
 	}
+	//건강문의 대화내용 꺼내오기
+	@ResponseBody
+	@RequestMapping(value="/general/qna/qnahealth/healthQnaPastChat.do",produces="text/html; charset=UTF-8")
+	public String healthQnAPastChat(@RequestParam Map map,HttpSession session) throws Exception {
+		map.put("genid",session.getAttribute("genid"));
+		HealthquestionDto dto = healthquestionService.selectOne(map);
+		map.put("qcontent", dto.getQcontent());
+		System.out.println(JSONObject.toJSONString(map));
+		return JSONObject.toJSONString(map);
+	}
+	//건강문의 채팅 내용 지우기
+	@RequestMapping("/general/qna/qnahealth/healthQnaDeleteSave.do")
+	public String healthQnADeleteSave(@RequestParam Map map,HttpSession session) throws Exception {
+		
+		map.put("qcontent", "");
+		healthquestionService.update(map);
+		
+		return "forward:/general/qna/qnahealth/healthQnaList.do";
+	}
+
 	//건강문의 채팅 페이지로
 	@ResponseBody
 	@RequestMapping(value="/general/qna/qnahealth/healthQnaChat.do",produces="text/html; charset=UTF-8")
@@ -351,6 +447,7 @@ public class HyunaController {
 		
 		map.put("title", dto.getTitle());
 		map.put("genid", dto.getGenid());
+		map.put("qcontent", dto.getQcontent());
 		System.out.println("dto:"+dto.getTitle());
 		
 		

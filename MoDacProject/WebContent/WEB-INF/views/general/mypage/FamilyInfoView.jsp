@@ -44,14 +44,14 @@ form {
 }
 </style>
 <script>
-	$(function(){
+	/* $(function(){
 		if(${!state eq null}){
 			$('#statebtn').text("건강정보 수정");
 		}
 		else
 			$('#statebtn').text("건강정보 등록");
 	});
-
+ */
 </script>
 <!-- body 시작 -->
 <div class="jumbotron jumbotron-billboard" style="height: 500px">
@@ -135,12 +135,16 @@ form {
 									</c:forEach> 
 								</table>
 								<br /> <br />
-								<div class="row col-sm-offset-3">
-									<a class="btn btn-warning"
-										href="<c:url value='/general/mypage/familyinfo_edit.do'/>">수정</a>
-									<a class="btn btn-warning">삭제</a>
-									<a class="btn btn-warning" id="statebtn" href="<c:url value='/general/mypage/healthinfoWrite.do?fno=${record.fno}'/>">건강정보 등록</a>
-									<a class="btn btn-warning" id="statebtn" href="<c:url value='/general/mypage/healthstateEdit.do?fno=${record.fno}'/>">건강정보 수정</a>
+								<div class="row col-sm-offset-1">
+									<a class="btn btn-warning" href="<c:url value='/general/mypage/familyinfoEdit.do'/>">가족 정보 수정</a>
+									<a class="btn btn-warning">가족 정보 삭제</a>
+									
+									<c:if test="${empty staterecord.bloodtype}" var="emptyrecord">
+										<a class="btn btn-warning" id="statebtn" href="<c:url value='/general/mypage/healthinfoWrite.do?fno=${record.fno}'/>">건강정보 등록</a>
+									</c:if>
+									<c:if test="${not emptyrecord}">
+										<a class="btn btn-warning" id="statebtn" href="<c:url value='/general/mypage/healthstateEdit.do?fno=${record.fno}'/>">건강정보 수정</a>
+									</c:if>
 								</div>
 								<br /> <br /> <br />
 								

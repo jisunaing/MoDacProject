@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,8 +43,9 @@ public class PartnerNGeneralQnAController {
 	//일반회원과 공유하는 문의 리스트
 	@RequestMapping("/partner/partnerQnA/partner_QnAList.do")
 	public String partnerNadminQnAList(Model model,
-			@ModelAttribute("pid")String pid,
+			@ModelAttribute("pid") String pid,
 			HttpServletRequest req,
+			HttpSession session,
 			@RequestParam Map map,
 			@RequestParam(required=false,defaultValue="1") int nowPage
 			) throws Exception{
@@ -78,6 +80,9 @@ public class PartnerNGeneralQnAController {
 		
 			
 		List<PartnerNGeneralQNADto> list  = pNgService.selectList(map);
+		//알림을 위해 리스트의 맨 위 가져와서 세션에 저장시켜두기
+		Map selectlast = pNgService.selectLast(map);
+		session.setAttribute("selectlast", selectlast.get("qno"));
 		model.addAttribute("list", list);
 		/*if(map.get("searchWord") !=null) {
 			
