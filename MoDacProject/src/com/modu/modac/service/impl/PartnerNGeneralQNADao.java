@@ -65,6 +65,11 @@ public class PartnerNGeneralQNADao implements PartnerNGeneralQNAService{
 		return template.selectOne("PartnerNGeneralQnAHosname", map);
 	}
 
+	@Override
+	public Map selectLast(Map map) {
+		return template.selectOne("PartnerNGeneralQnASelectLast", map);
+	}
+
 
 	
 	
