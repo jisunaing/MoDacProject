@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value='/css/masongram.min.css'/>">
 <!--아이콘때문에 필요 -->
 <link rel="stylesheet"
@@ -23,12 +23,9 @@
 	box-sizing: border-box;
 }
 #hr{
-	margin-left: 40%;
+	margin-left: 40%; 
 	border: solid 1px black; 
 	width: 20%
-}
-body{
-	padding-top:0px
 }
 </style>
 <script>
@@ -42,19 +39,24 @@ $(function(){
 
 </script>
 <!-- body 시작 -->
-<br/>
-<br/>
-<img src="<c:url value='/Images/plasticheart.jpg'/>" id="toppic"/>
+<div class="jumbotron jumbotron-billboard" style="height: 500px">
+  <div class="img">
+	  <img src="<c:url value='/Images/plasticheart.jpg'/>" style="min-height:700px; height: auto;width:100%;margin-top:-200px" id="toppic"/>
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<h2 style="text-align: center">${genid}님의 <span style="color:gray;font-size: 40px"> MyPage</span></h2>
+   	          <br/>
+				<p style="text-align:center">
+					회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.
+				</p>
+				<hr style="border: solid 1px black; width: 20%;" id="hr">
+            </div>
+        </div>
+    </div>
+</div>
 <div id="dv">
-	<div class="top" style="text-align: center">
-		<div style="font-size: 50px; height: 100px;padding-top:45px" class="row">
-			${genid}님의<span style="color:gray;font-size: 40px"> MyPage</span> 
-		</div>
-		<p>회원님의 정보들을 한눈에 확인 할 수 있는 페이지 입니다.</p>
-		<br/>
-		<hr id="hr">
-		<br/>
-	</div>
 	<div class="masongram-container" style="position: relative; height: 600px;">
 		<!-- 개인정보 -->
 		<div tabindex="0" class="masongram-image-container masongram-image-size-standard_resolution"

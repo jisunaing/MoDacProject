@@ -15,28 +15,28 @@
 		width: 100%;
 	}
 </style>
+<!-- 카테고리상세 -->
+<div class="jumbotron jumbotron-billboard" style="height: 500px;">
+  <div class="img">
+  	${record.categimage }
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <h2 style="padding-left:20%">${requestScope.categname}</h2>
+   	          <br/>
+				<p style="padding-left:20%">
+					${record.explanation }	                
+				</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ~카테고리상세 -->
 <!-- body 시작 -->
 <div class="container" style="margin-top: -40px;">
 	<br/>
 	<br/>
-	<!-- 카테고리상세 -->
-	<div class="jumbotron jumbotron-billboard" style="height: 500px;">
-	  <div class="img">
-	  	${record.categimage }
-	  </div>
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-lg-12">
-	              <h2 style="padding-left:20%">${requestScope.categname}</h2>
-    	          <br/>
-					<p style="padding-left:20%">
-						${record.explanation }	                
-					</p>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	<!-- ~카테고리상세 -->
 	
 	<!-- 카테고리 하위 리스트 -->
 	<div class="row">

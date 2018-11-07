@@ -13,6 +13,21 @@ public class MapPharmacyDto {
 	private String phfri;
 	private String phsat;
 	private String phsun;
+	private String phlat;
+	private String phlng;
+	
+	public String getPhlat() {
+		return phlat;
+	}
+	public void setPhlat(String phlat) {
+		this.phlat = phlat;
+	}
+	public String getPhlng() {
+		return phlng;
+	}
+	public void setPhlng(String phlng) {
+		this.phlng = phlng;
+	}
 	public String getPhno() {
 		return phno;
 	}

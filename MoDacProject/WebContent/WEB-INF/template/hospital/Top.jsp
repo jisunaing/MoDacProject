@@ -104,7 +104,7 @@ function successAjax2(data,target){
 						<li class="dropdown user user-menu">
 						<a href="#"	class="dropdown-toggle" data-toggle="dropdown">
 							<img src="<c:url value="/Images/doctor.jpg"/>" class="user-image" alt="User Image">
-							<span class="hidden-sm" style="font-weight: bolder;font-size: 2em">${pid } </span>님 환영합니다
+							<span style="font-weight: bolder;font-size: 2em">${sessionScope.pid } </span>님 환영합니다
 						</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->

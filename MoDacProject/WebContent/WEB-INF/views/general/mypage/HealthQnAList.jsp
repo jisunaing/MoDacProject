@@ -37,11 +37,12 @@
 	<div class="row">
 		<div class="text-center">
 			<div class="container">
+			<%-- 
 				<a id="qna"
 					href="<c:url value='/general/qna/qnahealth/healthQnaWrite.do'/>"
 					class="col-md-offset-10  btn btn-success"
 					style="width: 120px; color: black">문의하기</a>
-
+			 --%>	
 
 				<button type="button" class="btn btn-primary" data-toggle="modal"
 					data-target="#exampleModal">문의하기</button>

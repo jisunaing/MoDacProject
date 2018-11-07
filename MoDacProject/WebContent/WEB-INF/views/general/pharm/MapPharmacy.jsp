@@ -99,7 +99,10 @@
 </div>
 
 <div class="row1">
-	<h4># 검색 키워드 : ${requestScope.paramValue}</h4>
+	<h4>
+		<strong>#</strong> 검색 키워드 : <strong>${requestScope.paramValue}</strong><br/>
+		<strong>#</strong> 검색 결과 &nbsp;&nbsp;: 총 <strong>${requestScope.size}개</strong>의 약국이 검색되었습니다. 
+	</h4>
 </div>
 <div class="row2">
 	<div id="map"></div>
@@ -108,55 +111,10 @@
 <!-- KAKAO MAP API -->
 <script>
 	
-	function wrapWindowByMask() {
-		
-	    var maskHeight = $(document).height(); 
-	    var maskWidth = window.document.body.clientWidth;
-	     
-	    var mask = "<div id='mask' style='position:absolute; z-index:9000; background-color:#000000; display:none; left:0; top:0;'></div>";
-	    var loadingImg = '';
-	     
-	    loadingImg += "<div id='loadingImg' style='position:absolute; left:45%; top:60%; display:none; z-index:10000;'>";
-	    loadingImg += "<img src='/MoDacProject/Images/loading.gif'/>";
-	    loadingImg += "<h4 style='color:#ffffff'>데이터를 불러오는 중...</h4>";
-	    loadingImg += "</div>";  
-	 
-	    //화면에 레이어 추가
-	    $('body').append(mask).append(loadingImg)
-	       
-	    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-	    $('#mask').css({
-	            'width' : maskWidth,
-	            'height': maskHeight,
-	            'opacity' : '0.3'	
-	    }); 
-	 
-	    //마스크 표시
-	    $('#mask').show();   
-	 
-	    //로딩중 이미지 표시
-	    $('#loadingImg').show();
-	}
 	
-	wrapWindowByMask();
-	
-	function closeWindowByMask() {
-	    $('#mask, #loadingImg').hide();
-	    $('#mask, #loadingImg').remove();  
-	}
 
 	// [컨트롤러로 부터 데이터 받아 세팅]
 	var datas = JSON.parse('${records}');
-	var editDatas = [];
-	
-	if(datas.length == 0) {
-		closeWindowByMask();
-	}
-	
-	var addrs = [];
-	for(var i = 0; i < datas.length; i++) {
-		addrs[i] = datas[i]['addr'];
-	}
 	
 	// [지도 생성]
 	var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
@@ -171,7 +129,18 @@
 	// 클러스터 마커를 클릭했을 때 클릭된 클러스터 마커의 위치를 기준으로 지도를 1레벨씩 확대합니다
 	// 데이터에서 좌표 값을 가지고 마커를 표시합니다
 	// 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다.
-
+	
+	//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+	var mapTypeControl = new daum.maps.MapTypeControl();
+	
+	// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+	// daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+	map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+	
+	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+	var zoomControl = new daum.maps.ZoomControl();
+	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+	
 	var clusterer = new daum.maps.MarkerClusterer({
 		map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
 		averageCenter : true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
@@ -179,45 +148,21 @@
 		disableClickZoom : true	// 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
 	});
 	
-	var count = 0;
-	var dataIndex = 0;
-	var posArray = [];
-	var geocoder = new daum.maps.services.Geocoder();
-	
-	$.each(addrs,function(index,value){
-		geocoder.addressSearch(value, function(result, status) {
-	    	
-	        if(status === daum.maps.services.Status.OK) {
-	            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-	            editDatas[dataIndex] = datas[index];
-	            posArray[dataIndex] = coords;
-	            dataIndex++;
-	        }  
-	        
-	        count++;
-	        
-	        if(count == addrs.length){
-	        	doNext(posArray);
-	        }
-	    });
-	})
-	
 	var imageSrc = '<c:url value="/Images/MarkerPharmacy.png"/>', // 마커이미지의 주소입니다    
    		imageSize = new daum.maps.Size(55, 60); // 마커이미지의 크기입니다
      
 	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 	var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
 	
-	function doNext(posArray) {
 		
 		var markers = [];
 		
-		for(var i = 0; i < posArray.length; i++) {
+		for(var i = 0; i < datas.length; i++) {
 		   markers[i] = new daum.maps.Marker({
                 map: map,
                 image: markerImage,
-                position: posArray[i],
-                zIndex: editDatas[i]['no']
+                position: new daum.maps.LatLng(datas[i]['lat'],datas[i]['lng']),
+                zIndex: datas[i]['no']
            });
 		}
 		
@@ -240,9 +185,9 @@
 		
 		// [커스텀 오버레이]
 		var customOverlay = [];
-		for (var i = 0; i < posArray.length; i++) {
+		for (var i = 0; i < datas.length; i++) {
 			customOverlay[i] = new daum.maps.CustomOverlay({
-				position : posArray[i]
+				position : new daum.maps.LatLng(datas[i]['lat'],datas[i]['lng'])
 			});
 
 			daum.maps.event.addListener(markers[i], 'click', openOverlayListener(map, markers[i]));
@@ -273,17 +218,17 @@
 						var editxPos = xPos + (northXpos-xPos)/2;
 						map.setCenter(new daum.maps.LatLng(editxPos, yPos));
 						
-						var name = editDatas[i]['name'];
-						var addr = editDatas[i]['addr'];
-						var phone = editDatas[i]['phone'];
-						var mon = editDatas[i]['mon'];
-						var tue = editDatas[i]['tue'];
-						var wed = editDatas[i]['wed'];
-						var thu = editDatas[i]['thu'];
-						var fri = editDatas[i]['fri'];
-						var sat = editDatas[i]['sat'];
-						var sun = editDatas[i]['sun'];
-						var holiday = editDatas[i]['holiday'];
+						var name = datas[i]['name'];
+						var addr = datas[i]['addr'];
+						var phone = datas[i]['phone'];
+						var mon = datas[i]['mon'];
+						var tue = datas[i]['tue'];
+						var wed = datas[i]['wed'];
+						var thu = datas[i]['thu'];
+						var fri = datas[i]['fri'];
+						var sat = datas[i]['sat'];
+						var sun = datas[i]['sun'];
+						var holiday = datas[i]['holiday'];
 						
 						var content =
 							'<div class="wrap">' + 
@@ -334,9 +279,6 @@
 					}
 				}
 			}
-		};
-		
-		closeWindowByMask();
 		
 	};
 	

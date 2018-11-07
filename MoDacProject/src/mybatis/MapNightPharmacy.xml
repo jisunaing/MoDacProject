@@ -17,9 +17,11 @@
 		<result property="nphfri" column="nphfri"/>
 		<result property="nphsat" column="nphsat"/>
 		<result property="nphsun" column="nphsun"/>
+		<result property="nphlat" column="nphlat"/>
+		<result property="nphlng" column="nphlng"/>
 	</resultMap>
 	<!-- 쿼리 작성 -->
 	<select id="NightPharmacyList" parameterType="java.util.Map" resultType="MapNightPharmacyDto">
-		SELECT * FROM nightpharmacy  
+		SELECT * FROM nightpharmacy where nphno &lt; 100
 	</select>
 </mapper>

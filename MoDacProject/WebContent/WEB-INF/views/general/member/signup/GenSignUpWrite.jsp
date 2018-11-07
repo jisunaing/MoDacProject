@@ -114,9 +114,17 @@ form{
 </style>
 
 <!-- body 시작 -->
-<div class="jumbotron jumbotron-billboard" style="height: 500px;">
+<div class="jumbotron jumbotron-billboard" style="height: 400px;">
   <div class="img">
-	<img style="opacity: 100;width: auto;height: 100%" src="<c:url value='/Images/register.png'/>" />
+	<img style="opacity: 100;width: 150%;height: auto" src="<c:url value='/Images/register.png'/>" />
+  </div>
+  <div class="container">
+  	<div class="row" style="text-align: center;">
+		<h2>
+			회원가입 <small> 일반회원</small>
+		</h2>
+		<hr>
+  	</div>
   </div>
 </div>
  	
@@ -125,13 +133,6 @@ form{
 	
 	<div class="panel panel-default" style="width: 70%;">
 	  <div class="panel-body">
-	  	<div class="text-center">
-			<h2>
-				회원가입 <small> 일반회원</small>
-			</h2>
-			<hr>
-		</div>
-		<br/>
 	   		<form class="form-horizontal" id="frm" name="frm" action="<c:url value='/general/member/signup/genSignupProcess.do'/>" method="post">
 				<div class="form-group center-block">
 					<label class="col-sm-3 control-label">아이디</label>

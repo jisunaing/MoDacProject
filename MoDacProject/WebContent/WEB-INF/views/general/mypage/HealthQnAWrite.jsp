@@ -14,6 +14,23 @@ form {
 </style>
 
 <!-- body 시작 -->
+<div class="jumbotron jumbotron-billboard" style="height: 500px">
+  <div class="img">
+	  <img src="<c:url value='/Images/family.jpg'/>" style="min-height:700px; height: auto;width:100%;margin-top:-200px" id="toppic"/>
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<h2 style="text-align: center">가족 정보</h2>
+   	          <br/>
+				<p style="text-align:center">
+					가족정보를 등록할 시 대리 예약/접수가 편리해집니다!<br /> 한번의 등록으로 간편하게 관리하세요.
+				</p>
+				<hr style="border: solid 1px black; width: 30%;" id="hr">
+            </div>
+        </div>
+    </div>
+</div>
 
 <img src="<c:url value='/Images/plasticheart.jpg'/>" id="toppic"/>
 <div id="dv" class="container">
