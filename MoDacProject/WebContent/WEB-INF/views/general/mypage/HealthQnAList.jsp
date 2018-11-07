@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
+
 <style>
 #hr {
 	margin-left: 40%;
@@ -21,16 +23,27 @@
 
 
 <!-- body 시작 -->
-<img src="<c:url value='/Images/healthquestion.jpg'/>" id="toppic" />
+
+<div class="jumbotron jumbotron-billboard" style="height: 500px">
+  <div class="img">
+	<img src="<c:url value='/Images/healthquestion.jpg'/>" id="toppic" />
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+				<h2 style="text-align: center">증상문의하기</h2>
+   	          <br/>
+				<p style="text-align:center">
+					회원님과 제휴병원측만 확인 가능한 페이지 입니다.<br /> 회원님의 증상에 대해 의사선생님께 직접 질문을 남기는 곳입니다.
+					<br /> 언제든지 궁금한걸 물어보세요~				
+				</p>
+				<hr id="hr">
+            </div>
+        </div>
+    </div>
+</div>
+	
 <div class="container" id="dv">
-	<h2 style="text-align: center">증상문의하기</h2>
-	<br />
-	<p style="text-align: center;">
-		회원님과 제휴병원측만 확인 가능한 페이지 입니다.<br /> 회원님의 증상에 대해 의사선생님께 직접 질문을 남기는 곳입니다.
-		<br /> 언제든지 궁금한걸 물어보세요~
-	</p>
-	<br />
-	<hr id="hr">
 	<br /> <br />
 	<!-- row -->
 	<div class="row">
@@ -140,8 +153,6 @@
 					<!-- ajax로 들어감 -->
 					</div>
 				</div>
-
-
 
 				<div id="chatArea" class="row"
 					style="border: 2px solid rgba(43,104,167,0.85); overflow: auto; resize: none; width: 400px; height: 470px">
@@ -410,8 +421,6 @@ var chatSave = function(){
         		    //삭제
         		    console.log(url.replace("Chat", "Delete"));
     				location.replace(url.replace("Chat", "Delete"));				
-
-        		    
         		} else {
         		    //다른 의사선생님한테 문의하려고 내용 지우고 채팅방만 놔두기 
         			location.replace(url.replace("Chat", "DeleteSave"));

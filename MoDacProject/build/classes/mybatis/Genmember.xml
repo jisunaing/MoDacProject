@@ -18,8 +18,9 @@
 	<!-- 쿼리 작성 -->
 	<!-- 회원가입 -->
 	<insert id="genmemberInsert" parameterType="java.util.Map">
-		INSERT INTO genmember(genid,pwd,genname,birthdate,gender,email,addr,phone) 
-		VALUES(#{genid},#{pwd},#{genname},#{birthdate},#{gender},#{email},#{addr},#{phone})
+		INSERT
+		INTO genmember(genid,pwd,genname,birthdate,gender,email,addr,phone,enabled,authority) 
+		VALUES(#{genid},#{pwd},#{genname},#{birthdate},#{gender},#{email},#{addr},#{phone},1,'ROLE_USER')
 	</insert>
 	<!-- 로그인 -->
 	<select id="genmmemberIsMember" parameterType="java.util.Map" resultType="int">

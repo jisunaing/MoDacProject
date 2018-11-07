@@ -54,9 +54,6 @@ public class HomeController {
 		 /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
         
-        //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-        //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-//        System.out.println("네이버:" + naverAuthUrl);
         
         //네이버 
         model.addAttribute("url", naverAuthUrl);
@@ -105,36 +102,17 @@ public class HomeController {
 	public String logoutProcess(HttpSession session) throws Exception {
 		System.out.println("invalidate");
 		session.invalidate();
-//		SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false); 
 		return "/main.do";
 	}
-  //임의로 로그인 처리함
-   @RequestMapping("/home/loginProcess.do")
-   public String loginProcess(@RequestParam Map map, Model model,HttpSession session, Authentication auth) throws Exception {
-	   System.out.println("로그인프로세스");
 
-  /*
-		// spring security 적용 전
-		//일반사용자 로그인 처리 부분 시작
-		boolean ismember = generalService.isMember(map);
-		if(ismember) {
- 			model.addAllAttributes(map);
-			session.setAttribute("genid", map.get("genid"));
-			return "/main.do";
-		} else { 
-			model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
-			return "forward:/home/loginmain.do";
-		}
-   */
-		System.out.println("인증된 사용자 :"+auth.getPrincipal());
+	@RequestMapping("/home/loginProcess.do")
+   public String loginProcess(@RequestParam Map map, Model model,HttpSession session, Authentication auth) throws Exception {
 		UserDetails authenticated=(UserDetails)auth.getPrincipal();
-	   
-		System.out.println("아이디: "+authenticated.getUsername());
-		System.out.println("비밀번호: "+authenticated.getPassword()); //null
-		System.out.println("권한:"+authenticated.getAuthorities().toString());
+
 		if(authenticated.getUsername() != null) {
 			//스프링 씨큐리티 적용 후
 			map.put("genid",authenticated.getUsername());
+		
 			session.setAttribute("genid", map.get("genid"));
 			session.getAttribute("genid");
 			model.addAllAttributes(map);
@@ -146,66 +124,5 @@ public class HomeController {
 		
    }
 	
-/*		
-  		//임의로 로그인 처리함
-		@RequestMapping("/home/loginProcess.do")
-		public String loginProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {
-			//System.out.println(map.get("GENERAL").toString());
-			//System.out.println(map.get("PARTNER").toString());
-			
-			if(map.get("GENERAL")!=null) {
-				System.out.println("일반사용자로 들어옴");
-				//일반사용자 로그인 처리 부분 시작
-				boolean ismember = generalService.isMember(map);
-				if(ismember) {
-					model.addAllAttributes(map);
-					session.setAttribute("genid", map.get("genid"));
-					return "/index";
-				}
-				else {
-					model.addAttribute("loginError", "존재하지 않는 아이디/비밀번호 입니다");
-					return "forward:/home/loginmain.do";
-				}
-			}
-			if(map.get("PARTNER")!=null) {
-				System.out.println("병원사용자로 들어옴");
-				session.setAttribute("PARTNER_ID", "PARTNER");
-				//여기 맵에 ! 반드시 세션[병원아이디]를 넣어주세요
-				map.put("pid", "uesr");
-				//병원 차트를 가져오기 위한 부분
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-				Calendar cal = Calendar.getInstance();
-				List<Map> list;
-				list = chartService.dayList(map);
-				System.out.println(list);
-				if(list!=null) {
-					for(int i=0;i<list.size();i++) {
-						cal.setTime(dateFormat.parse(list.get(i).toString()));
-						switch (cal.get(Calendar.DAY_OF_WEEK)) {
-						case 1:	sun++;	break;
-						case 2:	mon++;	break;
-						case 3:	tue++;	break;
-						case 4:	wed++;	break;
-						case 5:	thu++;	break;
-						case 6:	fri++;	break;
-						case 7:	dat++;	break;
-						}//switch
-					}//for
-				}//if
-				//병원 차트를 가져오기 위한 부분
-				//병원 차트 요일별 저장하기
-				model.addAttribute("mon", mon);
-				model.addAttribute("tue", tue);
-				model.addAttribute("wed", wed);
-				model.addAttribute("thu", thu);
-				model.addAttribute("fri", fri);
-				model.addAttribute("dat", dat);
-				model.addAttribute("sun", sun);
-				
-				return "/partner/HospitalSystem";
-			}
-			return null;
-		}
-*/
 	
 }/////HomeController

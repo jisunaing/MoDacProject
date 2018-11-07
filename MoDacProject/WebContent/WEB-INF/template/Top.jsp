@@ -11,7 +11,7 @@
    }   
    .navbar-brand{
       padding-top: 0px;
-   }
+   }   
    .navbar-toggle{ 
       border:none;
    }
@@ -33,16 +33,16 @@
       $('.nav').css('padding', '20px');
       $('.navmenus').css('color', 'white');
    });   
-</script>
+</script>  
 <!-- 네비게이션바 시작 -->
 <nav class="navbar navbar-default navbar-fixed-top navbar-fixed-width  navbar-inverse" style="background-color: #2b68a7 !important; border:none">
 <div class="container" id="picture" >
-   <a class="navbar-brand brand-logo" id="brandspace" href="<c:url value='/main.do'/>" style="color:white;font-size:3em;font-weight: bold;text-align: center;line-height: 70px">   
+   <a class="navbar-brand brand-logo" id="brandspace" href="<c:url value='/main.do'/>" style="height: 85px">     
          <!-- 로고이미지 들어갈자리 -->
-      <img style="padding:20px 0 30px 0;width:auto;height: 300%;" src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />  
+      <img style="margin-top:15px;auto;height:80%;" src="<c:url value='/Images/logo.png'/>" alt="로고이미지" />
       </a> 
-  <div class="navbar-header">
-  <!-- 화면크기가 작을때 보여지는 메뉴버튼 -->
+  <div class="navbar-header">    
+  <!-- 화면크기가 작을때 보여지는 메뉴버튼 -->                 
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseMenu">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -50,7 +50,7 @@
     </button>   
    <!-- 로고자리끝남 -->    
   </div><!-- navbar-header --->
-<!-- 일반사용자용 top -->
+<!-- 일반사용자용 top -->  
        <div class="collapse navbar-collapse" id="collapseMenu">
           <ul class="nav navbar-nav navbar-right">
             <li id="navbar-page" ><a class="navmenus" href="<c:url value='/main.do'/>">홈</a></li>
