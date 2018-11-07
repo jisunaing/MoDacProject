@@ -247,6 +247,17 @@ public class HyunaController {
 		
 		return "forward:/general/mypage/familyinfoview.do";
 	}
+	//가족 개인 정보 수정
+	@RequestMapping("/general/mypage/familyinfoEdit.do")
+	public String familyInfoEdit(@RequestParam Map map,HttpSession session) throws Exception {
+		
+		map.put("genid", session.getAttribute("genid"));
+		map.put("fbirthdate", map.get("year")+"/"+map.get("month")+"/"+map.get("day"));
+		genfamilyService.insert(map);
+		
+		
+		return "/general/mypage/familyinfoEdit.tiles";
+	}
 	//건강 정보
 	@RequestMapping(value="/general/mypage/healthinfoWrite.do",method=RequestMethod.GET)
 	public String healthinfoWriteG(@RequestParam Map map,Model model) throws Exception {

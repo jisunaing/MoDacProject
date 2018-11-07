@@ -111,13 +111,18 @@
 					<c:if test="${not isEmpty }">
 						<c:forEach var="record" items="${list}" varStatus="loop">
 							<tr class="success">
-								<td>${record.qno} ${loop.index}</td>
+								<td>${record.qno}</td>
 								<td>
 									<a href="<c:url value='/general/qna/qnahealth/healthQnaChat.do?qno=${record.qno}&sender=${genid}'/>"
 									id="opener${loop.index}" class="opener" data-target="#dialog" title="${loop.index }" onclick="return false">${record.title}</a>
 								</td>
 								<td>${record.postdate}</td>
-								<td>답변완료</td>
+								<c:if test="${record.qcontent eq ('chat' or 'null')}" var="isreplied">
+									<td>답변 대기중</td>
+								</c:if>
+								<c:if test="${!isreplied}">
+									<td>답변 완료</td>
+								</c:if>
 							</tr>
 						</c:forEach>
 					</c:if>
@@ -429,7 +434,7 @@ var chatSave = function(){
 				
 				console.log(JSON.stringify(data));
 				// 웹 소켓 객체로 서버에 연결하기
-				wsocket = new WebSocket("ws://localhost:8080${pageContext.request.contextPath}/chat-ws.do"); 
+				wsocket = new WebSocket("ws://192.168.0.163:8080${pageContext.request.contextPath}/chat-ws.do"); 
 				wsocket.onclose=socketClose;
 				wsocket.onopen =socketOpen(data);
 				wsocket.addEventListener("message",socketMessage);
