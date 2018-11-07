@@ -35,14 +35,12 @@ public class HealthquestionDao implements HealthquestionService{
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.delete("healthquestionDelete",map);
 	}
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("healthquestionUpdate", map);
 	}
 
 	@Override
@@ -62,6 +60,5 @@ public class HealthquestionDao implements HealthquestionService{
 
 	
 
-	
 
 }

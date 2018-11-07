@@ -69,8 +69,4 @@ public class HealthInfoController {
 		return "general/HealthInfoView.tiles";
 	}
 
-	@RequestMapping("/main.do")
-	public String healthCateg() throws Exception {
-		return "forward:/healthinfoList.do";
-	}
 }

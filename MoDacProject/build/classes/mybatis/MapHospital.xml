@@ -22,6 +22,8 @@
 		<result property="pid" column="pid"/>
 		<result property="lunch" column="lunch"/>
 		<result property="pwebsite" column="pwebsite"/>
+		<result property="hoslat" column="hoslat"/>
+		<result property="hoslng" column="hoslng"/>
 	</resultMap>
 	<!-- 쿼리 작성 -->
 	<select id="HospitalList" parameterType="java.util.Map" resultType="MapHospitalDto">
@@ -41,20 +43,20 @@
 				</if>
 				ORDER BY HP.hosno DESC 
 				)
-			WHERE ROWNUM &lt; 31
+			WHERE ROWNUM &lt; 500
 		</if>
 		<if test="hosname != null">
 			SELECT * FROM 
-				(
-				SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
-				LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
-				JOIN hossubject HS ON HP.hosno = HS.hosno
-				JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
-				WHERE HP.hosname LIKE '%' || #{hosname} || '%' 
-				AND SB.SUBNAME = #{subjectname}
-				ORDER BY HP.hosno DESC
-				)
-			WHERE ROWNUM &lt; 31
+					(
+					SELECT HP.*, PT.pid, PT.pwebsite, PT.lunch FROM hospital HP
+					LEFT OUTER JOIN partners PT ON HP.hosno = PT.hosno
+					JOIN hossubject HS ON HP.hosno = HS.hosno
+					JOIN SUBJECT SB ON HS.subjectcode = SB.subjectcode 
+					WHERE HP.hosname LIKE '%' || #{hosname} || '%' 
+					AND SB.SUBNAME = #{subjectname}
+					ORDER BY HP.hosno DESC
+					)
+			WHERE ROWNUM &lt; 500
 		</if>
 	</select>
 	

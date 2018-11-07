@@ -23,14 +23,12 @@ public class HealthquestionServiceImpl implements HealthquestionService{
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(map);
 	}
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(map);
 	}
 
 	@Override
@@ -59,5 +57,5 @@ public class HealthquestionServiceImpl implements HealthquestionService{
 	public List<Map> selectListHos(Map map) {
 		return dao.selectListHos(map);
 	}
-	
+
 }
