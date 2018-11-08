@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/views/common/IsGenMember.jsp" %>
 <style>
 #hr {
 	margin-left: 40%;
@@ -17,8 +18,8 @@
 }
 </style>
 <title>건강문의</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- body 시작 -->
 <img src="<c:url value='/Images/healthquestion.jpg'/>" id="toppic" />
@@ -183,6 +184,7 @@ var patient="<c:url value='/Images/chatbubble.png'/>";
 
 var socketClose = function(){
 	appendMessage('연결을 끊었어요');
+	console.log("클로즈 끝 ");
 }///////////////////////socketClose
 var socketOpen  = function(data){
 	
@@ -202,12 +204,12 @@ var socketOpen  = function(data){
 	
 	appendMessage("연결되었습니다");
 	console.log(data['qcontent']);
+	//저장된 데이터가 있을시 
 	if(data['qcontent'] !="chat"){
 		pastChat();
 		console.log('pastchat다음호출');
 	}
-	//저장된 데이터가 있을시 
-	
+	console.log("오픈 끝 ");
 }///////////////////
 var socketMessage = function(e){
 	//서버로부터 받은 데이타 저장
@@ -263,7 +265,7 @@ var socketMessage = function(e){
 			if(rawdata.includes("연결되었습니다")){
 				appendSavedMessage(rawdata.replace(rawdata.substr(0,304),""));
 			}
-			if(rawdata.includes("연결을 끊었습니다")){
+			if(rawdata.includes("연결을 끊었어요")){
 				appendSavedMessage(rawdata.replace(rawdata.substr(rawdata.lastIndesOf("<div class='row' style = 'height : 75x; margin-top : 5px;padding-left:100px;'>"),rawdata.length()),""));
 			}
 			
@@ -375,11 +377,7 @@ var chatSave = function(){
 } 
 //채팅창에 채팅내용 보이기
  var displayPastChat = function(data){
-	console.log("displaypastchat");
-	console.log(data['qcontent']);
-	console.log("전전전전전: "+$('#chatMessage').html());
 	wsocket.send(data['qcontent']);
-	console.log("후후후후후: "+$('#chatMessage').html());
 } 
  
  ///기본-->
@@ -433,10 +431,11 @@ var chatSave = function(){
 			dataType:'json',
 			type:'post',
 			success: function(data){
-				
+				// 아이피 가져오기 위함 
+				var ip = location.host;
 				console.log(JSON.stringify(data));
 				// 웹 소켓 객체로 서버에 연결하기
-				wsocket = new WebSocket("ws://192.168.0.163:8080${pageContext.request.contextPath}/chat-ws.do"); 
+				wsocket = new WebSocket("wss://www.modac.co.kr/MoDacProject/chat-ws.do"); 
 				wsocket.onclose=socketClose;
 				wsocket.onopen =socketOpen(data);
 				wsocket.addEventListener("message",socketMessage);

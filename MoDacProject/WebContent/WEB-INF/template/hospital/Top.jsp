@@ -126,7 +126,7 @@ function successAjaxChatting(data,target){
 					console.log('에러:',error);
 				}
 			});			
-		},5000);
+		},3600000);//5000
 </script>
 		<!-- 탑부분 시작 -->
 		<header class="main-header">

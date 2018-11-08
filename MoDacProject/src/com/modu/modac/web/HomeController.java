@@ -78,6 +78,11 @@ public class HomeController {
 		
 		return "general/member/signup/GenSignUpWrite.tiles";
 	}
+	//회원가입 페이지에서 아이디 중복체크
+	@RequestMapping("/general/member/signup/genSignupIdCheck.do")
+	public String genSignupIdCheck() throws Exception {
+		return "general/mypage/MyPage.tiles";
+	}
 	//일반 회원가입 신청 
 	@RequestMapping("/general/member/signup/genSignupProcess.do")
 	public String genSignupProcess(@RequestParam Map map, Model model,HttpSession session) throws Exception {

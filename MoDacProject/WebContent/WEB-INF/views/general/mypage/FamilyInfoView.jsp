@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/views/common/IsGenMember.jsp" %>
 <link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
 
 <script
@@ -44,14 +45,13 @@ form {
 }
 </style>
 <script>
-	/* $(function(){
-		if(${!state eq null}){
-			$('#statebtn').text("건강정보 수정");
-		}
-		else
-			$('#statebtn').text("건강정보 등록");
-	});
- */
+$(function(){
+	if(${staterecord.bloodtype eq null}){
+		$('stateupdate').attr({display:none});
+	}
+	else
+		$('registerstate').attr({display:none});
+});
 </script>
 <!-- body 시작 -->
 <div class="jumbotron jumbotron-billboard" style="height: 500px">
@@ -98,7 +98,14 @@ form {
 									</tr>
 									<tr>
 										<th>성별</th>
-										<td>${record.fgender}</td>
+										<td>
+											<c:if test="${record.fgender eq 'F'}" var="isFemale">
+								  				여자
+								  			</c:if>
+								  			<c:if test="${!isFemale}">
+								  				남자
+								  			</c:if>
+										</td>
 									</tr>
 									<tr>
 										<th>연락처</th>
@@ -120,7 +127,14 @@ form {
 											</tr>
 											<tr>
 												<th>임신여부</th>
-												<td>${staterecord.pregnant}</td>
+												<td>
+													<c:if test="${staterecord.pregnant eq 'N'}" var="isntPreg">
+														없음
+													</c:if>
+													<c:if test="${!isntPreg}">
+														있음
+													</c:if> 
+												</td>
 											</tr>
 											<tr>
 												<th>복용중인 약</th>

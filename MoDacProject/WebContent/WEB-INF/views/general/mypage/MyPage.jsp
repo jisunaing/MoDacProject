@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/WEB-INF/views/common/IsGenMember.jsp" %>
 <link href="<c:url value='/css/jumbo.css'/>" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value='/css/masongram.min.css'/>">
 <!--아이콘때문에 필요 -->

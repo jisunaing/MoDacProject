@@ -54,7 +54,7 @@
 		//입장버튼 클릭시]
 		$('#enterBtn').on('click',function(){
 			// 웹 소켓 객체로 서버에 연결하기
-			wsocket = new WebSocket("ws://localhost:8080${pageContext.request.contextPath}/chat-ws.do"); 
+			wsocket = new WebSocket("ws://192.168.0.163:10080${pageContext.request.contextPath}/chat-ws.do"); 
 			wsocket.onclose=socketClose;
 			wsocket.onopen =socketOpen;
 			wsocket.addEventListener("message",socketMessage);

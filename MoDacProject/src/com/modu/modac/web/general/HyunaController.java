@@ -159,6 +159,7 @@ public class HyunaController {
 	public String mypage() throws Exception {
 		return "general/mypage/MyPage.tiles";
 	}
+	
 	// 개인 정보
 	@RequestMapping("/general/mypage/personalinfo.do")
 	public String personalInfo(Model model,GenmemberDto dto,HttpSession session,Map map) throws Exception {
