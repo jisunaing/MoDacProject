@@ -72,7 +72,7 @@
 		springSecurityFilterChain이 사용
 	-->
 
-	<!-- 위에 MdServlet으로 등록함 -->
+	<!-- 위에 appServlet으로 등록함 -->
 	<!--  
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>

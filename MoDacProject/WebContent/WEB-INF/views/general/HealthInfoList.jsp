@@ -13,21 +13,22 @@
 	#img_resize{
 		height: auto;
 		width: 100%;
+		margin-top: -250px;
 	}
 </style>
 <!-- 카테고리상세 -->
-<div class="jumbotron jumbotron-billboard" style="height: 500px;">
+<div class="jumbotron jumbotron-billboard" style="height: 600px;">
   <div class="img">
   	${record.categimage }
   </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-              <h2 style="padding-left:20%">${requestScope.categname}</h2>
+              <h2 style="margin-top:150px;text-align: left; padding-left:20%">${record.categname}</h2>
    	          <br/>
-				<p style="padding-left:20%">
+				<h4 style="padding-left:20%">
 					${record.explanation }	                
-				</p>
+				</h4>
             </div>
         </div>
     </div>
